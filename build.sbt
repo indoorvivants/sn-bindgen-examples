@@ -1,6 +1,5 @@
 import bindgen.interface.LogLevel
-scalaVersion := "3.1.0"
-enablePlugins(ScalaNativePlugin, BindgenPlugin)
+import java.nio.file.Paths
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
 lazy val `tree-sitter` = project
@@ -22,7 +21,7 @@ lazy val `tree-sitter` = project
         "treesitter",
         linkName = Some("tree-sitter"),
         cImports = List("tree_sitter/api.h"),
-        clangFlags = List("-std=gnu99")
+        clangFlags = List("-std=gnu99") ++ llvmInclude ++ clangInclude
       )
 
     },
@@ -56,3 +55,46 @@ lazy val `tree-sitter` = project
         )
     }
   )
+
+import bindgen.interface.Platform
+def includes(
+    ifLinux: List[String] = Nil,
+    ifMac: List[String] = Nil,
+    ifWindows: List[String] = Nil
+): List[String] = {
+  Platform.target.os match {
+    case Platform.OS.Linux   => ifLinux
+    case Platform.OS.MacOS   => ifMac
+    case Platform.OS.Windows => ifWindows
+    case _                   => Nil
+  }
+}.filter(s => Paths.get(s).toFile.exists).map(s => s"-I$s")
+def llvmInclude: List[String] = {
+  includes(
+    ifLinux =
+      (10 to 13).toList.flatMap(v => List(s"/usr/lib/llvm-$v/include/")),
+    ifMac =
+      List("/opt/homebrew/opt/llvm/include", "/usr/local/opt/llvm/include")
+  )
+}
+
+def clangInclude: List[String] = {
+  val majorVersion = sys.env.getOrElse("CLANG_VERSION", "13")
+  includes(
+    ifMac =
+      if (Platform.target.arch == Platform.Arch.x86_64)
+        List(
+          // on X86 macs
+          s"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/$majorVersion.0.0/include",
+          "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"
+        )
+      else
+        List(
+          // on M1 macs
+          s"/Library/Developer/CommandLineTools/usr/lib/clang/$majorVersion.0.0/include",
+          "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
+          "/Library/Developer/CommandLineTools/usr/include"
+        )
+  )
+}
