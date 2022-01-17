@@ -1,0 +1,15 @@
+*.class
+*.tasty
+.metals
+.bloop
+.bsp
+.sbt
+*.gch
+.cache
+c-playground
+target
+
+**/target/**
+project/project
+project/metals.sbt
+

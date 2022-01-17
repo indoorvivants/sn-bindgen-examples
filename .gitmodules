@@ -1,0 +1,6 @@
+[submodule "example-tree-sitter/tree-sitter"]
+	path = example-tree-sitter/tree-sitter
+	url = https://github.com/tree-sitter/tree-sitter
+[submodule "example-tree-sitter/tree-sitter-scala"]
+	path = example-tree-sitter/tree-sitter-scala
+	url = https://github.com/tree-sitter/tree-sitter-scala
