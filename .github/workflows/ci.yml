@@ -37,7 +37,7 @@ jobs:
 
       - name: Setup for examples
         run: |
-          git submodule update
+          git submodule update --init
           cd example-tree-sitter/tree-sitter && make && cd -
           cd example-tree-sitter/tree-sitter-scala && npm install && npm run build && cd -
 
