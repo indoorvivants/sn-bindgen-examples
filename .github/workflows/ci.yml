@@ -38,11 +38,10 @@ jobs:
       - name: Setup for examples
         run: |
           git submodule update --init
-          cd example-tree-sitter/tree-sitter && make && cd -
-          cd example-tree-sitter/tree-sitter-scala && npm install && npm run build && cd -
 
+          cd example-tree-sitter && ./setup.sh && cd -
           cd example-cjson && ./setup.sh && cd - 
 
       - name: Run examples
         run: | 
-          sbt tree-sitter/run
+          sbt tree-sitter/run cjson/run
