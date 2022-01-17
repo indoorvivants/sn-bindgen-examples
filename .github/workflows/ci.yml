@@ -41,6 +41,8 @@ jobs:
           cd example-tree-sitter/tree-sitter && make && cd -
           cd example-tree-sitter/tree-sitter-scala && npm install && npm run build && cd -
 
+          cd examples-cjson && ./setup.sh && cd - 
+
       - name: Run examples
         run: | 
           sbt tree-sitter/run

@@ -4,3 +4,6 @@
 [submodule "example-tree-sitter/tree-sitter-scala"]
 	path = example-tree-sitter/tree-sitter-scala
 	url = https://github.com/tree-sitter/tree-sitter-scala
+[submodule "example-cjson/cJSON"]
+	path = example-cjson/cJSON
+	url = git@github.com:DaveGamble/cJSON.git
