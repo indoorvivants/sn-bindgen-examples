@@ -2,13 +2,19 @@ import bindgen.interface.LogLevel
 import java.nio.file.Paths
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
+ThisBuild / resolvers += Resolver.sonatypeRepo("snapshots")
+
+lazy val Versions = new {
+  val Scala = "3.1.1"
+}
+
 // Example of Tree Sitter binding usage:
 // https://tree-sitter.github.io/tree-sitter/using-parsers#the-basic-objects
 lazy val `tree-sitter` = project
   .in(file("example-tree-sitter"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin)
   .settings(
-    scalaVersion := "3.1.0",
+    scalaVersion := Versions.Scala,
     Compile / run / envVars := Map(
       // As we're not installing tree-sitter globally,
       // we're just point binaries to the location of compiled
@@ -64,7 +70,7 @@ lazy val cjson = project
   .in(file("example-cjson"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin)
   .settings(
-    scalaVersion := "3.1.0",
+    scalaVersion := Versions.Scala,
     Compile / run / envVars := Map(
       // As we're not installing tree-sitter globally,
       // we're just point binaries to the location of compiled
