@@ -14,11 +14,9 @@ jobs:
       matrix: 
         include:
           - os: macos-latest
-            # uploaded_filename: sn-bindgen-osx-x86_64
             llvmBinPath: /usr/local/opt/llvm/bin
 
           - os: ubuntu-latest
-            # uploaded_filename: sn-bindgen-linux-x86_64
             llvmBinPath: /usr/lib/llvm-13/bin
     runs-on: ${{ matrix.os }}
     steps:
