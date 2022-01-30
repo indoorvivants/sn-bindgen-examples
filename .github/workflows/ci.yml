@@ -12,7 +12,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
-        os: [ubuntu-latest, macos-latest]
+        include:
+          - os: macos-latest
+            llvmBinPath: /usr/local/opt/llvm/bin
+
+          - os: ubuntu-latest
+            llvmBinPath: /usr/lib/llvm-13/bin
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -45,3 +50,5 @@ jobs:
       - name: Run examples
         run: | 
           sbt tree-sitter/run cjson/run
+        env:
+          LLVM_BIN: ${{ matrix.llvmBinPath }}
