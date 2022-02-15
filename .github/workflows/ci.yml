@@ -49,7 +49,7 @@ jobs:
           cd example-postgres && ./setup.sh && cd - 
 
           PLATFORM="$(uname)"
-          if [$PLATFORM == "Darwin" ]; then 
+          if [ $PLATFORM == "Darwin" ]; then 
             echo "It's a Mac"
           else
             docker run -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
@@ -58,7 +58,7 @@ jobs:
       - name: Run examples
         run: | 
           PLATFORM="$(uname)"
-          if [$PLATFORM == "Darwin" ]; then 
+          if [ $PLATFORM == "Darwin" ]; then 
             echo "It's a Mac"
             sbt tree-sitter/run cjson/run 
           else
