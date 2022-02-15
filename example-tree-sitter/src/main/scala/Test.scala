@@ -24,7 +24,7 @@ def tree_sitter_scala(): Ptr[TSLanguage] = extern
         parser,
         null,
         source,
-        uint32_t(strlen(source).toUInt)
+        strlen(source).toUInt
       )
 
     val root_node = ts_tree_root_node(tree)
@@ -35,11 +35,11 @@ def tree_sitter_scala(): Ptr[TSLanguage] = extern
         print(" " * level)
         println(nodeType)
         // asInstanceOf is a bug in codegen
-        val childrenCount = ts_node_child_count(node).asInstanceOf[CUnsignedInt]
+        val childrenCount = ts_node_child_count(node)
         if childrenCount != 0.toUInt then
           for childId <- 0 until childrenCount.toInt do
             val childNode =
-              ts_node_child(node, uint32_t(childId.toUInt))
+              ts_node_child(node, childId.toUInt)
             go(childNode, level + 1)
       end go
 
