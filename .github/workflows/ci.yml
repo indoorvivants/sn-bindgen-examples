@@ -75,6 +75,6 @@ jobs:
 
       - name: Run examples
         run: | 
-          sbt tree-sitter/run cjson/run postgres/run
+          sbt postgres/run tree-sitter/run cjson/run
         env:
           LLVM_BIN: ${{ matrix.llvmBinPath }}
