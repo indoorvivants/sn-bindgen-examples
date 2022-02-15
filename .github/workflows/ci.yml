@@ -46,9 +46,24 @@ jobs:
 
           cd example-tree-sitter && ./setup.sh && cd -
           cd example-cjson && ./setup.sh && cd - 
+          cd example-postgres && ./setup.sh && cd - 
+
+          PLATFORM="$(uname)"
+          if [ $PLATFORM == "Darwin" ]; then 
+            echo "It's a Mac"
+          else
+            docker run -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+          fi
 
       - name: Run examples
         run: | 
-          sbt tree-sitter/run cjson/run
+          PLATFORM="$(uname)"
+          if [ $PLATFORM == "Darwin" ]; then 
+            echo "It's a Mac"
+            sbt tree-sitter/run cjson/run 
+          else
+            echo "It's a Linux"
+            sbt tree-sitter/run cjson/run postgres/run
+          fi
         env:
           LLVM_BIN: ${{ matrix.llvmBinPath }}
