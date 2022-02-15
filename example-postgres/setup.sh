@@ -1,5 +1,7 @@
 #!/bin/sh
 
+PLATFORM="$(uname)"
+
 if [ $PLATFORM == "Darwin" ]; then
   echo "It's a Mac"
   brew install libpq
