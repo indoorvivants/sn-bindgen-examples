@@ -101,8 +101,6 @@ lazy val cjson = project
         linkName = Some("cjson"),
         cImports = List("cJSON.h")
       )
-
-      }
     },
     nativeConfig := {
       val base = baseDirectory.value / "cJSON"
