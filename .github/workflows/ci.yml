@@ -19,31 +19,6 @@ jobs:
           - os: ubuntu-latest
             llvmBinPath: /usr/lib/llvm-13/bin
     runs-on: ${{ matrix.os }}
-    services:
-      # label used to access the service container
-      postgres:
-        # Docker Hub image
-        image: postgres:latest
-        # service environment variables
-        # `POSTGRES_HOST` is `postgres`
-        env:
-          # optional (defaults to `postgres`)
-          POSTGRES_DB: postgres
-          # required
-          POSTGRES_PASSWORD: mysecretpassword
-          # optional (defaults to `5432`)
-          POSTGRES_PORT: 5432
-          # optional (defaults to `postgres`)
-          POSTGRES_USER: postgres
-        ports:
-          # maps tcp port 5432 on service container to the host
-          - 5432:5432
-        # set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
     steps:
       - uses: actions/checkout@v2
 
@@ -73,8 +48,22 @@ jobs:
           cd example-cjson && ./setup.sh && cd - 
           cd example-postgres && ./setup.sh && cd - 
 
+          PLATFORM="$(uname)"
+          if [$PLATFORM == "Darwin" ]; then 
+            echo "It's a Mac"
+          else
+            docker run -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+          fi
+
       - name: Run examples
         run: | 
-          sbt postgres/run tree-sitter/run cjson/run
+          PLATFORM="$(uname)"
+          if [$PLATFORM == "Darwin" ]; then 
+            echo "It's a Mac"
+            sbt tree-sitter/run cjson/run 
+          else
+            echo "It's a Linux"
+            sbt tree-sitter/run cjson/run postgres/run
+          fi
         env:
           LLVM_BIN: ${{ matrix.llvmBinPath }}
