@@ -46,9 +46,10 @@ jobs:
 
           cd example-tree-sitter && ./setup.sh && cd -
           cd example-cjson && ./setup.sh && cd - 
+          cd example-postgres && ./setup.sh && cd - 
 
       - name: Run examples
         run: | 
-          sbt tree-sitter/run cjson/run
+          sbt tree-sitter/run cjson/run postgres/run
         env:
           LLVM_BIN: ${{ matrix.llvmBinPath }}

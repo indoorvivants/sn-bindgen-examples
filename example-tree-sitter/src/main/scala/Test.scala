@@ -24,7 +24,7 @@ def tree_sitter_scala(): Ptr[TSLanguage] = extern
         parser,
         null,
         source,
-        strlen(source).toUInt.asInstanceOf[uint32_t]
+        uint32_t(strlen(source).toUInt)
       )
 
     val root_node = ts_tree_root_node(tree)
@@ -39,7 +39,7 @@ def tree_sitter_scala(): Ptr[TSLanguage] = extern
         if childrenCount != 0.toUInt then
           for childId <- 0 until childrenCount.toInt do
             val childNode =
-              ts_node_child(node, childId.toUInt.asInstanceOf[uint32_t])
+              ts_node_child(node, uint32_t(childId.toUInt))
             go(childNode, level + 1)
       end go
 

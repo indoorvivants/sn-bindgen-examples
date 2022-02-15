@@ -1,5 +1,7 @@
+import bindgen.interface.Platform
 import bindgen.interface.LogLevel
 import java.nio.file.Paths
+
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
 ThisBuild / resolvers += Resolver.sonatypeRepo("snapshots")
@@ -24,10 +26,16 @@ lazy val `tree-sitter` = project
     ),
     // Generate bindings to Tree Sitter's main API
     Bindgen.bindings := {
-      val cfg =
-        bindgen.interface.Platform.detectClangInfo(nativeClang.value.toPath)
+      val extraFlags = {
+        val clang = nativeConfig.value.clang
 
-      val includes = cfg.includePaths.map("-I" + _)
+        val ci = Platform.detectClangInfo(clang)
+
+        val clangInclude = ci.includePaths.map("-I" + _)
+        val llvmInclude = ci.llvmInclude.map("-I" + _)
+
+        clangInclude ++ llvmInclude
+      }
 
       { builder =>
         builder.define(
@@ -35,10 +43,10 @@ lazy val `tree-sitter` = project
           "treesitter",
           linkName = Some("tree-sitter"),
           cImports = List("tree_sitter/api.h"),
-          clangFlags = List("-std=gnu99") ++ includes
+          clangFlags = List("-std=gnu99") ++ extraFlags
         )
-      }
 
+      }
     },
     // Copy generated Scala parser
     Compile / resourceGenerators += Def.task {
@@ -86,14 +94,13 @@ lazy val cjson = project
       "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "cJSON" / "build").toString
     ),
     // Generate bindings to Tree Sitter's main API
-    Bindgen.bindings := {
-      { builder =>
-        builder.define(
-          baseDirectory.value / "cJSON" / "cJSON.h",
-          "cjson",
-          linkName = Some("cjson"),
-          cImports = List("cJSON.h")
-        )
+    Bindgen.bindings := { builder =>
+      builder.define(
+        baseDirectory.value / "cJSON" / "cJSON.h",
+        "cjson",
+        linkName = Some("cjson"),
+        cImports = List("cJSON.h")
+      )
 
       }
     },
@@ -115,3 +122,55 @@ lazy val cjson = project
         )
     }
   )
+
+lazy val postgres =
+  project
+    .in(file("example-postgres"))
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+    .settings(
+      scalaVersion := Versions.Scala,
+      // Generate bindings to Postgres main API
+      Bindgen.bindings := { builder =>
+        builder.define(
+          postgresHeader.toFile(),
+          "libpq",
+          linkName = Some("pq"),
+          cImports = List("libpq-fe.h"),
+          clangFlags = List("-std=gnu99") ++ List(s"-I$postgresInclude")
+        )
+
+      },
+      nativeConfig ~= { conf =>
+        conf.withLinkingOptions(
+          conf.linkingOptions ++ postgresLib.toList.map("-L" + _)
+        )
+      }
+    )
+
+def postgresInclude = {
+  import Platform.*
+  (os, arch) match {
+    case (OS.Linux, _) => Paths.get("/usr/include/postgresql/")
+    case (OS.MacOS, Arch.aarch64) =>
+      Paths.get("/opt/homebrew/opt/libpq/include/")
+    case (OS.MacOS, Arch.x86_64) => Paths.get("/usr/local/opt/libpq/include/")
+  }
+}
+
+def postgresLib = {
+  import Platform.*
+  (os, arch) match {
+    case (OS.MacOS, Arch.aarch64) =>
+      Some(Paths.get("/opt/homebrew/opt/libpq/lib/"))
+    case (OS.MacOS, Arch.x86_64) =>
+      Some(Paths.get("/usr/local/opt/libpq/lib/"))
+    case _ => None
+  }
+}
+
+def postgresHeader = {
+  import Platform.*
+  val filename = "libpq-fe.h"
+
+  postgresInclude.resolve(filename)
+}
