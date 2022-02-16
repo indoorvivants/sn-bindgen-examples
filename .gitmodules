@@ -7,3 +7,6 @@
 [submodule "example-cjson/cJSON"]
 	path = example-cjson/cJSON
 	url = https://github.com/DaveGamble/cJSON.git
+[submodule "example-git/libgit2"]
+	path = example-git/libgit2
+	url = https://github.com/libgit2/libgit2.git

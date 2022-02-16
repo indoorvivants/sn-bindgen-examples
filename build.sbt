@@ -121,6 +121,49 @@ lazy val cjson = project
     }
   )
 
+lazy val libgit2 = project
+  .in(file("example-git"))
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+  .settings(
+    scalaVersion := Versions.Scala,
+    Compile / run / envVars := Map(
+      // As we're not installing tree-sitter globally,
+      // we're just point binaries to the location of compiled
+      // dynamic libraries
+      "LD_LIBRARY_PATH" -> (baseDirectory.value / "libgit2" / "build").toString,
+      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "libgit2" / "build").toString
+    ),
+    // Generate bindings to Tree Sitter's main API
+    Bindgen.bindings := { builder =>
+      val gitinclude = baseDirectory.value / "libgit2" / "include"
+
+      builder.define(
+        gitinclude / "git2.h",
+        "libgit",
+        linkName = Some("git2"),
+        cImports = List("git2.h"),
+        clangFlags = List(s"-I$gitinclude")
+      )
+    },
+    nativeConfig := {
+      val base = baseDirectory.value / "libgit2"
+      val libFolder = base / "build"
+      val headersFolder = base / "include"
+      val conf = nativeConfig.value
+
+      conf
+        .withLinkingOptions(
+          conf.linkingOptions ++ List(
+            "-lgit2",
+            s"-L$libFolder"
+          )
+        )
+        .withCompileOptions(
+          conf.compileOptions ++ List(s"-I$headersFolder")
+        )
+    }
+  )
+
 lazy val postgres =
   project
     .in(file("example-postgres"))
