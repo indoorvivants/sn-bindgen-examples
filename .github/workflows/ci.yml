@@ -48,6 +48,7 @@ jobs:
           cd example-cjson && ./setup.sh && cd - 
           cd example-postgres && ./setup.sh && cd - 
           cd example-git && ./setup.sh && cd - 
+          cd example-sqlite && ./setup.sh && cd - 
 
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 
@@ -61,10 +62,10 @@ jobs:
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 
             echo "It's a Mac"
-            sbt tree-sitter/run cjson/run libgit2/run
+            sbt tree-sitter/run cjson/run libgit2/run sqlite/run
           else
             echo "It's a Linux"
-            sbt tree-sitter/run cjson/run libgit2/run postgres/run
+            sbt tree-sitter/run cjson/run libgit2/run sqlite/run postgres/run
           fi
         env:
           LLVM_BIN: ${{ matrix.llvmBinPath }}

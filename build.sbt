@@ -215,3 +215,41 @@ def postgresHeader = {
 
   postgresInclude.resolve(filename)
 }
+
+lazy val sqlite =
+  project
+    .in(file("example-sqlite"))
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+    .settings(
+      scalaVersion := Versions.Scala,
+      // Generate bindings to Postgres main API
+      Bindgen.bindings := {
+        val extraFlags = {
+          val clang = nativeConfig.value.clang
+
+          val ci = Platform.detectClangInfo(clang)
+
+          val clangInclude = ci.includePaths.map("-I" + _)
+          val llvmInclude = ci.llvmInclude.map("-I" + _)
+
+          clangInclude ++ llvmInclude
+        }
+
+        { builder =>
+          val loc = baseDirectory.value / "sqlite"
+
+          builder.define(
+            loc / "sqlite3.h",
+            "libsqlite",
+            linkName = Some("sqlite3"),
+            cImports = List("sqlite.h"),
+            clangFlags = extraFlags
+          )
+        }
+      },
+      nativeConfig ~= { conf =>
+        conf.withLinkingOptions(
+          conf.linkingOptions // ++ postgresLib.toList.map("-L" + _)
+        )
+      }
+    )
