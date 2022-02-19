@@ -39,10 +39,10 @@ def client_get(cli: Ptr[mg_connection], path: String)(using
 
     while rem > 0 && !err do
       string.memset(buf, 0, 1024.toUInt)
-      val ret = mg_read(cli, buf, 1024.toUInt)
+      val ret = mg_read(cli, buf, 100.toUInt)
       if ret > 0 then
         rem -= ret
-        body.append(fromCString(buf))
+        // body.append(fromCString(buf))
       else err = true
   end if
 
@@ -126,7 +126,7 @@ end client_get
 
     // Now let's call our own http server
 
-    val cli = mg_connect_client(c"localhost", 9991, 0, errbuf, 256.toUInt)
+    val cli = mg_connect_client(c"localhost", 9991, 0, errbuf, 128.toUInt)
 
     println(client_get(cli, "/add/111/567"))
 
