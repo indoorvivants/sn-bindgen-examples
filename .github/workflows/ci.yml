@@ -13,10 +13,10 @@ jobs:
       fail-fast: false
       matrix: 
         include:
-          - os: macos-latest
+          - os: macos-11
             llvmBinPath: /usr/local/opt/llvm/bin
 
-          - os: ubuntu-latest
+          - os: ubuntu-20.04
             llvmBinPath: /usr/lib/llvm-13/bin
     runs-on: ${{ matrix.os }}
     steps:
@@ -44,12 +44,14 @@ jobs:
         run: |
           git submodule update --init
 
-          cd example-tree-sitter && ./setup.sh && cd -
-          cd example-cjson && ./setup.sh && cd - 
-          cd example-postgres && ./setup.sh && cd - 
-          cd example-git && ./setup.sh && cd - 
-          cd example-sqlite && ./setup.sh && cd - 
-          cd example-civetweb && ./setup.sh && cd - 
+          BASE=$PWD
+
+          cd example-tree-sitter && ./setup.sh && cd $BASE
+          cd example-cjson && ./setup.sh && cd $BASE
+          cd example-postgres && ./setup.sh && cd $BASE 
+          cd example-git && ./setup.sh && cd $BASE
+          cd example-sqlite && ./setup.sh && cd $BASE 
+          cd example-civetweb && ./setup.sh && cd $BASE
 
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 
