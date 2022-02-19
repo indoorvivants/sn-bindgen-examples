@@ -127,7 +127,7 @@ lazy val libgit2 = project
   .settings(
     scalaVersion := Versions.Scala,
     Compile / run / envVars := Map(
-      // As we're not installing tree-sitter globally,
+      // As we're not installing libgit globally,
       // we're just point binaries to the location of compiled
       // dynamic libraries
       "LD_LIBRARY_PATH" -> (baseDirectory.value / "libgit2" / "build").toString,
@@ -222,6 +222,13 @@ lazy val sqlite =
     .enablePlugins(ScalaNativePlugin, BindgenPlugin)
     .settings(
       scalaVersion := Versions.Scala,
+      Compile / run / envVars := Map(
+        // As we're not installing sqlite globally,
+        // we're just point binaries to the location of compiled
+        // dynamic libraries
+        "LD_LIBRARY_PATH" -> (baseDirectory.value / "sqlite").toString,
+        "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "sqlite").toString
+      ),
       // Generate bindings to Postgres main API
       Bindgen.bindings := {
         val extraFlags = {
@@ -243,13 +250,54 @@ lazy val sqlite =
             "libsqlite",
             linkName = Some("sqlite3"),
             cImports = List("sqlite.h"),
-            clangFlags = extraFlags
+            clangFlags = extraFlags ++ List("-fsigned-char")
           )
         }
       },
-      nativeConfig ~= { conf =>
+      nativeConfig := {
+	val conf = nativeConfig.value
+	val dir = baseDirectory.value / "sqlite"
+
+	conf.withLinkingOptions(conf.linkingOptions ++ List(s"-L$dir"))
+      }
+    )
+
+lazy val civetweb =
+  project
+    .in(file("example-civetweb"))
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+    .settings(
+      scalaVersion := Versions.Scala,
+      // Generate bindings to Postgres main API
+      Bindgen.bindings := {
+        val extraFlags = {
+          val clang = nativeConfig.value.clang
+
+          val ci = Platform.detectClangInfo(clang)
+
+          val clangInclude = ci.includePaths.map("-I" + _)
+          val llvmInclude = ci.llvmInclude.map("-I" + _)
+
+          clangInclude ++ llvmInclude
+        }
+
+        { builder =>
+          val loc = baseDirectory.value / "civetweb"
+
+          builder.define(
+            loc / "include" / "civetweb.h",
+            "civetweb",
+            cImports = List("civetweb.h"),
+            clangFlags = extraFlags ++ List("-fsigned-char")
+          )
+        }
+      },
+      nativeConfig := {
+        val fullPath = baseDirectory.value / "civetweb" / "libcivetweb.a"
+        val conf = nativeConfig.value
+
         conf.withLinkingOptions(
-          conf.linkingOptions // ++ postgresLib.toList.map("-L" + _)
+          conf.linkingOptions :+ fullPath.toString
         )
       }
     )
