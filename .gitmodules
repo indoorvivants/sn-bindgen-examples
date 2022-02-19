@@ -10,3 +10,6 @@
 [submodule "example-git/libgit2"]
 	path = example-git/libgit2
 	url = https://github.com/libgit2/libgit2.git
+[submodule "example-civetweb/civetweb"]
+	path = example-civetweb/civetweb
+	url = https://github.com/civetweb/civetweb.git

@@ -246,10 +246,45 @@ lazy val sqlite =
             clangFlags = extraFlags
           )
         }
+      }
+    )
+
+lazy val civetweb =
+  project
+    .in(file("example-civetweb"))
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+    .settings(
+      scalaVersion := Versions.Scala,
+      // Generate bindings to Postgres main API
+      Bindgen.bindings := {
+        val extraFlags = {
+          val clang = nativeConfig.value.clang
+
+          val ci = Platform.detectClangInfo(clang)
+
+          val clangInclude = ci.includePaths.map("-I" + _)
+          val llvmInclude = ci.llvmInclude.map("-I" + _)
+
+          clangInclude ++ llvmInclude
+        }
+
+        { builder =>
+          val loc = baseDirectory.value / "civetweb"
+
+          builder.define(
+            loc / "include" / "civetweb.h",
+            "civetweb",
+            cImports = List("civetweb.h"),
+            clangFlags = extraFlags
+          )
+        }
       },
-      nativeConfig ~= { conf =>
+      nativeConfig := {
+        val fullPath = baseDirectory.value / "civetweb" / "libcivetweb.a"
+        val conf = nativeConfig.value
+
         conf.withLinkingOptions(
-          conf.linkingOptions // ++ postgresLib.toList.map("-L" + _)
+          conf.linkingOptions :+ fullPath.toString
         )
       }
     )
