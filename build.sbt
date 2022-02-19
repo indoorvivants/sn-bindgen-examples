@@ -127,7 +127,7 @@ lazy val libgit2 = project
   .settings(
     scalaVersion := Versions.Scala,
     Compile / run / envVars := Map(
-      // As we're not installing tree-sitter globally,
+      // As we're not installing libgit globally,
       // we're just point binaries to the location of compiled
       // dynamic libraries
       "LD_LIBRARY_PATH" -> (baseDirectory.value / "libgit2" / "build").toString,
@@ -250,9 +250,15 @@ lazy val sqlite =
             "libsqlite",
             linkName = Some("sqlite3"),
             cImports = List("sqlite.h"),
-            clangFlags = extraFlags
+            clangFlags = extraFlags ++ List("-fsigned-char")
           )
         }
+      },
+      nativeConfig := {
+	val conf = nativeConfig.value
+	val dir = baseDirectory.value / "sqlite"
+
+	conf.withLinkingOptions(conf.linkingOptions ++ List(s"-L$dir"))
       }
     )
 
@@ -282,7 +288,7 @@ lazy val civetweb =
             loc / "include" / "civetweb.h",
             "civetweb",
             cImports = List("civetweb.h"),
-            clangFlags = extraFlags
+            clangFlags = extraFlags ++ List("-fsigned-char")
           )
         }
       },
