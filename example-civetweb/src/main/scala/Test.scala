@@ -32,17 +32,17 @@ def client_get(cli: Ptr[mg_connection], path: String)(using
 
   val body_length = ri.content_length
 
-  if body_length > 0 then
-    var rem = ri.content_length
-    var err = false
-    val buf = alloc[CChar](1024)
-    while rem > 0 && !err do
-      val ret = mg_read(cli, buf, 1024.toUInt)
-      if ret >= 0 then
-        rem -= ret
-        for i <- 0 until ret do body.addOne(buf(i).toChar)
-      else err = true
-  end if
+  // if body_length > 0 then
+  //   var rem = ri.content_length
+  //   var err = false
+  //   val buf = alloc[CChar](1024)
+  //   while rem > 0 && !err do
+  //     val ret = mg_read(cli, buf, 1024.toUInt)
+  //     if ret >= 0 then
+  //       rem -= ret
+  //       for i <- 0 until ret do body.addOne(buf(i).toChar)
+  //     else err = true
+  // end if
 
   if ret != 1 then Left(fromCString(errbuf))
   else Right(Response(ri.status_code, headers.result, body.result))
