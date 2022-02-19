@@ -67,7 +67,7 @@ end client_get
     val options = alloc[CArray[CString, Nat._2]](1)
 
     (!options)(0) = c"listening_ports"
-    (!options)(1) = c"8081"
+    (!options)(1) = c"9991"
 
     val ctx = mg_start(callbacks, null, options.at(0))
 
@@ -124,7 +124,7 @@ end client_get
 
     // Now let's call our own http server
 
-    val cli = mg_connect_client(c"localhost", 8081, 0, errbuf, 256.toUInt)
+    val cli = mg_connect_client(c"localhost", 9991, 0, errbuf, 256.toUInt)
 
     println(client_get(cli, "/add/111/567"))
 
