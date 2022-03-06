@@ -1,4 +1,5 @@
 import bindgen.interface.Platform
+import bindgen.interface.Binding
 import bindgen.interface.LogLevel
 import java.nio.file.Paths
 
@@ -25,28 +26,14 @@ lazy val `tree-sitter` = project
       "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "tree-sitter").toString
     ),
     // Generate bindings to Tree Sitter's main API
-    Bindgen.bindings := {
-      val extraFlags = {
-        val clang = nativeConfig.value.clang
-
-        val ci = Platform.detectClangInfo(clang)
-
-        val clangInclude = ci.includePaths.map("-I" + _)
-        val llvmInclude = ci.llvmInclude.map("-I" + _)
-
-        clangInclude ++ llvmInclude
-      }
-
-      { builder =>
-        builder.define(
-          baseDirectory.value / "tree-sitter" / "lib" / "include" / "tree_sitter" / "api.h",
-          "treesitter",
-          linkName = Some("tree-sitter"),
-          cImports = List("tree_sitter/api.h"),
-          clangFlags = List("-std=gnu99") ++ extraFlags
-        )
-
-      }
+    bindgenBindings += {
+      Binding(
+        baseDirectory.value / "tree-sitter" / "lib" / "include" / "tree_sitter" / "api.h",
+        "treesitter",
+        linkName = Some("tree-sitter"),
+        cImports = List("tree_sitter/api.h"),
+        clangFlags = List("-std=gnu99")
+      )
     },
     // Copy generated Scala parser
     Compile / resourceGenerators += Def.task {
@@ -94,8 +81,8 @@ lazy val cjson = project
       "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "cJSON" / "build").toString
     ),
     // Generate bindings to Tree Sitter's main API
-    Bindgen.bindings := { builder =>
-      builder.define(
+    bindgenBindings += {
+      Binding(
         baseDirectory.value / "cJSON" / "cJSON.h",
         "cjson",
         linkName = Some("cjson"),
@@ -134,10 +121,10 @@ lazy val libgit2 = project
       "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "libgit2" / "build").toString
     ),
     // Generate bindings to Tree Sitter's main API
-    Bindgen.bindings := { builder =>
+    bindgenBindings += {
       val gitinclude = baseDirectory.value / "libgit2" / "include"
 
-      builder.define(
+      Binding(
         gitinclude / "git2.h",
         "libgit",
         linkName = Some("git2"),
@@ -171,15 +158,14 @@ lazy val postgres =
     .settings(
       scalaVersion := Versions.Scala,
       // Generate bindings to Postgres main API
-      Bindgen.bindings := { builder =>
-        builder.define(
+      bindgenBindings += {
+        Binding(
           postgresHeader.toFile(),
           "libpq",
           linkName = Some("pq"),
           cImports = List("libpq-fe.h"),
-          clangFlags = List("-std=gnu99") ++ List(s"-I$postgresInclude")
+          clangFlags = List("-std=gnu99", s"-I$postgresInclude")
         )
-
       },
       nativeConfig ~= { conf =>
         conf.withLinkingOptions(
@@ -230,35 +216,20 @@ lazy val sqlite =
         "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "sqlite").toString
       ),
       // Generate bindings to Postgres main API
-      Bindgen.bindings := {
-        val extraFlags = {
-          val clang = nativeConfig.value.clang
-
-          val ci = Platform.detectClangInfo(clang)
-
-          val clangInclude = ci.includePaths.map("-I" + _)
-          val llvmInclude = ci.llvmInclude.map("-I" + _)
-
-          clangInclude ++ llvmInclude
-        }
-
-        { builder =>
-          val loc = baseDirectory.value / "sqlite"
-
-          builder.define(
-            loc / "sqlite3.h",
-            "libsqlite",
-            linkName = Some("sqlite3"),
-            cImports = List("sqlite.h"),
-            clangFlags = extraFlags ++ List("-fsigned-char")
-          )
-        }
+      bindgenBindings += {
+        Binding(
+          baseDirectory.value / "sqlite" / "sqlite3.h",
+          "libsqlite",
+          linkName = Some("sqlite3"),
+          cImports = List("sqlite.h"),
+          clangFlags = List("-fsigned-char")
+        )
       },
       nativeConfig := {
-	val conf = nativeConfig.value
-	val dir = baseDirectory.value / "sqlite"
+        val conf = nativeConfig.value
+        val dir = baseDirectory.value / "sqlite"
 
-	conf.withLinkingOptions(conf.linkingOptions ++ List(s"-L$dir"))
+        conf.withLinkingOptions(conf.linkingOptions ++ List(s"-L$dir"))
       }
     )
 
@@ -269,28 +240,13 @@ lazy val civetweb =
     .settings(
       scalaVersion := Versions.Scala,
       // Generate bindings to Postgres main API
-      Bindgen.bindings := {
-        val extraFlags = {
-          val clang = nativeConfig.value.clang
-
-          val ci = Platform.detectClangInfo(clang)
-
-          val clangInclude = ci.includePaths.map("-I" + _)
-          val llvmInclude = ci.llvmInclude.map("-I" + _)
-
-          clangInclude ++ llvmInclude
-        }
-
-        { builder =>
-          val loc = baseDirectory.value / "civetweb"
-
-          builder.define(
-            loc / "include" / "civetweb.h",
-            "civetweb",
-            cImports = List("civetweb.h"),
-            clangFlags = extraFlags ++ List("-fsigned-char")
-          )
-        }
+      bindgenBindings += {
+        Binding(
+          baseDirectory.value / "civetweb" / "include" / "civetweb.h",
+          "civetweb",
+          cImports = List("civetweb.h"),
+          clangFlags = List("-fsigned-char")
+        )
       },
       nativeConfig := {
         val fullPath = baseDirectory.value / "civetweb" / "libcivetweb.a"
