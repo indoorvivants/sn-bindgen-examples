@@ -257,3 +257,34 @@ lazy val civetweb =
         )
       }
     )
+
+lazy val redis =
+  project
+    .in(file("example-redis"))
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+    .settings(
+      scalaVersion := Versions.Scala,
+      // Generate bindings to Hiredis main API
+      bindgenBindings += {
+        Binding(
+          baseDirectory.value / "hiredis" / "hiredis.h",
+          "libredis",
+          /* linkName = Some("hiredis"), */
+          cImports = List("hiredis.h"),
+          clangFlags = List("-fsigned-char")
+        )
+      },
+      nativeConfig := {
+        val conf = nativeConfig.value
+        val dir = baseDirectory.value / "hiredis"
+
+        conf
+          .withLinkingOptions(
+            conf.linkingOptions ++ List(
+              s"-L$dir",
+              (dir / "libhiredis.a").toString
+            )
+          )
+          .withCompileOptions(conf.compileOptions ++ List(s"-I$dir"))
+      }
+    )

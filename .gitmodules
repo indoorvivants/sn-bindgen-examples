@@ -13,3 +13,6 @@
 [submodule "example-civetweb/civetweb"]
 	path = example-civetweb/civetweb
 	url = https://github.com/civetweb/civetweb.git
+[submodule "example-redis/hiredis"]
+	path = example-redis/hiredis
+	url = https://github.com/redis/hiredis.git
