@@ -264,42 +264,27 @@ lazy val redis =
     .enablePlugins(ScalaNativePlugin, BindgenPlugin)
     .settings(
       scalaVersion := Versions.Scala,
-      Compile / run / envVars := Map(
-        // As we're not installing sqlite globally,
-        // we're just point binaries to the location of compiled
-        // dynamic libraries
-        "LD_LIBRARY_PATH" -> (baseDirectory.value / "sqlite").toString,
-        "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "sqlite").toString
-      ),
-      // Generate bindings to Postgres main API
-      Bindgen.bindings := {
-        val extraFlags = {
-          val clang = nativeConfig.value.clang
-
-          val ci = Platform.detectClangInfo(clang)
-
-          val clangInclude = ci.includePaths.map("-I" + _)
-          val llvmInclude = ci.llvmInclude.map("-I" + _)
-
-          clangInclude ++ llvmInclude
-        }
-
-        { builder =>
-          val loc = baseDirectory.value / "hiredis"
-
-          builder.define(
-            loc / "hiredis.h",
-            "libredis",
-            linkName = Some("hiredis"),
-            cImports = List("hiredis.h"),
-            clangFlags = extraFlags ++ List("-fsigned-char")
-          )
-        }
+      // Generate bindings to Hiredis main API
+      bindgenBindings += {
+        Binding(
+          baseDirectory.value / "hiredis" / "hiredis.h",
+          "libredis",
+          /* linkName = Some("hiredis"), */
+          cImports = List("hiredis.h"),
+          clangFlags = List("-fsigned-char")
+        )
       },
       nativeConfig := {
         val conf = nativeConfig.value
         val dir = baseDirectory.value / "hiredis"
 
-        conf.withLinkingOptions(conf.linkingOptions ++ List(s"-L$dir"))
+        conf
+          .withLinkingOptions(
+            conf.linkingOptions ++ List(
+              s"-L$dir",
+              (dir / "libhiredis.a").toString
+            )
+          )
+          .withCompileOptions(conf.compileOptions ++ List(s"-I$dir"))
       }
     )
