@@ -1,9 +1,9 @@
 #!/bin/sh
 
-cd cmark && \
+cd libgit2 && \
 rm -rf build && \
 mkdir build && \
 cd build && \
 cmake .. && \
-make && \
+cmake --build && \
 cd ../../
