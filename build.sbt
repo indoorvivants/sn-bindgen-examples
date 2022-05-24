@@ -288,3 +288,45 @@ lazy val redis =
           .withCompileOptions(conf.compileOptions ++ List(s"-I$dir"))
       }
     )
+
+lazy val cmark = project
+  .in(file("example-cmark"))
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+  .settings(
+    scalaVersion := Versions.Scala,
+    Compile / run / envVars := Map(
+      // As we're not installing tree-sitter globally,
+      // we're just point binaries to the location of compiled
+      // dynamic libraries
+      "LD_LIBRARY_PATH" -> (baseDirectory.value / "cmark" / "build" / "src").toString,
+      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "cmark" / "build" / "src").toString
+    ),
+    // Generate bindings to Tree Sitter's main API
+    bindgenBindings += {
+      val bd = (baseDirectory.value / "cmark" / "build" / "src")
+      Binding(
+        baseDirectory.value / "cmark" / "src" / "cmark.h",
+        "cmark",
+        linkName = Some("cmark"),
+        cImports = List("cmark.h"),
+        clangFlags = List(s"-I$bd", "-DCMARK_STATIC_DEFINE=")
+      )
+    },
+    nativeConfig := {
+      val base = baseDirectory.value / "cmark"
+      val libFolder = base / "build" / "src"
+      val headersFolder = base // cmark puts headers in root
+      val conf = nativeConfig.value
+
+      conf
+        .withLinkingOptions(
+          conf.linkingOptions ++ List(
+            "-lcmark",
+            s"-L$libFolder"
+          )
+        )
+        .withCompileOptions(
+          conf.compileOptions ++ List(s"-I$headersFolder")
+        )
+    }
+  )

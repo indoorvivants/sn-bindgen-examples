@@ -16,3 +16,6 @@
 [submodule "example-redis/hiredis"]
 	path = example-redis/hiredis
 	url = https://github.com/redis/hiredis.git
+[submodule "example-cmark/cmark"]
+	path = example-cmark/cmark
+	url = https://github.com/commonmark/cmark.git
