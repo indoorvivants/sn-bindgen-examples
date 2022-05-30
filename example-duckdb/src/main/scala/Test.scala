@@ -39,8 +39,8 @@ import duckdb_state.*
     row <- 0L until rows.toLong
     col <- 0L until columns.toLong
 
-    r = uint64_t(row.toULong)
-    c = uint64_t(col.toULong)
+    r = row.toULong.asInstanceOf[uint64_t]
+    c = col.toULong.asInstanceOf[uint64_t]
   do
     val value = duckdb_value_varchar(result, c, r)
     println(s"Row = $r, Col = $c   ==   ${fromCString(value)}")

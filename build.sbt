@@ -381,7 +381,7 @@ lazy val duckdb = project
         "duckdb",
         linkName = Some("duckdb"),
         cImports = List("duckdb.h"),
-        clangFlags = List(s"-I$bd")
+        clangFlags = List(s"-I$bd","-fsigned-char")
       ).copy(logLevel = LogLevel.Trace)
 
     },
