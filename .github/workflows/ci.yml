@@ -44,9 +44,7 @@ jobs:
         run: |
           git submodule update --init
 
-          BASE=$PWD
-
-          find . -maxdepth 2 -name "setup.sh" | xargs -t -n1 bash
+          find . -maxdepth 1 -name "example-*" | xargs -n1 -I{} bash -c "cd {} && ./setup.sh"
 
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 
