@@ -19,3 +19,6 @@
 [submodule "example-cmark/cmark"]
 	path = example-cmark/cmark
 	url = https://github.com/commonmark/cmark.git
+[submodule "example-rocksdb/rocksdb"]
+	path = example-rocksdb/rocksdb
+	url = https://github.com/facebook/rocksdb.git
