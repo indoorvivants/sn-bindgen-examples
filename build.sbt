@@ -295,13 +295,9 @@ lazy val cmark = project
   .settings(
     scalaVersion := Versions.Scala,
     Compile / run / envVars := Map(
-      // As we're not installing tree-sitter globally,
-      // we're just point binaries to the location of compiled
-      // dynamic libraries
       "LD_LIBRARY_PATH" -> (baseDirectory.value / "cmark" / "build" / "src").toString,
       "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "cmark" / "build" / "src").toString
     ),
-    // Generate bindings to Tree Sitter's main API
     bindgenBindings += {
       val bd = (baseDirectory.value / "cmark" / "build" / "src")
       Binding(
@@ -331,39 +327,37 @@ lazy val cmark = project
     }
   )
 
-lazy val rocksdb = project
-  .in(file("example-rocksdb"))
+lazy val duckdb = project
+  .in(file("example-duckdb"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin)
   .settings(
     scalaVersion := Versions.Scala,
     Compile / run / envVars := Map(
-      // As we're not installing tree-sitter globally,
-      // we're just point binaries to the location of compiled
-      // dynamic libraries
-      "LD_LIBRARY_PATH" -> (baseDirectory.value / "rocksdb").toString,
-      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "rocksdb").toString
+      "LD_LIBRARY_PATH" -> (baseDirectory.value / "duckdb" / "build" / "release" / "src").toString,
+      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "duckdb" / "build" / "release" / "src").toString
     ),
     // Generate bindings to Tree Sitter's main API
     bindgenBindings += {
-      val bd = (baseDirectory.value / "rocksdb" / "include")
+      val bd = (baseDirectory.value / "duckdb" / "src" / "include")
       Binding(
-        baseDirectory.value / "rocksdb" / "include" / "rocksdb" / "c.h",
-        "rocksdb",
-        linkName = Some("rocksdb"),
-        cImports = List("rocksdb/c.h"),
+        baseDirectory.value / "duckdb" / "src" / "include" / "duckdb.h",
+        "duckdb",
+        linkName = Some("duckdb"),
+        cImports = List("duckdb.h"),
         clangFlags = List(s"-I$bd")
-      )
+      ).copy(logLevel = LogLevel.Trace)
+
     },
     nativeConfig := {
-      val base = baseDirectory.value / "rocksdb"
-      val libFolder = base
-      val headersFolder = base / "include" // cmark puts headers in root
+      val base = baseDirectory.value / "duckdb"
+      val libFolder = base / "build" / "release" / "src"
+      val headersFolder = base / "src" / "include"
       val conf = nativeConfig.value
 
       conf
         .withLinkingOptions(
           conf.linkingOptions ++ List(
-            "-lrocksdb",
+            "-lduckdb",
             s"-L$libFolder"
           )
         )
