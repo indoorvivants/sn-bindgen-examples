@@ -1,5 +1,5 @@
 #!/bin/sh
 
 cd duckdb && \
-GEN=ninja make && \
+GEN=ninja make -j4 && \
 cd ../../
