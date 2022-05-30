@@ -1,5 +1,5 @@
 #!/bin/sh
 
 cd duckdb && \
-make -j8 && \
+make -j4 && \
 cd ../../
