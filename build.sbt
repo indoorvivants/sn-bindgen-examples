@@ -330,3 +330,45 @@ lazy val cmark = project
         )
     }
   )
+
+lazy val rocksdb = project
+  .in(file("example-rocksdb"))
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+  .settings(
+    scalaVersion := Versions.Scala,
+    Compile / run / envVars := Map(
+      // As we're not installing tree-sitter globally,
+      // we're just point binaries to the location of compiled
+      // dynamic libraries
+      "LD_LIBRARY_PATH" -> (baseDirectory.value / "rocksdb").toString,
+      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "rocksdb").toString
+    ),
+    // Generate bindings to Tree Sitter's main API
+    bindgenBindings += {
+      val bd = (baseDirectory.value / "rocksdb" / "include")
+      Binding(
+        baseDirectory.value / "rocksdb" / "include" / "rocksdb" / "c.h",
+        "rocksdb",
+        linkName = Some("rocksdb"),
+        cImports = List("rocksdb/c.h"),
+        clangFlags = List(s"-I$bd")
+      )
+    },
+    nativeConfig := {
+      val base = baseDirectory.value / "rocksdb"
+      val libFolder = base
+      val headersFolder = base / "include" // cmark puts headers in root
+      val conf = nativeConfig.value
+
+      conf
+        .withLinkingOptions(
+          conf.linkingOptions ++ List(
+            "-lrocksdb",
+            s"-L$libFolder"
+          )
+        )
+        .withCompileOptions(
+          conf.compileOptions ++ List(s"-I$headersFolder")
+        )
+    }
+  )
