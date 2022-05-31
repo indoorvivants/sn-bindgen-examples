@@ -370,8 +370,8 @@ lazy val duckdb = project
   .settings(
     scalaVersion := Versions.Scala,
     Compile / run / envVars := Map(
-      "LD_LIBRARY_PATH" -> (baseDirectory.value / "duckdb" / "build" / "release" / "src").toString,
-      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "duckdb" / "build" / "release" / "src").toString
+      "LD_LIBRARY_PATH" -> (baseDirectory.value / "duckdb" / "build" / "debug" / "src").toString,
+      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "duckdb" / "build" / "debug" / "src").toString
     ),
     // Generate bindings to Tree Sitter's main API
     bindgenBindings += {
@@ -386,7 +386,7 @@ lazy val duckdb = project
     },
     nativeConfig := {
       val base = baseDirectory.value / "duckdb"
-      val libFolder = base / "build" / "release" / "src"
+      val libFolder = base / "build" / "debug" / "src"
       val headersFolder = base / "src" / "include"
       val conf = nativeConfig.value
 
