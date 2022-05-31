@@ -348,7 +348,7 @@ lazy val rocksdb = project
     nativeConfig := {
       val base = baseDirectory.value / "rocksdb"
       val libFolder = base
-      val headersFolder = base / "include" 
+      val headersFolder = base / "include"
       val conf = nativeConfig.value
 
       conf
@@ -381,9 +381,8 @@ lazy val duckdb = project
         "duckdb",
         linkName = Some("duckdb"),
         cImports = List("duckdb.h"),
-        clangFlags = List(s"-I$bd","-fsigned-char")
-      ).copy(logLevel = LogLevel.Trace)
-
+        clangFlags = List(s"-I$bd", "-fsigned-char")
+      )
     },
     nativeConfig := {
       val base = baseDirectory.value / "duckdb"
