@@ -1,5 +1,5 @@
 #!/bin/sh
 
 cd duckdb && \
-GEN=ninja make debug -j4 && \
+GEN=ninja DISABLE_SANITIZER=1 DISABLE_UNITY=1 make debug -j4 && \
 cd ../../
