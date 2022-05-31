@@ -108,7 +108,7 @@ lazy val cjson = project
     }
   )
 
-lazy val libgit2 = project
+lazy val git = project
   .in(file("example-git"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin)
   .settings(
@@ -129,7 +129,7 @@ lazy val libgit2 = project
         "libgit",
         linkName = Some("git2"),
         cImports = List("git2.h"),
-        clangFlags = List(s"-I$gitinclude")
+        clangFlags = List(s"-I$gitinclude", "-fsigned-char")
       )
     },
     nativeConfig := {
