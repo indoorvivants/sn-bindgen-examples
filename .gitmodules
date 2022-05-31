@@ -22,3 +22,6 @@
 [submodule "example-rocksdb/rocksdb"]
 	path = example-rocksdb/rocksdb
 	url = https://github.com/facebook/rocksdb.git
+[submodule "example-duckdb/duckdb"]
+	path = example-duckdb/duckdb
+	url = https://github.com/duckdb/duckdb.git

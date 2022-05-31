@@ -108,7 +108,7 @@ lazy val cjson = project
     }
   )
 
-lazy val libgit2 = project
+lazy val git = project
   .in(file("example-git"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin)
   .settings(
@@ -129,7 +129,7 @@ lazy val libgit2 = project
         "libgit",
         linkName = Some("git2"),
         cImports = List("git2.h"),
-        clangFlags = List(s"-I$gitinclude")
+        clangFlags = List(s"-I$gitinclude", "-fsigned-char")
       )
     },
     nativeConfig := {
@@ -269,7 +269,6 @@ lazy val redis =
         Binding(
           baseDirectory.value / "hiredis" / "hiredis.h",
           "libredis",
-          /* linkName = Some("hiredis"), */
           cImports = List("hiredis.h"),
           clangFlags = List("-fsigned-char")
         )
@@ -295,13 +294,9 @@ lazy val cmark = project
   .settings(
     scalaVersion := Versions.Scala,
     Compile / run / envVars := Map(
-      // As we're not installing tree-sitter globally,
-      // we're just point binaries to the location of compiled
-      // dynamic libraries
       "LD_LIBRARY_PATH" -> (baseDirectory.value / "cmark" / "build" / "src").toString,
       "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "cmark" / "build" / "src").toString
     ),
-    // Generate bindings to Tree Sitter's main API
     bindgenBindings += {
       val bd = (baseDirectory.value / "cmark" / "build" / "src")
       Binding(
@@ -337,13 +332,9 @@ lazy val rocksdb = project
   .settings(
     scalaVersion := Versions.Scala,
     Compile / run / envVars := Map(
-      // As we're not installing tree-sitter globally,
-      // we're just point binaries to the location of compiled
-      // dynamic libraries
       "LD_LIBRARY_PATH" -> (baseDirectory.value / "rocksdb").toString,
       "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "rocksdb").toString
     ),
-    // Generate bindings to Tree Sitter's main API
     bindgenBindings += {
       val bd = (baseDirectory.value / "rocksdb" / "include")
       Binding(
@@ -357,13 +348,52 @@ lazy val rocksdb = project
     nativeConfig := {
       val base = baseDirectory.value / "rocksdb"
       val libFolder = base
-      val headersFolder = base / "include" // cmark puts headers in root
+      val headersFolder = base / "include"
       val conf = nativeConfig.value
 
       conf
         .withLinkingOptions(
           conf.linkingOptions ++ List(
             "-lrocksdb",
+            s"-L$libFolder"
+          )
+        )
+        .withCompileOptions(
+          conf.compileOptions ++ List(s"-I$headersFolder")
+        )
+    }
+  )
+
+lazy val duckdb = project
+  .in(file("example-duckdb"))
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+  .settings(
+    scalaVersion := Versions.Scala,
+    Compile / run / envVars := Map(
+      "LD_LIBRARY_PATH" -> (baseDirectory.value / "duckdb" / "build" / "debug" / "src").toString,
+      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "duckdb" / "build" / "debug" / "src").toString
+    ),
+    // Generate bindings to Tree Sitter's main API
+    bindgenBindings += {
+      val bd = (baseDirectory.value / "duckdb" / "src" / "include")
+      Binding(
+        baseDirectory.value / "duckdb" / "src" / "include" / "duckdb.h",
+        "duckdb",
+        linkName = Some("duckdb"),
+        cImports = List("duckdb.h"),
+        clangFlags = List(s"-I$bd", "-fsigned-char")
+      )
+    },
+    nativeConfig := {
+      val base = baseDirectory.value / "duckdb"
+      val libFolder = base / "build" / "debug" / "src"
+      val headersFolder = base / "src" / "include"
+      val conf = nativeConfig.value
+
+      conf
+        .withLinkingOptions(
+          conf.linkingOptions ++ List(
+            "-lduckdb",
             s"-L$libFolder"
           )
         )
