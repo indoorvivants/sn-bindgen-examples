@@ -12,12 +12,23 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
-        include:
-          - os: macos-11
-            llvmBinPath: /usr/local/opt/llvm/bin
-
-          - os: ubuntu-20.04
-            llvmBinPath: /usr/lib/llvm-13/bin
+        os: [macos-11, ubuntu-20.04]
+        example:
+          - tree-sitter
+          - cjson 
+          - libgit2
+          - sqlite
+          - civetweb 
+          - cmark 
+          - rocksdb 
+          - duckdb 
+          - postgres 
+          - redis
+        exclude:
+          - os: macos-11 
+            example: postgres 
+          - os: macos-11 
+            example: redis
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -45,7 +56,7 @@ jobs:
         run: |
           git submodule update --init
 
-          find . -maxdepth 1 -name "example-*" | sort | xargs -t -n1 -I{} bash -c "cd {} && time ./setup.sh"
+          cd example-${{ matrix.example }} && ./setup.sh
 
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 
@@ -60,10 +71,8 @@ jobs:
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 
             echo "It's a Mac"
-            sbt tree-sitter/run cjson/run libgit2/run sqlite/run civetweb/run cmark/run rocksdb/run duckdb/run
+            LLVM_BIN=/usr/local/opt/llvm/bin sbt ${{ matrix.example }}/run
           else
             echo "It's a Linux"
-            sbt tree-sitter/run cjson/run libgit2/run sqlite/run civetweb/run cmark/run postgres/run redis/run rocksdb/run duckdb/run
+            LLVM_BIN=/usr/lib/llvm-13/bin sbt ${{ matrix.example }}/run
           fi
-        env:
-          LLVM_BIN: ${{ matrix.llvmBinPath }}
