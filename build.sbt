@@ -424,7 +424,7 @@ lazy val libuv = project
         linkName = Some("uv"),
         cImports = List("uv.h"),
         clangFlags = List(s"-I${base}")
-      ).copy(logLevel = LogLevel.Trace)
+      )
     },
     nativeConfig := {
       val base = baseDirectory.value / "libuv"
