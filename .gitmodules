@@ -25,3 +25,6 @@
 [submodule "example-duckdb/duckdb"]
 	path = example-duckdb/duckdb
 	url = https://github.com/duckdb/duckdb.git
+[submodule "example-libuv/libuv"]
+	path = example-libuv/libuv
+	url = https://github.com/libuv/libuv.git

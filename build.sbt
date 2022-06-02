@@ -402,3 +402,45 @@ lazy val duckdb = project
         )
     }
   )
+
+lazy val libuv = project
+  .in(file("example-libuv"))
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+  .settings(
+    scalaVersion := Versions.Scala,
+    Compile / run / envVars := Map(
+      // As we're not installing tree-sitter globally,
+      // we're just point binaries to the location of compiled
+      // dynamic libraries
+      "LD_LIBRARY_PATH" -> (baseDirectory.value / "libuv" / "build").toString,
+      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "libuv" / "build").toString
+    ),
+    // Generate bindings to Tree Sitter's main API
+    bindgenBindings += {
+      val base = baseDirectory.value / "libuv" / "include"
+      Binding(
+        base / "uv.h",
+        "libuv",
+        linkName = Some("uv"),
+        cImports = List("uv.h"),
+        clangFlags = List(s"-I${base}")
+      )
+    },
+    nativeConfig := {
+      val base = baseDirectory.value / "libuv"
+      val libFolder = base / "build"
+      val headersFolder = base / "include" // cJSON puts headers in root
+      val conf = nativeConfig.value
+
+      conf
+        .withLinkingOptions(
+          conf.linkingOptions ++ List(
+            "-luv",
+            s"-L$libFolder"
+          )
+        )
+        .withCompileOptions(
+          conf.compileOptions ++ List(s"-I$headersFolder")
+        )
+    }
+  )

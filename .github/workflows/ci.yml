@@ -10,7 +10,7 @@ jobs:
   build:
     name: CI
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix: 
         os: [macos-11, ubuntu-20.04]
         example:
@@ -24,6 +24,7 @@ jobs:
           - duckdb 
           - postgres 
           - redis
+          - libuv
         exclude:
           - os: macos-11 
             example: postgres 
