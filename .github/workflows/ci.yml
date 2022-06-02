@@ -24,6 +24,7 @@ jobs:
           - duckdb 
           - postgres 
           - redis
+          - libuv
         exclude:
           - os: macos-11 
             example: postgres 
