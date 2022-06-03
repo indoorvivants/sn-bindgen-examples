@@ -25,6 +25,7 @@ jobs:
           - postgres 
           - redis
           - libuv
+          - vcpkg
         exclude:
           - os: macos-11 
             example: postgres 
