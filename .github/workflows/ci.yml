@@ -10,21 +10,21 @@ jobs:
   build:
     name: CI
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix: 
         os: [macos-11, ubuntu-20.04]
         example:
-          - tree-sitter
-          - cjson 
-          - git
-          - sqlite
-          - civetweb 
-          - cmark 
-          - rocksdb 
-          - duckdb 
-          - postgres 
-          - redis
-          - libuv
+          # - tree-sitter
+          # - cjson 
+          # - git
+          # - sqlite
+          # - civetweb 
+          # - cmark 
+          # - rocksdb 
+          # - duckdb 
+          # - postgres 
+          # - redis
+          # - libuv
           - vcpkg
         exclude:
           - os: macos-11 
@@ -55,7 +55,7 @@ jobs:
             wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
             sudo add-apt-repository "deb http://apt.llvm.org/focal/     llvm-toolchain-focal-13   main"
             sudo apt-get update 
-            sudo apt-get install clang-13 lldb-13 libclang-13-dev llvm-13-dev
+            sudo apt-get install clang-13 lldb-13 libclang-13-dev llvm-13-dev lld-13
             sudo apt-get install ninja-build
           fi
 
