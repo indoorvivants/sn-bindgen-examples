@@ -2,7 +2,7 @@ val BindgenVersion =
   sys.env.getOrElse("SN_BINDGEN_VERSION", "0.0.9+2-668a1f06-SNAPSHOT")
 
 val VcpkgVersion =
-  sys.env.getOrElse("SBT_VCPKG_VERSION", "0.0.1")
+  sys.env.getOrElse("SBT_VCPKG_VERSION", "0.0.2")
 
 resolvers += Resolver.sonatypeRepo("snapshots")
 
