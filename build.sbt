@@ -459,20 +459,24 @@ lazy val vcpkg = project
           conf.compileOptions ++ vcpkgCompilationArguments.value
         )
         .withLinkingOptions(
-          conf.linkingOptions ++ vcpkgLinkingArguments.value
+          conf.linkingOptions ++ vcpkgLinkingArguments.value ++ Seq("-fuse-ld=lld")
         )
     },
     bindgenBindings := Seq(
       Binding(
         vcpkgManager.value.includes("cjson") / "cjson" / "cJSON.h",
         "cjson",
-        cImports = List("cJSON.h")
+        cImports = List("cJSON.h"),
+        clangFlags = List("-fsigned-char")
       ),
       Binding(
         vcpkgManager.value.includes("libuv") / "uv.h",
         "libuv",
         cImports = List("uv.h"),
-        clangFlags = List("-I" + vcpkgManager.value.includes("libuv").toString)
+        clangFlags = List(
+          "-I" + vcpkgManager.value.includes("libuv").toString,
+          "-fsigned-char"
+        )
       ),
       Binding(
         vcpkgManager.value.includes("czmq") / "czmq.h",
@@ -480,7 +484,8 @@ lazy val vcpkg = project
         cImports = List("czmq.h"),
         clangFlags = List(
           "-I" + vcpkgManager.value.includes("czmq").toString,
-          "-I" + vcpkgManager.value.includes("zeromq").toString
+          "-I" + vcpkgManager.value.includes("zeromq").toString,
+          "-fsigned-char"
         )
       )
     )
