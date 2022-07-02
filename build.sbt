@@ -8,7 +8,7 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / resolvers += Resolver.sonatypeRepo("snapshots")
 
 lazy val Versions = new {
-  val Scala = "3.1.1"
+  val Scala = "3.1.3"
 }
 
 // Example of Tree Sitter binding usage:
@@ -459,7 +459,9 @@ lazy val vcpkg = project
           conf.compileOptions ++ vcpkgCompilationArguments.value
         )
         .withLinkingOptions(
-          conf.linkingOptions ++ vcpkgLinkingArguments.value ++ Seq("-fuse-ld=lld")
+          conf.linkingOptions ++ vcpkgLinkingArguments.value ++ Seq(
+            "-fuse-ld=lld"
+          )
         )
     },
     bindgenBindings := Seq(
@@ -489,4 +491,33 @@ lazy val vcpkg = project
         )
       )
     )
+  )
+
+lazy val lua = project
+  .in(file("example-lua"))
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+  .settings(
+    vcpkgDependencies := Set("lua"),
+    scalaVersion := Versions.Scala,
+    nativeConfig := {
+      val conf = nativeConfig.value
+
+      conf
+        .withCompileOptions(
+          conf.compileOptions ++ vcpkgCompilationArguments.value
+        )
+        .withLinkingOptions(conf.linkingOptions ++ vcpkgLinkingArguments.value)
+    },
+    bindgenBindings := {
+      Seq(
+        Binding(
+          (Compile / baseDirectory).value / "lua-amalgam.h",
+          "lua",
+          cImports = List("lua.h", "lauxlib.h", "lualib.h"),
+          clangFlags = List(
+            "-I" + vcpkgManager.value.includes("lua").toString
+          )
+        )
+      )
+    }
   )
