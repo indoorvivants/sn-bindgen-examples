@@ -10,7 +10,7 @@ jobs:
   build:
     name: CI
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix: 
         os: [macos-11, ubuntu-20.04]
         example:
@@ -65,7 +65,7 @@ jobs:
         run: |
           git submodule update --init
 
-          cd example-${{ matrix.example }} && ./setup.sh
+          (cd example-${{ matrix.example }} && ./setup.sh) || echo "No setup"
 
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 
