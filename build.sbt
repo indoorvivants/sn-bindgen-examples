@@ -521,3 +521,39 @@ lazy val lua = project
       )
     }
   )
+
+lazy val openssl = project
+  .in(file("example-openssl"))
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+  .settings(
+    vcpkgDependencies := Set("openssl"),
+    scalaVersion := Versions.Scala,
+    nativeConfig := {
+      val conf = nativeConfig.value
+
+      val arch64 =
+        if (Platform.arch == Platform.Arch.aarch64)
+          List("-arch", "arm64")
+        else Nil
+
+      conf
+        .withCompileOptions(
+          conf.compileOptions ++ vcpkgCompilationArguments.value ++ arch64
+        )
+        .withLinkingOptions(
+          conf.linkingOptions ++ vcpkgLinkingArguments.value ++ arch64
+        )
+    },
+    bindgenBindings := {
+      Seq(
+        Binding(
+          (Compile / baseDirectory).value / "openssl-amalgam.h",
+          "openssl",
+          cImports = List("openssl/sha.h", "openssl/evp.h"),
+          clangFlags = List(
+            "-I" + vcpkgManager.value.includes("openssl").toString
+          )
+        )
+      )
+    }
+  )
