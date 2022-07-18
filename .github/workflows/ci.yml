@@ -27,6 +27,7 @@ jobs:
           - libuv
           - vcpkg
           - lua
+          - openssl
         exclude:
           - os: macos-11 
             example: postgres 
