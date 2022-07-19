@@ -10,7 +10,7 @@ jobs:
   build:
     name: CI
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix: 
         os: [macos-11, ubuntu-20.04]
         example:
