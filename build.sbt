@@ -258,13 +258,13 @@ def vcpkgNativeConfig(rename: String => String = identity) = Seq(
     conf
       .withLinkingOptions(
         manager.updateLinkingFlags(
-          conf.linkingOptions ++ arch64,
+          conf.linkingOptions ++ arch64 ++ List("-fuse-ld=lld"),
           deps*
         )
       )
       .withCompileOptions(
         manager.updateCompilationFlags(
-          conf.compileOptions ++ arch64 ++ List("-fuse-ld=lld"),
+          conf.compileOptions ++ arch64,
           deps*
         )
       )
