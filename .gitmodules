@@ -4,27 +4,12 @@
 [submodule "example-tree-sitter/tree-sitter-scala"]
 	path = example-tree-sitter/tree-sitter-scala
 	url = https://github.com/tree-sitter/tree-sitter-scala
-[submodule "example-cjson/cJSON"]
-	path = example-cjson/cJSON
-	url = https://github.com/DaveGamble/cJSON.git
-[submodule "example-git/libgit2"]
-	path = example-git/libgit2
-	url = https://github.com/libgit2/libgit2.git
 [submodule "example-civetweb/civetweb"]
 	path = example-civetweb/civetweb
 	url = https://github.com/civetweb/civetweb.git
-[submodule "example-redis/hiredis"]
-	path = example-redis/hiredis
-	url = https://github.com/redis/hiredis.git
-[submodule "example-cmark/cmark"]
-	path = example-cmark/cmark
-	url = https://github.com/commonmark/cmark.git
 [submodule "example-rocksdb/rocksdb"]
 	path = example-rocksdb/rocksdb
 	url = https://github.com/facebook/rocksdb.git
 [submodule "example-duckdb/duckdb"]
 	path = example-duckdb/duckdb
 	url = https://github.com/duckdb/duckdb.git
-[submodule "example-libuv/libuv"]
-	path = example-libuv/libuv
-	url = https://github.com/libuv/libuv.git
