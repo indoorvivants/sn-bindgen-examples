@@ -264,7 +264,7 @@ def vcpkgNativeConfig(rename: String => String = identity) = Seq(
       )
       .withCompileOptions(
         manager.updateCompilationFlags(
-          conf.compileOptions ++ arch64,
+          conf.compileOptions ++ arch64 ++ List("-fuse-ld=lld"),
           deps*
         )
       )
