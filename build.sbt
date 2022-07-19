@@ -96,7 +96,7 @@ lazy val git = project
         "libgit",
         linkName = Some("git2"),
         cImports = List("git2.h"),
-        clangFlags = vcpkgManager.value.pkgConfig
+        clangFlags = vcpkgConfigurator.value
           .updateCompilationFlags(List("-fsigned-char"), "libgit2")
           .toList
       )
@@ -117,7 +117,7 @@ lazy val postgres =
           "libpq",
           linkName = Some("pq"),
           cImports = List("libpq-fe.h"),
-          clangFlags = vcpkgManager.value.pkgConfig
+          clangFlags = vcpkgConfigurator.value
             .updateCompilationFlags(List("-std=gnu99"), "libpq")
             .toList
         )
@@ -196,7 +196,7 @@ lazy val cmark = project
         vcpkgManager.value.includes("cmark") / "cmark.h",
         "cmark",
         cImports = List("cmark.h"),
-        clangFlags = vcpkgManager.value.pkgConfig
+        clangFlags = vcpkgConfigurator.value
           .updateCompilationFlags(List("-DCMARK_STATIC_DEFINE="), "libcmark")
           .toList
       )
@@ -246,7 +246,7 @@ lazy val rocksdb = project
 
 def vcpkgNativeConfig(rename: String => String = identity) = Seq(
   nativeConfig := {
-    val manager = vcpkgManager.value.pkgConfig
+    val manager = vcpkgConfigurator.value
     val conf = nativeConfig.value
     val deps = vcpkgDependencies.value.toSeq.map(rename)
 
@@ -413,7 +413,7 @@ lazy val openssl = project
           "openssl",
           cImports = List("openssl/sha.h", "openssl/evp.h"),
           clangFlags =
-            vcpkgManager.value.pkgConfig.compilationFlags("openssl").toList
+            vcpkgConfigurator.value.compilationFlags("openssl").toList
         )
       )
     }
