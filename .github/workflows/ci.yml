@@ -14,19 +14,19 @@ jobs:
       matrix: 
         os: [macos-11, ubuntu-20.04]
         example:
-          - tree-sitter
-          - cjson 
-          - git
-          - sqlite
-          - civetweb 
-          - cmark 
-          - rocksdb 
-          - duckdb 
-          - postgres 
-          - redis
-          - libuv
-          - vcpkg
-          - lua
+          # - tree-sitter
+          # - cjson 
+          # - git
+          # - sqlite
+          # - civetweb 
+          # - cmark 
+          # - rocksdb 
+          # - duckdb 
+          # - postgres 
+          # - redis
+          # - libuv
+          # - vcpkg
+          # - lua
           - openssl
         exclude:
           - os: macos-11 
@@ -42,7 +42,13 @@ jobs:
           distribution: 'temurin' 
           java-version: '17'
 
-      - uses: coursier/cache-action@v6      
+      - name: Cache sbt-vcpkg
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/Library/Caches/sbt-vcpkg
+            ~/.cache/sbt-vcpkg
+          key: ${{ runner.os }}-sbt-vcpkg-${{ hashFiles('**/*.sbt') }}
 
       - name: Setup for Scala Native
         run: |
@@ -83,5 +89,5 @@ jobs:
             LLVM_BIN=/usr/local/opt/llvm/bin sbt ${{ matrix.example }}/run
           else
             echo "It's a Linux"
-            LLVM_BIN=/usr/lib/llvm-13/bin sbt ${{ matrix.example }}/run
+            LLVM_BIN=/usr/lib/llvm-13/bin sbt 'show ${{ matrix.example }}/nativeConfig' ${{ matrix.example }}/run
           fi
