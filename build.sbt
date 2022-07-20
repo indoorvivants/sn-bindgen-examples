@@ -271,7 +271,7 @@ def vcpkgNativeConfig(rename: String => String = identity) = Seq(
     conf
       .withLinkingOptions(
         updateLinkingFlags(
-          conf.linkingOptions ++ arch64 ++ List("-fuse-ld=lld"),
+          conf.linkingOptions ++ arch64,
           deps*
         )
       )
@@ -378,7 +378,12 @@ lazy val vcpkg = project
       )
     )
   )
-  .settings(vcpkgNativeConfig())
+  .settings(vcpkgNativeConfig {
+    case "czmq"  => "libczmq"
+    case "zmq"   => "libzmq"
+    case "cjson" => "libcjson"
+    case other   => other
+  })
 
 lazy val lua = project
   .in(file("example-lua"))
