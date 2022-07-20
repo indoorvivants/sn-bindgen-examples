@@ -208,47 +208,60 @@ lazy val cmark = project
 
 lazy val rocksdb = project
   .in(file("example-rocksdb"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    Compile / run / envVars := Map(
-      "LD_LIBRARY_PATH" -> (baseDirectory.value / "rocksdb").toString,
-      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "rocksdb").toString
-    ),
+    vcpkgDependencies := Set("rocksdb", "zlib"),
     bindgenBindings += {
-      val bd = (baseDirectory.value / "rocksdb" / "include")
       Binding(
-        baseDirectory.value / "rocksdb" / "include" / "rocksdb" / "c.h",
+        vcpkgManager.value.includes("rocksdb") / "rocksdb" / "c.h",
         "rocksdb",
-        linkName = Some("rocksdb"),
         cImports = List("rocksdb/c.h"),
-        clangFlags = List(s"-I$bd")
+        clangFlags = List("-I" + vcpkgManager.value.includes("rocksdb"))
       )
-    },
-    nativeConfig := {
-      val base = baseDirectory.value / "rocksdb"
-      val libFolder = base
-      val headersFolder = base / "include"
-      val conf = nativeConfig.value
-
-      conf
-        .withLinkingOptions(
-          conf.linkingOptions ++ List(
-            "-lrocksdb",
-            s"-L$libFolder"
-          )
-        )
-        .withCompileOptions(
-          conf.compileOptions ++ List(s"-I$headersFolder")
-        )
     }
   )
+  .settings(vcpkgNativeConfig())
 
 def vcpkgNativeConfig(rename: String => String = identity) = Seq(
   nativeConfig := {
-    val manager = vcpkgConfigurator.value
+    val configurator = vcpkgConfigurator.value
+    val manager = vcpkgManager.value
     val conf = nativeConfig.value
     val deps = vcpkgDependencies.value.toSeq.map(rename)
+
+    val files = deps.map(d => manager.files(d))
+
+    val compileArgsApprox = files.flatMap { f =>
+      List("-I" + f.includeDir.toString)
+    }
+    val linkingArgsApprox = files.flatMap { f =>
+      List("-L" + f.libDir) ++ f.staticLibraries.map(_.toString)
+    }
+
+    import scala.util.control.NonFatal
+
+    def updateLinkingFlags(current: Seq[String], deps: String*) =
+      try {
+        configurator.updateLinkingFlags(
+          current,
+          deps*
+        )
+      } catch {
+        case NonFatal(exc) =>
+          linkingArgsApprox
+      }
+
+    def updateCompilationFlags(current: Seq[String], deps: String*) =
+      try {
+        configurator.updateCompilationFlags(
+          current,
+          deps*
+        )
+      } catch {
+        case NonFatal(exc) =>
+          compileArgsApprox
+      }
 
     val arch64 =
       if (Platform.arch == Platform.Arch.aarch64)
@@ -257,13 +270,13 @@ def vcpkgNativeConfig(rename: String => String = identity) = Seq(
 
     conf
       .withLinkingOptions(
-        manager.updateLinkingFlags(
+        updateLinkingFlags(
           conf.linkingOptions ++ arch64 ++ List("-fuse-ld=lld"),
           deps*
         )
       )
       .withCompileOptions(
-        manager.updateCompilationFlags(
+        updateCompilationFlags(
           conf.compileOptions ++ arch64,
           deps*
         )
@@ -337,19 +350,6 @@ lazy val vcpkg = project
   .settings(
     vcpkgDependencies := Set("libuv", "czmq", "cjson"),
     scalaVersion := Versions.Scala,
-    nativeConfig := {
-      val conf = nativeConfig.value
-
-      conf
-        .withCompileOptions(
-          conf.compileOptions ++ vcpkgCompilationArguments.value
-        )
-        .withLinkingOptions(
-          conf.linkingOptions ++ vcpkgLinkingArguments.value ++ Seq(
-            "-fuse-ld=lld"
-          )
-        )
-    },
     bindgenBindings := Seq(
       Binding(
         vcpkgManager.value.includes("cjson") / "cjson" / "cJSON.h",
@@ -378,6 +378,7 @@ lazy val vcpkg = project
       )
     )
   )
+  .settings(vcpkgNativeConfig())
 
 lazy val lua = project
   .in(file("example-lua"))
@@ -412,8 +413,7 @@ lazy val openssl = project
           (Compile / baseDirectory).value / "openssl-amalgam.h",
           "openssl",
           cImports = List("openssl/sha.h", "openssl/evp.h"),
-          clangFlags =
-            vcpkgConfigurator.value.compilationFlags("openssl").toList
+          clangFlags = List("-I" + vcpkgManager.value.includes("openssl"))
         )
       )
     }
