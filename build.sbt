@@ -1,3 +1,4 @@
+import bindgen.interface.Platform.OS.*
 import bindgen.interface.Platform
 import bindgen.interface.Binding
 import bindgen.interface.LogLevel
@@ -383,3 +384,33 @@ lazy val openssl = project
     }
   )
   .settings(vcpkgNativeConfig())
+
+def getProjects(s: State): Seq[String] = {
+  val extracted = Project.extract(s)
+  val currentBuildUri = extracted.currentRef.build
+  val buildStructure = extracted.structure
+  val buildUnitsMap = buildStructure.units
+  val currentBuildUnit = buildUnitsMap(currentBuildUri)
+  val projectsMap = currentBuildUnit.defined
+  projectsMap.values.map(_.id).toVector
+}
+
+ThisBuild / commands += Command.command("runExamples") { st =>
+  val exceptions: Set[String] =
+    if (sys.env.contains("CI"))
+      Platform.os match {
+        // this require docker containers so we don't run them on CI
+        case MacOS => Set("postgres", "redis")
+        case _     => Set.empty
+      }
+    else Set.empty
+
+  getProjects(st)
+    .filterNot(exceptions.contains)
+    .map(_ + "/run")
+    .foldLeft(st) { case (s, n) =>
+      n :: s
+    }
+
+}
+

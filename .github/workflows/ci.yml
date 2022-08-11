@@ -13,25 +13,6 @@ jobs:
       fail-fast: false
       matrix: 
         os: [macos-11, ubuntu-20.04]
-        example:
-          - tree-sitter
-          - cjson 
-          - git
-          - sqlite
-          - civetweb 
-          - cmark 
-          - rocksdb 
-          - duckdb 
-          - postgres 
-          - redis
-          - libuv
-          - lua
-          - openssl
-        exclude:
-          - os: macos-11 
-            example: postgres 
-          - os: macos-11 
-            example: redis
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -85,8 +66,8 @@ jobs:
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 
             echo "It's a Mac"
-            LLVM_BIN=/usr/local/opt/llvm/bin sbt ${{ matrix.example }}/run
+            LLVM_BIN=/usr/local/opt/llvm/bin sbt runExamples
           else
             echo "It's a Linux"
-            LLVM_BIN=/usr/lib/llvm-13/bin sbt 'show ${{ matrix.example }}/nativeConfig' ${{ matrix.example }}/run
+            LLVM_BIN=/usr/lib/llvm-13/bin sbt runExamples
           fi
