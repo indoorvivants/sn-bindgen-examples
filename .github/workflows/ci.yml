@@ -14,19 +14,18 @@ jobs:
       matrix: 
         os: [macos-11, ubuntu-20.04]
         example:
-          # - tree-sitter
-          # - cjson 
-          # - git
-          # - sqlite
-          # - civetweb 
-          # - cmark 
-          # - rocksdb 
-          # - duckdb 
-          # - postgres 
-          # - redis
-          # - libuv
-          - vcpkg
-          # - lua
+          - tree-sitter
+          - cjson 
+          - git
+          - sqlite
+          - civetweb 
+          - cmark 
+          - rocksdb 
+          - duckdb 
+          - postgres 
+          - redis
+          - libuv
+          - lua
           - openssl
         exclude:
           - os: macos-11 

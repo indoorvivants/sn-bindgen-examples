@@ -344,47 +344,6 @@ lazy val libuv = project
   )
   .settings(vcpkgNativeConfig())
 
-lazy val vcpkg = project
-  .in(file("example-vcpkg"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
-  .settings(
-    vcpkgDependencies := Set("libuv", "czmq", "cjson"),
-    scalaVersion := Versions.Scala,
-    bindgenBindings := Seq(
-      Binding(
-        vcpkgManager.value.includes("cjson") / "cjson" / "cJSON.h",
-        "cjson",
-        cImports = List("cJSON.h"),
-        clangFlags = List("-fsigned-char")
-      ),
-      Binding(
-        vcpkgManager.value.includes("libuv") / "uv.h",
-        "libuv",
-        cImports = List("uv.h"),
-        clangFlags = List(
-          "-I" + vcpkgManager.value.includes("libuv").toString,
-          "-fsigned-char"
-        )
-      ),
-      Binding(
-        vcpkgManager.value.includes("czmq") / "czmq.h",
-        "czmq",
-        cImports = List("czmq.h"),
-        clangFlags = List(
-          "-I" + vcpkgManager.value.includes("czmq").toString,
-          "-I" + vcpkgManager.value.includes("zeromq").toString,
-          "-fsigned-char"
-        )
-      )
-    )
-  )
-  .settings(vcpkgNativeConfig {
-    case "czmq"  => "libczmq"
-    case "zmq"   => "libzmq"
-    case "cjson" => "libcjson"
-    case other   => other
-  })
-
 lazy val lua = project
   .in(file("example-lua"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
