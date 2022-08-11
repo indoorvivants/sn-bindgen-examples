@@ -1,3 +1,4 @@
+import bindgen.interface.Platform.OS.*
 import bindgen.interface.Platform
 import bindgen.interface.Binding
 import bindgen.interface.LogLevel
@@ -10,6 +11,12 @@ ThisBuild / resolvers += Resolver.sonatypeRepo("snapshots")
 lazy val Versions = new {
   val Scala = "3.1.3"
 }
+
+lazy val root = project
+  .in(file("."))
+  .settings(
+    run := {}
+  )
 
 // Example of Tree Sitter binding usage:
 // https://tree-sitter.github.io/tree-sitter/using-parsers#the-basic-objects
@@ -383,3 +390,34 @@ lazy val openssl = project
     }
   )
   .settings(vcpkgNativeConfig())
+
+def getProjects(s: State): Seq[String] = {
+  val extracted = Project.extract(s)
+  val currentBuildUri = extracted.currentRef.build
+  val buildStructure = extracted.structure
+  val buildUnitsMap = buildStructure.units
+  val currentBuildUnit = buildUnitsMap(currentBuildUri)
+  val projectsMap = currentBuildUnit.defined
+  projectsMap.values.map(_.id).toVector
+}
+
+ThisBuild / commands += Command.command("runExamples") { st =>
+  val exceptions: Set[String] =
+    if (sys.env.contains("CI"))
+      Platform.os match {
+        // postgres, redis - these require docker containers so we don't run them on CI
+        // duckdb - takes a VERY LONG TIME TO COMPILE
+        case MacOS => Set("postgres", "redis", "duckdb")
+        case _     => Set("duckdb")
+      }
+    else Set.empty
+
+  val commands = getProjects(st).sorted.reverse
+    .filterNot(exceptions.contains)
+    .map(_ + "/run")
+
+  commands.foldLeft(st) { case (s, n) =>
+    n :: s
+  }
+
+}

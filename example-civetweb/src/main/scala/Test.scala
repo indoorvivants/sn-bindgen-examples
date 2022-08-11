@@ -40,9 +40,8 @@ def client_get(cli: Ptr[mg_connection], path: String)(using
     while rem > 0 && !err do
       string.memset(buf, 0, 1024.toUInt)
       val ret = mg_read(cli, buf, 100.toUInt)
-      if ret > 0 then
-        rem -= ret
-        // body.append(fromCString(buf))
+      if ret > 0 then rem -= ret
+      // body.append(fromCString(buf))
       else err = true
   end if
 
@@ -85,10 +84,9 @@ end client_get
         )
         mg_printf(conn, c"Server will shut down.\n")
         mg_printf(conn, c"Bye!\n")
-        !(channel.asInstanceOf[Ptr[Boolean]]) = true
         200
       },
-      channel.asInstanceOf[Ptr[Byte]]
+      null
     )
 
     mg_set_request_handler(
