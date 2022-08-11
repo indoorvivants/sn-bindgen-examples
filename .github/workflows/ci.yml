@@ -52,6 +52,7 @@ jobs:
           git submodule update --init
 
           cd example-tree-sitter && ./setup.sh
+          cd example-civetweb && ./setup.sh
 
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 

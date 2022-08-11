@@ -12,6 +12,12 @@ lazy val Versions = new {
   val Scala = "3.1.3"
 }
 
+lazy val root = project
+  .in(file("."))
+  .settings(
+    run := {}
+  )
+
 // Example of Tree Sitter binding usage:
 // https://tree-sitter.github.io/tree-sitter/using-parsers#the-basic-objects
 lazy val `tree-sitter` = project
@@ -406,12 +412,12 @@ ThisBuild / commands += Command.command("runExamples") { st =>
       }
     else Set.empty
 
-  getProjects(st)
+  val commands = getProjects(st).sorted.reverse
     .filterNot(exceptions.contains)
     .map(_ + "/run")
-    .foldLeft(st) { case (s, n) =>
-      n :: s
-    }
+
+  commands.foldLeft(st) { case (s, n) =>
+    n :: s
+  }
 
 }
-
