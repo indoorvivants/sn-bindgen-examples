@@ -399,9 +399,10 @@ ThisBuild / commands += Command.command("runExamples") { st =>
   val exceptions: Set[String] =
     if (sys.env.contains("CI"))
       Platform.os match {
-        // this require docker containers so we don't run them on CI
-        case MacOS => Set("postgres", "redis")
-        case _     => Set.empty
+        // postgres, redis - these require docker containers so we don't run them on CI
+        // duckdb - takes a VERY LONG TIME TO COMPILE
+        case MacOS => Set("postgres", "redis", "duckdb")
+        case _     => Set("duckdb")
       }
     else Set.empty
 

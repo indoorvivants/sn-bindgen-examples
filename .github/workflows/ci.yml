@@ -51,7 +51,6 @@ jobs:
         run: |
           git submodule update --init
 
-          cd example-duckdb && ./setup.sh
           cd example-tree-sitter && ./setup.sh
 
           PLATFORM="$(uname)"
