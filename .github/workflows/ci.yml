@@ -51,7 +51,8 @@ jobs:
         run: |
           git submodule update --init
 
-          (cd example-${{ matrix.example }} && ./setup.sh) || echo "No setup"
+          cd example-duckdb && ./setup.sh
+          cd example-tree-sitter && ./setup.sh
 
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 
