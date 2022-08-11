@@ -66,172 +66,82 @@ lazy val `tree-sitter` = project
     }
   )
 
-// Example of cJSON binding usage
-// https://github.com/DaveGamble/cJSON
 lazy val cjson = project
   .in(file("example-cjson"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    Compile / run / envVars := Map(
-      // As we're not installing tree-sitter globally,
-      // we're just point binaries to the location of compiled
-      // dynamic libraries
-      "LD_LIBRARY_PATH" -> (baseDirectory.value / "cJSON" / "build").toString,
-      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "cJSON" / "build").toString
-    ),
-    // Generate bindings to Tree Sitter's main API
+    vcpkgDependencies := Set("cjson"),
     bindgenBindings += {
       Binding(
-        baseDirectory.value / "cJSON" / "cJSON.h",
+        vcpkgManager.value.includes("cjson") / "cjson" / "cJSON.h",
         "cjson",
-        linkName = Some("cjson"),
         cImports = List("cJSON.h")
       )
-    },
-    nativeConfig := {
-      val base = baseDirectory.value / "cJSON"
-      val libFolder = base / "build"
-      val headersFolder = base // cJSON puts headers in root
-      val conf = nativeConfig.value
-
-      conf
-        .withLinkingOptions(
-          conf.linkingOptions ++ List(
-            "-lcjson",
-            s"-L$libFolder"
-          )
-        )
-        .withCompileOptions(
-          conf.compileOptions ++ List(s"-I$headersFolder")
-        )
     }
   )
+  .settings(vcpkgNativeConfig { case "cjson" =>
+    "libcjson"
+  })
 
 lazy val git = project
   .in(file("example-git"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    Compile / run / envVars := Map(
-      // As we're not installing libgit globally,
-      // we're just point binaries to the location of compiled
-      // dynamic libraries
-      "LD_LIBRARY_PATH" -> (baseDirectory.value / "libgit2" / "build").toString,
-      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "libgit2" / "build").toString
-    ),
-    // Generate bindings to Tree Sitter's main API
+    vcpkgDependencies := Set("libgit2"),
     bindgenBindings += {
-      val gitinclude = baseDirectory.value / "libgit2" / "include"
-
       Binding(
-        gitinclude / "git2.h",
+        vcpkgManager.value.includes("libgit2") / "git2.h",
         "libgit",
         linkName = Some("git2"),
         cImports = List("git2.h"),
-        clangFlags = List(s"-I$gitinclude", "-fsigned-char")
+        clangFlags = vcpkgConfigurator.value
+          .updateCompilationFlags(List("-fsigned-char"), "libgit2")
+          .toList
       )
-    },
-    nativeConfig := {
-      val base = baseDirectory.value / "libgit2"
-      val libFolder = base / "build"
-      val headersFolder = base / "include"
-      val conf = nativeConfig.value
-
-      conf
-        .withLinkingOptions(
-          conf.linkingOptions ++ List(
-            "-lgit2",
-            s"-L$libFolder"
-          )
-        )
-        .withCompileOptions(
-          conf.compileOptions ++ List(s"-I$headersFolder")
-        )
     }
   )
+  .settings(vcpkgNativeConfig())
 
 lazy val postgres =
   project
     .in(file("example-postgres"))
-    .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
     .settings(
       scalaVersion := Versions.Scala,
-      // Generate bindings to Postgres main API
+      vcpkgDependencies := Set("libpq"),
       bindgenBindings += {
         Binding(
-          postgresHeader.toFile(),
+          vcpkgManager.value.includes("libpq") / "libpq-fe.h",
           "libpq",
           linkName = Some("pq"),
           cImports = List("libpq-fe.h"),
-          clangFlags = List("-std=gnu99", s"-I$postgresInclude")
-        )
-      },
-      nativeConfig ~= { conf =>
-        conf.withLinkingOptions(
-          conf.linkingOptions ++ postgresLib.toList.map("-L" + _)
+          clangFlags = vcpkgConfigurator.value
+            .updateCompilationFlags(List("-std=gnu99"), "libpq")
+            .toList
         )
       }
     )
-
-def postgresInclude = {
-  import Platform.*
-  (os, arch) match {
-    case (OS.Linux, _) => Paths.get("/usr/include/postgresql/")
-    case (OS.MacOS, Arch.aarch64) =>
-      Paths.get("/opt/homebrew/opt/libpq/include/")
-    case (OS.MacOS, Arch.x86_64) => Paths.get("/usr/local/opt/libpq/include/")
-  }
-}
-
-def postgresLib = {
-  import Platform.*
-  (os, arch) match {
-    case (OS.MacOS, Arch.aarch64) =>
-      Some(Paths.get("/opt/homebrew/opt/libpq/lib/"))
-    case (OS.MacOS, Arch.x86_64) =>
-      Some(Paths.get("/usr/local/opt/libpq/lib/"))
-    case _ => None
-  }
-}
-
-def postgresHeader = {
-  import Platform.*
-  val filename = "libpq-fe.h"
-
-  postgresInclude.resolve(filename)
-}
+    .settings(vcpkgNativeConfig())
 
 lazy val sqlite =
   project
     .in(file("example-sqlite"))
-    .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
     .settings(
       scalaVersion := Versions.Scala,
-      Compile / run / envVars := Map(
-        // As we're not installing sqlite globally,
-        // we're just point binaries to the location of compiled
-        // dynamic libraries
-        "LD_LIBRARY_PATH" -> (baseDirectory.value / "sqlite").toString,
-        "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "sqlite").toString
-      ),
-      // Generate bindings to Postgres main API
+      vcpkgDependencies := Set("sqlite3"),
       bindgenBindings += {
         Binding(
-          baseDirectory.value / "sqlite" / "sqlite3.h",
+          vcpkgManager.value.includes("sqlite3") / "sqlite3.h",
           "libsqlite",
-          linkName = Some("sqlite3"),
           cImports = List("sqlite.h"),
           clangFlags = List("-fsigned-char")
         )
-      },
-      nativeConfig := {
-        val conf = nativeConfig.value
-        val dir = baseDirectory.value / "sqlite"
-
-        conf.withLinkingOptions(conf.linkingOptions ++ List(s"-L$dir"))
       }
     )
+    .settings(vcpkgNativeConfig())
 
 lazy val civetweb =
   project
@@ -239,7 +149,6 @@ lazy val civetweb =
     .enablePlugins(ScalaNativePlugin, BindgenPlugin)
     .settings(
       scalaVersion := Versions.Scala,
-      // Generate bindings to Postgres main API
       bindgenBindings += {
         Binding(
           baseDirectory.value / "civetweb" / "include" / "civetweb.h",
@@ -261,108 +170,119 @@ lazy val civetweb =
 lazy val redis =
   project
     .in(file("example-redis"))
-    .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
     .settings(
       scalaVersion := Versions.Scala,
-      // Generate bindings to Hiredis main API
+      vcpkgDependencies := Set("hiredis"),
       bindgenBindings += {
         Binding(
-          baseDirectory.value / "hiredis" / "hiredis.h",
+          vcpkgManager.value.includes("hiredis") / "hiredis" / "hiredis.h",
           "libredis",
           cImports = List("hiredis.h"),
           clangFlags = List("-fsigned-char")
         )
-      },
-      nativeConfig := {
-        val conf = nativeConfig.value
-        val dir = baseDirectory.value / "hiredis"
-
-        conf
-          .withLinkingOptions(
-            conf.linkingOptions ++ List(
-              s"-L$dir",
-              (dir / "libhiredis.a").toString
-            )
-          )
-          .withCompileOptions(conf.compileOptions ++ List(s"-I$dir"))
       }
     )
+    .settings(vcpkgNativeConfig())
 
 lazy val cmark = project
   .in(file("example-cmark"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    Compile / run / envVars := Map(
-      "LD_LIBRARY_PATH" -> (baseDirectory.value / "cmark" / "build" / "src").toString,
-      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "cmark" / "build" / "src").toString
-    ),
+    vcpkgDependencies := Set("cmark"),
     bindgenBindings += {
-      val bd = (baseDirectory.value / "cmark" / "build" / "src")
       Binding(
-        baseDirectory.value / "cmark" / "src" / "cmark.h",
+        vcpkgManager.value.includes("cmark") / "cmark.h",
         "cmark",
-        linkName = Some("cmark"),
         cImports = List("cmark.h"),
-        clangFlags = List(s"-I$bd", "-DCMARK_STATIC_DEFINE=")
+        clangFlags = vcpkgConfigurator.value
+          .updateCompilationFlags(List("-DCMARK_STATIC_DEFINE="), "libcmark")
+          .toList
       )
-    },
-    nativeConfig := {
-      val base = baseDirectory.value / "cmark"
-      val libFolder = base / "build" / "src"
-      val headersFolder = base // cmark puts headers in root
-      val conf = nativeConfig.value
-
-      conf
-        .withLinkingOptions(
-          conf.linkingOptions ++ List(
-            "-lcmark",
-            s"-L$libFolder"
-          )
-        )
-        .withCompileOptions(
-          conf.compileOptions ++ List(s"-I$headersFolder")
-        )
     }
   )
+  .settings(vcpkgNativeConfig { case "cmark" =>
+    "libcmark"
+  })
 
 lazy val rocksdb = project
   .in(file("example-rocksdb"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    Compile / run / envVars := Map(
-      "LD_LIBRARY_PATH" -> (baseDirectory.value / "rocksdb").toString,
-      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "rocksdb").toString
-    ),
+    vcpkgDependencies := Set("rocksdb", "zlib"),
     bindgenBindings += {
-      val bd = (baseDirectory.value / "rocksdb" / "include")
       Binding(
-        baseDirectory.value / "rocksdb" / "include" / "rocksdb" / "c.h",
+        vcpkgManager.value.includes("rocksdb") / "rocksdb" / "c.h",
         "rocksdb",
-        linkName = Some("rocksdb"),
         cImports = List("rocksdb/c.h"),
-        clangFlags = List(s"-I$bd")
+        clangFlags = List("-I" + vcpkgManager.value.includes("rocksdb"))
       )
-    },
-    nativeConfig := {
-      val base = baseDirectory.value / "rocksdb"
-      val libFolder = base
-      val headersFolder = base / "include"
-      val conf = nativeConfig.value
-
-      conf
-        .withLinkingOptions(
-          conf.linkingOptions ++ List(
-            "-lrocksdb",
-            s"-L$libFolder"
-          )
-        )
-        .withCompileOptions(
-          conf.compileOptions ++ List(s"-I$headersFolder")
-        )
     }
   )
+  .settings(vcpkgNativeConfig())
+
+def vcpkgNativeConfig(rename: String => String = identity) = Seq(
+  nativeConfig := {
+    val configurator = vcpkgConfigurator.value
+    val manager = vcpkgManager.value
+    val conf = nativeConfig.value
+    val deps = vcpkgDependencies.value.toSeq.map(rename)
+
+    val files = deps.map(d => manager.files(d))
+
+    val compileArgsApprox = files.flatMap { f =>
+      List("-I" + f.includeDir.toString)
+    }
+    val linkingArgsApprox = files.flatMap { f =>
+      List("-L" + f.libDir) ++ f.staticLibraries.map(_.toString)
+    }
+
+    import scala.util.control.NonFatal
+
+    def updateLinkingFlags(current: Seq[String], deps: String*) =
+      try {
+        configurator.updateLinkingFlags(
+          current,
+          deps*
+        )
+      } catch {
+        case NonFatal(exc) =>
+          linkingArgsApprox
+      }
+
+    def updateCompilationFlags(current: Seq[String], deps: String*) =
+      try {
+        configurator.updateCompilationFlags(
+          current,
+          deps*
+        )
+      } catch {
+        case NonFatal(exc) =>
+          compileArgsApprox
+      }
+
+    val arch64 =
+      if (Platform.arch == Platform.Arch.aarch64)
+        List("-arch", "arm64")
+      else Nil
+
+    conf
+      .withLinkingOptions(
+        updateLinkingFlags(
+          conf.linkingOptions ++ arch64,
+          deps*
+        )
+      )
+      .withCompileOptions(
+        updateCompilationFlags(
+          conf.compileOptions ++ arch64,
+          deps*
+        )
+      )
+  }
+)
 
 lazy val duckdb = project
   .in(file("example-duckdb"))
@@ -405,93 +325,24 @@ lazy val duckdb = project
 
 lazy val libuv = project
   .in(file("example-libuv"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin)
-  .settings(
-    scalaVersion := Versions.Scala,
-    Compile / run / envVars := Map(
-      // As we're not installing tree-sitter globally,
-      // we're just point binaries to the location of compiled
-      // dynamic libraries
-      "LD_LIBRARY_PATH" -> (baseDirectory.value / "libuv" / "build").toString,
-      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "libuv" / "build").toString
-    ),
-    // Generate bindings to Tree Sitter's main API
-    bindgenBindings += {
-      val base = baseDirectory.value / "libuv" / "include"
-      Binding(
-        base / "uv.h",
-        "libuv",
-        linkName = Some("uv"),
-        cImports = List("uv.h"),
-        clangFlags = List(s"-I${base}")
-      )
-    },
-    nativeConfig := {
-      val base = baseDirectory.value / "libuv"
-      val libFolder = base / "build"
-      val headersFolder = base / "include" // cJSON puts headers in root
-      val conf = nativeConfig.value
-
-      conf
-        .withLinkingOptions(
-          conf.linkingOptions ++ List(
-            "-luv",
-            s"-L$libFolder"
-          )
-        )
-        .withCompileOptions(
-          conf.compileOptions ++ List(s"-I$headersFolder")
-        )
-    }
-  )
-
-lazy val vcpkg = project
-  .in(file("example-vcpkg"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
   .settings(
-    vcpkgDependencies := Set("libuv", "czmq", "cjson"),
     scalaVersion := Versions.Scala,
-    nativeConfig := {
-      val conf = nativeConfig.value
-
-      conf
-        .withCompileOptions(
-          conf.compileOptions ++ vcpkgCompilationArguments.value
-        )
-        .withLinkingOptions(
-          conf.linkingOptions ++ vcpkgLinkingArguments.value ++ Seq(
-            "-fuse-ld=lld"
+    vcpkgDependencies := Set("libuv"),
+    bindgenBindings := {
+      Seq(
+        Binding(
+          vcpkgManager.value.includes("libuv") / "uv.h",
+          "libuv",
+          cImports = List("uv.h"),
+          clangFlags = List(
+            "-I" + vcpkgManager.value.includes("libuv").toString
           )
         )
-    },
-    bindgenBindings := Seq(
-      Binding(
-        vcpkgManager.value.includes("cjson") / "cjson" / "cJSON.h",
-        "cjson",
-        cImports = List("cJSON.h"),
-        clangFlags = List("-fsigned-char")
-      ),
-      Binding(
-        vcpkgManager.value.includes("libuv") / "uv.h",
-        "libuv",
-        cImports = List("uv.h"),
-        clangFlags = List(
-          "-I" + vcpkgManager.value.includes("libuv").toString,
-          "-fsigned-char"
-        )
-      ),
-      Binding(
-        vcpkgManager.value.includes("czmq") / "czmq.h",
-        "czmq",
-        cImports = List("czmq.h"),
-        clangFlags = List(
-          "-I" + vcpkgManager.value.includes("czmq").toString,
-          "-I" + vcpkgManager.value.includes("zeromq").toString,
-          "-fsigned-char"
-        )
       )
-    )
+    }
   )
+  .settings(vcpkgNativeConfig())
 
 lazy val lua = project
   .in(file("example-lua"))
@@ -499,15 +350,6 @@ lazy val lua = project
   .settings(
     vcpkgDependencies := Set("lua"),
     scalaVersion := Versions.Scala,
-    nativeConfig := {
-      val conf = nativeConfig.value
-
-      conf
-        .withCompileOptions(
-          conf.compileOptions ++ vcpkgCompilationArguments.value
-        )
-        .withLinkingOptions(conf.linkingOptions ++ vcpkgLinkingArguments.value)
-    },
     bindgenBindings := {
       Seq(
         Binding(
@@ -521,6 +363,7 @@ lazy val lua = project
       )
     }
   )
+  .settings(vcpkgNativeConfig())
 
 lazy val openssl = project
   .in(file("example-openssl"))
@@ -528,32 +371,15 @@ lazy val openssl = project
   .settings(
     vcpkgDependencies := Set("openssl"),
     scalaVersion := Versions.Scala,
-    nativeConfig := {
-      val conf = nativeConfig.value
-
-      val arch64 =
-        if (Platform.arch == Platform.Arch.aarch64)
-          List("-arch", "arm64")
-        else Nil
-
-      conf
-        .withCompileOptions(
-          conf.compileOptions ++ vcpkgCompilationArguments.value ++ arch64
-        )
-        .withLinkingOptions(
-          conf.linkingOptions ++ vcpkgLinkingArguments.value ++ arch64
-        )
-    },
     bindgenBindings := {
       Seq(
         Binding(
           (Compile / baseDirectory).value / "openssl-amalgam.h",
           "openssl",
           cImports = List("openssl/sha.h", "openssl/evp.h"),
-          clangFlags = List(
-            "-I" + vcpkgManager.value.includes("openssl").toString
-          )
+          clangFlags = List("-I" + vcpkgManager.value.includes("openssl"))
         )
       )
     }
   )
+  .settings(vcpkgNativeConfig())

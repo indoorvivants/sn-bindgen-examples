@@ -9,7 +9,7 @@ import scala.scalanative.libc.*
     val ref = alloc[Ptr[git_repository]](1)
     val res = git_repository_open(
       ref,
-      c"./example-git/libgit2"
+      c"./"
     )
 
     stdio.printf(c"Repo path: %s\n", git_repository_path(!ref))
