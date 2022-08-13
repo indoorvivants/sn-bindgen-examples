@@ -150,30 +150,6 @@ lazy val sqlite =
     )
     .settings(vcpkgNativeConfig())
 
-lazy val civetweb =
-  project
-    .in(file("example-civetweb"))
-    .enablePlugins(ScalaNativePlugin, BindgenPlugin)
-    .settings(
-      scalaVersion := Versions.Scala,
-      bindgenBindings += {
-        Binding(
-          baseDirectory.value / "civetweb" / "include" / "civetweb.h",
-          "civetweb",
-          cImports = List("civetweb.h"),
-          clangFlags = List("-fsigned-char")
-        )
-      },
-      nativeConfig := {
-        val fullPath = baseDirectory.value / "civetweb" / "libcivetweb.a"
-        val conf = nativeConfig.value
-
-        conf.withLinkingOptions(
-          conf.linkingOptions :+ fullPath.toString
-        )
-      }
-    )
-
 lazy val redis =
   project
     .in(file("example-redis"))
