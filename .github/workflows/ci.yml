@@ -49,9 +49,7 @@ jobs:
 
       - name: Setup for examples
         run: |
-          git submodule update --init
-
-          cd example-tree-sitter && ./setup.sh && cd ..
+          ./manual_setup.sh
 
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 
