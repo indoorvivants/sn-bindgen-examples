@@ -8,7 +8,9 @@ import java.util.Base64
 @main def hello =
   Zone { implicit z =>
     println(s"SHA256(helloworld) = ${OpenSSL.sha256("helloworld")}")
-    println(s"HMAC(helloworld, secret) = ${OpenSSL.hmac("helloworld", "secret")}")
+    println(
+      s"HMAC(helloworld, secret) = ${OpenSSL.hmac("helloworld", "secret")}"
+    )
   }
 
 @extern
