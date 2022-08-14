@@ -59,13 +59,15 @@ lazy val `tree-sitter` = project
     nativeConfig := {
       val base = baseDirectory.value / "tree-sitter"
       val conf = nativeConfig.value
+      val mold =
+        if (Platform.os == Platform.OS.MacOS) List("-fuse-ld=mold") else Nil
 
       conf
         .withLinkingOptions(
           conf.linkingOptions ++ List(
             "-ltree-sitter",
             s"-L$base"
-          )
+          ) ++ mold
         )
         .withCompileOptions(
           conf.compileOptions ++ List(s"-I${base / "lib" / "include"}")
@@ -251,10 +253,13 @@ def vcpkgNativeConfig(rename: String => String = identity) = Seq(
         List("-arch", "arm64")
       else Nil
 
+    val mold =
+      if (Platform.os == Platform.OS.MacOS) List("-fuse-ld=mold") else Nil
+
     conf
       .withLinkingOptions(
         updateLinkingFlags(
-          conf.linkingOptions ++ arch64,
+          conf.linkingOptions ++ arch64 ++ mold,
           deps*
         )
       )

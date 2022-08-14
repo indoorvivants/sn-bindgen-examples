@@ -37,6 +37,7 @@ jobs:
           if [ $PLATFORM == "Darwin" ]; then
             echo "It's a Mac"
             brew install llvm ninja
+            brew install mold
           else
             echo "It's a Linux"
             sudo apt update
