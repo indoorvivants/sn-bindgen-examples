@@ -28,8 +28,9 @@ import scala.scalanative.libc
         var ev_type: cmark_event_type = cmark_event_type.CMARK_EVENT_NONE
 
         while {
-          ev_type = cmark_iter_next(iter); ev_type
-        } != cmark_event_type.CMARK_EVENT_DONE do
+            ev_type = cmark_iter_next(iter); ev_type
+          } != cmark_event_type.CMARK_EVENT_DONE
+        do
           val cur = cmark_iter_get_node(iter)
 
           stdio.printf(
