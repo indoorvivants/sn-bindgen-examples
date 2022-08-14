@@ -8,11 +8,12 @@ on:
 
 jobs:
   build:
-    name: CI
+    name: CI on ${{matrix.os}} ${{matrix.segment}} out of 4
     strategy:
       fail-fast: false
       matrix: 
         os: [macos-11, ubuntu-20.04]
+        segment: [1, 2, 3, 4]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -64,8 +65,8 @@ jobs:
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 
             echo "It's a Mac"
-            LLVM_BIN=/usr/local/opt/llvm/bin sbt runExamples
+            LLVM_BIN=/usr/local/opt/llvm/bin sbt 'runBatchedExamples ${{matrix.segment}} 4'
           else
             echo "It's a Linux"
-            LLVM_BIN=/usr/lib/llvm-13/bin sbt runExamples
+            LLVM_BIN=/usr/lib/llvm-13/bin sbt 'runBatchedExamples ${{matrix.segment}} 4'
           fi

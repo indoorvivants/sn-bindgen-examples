@@ -377,7 +377,28 @@ def getProjects(s: State): Seq[String] = {
   projectsMap.values.map(_.id).toVector
 }
 
-ThisBuild / commands += Command.command("runExamples") { st =>
+def balancedPartitioner[A](strings: Vector[A], jobs: Int): Int => Vector[A] = {
+  import scala.collection.mutable.ListBuffer
+  val parts = Vector.fill(jobs)(ListBuffer.empty[A])
+  var curIdx = 0
+  val maxSize = strings.size / jobs
+
+  strings.zipWithIndex.foreach { case (el, idx) =>
+    if (parts(curIdx).size >= maxSize) {
+      curIdx += 1
+    }
+
+    if (curIdx >= jobs) curIdx = 0
+
+    parts(curIdx).+=(el)
+  }
+
+  jobId => parts.map(_.toVector).apply(jobId - 1)
+}
+
+import complete.DefaultParsers.*
+
+def projectCommands(st: State) = {
   val exceptions: Set[String] =
     if (sys.env.contains("CI"))
       Platform.os match {
@@ -388,11 +409,28 @@ ThisBuild / commands += Command.command("runExamples") { st =>
       }
     else Set.empty
 
-  val commands = getProjects(st).sorted.reverse
+  getProjects(st).sorted.reverse
     .filterNot(exceptions.contains)
     .map(_ + "/run")
+}
 
-  commands.foldLeft(st) { case (s, n) =>
+ThisBuild / commands += Command.arb { s =>
+  token(
+    literal("runBatchedExamples") <~ Space
+  ) ~ (IntBasic <~ Space) ~ (IntBasic)
+} { case (st, t) =>
+  val ((_, jobId), totalJobs) = t
+  val commands = projectCommands(st)
+  val partition = balancedPartitioner(commands.toVector, totalJobs)(jobId)
+
+  partition.foldLeft(st) { case (s, n) =>
+    n :: s
+  }
+
+}
+
+ThisBuild / commands += Command.command("runExamples") { st =>
+  projectCommands(st).foldLeft(st) { case (s, n) =>
     n :: s
   }
 
