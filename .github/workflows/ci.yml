@@ -8,11 +8,12 @@ on:
 
 jobs:
   build:
-    name: CI
+    name: CI on ${{matrix.os}} ${{matrix.segment}} out of 3
     strategy:
       fail-fast: false
       matrix: 
         os: [macos-11, ubuntu-20.04]
+        segment: [1, 2, 3]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -22,13 +23,13 @@ jobs:
           distribution: 'temurin' 
           java-version: '17'
 
-      - name: Cache sbt-vcpkg
+      - name: Cache vcpkg
         uses: actions/cache@v3
         with:
           path: |
-            ~/Library/Caches/sbt-vcpkg
-            ~/.cache/sbt-vcpkg
-          key: ${{ runner.os }}-sbt-vcpkg-${{ hashFiles('**/*.sbt') }}
+            ~/Library/Caches/sbt-vcpkg/vcpkg
+            ~/.cache/sbt-vcpkg/vcpkg
+          key: ${{ runner.os }}-sbt-vcpkg
 
       - name: Setup for Scala Native
         run: |
@@ -64,8 +65,17 @@ jobs:
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 
             echo "It's a Mac"
-            LLVM_BIN=/usr/local/opt/llvm/bin sbt runExamples
+            LLVM_BIN=/usr/local/opt/llvm/bin sbt 'runBatchedExamples ${{matrix.segment}} 3'
           else
             echo "It's a Linux"
-            LLVM_BIN=/usr/lib/llvm-13/bin sbt runExamples
+            LLVM_BIN=/usr/lib/llvm-13/bin sbt 'runBatchedExamples ${{matrix.segment}} 3'
           fi
+
+  summary:
+    name: Build summary
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: I only exist to please Mergify :(
+        run: echo "It's a sad existence but necessary"
+
