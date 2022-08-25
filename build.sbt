@@ -25,19 +25,11 @@ lazy val `tree-sitter` = project
   .enablePlugins(ScalaNativePlugin, BindgenPlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    Compile / run / envVars := Map(
-      // As we're not installing tree-sitter globally,
-      // we're just point binaries to the location of compiled
-      // dynamic libraries
-      "LD_LIBRARY_PATH" -> (baseDirectory.value / "tree-sitter").toString,
-      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "tree-sitter").toString
-    ),
     // Generate bindings to Tree Sitter's main API
     bindgenBindings += {
       Binding(
         baseDirectory.value / "tree-sitter" / "lib" / "include" / "tree_sitter" / "api.h",
         "treesitter",
-        linkName = Some("tree-sitter"),
         cImports = List("tree_sitter/api.h"),
         clangFlags = List("-std=gnu99")
       )
@@ -59,12 +51,12 @@ lazy val `tree-sitter` = project
     nativeConfig := {
       val base = baseDirectory.value / "tree-sitter"
       val conf = nativeConfig.value
+      val staticLib = base / "libtree-sitter.a"
 
       conf
         .withLinkingOptions(
           conf.linkingOptions ++ List(
-            "-ltree-sitter",
-            s"-L$base"
+            staticLib.toString
           )
         )
         .withCompileOptions(
