@@ -7,8 +7,7 @@ import scalanative.libc.*
 
 @main def hello =
   Zone { implicit z =>
-    val loop = uv_loop_t()
-
+    val loop = uv_default_loop()
     uv_loop_init(loop)
 
     inline def setTimer(inline delay: Int) =
