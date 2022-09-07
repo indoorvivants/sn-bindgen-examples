@@ -350,8 +350,7 @@ lazy val lua = project
           cImports = List("lua.h", "lauxlib.h", "lualib.h"),
           clangFlags = List(
             "-I" + vcpkgManager.value.includes("lua").toString
-          ),
-          logLevel = LogLevel.Trace
+          )
         )
       )
     }
