@@ -342,9 +342,6 @@ lazy val lua = project
   .settings(
     vcpkgDependencies := Set("lua"),
     scalaVersion := Versions.Scala,
-    bindgenBinary := file(
-      "/Users/velvetbaldmime/projects/sn-bindgen/modules/bindgen/target/scala-3.2.0/bindgen-out"
-    ),
     bindgenBindings := {
       Seq(
         Binding(
@@ -367,9 +364,6 @@ lazy val openssl = project
   .settings(
     vcpkgDependencies := Set("openssl"),
     scalaVersion := Versions.Scala,
-    bindgenBinary := file(
-      "/Users/velvetbaldmime/projects/sn-bindgen/modules/bindgen/target/scala-3.2.0/bindgen-out"
-    ),
     bindgenBindings := {
       Seq(
         Binding(
