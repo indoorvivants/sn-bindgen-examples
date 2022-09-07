@@ -14,6 +14,21 @@ lazy val Versions = new {
 
 lazy val root = project
   .in(file("."))
+  .aggregate(
+    `tree-sitter`,
+    cjson,
+    cmark,
+    git,
+    duckdb,
+    git,
+    libuv,
+    lua,
+    openssl,
+    postgres,
+    redis,
+    rocksdb,
+    sqlite
+  )
   .settings(
     run := {}
   )
@@ -327,6 +342,9 @@ lazy val lua = project
   .settings(
     vcpkgDependencies := Set("lua"),
     scalaVersion := Versions.Scala,
+    bindgenBinary := file(
+      "/Users/velvetbaldmime/projects/sn-bindgen/modules/bindgen/target/scala-3.2.0/bindgen-out"
+    ),
     bindgenBindings := {
       Seq(
         Binding(
@@ -335,7 +353,8 @@ lazy val lua = project
           cImports = List("lua.h", "lauxlib.h", "lualib.h"),
           clangFlags = List(
             "-I" + vcpkgManager.value.includes("lua").toString
-          )
+          ),
+          logLevel = LogLevel.Trace
         )
       )
     }
@@ -348,6 +367,9 @@ lazy val openssl = project
   .settings(
     vcpkgDependencies := Set("openssl"),
     scalaVersion := Versions.Scala,
+    bindgenBinary := file(
+      "/Users/velvetbaldmime/projects/sn-bindgen/modules/bindgen/target/scala-3.2.0/bindgen-out"
+    ),
     bindgenBindings := {
       Seq(
         Binding(

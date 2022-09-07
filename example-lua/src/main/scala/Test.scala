@@ -13,12 +13,12 @@ import lua.functions.*
         val state = ud.asInstanceOf[Ptr[CStruct2[Long, Long]]]
 
         if nsize == 0.toULong then
-          (!state)._2 = (!state)._2 + osize.toLong
+          (!state)._2 = (!state)._2 + osize.value.toLong
           scalanative.libc.stdlib.free(ptr)
           null
         else
-          (!state)._1 = (!state)._1 + nsize.toLong
-          scalanative.libc.stdlib.realloc(ptr, nsize)
+          (!state)._1 = (!state)._1 + nsize.value.toLong
+          scalanative.libc.stdlib.realloc(ptr, nsize.value)
       }
     }
 
