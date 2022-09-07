@@ -1,5 +1,5 @@
-import bindgen.interface.Platform.OS.*
-import bindgen.interface.Platform
+import com.indoorvivants.detective.Platform.OS.*
+import com.indoorvivants.detective.Platform
 import bindgen.interface.Binding
 import bindgen.interface.LogLevel
 import java.nio.file.Paths
@@ -9,11 +9,26 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / resolvers += Resolver.sonatypeRepo("snapshots")
 
 lazy val Versions = new {
-  val Scala = "3.1.3"
+  val Scala = "3.2.0"
 }
 
 lazy val root = project
   .in(file("."))
+  .aggregate(
+    `tree-sitter`,
+    cjson,
+    cmark,
+    git,
+    duckdb,
+    git,
+    libuv,
+    lua,
+    openssl,
+    postgres,
+    redis,
+    rocksdb,
+    sqlite
+  )
   .settings(
     run := {}
   )
@@ -239,7 +254,9 @@ def vcpkgNativeConfig(rename: String => String = identity) = Seq(
       }
 
     val arch64 =
-      if (Platform.arch == Platform.Arch.aarch64)
+      if (
+        Platform.arch == Platform.Arch.Arm && Platform.bits == Platform.Bits.x64
+      )
         List("-arch", "arm64")
       else Nil
 
@@ -333,7 +350,8 @@ lazy val lua = project
           cImports = List("lua.h", "lauxlib.h", "lualib.h"),
           clangFlags = List(
             "-I" + vcpkgManager.value.includes("lua").toString
-          )
+          ),
+          logLevel = LogLevel.Trace
         )
       )
     }

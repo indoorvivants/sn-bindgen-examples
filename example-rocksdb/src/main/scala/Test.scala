@@ -30,18 +30,18 @@ import scala.scalanative.libc.string
     db,
     write_options,
     key,
-    string.strlen(key),
+    size_t(string.strlen(key)),
     value,
-    string.strlen(value) + 1.toULong,
+    size_t(string.strlen(value) + 1.toULong),
     err
   )
   assert(!err == null)
 
   // Read key-value
   val read_options = rocksdb_readoptions_create()
-  val len = stackalloc[CSize]()
+  val len = stackalloc[size_t]()
   val returned_value =
-    rocksdb_get(db, read_options, key, string.strlen(key), len, err)
+    rocksdb_get(db, read_options, key, size_t(string.strlen(key)), len, err)
   assert(!err == null)
   assert(fromCString(returned_value) == "Scala Native!")
 
