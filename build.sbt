@@ -27,7 +27,8 @@ lazy val root = project
     postgres,
     redis,
     rocksdb,
-    sqlite
+    sqlite,
+    s2n
   )
   .settings(
     run := {}
@@ -219,6 +220,7 @@ lazy val s2n = project
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := Set("s2n", "openssl"),
+    Compile / run / envVars := Map("S2N_DONT_MLOCK" -> "1"),
     bindgenBindings += {
       Binding(
         vcpkgManager.value.includes("s2n") / "s2n.h",
