@@ -213,6 +213,24 @@ lazy val rocksdb = project
   )
   .settings(vcpkgNativeConfig())
 
+lazy val s2n = project
+  .in(file("example-s2n"))
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+  .settings(
+    scalaVersion := Versions.Scala,
+    vcpkgDependencies := Set("s2n", "openssl"),
+    bindgenBindings += {
+      Binding(
+        vcpkgManager.value.includes("s2n") / "s2n.h",
+        "s2n",
+        cImports = List("s2n.h"),
+        clangFlags = List("-I" + vcpkgManager.value.includes("s2n"))
+      )
+    }
+  )
+  .settings(vcpkgNativeConfig())
+
+
 def vcpkgNativeConfig(rename: String => String = identity) = Seq(
   nativeConfig := {
     val configurator = vcpkgConfigurator.value
