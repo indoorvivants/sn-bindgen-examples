@@ -27,9 +27,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            ~/Library/Caches/sbt-vcpkg/vcpkg
-            ~/.cache/sbt-vcpkg/vcpkg
-          key: ${{ runner.os }}-sbt-vcpkg
+            ~/Library/Caches/sbt-vcpkg/vcpkg-install
+            ~/.cache/sbt-vcpkg/vcpkg-install
+          key: ${{ runner.os }}-sbt-vcpkg-new
 
       - name: Setup for Scala Native
         run: |

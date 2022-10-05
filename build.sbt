@@ -89,7 +89,7 @@ lazy val cjson = project
     vcpkgDependencies := Set("cjson"),
     bindgenBindings += {
       Binding(
-        vcpkgManager.value.includes("cjson") / "cjson" / "cJSON.h",
+        vcpkgConfigurator.value.includes("cjson") / "cjson" / "cJSON.h",
         "cjson",
         cImports = List("cJSON.h")
       )
@@ -107,11 +107,11 @@ lazy val git = project
     vcpkgDependencies := Set("libgit2"),
     bindgenBindings += {
       Binding(
-        vcpkgManager.value.includes("libgit2") / "git2.h",
+        vcpkgConfigurator.value.includes("libgit2") / "git2.h",
         "libgit",
         linkName = Some("git2"),
         cImports = List("git2.h"),
-        clangFlags = vcpkgConfigurator.value
+        clangFlags = vcpkgConfigurator.value.pkgConfig
           .updateCompilationFlags(List("-fsigned-char"), "libgit2")
           .toList
       )
@@ -128,11 +128,11 @@ lazy val postgres =
       vcpkgDependencies := Set("libpq"),
       bindgenBindings += {
         Binding(
-          vcpkgManager.value.includes("libpq") / "libpq-fe.h",
+          vcpkgConfigurator.value.includes("libpq") / "libpq-fe.h",
           "libpq",
           linkName = Some("pq"),
           cImports = List("libpq-fe.h"),
-          clangFlags = vcpkgConfigurator.value
+          clangFlags = vcpkgConfigurator.value.pkgConfig
             .updateCompilationFlags(List("-std=gnu99"), "libpq")
             .toList
         )
@@ -149,7 +149,7 @@ lazy val sqlite =
       vcpkgDependencies := Set("sqlite3"),
       bindgenBindings += {
         Binding(
-          vcpkgManager.value.includes("sqlite3") / "sqlite3.h",
+          vcpkgConfigurator.value.includes("sqlite3") / "sqlite3.h",
           "libsqlite",
           cImports = List("sqlite.h"),
           clangFlags = List("-fsigned-char")
@@ -167,7 +167,7 @@ lazy val redis =
       vcpkgDependencies := Set("hiredis"),
       bindgenBindings += {
         Binding(
-          vcpkgManager.value.includes("hiredis") / "hiredis" / "hiredis.h",
+          vcpkgConfigurator.value.includes("hiredis") / "hiredis" / "hiredis.h",
           "libredis",
           cImports = List("hiredis.h"),
           clangFlags = List("-fsigned-char")
@@ -184,10 +184,10 @@ lazy val cmark = project
     vcpkgDependencies := Set("cmark"),
     bindgenBindings += {
       Binding(
-        vcpkgManager.value.includes("cmark") / "cmark.h",
+        vcpkgConfigurator.value.includes("cmark") / "cmark.h",
         "cmark",
         cImports = List("cmark.h"),
-        clangFlags = vcpkgConfigurator.value
+        clangFlags = vcpkgConfigurator.value.pkgConfig
           .updateCompilationFlags(List("-DCMARK_STATIC_DEFINE="), "libcmark")
           .toList
       )
@@ -205,10 +205,10 @@ lazy val rocksdb = project
     vcpkgDependencies := Set("rocksdb", "zlib"),
     bindgenBindings += {
       Binding(
-        vcpkgManager.value.includes("rocksdb") / "rocksdb" / "c.h",
+        vcpkgConfigurator.value.includes("rocksdb") / "rocksdb" / "c.h",
         "rocksdb",
         cImports = List("rocksdb/c.h"),
-        clangFlags = List("-I" + vcpkgManager.value.includes("rocksdb"))
+        clangFlags = List("-I" + vcpkgConfigurator.value.includes("rocksdb"))
       )
     }
   )
@@ -223,24 +223,22 @@ lazy val s2n = project
     Compile / run / envVars := Map("S2N_DONT_MLOCK" -> "1"),
     bindgenBindings += {
       Binding(
-        vcpkgManager.value.includes("s2n") / "s2n.h",
+        vcpkgConfigurator.value.includes("s2n") / "s2n.h",
         "s2n",
         cImports = List("s2n.h"),
-        clangFlags = List("-I" + vcpkgManager.value.includes("s2n"))
+        clangFlags = List("-I" + vcpkgConfigurator.value.includes("s2n"))
       )
     }
   )
   .settings(vcpkgNativeConfig())
 
-
 def vcpkgNativeConfig(rename: String => String = identity) = Seq(
   nativeConfig := {
     val configurator = vcpkgConfigurator.value
-    val manager = vcpkgManager.value
     val conf = nativeConfig.value
     val deps = vcpkgDependencies.value.toSeq.map(rename)
 
-    val files = deps.map(d => manager.files(d))
+    val files = deps.map(d => configurator.files(d))
 
     val compileArgsApprox = files.flatMap { f =>
       List("-I" + f.includeDir.toString)
@@ -253,7 +251,7 @@ def vcpkgNativeConfig(rename: String => String = identity) = Seq(
 
     def updateLinkingFlags(current: Seq[String], deps: String*) =
       try {
-        configurator.updateLinkingFlags(
+        configurator.pkgConfig.updateLinkingFlags(
           current,
           deps*
         )
@@ -264,7 +262,7 @@ def vcpkgNativeConfig(rename: String => String = identity) = Seq(
 
     def updateCompilationFlags(current: Seq[String], deps: String*) =
       try {
-        configurator.updateCompilationFlags(
+        configurator.pkgConfig.updateCompilationFlags(
           current,
           deps*
         )
@@ -344,11 +342,11 @@ lazy val libuv = project
     bindgenBindings := {
       Seq(
         Binding(
-          vcpkgManager.value.includes("libuv") / "uv.h",
+          vcpkgConfigurator.value.includes("libuv") / "uv.h",
           "libuv",
           cImports = List("uv.h"),
           clangFlags = List(
-            "-I" + vcpkgManager.value.includes("libuv").toString
+            "-I" + vcpkgConfigurator.value.includes("libuv").toString
           )
         )
       )
@@ -369,7 +367,7 @@ lazy val lua = project
           "lua",
           cImports = List("lua.h", "lauxlib.h", "lualib.h"),
           clangFlags = List(
-            "-I" + vcpkgManager.value.includes("lua").toString
+            "-I" + vcpkgConfigurator.value.includes("lua").toString
           )
         )
       )
@@ -389,7 +387,7 @@ lazy val openssl = project
           (Compile / baseDirectory).value / "openssl-amalgam.h",
           "openssl",
           cImports = List("openssl/sha.h", "openssl/evp.h"),
-          clangFlags = List("-I" + vcpkgManager.value.includes("openssl"))
+          clangFlags = List("-I" + vcpkgConfigurator.value.includes("openssl"))
         )
       )
     }
