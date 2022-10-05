@@ -95,9 +95,7 @@ lazy val cjson = project
       )
     }
   )
-  .settings(vcpkgNativeConfig { case "cjson" =>
-    "libcjson"
-  })
+  .settings(vcpkgNativeConfig())
 
 lazy val git = project
   .in(file("example-git"))
@@ -193,9 +191,7 @@ lazy val cmark = project
       )
     }
   )
-  .settings(vcpkgNativeConfig { case "cmark" =>
-    "libcmark"
-  })
+  .settings(vcpkgNativeConfig())
 
 lazy val rocksdb = project
   .in(file("example-rocksdb"))
