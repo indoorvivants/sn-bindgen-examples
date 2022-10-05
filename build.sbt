@@ -435,7 +435,9 @@ def projectCommands(st: State) = {
 
   getProjects(st).sorted.reverse
     .filterNot(exceptions.contains)
-    .map(_ + "/run")
+    .flatMap { projectName =>
+      List(s"show $projectName/nativeConfig", s"$projectName/run")
+    }
 }
 
 ThisBuild / commands += Command.arb { s =>
