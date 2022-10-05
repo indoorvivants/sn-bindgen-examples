@@ -436,7 +436,7 @@ def projectCommands(st: State) = {
   getProjects(st).sorted.reverse
     .filterNot(exceptions.contains)
     .flatMap { projectName =>
-      List(s"show $projectName/nativeConfig", s"$projectName/run")
+      List(s"$projectName/run", s"show $projectName/nativeConfig")
     }
 }
 
