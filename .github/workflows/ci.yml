@@ -23,13 +23,15 @@ jobs:
           distribution: 'temurin' 
           java-version: '17'
 
-      # - name: Cache vcpkg
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: |
-      #       ~/Library/Caches/sbt-vcpkg/vcpkg-install
-      #       ~/.cache/sbt-vcpkg/vcpkg-install
-      #     key: ${{ runner.os }}-sbt-vcpkg-new
+      - name: Cache vcpkg
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/Library/Caches/sbt-vcpkg/vcpkg-install
+            ~/Library/Caches/sbt-vcpkg/vcpkg
+            ~/.cache/sbt-vcpkg/vcpkg-install
+            ~/.cache/sbt-vcpkg/vcpkg
+          key: ${{ runner.os }}-sbt-vcpkg
 
       - name: Setup for Scala Native
         run: |
