@@ -33,6 +33,8 @@ jobs:
             ~/.cache/sbt-vcpkg/vcpkg
           key: ${{ runner.os }}-sbt-vcpkg
 
+      - uses: rui314/setup-mold@v1
+
       - name: Setup for Scala Native
         run: |
           PLATFORM="$(uname)"
