@@ -31,7 +31,9 @@ jobs:
             ~/Library/Caches/sbt-vcpkg/vcpkg
             ~/.cache/sbt-vcpkg/vcpkg-install
             ~/.cache/sbt-vcpkg/vcpkg
-          key: ${{ runner.os }}-sbt-vcpkg
+          key: ${{ runner.os }}-sbt-vcpkg-${{ matrix.segment }}
+
+      - uses: rui314/setup-mold@v1
 
       - name: Setup for Scala Native
         run: |
