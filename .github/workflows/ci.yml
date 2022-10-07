@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: ["*"]
 
+env:
+  JAVA_OPTS: "-Xmx4G -Dsbt.task.timings=true -Dsbt.task.timings.on.shutdown=true"
+
 jobs:
   build:
     name: CI on ${{matrix.os}} ${{matrix.segment}} out of 3
