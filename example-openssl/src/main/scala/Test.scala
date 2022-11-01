@@ -39,7 +39,11 @@ object OpenSSL:
       "failed to initialise sha context"
     )
     assert(
-      SHA256_Update(sha256_ctx, str, string.strlen(str).asInstanceOf[size_t]) == 1,
+      SHA256_Update(
+        sha256_ctx,
+        str,
+        string.strlen(str).asInstanceOf[size_t]
+      ) == 1,
       "failed to update sha context"
     )
     assert(
@@ -71,7 +75,13 @@ object OpenSSL:
     val md_len = stackalloc[size_t](1)
 
     assert(EVP_DigestSignInit(mdctx, null, EVP_sha256(), null, pkey) == 1)
-    assert(EVP_DigestUpdate(mdctx, message, string.strlen(message).asInstanceOf[size_t]) == 1)
+    assert(
+      EVP_DigestUpdate(
+        mdctx,
+        message,
+        string.strlen(message).asInstanceOf[size_t]
+      ) == 1
+    )
     assert(EVP_DigestSignFinal(mdctx, null, md_len) == 1)
     val md_value = stackalloc[CUnsignedChar]((!md_len).asInstanceOf[ULong])
 
@@ -79,7 +89,8 @@ object OpenSSL:
 
     val ar = Array.newBuilder[Byte]
 
-    for i <- 0 until (!md_len).asInstanceOf[ULong].toInt do ar.addOne(md_value(i).toByte)
+    for i <- 0 until (!md_len).asInstanceOf[ULong].toInt do
+      ar.addOne(md_value(i).toByte)
 
     EVP_MD_CTX_free(mdctx)
 
