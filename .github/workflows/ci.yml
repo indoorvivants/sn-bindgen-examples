@@ -78,11 +78,9 @@ jobs:
             LLVM_BIN=/usr/lib/llvm-13/bin sbt 'runBatchedExamples ${{matrix.segment}} 3'
           fi
 
-  summary:
-    name: Build summary
+  mergify-build-checkpoint:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
       - name: I only exist to please Mergify :(
         run: echo "It's a sad existence but necessary"
-
