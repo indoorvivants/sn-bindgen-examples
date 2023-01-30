@@ -9,7 +9,7 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / resolvers += Resolver.sonatypeRepo("snapshots")
 
 lazy val Versions = new {
-  val Scala = "3.2.1"
+  val Scala = "3.2.2"
 }
 
 lazy val root = project
