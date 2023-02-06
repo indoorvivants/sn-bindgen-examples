@@ -49,9 +49,9 @@ jobs:
             sudo apt update
             sudo apt install lsb-release wget software-properties-common
             wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
-            sudo add-apt-repository "deb http://apt.llvm.org/focal/     llvm-toolchain-focal-13   main"
+            sudo add-apt-repository "deb http://apt.llvm.org/focal/     llvm-toolchain-focal-14   main"
             sudo apt-get update 
-            sudo apt-get install clang-13 lldb-13 libclang-13-dev llvm-13-dev lld-13
+            sudo apt-get install clang-14 lldb-14 libclang-14-dev llvm-14-dev lld-14
             sudo apt-get install ninja-build
           fi
 
@@ -75,7 +75,7 @@ jobs:
             LLVM_BIN=/usr/local/opt/llvm/bin sbt 'runBatchedExamples ${{matrix.segment}} 3'
           else
             echo "It's a Linux"
-            LLVM_BIN=/usr/lib/llvm-13/bin sbt 'runBatchedExamples ${{matrix.segment}} 3'
+            LLVM_BIN=/usr/lib/llvm-14/bin sbt 'runBatchedExamples ${{matrix.segment}} 3'
           fi
 
   mergify-build-checkpoint:
