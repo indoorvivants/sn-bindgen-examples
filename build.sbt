@@ -83,10 +83,11 @@ lazy val `tree-sitter` = project
 
 lazy val cjson = project
   .in(file("example-cjson"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := Set("cjson"),
+    vcpkgNativeConfig ~= {_.addRenamedLibrary("cjson", "libcjson")},
     bindgenBindings += {
       Binding(
         vcpkgConfigurator.value.includes("cjson") / "cjson" / "cJSON.h",
@@ -95,11 +96,11 @@ lazy val cjson = project
       )
     }
   )
-  .settings(vcpkgNativeConfig())
+  .settings(configurePlatform())
 
 lazy val git = project
   .in(file("example-git"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := Set("libgit2"),
@@ -115,12 +116,12 @@ lazy val git = project
       )
     }
   )
-  .settings(vcpkgNativeConfig())
+  .settings(configurePlatform())
 
 lazy val postgres =
   project
     .in(file("example-postgres"))
-    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
     .settings(
       scalaVersion := Versions.Scala,
       vcpkgDependencies := Set("libpq"),
@@ -136,12 +137,12 @@ lazy val postgres =
         )
       }
     )
-    .settings(vcpkgNativeConfig())
+    .settings(configurePlatform())
 
 lazy val sqlite =
   project
     .in(file("example-sqlite"))
-    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
     .settings(
       scalaVersion := Versions.Scala,
       vcpkgDependencies := Set("sqlite3"),
@@ -154,12 +155,12 @@ lazy val sqlite =
         )
       }
     )
-    .settings(vcpkgNativeConfig())
+    .settings(configurePlatform())
 
 lazy val redis =
   project
     .in(file("example-redis"))
-    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
     .settings(
       scalaVersion := Versions.Scala,
       vcpkgDependencies := Set("hiredis"),
@@ -172,14 +173,15 @@ lazy val redis =
         )
       }
     )
-    .settings(vcpkgNativeConfig())
+    .settings(configurePlatform())
 
 lazy val cmark = project
   .in(file("example-cmark"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := Set("cmark"),
+    vcpkgNativeConfig ~= {_.addRenamedLibrary("cmark", "libcmark")},
     bindgenBindings += {
       Binding(
         vcpkgConfigurator.value.includes("cmark") / "cmark.h",
@@ -191,11 +193,11 @@ lazy val cmark = project
       )
     }
   )
-  .settings(vcpkgNativeConfig())
+  .settings(configurePlatform())
 
 lazy val rocksdb = project
   .in(file("example-rocksdb"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := Set("rocksdb", "zlib"),
@@ -208,11 +210,11 @@ lazy val rocksdb = project
       )
     }
   )
-  .settings(vcpkgNativeConfig())
+  .settings(configurePlatform())
 
 lazy val s2n = project
   .in(file("example-s2n"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := Set("s2n", "openssl"),
@@ -226,47 +228,11 @@ lazy val s2n = project
       )
     }
   )
-  .settings(vcpkgNativeConfig())
+  .settings(configurePlatform())
 
-def vcpkgNativeConfig(rename: String => String = identity) = Seq(
+def configurePlatform(rename: String => String = identity) = Seq(
   nativeConfig := {
-    val configurator = vcpkgConfigurator.value
     val conf = nativeConfig.value
-    val deps = vcpkgDependencies.value.toSeq.map(rename)
-
-    val files = deps.map(d => configurator.files(d))
-
-    val compileArgsApprox = files.flatMap { f =>
-      List("-I" + f.includeDir.toString)
-    }
-    val linkingArgsApprox = files.flatMap { f =>
-      List("-L" + f.libDir) ++ f.staticLibraries.map(_.toString)
-    }
-
-    import scala.util.control.NonFatal
-
-    def updateLinkingFlags(current: Seq[String], deps: String*) =
-      try {
-        configurator.pkgConfig.updateLinkingFlags(
-          current,
-          deps*
-        )
-      } catch {
-        case NonFatal(exc) =>
-          linkingArgsApprox
-      }
-
-    def updateCompilationFlags(current: Seq[String], deps: String*) =
-      try {
-        configurator.pkgConfig.updateCompilationFlags(
-          current,
-          deps*
-        )
-      } catch {
-        case NonFatal(exc) =>
-          compileArgsApprox
-      }
-
     val arch64 =
       if (
         Platform.arch == Platform.Arch.Arm && Platform.bits == Platform.Bits.x64
@@ -276,16 +242,10 @@ def vcpkgNativeConfig(rename: String => String = identity) = Seq(
 
     conf
       .withLinkingOptions(
-        updateLinkingFlags(
-          conf.linkingOptions ++ arch64,
-          deps*
-        )
+        conf.linkingOptions ++ arch64
       )
       .withCompileOptions(
-        updateCompilationFlags(
-          conf.compileOptions ++ arch64,
-          deps*
-        )
+        conf.compileOptions ++ arch64
       )
   }
 )
@@ -331,7 +291,7 @@ lazy val duckdb = project
 
 lazy val libuv = project
   .in(file("example-libuv"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := Set("libuv"),
@@ -348,11 +308,11 @@ lazy val libuv = project
       )
     }
   )
-  .settings(vcpkgNativeConfig())
+  .settings(configurePlatform())
 
 lazy val lua = project
   .in(file("example-lua"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     vcpkgDependencies := Set("lua"),
     scalaVersion := Versions.Scala,
@@ -369,11 +329,11 @@ lazy val lua = project
       )
     }
   )
-  .settings(vcpkgNativeConfig())
+  .settings(configurePlatform())
 
 lazy val openssl = project
   .in(file("example-openssl"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     vcpkgDependencies := Set("openssl"),
     scalaVersion := Versions.Scala,
@@ -388,7 +348,7 @@ lazy val openssl = project
       )
     }
   )
-  .settings(vcpkgNativeConfig())
+  .settings(configurePlatform())
 
 def getProjects(s: State): Seq[String] = {
   val extracted = Project.extract(s)
