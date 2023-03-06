@@ -86,7 +86,7 @@ lazy val cjson = project
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    vcpkgDependencies := Set("cjson"),
+    vcpkgDependencies := VcpkgDependencies("cjson"),
     vcpkgNativeConfig ~= {_.addRenamedLibrary("cjson", "libcjson")},
     bindgenBindings += {
       Binding(
@@ -103,7 +103,7 @@ lazy val git = project
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    vcpkgDependencies := Set("libgit2"),
+    vcpkgDependencies := VcpkgDependencies("libgit2"),
     bindgenBindings += {
       Binding(
         vcpkgConfigurator.value.includes("libgit2") / "git2.h",
@@ -124,7 +124,7 @@ lazy val postgres =
     .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
     .settings(
       scalaVersion := Versions.Scala,
-      vcpkgDependencies := Set("libpq"),
+      vcpkgDependencies := VcpkgDependencies("libpq"),
       bindgenBindings += {
         Binding(
           vcpkgConfigurator.value.includes("libpq") / "libpq-fe.h",
@@ -145,7 +145,7 @@ lazy val sqlite =
     .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
     .settings(
       scalaVersion := Versions.Scala,
-      vcpkgDependencies := Set("sqlite3"),
+      vcpkgDependencies := VcpkgDependencies("sqlite3"),
       bindgenBindings += {
         Binding(
           vcpkgConfigurator.value.includes("sqlite3") / "sqlite3.h",
@@ -163,7 +163,7 @@ lazy val redis =
     .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
     .settings(
       scalaVersion := Versions.Scala,
-      vcpkgDependencies := Set("hiredis"),
+      vcpkgDependencies := VcpkgDependencies("hiredis"),
       bindgenBindings += {
         Binding(
           vcpkgConfigurator.value.includes("hiredis") / "hiredis" / "hiredis.h",
@@ -180,7 +180,7 @@ lazy val cmark = project
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    vcpkgDependencies := Set("cmark"),
+    vcpkgDependencies := VcpkgDependencies("cmark"),
     vcpkgNativeConfig ~= {_.addRenamedLibrary("cmark", "libcmark")},
     bindgenBindings += {
       Binding(
@@ -200,7 +200,7 @@ lazy val rocksdb = project
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    vcpkgDependencies := Set("rocksdb", "zlib"),
+    vcpkgDependencies := VcpkgDependencies("rocksdb", "zlib"),
     bindgenBindings += {
       Binding(
         vcpkgConfigurator.value.includes("rocksdb") / "rocksdb" / "c.h",
@@ -217,7 +217,7 @@ lazy val s2n = project
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    vcpkgDependencies := Set("s2n", "openssl"),
+    vcpkgDependencies := VcpkgDependencies("s2n", "openssl"),
     Compile / run / envVars := Map("S2N_DONT_MLOCK" -> "1"),
     bindgenBindings += {
       Binding(
@@ -294,7 +294,7 @@ lazy val libuv = project
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    vcpkgDependencies := Set("libuv"),
+    vcpkgDependencies := VcpkgDependencies("libuv"),
     bindgenBindings := {
       Seq(
         Binding(
@@ -314,7 +314,7 @@ lazy val lua = project
   .in(file("example-lua"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
-    vcpkgDependencies := Set("lua"),
+    vcpkgDependencies := VcpkgDependencies("lua"),
     scalaVersion := Versions.Scala,
     bindgenBindings := {
       Seq(
@@ -335,7 +335,7 @@ lazy val openssl = project
   .in(file("example-openssl"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
-    vcpkgDependencies := Set("openssl"),
+    vcpkgDependencies := VcpkgDependencies("openssl"),
     scalaVersion := Versions.Scala,
     bindgenBindings := {
       Seq(
