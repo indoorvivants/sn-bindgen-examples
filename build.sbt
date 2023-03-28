@@ -87,7 +87,7 @@ lazy val cjson = project
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("cjson"),
-    vcpkgNativeConfig ~= {_.addRenamedLibrary("cjson", "libcjson")},
+    vcpkgNativeConfig ~= { _.addRenamedLibrary("cjson", "libcjson") },
     bindgenBindings += {
       Binding(
         vcpkgConfigurator.value.includes("cjson") / "cjson" / "cJSON.h",
@@ -181,7 +181,7 @@ lazy val cmark = project
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("cmark"),
-    vcpkgNativeConfig ~= {_.addRenamedLibrary("cmark", "libcmark")},
+    vcpkgNativeConfig ~= { _.addRenamedLibrary("cmark", "libcmark") },
     bindgenBindings += {
       Binding(
         vcpkgConfigurator.value.includes("cmark") / "cmark.h",
