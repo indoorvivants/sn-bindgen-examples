@@ -18,6 +18,7 @@ lazy val root = project
     `tree-sitter`,
     cjson,
     cmark,
+    curl,
     git,
     duckdb,
     git,
@@ -97,6 +98,24 @@ lazy val cjson = project
     }
   )
   .settings(configurePlatform())
+
+lazy val curl = project
+  .in(file("example-curl"))
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+  .settings(
+    scalaVersion := Versions.Scala,
+    vcpkgDependencies := VcpkgDependencies("curl"),
+    vcpkgNativeConfig ~= {_.addRenamedLibrary("curl", "libcurl")},
+    bindgenBindings += {
+      Binding(
+        vcpkgConfigurator.value.includes("curl") / "curl" / "curl.h",
+        "curl",
+        cImports = List("curl/curl.h")
+      )
+    }
+  )
+  .settings(configurePlatform())
+
 
 lazy val git = project
   .in(file("example-git"))
