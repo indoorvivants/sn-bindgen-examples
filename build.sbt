@@ -88,7 +88,7 @@ lazy val cjson = project
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("cjson"),
-    vcpkgNativeConfig ~= {_.addRenamedLibrary("cjson", "libcjson")},
+    vcpkgNativeConfig ~= { _.addRenamedLibrary("cjson", "libcjson") },
     bindgenBindings += {
       Binding(
         vcpkgConfigurator.value.includes("cjson") / "cjson" / "cJSON.h",
@@ -105,7 +105,7 @@ lazy val curl = project
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("curl"),
-    vcpkgNativeConfig ~= {_.addRenamedLibrary("curl", "libcurl")},
+    vcpkgNativeConfig ~= { _.addRenamedLibrary("curl", "libcurl") },
     bindgenBindings += {
       Binding(
         vcpkgConfigurator.value.includes("curl") / "curl" / "curl.h",
@@ -115,7 +115,6 @@ lazy val curl = project
     }
   )
   .settings(configurePlatform())
-
 
 lazy val git = project
   .in(file("example-git"))
@@ -200,7 +199,7 @@ lazy val cmark = project
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("cmark"),
-    vcpkgNativeConfig ~= {_.addRenamedLibrary("cmark", "libcmark")},
+    vcpkgNativeConfig ~= { _.addRenamedLibrary("cmark", "libcmark") },
     bindgenBindings += {
       Binding(
         vcpkgConfigurator.value.includes("cmark") / "cmark.h",
