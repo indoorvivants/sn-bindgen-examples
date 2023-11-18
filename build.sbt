@@ -1,3 +1,4 @@
+import bindgen.plugin.BindgenMode
 import com.indoorvivants.detective.Platform.OS.*
 import com.indoorvivants.detective.Platform
 import bindgen.interface.Binding
@@ -9,7 +10,7 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / resolvers += Resolver.sonatypeRepo("snapshots")
 
 lazy val Versions = new {
-  val Scala = "3.2.2"
+  val Scala = "3.3.1"
 }
 
 lazy val root = project
@@ -26,6 +27,7 @@ lazy val root = project
     lua,
     openssl,
     postgres,
+    mysql,
     redis,
     rocksdb,
     sqlite,
@@ -154,6 +156,51 @@ lazy val postgres =
             .toList
         )
       }
+    )
+    .settings(configurePlatform())
+
+lazy val mysql =
+  project
+    .in(file("example-mysql"))
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(
+      scalaVersion := Versions.Scala,
+      vcpkgDependencies := VcpkgDependencies("libmysql", "openssl", "zlib"),
+      // Mysql package in vcpkg is absolutely messed up
+      vcpkgNativeConfig ~= { _.addRenamedLibrary("libmysql", "mysqlclient") },
+      nativeConfig := {
+
+        val config = nativeConfig.value
+        config.withLinkingOptions(config.linkingOptions.map {
+          case "-lresolv-lresolv" => "-lresolv"
+          case other              => other
+        })
+
+      },
+      bindgenBindings += {
+        val actualIncludeFolder = new File(
+          vcpkgConfigurator.value.pkgConfig
+            .compilationFlags("mysqlclient")
+            .toList
+            .filter(_.contains("include/mysql"))
+            .head
+            .stripPrefix("-I")
+        )
+
+        Binding(
+          actualIncludeFolder / "mysql.h",
+          "libmysql",
+          linkName = Some("mysqlclient"),
+          cImports = List("mysql/mysql.h"),
+          clangFlags = vcpkgConfigurator.value.pkgConfig
+            .updateCompilationFlags(List("-std=gnu99"), "mysqlclient")
+            .toList
+        )
+      },
+      bindgenMode := BindgenMode.Manual(
+        scalaDir = sourceDirectory.value / "main" / "scala" / "generated",
+        cDir = (Compile / resourceDirectory).value / "scala-native"
+      )
     )
     .settings(configurePlatform())
 
