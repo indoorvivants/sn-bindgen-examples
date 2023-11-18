@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
-        os: [macos-11, ubuntu-20.04]
+        os: [macos-12, ubuntu-20.04]
         segment: [1, 2, 3]
     runs-on: ${{ matrix.os }}
     steps:
