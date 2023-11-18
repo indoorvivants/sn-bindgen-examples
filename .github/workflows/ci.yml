@@ -61,7 +61,7 @@ jobs:
             echo "It's a Mac"
           else
             docker run -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
-            docker run -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_USER=mysql -e MYSQL_PASSWORD=mysql-password -e MYSQL_DATABASE=mysql_db -p 3306:3306
+            docker run -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_USER=mysql -e MYSQL_PASSWORD=mysql-password -e MYSQL_DATABASE=mysql_db -p 3306:3306 mysql
             docker run -p 6379:6379 -d redis
           fi
 
