@@ -39,6 +39,10 @@ jobs:
 
       - uses: rui314/setup-mold@v1
 
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
       - name: Setup for Scala Native
         run: |
           PLATFORM="$(uname)"
