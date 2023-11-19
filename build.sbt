@@ -450,8 +450,8 @@ def projectCommands(st: State) = {
   val exceptions: Set[String] =
     if (sys.env.contains("CI")) {
       val platformSpecific = Platform.os match {
-        // postgres, redis - these require docker containers so we don't run them on CI
-        case MacOS => Set("postgres", "redis")
+        // these require docker containers so we don't run them on CI
+        case MacOS => Set("mysql", "postgres", "redis")
         case _     => Set.empty
       }
 
