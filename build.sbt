@@ -1,3 +1,4 @@
+import bindgen.plugin.BindgenMode
 import com.indoorvivants.detective.Platform.OS.*
 import com.indoorvivants.detective.Platform
 import bindgen.interface.Binding
@@ -9,7 +10,7 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / resolvers += Resolver.sonatypeRepo("snapshots")
 
 lazy val Versions = new {
-  val Scala = "3.2.2"
+  val Scala = "3.3.1"
 }
 
 lazy val root = project
@@ -26,6 +27,7 @@ lazy val root = project
     lua,
     openssl,
     postgres,
+    mysql,
     redis,
     rocksdb,
     sqlite,
@@ -47,8 +49,7 @@ lazy val `tree-sitter` = project
       Binding(
         baseDirectory.value / "tree-sitter" / "lib" / "include" / "tree_sitter" / "api.h",
         "treesitter",
-        cImports = List("tree_sitter/api.h"),
-        clangFlags = List("-std=gnu99")
+        cImports = List("tree_sitter/api.h")
       )
     },
     // Copy generated Scala parser
@@ -57,7 +58,7 @@ lazy val `tree-sitter` = project
         baseDirectory.value / "tree-sitter-scala" / "src"
       val resourcesFolder = (Compile / resourceManaged).value / "scala-native"
 
-      val fileNames = List("parser.c", "scanner.c")
+      val fileNames = List("parser.c", "scanner.c", "stack.h")
 
       fileNames.foreach { fileName =>
         IO.copyFile(scalaParserLocation / fileName, resourcesFolder / fileName)
@@ -77,7 +78,7 @@ lazy val `tree-sitter` = project
           )
         )
         .withCompileOptions(
-          conf.compileOptions ++ List(s"-I${base / "lib" / "include"}")
+          List(s"-I${base / "lib" / "include"}") ++ conf.compileOptions
         )
     }
   )
@@ -154,6 +155,52 @@ lazy val postgres =
             .toList
         )
       }
+    )
+    .settings(configurePlatform())
+
+lazy val mysql =
+  project
+    .in(file("example-mysql"))
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(
+      scalaVersion := Versions.Scala,
+      vcpkgDependencies := VcpkgDependencies("libmysql", "openssl", "zlib"),
+      // Mysql package in vcpkg is absolutely messed up
+      vcpkgNativeConfig ~= { _.addRenamedLibrary("libmysql", "mysqlclient") },
+      nativeConfig := {
+
+        val config = nativeConfig.value
+        config.withLinkingOptions(config.linkingOptions.flatMap {
+          case "-lresolv-lresolv" => Some("-lresolv")
+          case "-lm-lresolv"      => None
+          case other              => Some(other)
+        })
+
+      },
+      bindgenBindings += {
+        val actualIncludeFolder = new File(
+          vcpkgConfigurator.value.pkgConfig
+            .compilationFlags("mysqlclient")
+            .toList
+            .filter(_.contains("include/mysql"))
+            .head
+            .stripPrefix("-I")
+        )
+
+        Binding(
+          actualIncludeFolder / "mysql.h",
+          "libmysql",
+          linkName = Some("mysqlclient"),
+          cImports = List("mysql/mysql.h"),
+          clangFlags = vcpkgConfigurator.value.pkgConfig
+            .updateCompilationFlags(List("-std=gnu99"), "mysqlclient")
+            .toList
+        )
+      },
+      bindgenMode := BindgenMode.Manual(
+        scalaDir = sourceDirectory.value / "main" / "scala" / "generated",
+        cDir = (Compile / resourceDirectory).value / "scala-native"
+      )
     )
     .settings(configurePlatform())
 
@@ -403,8 +450,8 @@ def projectCommands(st: State) = {
   val exceptions: Set[String] =
     if (sys.env.contains("CI")) {
       val platformSpecific = Platform.os match {
-        // postgres, redis - these require docker containers so we don't run them on CI
-        case MacOS => Set("postgres", "redis")
+        // these require docker containers so we don't run them on CI
+        case MacOS => Set("mysql", "postgres", "redis")
         case _     => Set.empty
       }
 
