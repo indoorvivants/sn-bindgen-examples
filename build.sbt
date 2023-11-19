@@ -49,8 +49,7 @@ lazy val `tree-sitter` = project
       Binding(
         baseDirectory.value / "tree-sitter" / "lib" / "include" / "tree_sitter" / "api.h",
         "treesitter",
-        cImports = List("tree_sitter/api.h"),
-        clangFlags = List("-std=gnu99")
+        cImports = List("tree_sitter/api.h")
       )
     },
     // Copy generated Scala parser
@@ -59,7 +58,7 @@ lazy val `tree-sitter` = project
         baseDirectory.value / "tree-sitter-scala" / "src"
       val resourcesFolder = (Compile / resourceManaged).value / "scala-native"
 
-      val fileNames = List("parser.c", "scanner.c")
+      val fileNames = List("parser.c", "scanner.c", "stack.h")
 
       fileNames.foreach { fileName =>
         IO.copyFile(scalaParserLocation / fileName, resourcesFolder / fileName)
@@ -79,7 +78,7 @@ lazy val `tree-sitter` = project
           )
         )
         .withCompileOptions(
-          conf.compileOptions ++ List(s"-I${base / "lib" / "include"}")
+          List(s"-I${base / "lib" / "include"}") ++ conf.compileOptions
         )
     }
   )
