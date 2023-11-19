@@ -49,8 +49,7 @@ jobs:
           if [ $PLATFORM == "Darwin" ]; then
             echo "It's a Mac"
             brew install llvm@14 ninja
-            echo "LLVM_BIN=/usr/local/opt/llvm@14/bin " >> $GITHUB_ENV
-
+            echo "LLVM_BIN=/usr/local/opt/llvm@14/bin" >> $GITHUB_ENV
           else
             echo "It's a Linux"
             wget https://apt.llvm.org/llvm.sh
