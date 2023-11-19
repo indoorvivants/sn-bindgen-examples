@@ -170,9 +170,10 @@ lazy val mysql =
       nativeConfig := {
 
         val config = nativeConfig.value
-        config.withLinkingOptions(config.linkingOptions.map {
-          case "-lresolv-lresolv" => "-lresolv"
-          case other              => other
+        config.withLinkingOptions(config.linkingOptions.flatMap {
+          case "-lresolv-lresolv" => Some("-lresolv")
+          case "-lm-lresolv"      => None
+          case other              => Some(other)
         })
 
       },

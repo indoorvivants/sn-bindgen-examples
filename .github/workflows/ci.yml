@@ -62,7 +62,7 @@ jobs:
 
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then 
-            echo "It's a Mac"
+            python3 -m pip install packaging
           else
             docker run -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
             docker run -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_USER=mysql -e MYSQL_PASSWORD=mysql-password -e MYSQL_DATABASE=mysql_db -p 3306:3306 -d mysql
