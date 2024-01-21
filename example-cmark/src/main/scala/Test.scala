@@ -35,9 +35,9 @@ import scala.scalanative.libc
 
           stdio.printf(
             c"Node: %s, ev_type: %d, address: %p \n",
-            cmark_node_get_type_string(cur),
+            // cmark_node_get_type_string(cur),
             ev_type,
-            cur
+            // cur
           )
 
         end while

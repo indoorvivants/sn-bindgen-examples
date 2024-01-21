@@ -201,11 +201,7 @@ lazy val mysql =
             .updateCompilationFlags(List("-std=gnu99"), "mysqlclient")
             .toList
         )
-      },
-      bindgenMode := BindgenMode.Manual(
-        scalaDir = sourceDirectory.value / "main" / "scala" / "generated",
-        cDir = (Compile / resourceDirectory).value / "scala-native"
-      )
+      }
     )
     .settings(bindgenSettings)
     .settings(configurePlatform())
@@ -308,8 +304,7 @@ lazy val s2n = project
 
 val bindgenSettings = Seq(
   bindgenMode := BindgenMode.Manual(
-    scalaDir =
-      (Compile / sourceDirectory).value /  "scala" / "generated",
+    scalaDir = (Compile / sourceDirectory).value / "scala" / "generated",
     cDir = (Compile / resourceDirectory).value / "scala-native" / "generated"
   )
 )
