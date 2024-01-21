@@ -7,7 +7,7 @@ import java.nio.file.Paths
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
-ThisBuild / resolvers += Resolver.sonatypeRepo("snapshots")
+ThisBuild / resolvers ++= Resolver.sonatypeOssRepos("snapshots")
 
 lazy val Versions = new {
   val Scala = "3.3.1"
@@ -82,6 +82,7 @@ lazy val `tree-sitter` = project
         )
     }
   )
+  .settings(bindgenSettings)
 
 lazy val cjson = project
   .in(file("example-cjson"))
@@ -98,6 +99,7 @@ lazy val cjson = project
       )
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
 
 lazy val curl = project
@@ -115,6 +117,7 @@ lazy val curl = project
       )
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
 
 lazy val git = project
@@ -135,6 +138,7 @@ lazy val git = project
       )
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
 
 lazy val postgres =
@@ -156,6 +160,7 @@ lazy val postgres =
         )
       }
     )
+    .settings(bindgenSettings)
     .settings(configurePlatform())
 
 lazy val mysql =
@@ -202,6 +207,7 @@ lazy val mysql =
         cDir = (Compile / resourceDirectory).value / "scala-native"
       )
     )
+    .settings(bindgenSettings)
     .settings(configurePlatform())
 
 lazy val sqlite =
@@ -220,6 +226,7 @@ lazy val sqlite =
         )
       }
     )
+    .settings(bindgenSettings)
     .settings(configurePlatform())
 
 lazy val redis =
@@ -238,6 +245,7 @@ lazy val redis =
         )
       }
     )
+    .settings(bindgenSettings)
     .settings(configurePlatform())
 
 lazy val cmark = project
@@ -258,6 +266,7 @@ lazy val cmark = project
       )
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
 
 lazy val rocksdb = project
@@ -275,6 +284,7 @@ lazy val rocksdb = project
       )
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
 
 lazy val s2n = project
@@ -293,7 +303,16 @@ lazy val s2n = project
       )
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
+
+val bindgenSettings = Seq(
+  bindgenMode := BindgenMode.Manual(
+    scalaDir =
+      (Compile / sourceDirectory).value /  "scala" / "generated",
+    cDir = (Compile / resourceDirectory).value / "scala-native" / "generated"
+  )
+)
 
 def configurePlatform(rename: String => String = identity) = Seq(
   nativeConfig := {
