@@ -17,7 +17,6 @@ object predef:
 object enumerations:
   import predef.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type DUCKDB_TYPE = CUnsignedInt
   object DUCKDB_TYPE extends CEnumU[DUCKDB_TYPE]:
@@ -90,7 +89,6 @@ object enumerations:
       inline def is(b: DUCKDB_TYPE): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_state = CUnsignedInt
   object duckdb_state extends CEnumU[duckdb_state]:
@@ -114,7 +112,6 @@ object aliases:
   import _root_.duckdb.aliases.*
   import _root_.duckdb.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_appender = Ptr[Byte]
   object duckdb_appender: 
@@ -124,7 +121,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_arrow = Ptr[Byte]
   object duckdb_arrow: 
@@ -134,7 +130,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_arrow_array = Ptr[Byte]
   object duckdb_arrow_array: 
@@ -144,7 +139,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_arrow_schema = Ptr[Byte]
   object duckdb_arrow_schema: 
@@ -154,7 +148,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_bind_info = Ptr[Byte]
   object duckdb_bind_info: 
@@ -164,7 +157,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_config = Ptr[Byte]
   object duckdb_config: 
@@ -174,7 +166,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_connection = Ptr[Byte]
   object duckdb_connection: 
@@ -184,7 +175,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_data_chunk = Ptr[Byte]
   object duckdb_data_chunk: 
@@ -194,7 +184,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_database = Ptr[Byte]
   object duckdb_database: 
@@ -204,7 +193,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_delete_callback_t = CFuncPtr1[Ptr[Byte], Unit]
   object duckdb_delete_callback_t: 
@@ -216,7 +204,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_function_info = Ptr[Byte]
   object duckdb_function_info: 
@@ -226,7 +213,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_init_info = Ptr[Byte]
   object duckdb_init_info: 
@@ -236,7 +222,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_logical_type = Ptr[Byte]
   object duckdb_logical_type: 
@@ -246,7 +231,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_prepared_statement = Ptr[Byte]
   object duckdb_prepared_statement: 
@@ -256,7 +240,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_replacement_callback_t = CFuncPtr3[duckdb_replacement_scan_info, CString, Ptr[Byte], Unit]
   object duckdb_replacement_callback_t: 
@@ -268,7 +251,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_replacement_scan_info = Ptr[Byte]
   object duckdb_replacement_scan_info: 
@@ -278,7 +260,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_table_function = Ptr[Byte]
   object duckdb_table_function: 
@@ -288,7 +269,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_table_function_bind_t = CFuncPtr1[duckdb_bind_info, Unit]
   object duckdb_table_function_bind_t: 
@@ -300,7 +280,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_table_function_init_t = CFuncPtr1[duckdb_init_info, Unit]
   object duckdb_table_function_init_t: 
@@ -312,7 +291,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_table_function_t = CFuncPtr2[duckdb_function_info, duckdb_data_chunk, Unit]
   object duckdb_table_function_t: 
@@ -324,7 +302,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   type duckdb_type = DUCKDB_TYPE
   object duckdb_type: 
@@ -334,7 +311,6 @@ object aliases:
       inline def value: DUCKDB_TYPE = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_value = Ptr[Byte]
   object duckdb_value: 
@@ -344,7 +320,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_vector = Ptr[Byte]
   object duckdb_vector: 
@@ -354,7 +329,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   type idx_t = uint64_t
   object idx_t: 
@@ -432,7 +406,6 @@ object structs:
   import _root_.duckdb.aliases.*
   import _root_.duckdb.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_blob = CStruct2[Ptr[Byte], idx_t]
   object duckdb_blob:
@@ -450,7 +423,6 @@ object structs:
       def size_=(value: idx_t): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_column = CStruct5[Ptr[Byte], Ptr[Boolean], duckdb_type, CString, Ptr[Byte]]
   object duckdb_column:
@@ -478,8 +450,6 @@ object structs:
 
   /**
    * Days are stored as days since 1970-01-01 Use the duckdb_from_date/duckdb_to_date function to extract individual information
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_date = CStruct1[int32_t]
   object duckdb_date:
@@ -494,7 +464,6 @@ object structs:
       def days_=(value: int32_t): Unit = !struct.at1 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_date_struct = CStruct3[int32_t, int8_t, int8_t]
   object duckdb_date_struct:
@@ -515,7 +484,6 @@ object structs:
       def day_=(value: int8_t): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_decimal = CStruct3[uint8_t, uint8_t, duckdb_hugeint]
   object duckdb_decimal:
@@ -537,8 +505,6 @@ object structs:
 
   /**
    * Hugeints are composed in a (lower, upper) component The value of the hugeint is upper * 2^64 + lower For easy usage, the functions duckdb_hugeint_to_double/duckdb_double_to_hugeint are recommended
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_hugeint = CStruct2[uint64_t, int64_t]
   object duckdb_hugeint:
@@ -556,7 +522,6 @@ object structs:
       def upper_=(value: int64_t): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_interval = CStruct3[int32_t, int32_t, int64_t]
   object duckdb_interval:
@@ -577,7 +542,6 @@ object structs:
       def micros_=(value: int64_t): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_result = CStruct6[idx_t, idx_t, idx_t, Ptr[duckdb_column], CString, Ptr[Byte]]
   object duckdb_result:
@@ -608,8 +572,6 @@ object structs:
 
   /**
    * Time is stored as microseconds since 00:00:00 Use the duckdb_from_time/duckdb_to_time function to extract individual information
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_time = CStruct1[int64_t]
   object duckdb_time:
@@ -624,7 +586,6 @@ object structs:
       def micros_=(value: int64_t): Unit = !struct.at1 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_time_struct = CStruct4[int8_t, int8_t, int8_t, int32_t]
   object duckdb_time_struct:
@@ -649,8 +610,6 @@ object structs:
 
   /**
    * Timestamps are stored as microseconds since 1970-01-01 Use the duckdb_from_timestamp/duckdb_to_timestamp function to extract individual information
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_timestamp = CStruct1[int64_t]
   object duckdb_timestamp:
@@ -665,7 +624,6 @@ object structs:
       def micros_=(value: int64_t): Unit = !struct.at1 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   opaque type duckdb_timestamp_struct = CStruct2[duckdb_date_struct, duckdb_time_struct]
   object duckdb_timestamp_struct:
@@ -747,1156 +705,826 @@ private[duckdb] object extern_functions:
 
   /**
    * Add a replacement scan definition to the specified database
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_add_replacement_scan(db : duckdb_database, replacement : duckdb_replacement_callback_t, extra_data : Ptr[Byte], delete_callback : duckdb_delete_callback_t): Unit = extern
 
   /**
    * Append a blob value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_blob(appender : duckdb_appender, data : Ptr[Byte], length : idx_t): duckdb_state = extern
 
   /**
    * Append a bool value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_bool(appender : duckdb_appender, value : Boolean): duckdb_state = extern
 
   /**
    * Appends a pre-filled data chunk to the specified appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_data_chunk(appender : duckdb_appender, chunk : duckdb_data_chunk): duckdb_state = extern
 
   /**
    * Append a double value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_double(appender : duckdb_appender, value : Double): duckdb_state = extern
 
   /**
    * Append a float value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_float(appender : duckdb_appender, value : Float): duckdb_state = extern
 
   /**
    * Append an int16_t value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_int16(appender : duckdb_appender, value : int16_t): duckdb_state = extern
 
   /**
    * Append an int32_t value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_int32(appender : duckdb_appender, value : int32_t): duckdb_state = extern
 
   /**
    * Append an int64_t value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_int64(appender : duckdb_appender, value : int64_t): duckdb_state = extern
 
   /**
    * Append an int8_t value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_int8(appender : duckdb_appender, value : int8_t): duckdb_state = extern
 
   /**
    * Append a NULL value to the appender (of any type).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_null(appender : duckdb_appender): duckdb_state = extern
 
   /**
    * Append a uint16_t value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_uint16(appender : duckdb_appender, value : uint16_t): duckdb_state = extern
 
   /**
    * Append a uint32_t value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_uint32(appender : duckdb_appender, value : uint32_t): duckdb_state = extern
 
   /**
    * Append a uint64_t value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_uint64(appender : duckdb_appender, value : uint64_t): duckdb_state = extern
 
   /**
    * Append a uint8_t value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_uint8(appender : duckdb_appender, value : uint8_t): duckdb_state = extern
 
   /**
    * Append a varchar value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_varchar(appender : duckdb_appender, `val` : CString): duckdb_state = extern
 
   /**
    * Append a varchar value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_varchar_length(appender : duckdb_appender, `val` : CString, length : idx_t): duckdb_state = extern
 
   /**
    * A nop function, provided for backwards compatibility reasons. Does nothing. Only `duckdb_appender_end_row` is required.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_appender_begin_row(appender : duckdb_appender): duckdb_state = extern
 
   /**
    * Close the appender, flushing all intermediate state in the appender to the table and closing it for further appends.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_appender_close(appender : duckdb_appender): duckdb_state = extern
 
   /**
    * Creates an appender object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_appender_create(connection : duckdb_connection, schema : CString, table : CString, out_appender : Ptr[duckdb_appender]): duckdb_state = extern
 
   /**
    * Close the appender and destroy it. Flushing all intermediate state in the appender to the table, and de-allocating all memory associated with the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_appender_destroy(appender : Ptr[duckdb_appender]): duckdb_state = extern
 
   /**
    * Finish the current row of appends. After end_row is called, the next row can be appended.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_appender_end_row(appender : duckdb_appender): duckdb_state = extern
 
   /**
    * Returns the error message associated with the given appender. If the appender has no error message, this returns `nullptr` instead.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_appender_error(appender : duckdb_appender): CString = extern
 
   /**
    * Flush the appender to the table, forcing the cache of the appender to be cleared and the data to be appended to the base table.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_appender_flush(appender : duckdb_appender): duckdb_state = extern
 
   /**
    * Returns the number of columns present in a the arrow result object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_arrow_column_count(result : duckdb_arrow): idx_t = extern
 
   /**
    * Returns the number of rows present in a the arrow result object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_arrow_row_count(result : duckdb_arrow): idx_t = extern
 
   /**
    * Returns the number of rows changed by the query stored in the arrow result. This is relevant only for INSERT/UPDATE/DELETE queries. For other queries the rows_changed will be 0.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_arrow_rows_changed(result : duckdb_arrow): idx_t = extern
 
   /**
    * Adds a result column to the output of the table function.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_add_result_column(info : duckdb_bind_info, name : CString, `type` : duckdb_logical_type): Unit = extern
 
   /**
    * Binds a blob value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_blob(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, data : Ptr[Byte], length : idx_t): duckdb_state = extern
 
   /**
    * Binds a bool value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_boolean(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Boolean): duckdb_state = extern
 
   /**
    * Binds an double value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_double(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Double): duckdb_state = extern
 
   /**
    * Binds an float value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_float(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Float): duckdb_state = extern
 
   /**
    * Retrieves the extra info of the function as set in `duckdb_table_function_set_extra_info`
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_get_extra_info(info : duckdb_bind_info): Ptr[Byte] = extern
 
   /**
    * Retrieves the parameter at the given index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_get_parameter(info : duckdb_bind_info, index : idx_t): duckdb_value = extern
 
   /**
    * Retrieves the number of regular (non-named) parameters to the function.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_get_parameter_count(info : duckdb_bind_info): idx_t = extern
 
   /**
    * Binds an int16_t value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_int16(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : int16_t): duckdb_state = extern
 
   /**
    * Binds an int32_t value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_int32(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : int32_t): duckdb_state = extern
 
   /**
    * Binds an int64_t value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_int64(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : int64_t): duckdb_state = extern
 
   /**
    * Binds an int8_t value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_int8(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : int8_t): duckdb_state = extern
 
   /**
    * Binds a NULL value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_null(prepared_statement : duckdb_prepared_statement, param_idx : idx_t): duckdb_state = extern
 
   /**
    * Sets the user-provided bind data in the bind object. This object can be retrieved again during execution.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_set_bind_data(info : duckdb_bind_info, bind_data : Ptr[Byte], destroy : duckdb_delete_callback_t): Unit = extern
 
   /**
    * Report that an error has occurred while calling bind.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_set_error(info : duckdb_bind_info, error : CString): Unit = extern
 
   /**
    * Binds an uint16_t value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_uint16(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : uint16_t): duckdb_state = extern
 
   /**
    * Binds an uint32_t value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_uint32(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : uint32_t): duckdb_state = extern
 
   /**
    * Binds an uint64_t value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_uint64(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : uint64_t): duckdb_state = extern
 
   /**
    * Binds an uint8_t value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_uint8(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : uint8_t): duckdb_state = extern
 
   /**
    * Binds a null-terminated varchar value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_varchar(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : CString): duckdb_state = extern
 
   /**
    * Binds a varchar value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_varchar_length(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : CString, length : idx_t): duckdb_state = extern
 
   /**
    * Closes the specified database and de-allocates all memory allocated for that database. This should be called after you are done with any database allocated through `duckdb_open`. Note that failing to call `duckdb_close` (in case of e.g. a program crash) will not cause data corruption. Still it is recommended to always correctly close a database object after you are done with it.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_close(database : Ptr[duckdb_database]): Unit = extern
 
   /**
    * Returns the number of columns present in a the result object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_column_count(result : Ptr[duckdb_result]): idx_t = extern
 
   /**
    * *DEPRECATED**: Prefer using `duckdb_result_get_chunk` instead.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_column_data(result : Ptr[duckdb_result], col : idx_t): Ptr[Byte] = extern
 
   /**
    * Returns the logical column type of the specified column.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_column_logical_type(result : Ptr[duckdb_result], col : idx_t): duckdb_logical_type = extern
 
   /**
    * Returns the column name of the specified column. The result should not need be freed; the column names will automatically be destroyed when the result is destroyed.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_column_name(result : Ptr[duckdb_result], col : idx_t): CString = extern
 
   /**
    * Returns the column type of the specified column.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_column_type(result : Ptr[duckdb_result], col : idx_t): duckdb_type = extern
 
   /**
    * This returns the total amount of configuration options available for usage with `duckdb_get_config_flag`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_config_count(): size_t = extern
 
   /**
    * Opens a connection to a database. Connections are required to query the database, and store transactional state associated with the connection.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_connect(database : duckdb_database, out_connection : Ptr[duckdb_connection]): duckdb_state = extern
 
   /**
    * Initializes an empty configuration object that can be used to provide start-up options for the DuckDB instance through `duckdb_open_ext`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_create_config(out_config : Ptr[duckdb_config]): duckdb_state = extern
 
   /**
    * Creates an empty DataChunk with the specified set of types.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_create_data_chunk(types : Ptr[duckdb_logical_type], column_count : idx_t): duckdb_data_chunk = extern
 
   /**
    * Creates a `duckdb_logical_type` of type decimal with the specified width and scale The resulting type should be destroyed with `duckdb_destroy_logical_type`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_create_decimal_type(width : uint8_t, scale : uint8_t): duckdb_logical_type = extern
 
   /**
    * Creates a value from an int64
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_create_int64(`val` : int64_t): duckdb_value = extern
 
   /**
    * Creates a list type from its child type. The resulting type should be destroyed with `duckdb_destroy_logical_type`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_create_list_type(`type` : duckdb_logical_type): duckdb_logical_type = extern
 
   /**
    * Creates a `duckdb_logical_type` from a standard primitive type. The resulting type should be destroyed with `duckdb_destroy_logical_type`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_create_logical_type(`type` : duckdb_type): duckdb_logical_type = extern
 
   /**
    * Creates a map type from its key type and value type. The resulting type should be destroyed with `duckdb_destroy_logical_type`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_create_map_type(key_type : duckdb_logical_type, value_type : duckdb_logical_type): duckdb_logical_type = extern
 
   /**
    * Creates a new empty table function.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_create_table_function(): duckdb_table_function = extern
 
   /**
    * Creates a value from a null-terminated string
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_create_varchar(text : CString): duckdb_value = extern
 
   /**
    * Creates a value from a string
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_create_varchar_length(text : CString, length : idx_t): duckdb_value = extern
 
   /**
    * Retrieves the number of columns in a data chunk.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_data_chunk_get_column_count(chunk : duckdb_data_chunk): idx_t = extern
 
   /**
    * Retrieves the current number of tuples in a data chunk.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_data_chunk_get_size(chunk : duckdb_data_chunk): idx_t = extern
 
   /**
    * Retrieves the vector at the specified column index in the data chunk.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_data_chunk_get_vector(chunk : duckdb_data_chunk, col_idx : idx_t): duckdb_vector = extern
 
   /**
    * Resets a data chunk, clearing the validity masks and setting the cardinality of the data chunk to 0.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_data_chunk_reset(chunk : duckdb_data_chunk): Unit = extern
 
   /**
    * Sets the current number of tuples in a data chunk.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_data_chunk_set_size(chunk : duckdb_data_chunk, size : idx_t): Unit = extern
 
   /**
    * Retrieves the internal storage type of a decimal type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_decimal_internal_type(`type` : duckdb_logical_type): duckdb_type = extern
 
   /**
    * Retrieves the scale of a decimal type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_decimal_scale(`type` : duckdb_logical_type): uint8_t = extern
 
   /**
    * Retrieves the width of a decimal type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_decimal_width(`type` : duckdb_logical_type): uint8_t = extern
 
   /**
    * Closes the result and de-allocates all memory allocated for the arrow result.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_destroy_arrow(result : Ptr[duckdb_arrow]): Unit = extern
 
   /**
    * Destroys the specified configuration option and de-allocates all memory allocated for the object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_destroy_config(config : Ptr[duckdb_config]): Unit = extern
 
   /**
    * Destroys the data chunk and de-allocates all memory allocated for that chunk.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_destroy_data_chunk(chunk : Ptr[duckdb_data_chunk]): Unit = extern
 
   /**
    * Destroys the logical type and de-allocates all memory allocated for that type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_destroy_logical_type(`type` : Ptr[duckdb_logical_type]): Unit = extern
 
   /**
    * Closes the prepared statement and de-allocates all memory allocated for the statement.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_destroy_prepare(prepared_statement : Ptr[duckdb_prepared_statement]): Unit = extern
 
   /**
    * Closes the result and de-allocates all memory allocated for that connection.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_destroy_result(result : Ptr[duckdb_result]): Unit = extern
 
   /**
    * Destroys the given table function object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_destroy_table_function(table_function : Ptr[duckdb_table_function]): Unit = extern
 
   /**
    * Destroys the value and de-allocates all memory allocated for that type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_destroy_value(value : Ptr[duckdb_value]): Unit = extern
 
   /**
    * Closes the specified connection and de-allocates all memory allocated for that connection.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_disconnect(connection : Ptr[duckdb_connection]): Unit = extern
 
   /**
    * Retrieves the dictionary size of the enum type
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_enum_dictionary_size(`type` : duckdb_logical_type): uint32_t = extern
 
   /**
    * Retrieves the dictionary value at the specified position from the enum.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_enum_dictionary_value(`type` : duckdb_logical_type, index : idx_t): CString = extern
 
   /**
    * Retrieves the internal storage type of an enum type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_enum_internal_type(`type` : duckdb_logical_type): duckdb_type = extern
 
   /**
    * Executes the prepared statement with the given bound parameters, and returns a materialized query result.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_execute_prepared(prepared_statement : duckdb_prepared_statement, out_result : Ptr[duckdb_result]): duckdb_state = extern
 
   /**
    * Executes the prepared statement with the given bound parameters, and returns an arrow query result.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_execute_prepared_arrow(prepared_statement : duckdb_prepared_statement, out_result : Ptr[duckdb_arrow]): duckdb_state = extern
 
   /**
    * Execute DuckDB tasks on this thread.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_execute_tasks(database : duckdb_database, max_tasks : idx_t): Unit = extern
 
   /**
    * Free a value returned from `duckdb_malloc`, `duckdb_value_varchar` or `duckdb_value_blob`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_free(ptr : Ptr[Byte]): Unit = extern
 
   /**
    * Gets the bind data set by `duckdb_bind_set_bind_data` during the bind.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_function_get_bind_data(info : duckdb_function_info): Ptr[Byte] = extern
 
   /**
    * Retrieves the extra info of the function as set in `duckdb_table_function_set_extra_info`
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_function_get_extra_info(info : duckdb_function_info): Ptr[Byte] = extern
 
   /**
    * Gets the init data set by `duckdb_bind_set_init_data` during the bind.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_function_get_init_data(info : duckdb_function_info): Ptr[Byte] = extern
 
   /**
    * Report that an error has occurred while executing the function.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_function_set_error(info : duckdb_function_info, error : CString): Unit = extern
 
   /**
    * Obtains a human-readable name and description of a specific configuration option. This can be used to e.g. display configuration options. This will succeed unless `index` is out of range (i.e. `>= duckdb_config_count`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_get_config_flag(index : size_t, out_name : Ptr[CString], out_description : Ptr[CString]): duckdb_state = extern
 
   /**
    * Obtains an int64 of the given value.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_get_int64(value : duckdb_value): int64_t = extern
 
   /**
    * Retrieves the type class of a `duckdb_logical_type`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_get_type_id(`type` : duckdb_logical_type): duckdb_type = extern
 
   /**
    * Obtains a string representation of the given value. The result must be destroyed with `duckdb_free`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_get_varchar(value : duckdb_value): CString = extern
 
   /**
    * Gets the bind data set by `duckdb_bind_set_bind_data` during the bind.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_init_get_bind_data(info : duckdb_init_info): Ptr[Byte] = extern
 
   /**
    * Returns the number of projected columns.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_init_get_column_count(info : duckdb_init_info): idx_t = extern
 
   /**
    * Returns the column index of the projected column at the specified position.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_init_get_column_index(info : duckdb_init_info, column_index : idx_t): idx_t = extern
 
   /**
    * Retrieves the extra info of the function as set in `duckdb_table_function_set_extra_info`
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_init_get_extra_info(info : duckdb_init_info): Ptr[Byte] = extern
 
   /**
    * Report that an error has occurred while calling init.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_init_set_error(info : duckdb_init_info, error : CString): Unit = extern
 
   /**
    * Sets the user-provided init data in the init object. This object can be retrieved again during execution.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_init_set_init_data(info : duckdb_init_info, init_data : Ptr[Byte], destroy : duckdb_delete_callback_t): Unit = extern
 
   /**
    * Retrieves the child type of the given list type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_list_type_child_type(`type` : duckdb_logical_type): duckdb_logical_type = extern
 
   /**
    * Retrieves the child vector of a list vector.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_list_vector_get_child(vector : duckdb_vector): duckdb_vector = extern
 
   /**
    * Returns the size of the child vector of the list
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_list_vector_get_size(vector : duckdb_vector): idx_t = extern
 
   /**
    * Allocate `size` bytes of memory using the duckdb internal malloc function. Any memory allocated in this manner should be freed using `duckdb_free`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_malloc(size : size_t): Ptr[Byte] = extern
 
   /**
    * Retrieves the key type of the given map type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_map_type_key_type(`type` : duckdb_logical_type): duckdb_logical_type = extern
 
   /**
    * Retrieves the value type of the given map type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_map_type_value_type(`type` : duckdb_logical_type): duckdb_logical_type = extern
 
   /**
    * Returns the number of parameters that can be provided to the given prepared statement.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_nparams(prepared_statement : duckdb_prepared_statement): idx_t = extern
 
   /**
    * *DEPRECATED**: Prefer using `duckdb_result_get_chunk` instead.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_nullmask_data(result : Ptr[duckdb_result], col : idx_t): Ptr[Boolean] = extern
 
   /**
    * Creates a new database or opens an existing database file stored at the the given path. If no path is given a new in-memory database is created instead.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_open(path : CString, out_database : Ptr[duckdb_database]): duckdb_state = extern
 
   /**
    * Extended version of duckdb_open. Creates a new database or opens an existing database file stored at the the given path.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_open_ext(path : CString, out_database : Ptr[duckdb_database], config : duckdb_config, out_error : Ptr[CString]): duckdb_state = extern
 
   /**
    * Returns the parameter type for the parameter at the given index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_param_type(prepared_statement : duckdb_prepared_statement, param_idx : idx_t): duckdb_type = extern
 
   /**
    * Create a prepared statement object from a query.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_prepare(connection : duckdb_connection, query : CString, out_prepared_statement : Ptr[duckdb_prepared_statement]): duckdb_state = extern
 
   /**
    * Returns the error message associated with the given prepared statement. If the prepared statement has no error message, this returns `nullptr` instead.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_prepare_error(prepared_statement : duckdb_prepared_statement): CString = extern
 
   /**
    * Executes a SQL query within a connection and stores the full (materialized) result in the out_result pointer. If the query fails to execute, DuckDBError is returned and the error message can be retrieved by calling `duckdb_result_error`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_query(connection : duckdb_connection, query : CString, out_result : Ptr[duckdb_result]): duckdb_state = extern
 
   /**
    * Executes a SQL query within a connection and stores the full (materialized) result in an arrow structure. If the query fails to execute, DuckDBError is returned and the error message can be retrieved by calling `duckdb_query_arrow_error`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_query_arrow(connection : duckdb_connection, query : CString, out_result : Ptr[duckdb_arrow]): duckdb_state = extern
 
   /**
    * Fetch an internal arrow array from the arrow result.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_query_arrow_array(result : duckdb_arrow, out_array : Ptr[duckdb_arrow_array]): duckdb_state = extern
 
   /**
    * Returns the error message contained within the result. The error is only set if `duckdb_query_arrow` returns `DuckDBError`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_query_arrow_error(result : duckdb_arrow): CString = extern
 
   /**
    * Fetch the internal arrow schema from the arrow result.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_query_arrow_schema(result : duckdb_arrow, out_schema : Ptr[duckdb_arrow_schema]): duckdb_state = extern
 
   /**
    * Register the table function object within the given connection.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_register_table_function(con : duckdb_connection, function : duckdb_table_function): duckdb_state = extern
 
   /**
    * Adds a parameter to the replacement scan function.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_replacement_scan_add_parameter(info : duckdb_replacement_scan_info, parameter : duckdb_value): Unit = extern
 
   /**
    * Sets the replacement function name to use. If this function is called in the replacement callback, the replacement scan is performed. If it is not called, the replacement callback is not performed.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_replacement_scan_set_function_name(info : duckdb_replacement_scan_info, function_name : CString): Unit = extern
 
   /**
    * Returns the error message contained within the result. The error is only set if `duckdb_query` returns `DuckDBError`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_result_error(result : Ptr[duckdb_result]): CString = extern
 
   /**
    * Returns the number of rows present in a the result object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_row_count(result : Ptr[duckdb_result]): idx_t = extern
 
   /**
    * Returns the number of rows changed by the query stored in the result. This is relevant only for INSERT/UPDATE/DELETE queries. For other queries the rows_changed will be 0.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_rows_changed(result : Ptr[duckdb_result]): idx_t = extern
 
   /**
    * Sets the specified option for the specified configuration. The configuration option is indicated by name. To obtain a list of config options, see `duckdb_get_config_flag`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_set_config(config : duckdb_config, name : CString, option : CString): duckdb_state = extern
 
   /**
    * Returns the number of children of a struct type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_struct_type_child_count(`type` : duckdb_logical_type): idx_t = extern
 
   /**
    * Retrieves the name of the struct child.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_struct_type_child_name(`type` : duckdb_logical_type, index : idx_t): CString = extern
 
   /**
    * Retrieves the child type of the given struct type at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_struct_type_child_type(`type` : duckdb_logical_type, index : idx_t): duckdb_logical_type = extern
 
   /**
    * Retrieves the child vector of a struct vector.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_struct_vector_get_child(vector : duckdb_vector, index : idx_t): duckdb_vector = extern
 
   /**
    * Adds a parameter to the table function.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_table_function_add_parameter(table_function : duckdb_table_function, `type` : duckdb_logical_type): Unit = extern
 
   /**
    * Sets the bind function of the table function
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_table_function_set_bind(table_function : duckdb_table_function, bind : duckdb_table_function_bind_t): Unit = extern
 
   /**
    * Assigns extra information to the table function that can be fetched during binding, etc.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_table_function_set_extra_info(table_function : duckdb_table_function, extra_info : Ptr[Byte], destroy : duckdb_delete_callback_t): Unit = extern
 
   /**
    * Sets the main function of the table function
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_table_function_set_function(table_function : duckdb_table_function, function : duckdb_table_function_t): Unit = extern
 
   /**
    * Sets the init function of the table function
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_table_function_set_init(table_function : duckdb_table_function, init : duckdb_table_function_init_t): Unit = extern
 
   /**
    * Sets the name of the given table function.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_table_function_set_name(table_function : duckdb_table_function, name : CString): Unit = extern
 
   /**
    * Sets whether or not the given table function supports projection pushdown.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_table_function_supports_projection_pushdown(table_function : duckdb_table_function, pushdown : Boolean): Unit = extern
 
   /**
    * Returns whether or not a row is valid (i.e. not NULL) in the given validity mask.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_validity_row_is_valid(validity : Ptr[uint64_t], row : idx_t): Boolean = extern
 
   /**
    * In a validity mask, sets a specific row to invalid.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_validity_set_row_invalid(validity : Ptr[uint64_t], row : idx_t): Unit = extern
 
   /**
    * In a validity mask, sets a specific row to valid.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_validity_set_row_valid(validity : Ptr[uint64_t], row : idx_t): Unit = extern
 
   /**
    * In a validity mask, sets a specific row to either valid or invalid.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_validity_set_row_validity(validity : Ptr[uint64_t], row : idx_t, valid : Boolean): Unit = extern
 
   /**
    * returns: The boolean value at the specified location, or false if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_boolean(result : Ptr[duckdb_result], col : idx_t, row : idx_t): Boolean = extern
 
   /**
    * returns: The double value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_double(result : Ptr[duckdb_result], col : idx_t, row : idx_t): Double = extern
 
   /**
    * returns: The float value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_float(result : Ptr[duckdb_result], col : idx_t, row : idx_t): Float = extern
 
   /**
    * returns: The int16_t value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_int16(result : Ptr[duckdb_result], col : idx_t, row : idx_t): int16_t = extern
 
   /**
    * returns: The int32_t value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_int32(result : Ptr[duckdb_result], col : idx_t, row : idx_t): int32_t = extern
 
   /**
    * returns: The int64_t value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_int64(result : Ptr[duckdb_result], col : idx_t, row : idx_t): int64_t = extern
 
   /**
    * returns: The int8_t value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_int8(result : Ptr[duckdb_result], col : idx_t, row : idx_t): int8_t = extern
 
   /**
    * returns: Returns true if the value at the specified index is NULL, and false otherwise.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_is_null(result : Ptr[duckdb_result], col : idx_t, row : idx_t): Boolean = extern
 
   /**
    * returns: The uint16_t value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_uint16(result : Ptr[duckdb_result], col : idx_t, row : idx_t): uint16_t = extern
 
   /**
    * returns: The uint32_t value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_uint32(result : Ptr[duckdb_result], col : idx_t, row : idx_t): uint32_t = extern
 
   /**
    * returns: The uint64_t value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_uint64(result : Ptr[duckdb_result], col : idx_t, row : idx_t): uint64_t = extern
 
   /**
    * returns: The uint8_t value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_uint8(result : Ptr[duckdb_result], col : idx_t, row : idx_t): uint8_t = extern
 
   /**
    * returns: The char* value at the specified location, or nullptr if the value cannot be converted. The result must be freed with `duckdb_free`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_varchar(result : Ptr[duckdb_result], col : idx_t, row : idx_t): CString = extern
 
   /**
    * returns: The char* value at the specified location. ONLY works on VARCHAR columns and does not auto-cast. If the column is NOT a VARCHAR column this function will return NULL.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_varchar_internal(result : Ptr[duckdb_result], col : idx_t, row : idx_t): CString = extern
 
   /**
    * Assigns a string element in the vector at the specified location.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_vector_assign_string_element(vector : duckdb_vector, index : idx_t, str : CString): Unit = extern
 
   /**
    * Assigns a string element in the vector at the specified location.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_vector_assign_string_element_len(vector : duckdb_vector, index : idx_t, str : CString, str_len : idx_t): Unit = extern
 
   /**
    * Ensures the validity mask is writable by allocating it.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_vector_ensure_validity_writable(vector : duckdb_vector): Unit = extern
 
   /**
    * Retrieves the column type of the specified vector.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_vector_get_column_type(vector : duckdb_vector): duckdb_logical_type = extern
 
   /**
    * Retrieves the data pointer of the vector.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_vector_get_data(vector : duckdb_vector): Ptr[Byte] = extern
 
   /**
    * Retrieves the validity mask pointer of the specified vector.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_vector_get_validity(vector : duckdb_vector): Ptr[uint64_t] = extern
 
   /**
    * The internal vector size used by DuckDB. This is the amount of tuples that will fit into a data chunk created by `duckdb_create_data_chunk`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_vector_size(): idx_t = extern
 
@@ -1911,8 +1539,6 @@ object functions:
 
   /**
    * Append a duckdb_date value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_date(appender : duckdb_appender, value : duckdb_date)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
@@ -1921,24 +1547,18 @@ object functions:
 
   /**
    * Append a duckdb_date value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_date(appender : duckdb_appender, value : Ptr[duckdb_date]): duckdb_state = 
     __sn_wrap_duckdb_duckdb_append_date(appender, value)
 
   /**
    * Append a duckdb_hugeint value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_hugeint(appender : duckdb_appender, value : Ptr[duckdb_hugeint]): duckdb_state = 
     __sn_wrap_duckdb_duckdb_append_hugeint(appender, value)
 
   /**
    * Append a duckdb_hugeint value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_hugeint(appender : duckdb_appender, value : duckdb_hugeint)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
@@ -1947,16 +1567,12 @@ object functions:
 
   /**
    * Append a duckdb_interval value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_interval(appender : duckdb_appender, value : Ptr[duckdb_interval]): duckdb_state = 
     __sn_wrap_duckdb_duckdb_append_interval(appender, value)
 
   /**
    * Append a duckdb_interval value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_interval(appender : duckdb_appender, value : duckdb_interval)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_interval] = alloc[duckdb_interval](1)
@@ -1965,8 +1581,6 @@ object functions:
 
   /**
    * Append a duckdb_time value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_time(appender : duckdb_appender, value : duckdb_time)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
@@ -1975,16 +1589,18 @@ object functions:
 
   /**
    * Append a duckdb_time value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_append_time(appender : duckdb_appender, value : Ptr[duckdb_time]): duckdb_state = 
     __sn_wrap_duckdb_duckdb_append_time(appender, value)
 
   /**
    * Append a duckdb_timestamp value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
+  */
+  def duckdb_append_timestamp(appender : duckdb_appender, value : Ptr[duckdb_timestamp]): duckdb_state = 
+    __sn_wrap_duckdb_duckdb_append_timestamp(appender, value)
+
+  /**
+   * Append a duckdb_timestamp value to the appender.
   */
   def duckdb_append_timestamp(appender : duckdb_appender, value : duckdb_timestamp)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
@@ -1992,17 +1608,7 @@ object functions:
     __sn_wrap_duckdb_duckdb_append_timestamp(appender, (__ptr_0 + 0))
 
   /**
-   * Append a duckdb_timestamp value to the appender.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
-  */
-  def duckdb_append_timestamp(appender : duckdb_appender, value : Ptr[duckdb_timestamp]): duckdb_state = 
-    __sn_wrap_duckdb_duckdb_append_timestamp(appender, value)
-
-  /**
    * Binds a duckdb_date value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_date(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_date)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
@@ -2011,16 +1617,18 @@ object functions:
 
   /**
    * Binds a duckdb_date value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_date(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_date]): duckdb_state = 
     __sn_wrap_duckdb_duckdb_bind_date(prepared_statement, param_idx, `val`)
 
   /**
    * Binds an duckdb_hugeint value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
+  */
+  def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_hugeint]): duckdb_state = 
+    __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, `val`)
+
+  /**
+   * Binds an duckdb_hugeint value to the prepared statement at the specified index.
   */
   def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_hugeint)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
@@ -2028,17 +1636,13 @@ object functions:
     __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, (__ptr_0 + 0))
 
   /**
-   * Binds an duckdb_hugeint value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
+   * Binds a duckdb_interval value to the prepared statement at the specified index.
   */
-  def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_hugeint]): duckdb_state = 
-    __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, `val`)
+  def duckdb_bind_interval(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_interval]): duckdb_state = 
+    __sn_wrap_duckdb_duckdb_bind_interval(prepared_statement, param_idx, `val`)
 
   /**
    * Binds a duckdb_interval value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_interval(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_interval)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_interval] = alloc[duckdb_interval](1)
@@ -2046,25 +1650,13 @@ object functions:
     __sn_wrap_duckdb_duckdb_bind_interval(prepared_statement, param_idx, (__ptr_0 + 0))
 
   /**
-   * Binds a duckdb_interval value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
-  */
-  def duckdb_bind_interval(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_interval]): duckdb_state = 
-    __sn_wrap_duckdb_duckdb_bind_interval(prepared_statement, param_idx, `val`)
-
-  /**
    * Binds a duckdb_time value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_time(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_time]): duckdb_state = 
     __sn_wrap_duckdb_duckdb_bind_time(prepared_statement, param_idx, `val`)
 
   /**
    * Binds a duckdb_time value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_time(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_time)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
@@ -2073,8 +1665,6 @@ object functions:
 
   /**
    * Binds a duckdb_timestamp value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_timestamp(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_timestamp)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
@@ -2083,16 +1673,12 @@ object functions:
 
   /**
    * Binds a duckdb_timestamp value to the prepared statement at the specified index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_bind_timestamp(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_timestamp]): duckdb_state = 
     __sn_wrap_duckdb_duckdb_bind_timestamp(prepared_statement, param_idx, `val`)
 
   /**
    * Converts a duckdb_decimal object (as obtained from a `DUCKDB_TYPE_DECIMAL` column) into a double.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_decimal_to_double(`val` : duckdb_decimal)(using Zone): Double = 
     val __ptr_0: Ptr[duckdb_decimal] = alloc[duckdb_decimal](1)
@@ -2101,24 +1687,12 @@ object functions:
 
   /**
    * Converts a duckdb_decimal object (as obtained from a `DUCKDB_TYPE_DECIMAL` column) into a double.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_decimal_to_double(`val` : Ptr[duckdb_decimal]): Double = 
     __sn_wrap_duckdb_duckdb_decimal_to_double(`val`)
 
   /**
    * Converts a double value to a duckdb_hugeint object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
-  */
-  def duckdb_double_to_hugeint(`val` : Double)(__return : Ptr[duckdb_hugeint]): Unit = 
-    __sn_wrap_duckdb_duckdb_double_to_hugeint(`val`, __return)
-
-  /**
-   * Converts a double value to a duckdb_hugeint object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_double_to_hugeint(`val` : Double)(using Zone): duckdb_hugeint = 
     val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
@@ -2126,9 +1700,13 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
+   * Converts a double value to a duckdb_hugeint object.
+  */
+  def duckdb_double_to_hugeint(`val` : Double)(__return : Ptr[duckdb_hugeint]): Unit = 
+    __sn_wrap_duckdb_duckdb_double_to_hugeint(`val`, __return)
+
+  /**
    * Decompose a `duckdb_date` object into year, month and date (stored as `duckdb_date_struct`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_from_date(date : Ptr[duckdb_date])(using Zone): duckdb_date_struct = 
     val __ptr_0: Ptr[duckdb_date_struct] = alloc[duckdb_date_struct](1)
@@ -2137,8 +1715,12 @@ object functions:
 
   /**
    * Decompose a `duckdb_date` object into year, month and date (stored as `duckdb_date_struct`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
+  */
+  def duckdb_from_date(date : Ptr[duckdb_date])(__return : Ptr[duckdb_date_struct]): Unit = 
+    __sn_wrap_duckdb_duckdb_from_date(date, __return)
+
+  /**
+   * Decompose a `duckdb_date` object into year, month and date (stored as `duckdb_date_struct`).
   */
   def duckdb_from_date(date : duckdb_date)(using Zone): duckdb_date_struct = 
     val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
@@ -2148,27 +1730,13 @@ object functions:
     !(__ptr_1 + 0)
 
   /**
-   * Decompose a `duckdb_date` object into year, month and date (stored as `duckdb_date_struct`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
+   * Decompose a `duckdb_time` object into hour, minute, second and microsecond (stored as `duckdb_time_struct`).
   */
-  def duckdb_from_date(date : Ptr[duckdb_date])(__return : Ptr[duckdb_date_struct]): Unit = 
-    __sn_wrap_duckdb_duckdb_from_date(date, __return)
+  def duckdb_from_time(time : Ptr[duckdb_time])(__return : Ptr[duckdb_time_struct]): Unit = 
+    __sn_wrap_duckdb_duckdb_from_time(time, __return)
 
   /**
    * Decompose a `duckdb_time` object into hour, minute, second and microsecond (stored as `duckdb_time_struct`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
-  */
-  def duckdb_from_time(time : Ptr[duckdb_time])(using Zone): duckdb_time_struct = 
-    val __ptr_0: Ptr[duckdb_time_struct] = alloc[duckdb_time_struct](1)
-    __sn_wrap_duckdb_duckdb_from_time(time, (__ptr_0 + 0))
-    !(__ptr_0 + 0)
-
-  /**
-   * Decompose a `duckdb_time` object into hour, minute, second and microsecond (stored as `duckdb_time_struct`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_from_time(time : duckdb_time)(using Zone): duckdb_time_struct = 
     val __ptr_0: Ptr[duckdb_time_struct] = alloc[duckdb_time_struct](1)
@@ -2179,16 +1747,20 @@ object functions:
 
   /**
    * Decompose a `duckdb_time` object into hour, minute, second and microsecond (stored as `duckdb_time_struct`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
-  def duckdb_from_time(time : Ptr[duckdb_time])(__return : Ptr[duckdb_time_struct]): Unit = 
-    __sn_wrap_duckdb_duckdb_from_time(time, __return)
+  def duckdb_from_time(time : Ptr[duckdb_time])(using Zone): duckdb_time_struct = 
+    val __ptr_0: Ptr[duckdb_time_struct] = alloc[duckdb_time_struct](1)
+    __sn_wrap_duckdb_duckdb_from_time(time, (__ptr_0 + 0))
+    !(__ptr_0 + 0)
 
   /**
    * Decompose a `duckdb_timestamp` object into a `duckdb_timestamp_struct`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
+  */
+  def duckdb_from_timestamp(ts : Ptr[duckdb_timestamp])(__return : Ptr[duckdb_timestamp_struct]): Unit = 
+    __sn_wrap_duckdb_duckdb_from_timestamp(ts, __return)
+
+  /**
+   * Decompose a `duckdb_timestamp` object into a `duckdb_timestamp_struct`.
   */
   def duckdb_from_timestamp(ts : duckdb_timestamp)(using Zone): duckdb_timestamp_struct = 
     val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
@@ -2199,16 +1771,6 @@ object functions:
 
   /**
    * Decompose a `duckdb_timestamp` object into a `duckdb_timestamp_struct`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
-  */
-  def duckdb_from_timestamp(ts : Ptr[duckdb_timestamp])(__return : Ptr[duckdb_timestamp_struct]): Unit = 
-    __sn_wrap_duckdb_duckdb_from_timestamp(ts, __return)
-
-  /**
-   * Decompose a `duckdb_timestamp` object into a `duckdb_timestamp_struct`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_from_timestamp(ts : Ptr[duckdb_timestamp])(using Zone): duckdb_timestamp_struct = 
     val __ptr_0: Ptr[duckdb_timestamp_struct] = alloc[duckdb_timestamp_struct](1)
@@ -2217,16 +1779,6 @@ object functions:
 
   /**
    * Converts a duckdb_hugeint object (as obtained from a `DUCKDB_TYPE_HUGEINT` column) into a double.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
-  */
-  def duckdb_hugeint_to_double(`val` : Ptr[duckdb_hugeint]): Double = 
-    __sn_wrap_duckdb_duckdb_hugeint_to_double(`val`)
-
-  /**
-   * Converts a duckdb_hugeint object (as obtained from a `DUCKDB_TYPE_HUGEINT` column) into a double.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_hugeint_to_double(`val` : duckdb_hugeint)(using Zone): Double = 
     val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
@@ -2234,17 +1786,19 @@ object functions:
     __sn_wrap_duckdb_duckdb_hugeint_to_double((__ptr_0 + 0))
 
   /**
+   * Converts a duckdb_hugeint object (as obtained from a `DUCKDB_TYPE_HUGEINT` column) into a double.
+  */
+  def duckdb_hugeint_to_double(`val` : Ptr[duckdb_hugeint]): Double = 
+    __sn_wrap_duckdb_duckdb_hugeint_to_double(`val`)
+
+  /**
    * Returns the number of data chunks present in the result.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_result_chunk_count(result : Ptr[duckdb_result]): idx_t = 
     __sn_wrap_duckdb_duckdb_result_chunk_count(result)
 
   /**
    * Returns the number of data chunks present in the result.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_result_chunk_count(result : duckdb_result)(using Zone): idx_t = 
     val __ptr_0: Ptr[duckdb_result] = alloc[duckdb_result](1)
@@ -2253,8 +1807,6 @@ object functions:
 
   /**
    * Fetches a data chunk from the duckdb_result. This function should be called repeatedly until the result is exhausted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_result_get_chunk(result : duckdb_result, chunk_index : idx_t)(using Zone): duckdb_data_chunk = 
     val __ptr_0: Ptr[duckdb_result] = alloc[duckdb_result](1)
@@ -2263,24 +1815,18 @@ object functions:
 
   /**
    * Fetches a data chunk from the duckdb_result. This function should be called repeatedly until the result is exhausted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_result_get_chunk(result : Ptr[duckdb_result], chunk_index : idx_t): duckdb_data_chunk = 
     __sn_wrap_duckdb_duckdb_result_get_chunk(result, chunk_index)
 
   /**
    * Re-compose a `duckdb_date` from year, month and date (`duckdb_date_struct`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_to_date(date : Ptr[duckdb_date_struct])(__return : Ptr[duckdb_date]): Unit = 
     __sn_wrap_duckdb_duckdb_to_date(date, __return)
 
   /**
    * Re-compose a `duckdb_date` from year, month and date (`duckdb_date_struct`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_to_date(date : duckdb_date_struct)(using Zone): duckdb_date = 
     val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
@@ -2291,8 +1837,6 @@ object functions:
 
   /**
    * Re-compose a `duckdb_date` from year, month and date (`duckdb_date_struct`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_to_date(date : Ptr[duckdb_date_struct])(using Zone): duckdb_date = 
     val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
@@ -2301,8 +1845,6 @@ object functions:
 
   /**
    * Re-compose a `duckdb_time` from hour, minute, second and microsecond (`duckdb_time_struct`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_to_time(time : duckdb_time_struct)(using Zone): duckdb_time = 
     val __ptr_0: Ptr[duckdb_time_struct] = alloc[duckdb_time_struct](1)
@@ -2313,8 +1855,6 @@ object functions:
 
   /**
    * Re-compose a `duckdb_time` from hour, minute, second and microsecond (`duckdb_time_struct`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_to_time(time : Ptr[duckdb_time_struct])(using Zone): duckdb_time = 
     val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
@@ -2323,16 +1863,12 @@ object functions:
 
   /**
    * Re-compose a `duckdb_time` from hour, minute, second and microsecond (`duckdb_time_struct`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_to_time(time : Ptr[duckdb_time_struct])(__return : Ptr[duckdb_time]): Unit = 
     __sn_wrap_duckdb_duckdb_to_time(time, __return)
 
   /**
    * Re-compose a `duckdb_timestamp` from a duckdb_timestamp_struct.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_to_timestamp(ts : Ptr[duckdb_timestamp_struct])(using Zone): duckdb_timestamp = 
     val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
@@ -2341,16 +1877,12 @@ object functions:
 
   /**
    * Re-compose a `duckdb_timestamp` from a duckdb_timestamp_struct.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_to_timestamp(ts : Ptr[duckdb_timestamp_struct])(__return : Ptr[duckdb_timestamp]): Unit = 
     __sn_wrap_duckdb_duckdb_to_timestamp(ts, __return)
 
   /**
    * Re-compose a `duckdb_timestamp` from a duckdb_timestamp_struct.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_to_timestamp(ts : duckdb_timestamp_struct)(using Zone): duckdb_timestamp = 
     val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
@@ -2361,16 +1893,12 @@ object functions:
 
   /**
    * returns: The duckdb_blob value at the specified location. Returns a blob with blob.data set to nullptr if the value cannot be converted. The resulting "blob.data" must be freed with `duckdb_free.`
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_blob(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_blob]): Unit = 
     __sn_wrap_duckdb_duckdb_value_blob(result, col, row, __return)
 
   /**
    * returns: The duckdb_blob value at the specified location. Returns a blob with blob.data set to nullptr if the value cannot be converted. The resulting "blob.data" must be freed with `duckdb_free.`
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_blob(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_blob = 
     val __ptr_0: Ptr[duckdb_blob] = alloc[duckdb_blob](1)
@@ -2379,16 +1907,6 @@ object functions:
 
   /**
    * returns: The duckdb_date value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
-  */
-  def duckdb_value_date(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_date]): Unit = 
-    __sn_wrap_duckdb_duckdb_value_date(result, col, row, __return)
-
-  /**
-   * returns: The duckdb_date value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_date(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_date = 
     val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
@@ -2396,9 +1914,19 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
+   * returns: The duckdb_date value at the specified location, or 0 if the value cannot be converted.
+  */
+  def duckdb_value_date(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_date]): Unit = 
+    __sn_wrap_duckdb_duckdb_value_date(result, col, row, __return)
+
+  /**
    * returns: The duckdb_decimal value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
+  */
+  def duckdb_value_decimal(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_decimal]): Unit = 
+    __sn_wrap_duckdb_duckdb_value_decimal(result, col, row, __return)
+
+  /**
+   * returns: The duckdb_decimal value at the specified location, or 0 if the value cannot be converted.
   */
   def duckdb_value_decimal(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_decimal = 
     val __ptr_0: Ptr[duckdb_decimal] = alloc[duckdb_decimal](1)
@@ -2406,25 +1934,7 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * returns: The duckdb_decimal value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
-  */
-  def duckdb_value_decimal(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_decimal]): Unit = 
-    __sn_wrap_duckdb_duckdb_value_decimal(result, col, row, __return)
-
-  /**
    * returns: The duckdb_hugeint value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
-  */
-  def duckdb_value_hugeint(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_hugeint]): Unit = 
-    __sn_wrap_duckdb_duckdb_value_hugeint(result, col, row, __return)
-
-  /**
-   * returns: The duckdb_hugeint value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_hugeint(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_hugeint = 
     val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
@@ -2432,17 +1942,19 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
+   * returns: The duckdb_hugeint value at the specified location, or 0 if the value cannot be converted.
+  */
+  def duckdb_value_hugeint(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_hugeint]): Unit = 
+    __sn_wrap_duckdb_duckdb_value_hugeint(result, col, row, __return)
+
+  /**
    * returns: The duckdb_interval value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_interval(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_interval]): Unit = 
     __sn_wrap_duckdb_duckdb_value_interval(result, col, row, __return)
 
   /**
    * returns: The duckdb_interval value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_interval(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_interval = 
     val __ptr_0: Ptr[duckdb_interval] = alloc[duckdb_interval](1)
@@ -2451,8 +1963,6 @@ object functions:
 
   /**
    * returns: The duckdb_time value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_time(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_time = 
     val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
@@ -2461,16 +1971,12 @@ object functions:
 
   /**
    * returns: The duckdb_time value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_time(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_time]): Unit = 
     __sn_wrap_duckdb_duckdb_value_time(result, col, row, __return)
 
   /**
    * returns: The duckdb_timestamp value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_timestamp(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_timestamp = 
     val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
@@ -2479,8 +1985,6 @@ object functions:
 
   /**
    * returns: The duckdb_timestamp value at the specified location, or 0 if the value cannot be converted.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-duckdb/duckdb/src/include/duckdb.h
   */
   def duckdb_value_timestamp(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_timestamp]): Unit = 
     __sn_wrap_duckdb_duckdb_value_timestamp(result, col, row, __return)

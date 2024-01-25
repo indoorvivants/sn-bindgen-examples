@@ -17,7 +17,6 @@ object predef:
 object enumerations:
   import predef.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type BIO_hostserv_priorities = CUnsignedInt
   object BIO_hostserv_priorities extends CEnumU[BIO_hostserv_priorities]:
@@ -36,7 +35,6 @@ object enumerations:
       inline def is(b: BIO_hostserv_priorities): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type BIO_lookup_type = CUnsignedInt
   object BIO_lookup_type extends CEnumU[BIO_lookup_type]:
@@ -55,7 +53,6 @@ object enumerations:
       inline def is(b: BIO_lookup_type): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type BIO_sock_info_type = CUnsignedInt
   object BIO_sock_info_type extends CEnumU[BIO_sock_info_type]:
@@ -78,7 +75,6 @@ object aliases:
   import _root_.openssl.structs.*
   import _root_.openssl.unions.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ASN1_BOOLEAN = CInt
   object ASN1_BOOLEAN: 
@@ -88,7 +84,6 @@ object aliases:
       inline def value: CInt = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   type ASN1_ITEM_EXP = CFuncPtr0[Ptr[ASN1_ITEM]]
   object ASN1_ITEM_EXP: 
@@ -98,7 +93,6 @@ object aliases:
       inline def value: CFuncPtr0[Ptr[ASN1_ITEM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ASN1_NULL = CInt
   object ASN1_NULL: 
@@ -108,7 +102,6 @@ object aliases:
       inline def value: CInt = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type BIO_callback_fn = CFuncPtr6[Ptr[BIO], CInt, CString, CInt, CLongInt, CLongInt, CLongInt]
   object BIO_callback_fn: 
@@ -120,7 +113,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type BIO_callback_fn_ex = CFuncPtr8[Ptr[BIO], CInt, CString, size_t, CInt, CLongInt, CInt, Ptr[size_t], CLongInt]
   object BIO_callback_fn_ex: 
@@ -132,7 +124,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type BIO_dgram_sctp_notification_handler_fn = CFuncPtr3[Ptr[BIO], Ptr[Byte], Ptr[Byte], Unit]
   object BIO_dgram_sctp_notification_handler_fn: 
@@ -144,7 +135,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   type BIO_info_cb = CFuncPtr3[Ptr[BIO], CInt, CInt, CInt]
   object BIO_info_cb: 
@@ -154,7 +144,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[BIO], CInt, CInt, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   type CRYPTO_EX_dup = CFuncPtr6[Ptr[CRYPTO_EX_DATA], Ptr[CRYPTO_EX_DATA], Ptr[Ptr[Byte]], CInt, CLongInt, Ptr[Byte], CInt]
   object CRYPTO_EX_dup: 
@@ -164,7 +153,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[CRYPTO_EX_DATA], Ptr[CRYPTO_EX_DATA], Ptr[Ptr[Byte]], CInt, CLongInt, Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   type CRYPTO_EX_free = CFuncPtr6[Ptr[Byte], Ptr[Byte], Ptr[CRYPTO_EX_DATA], CInt, CLongInt, Ptr[Byte], Unit]
   object CRYPTO_EX_free: 
@@ -174,7 +162,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[Byte], Ptr[CRYPTO_EX_DATA], CInt, CLongInt, Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   type CRYPTO_EX_new = CFuncPtr6[Ptr[Byte], Ptr[Byte], Ptr[CRYPTO_EX_DATA], CInt, CLongInt, Ptr[Byte], Unit]
   object CRYPTO_EX_new: 
@@ -184,7 +171,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[Byte], Ptr[CRYPTO_EX_DATA], CInt, CLongInt, Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   type CRYPTO_ONCE = pthread_once_t
   object CRYPTO_ONCE: 
@@ -194,7 +180,6 @@ object aliases:
       inline def value: pthread_once_t = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   type CRYPTO_RWLOCK = Unit
   object CRYPTO_RWLOCK: 
@@ -204,7 +189,6 @@ object aliases:
       inline def value: Unit = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   type CRYPTO_THREAD_ID = pthread_t
   object CRYPTO_THREAD_ID: 
@@ -214,7 +198,6 @@ object aliases:
       inline def value: pthread_t = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   type CRYPTO_THREAD_LOCAL = pthread_key_t
   object CRYPTO_THREAD_LOCAL: 
@@ -224,7 +207,6 @@ object aliases:
       inline def value: pthread_key_t = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   opaque type CRYPTO_free_fn = CFuncPtr3[Ptr[Byte], CString, CInt, Unit]
   object CRYPTO_free_fn: 
@@ -236,7 +218,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   opaque type CRYPTO_malloc_fn = CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
   object CRYPTO_malloc_fn: 
@@ -248,7 +229,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   opaque type CRYPTO_realloc_fn = CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Ptr[Byte]]
   object CRYPTO_realloc_fn: 
@@ -260,7 +240,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   type EVP_PBE_KEYGEN = CFuncPtr7[Ptr[EVP_CIPHER_CTX], CString, CInt, Ptr[ASN1_TYPE], Ptr[EVP_CIPHER], Ptr[EVP_MD], CInt, CInt]
   object EVP_PBE_KEYGEN: 
@@ -270,7 +249,6 @@ object aliases:
       inline def value: CFuncPtr7[Ptr[EVP_CIPHER_CTX], CString, CInt, Ptr[ASN1_TYPE], Ptr[EVP_CIPHER], Ptr[EVP_MD], CInt, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   type EVP_PBE_KEYGEN_EX = CFuncPtr9[Ptr[EVP_CIPHER_CTX], CString, CInt, Ptr[ASN1_TYPE], Ptr[EVP_CIPHER], Ptr[EVP_MD], CInt, Ptr[OSSL_LIB_CTX], CString, CInt]
   object EVP_PBE_KEYGEN_EX: 
@@ -280,7 +258,6 @@ object aliases:
       inline def value: CFuncPtr9[Ptr[EVP_CIPHER_CTX], CString, CInt, Ptr[ASN1_TYPE], Ptr[EVP_CIPHER], Ptr[EVP_MD], CInt, Ptr[OSSL_LIB_CTX], CString, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   type EVP_PKEY_gen_cb = CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]
   object EVP_PKEY_gen_cb: 
@@ -297,7 +274,6 @@ object aliases:
       inline def value: libc.stdio.FILE = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type OPENSSL_BLOCK = Ptr[Byte]
   object OPENSSL_BLOCK: 
@@ -307,7 +283,6 @@ object aliases:
       inline def value: Ptr[Byte] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type OPENSSL_CSTRING = CString
   object OPENSSL_CSTRING: 
@@ -317,7 +292,6 @@ object aliases:
       inline def value: CString = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type OPENSSL_STRING = CString
   object OPENSSL_STRING: 
@@ -327,7 +301,6 @@ object aliases:
       inline def value: CString = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   opaque type OPENSSL_sk_compfunc = CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]
   object OPENSSL_sk_compfunc: 
@@ -339,7 +312,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   opaque type OPENSSL_sk_copyfunc = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OPENSSL_sk_copyfunc: 
@@ -351,7 +323,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   opaque type OPENSSL_sk_freefunc = CFuncPtr1[Ptr[Byte], Unit]
   object OPENSSL_sk_freefunc: 
@@ -363,7 +334,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   type OSSL_CALLBACK = CFuncPtr2[Ptr[OSSL_PARAM], Ptr[Byte], CInt]
   object OSSL_CALLBACK: 
@@ -373,7 +343,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[OSSL_PARAM], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_BIO_ctrl_fn = CFuncPtr4[Ptr[OSSL_CORE_BIO], CInt, CLongInt, Ptr[Byte], CInt]
   object OSSL_FUNC_BIO_ctrl_fn: 
@@ -383,7 +352,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_BIO], CInt, CLongInt, Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_BIO_free_fn = CFuncPtr1[Ptr[OSSL_CORE_BIO], CInt]
   object OSSL_FUNC_BIO_free_fn: 
@@ -393,7 +361,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_BIO], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_BIO_gets_fn = CFuncPtr3[Ptr[OSSL_CORE_BIO], CString, CInt, CInt]
   object OSSL_FUNC_BIO_gets_fn: 
@@ -403,7 +370,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[OSSL_CORE_BIO], CString, CInt, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_BIO_new_file_fn = CFuncPtr2[CString, CString, Ptr[OSSL_CORE_BIO]]
   object OSSL_FUNC_BIO_new_file_fn: 
@@ -413,7 +379,6 @@ object aliases:
       inline def value: CFuncPtr2[CString, CString, Ptr[OSSL_CORE_BIO]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_BIO_new_membuf_fn = CFuncPtr2[Ptr[Byte], CInt, Ptr[OSSL_CORE_BIO]]
   object OSSL_FUNC_BIO_new_membuf_fn: 
@@ -423,7 +388,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], CInt, Ptr[OSSL_CORE_BIO]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_BIO_puts_fn = CFuncPtr2[Ptr[OSSL_CORE_BIO], CString, CInt]
   object OSSL_FUNC_BIO_puts_fn: 
@@ -433,7 +397,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[OSSL_CORE_BIO], CString, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_BIO_read_ex_fn = CFuncPtr4[Ptr[OSSL_CORE_BIO], Ptr[Byte], size_t, Ptr[size_t], CInt]
   object OSSL_FUNC_BIO_read_ex_fn: 
@@ -443,7 +406,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_BIO], Ptr[Byte], size_t, Ptr[size_t], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_BIO_up_ref_fn = CFuncPtr1[Ptr[OSSL_CORE_BIO], CInt]
   object OSSL_FUNC_BIO_up_ref_fn: 
@@ -453,7 +415,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_BIO], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_BIO_vprintf_fn = CFuncPtr3[Ptr[OSSL_CORE_BIO], CString, va_list, CInt]
   object OSSL_FUNC_BIO_vprintf_fn: 
@@ -463,7 +424,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[OSSL_CORE_BIO], CString, va_list, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_BIO_vsnprintf_fn = CFuncPtr4[CString, size_t, CString, va_list, CInt]
   object OSSL_FUNC_BIO_vsnprintf_fn: 
@@ -473,7 +433,6 @@ object aliases:
       inline def value: CFuncPtr4[CString, size_t, CString, va_list, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_BIO_write_ex_fn = CFuncPtr4[Ptr[OSSL_CORE_BIO], Ptr[Byte], size_t, Ptr[size_t], CInt]
   object OSSL_FUNC_BIO_write_ex_fn: 
@@ -483,7 +442,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_BIO], Ptr[Byte], size_t, Ptr[size_t], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_CRYPTO_clear_free_fn = CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Unit]
   object OSSL_FUNC_CRYPTO_clear_free_fn: 
@@ -493,7 +451,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_CRYPTO_clear_realloc_fn = CFuncPtr5[Ptr[Byte], size_t, size_t, CString, CInt, Ptr[Byte]]
   object OSSL_FUNC_CRYPTO_clear_realloc_fn: 
@@ -503,7 +460,6 @@ object aliases:
       inline def value: CFuncPtr5[Ptr[Byte], size_t, size_t, CString, CInt, Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_CRYPTO_free_fn = CFuncPtr3[Ptr[Byte], CString, CInt, Unit]
   object OSSL_FUNC_CRYPTO_free_fn: 
@@ -513,7 +469,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], CString, CInt, Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_CRYPTO_malloc_fn = CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
   object OSSL_FUNC_CRYPTO_malloc_fn: 
@@ -523,7 +478,6 @@ object aliases:
       inline def value: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_CRYPTO_realloc_fn = CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Ptr[Byte]]
   object OSSL_FUNC_CRYPTO_realloc_fn: 
@@ -533,7 +487,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_CRYPTO_secure_allocated_fn = CFuncPtr1[Ptr[Byte], CInt]
   object OSSL_FUNC_CRYPTO_secure_allocated_fn: 
@@ -543,7 +496,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_CRYPTO_secure_clear_free_fn = CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Unit]
   object OSSL_FUNC_CRYPTO_secure_clear_free_fn: 
@@ -553,7 +505,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_CRYPTO_secure_free_fn = CFuncPtr3[Ptr[Byte], CString, CInt, Unit]
   object OSSL_FUNC_CRYPTO_secure_free_fn: 
@@ -563,7 +514,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], CString, CInt, Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_CRYPTO_secure_malloc_fn = CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
   object OSSL_FUNC_CRYPTO_secure_malloc_fn: 
@@ -573,7 +523,6 @@ object aliases:
       inline def value: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_CRYPTO_secure_zalloc_fn = CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
   object OSSL_FUNC_CRYPTO_secure_zalloc_fn: 
@@ -583,7 +532,6 @@ object aliases:
       inline def value: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_CRYPTO_zalloc_fn = CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
   object OSSL_FUNC_CRYPTO_zalloc_fn: 
@@ -593,7 +541,6 @@ object aliases:
       inline def value: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_OPENSSL_cleanse_fn = CFuncPtr2[Ptr[Byte], size_t, Unit]
   object OSSL_FUNC_OPENSSL_cleanse_fn: 
@@ -603,7 +550,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], size_t, Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_asym_cipher_decrypt_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_asym_cipher_decrypt_fn: 
@@ -613,7 +559,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_asym_cipher_decrypt_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_asym_cipher_decrypt_init_fn: 
@@ -623,7 +568,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_asym_cipher_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_asym_cipher_dupctx_fn: 
@@ -633,7 +577,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_asym_cipher_encrypt_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_asym_cipher_encrypt_fn: 
@@ -643,7 +586,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_asym_cipher_encrypt_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_asym_cipher_encrypt_init_fn: 
@@ -653,7 +595,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_asym_cipher_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_asym_cipher_freectx_fn: 
@@ -663,7 +604,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_asym_cipher_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_asym_cipher_get_ctx_params_fn: 
@@ -673,7 +613,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_asym_cipher_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_asym_cipher_gettable_ctx_params_fn: 
@@ -683,7 +622,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_asym_cipher_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_asym_cipher_newctx_fn: 
@@ -693,7 +631,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_asym_cipher_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_asym_cipher_set_ctx_params_fn: 
@@ -703,7 +640,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_asym_cipher_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_asym_cipher_settable_ctx_params_fn: 
@@ -713,7 +649,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_cipher_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_cipher_cipher_fn: 
@@ -723,7 +658,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_decrypt_init_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_cipher_decrypt_init_fn: 
@@ -733,7 +667,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_cipher_dupctx_fn: 
@@ -743,7 +676,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_encrypt_init_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_cipher_encrypt_init_fn: 
@@ -753,7 +685,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_final_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
   object OSSL_FUNC_cipher_final_fn: 
@@ -763,7 +694,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_cipher_freectx_fn: 
@@ -773,7 +703,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_cipher_get_ctx_params_fn: 
@@ -783,7 +712,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_cipher_get_params_fn: 
@@ -793,7 +721,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_cipher_gettable_ctx_params_fn: 
@@ -803,7 +730,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_cipher_gettable_params_fn: 
@@ -813,7 +739,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_cipher_newctx_fn: 
@@ -823,7 +748,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_cipher_set_ctx_params_fn: 
@@ -833,7 +757,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_cipher_settable_ctx_params_fn: 
@@ -843,7 +766,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cipher_update_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_cipher_update_fn: 
@@ -853,7 +775,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cleanup_entropy_fn = CFuncPtr3[Ptr[OSSL_CORE_HANDLE], Ptr[CUnsignedChar], size_t, Unit]
   object OSSL_FUNC_cleanup_entropy_fn: 
@@ -863,7 +784,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[OSSL_CORE_HANDLE], Ptr[CUnsignedChar], size_t, Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_cleanup_nonce_fn = CFuncPtr3[Ptr[OSSL_CORE_HANDLE], Ptr[CUnsignedChar], size_t, Unit]
   object OSSL_FUNC_cleanup_nonce_fn: 
@@ -873,7 +793,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[OSSL_CORE_HANDLE], Ptr[CUnsignedChar], size_t, Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_core_clear_last_error_mark_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt]
   object OSSL_FUNC_core_clear_last_error_mark_fn: 
@@ -883,7 +802,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_core_get_libctx_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OPENSSL_CORE_CTX]]
   object OSSL_FUNC_core_get_libctx_fn: 
@@ -893,7 +811,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OPENSSL_CORE_CTX]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_core_get_params_fn = CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_core_get_params_fn: 
@@ -903,7 +820,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_core_gettable_params_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_core_gettable_params_fn: 
@@ -913,7 +829,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_core_new_error_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Unit]
   object OSSL_FUNC_core_new_error_fn: 
@@ -923,7 +838,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_core_obj_add_sigid_fn = CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CString, CString, CInt]
   object OSSL_FUNC_core_obj_add_sigid_fn: 
@@ -933,7 +847,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CString, CString, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_core_obj_create_fn = CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CString, CString, CInt]
   object OSSL_FUNC_core_obj_create_fn: 
@@ -943,7 +856,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CString, CString, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_core_pop_error_to_mark_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt]
   object OSSL_FUNC_core_pop_error_to_mark_fn: 
@@ -953,7 +865,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_core_set_error_debug_fn = CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CInt, CString, Unit]
   object OSSL_FUNC_core_set_error_debug_fn: 
@@ -963,7 +874,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CInt, CString, Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_core_set_error_mark_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt]
   object OSSL_FUNC_core_set_error_mark_fn: 
@@ -973,7 +883,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_core_thread_start_fn = CFuncPtr3[Ptr[OSSL_CORE_HANDLE], OSSL_thread_stop_handler_fn, Ptr[Byte], CInt]
   object OSSL_FUNC_core_thread_start_fn: 
@@ -983,7 +892,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[OSSL_CORE_HANDLE], OSSL_thread_stop_handler_fn, Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_core_vset_error_fn = CFuncPtr4[Ptr[OSSL_CORE_HANDLE], uint32_t, CString, va_list, Unit]
   object OSSL_FUNC_core_vset_error_fn: 
@@ -993,7 +901,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], uint32_t, CString, va_list, Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_decoder_decode_fn = CFuncPtr7[Ptr[Byte], Ptr[OSSL_CORE_BIO], CInt, Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt]
   object OSSL_FUNC_decoder_decode_fn: 
@@ -1003,7 +910,6 @@ object aliases:
       inline def value: CFuncPtr7[Ptr[Byte], Ptr[OSSL_CORE_BIO], CInt, Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_decoder_does_selection_fn = CFuncPtr2[Ptr[Byte], CInt, CInt]
   object OSSL_FUNC_decoder_does_selection_fn: 
@@ -1013,7 +919,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], CInt, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_decoder_export_object_fn = CFuncPtr5[Ptr[Byte], Ptr[Byte], size_t, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]
   object OSSL_FUNC_decoder_export_object_fn: 
@@ -1023,7 +928,6 @@ object aliases:
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[Byte], size_t, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_decoder_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_decoder_freectx_fn: 
@@ -1033,7 +937,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_decoder_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_decoder_get_params_fn: 
@@ -1043,7 +946,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_decoder_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_decoder_gettable_params_fn: 
@@ -1053,7 +955,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_decoder_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_decoder_newctx_fn: 
@@ -1063,7 +964,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_decoder_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_decoder_set_ctx_params_fn: 
@@ -1073,7 +973,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_decoder_settable_ctx_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_decoder_settable_ctx_params_fn: 
@@ -1083,7 +982,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_digest_digest_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
   object OSSL_FUNC_digest_digest_fn: 
@@ -1093,7 +991,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_digest_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_digest_dupctx_fn: 
@@ -1103,7 +1000,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_digest_final_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
   object OSSL_FUNC_digest_final_fn: 
@@ -1113,7 +1009,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_digest_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_digest_freectx_fn: 
@@ -1123,7 +1018,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_digest_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_digest_get_ctx_params_fn: 
@@ -1133,7 +1027,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_digest_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_digest_get_params_fn: 
@@ -1143,7 +1036,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_digest_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_digest_gettable_ctx_params_fn: 
@@ -1153,7 +1045,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_digest_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_digest_gettable_params_fn: 
@@ -1163,7 +1054,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_digest_init_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_digest_init_fn: 
@@ -1173,7 +1063,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_digest_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_digest_newctx_fn: 
@@ -1183,7 +1072,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_digest_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_digest_set_ctx_params_fn: 
@@ -1193,7 +1081,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_digest_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_digest_settable_ctx_params_fn: 
@@ -1203,7 +1090,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_digest_update_fn = CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_digest_update_fn: 
@@ -1213,7 +1099,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_encoder_does_selection_fn = CFuncPtr2[Ptr[Byte], CInt, CInt]
   object OSSL_FUNC_encoder_does_selection_fn: 
@@ -1223,7 +1108,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], CInt, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_encoder_encode_fn = CFuncPtr7[Ptr[Byte], Ptr[OSSL_CORE_BIO], Ptr[Byte], Ptr[OSSL_PARAM], CInt, Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt]
   object OSSL_FUNC_encoder_encode_fn: 
@@ -1233,7 +1117,6 @@ object aliases:
       inline def value: CFuncPtr7[Ptr[Byte], Ptr[OSSL_CORE_BIO], Ptr[Byte], Ptr[OSSL_PARAM], CInt, Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_encoder_free_object_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_encoder_free_object_fn: 
@@ -1243,7 +1126,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_encoder_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_encoder_freectx_fn: 
@@ -1253,7 +1135,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_encoder_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_encoder_get_params_fn: 
@@ -1263,7 +1144,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_encoder_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_encoder_gettable_params_fn: 
@@ -1273,7 +1153,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_encoder_import_object_fn = CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], Ptr[Byte]]
   object OSSL_FUNC_encoder_import_object_fn: 
@@ -1283,7 +1162,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_encoder_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_encoder_newctx_fn: 
@@ -1293,7 +1171,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_encoder_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_encoder_set_ctx_params_fn: 
@@ -1303,7 +1180,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_encoder_settable_ctx_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_encoder_settable_ctx_params_fn: 
@@ -1313,7 +1189,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_get_entropy_fn = CFuncPtr5[Ptr[OSSL_CORE_HANDLE], Ptr[Ptr[CUnsignedChar]], CInt, size_t, size_t, size_t]
   object OSSL_FUNC_get_entropy_fn: 
@@ -1323,7 +1198,6 @@ object aliases:
       inline def value: CFuncPtr5[Ptr[OSSL_CORE_HANDLE], Ptr[Ptr[CUnsignedChar]], CInt, size_t, size_t, size_t] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_get_nonce_fn = CFuncPtr6[Ptr[OSSL_CORE_HANDLE], Ptr[Ptr[CUnsignedChar]], size_t, size_t, Ptr[Byte], size_t, size_t]
   object OSSL_FUNC_get_nonce_fn: 
@@ -1333,7 +1207,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[OSSL_CORE_HANDLE], Ptr[Ptr[CUnsignedChar]], size_t, size_t, Ptr[Byte], size_t, size_t] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kdf_derive_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_kdf_derive_fn: 
@@ -1343,7 +1216,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kdf_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_kdf_dupctx_fn: 
@@ -1353,7 +1225,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kdf_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_kdf_freectx_fn: 
@@ -1363,7 +1234,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kdf_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_kdf_get_ctx_params_fn: 
@@ -1373,7 +1243,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kdf_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_kdf_get_params_fn: 
@@ -1383,7 +1252,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kdf_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_kdf_gettable_ctx_params_fn: 
@@ -1393,7 +1261,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kdf_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_kdf_gettable_params_fn: 
@@ -1403,7 +1270,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kdf_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_kdf_newctx_fn: 
@@ -1413,7 +1279,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kdf_reset_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_kdf_reset_fn: 
@@ -1423,7 +1288,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kdf_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_kdf_set_ctx_params_fn: 
@@ -1433,7 +1297,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kdf_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_kdf_settable_ctx_params_fn: 
@@ -1443,7 +1306,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kem_decapsulate_fn = CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_kem_decapsulate_fn: 
@@ -1453,7 +1315,6 @@ object aliases:
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kem_decapsulate_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_kem_decapsulate_init_fn: 
@@ -1463,7 +1324,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kem_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_kem_dupctx_fn: 
@@ -1473,7 +1333,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kem_encapsulate_fn = CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], Ptr[size_t], CInt]
   object OSSL_FUNC_kem_encapsulate_fn: 
@@ -1483,7 +1342,6 @@ object aliases:
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], Ptr[size_t], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kem_encapsulate_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_kem_encapsulate_init_fn: 
@@ -1493,7 +1351,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kem_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_kem_freectx_fn: 
@@ -1503,7 +1360,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kem_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_kem_get_ctx_params_fn: 
@@ -1513,7 +1369,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kem_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_kem_gettable_ctx_params_fn: 
@@ -1523,7 +1378,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kem_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_kem_newctx_fn: 
@@ -1533,7 +1387,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kem_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_kem_set_ctx_params_fn: 
@@ -1543,7 +1396,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_kem_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_kem_settable_ctx_params_fn: 
@@ -1553,7 +1405,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keyexch_derive_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
   object OSSL_FUNC_keyexch_derive_fn: 
@@ -1563,7 +1414,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keyexch_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_keyexch_dupctx_fn: 
@@ -1573,7 +1423,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keyexch_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_keyexch_freectx_fn: 
@@ -1583,7 +1432,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keyexch_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_keyexch_get_ctx_params_fn: 
@@ -1593,7 +1441,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keyexch_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_keyexch_gettable_ctx_params_fn: 
@@ -1603,7 +1450,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keyexch_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_keyexch_init_fn: 
@@ -1613,7 +1459,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keyexch_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_keyexch_newctx_fn: 
@@ -1623,7 +1468,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keyexch_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_keyexch_set_ctx_params_fn: 
@@ -1633,7 +1477,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keyexch_set_peer_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]
   object OSSL_FUNC_keyexch_set_peer_fn: 
@@ -1643,7 +1486,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keyexch_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_keyexch_settable_ctx_params_fn: 
@@ -1653,7 +1495,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_dup_fn = CFuncPtr2[Ptr[Byte], CInt, Ptr[Byte]]
   object OSSL_FUNC_keymgmt_dup_fn: 
@@ -1663,7 +1504,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], CInt, Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_export_fn = CFuncPtr4[Ptr[Byte], CInt, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]
   object OSSL_FUNC_keymgmt_export_fn: 
@@ -1673,7 +1513,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], CInt, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_export_types_fn = CFuncPtr1[CInt, Ptr[OSSL_PARAM]]
   object OSSL_FUNC_keymgmt_export_types_fn: 
@@ -1683,7 +1522,6 @@ object aliases:
       inline def value: CFuncPtr1[CInt, Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_free_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_keymgmt_free_fn: 
@@ -1693,7 +1531,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_gen_cleanup_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_keymgmt_gen_cleanup_fn: 
@@ -1703,7 +1540,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_gen_fn = CFuncPtr3[Ptr[Byte], Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_keymgmt_gen_fn: 
@@ -1713,7 +1549,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_gen_init_fn = CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], Ptr[Byte]]
   object OSSL_FUNC_keymgmt_gen_init_fn: 
@@ -1723,7 +1558,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_gen_set_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_keymgmt_gen_set_params_fn: 
@@ -1733,7 +1567,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_gen_set_template_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]
   object OSSL_FUNC_keymgmt_gen_set_template_fn: 
@@ -1743,7 +1576,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_gen_settable_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_keymgmt_gen_settable_params_fn: 
@@ -1753,7 +1585,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_get_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_keymgmt_get_params_fn: 
@@ -1763,7 +1594,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_keymgmt_gettable_params_fn: 
@@ -1773,7 +1603,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_has_fn = CFuncPtr2[Ptr[Byte], CInt, CInt]
   object OSSL_FUNC_keymgmt_has_fn: 
@@ -1783,7 +1612,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], CInt, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_import_fn = CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_keymgmt_import_fn: 
@@ -1793,7 +1621,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_import_types_fn = CFuncPtr1[CInt, Ptr[OSSL_PARAM]]
   object OSSL_FUNC_keymgmt_import_types_fn: 
@@ -1803,7 +1630,6 @@ object aliases:
       inline def value: CFuncPtr1[CInt, Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_load_fn = CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]]
   object OSSL_FUNC_keymgmt_load_fn: 
@@ -1813,7 +1639,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_match_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], CInt, CInt]
   object OSSL_FUNC_keymgmt_match_fn: 
@@ -1823,7 +1648,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], CInt, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_new_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_keymgmt_new_fn: 
@@ -1833,7 +1657,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_query_operation_name_fn = CFuncPtr1[CInt, CString]
   object OSSL_FUNC_keymgmt_query_operation_name_fn: 
@@ -1843,7 +1666,6 @@ object aliases:
       inline def value: CFuncPtr1[CInt, CString] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_set_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_keymgmt_set_params_fn: 
@@ -1853,7 +1675,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_settable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_keymgmt_settable_params_fn: 
@@ -1863,7 +1684,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_keymgmt_validate_fn = CFuncPtr3[Ptr[Byte], CInt, CInt, CInt]
   object OSSL_FUNC_keymgmt_validate_fn: 
@@ -1873,7 +1693,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], CInt, CInt, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_mac_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_mac_dupctx_fn: 
@@ -1883,7 +1702,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_mac_final_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
   object OSSL_FUNC_mac_final_fn: 
@@ -1893,7 +1711,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_mac_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_mac_freectx_fn: 
@@ -1903,7 +1720,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_mac_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_mac_get_ctx_params_fn: 
@@ -1913,7 +1729,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_mac_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_mac_get_params_fn: 
@@ -1923,7 +1738,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_mac_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_mac_gettable_ctx_params_fn: 
@@ -1933,7 +1747,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_mac_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_mac_gettable_params_fn: 
@@ -1943,7 +1756,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_mac_init_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_mac_init_fn: 
@@ -1953,7 +1765,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_mac_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_mac_newctx_fn: 
@@ -1963,7 +1774,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_mac_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_mac_set_ctx_params_fn: 
@@ -1973,7 +1783,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_mac_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_mac_settable_ctx_params_fn: 
@@ -1983,7 +1792,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_mac_update_fn = CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_mac_update_fn: 
@@ -1993,7 +1801,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_deregister_child_cb_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Unit]
   object OSSL_FUNC_provider_deregister_child_cb_fn: 
@@ -2003,7 +1810,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_free_fn = CFuncPtr2[Ptr[OSSL_CORE_HANDLE], CInt, CInt]
   object OSSL_FUNC_provider_free_fn: 
@@ -2013,7 +1819,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[OSSL_CORE_HANDLE], CInt, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_get0_dispatch_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_DISPATCH]]
   object OSSL_FUNC_provider_get0_dispatch_fn: 
@@ -2023,7 +1828,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_DISPATCH]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_get0_provider_ctx_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[Byte]]
   object OSSL_FUNC_provider_get0_provider_ctx_fn: 
@@ -2033,7 +1837,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_get_capabilities_fn = CFuncPtr4[Ptr[Byte], CString, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]
   object OSSL_FUNC_provider_get_capabilities_fn: 
@@ -2043,7 +1846,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], CString, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_get_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_provider_get_params_fn: 
@@ -2053,7 +1855,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_get_reason_strings_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_ITEM]]
   object OSSL_FUNC_provider_get_reason_strings_fn: 
@@ -2063,7 +1864,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_ITEM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_provider_gettable_params_fn: 
@@ -2073,7 +1873,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_name_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CString]
   object OSSL_FUNC_provider_name_fn: 
@@ -2083,7 +1882,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CString] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_query_operation_fn = CFuncPtr3[Ptr[Byte], CInt, Ptr[CInt], Ptr[OSSL_ALGORITHM]]
   object OSSL_FUNC_provider_query_operation_fn: 
@@ -2093,7 +1891,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], CInt, Ptr[CInt], Ptr[OSSL_ALGORITHM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_register_child_cb_fn = CFuncPtr5[Ptr[OSSL_CORE_HANDLE], CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[Byte], CInt], CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], Ptr[Byte], CInt]
   object OSSL_FUNC_provider_register_child_cb_fn: 
@@ -2103,7 +1900,6 @@ object aliases:
       inline def value: CFuncPtr5[Ptr[OSSL_CORE_HANDLE], CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[Byte], CInt], CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_self_test_fn = CFuncPtr1[Ptr[Byte], CInt]
   object OSSL_FUNC_provider_self_test_fn: 
@@ -2113,7 +1909,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_teardown_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_provider_teardown_fn: 
@@ -2123,7 +1918,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_unquery_operation_fn = CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_ALGORITHM], Unit]
   object OSSL_FUNC_provider_unquery_operation_fn: 
@@ -2133,7 +1927,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_ALGORITHM], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_provider_up_ref_fn = CFuncPtr2[Ptr[OSSL_CORE_HANDLE], CInt, CInt]
   object OSSL_FUNC_provider_up_ref_fn: 
@@ -2143,7 +1936,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[OSSL_CORE_HANDLE], CInt, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_clear_seed_fn = CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, Unit]
   object OSSL_FUNC_rand_clear_seed_fn: 
@@ -2153,7 +1945,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_enable_locking_fn = CFuncPtr1[Ptr[Byte], CInt]
   object OSSL_FUNC_rand_enable_locking_fn: 
@@ -2163,7 +1954,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_rand_freectx_fn: 
@@ -2173,7 +1963,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_generate_fn = CFuncPtr7[Ptr[Byte], Ptr[CUnsignedChar], size_t, CUnsignedInt, CInt, Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_rand_generate_fn: 
@@ -2183,7 +1972,6 @@ object aliases:
       inline def value: CFuncPtr7[Ptr[Byte], Ptr[CUnsignedChar], size_t, CUnsignedInt, CInt, Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_rand_get_ctx_params_fn: 
@@ -2193,7 +1981,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_rand_get_params_fn: 
@@ -2203,7 +1990,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_get_seed_fn = CFuncPtr8[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt, size_t, size_t, CInt, Ptr[CUnsignedChar], size_t, size_t]
   object OSSL_FUNC_rand_get_seed_fn: 
@@ -2213,7 +1999,6 @@ object aliases:
       inline def value: CFuncPtr8[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt, size_t, size_t, CInt, Ptr[CUnsignedChar], size_t, size_t] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_rand_gettable_ctx_params_fn: 
@@ -2223,7 +2008,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_rand_gettable_params_fn: 
@@ -2233,7 +2017,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_instantiate_fn = CFuncPtr6[Ptr[Byte], CUnsignedInt, CInt, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_rand_instantiate_fn: 
@@ -2243,7 +2026,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], CUnsignedInt, CInt, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_lock_fn = CFuncPtr1[Ptr[Byte], CInt]
   object OSSL_FUNC_rand_lock_fn: 
@@ -2253,7 +2035,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_newctx_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_DISPATCH], Ptr[Byte]]
   object OSSL_FUNC_rand_newctx_fn: 
@@ -2263,7 +2044,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_DISPATCH], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_nonce_fn = CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], CUnsignedInt, size_t, size_t, size_t]
   object OSSL_FUNC_rand_nonce_fn: 
@@ -2273,7 +2053,6 @@ object aliases:
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], CUnsignedInt, size_t, size_t, size_t] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_reseed_fn = CFuncPtr6[Ptr[Byte], CInt, Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_rand_reseed_fn: 
@@ -2283,7 +2062,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], CInt, Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_set_callbacks_fn = CFuncPtr6[Ptr[Byte], Ptr[OSSL_INOUT_CALLBACK], Ptr[OSSL_CALLBACK], Ptr[OSSL_INOUT_CALLBACK], Ptr[OSSL_CALLBACK], Ptr[Byte], Unit]
   object OSSL_FUNC_rand_set_callbacks_fn: 
@@ -2293,7 +2071,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[OSSL_INOUT_CALLBACK], Ptr[OSSL_CALLBACK], Ptr[OSSL_INOUT_CALLBACK], Ptr[OSSL_CALLBACK], Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_rand_set_ctx_params_fn: 
@@ -2303,7 +2080,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_rand_settable_ctx_params_fn: 
@@ -2313,7 +2089,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_uninstantiate_fn = CFuncPtr1[Ptr[Byte], CInt]
   object OSSL_FUNC_rand_uninstantiate_fn: 
@@ -2323,7 +2098,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_unlock_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_rand_unlock_fn: 
@@ -2333,7 +2107,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_rand_verify_zeroization_fn = CFuncPtr1[Ptr[Byte], CInt]
   object OSSL_FUNC_rand_verify_zeroization_fn: 
@@ -2343,7 +2116,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_self_test_cb_fn = CFuncPtr3[Ptr[OPENSSL_CORE_CTX], Ptr[Ptr[OSSL_CALLBACK]], Ptr[Ptr[Byte]], Unit]
   object OSSL_FUNC_self_test_cb_fn: 
@@ -2353,7 +2125,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[OPENSSL_CORE_CTX], Ptr[Ptr[OSSL_CALLBACK]], Ptr[Ptr[Byte]], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_digest_sign_final_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
   object OSSL_FUNC_signature_digest_sign_final_fn: 
@@ -2363,7 +2134,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_digest_sign_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_signature_digest_sign_fn: 
@@ -2373,7 +2143,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_digest_sign_init_fn = CFuncPtr4[Ptr[Byte], CString, Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_signature_digest_sign_init_fn: 
@@ -2383,7 +2152,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], CString, Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_digest_sign_update_fn = CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_signature_digest_sign_update_fn: 
@@ -2393,7 +2161,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_digest_verify_final_fn = CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_signature_digest_verify_final_fn: 
@@ -2403,7 +2170,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_digest_verify_fn = CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_signature_digest_verify_fn: 
@@ -2413,7 +2179,6 @@ object aliases:
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_digest_verify_init_fn = CFuncPtr4[Ptr[Byte], CString, Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_signature_digest_verify_init_fn: 
@@ -2423,7 +2188,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[Byte], CString, Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_digest_verify_update_fn = CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_signature_digest_verify_update_fn: 
@@ -2433,7 +2197,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object OSSL_FUNC_signature_dupctx_fn: 
@@ -2443,7 +2206,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_FUNC_signature_freectx_fn: 
@@ -2453,7 +2215,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_get_ctx_md_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_signature_get_ctx_md_params_fn: 
@@ -2463,7 +2224,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_signature_get_ctx_params_fn: 
@@ -2473,7 +2233,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_gettable_ctx_md_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_signature_gettable_ctx_md_params_fn: 
@@ -2483,7 +2242,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_signature_gettable_ctx_params_fn: 
@@ -2493,7 +2251,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_newctx_fn = CFuncPtr2[Ptr[Byte], CString, Ptr[Byte]]
   object OSSL_FUNC_signature_newctx_fn: 
@@ -2503,7 +2260,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], CString, Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_set_ctx_md_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_signature_set_ctx_md_params_fn: 
@@ -2513,7 +2269,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_signature_set_ctx_params_fn: 
@@ -2523,7 +2278,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_settable_ctx_md_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_signature_settable_ctx_md_params_fn: 
@@ -2533,7 +2287,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_signature_settable_ctx_params_fn: 
@@ -2543,7 +2296,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_sign_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_signature_sign_fn: 
@@ -2553,7 +2305,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_sign_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_signature_sign_init_fn: 
@@ -2563,7 +2314,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_verify_fn = CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_signature_verify_fn: 
@@ -2573,7 +2323,6 @@ object aliases:
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_verify_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_signature_verify_init_fn: 
@@ -2583,7 +2332,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_verify_recover_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
   object OSSL_FUNC_signature_verify_recover_fn: 
@@ -2593,7 +2341,6 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_signature_verify_recover_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_signature_verify_recover_init_fn: 
@@ -2603,7 +2350,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_store_attach_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_CORE_BIO], Ptr[Byte]]
   object OSSL_FUNC_store_attach_fn: 
@@ -2613,7 +2359,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_CORE_BIO], Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_store_close_fn = CFuncPtr1[Ptr[Byte], CInt]
   object OSSL_FUNC_store_close_fn: 
@@ -2623,7 +2368,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_store_eof_fn = CFuncPtr1[Ptr[Byte], CInt]
   object OSSL_FUNC_store_eof_fn: 
@@ -2633,7 +2377,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_store_export_object_fn = CFuncPtr5[Ptr[Byte], Ptr[Byte], size_t, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]
   object OSSL_FUNC_store_export_object_fn: 
@@ -2643,7 +2386,6 @@ object aliases:
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[Byte], size_t, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_store_load_fn = CFuncPtr5[Ptr[Byte], Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt]
   object OSSL_FUNC_store_load_fn: 
@@ -2653,7 +2395,6 @@ object aliases:
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_store_open_fn = CFuncPtr2[Ptr[Byte], CString, Ptr[Byte]]
   object OSSL_FUNC_store_open_fn: 
@@ -2663,7 +2404,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], CString, Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_store_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
   object OSSL_FUNC_store_set_ctx_params_fn: 
@@ -2673,7 +2413,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   type OSSL_FUNC_store_settable_ctx_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
   object OSSL_FUNC_store_settable_ctx_params_fn: 
@@ -2683,7 +2422,6 @@ object aliases:
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   type OSSL_INOUT_CALLBACK = CFuncPtr3[Ptr[OSSL_PARAM], Ptr[OSSL_PARAM], Ptr[Byte], CInt]
   object OSSL_INOUT_CALLBACK: 
@@ -2693,7 +2431,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[OSSL_PARAM], Ptr[OSSL_PARAM], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   type OSSL_PASSPHRASE_CALLBACK = CFuncPtr5[CString, size_t, Ptr[size_t], Ptr[OSSL_PARAM], Ptr[Byte], CInt]
   object OSSL_PASSPHRASE_CALLBACK: 
@@ -2703,7 +2440,6 @@ object aliases:
       inline def value: CFuncPtr5[CString, size_t, Ptr[size_t], Ptr[OSSL_PARAM], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   type OSSL_provider_init_fn = CFuncPtr4[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_DISPATCH], Ptr[Ptr[OSSL_DISPATCH]], Ptr[Ptr[Byte]], CInt]
   object OSSL_provider_init_fn: 
@@ -2713,7 +2449,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_DISPATCH], Ptr[Ptr[OSSL_DISPATCH]], Ptr[Ptr[Byte]], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type OSSL_thread_stop_handler_fn = CFuncPtr1[Ptr[Byte], Unit]
   object OSSL_thread_stop_handler_fn: 
@@ -2725,7 +2460,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   type asn1_ps_func = CFuncPtr4[Ptr[BIO], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], Ptr[Byte], CInt]
   object asn1_ps_func: 
@@ -2735,7 +2469,6 @@ object aliases:
       inline def value: CFuncPtr4[Ptr[BIO], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], Ptr[Byte], CInt] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   type bio_info_cb = BIO_info_cb
   object bio_info_cb: 
@@ -2745,7 +2478,6 @@ object aliases:
       inline def value: BIO_info_cb = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   type d2i_of_void = CFuncPtr3[Ptr[Ptr[Byte]], Ptr[Ptr[CUnsignedChar]], CLongInt, Ptr[Byte]]
   object d2i_of_void: 
@@ -2755,7 +2487,6 @@ object aliases:
       inline def value: CFuncPtr3[Ptr[Ptr[Byte]], Ptr[Ptr[CUnsignedChar]], CLongInt, Ptr[Byte]] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   type i2d_of_void = CFuncPtr2[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt]
   object i2d_of_void: 
@@ -2786,7 +2517,6 @@ object aliases:
       inline def value: libc.stdint.intmax_t = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/e_os2.h
   */
   type ossl_intmax_t = intmax_t
   object ossl_intmax_t: 
@@ -2796,7 +2526,6 @@ object aliases:
       inline def value: intmax_t = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/e_os2.h
   */
   type ossl_uintmax_t = uintmax_t
   object ossl_uintmax_t: 
@@ -2806,7 +2535,6 @@ object aliases:
       inline def value: uintmax_t = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   type pem_password_cb = CFuncPtr4[CString, CInt, CInt, Ptr[Byte], CInt]
   object pem_password_cb: 
@@ -2844,7 +2572,6 @@ object aliases:
       inline def value: libc.stddef.size_t = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_GENERALSTRING_compfunc = CFuncPtr2[Ptr[Ptr[ASN1_GENERALSTRING]], Ptr[Ptr[ASN1_GENERALSTRING]], CInt]
   object sk_ASN1_GENERALSTRING_compfunc: 
@@ -2856,7 +2583,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_GENERALSTRING_copyfunc = CFuncPtr1[Ptr[ASN1_GENERALSTRING], Ptr[ASN1_GENERALSTRING]]
   object sk_ASN1_GENERALSTRING_copyfunc: 
@@ -2868,7 +2594,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_GENERALSTRING_freefunc = CFuncPtr1[Ptr[ASN1_GENERALSTRING], Unit]
   object sk_ASN1_GENERALSTRING_freefunc: 
@@ -2880,7 +2605,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_INTEGER_compfunc = CFuncPtr2[Ptr[Ptr[ASN1_INTEGER]], Ptr[Ptr[ASN1_INTEGER]], CInt]
   object sk_ASN1_INTEGER_compfunc: 
@@ -2892,7 +2616,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_INTEGER_copyfunc = CFuncPtr1[Ptr[ASN1_INTEGER], Ptr[ASN1_INTEGER]]
   object sk_ASN1_INTEGER_copyfunc: 
@@ -2904,7 +2627,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_INTEGER_freefunc = CFuncPtr1[Ptr[ASN1_INTEGER], Unit]
   object sk_ASN1_INTEGER_freefunc: 
@@ -2916,7 +2638,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_OBJECT_compfunc = CFuncPtr2[Ptr[Ptr[ASN1_OBJECT]], Ptr[Ptr[ASN1_OBJECT]], CInt]
   object sk_ASN1_OBJECT_compfunc: 
@@ -2928,7 +2649,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_OBJECT_copyfunc = CFuncPtr1[Ptr[ASN1_OBJECT], Ptr[ASN1_OBJECT]]
   object sk_ASN1_OBJECT_copyfunc: 
@@ -2940,7 +2660,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_OBJECT_freefunc = CFuncPtr1[Ptr[ASN1_OBJECT], Unit]
   object sk_ASN1_OBJECT_freefunc: 
@@ -2952,7 +2671,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_STRING_TABLE_compfunc = CFuncPtr2[Ptr[Ptr[ASN1_STRING_TABLE]], Ptr[Ptr[ASN1_STRING_TABLE]], CInt]
   object sk_ASN1_STRING_TABLE_compfunc: 
@@ -2964,7 +2682,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_STRING_TABLE_copyfunc = CFuncPtr1[Ptr[ASN1_STRING_TABLE], Ptr[ASN1_STRING_TABLE]]
   object sk_ASN1_STRING_TABLE_copyfunc: 
@@ -2976,7 +2693,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_STRING_TABLE_freefunc = CFuncPtr1[Ptr[ASN1_STRING_TABLE], Unit]
   object sk_ASN1_STRING_TABLE_freefunc: 
@@ -2988,7 +2704,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_TYPE_compfunc = CFuncPtr2[Ptr[Ptr[ASN1_TYPE]], Ptr[Ptr[ASN1_TYPE]], CInt]
   object sk_ASN1_TYPE_compfunc: 
@@ -3000,7 +2715,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_TYPE_copyfunc = CFuncPtr1[Ptr[ASN1_TYPE], Ptr[ASN1_TYPE]]
   object sk_ASN1_TYPE_copyfunc: 
@@ -3012,7 +2726,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_TYPE_freefunc = CFuncPtr1[Ptr[ASN1_TYPE], Unit]
   object sk_ASN1_TYPE_freefunc: 
@@ -3024,7 +2737,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_UTF8STRING_compfunc = CFuncPtr2[Ptr[Ptr[ASN1_UTF8STRING]], Ptr[Ptr[ASN1_UTF8STRING]], CInt]
   object sk_ASN1_UTF8STRING_compfunc: 
@@ -3036,7 +2748,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_UTF8STRING_copyfunc = CFuncPtr1[Ptr[ASN1_UTF8STRING], Ptr[ASN1_UTF8STRING]]
   object sk_ASN1_UTF8STRING_copyfunc: 
@@ -3048,7 +2759,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_ASN1_UTF8STRING_freefunc = CFuncPtr1[Ptr[ASN1_UTF8STRING], Unit]
   object sk_ASN1_UTF8STRING_freefunc: 
@@ -3060,7 +2770,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type sk_BIO_compfunc = CFuncPtr2[Ptr[Ptr[BIO]], Ptr[Ptr[BIO]], CInt]
   object sk_BIO_compfunc: 
@@ -3072,7 +2781,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type sk_BIO_copyfunc = CFuncPtr1[Ptr[BIO], Ptr[BIO]]
   object sk_BIO_copyfunc: 
@@ -3084,7 +2792,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type sk_BIO_freefunc = CFuncPtr1[Ptr[BIO], Unit]
   object sk_BIO_freefunc: 
@@ -3096,7 +2803,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type sk_OPENSSL_BLOCK_compfunc = CFuncPtr2[Ptr[Ptr[Byte]], Ptr[Ptr[Byte]], CInt]
   object sk_OPENSSL_BLOCK_compfunc: 
@@ -3108,7 +2814,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type sk_OPENSSL_BLOCK_copyfunc = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object sk_OPENSSL_BLOCK_copyfunc: 
@@ -3120,7 +2825,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type sk_OPENSSL_BLOCK_freefunc = CFuncPtr1[Ptr[Byte], Unit]
   object sk_OPENSSL_BLOCK_freefunc: 
@@ -3132,7 +2836,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type sk_OPENSSL_CSTRING_compfunc = CFuncPtr2[Ptr[CString], Ptr[CString], CInt]
   object sk_OPENSSL_CSTRING_compfunc: 
@@ -3144,7 +2847,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type sk_OPENSSL_CSTRING_copyfunc = CFuncPtr1[CString, CString]
   object sk_OPENSSL_CSTRING_copyfunc: 
@@ -3156,7 +2858,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type sk_OPENSSL_CSTRING_freefunc = CFuncPtr1[CString, Unit]
   object sk_OPENSSL_CSTRING_freefunc: 
@@ -3168,7 +2869,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type sk_OPENSSL_STRING_compfunc = CFuncPtr2[Ptr[CString], Ptr[CString], CInt]
   object sk_OPENSSL_STRING_compfunc: 
@@ -3180,7 +2880,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type sk_OPENSSL_STRING_copyfunc = CFuncPtr1[CString, CString]
   object sk_OPENSSL_STRING_copyfunc: 
@@ -3192,7 +2891,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type sk_OPENSSL_STRING_freefunc = CFuncPtr1[CString, Unit]
   object sk_OPENSSL_STRING_freefunc: 
@@ -3204,7 +2902,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_X509_ALGOR_compfunc = CFuncPtr2[Ptr[Ptr[X509_ALGOR]], Ptr[Ptr[X509_ALGOR]], CInt]
   object sk_X509_ALGOR_compfunc: 
@@ -3216,7 +2913,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_X509_ALGOR_copyfunc = CFuncPtr1[Ptr[X509_ALGOR], Ptr[X509_ALGOR]]
   object sk_X509_ALGOR_copyfunc: 
@@ -3228,7 +2924,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type sk_X509_ALGOR_freefunc = CFuncPtr1[Ptr[X509_ALGOR], Unit]
   object sk_X509_ALGOR_freefunc: 
@@ -3240,7 +2935,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   opaque type sk_void_compfunc = CFuncPtr2[Ptr[Ptr[Byte]], Ptr[Ptr[Byte]], CInt]
   object sk_void_compfunc: 
@@ -3252,7 +2946,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   opaque type sk_void_copyfunc = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
   object sk_void_copyfunc: 
@@ -3264,7 +2957,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   opaque type sk_void_freefunc = CFuncPtr1[Ptr[Byte], Unit]
   object sk_void_freefunc: 
@@ -3324,7 +3016,6 @@ object structs:
   import _root_.openssl.structs.*
   import _root_.openssl.unions.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_BIT_STRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_BIT_STRING:
@@ -3348,7 +3039,6 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_BMPSTRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_BMPSTRING:
@@ -3372,7 +3062,6 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_ENCODING = CStruct3[Ptr[CUnsignedChar], CLongInt, CInt]
   object ASN1_ENCODING:
@@ -3393,7 +3082,6 @@ object structs:
       def modified_=(value: CInt): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_ENCODING_st = CStruct3[Ptr[CUnsignedChar], CLongInt, CInt]
   object ASN1_ENCODING_st:
@@ -3414,7 +3102,6 @@ object structs:
       def modified_=(value: CInt): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_ENUMERATED = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_ENUMERATED:
@@ -3438,7 +3125,6 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_GENERALIZEDTIME = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_GENERALIZEDTIME:
@@ -3462,7 +3148,6 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_GENERALSTRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_GENERALSTRING:
@@ -3486,7 +3171,6 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_IA5STRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_IA5STRING:
@@ -3510,7 +3194,6 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_INTEGER = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_INTEGER:
@@ -3534,28 +3217,24 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ASN1_ITEM = CStruct0
   object ASN1_ITEM:
     given _tag: Tag[ASN1_ITEM] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ASN1_ITEM_st = CStruct0
   object ASN1_ITEM_st:
     given _tag: Tag[ASN1_ITEM_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ASN1_OBJECT = CStruct0
   object ASN1_OBJECT:
     given _tag: Tag[ASN1_OBJECT] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_OCTET_STRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_OCTET_STRING:
@@ -3579,14 +3258,12 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ASN1_PCTX = CStruct0
   object ASN1_PCTX:
     given _tag: Tag[ASN1_PCTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_PRINTABLESTRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_PRINTABLESTRING:
@@ -3610,21 +3287,18 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ASN1_SCTX = CStruct0
   object ASN1_SCTX:
     given _tag: Tag[ASN1_SCTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_SEQUENCE_ANY = CStruct0
   object ASN1_SEQUENCE_ANY:
     given _tag: Tag[ASN1_SEQUENCE_ANY] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_STRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_STRING:
@@ -3648,7 +3322,6 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_STRING_TABLE = CStruct5[CInt, CLongInt, CLongInt, CUnsignedLongInt, CUnsignedLongInt]
   object ASN1_STRING_TABLE:
@@ -3675,7 +3348,6 @@ object structs:
       def flags_=(value: CUnsignedLongInt): Unit = !struct.at5 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_T61STRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_T61STRING:
@@ -3699,21 +3371,18 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_TEMPLATE = CStruct0
   object ASN1_TEMPLATE:
     given _tag: Tag[ASN1_TEMPLATE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_TEMPLATE_st = CStruct0
   object ASN1_TEMPLATE_st:
     given _tag: Tag[ASN1_TEMPLATE_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_TIME = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_TIME:
@@ -3737,26 +3406,22 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_TLC = CStruct0
   object ASN1_TLC:
     given _tag: Tag[ASN1_TLC] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_TLC_st = CStruct0
   object ASN1_TLC_st:
     given _tag: Tag[ASN1_TLC_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_TYPE = CStruct2[CInt, ASN1_TYPE.Union0]
   object ASN1_TYPE:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
     */
     opaque type Union0 = CArray[Byte, Nat._8]
     object Union0:
@@ -3947,7 +3612,6 @@ object structs:
       def value_=(value: ASN1_TYPE.Union0): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_UNIVERSALSTRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_UNIVERSALSTRING:
@@ -3971,7 +3635,6 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_UTCTIME = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_UTCTIME:
@@ -3995,7 +3658,6 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_UTF8STRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_UTF8STRING:
@@ -4019,21 +3681,18 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_VALUE = CStruct0
   object ASN1_VALUE:
     given _tag: Tag[ASN1_VALUE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_VALUE_st = CStruct0
   object ASN1_VALUE_st:
     given _tag: Tag[ASN1_VALUE_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type ASN1_VISIBLESTRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object ASN1_VISIBLESTRING:
@@ -4057,49 +3716,42 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type AUTHORITY_KEYID = CStruct0
   object AUTHORITY_KEYID:
     given _tag: Tag[AUTHORITY_KEYID] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type AUTHORITY_KEYID_st = CStruct0
   object AUTHORITY_KEYID_st:
     given _tag: Tag[AUTHORITY_KEYID_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type BIGNUM = CStruct0
   object BIGNUM:
     given _tag: Tag[BIGNUM] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type BIO = CStruct0
   object BIO:
     given _tag: Tag[BIO] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type BIO_ADDRINFO = CStruct0
   object BIO_ADDRINFO:
     given _tag: Tag[BIO_ADDRINFO] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type BIO_METHOD = CStruct0
   object BIO_METHOD:
     given _tag: Tag[BIO_METHOD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type BIT_STRING_BITNAME = CStruct3[CInt, CString, CString]
   object BIT_STRING_BITNAME:
@@ -4120,7 +3772,6 @@ object structs:
       def sname_=(value: CString): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type BIT_STRING_BITNAME_st = CStruct3[CInt, CString, CString]
   object BIT_STRING_BITNAME_st:
@@ -4141,75 +3792,64 @@ object structs:
       def sname_=(value: CString): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type BN_BLINDING = CStruct0
   object BN_BLINDING:
     given _tag: Tag[BN_BLINDING] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type BN_CTX = CStruct0
   object BN_CTX:
     given _tag: Tag[BN_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type BN_GENCB = CStruct0
   object BN_GENCB:
     given _tag: Tag[BN_GENCB] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type BN_MONT_CTX = CStruct0
   object BN_MONT_CTX:
     given _tag: Tag[BN_MONT_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type BN_RECP_CTX = CStruct0
   object BN_RECP_CTX:
     given _tag: Tag[BN_RECP_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type BUF_MEM = CStruct0
   object BUF_MEM:
     given _tag: Tag[BUF_MEM] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type COMP_CTX = CStruct0
   object COMP_CTX:
     given _tag: Tag[COMP_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type COMP_METHOD = CStruct0
   object COMP_METHOD:
     given _tag: Tag[COMP_METHOD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type CONF = CStruct0
   object CONF:
     given _tag: Tag[CONF] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   opaque type CRYPTO_EX_DATA = CStruct2[Ptr[OSSL_LIB_CTX], Ptr[stack_st_void]]
   object CRYPTO_EX_DATA:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
     */
     opaque type Struct0 = CStruct0
     object Struct0:
@@ -4228,7 +3868,6 @@ object structs:
       def sk_=(value: Ptr[stack_st_void]): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   opaque type CRYPTO_THREADID = CStruct1[CInt]
   object CRYPTO_THREADID:
@@ -4243,7 +3882,6 @@ object structs:
       def dummy_=(value: CInt): Unit = !struct.at1 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   opaque type CRYPTO_dynlock = CStruct1[CInt]
   object CRYPTO_dynlock:
@@ -4258,119 +3896,102 @@ object structs:
       def dummy_=(value: CInt): Unit = !struct.at1 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type CTLOG = CStruct0
   object CTLOG:
     given _tag: Tag[CTLOG] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type CTLOG_STORE = CStruct0
   object CTLOG_STORE:
     given _tag: Tag[CTLOG_STORE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type CT_POLICY_EVAL_CTX = CStruct0
   object CT_POLICY_EVAL_CTX:
     given _tag: Tag[CT_POLICY_EVAL_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type DH = CStruct0
   object DH:
     given _tag: Tag[DH] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type DH_METHOD = CStruct0
   object DH_METHOD:
     given _tag: Tag[DH_METHOD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type DIST_POINT = CStruct0
   object DIST_POINT:
     given _tag: Tag[DIST_POINT] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type DIST_POINT_st = CStruct0
   object DIST_POINT_st:
     given _tag: Tag[DIST_POINT_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type DSA = CStruct0
   object DSA:
     given _tag: Tag[DSA] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type DSA_METHOD = CStruct0
   object DSA_METHOD:
     given _tag: Tag[DSA_METHOD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EC_KEY = CStruct0
   object EC_KEY:
     given _tag: Tag[EC_KEY] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EC_KEY_METHOD = CStruct0
   object EC_KEY_METHOD:
     given _tag: Tag[EC_KEY_METHOD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ENGINE = CStruct0
   object ENGINE:
     given _tag: Tag[ENGINE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ERR_STATE = CStruct0
   object ERR_STATE:
     given _tag: Tag[ERR_STATE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_ASYM_CIPHER = CStruct0
   object EVP_ASYM_CIPHER:
     given _tag: Tag[EVP_ASYM_CIPHER] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_CIPHER = CStruct0
   object EVP_CIPHER:
     given _tag: Tag[EVP_CIPHER] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_CIPHER_CTX = CStruct0
   object EVP_CIPHER_CTX:
     given _tag: Tag[EVP_CIPHER_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   opaque type EVP_CIPHER_INFO = CStruct2[Ptr[EVP_CIPHER], CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]]]
   object EVP_CIPHER_INFO:
@@ -4388,7 +4009,6 @@ object structs:
       def iv_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]]): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   opaque type EVP_CTRL_TLS1_1_MULTIBLOCK_PARAM = CStruct4[Ptr[CUnsignedChar], Ptr[CUnsignedChar], size_t, CUnsignedInt]
   object EVP_CTRL_TLS1_1_MULTIBLOCK_PARAM:
@@ -4412,161 +4032,138 @@ object structs:
       def interleave_=(value: CUnsignedInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_ENCODE_CTX = CStruct0
   object EVP_ENCODE_CTX:
     given _tag: Tag[EVP_ENCODE_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_KDF = CStruct0
   object EVP_KDF:
     given _tag: Tag[EVP_KDF] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_KDF_CTX = CStruct0
   object EVP_KDF_CTX:
     given _tag: Tag[EVP_KDF_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_KEM = CStruct0
   object EVP_KEM:
     given _tag: Tag[EVP_KEM] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_KEYEXCH = CStruct0
   object EVP_KEYEXCH:
     given _tag: Tag[EVP_KEYEXCH] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_KEYMGMT = CStruct0
   object EVP_KEYMGMT:
     given _tag: Tag[EVP_KEYMGMT] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_MAC = CStruct0
   object EVP_MAC:
     given _tag: Tag[EVP_MAC] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_MAC_CTX = CStruct0
   object EVP_MAC_CTX:
     given _tag: Tag[EVP_MAC_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_MD = CStruct0
   object EVP_MD:
     given _tag: Tag[EVP_MD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_MD_CTX = CStruct0
   object EVP_MD_CTX:
     given _tag: Tag[EVP_MD_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_PKEY = CStruct0
   object EVP_PKEY:
     given _tag: Tag[EVP_PKEY] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_PKEY_ASN1_METHOD = CStruct0
   object EVP_PKEY_ASN1_METHOD:
     given _tag: Tag[EVP_PKEY_ASN1_METHOD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_PKEY_CTX = CStruct0
   object EVP_PKEY_CTX:
     given _tag: Tag[EVP_PKEY_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_PKEY_METHOD = CStruct0
   object EVP_PKEY_METHOD:
     given _tag: Tag[EVP_PKEY_METHOD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_RAND = CStruct0
   object EVP_RAND:
     given _tag: Tag[EVP_RAND] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_RAND_CTX = CStruct0
   object EVP_RAND_CTX:
     given _tag: Tag[EVP_RAND_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type EVP_SIGNATURE = CStruct0
   object EVP_SIGNATURE:
     given _tag: Tag[EVP_SIGNATURE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type HMAC_CTX = CStruct0
   object HMAC_CTX:
     given _tag: Tag[HMAC_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ISSUING_DIST_POINT = CStruct0
   object ISSUING_DIST_POINT:
     given _tag: Tag[ISSUING_DIST_POINT] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ISSUING_DIST_POINT_st = CStruct0
   object ISSUING_DIST_POINT_st:
     given _tag: Tag[ISSUING_DIST_POINT_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type NAME_CONSTRAINTS = CStruct0
   object NAME_CONSTRAINTS:
     given _tag: Tag[NAME_CONSTRAINTS] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type NAME_CONSTRAINTS_st = CStruct0
   object NAME_CONSTRAINTS_st:
     given _tag: Tag[NAME_CONSTRAINTS_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   opaque type OBJ_NAME = CStruct4[CInt, CInt, CString, CString]
   object OBJ_NAME:
@@ -4590,42 +4187,36 @@ object structs:
       def data_=(value: CString): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OCSP_RESPID = CStruct0
   object OCSP_RESPID:
     given _tag: Tag[OCSP_RESPID] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OCSP_RESPONSE = CStruct0
   object OCSP_RESPONSE:
     given _tag: Tag[OCSP_RESPONSE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type OPENSSL_CORE_CTX = CStruct0
   object OPENSSL_CORE_CTX:
     given _tag: Tag[OPENSSL_CORE_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OPENSSL_INIT_SETTINGS = CStruct0
   object OPENSSL_INIT_SETTINGS:
     given _tag: Tag[OPENSSL_INIT_SETTINGS] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   opaque type OPENSSL_STACK = CStruct0
   object OPENSSL_STACK:
     given _tag: Tag[OPENSSL_STACK] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type OSSL_ALGORITHM = CStruct4[CString, CString, Ptr[OSSL_DISPATCH], CString]
   object OSSL_ALGORITHM:
@@ -4649,35 +4240,30 @@ object structs:
       def algorithm_description_=(value: CString): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type OSSL_CORE_BIO = CStruct0
   object OSSL_CORE_BIO:
     given _tag: Tag[OSSL_CORE_BIO] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type OSSL_CORE_HANDLE = CStruct0
   object OSSL_CORE_HANDLE:
     given _tag: Tag[OSSL_CORE_HANDLE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OSSL_DECODER = CStruct0
   object OSSL_DECODER:
     given _tag: Tag[OSSL_DECODER] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OSSL_DECODER_CTX = CStruct0
   object OSSL_DECODER_CTX:
     given _tag: Tag[OSSL_DECODER_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type OSSL_DISPATCH = CStruct2[CInt, CFuncPtr0[Unit]]
   object OSSL_DISPATCH:
@@ -4695,28 +4281,24 @@ object structs:
       def function_=(value: CFuncPtr0[Unit]): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OSSL_ENCODER = CStruct0
   object OSSL_ENCODER:
     given _tag: Tag[OSSL_ENCODER] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OSSL_ENCODER_CTX = CStruct0
   object OSSL_ENCODER_CTX:
     given _tag: Tag[OSSL_ENCODER_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OSSL_HTTP_REQ_CTX = CStruct0
   object OSSL_HTTP_REQ_CTX:
     given _tag: Tag[OSSL_HTTP_REQ_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type OSSL_ITEM = CStruct2[CUnsignedInt, Ptr[Byte]]
   object OSSL_ITEM:
@@ -4734,14 +4316,12 @@ object structs:
       def ptr_=(value: Ptr[Byte]): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OSSL_LIB_CTX = CStruct0
   object OSSL_LIB_CTX:
     given _tag: Tag[OSSL_LIB_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type OSSL_PARAM = CStruct5[CString, CUnsignedInt, Ptr[Byte], size_t, size_t]
   object OSSL_PARAM:
@@ -4768,98 +4348,84 @@ object structs:
       def return_size_=(value: size_t): Unit = !struct.at5 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OSSL_PARAM_BLD = CStruct0
   object OSSL_PARAM_BLD:
     given _tag: Tag[OSSL_PARAM_BLD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OSSL_PROVIDER = CStruct0
   object OSSL_PROVIDER:
     given _tag: Tag[OSSL_PROVIDER] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OSSL_SELF_TEST = CStruct0
   object OSSL_SELF_TEST:
     given _tag: Tag[OSSL_SELF_TEST] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OSSL_STORE_INFO = CStruct0
   object OSSL_STORE_INFO:
     given _tag: Tag[OSSL_STORE_INFO] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type OSSL_STORE_SEARCH = CStruct0
   object OSSL_STORE_SEARCH:
     given _tag: Tag[OSSL_STORE_SEARCH] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type PKCS8_PRIV_KEY_INFO = CStruct0
   object PKCS8_PRIV_KEY_INFO:
     given _tag: Tag[PKCS8_PRIV_KEY_INFO] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type RAND_DRBG = CStruct0
   object RAND_DRBG:
     given _tag: Tag[RAND_DRBG] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type RAND_METHOD = CStruct0
   object RAND_METHOD:
     given _tag: Tag[RAND_METHOD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type RSA = CStruct0
   object RSA:
     given _tag: Tag[RSA] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type RSA_METHOD = CStruct0
   object RSA_METHOD:
     given _tag: Tag[RSA_METHOD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type RSA_PSS_PARAMS = CStruct0
   object RSA_PSS_PARAMS:
     given _tag: Tag[RSA_PSS_PARAMS] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type SCT = CStruct0
   object SCT:
     given _tag: Tag[SCT] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type SCT_CTX = CStruct0
   object SCT_CTX:
     given _tag: Tag[SCT_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   opaque type SHA256_CTX = CStruct6[CArray[CUnsignedInt, Nat._8], CUnsignedInt, CUnsignedInt, CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], CUnsignedInt, CUnsignedInt]
   object SHA256_CTX:
@@ -4889,7 +4455,6 @@ object structs:
       def md_len_=(value: CUnsignedInt): Unit = !struct.at6 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   opaque type SHA256state_st = CStruct6[CArray[CUnsignedInt, Nat._8], CUnsignedInt, CUnsignedInt, CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], CUnsignedInt, CUnsignedInt]
   object SHA256state_st:
@@ -4919,12 +4484,10 @@ object structs:
       def md_len_=(value: CUnsignedInt): Unit = !struct.at6 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   opaque type SHA512_CTX = CStruct6[CArray[CUnsignedLongLong, Nat._8], CUnsignedLongLong, CUnsignedLongLong, SHA512_CTX.Union0, CUnsignedInt, CUnsignedInt]
   object SHA512_CTX:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
     */
     opaque type Union0 = CArray[Byte, Nat.Digit3[Nat._1, Nat._2, Nat._8]]
     object Union0:
@@ -4975,12 +4538,10 @@ object structs:
       def md_len_=(value: CUnsignedInt): Unit = !struct.at6 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   opaque type SHA512state_st = CStruct6[CArray[CUnsignedLongLong, Nat._8], CUnsignedLongLong, CUnsignedLongLong, SHA512state_st.Union0, CUnsignedInt, CUnsignedInt]
   object SHA512state_st:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
     */
     opaque type Union0 = CArray[Byte, Nat.Digit3[Nat._1, Nat._2, Nat._8]]
     object Union0:
@@ -5031,7 +4592,6 @@ object structs:
       def md_len_=(value: CUnsignedInt): Unit = !struct.at6 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   opaque type SHA_CTX = CStruct9[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], CUnsignedInt]
   object SHA_CTX:
@@ -5070,7 +4630,6 @@ object structs:
       def num_=(value: CUnsignedInt): Unit = !struct.at9 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   opaque type SHAstate_st = CStruct9[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], CUnsignedInt]
   object SHAstate_st:
@@ -5109,259 +4668,222 @@ object structs:
       def num_=(value: CUnsignedInt): Unit = !struct.at9 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type SSL = CStruct0
   object SSL:
     given _tag: Tag[SSL] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type SSL_CTX = CStruct0
   object SSL_CTX:
     given _tag: Tag[SSL_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type SSL_DANE = CStruct0
   object SSL_DANE:
     given _tag: Tag[SSL_DANE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type UI = CStruct0
   object UI:
     given _tag: Tag[UI] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type UI_METHOD = CStruct0
   object UI_METHOD:
     given _tag: Tag[UI_METHOD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509 = CStruct0
   object X509:
     given _tag: Tag[X509] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509V3_CTX = CStruct0
   object X509V3_CTX:
     given _tag: Tag[X509V3_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_ALGOR = CStruct0
   object X509_ALGOR:
     given _tag: Tag[X509_ALGOR] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_CRL = CStruct0
   object X509_CRL:
     given _tag: Tag[X509_CRL] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_CRL_METHOD = CStruct0
   object X509_CRL_METHOD:
     given _tag: Tag[X509_CRL_METHOD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_LOOKUP = CStruct0
   object X509_LOOKUP:
     given _tag: Tag[X509_LOOKUP] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_LOOKUP_METHOD = CStruct0
   object X509_LOOKUP_METHOD:
     given _tag: Tag[X509_LOOKUP_METHOD] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_NAME = CStruct0
   object X509_NAME:
     given _tag: Tag[X509_NAME] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_OBJECT = CStruct0
   object X509_OBJECT:
     given _tag: Tag[X509_OBJECT] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_POLICY_CACHE = CStruct0
   object X509_POLICY_CACHE:
     given _tag: Tag[X509_POLICY_CACHE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_POLICY_CACHE_st = CStruct0
   object X509_POLICY_CACHE_st:
     given _tag: Tag[X509_POLICY_CACHE_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_POLICY_LEVEL = CStruct0
   object X509_POLICY_LEVEL:
     given _tag: Tag[X509_POLICY_LEVEL] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_POLICY_LEVEL_st = CStruct0
   object X509_POLICY_LEVEL_st:
     given _tag: Tag[X509_POLICY_LEVEL_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_POLICY_NODE = CStruct0
   object X509_POLICY_NODE:
     given _tag: Tag[X509_POLICY_NODE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_POLICY_NODE_st = CStruct0
   object X509_POLICY_NODE_st:
     given _tag: Tag[X509_POLICY_NODE_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_POLICY_TREE = CStruct0
   object X509_POLICY_TREE:
     given _tag: Tag[X509_POLICY_TREE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_POLICY_TREE_st = CStruct0
   object X509_POLICY_TREE_st:
     given _tag: Tag[X509_POLICY_TREE_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_PUBKEY = CStruct0
   object X509_PUBKEY:
     given _tag: Tag[X509_PUBKEY] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_REVOKED = CStruct0
   object X509_REVOKED:
     given _tag: Tag[X509_REVOKED] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_SIG_INFO = CStruct0
   object X509_SIG_INFO:
     given _tag: Tag[X509_SIG_INFO] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_STORE = CStruct0
   object X509_STORE:
     given _tag: Tag[X509_STORE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_STORE_CTX = CStruct0
   object X509_STORE_CTX:
     given _tag: Tag[X509_STORE_CTX] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_VERIFY_PARAM = CStruct0
   object X509_VERIFY_PARAM:
     given _tag: Tag[X509_VERIFY_PARAM] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_VERIFY_PARAM_st = CStruct0
   object X509_VERIFY_PARAM_st:
     given _tag: Tag[X509_VERIFY_PARAM_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_algor_st = CStruct0
   object X509_algor_st:
     given _tag: Tag[X509_algor_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_crl_st = CStruct0
   object X509_crl_st:
     given _tag: Tag[X509_crl_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_name_st = CStruct0
   object X509_name_st:
     given _tag: Tag[X509_name_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type X509_pubkey_st = CStruct0
   object X509_pubkey_st:
     given _tag: Tag[X509_pubkey_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type asn1_object_st = CStruct0
   object asn1_object_st:
     given _tag: Tag[asn1_object_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type asn1_pctx_st = CStruct0
   object asn1_pctx_st:
     given _tag: Tag[asn1_pctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type asn1_sctx_st = CStruct0
   object asn1_sctx_st:
     given _tag: Tag[asn1_sctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type asn1_string_st = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
   object asn1_string_st:
@@ -5385,7 +4907,6 @@ object structs:
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type asn1_string_table_st = CStruct5[CInt, CLongInt, CLongInt, CUnsignedLongInt, CUnsignedLongInt]
   object asn1_string_table_st:
@@ -5412,12 +4933,10 @@ object structs:
       def flags_=(value: CUnsignedLongInt): Unit = !struct.at5 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type asn1_type_st = CStruct2[CInt, asn1_type_st.Union0]
   object asn1_type_st:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
     */
     opaque type Union0 = CArray[Byte, Nat._8]
     object Union0:
@@ -5608,103 +5127,88 @@ object structs:
       def value_=(value: asn1_type_st.Union0): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type bignum_ctx = CStruct0
   object bignum_ctx:
     given _tag: Tag[bignum_ctx] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type bignum_st = CStruct0
   object bignum_st:
     given _tag: Tag[bignum_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type bio_addrinfo_st = CStruct0
   object bio_addrinfo_st:
     given _tag: Tag[bio_addrinfo_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type bio_method_st = CStruct0
   object bio_method_st:
     given _tag: Tag[bio_method_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type bio_st = CStruct0
   object bio_st:
     given _tag: Tag[bio_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type bn_blinding_st = CStruct0
   object bn_blinding_st:
     given _tag: Tag[bn_blinding_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type bn_gencb_st = CStruct0
   object bn_gencb_st:
     given _tag: Tag[bn_gencb_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type bn_mont_ctx_st = CStruct0
   object bn_mont_ctx_st:
     given _tag: Tag[bn_mont_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type bn_recp_ctx_st = CStruct0
   object bn_recp_ctx_st:
     given _tag: Tag[bn_recp_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type buf_mem_st = CStruct0
   object buf_mem_st:
     given _tag: Tag[buf_mem_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type comp_ctx_st = CStruct0
   object comp_ctx_st:
     given _tag: Tag[comp_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type comp_method_st = CStruct0
   object comp_method_st:
     given _tag: Tag[comp_method_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type conf_st = CStruct0
   object conf_st:
     given _tag: Tag[conf_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   opaque type crypto_ex_data_st = CStruct2[Ptr[OSSL_LIB_CTX], Ptr[stack_st_void]]
   object crypto_ex_data_st:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
     */
     opaque type Struct0 = CStruct0
     object Struct0:
@@ -5723,7 +5227,6 @@ object structs:
       def sk_=(value: Ptr[stack_st_void]): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   opaque type crypto_threadid_st = CStruct1[CInt]
   object crypto_threadid_st:
@@ -5738,105 +5241,90 @@ object structs:
       def dummy_=(value: CInt): Unit = !struct.at1 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ct_policy_eval_ctx_st = CStruct0
   object ct_policy_eval_ctx_st:
     given _tag: Tag[ct_policy_eval_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ctlog_st = CStruct0
   object ctlog_st:
     given _tag: Tag[ctlog_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ctlog_store_st = CStruct0
   object ctlog_store_st:
     given _tag: Tag[ctlog_store_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type dh_method = CStruct0
   object dh_method:
     given _tag: Tag[dh_method] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   opaque type dh_st = CStruct0
   object dh_st:
     given _tag: Tag[dh_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type dsa_method = CStruct0
   object dsa_method:
     given _tag: Tag[dsa_method] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   opaque type dsa_st = CStruct0
   object dsa_st:
     given _tag: Tag[dsa_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ec_key_method_st = CStruct0
   object ec_key_method_st:
     given _tag: Tag[ec_key_method_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   opaque type ec_key_st = CStruct0
   object ec_key_st:
     given _tag: Tag[ec_key_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type engine_st = CStruct0
   object engine_st:
     given _tag: Tag[engine_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type err_state_st = CStruct0
   object err_state_st:
     given _tag: Tag[err_state_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_Encode_Ctx_st = CStruct0
   object evp_Encode_Ctx_st:
     given _tag: Tag[evp_Encode_Ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_asym_cipher_st = CStruct0
   object evp_asym_cipher_st:
     given _tag: Tag[evp_asym_cipher_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_cipher_ctx_st = CStruct0
   object evp_cipher_ctx_st:
     given _tag: Tag[evp_cipher_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   opaque type evp_cipher_info_st = CStruct2[Ptr[EVP_CIPHER], CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]]]
   object evp_cipher_info_st:
@@ -5854,140 +5342,120 @@ object structs:
       def iv_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]]): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_cipher_st = CStruct0
   object evp_cipher_st:
     given _tag: Tag[evp_cipher_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_kdf_ctx_st = CStruct0
   object evp_kdf_ctx_st:
     given _tag: Tag[evp_kdf_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_kdf_st = CStruct0
   object evp_kdf_st:
     given _tag: Tag[evp_kdf_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_kem_st = CStruct0
   object evp_kem_st:
     given _tag: Tag[evp_kem_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_keyexch_st = CStruct0
   object evp_keyexch_st:
     given _tag: Tag[evp_keyexch_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_keymgmt_st = CStruct0
   object evp_keymgmt_st:
     given _tag: Tag[evp_keymgmt_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_mac_ctx_st = CStruct0
   object evp_mac_ctx_st:
     given _tag: Tag[evp_mac_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_mac_st = CStruct0
   object evp_mac_st:
     given _tag: Tag[evp_mac_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_md_ctx_st = CStruct0
   object evp_md_ctx_st:
     given _tag: Tag[evp_md_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_md_st = CStruct0
   object evp_md_st:
     given _tag: Tag[evp_md_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_pkey_asn1_method_st = CStruct0
   object evp_pkey_asn1_method_st:
     given _tag: Tag[evp_pkey_asn1_method_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_pkey_ctx_st = CStruct0
   object evp_pkey_ctx_st:
     given _tag: Tag[evp_pkey_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_pkey_method_st = CStruct0
   object evp_pkey_method_st:
     given _tag: Tag[evp_pkey_method_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_pkey_st = CStruct0
   object evp_pkey_st:
     given _tag: Tag[evp_pkey_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_rand_ctx_st = CStruct0
   object evp_rand_ctx_st:
     given _tag: Tag[evp_rand_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_rand_st = CStruct0
   object evp_rand_st:
     given _tag: Tag[evp_rand_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type evp_signature_st = CStruct0
   object evp_signature_st:
     given _tag: Tag[evp_signature_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type hmac_ctx_st = CStruct0
   object hmac_ctx_st:
     given _tag: Tag[hmac_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type hostent = CStruct0
   object hostent:
     given _tag: Tag[hostent] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   opaque type obj_name_st = CStruct4[CInt, CInt, CString, CString]
   object obj_name_st:
@@ -6011,28 +5479,24 @@ object structs:
       def data_=(value: CString): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ocsp_responder_id_st = CStruct0
   object ocsp_responder_id_st:
     given _tag: Tag[ocsp_responder_id_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ocsp_response_st = CStruct0
   object ocsp_response_st:
     given _tag: Tag[ocsp_response_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type openssl_core_ctx_st = CStruct0
   object openssl_core_ctx_st:
     given _tag: Tag[openssl_core_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type ossl_algorithm_st = CStruct4[CString, CString, Ptr[OSSL_DISPATCH], CString]
   object ossl_algorithm_st:
@@ -6056,35 +5520,30 @@ object structs:
       def algorithm_description_=(value: CString): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type ossl_core_bio_st = CStruct0
   object ossl_core_bio_st:
     given _tag: Tag[ossl_core_bio_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type ossl_core_handle_st = CStruct0
   object ossl_core_handle_st:
     given _tag: Tag[ossl_core_handle_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ossl_decoder_ctx_st = CStruct0
   object ossl_decoder_ctx_st:
     given _tag: Tag[ossl_decoder_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ossl_decoder_st = CStruct0
   object ossl_decoder_st:
     given _tag: Tag[ossl_decoder_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type ossl_dispatch_st = CStruct2[CInt, CFuncPtr0[Unit]]
   object ossl_dispatch_st:
@@ -6102,35 +5561,30 @@ object structs:
       def function_=(value: CFuncPtr0[Unit]): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ossl_encoder_ctx_st = CStruct0
   object ossl_encoder_ctx_st:
     given _tag: Tag[ossl_encoder_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ossl_encoder_st = CStruct0
   object ossl_encoder_st:
     given _tag: Tag[ossl_encoder_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ossl_http_req_ctx_st = CStruct0
   object ossl_http_req_ctx_st:
     given _tag: Tag[ossl_http_req_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ossl_init_settings_st = CStruct0
   object ossl_init_settings_st:
     given _tag: Tag[ossl_init_settings_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type ossl_item_st = CStruct2[CUnsignedInt, Ptr[Byte]]
   object ossl_item_st:
@@ -6148,21 +5602,18 @@ object structs:
       def ptr_=(value: Ptr[Byte]): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ossl_lib_ctx_st = CStruct0
   object ossl_lib_ctx_st:
     given _tag: Tag[ossl_lib_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ossl_param_bld_st = CStruct0
   object ossl_param_bld_st:
     given _tag: Tag[ossl_param_bld_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   opaque type ossl_param_st = CStruct5[CString, CUnsignedInt, Ptr[Byte], size_t, size_t]
   object ossl_param_st:
@@ -6189,294 +5640,252 @@ object structs:
       def return_size_=(value: size_t): Unit = !struct.at5 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ossl_provider_st = CStruct0
   object ossl_provider_st:
     given _tag: Tag[ossl_provider_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ossl_self_test_st = CStruct0
   object ossl_self_test_st:
     given _tag: Tag[ossl_self_test_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ossl_store_info_st = CStruct0
   object ossl_store_info_st:
     given _tag: Tag[ossl_store_info_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ossl_store_search_st = CStruct0
   object ossl_store_search_st:
     given _tag: Tag[ossl_store_search_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type pkcs8_priv_key_info_st = CStruct0
   object pkcs8_priv_key_info_st:
     given _tag: Tag[pkcs8_priv_key_info_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type rand_drbg_st = CStruct0
   object rand_drbg_st:
     given _tag: Tag[rand_drbg_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type rand_meth_st = CStruct0
   object rand_meth_st:
     given _tag: Tag[rand_meth_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type rsa_meth_st = CStruct0
   object rsa_meth_st:
     given _tag: Tag[rsa_meth_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type rsa_pss_params_st = CStruct0
   object rsa_pss_params_st:
     given _tag: Tag[rsa_pss_params_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   opaque type rsa_st = CStruct0
   object rsa_st:
     given _tag: Tag[rsa_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type sct_ctx_st = CStruct0
   object sct_ctx_st:
     given _tag: Tag[sct_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type sct_st = CStruct0
   object sct_st:
     given _tag: Tag[sct_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ssl_ctx_st = CStruct0
   object ssl_ctx_st:
     given _tag: Tag[ssl_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ssl_dane_st = CStruct0
   object ssl_dane_st:
     given _tag: Tag[ssl_dane_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ssl_st = CStruct0
   object ssl_st:
     given _tag: Tag[ssl_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   opaque type stack_st = CStruct0
   object stack_st:
     given _tag: Tag[stack_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type stack_st_ASN1_GENERALSTRING = CStruct0
   object stack_st_ASN1_GENERALSTRING:
     given _tag: Tag[stack_st_ASN1_GENERALSTRING] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type stack_st_ASN1_INTEGER = CStruct0
   object stack_st_ASN1_INTEGER:
     given _tag: Tag[stack_st_ASN1_INTEGER] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type stack_st_ASN1_OBJECT = CStruct0
   object stack_st_ASN1_OBJECT:
     given _tag: Tag[stack_st_ASN1_OBJECT] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type stack_st_ASN1_STRING_TABLE = CStruct0
   object stack_st_ASN1_STRING_TABLE:
     given _tag: Tag[stack_st_ASN1_STRING_TABLE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type stack_st_ASN1_TYPE = CStruct0
   object stack_st_ASN1_TYPE:
     given _tag: Tag[stack_st_ASN1_TYPE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type stack_st_ASN1_UTF8STRING = CStruct0
   object stack_st_ASN1_UTF8STRING:
     given _tag: Tag[stack_st_ASN1_UTF8STRING] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type stack_st_BIGNUM = CStruct0
   object stack_st_BIGNUM:
     given _tag: Tag[stack_st_BIGNUM] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type stack_st_BIGNUM_const = CStruct0
   object stack_st_BIGNUM_const:
     given _tag: Tag[stack_st_BIGNUM_const] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type stack_st_BIO = CStruct0
   object stack_st_BIO:
     given _tag: Tag[stack_st_BIO] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type stack_st_OPENSSL_BLOCK = CStruct0
   object stack_st_OPENSSL_BLOCK:
     given _tag: Tag[stack_st_OPENSSL_BLOCK] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type stack_st_OPENSSL_CSTRING = CStruct0
   object stack_st_OPENSSL_CSTRING:
     given _tag: Tag[stack_st_OPENSSL_CSTRING] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   opaque type stack_st_OPENSSL_STRING = CStruct0
   object stack_st_OPENSSL_STRING:
     given _tag: Tag[stack_st_OPENSSL_STRING] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   opaque type stack_st_X509_ALGOR = CStruct0
   object stack_st_X509_ALGOR:
     given _tag: Tag[stack_st_X509_ALGOR] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   opaque type stack_st_void = CStruct0
   object stack_st_void:
     given _tag: Tag[stack_st_void] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ui_method_st = CStruct0
   object ui_method_st:
     given _tag: Tag[ui_method_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type ui_st = CStruct0
   object ui_st:
     given _tag: Tag[ui_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type v3_ext_ctx = CStruct0
   object v3_ext_ctx:
     given _tag: Tag[v3_ext_ctx] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type x509_crl_method_st = CStruct0
   object x509_crl_method_st:
     given _tag: Tag[x509_crl_method_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type x509_lookup_method_st = CStruct0
   object x509_lookup_method_st:
     given _tag: Tag[x509_lookup_method_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type x509_lookup_st = CStruct0
   object x509_lookup_st:
     given _tag: Tag[x509_lookup_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type x509_object_st = CStruct0
   object x509_object_st:
     given _tag: Tag[x509_object_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type x509_revoked_st = CStruct0
   object x509_revoked_st:
     given _tag: Tag[x509_revoked_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type x509_sig_info_st = CStruct0
   object x509_sig_info_st:
     given _tag: Tag[x509_sig_info_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type x509_st = CStruct0
   object x509_st:
     given _tag: Tag[x509_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type x509_store_ctx_st = CStruct0
   object x509_store_ctx_st:
     given _tag: Tag[x509_store_ctx_st] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/types.h
   */
   opaque type x509_store_st = CStruct0
   object x509_store_st:
@@ -6489,14 +5898,12 @@ object unions:
   import _root_.openssl.structs.*
   import _root_.openssl.unions.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type BIO_ADDR = CArray[Byte, Nat._1]
   object BIO_ADDR:
     given _tag: Tag[BIO_ADDR] = Tag.CArray[CChar, Nat._1](Tag.Byte, Tag.Nat1)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type BIO_sock_info_u = CArray[Byte, Nat._8]
   object BIO_sock_info_u:
@@ -6515,7 +5922,6 @@ object unions:
       def addr_=(value: Ptr[BIO_ADDR]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[BIO_ADDR]]] = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   opaque type bio_addr_st = CArray[Byte, Nat._1]
   object bio_addr_st:
@@ -6530,9181 +5936,7344 @@ private[openssl] object extern_functions:
   import _root_.openssl.structs.*
   import _root_.openssl.unions.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_ANY_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_BIT_STRING_check(a : Ptr[ASN1_BIT_STRING], flags : Ptr[CUnsignedChar], flags_len : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_BIT_STRING_free(a : Ptr[ASN1_BIT_STRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_BIT_STRING_get_bit(a : Ptr[ASN1_BIT_STRING], n : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_BIT_STRING_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_BIT_STRING_name_print(out : Ptr[BIO], bs : Ptr[ASN1_BIT_STRING], tbl : Ptr[BIT_STRING_BITNAME], indent : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_BIT_STRING_new(): Ptr[ASN1_BIT_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_BIT_STRING_num_asc(name : CString, tbl : Ptr[BIT_STRING_BITNAME]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_BIT_STRING_set(a : Ptr[ASN1_BIT_STRING], d : Ptr[CUnsignedChar], length : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_BIT_STRING_set_asc(bs : Ptr[ASN1_BIT_STRING], name : CString, value : CInt, tbl : Ptr[BIT_STRING_BITNAME]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_BIT_STRING_set_bit(a : Ptr[ASN1_BIT_STRING], n : CInt, value : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_BMPSTRING_free(a : Ptr[ASN1_BMPSTRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_BMPSTRING_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_BMPSTRING_new(): Ptr[ASN1_BMPSTRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_ENUMERATED_free(a : Ptr[ASN1_ENUMERATED]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_ENUMERATED_get(a : Ptr[ASN1_ENUMERATED]): CLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_ENUMERATED_get_int64(pr : Ptr[int64_t], a : Ptr[ASN1_ENUMERATED]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_ENUMERATED_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_ENUMERATED_new(): Ptr[ASN1_ENUMERATED] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_ENUMERATED_set(a : Ptr[ASN1_ENUMERATED], v : CLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_ENUMERATED_set_int64(a : Ptr[ASN1_ENUMERATED], r : int64_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_ENUMERATED_to_BN(ai : Ptr[ASN1_ENUMERATED], bn : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_GENERALIZEDTIME_adj(s : Ptr[ASN1_GENERALIZEDTIME], t : time_t, offset_day : CInt, offset_sec : CLongInt): Ptr[ASN1_GENERALIZEDTIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_GENERALIZEDTIME_check(a : Ptr[ASN1_GENERALIZEDTIME]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_GENERALIZEDTIME_dup(a : Ptr[ASN1_GENERALIZEDTIME]): Ptr[ASN1_GENERALIZEDTIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_GENERALIZEDTIME_free(a : Ptr[ASN1_GENERALIZEDTIME]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_GENERALIZEDTIME_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_GENERALIZEDTIME_new(): Ptr[ASN1_GENERALIZEDTIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_GENERALIZEDTIME_print(fp : Ptr[BIO], a : Ptr[ASN1_GENERALIZEDTIME]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_GENERALIZEDTIME_set(s : Ptr[ASN1_GENERALIZEDTIME], t : time_t): Ptr[ASN1_GENERALIZEDTIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_GENERALIZEDTIME_set_string(s : Ptr[ASN1_GENERALIZEDTIME], str : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_GENERALSTRING_free(a : Ptr[ASN1_GENERALSTRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_GENERALSTRING_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_GENERALSTRING_new(): Ptr[ASN1_GENERALSTRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_IA5STRING_free(a : Ptr[ASN1_IA5STRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_IA5STRING_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_IA5STRING_new(): Ptr[ASN1_IA5STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_INTEGER_cmp(x : Ptr[ASN1_INTEGER], y : Ptr[ASN1_INTEGER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_INTEGER_dup(a : Ptr[ASN1_INTEGER]): Ptr[ASN1_INTEGER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_INTEGER_free(a : Ptr[ASN1_INTEGER]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_INTEGER_get(a : Ptr[ASN1_INTEGER]): CLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_INTEGER_get_int64(pr : Ptr[int64_t], a : Ptr[ASN1_INTEGER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_INTEGER_get_uint64(pr : Ptr[uint64_t], a : Ptr[ASN1_INTEGER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_INTEGER_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_INTEGER_new(): Ptr[ASN1_INTEGER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_INTEGER_set(a : Ptr[ASN1_INTEGER], v : CLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_INTEGER_set_int64(a : Ptr[ASN1_INTEGER], r : int64_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_INTEGER_set_uint64(a : Ptr[ASN1_INTEGER], r : uint64_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_INTEGER_to_BN(ai : Ptr[ASN1_INTEGER], bn : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_ITEM_get(i : size_t): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_ITEM_lookup(name : CString): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_NULL_free(a : Ptr[ASN1_NULL]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_NULL_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_NULL_new(): Ptr[ASN1_NULL] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_OBJECT_create(nid : CInt, data : Ptr[CUnsignedChar], len : CInt, sn : CString, ln : CString): Ptr[ASN1_OBJECT] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_OBJECT_free(a : Ptr[ASN1_OBJECT]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_OBJECT_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_OBJECT_new(): Ptr[ASN1_OBJECT] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_OCTET_STRING_NDEF_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_OCTET_STRING_cmp(a : Ptr[ASN1_OCTET_STRING], b : Ptr[ASN1_OCTET_STRING]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_OCTET_STRING_dup(a : Ptr[ASN1_OCTET_STRING]): Ptr[ASN1_OCTET_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_OCTET_STRING_free(a : Ptr[ASN1_OCTET_STRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_OCTET_STRING_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_OCTET_STRING_new(): Ptr[ASN1_OCTET_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_OCTET_STRING_set(str : Ptr[ASN1_OCTET_STRING], data : Ptr[CUnsignedChar], len : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PCTX_free(p : Ptr[ASN1_PCTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PCTX_get_cert_flags(p : Ptr[ASN1_PCTX]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PCTX_get_flags(p : Ptr[ASN1_PCTX]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PCTX_get_nm_flags(p : Ptr[ASN1_PCTX]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PCTX_get_oid_flags(p : Ptr[ASN1_PCTX]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PCTX_get_str_flags(p : Ptr[ASN1_PCTX]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PCTX_new(): Ptr[ASN1_PCTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PCTX_set_cert_flags(p : Ptr[ASN1_PCTX], flags : CUnsignedLongInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PCTX_set_flags(p : Ptr[ASN1_PCTX], flags : CUnsignedLongInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PCTX_set_nm_flags(p : Ptr[ASN1_PCTX], flags : CUnsignedLongInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PCTX_set_oid_flags(p : Ptr[ASN1_PCTX], flags : CUnsignedLongInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PCTX_set_str_flags(p : Ptr[ASN1_PCTX], flags : CUnsignedLongInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PRINTABLESTRING_free(a : Ptr[ASN1_PRINTABLESTRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PRINTABLESTRING_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PRINTABLESTRING_new(): Ptr[ASN1_PRINTABLESTRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PRINTABLE_free(a : Ptr[ASN1_STRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PRINTABLE_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PRINTABLE_new(): Ptr[ASN1_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_PRINTABLE_type(s : Ptr[CUnsignedChar], max : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_SCTX_free(p : Ptr[ASN1_SCTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_SCTX_get_app_data(p : Ptr[ASN1_SCTX]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_SCTX_get_flags(p : Ptr[ASN1_SCTX]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_SCTX_get_item(p : Ptr[ASN1_SCTX]): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_SCTX_get_template(p : Ptr[ASN1_SCTX]): Ptr[ASN1_TEMPLATE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_SCTX_new(scan_cb : CFuncPtr1[Ptr[ASN1_SCTX], CInt]): Ptr[ASN1_SCTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_SCTX_set_app_data(p : Ptr[ASN1_SCTX], data : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_SEQUENCE_ANY_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_SET_ANY_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_TABLE_add(_0 : CInt, _1 : CLongInt, _2 : CLongInt, _3 : CUnsignedLongInt, _4 : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_TABLE_cleanup(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_TABLE_get(nid : CInt): Ptr[ASN1_STRING_TABLE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_clear_free(a : Ptr[ASN1_STRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_cmp(a : Ptr[ASN1_STRING], b : Ptr[ASN1_STRING]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_copy(dst : Ptr[ASN1_STRING], str : Ptr[ASN1_STRING]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_data(x : Ptr[ASN1_STRING]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_dup(a : Ptr[ASN1_STRING]): Ptr[ASN1_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_free(a : Ptr[ASN1_STRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_get0_data(x : Ptr[ASN1_STRING]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_get_default_mask(): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_length(x : Ptr[ASN1_STRING]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_length_set(x : Ptr[ASN1_STRING], n : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_new(): Ptr[ASN1_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_print(bp : Ptr[BIO], v : Ptr[ASN1_STRING]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_print_ex(out : Ptr[BIO], str : Ptr[ASN1_STRING], flags : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_print_ex_fp(fp : Ptr[FILE], str : Ptr[ASN1_STRING], flags : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_set(str : Ptr[ASN1_STRING], data : Ptr[Byte], len : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_set0(str : Ptr[ASN1_STRING], data : Ptr[Byte], len : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_set_by_NID(out : Ptr[Ptr[ASN1_STRING]], in : Ptr[CUnsignedChar], inlen : CInt, inform : CInt, nid : CInt): Ptr[ASN1_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_set_default_mask(mask : CUnsignedLongInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_set_default_mask_asc(p : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_to_UTF8(out : Ptr[Ptr[CUnsignedChar]], in : Ptr[ASN1_STRING]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_type(x : Ptr[ASN1_STRING]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_STRING_type_new(`type` : CInt): Ptr[ASN1_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_T61STRING_free(a : Ptr[ASN1_T61STRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_T61STRING_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_T61STRING_new(): Ptr[ASN1_T61STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_adj(s : Ptr[ASN1_TIME], t : time_t, offset_day : CInt, offset_sec : CLongInt): Ptr[ASN1_TIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_check(t : Ptr[ASN1_TIME]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_cmp_time_t(s : Ptr[ASN1_TIME], t : time_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_compare(a : Ptr[ASN1_TIME], b : Ptr[ASN1_TIME]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_diff(pday : Ptr[CInt], psec : Ptr[CInt], from : Ptr[ASN1_TIME], to : Ptr[ASN1_TIME]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_dup(a : Ptr[ASN1_TIME]): Ptr[ASN1_TIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_free(a : Ptr[ASN1_TIME]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_new(): Ptr[ASN1_TIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_normalize(s : Ptr[ASN1_TIME]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_print(bp : Ptr[BIO], tm : Ptr[ASN1_TIME]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_print_ex(bp : Ptr[BIO], tm : Ptr[ASN1_TIME], flags : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_set(s : Ptr[ASN1_TIME], t : time_t): Ptr[ASN1_TIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_set_string(s : Ptr[ASN1_TIME], str : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_set_string_X509(s : Ptr[ASN1_TIME], str : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_to_generalizedtime(t : Ptr[ASN1_TIME], out : Ptr[Ptr[ASN1_GENERALIZEDTIME]]): Ptr[ASN1_GENERALIZEDTIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TIME_to_tm(s : Ptr[ASN1_TIME], tm : Ptr[tm]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TYPE_cmp(a : Ptr[ASN1_TYPE], b : Ptr[ASN1_TYPE]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TYPE_free(a : Ptr[ASN1_TYPE]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TYPE_get(a : Ptr[ASN1_TYPE]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TYPE_get_int_octetstring(a : Ptr[ASN1_TYPE], num : Ptr[CLongInt], data : Ptr[CUnsignedChar], max_len : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TYPE_get_octetstring(a : Ptr[ASN1_TYPE], data : Ptr[CUnsignedChar], max_len : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TYPE_new(): Ptr[ASN1_TYPE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TYPE_pack_sequence(it : Ptr[ASN1_ITEM], s : Ptr[Byte], t : Ptr[Ptr[ASN1_TYPE]]): Ptr[ASN1_TYPE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TYPE_set(a : Ptr[ASN1_TYPE], `type` : CInt, value : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TYPE_set1(a : Ptr[ASN1_TYPE], `type` : CInt, value : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TYPE_set_int_octetstring(a : Ptr[ASN1_TYPE], num : CLongInt, data : Ptr[CUnsignedChar], len : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TYPE_set_octetstring(a : Ptr[ASN1_TYPE], data : Ptr[CUnsignedChar], len : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_TYPE_unpack_sequence(it : Ptr[ASN1_ITEM], t : Ptr[ASN1_TYPE]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UNIVERSALSTRING_free(a : Ptr[ASN1_UNIVERSALSTRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UNIVERSALSTRING_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UNIVERSALSTRING_new(): Ptr[ASN1_UNIVERSALSTRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UNIVERSALSTRING_to_string(s : Ptr[ASN1_UNIVERSALSTRING]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UTCTIME_adj(s : Ptr[ASN1_UTCTIME], t : time_t, offset_day : CInt, offset_sec : CLongInt): Ptr[ASN1_UTCTIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UTCTIME_check(a : Ptr[ASN1_UTCTIME]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UTCTIME_cmp_time_t(s : Ptr[ASN1_UTCTIME], t : time_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UTCTIME_dup(a : Ptr[ASN1_UTCTIME]): Ptr[ASN1_UTCTIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UTCTIME_free(a : Ptr[ASN1_UTCTIME]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UTCTIME_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UTCTIME_new(): Ptr[ASN1_UTCTIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UTCTIME_print(fp : Ptr[BIO], a : Ptr[ASN1_UTCTIME]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UTCTIME_set(s : Ptr[ASN1_UTCTIME], t : time_t): Ptr[ASN1_UTCTIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UTCTIME_set_string(s : Ptr[ASN1_UTCTIME], str : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UTF8STRING_free(a : Ptr[ASN1_UTF8STRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UTF8STRING_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_UTF8STRING_new(): Ptr[ASN1_UTF8STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_VISIBLESTRING_free(a : Ptr[ASN1_VISIBLESTRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_VISIBLESTRING_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_VISIBLESTRING_new(): Ptr[ASN1_VISIBLESTRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_add_oid_module(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_add_stable_module(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_bn_print(bp : Ptr[BIO], number : CString, num : Ptr[BIGNUM], buf : Ptr[CUnsignedChar], off : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_buf_print(bp : Ptr[BIO], buf : Ptr[CUnsignedChar], buflen : size_t, off : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_check_infinite_end(p : Ptr[Ptr[CUnsignedChar]], len : CLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_const_check_infinite_end(p : Ptr[Ptr[CUnsignedChar]], len : CLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_d2i_bio(xnew : CFuncPtr0[Ptr[Byte]], d2i : Ptr[d2i_of_void], in : Ptr[BIO], x : Ptr[Ptr[Byte]]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_d2i_fp(xnew : CFuncPtr0[Ptr[Byte]], d2i : Ptr[d2i_of_void], in : Ptr[FILE], x : Ptr[Ptr[Byte]]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_dup(i2d : Ptr[i2d_of_void], d2i : Ptr[d2i_of_void], x : Ptr[Byte]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_generate_nconf(str : CString, nconf : Ptr[CONF]): Ptr[ASN1_TYPE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_generate_v3(str : CString, cnf : Ptr[X509V3_CTX]): Ptr[ASN1_TYPE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_get_object(pp : Ptr[Ptr[CUnsignedChar]], plength : Ptr[CLongInt], ptag : Ptr[CInt], pclass : Ptr[CInt], omax : CLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_i2d_bio(i2d : Ptr[i2d_of_void], out : Ptr[BIO], x : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_i2d_fp(i2d : Ptr[i2d_of_void], out : Ptr[FILE], x : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_d2i(`val` : Ptr[Ptr[ASN1_VALUE]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt, it : Ptr[ASN1_ITEM]): Ptr[ASN1_VALUE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_d2i_bio(it : Ptr[ASN1_ITEM], in : Ptr[BIO], pval : Ptr[Byte]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_d2i_bio_ex(it : Ptr[ASN1_ITEM], in : Ptr[BIO], pval : Ptr[Byte], libctx : Ptr[OSSL_LIB_CTX], propq : CString): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_d2i_ex(`val` : Ptr[Ptr[ASN1_VALUE]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt, it : Ptr[ASN1_ITEM], libctx : Ptr[OSSL_LIB_CTX], propq : CString): Ptr[ASN1_VALUE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_d2i_fp(it : Ptr[ASN1_ITEM], in : Ptr[FILE], x : Ptr[Byte]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_d2i_fp_ex(it : Ptr[ASN1_ITEM], in : Ptr[FILE], x : Ptr[Byte], libctx : Ptr[OSSL_LIB_CTX], propq : CString): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_dup(it : Ptr[ASN1_ITEM], x : Ptr[Byte]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_free(`val` : Ptr[ASN1_VALUE], it : Ptr[ASN1_ITEM]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_i2d(`val` : Ptr[ASN1_VALUE], out : Ptr[Ptr[CUnsignedChar]], it : Ptr[ASN1_ITEM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_i2d_bio(it : Ptr[ASN1_ITEM], out : Ptr[BIO], x : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_i2d_fp(it : Ptr[ASN1_ITEM], out : Ptr[FILE], x : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_i2d_mem_bio(it : Ptr[ASN1_ITEM], `val` : Ptr[ASN1_VALUE]): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_ndef_i2d(`val` : Ptr[ASN1_VALUE], out : Ptr[Ptr[CUnsignedChar]], it : Ptr[ASN1_ITEM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_new(it : Ptr[ASN1_ITEM]): Ptr[ASN1_VALUE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_new_ex(it : Ptr[ASN1_ITEM], libctx : Ptr[OSSL_LIB_CTX], propq : CString): Ptr[ASN1_VALUE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_pack(obj : Ptr[Byte], it : Ptr[ASN1_ITEM], oct : Ptr[Ptr[ASN1_OCTET_STRING]]): Ptr[ASN1_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_print(out : Ptr[BIO], ifld : Ptr[ASN1_VALUE], indent : CInt, it : Ptr[ASN1_ITEM], pctx : Ptr[ASN1_PCTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_sign_ex(it : Ptr[ASN1_ITEM], algor1 : Ptr[X509_ALGOR], algor2 : Ptr[X509_ALGOR], signature : Ptr[ASN1_BIT_STRING], data : Ptr[Byte], id : Ptr[ASN1_OCTET_STRING], pkey : Ptr[EVP_PKEY], md : Ptr[EVP_MD], libctx : Ptr[OSSL_LIB_CTX], propq : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_unpack(oct : Ptr[ASN1_STRING], it : Ptr[ASN1_ITEM]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_item_verify_ex(it : Ptr[ASN1_ITEM], alg : Ptr[X509_ALGOR], signature : Ptr[ASN1_BIT_STRING], data : Ptr[Byte], id : Ptr[ASN1_OCTET_STRING], pkey : Ptr[EVP_PKEY], libctx : Ptr[OSSL_LIB_CTX], propq : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_mbstring_copy(out : Ptr[Ptr[ASN1_STRING]], in : Ptr[CUnsignedChar], len : CInt, inform : CInt, mask : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_mbstring_ncopy(out : Ptr[Ptr[ASN1_STRING]], in : Ptr[CUnsignedChar], len : CInt, inform : CInt, mask : CUnsignedLongInt, minsize : CLongInt, maxsize : CLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_object_size(constructed : CInt, length : CInt, tag : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_parse(bp : Ptr[BIO], pp : Ptr[CUnsignedChar], len : CLongInt, indent : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_parse_dump(bp : Ptr[BIO], pp : Ptr[CUnsignedChar], len : CLongInt, indent : CInt, dump : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_put_eoc(pp : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_put_object(pp : Ptr[Ptr[CUnsignedChar]], constructed : CInt, length : CInt, tag : CInt, xclass : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_str2mask(str : CString, pmask : Ptr[CUnsignedLongInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_tag2bit(tag : CInt): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ASN1_tag2str(tag : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDRINFO_address(bai : Ptr[BIO_ADDRINFO]): Ptr[BIO_ADDR] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDRINFO_family(bai : Ptr[BIO_ADDRINFO]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDRINFO_free(bai : Ptr[BIO_ADDRINFO]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDRINFO_next(bai : Ptr[BIO_ADDRINFO]): Ptr[BIO_ADDRINFO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDRINFO_protocol(bai : Ptr[BIO_ADDRINFO]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDRINFO_socktype(bai : Ptr[BIO_ADDRINFO]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDR_clear(ap : Ptr[BIO_ADDR]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDR_family(ap : Ptr[BIO_ADDR]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDR_free(_0 : Ptr[BIO_ADDR]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDR_hostname_string(ap : Ptr[BIO_ADDR], numeric : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDR_new(): Ptr[BIO_ADDR] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDR_path_string(ap : Ptr[BIO_ADDR]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDR_rawaddress(ap : Ptr[BIO_ADDR], p : Ptr[Byte], l : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDR_rawmake(ap : Ptr[BIO_ADDR], family : CInt, where : Ptr[Byte], wherelen : size_t, port : CUnsignedShort): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDR_rawport(ap : Ptr[BIO_ADDR]): CUnsignedShort = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ADDR_service_string(ap : Ptr[BIO_ADDR], numeric : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_accept(sock : CInt, ip_port : Ptr[CString]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_accept_ex(accept_sock : CInt, addr : Ptr[BIO_ADDR], options : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_asn1_get_prefix(b : Ptr[BIO], pprefix : Ptr[Ptr[asn1_ps_func]], pprefix_free : Ptr[Ptr[asn1_ps_func]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_asn1_get_suffix(b : Ptr[BIO], psuffix : Ptr[Ptr[asn1_ps_func]], psuffix_free : Ptr[Ptr[asn1_ps_func]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_asn1_set_prefix(b : Ptr[BIO], prefix : Ptr[asn1_ps_func], prefix_free : Ptr[asn1_ps_func]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_asn1_set_suffix(b : Ptr[BIO], suffix : Ptr[asn1_ps_func], suffix_free : Ptr[asn1_ps_func]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_bind(sock : CInt, addr : Ptr[BIO_ADDR], options : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_callback_ctrl(b : Ptr[BIO], cmd : CInt, fp : Ptr[BIO_info_cb]): CLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_clear_flags(b : Ptr[BIO], flags : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_closesocket(sock : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_connect(sock : CInt, addr : Ptr[BIO_ADDR], options : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_copy_next_retry(b : Ptr[BIO]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ctrl(bp : Ptr[BIO], cmd : CInt, larg : CLongInt, parg : Ptr[Byte]): CLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ctrl_get_read_request(b : Ptr[BIO]): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ctrl_get_write_guarantee(b : Ptr[BIO]): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ctrl_pending(b : Ptr[BIO]): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ctrl_reset_read_request(b : Ptr[BIO]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ctrl_wpending(b : Ptr[BIO]): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_debug_callback(bio : Ptr[BIO], cmd : CInt, argp : CString, argi : CInt, argl : CLongInt, ret : CLongInt): CLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_debug_callback_ex(bio : Ptr[BIO], oper : CInt, argp : CString, len : size_t, argi : CInt, argl : CLongInt, ret : CInt, processed : Ptr[size_t]): CLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_dgram_non_fatal_error(error : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_do_connect_retry(bio : Ptr[BIO], timeout : CInt, nap_milliseconds : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_dump(b : Ptr[BIO], bytes : Ptr[Byte], len : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_dump_cb(cb : CFuncPtr3[Ptr[Byte], size_t, Ptr[Byte], CInt], u : Ptr[Byte], s : Ptr[Byte], len : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_dump_fp(fp : Ptr[FILE], s : Ptr[Byte], len : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_dump_indent(b : Ptr[BIO], bytes : Ptr[Byte], len : CInt, indent : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_dump_indent_cb(cb : CFuncPtr3[Ptr[Byte], size_t, Ptr[Byte], CInt], u : Ptr[Byte], s : Ptr[Byte], len : CInt, indent : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_dump_indent_fp(fp : Ptr[FILE], s : Ptr[Byte], len : CInt, indent : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_dup_chain(in : Ptr[BIO]): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def BIO_f_asn1(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def BIO_f_base64(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_f_buffer(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def BIO_f_cipher(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_f_linebuffer(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def BIO_f_md(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_f_nbio_test(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_f_null(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_f_prefix(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_f_readbuffer(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def BIO_f_reliable(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_fd_non_fatal_error(error : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_fd_should_retry(i : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_find_type(b : Ptr[BIO], bio_type : CInt): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_free(a : Ptr[BIO]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_free_all(a : Ptr[BIO]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_accept_socket(host_port : CString, mode : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_callback(b : Ptr[BIO]): BIO_callback_fn = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_callback_arg(b : Ptr[BIO]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_callback_ex(b : Ptr[BIO]): BIO_callback_fn_ex = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_data(a : Ptr[BIO]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_ex_data(bio : Ptr[BIO], idx : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_host_ip(str : CString, ip : Ptr[CUnsignedChar]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_init(a : Ptr[BIO]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_line(bio : Ptr[BIO], buf : CString, size : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_new_index(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_port(str : CString, port_ptr : Ptr[CUnsignedShort]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_retry_BIO(bio : Ptr[BIO], reason : Ptr[CInt]): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_retry_reason(bio : Ptr[BIO]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_get_shutdown(a : Ptr[BIO]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_gethostbyname(name : CString): Ptr[hostent] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_gets(bp : Ptr[BIO], buf : CString, size : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_hex_string(out : Ptr[BIO], indent : CInt, width : CInt, data : Ptr[Byte], datalen : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_indent(b : Ptr[BIO], indent : CInt, max : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_int_ctrl(bp : Ptr[BIO], cmd : CInt, larg : CLongInt, iarg : CInt): CLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_listen(sock : CInt, addr : Ptr[BIO_ADDR], options : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_lookup(host : CString, service : CString, lookup_type : BIO_lookup_type, family : CInt, socktype : CInt, res : Ptr[Ptr[BIO_ADDRINFO]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_lookup_ex(host : CString, service : CString, lookup_type : CInt, family : CInt, socktype : CInt, protocol : CInt, res : Ptr[Ptr[BIO_ADDRINFO]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_free(biom : Ptr[BIO_METHOD]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_get_callback_ctrl(_0 : Ptr[BIO]): CFuncPtr3[Ptr[BIO], CInt, Ptr[BIO_info_cb], CLongInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_get_create(_0 : Ptr[BIO]): CFuncPtr1[Ptr[BIO], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_get_ctrl(_0 : Ptr[BIO]): CFuncPtr4[Ptr[BIO], CInt, CLongInt, Ptr[Byte], CLongInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_get_destroy(_0 : Ptr[BIO]): CFuncPtr1[Ptr[BIO], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_get_gets(_0 : Ptr[BIO]): CFuncPtr3[Ptr[BIO], CString, CInt, CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_get_puts(_0 : Ptr[BIO]): CFuncPtr2[Ptr[BIO], CString, CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_get_read(_0 : Ptr[BIO]): CFuncPtr3[Ptr[BIO], CString, CInt, CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_get_read_ex(_0 : Ptr[BIO]): CFuncPtr4[Ptr[BIO], CString, size_t, Ptr[size_t], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_get_write(_0 : Ptr[BIO]): CFuncPtr3[Ptr[BIO], CString, CInt, CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_get_write_ex(_0 : Ptr[BIO]): CFuncPtr4[Ptr[BIO], CString, size_t, Ptr[size_t], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_new(`type` : CInt, name : CString): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_set_callback_ctrl(biom : Ptr[BIO_METHOD], callback_ctrl : CFuncPtr3[Ptr[BIO], CInt, Ptr[BIO_info_cb], CLongInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_set_create(biom : Ptr[BIO_METHOD], create : CFuncPtr1[Ptr[BIO], CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_set_ctrl(biom : Ptr[BIO_METHOD], ctrl : CFuncPtr4[Ptr[BIO], CInt, CLongInt, Ptr[Byte], CLongInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_set_destroy(biom : Ptr[BIO_METHOD], destroy : CFuncPtr1[Ptr[BIO], CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_set_gets(biom : Ptr[BIO_METHOD], gets : CFuncPtr3[Ptr[BIO], CString, CInt, CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_set_puts(biom : Ptr[BIO_METHOD], puts : CFuncPtr2[Ptr[BIO], CString, CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_set_read(biom : Ptr[BIO_METHOD], read : CFuncPtr3[Ptr[BIO], CString, CInt, CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_set_read_ex(biom : Ptr[BIO_METHOD], bread : CFuncPtr4[Ptr[BIO], CString, size_t, Ptr[size_t], CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_set_write(biom : Ptr[BIO_METHOD], write : CFuncPtr3[Ptr[BIO], CString, CInt, CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_meth_set_write_ex(biom : Ptr[BIO_METHOD], bwrite : CFuncPtr4[Ptr[BIO], CString, size_t, Ptr[size_t], CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_method_name(b : Ptr[BIO]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_method_type(b : Ptr[BIO]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_new(`type` : Ptr[BIO_METHOD]): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def BIO_new_NDEF(out : Ptr[BIO], `val` : Ptr[ASN1_VALUE], it : Ptr[ASN1_ITEM]): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_new_accept(host_port : CString): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_new_bio_pair(bio1 : Ptr[Ptr[BIO]], writebuf1 : size_t, bio2 : Ptr[Ptr[BIO]], writebuf2 : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_new_connect(host_port : CString): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_new_dgram(fd : CInt, close_flag : CInt): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_new_ex(libctx : Ptr[OSSL_LIB_CTX], method : Ptr[BIO_METHOD]): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_new_fd(fd : CInt, close_flag : CInt): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_new_file(filename : CString, mode : CString): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_new_fp(stream : Ptr[FILE], close_flag : CInt): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_new_from_core_bio(libctx : Ptr[OSSL_LIB_CTX], corebio : Ptr[OSSL_CORE_BIO]): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_new_mem_buf(buf : Ptr[Byte], len : CInt): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_new_socket(sock : CInt, close_flag : CInt): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_next(b : Ptr[BIO]): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_nread(bio : Ptr[BIO], buf : Ptr[CString], num : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_nread0(bio : Ptr[BIO], buf : Ptr[CString]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_number_read(bio : Ptr[BIO]): uint64_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_number_written(bio : Ptr[BIO]): uint64_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_nwrite(bio : Ptr[BIO], buf : Ptr[CString], num : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_nwrite0(bio : Ptr[BIO], buf : Ptr[CString]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_parse_hostserv(hostserv : CString, host : Ptr[CString], service : Ptr[CString], hostserv_prio : BIO_hostserv_priorities): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_pop(b : Ptr[BIO]): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_printf(bio : Ptr[BIO], format : CString, rest: Any*): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_ptr_ctrl(bp : Ptr[BIO], cmd : CInt, larg : CLongInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_push(b : Ptr[BIO], append : Ptr[BIO]): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_puts(bp : Ptr[BIO], buf : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_read(b : Ptr[BIO], data : Ptr[Byte], dlen : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_read_ex(b : Ptr[BIO], data : Ptr[Byte], dlen : size_t, readbytes : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_s_accept(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_s_bio(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_s_connect(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_s_core(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_s_datagram(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_s_fd(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_s_file(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_s_log(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_s_mem(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_s_null(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_s_secmem(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_s_socket(): Ptr[BIO_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_set_callback(b : Ptr[BIO], callback : BIO_callback_fn): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_set_callback_arg(b : Ptr[BIO], arg : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_set_callback_ex(b : Ptr[BIO], callback : BIO_callback_fn_ex): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def BIO_set_cipher(b : Ptr[BIO], c : Ptr[EVP_CIPHER], k : Ptr[CUnsignedChar], i : Ptr[CUnsignedChar], enc : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_set_data(a : Ptr[BIO], ptr : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_set_ex_data(bio : Ptr[BIO], idx : CInt, data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_set_flags(b : Ptr[BIO], flags : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_set_init(a : Ptr[BIO], init : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_set_next(b : Ptr[BIO], next : Ptr[BIO]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_set_retry_reason(bio : Ptr[BIO], reason : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_set_shutdown(a : Ptr[BIO], shut : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_set_tcp_ndelay(sock : CInt, turn_on : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_snprintf(buf : CString, n : size_t, format : CString, rest: Any*): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_sock_error(sock : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_sock_info(sock : CInt, `type` : BIO_sock_info_type, info : Ptr[BIO_sock_info_u]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_sock_init(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_sock_non_fatal_error(error : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_sock_should_retry(i : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_socket(domain : CInt, socktype : CInt, protocol : CInt, options : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_socket_ioctl(fd : CInt, `type` : CLongInt, arg : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_socket_nbio(fd : CInt, mode : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_socket_wait(fd : CInt, for_read : CInt, max_time : time_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_test_flags(b : Ptr[BIO], flags : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_up_ref(a : Ptr[BIO]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_vfree(a : Ptr[BIO]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_vprintf(bio : Ptr[BIO], format : CString, args : va_list): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_vsnprintf(buf : CString, n : size_t, format : CString, args : va_list): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_wait(bio : Ptr[BIO], max_time : time_t, nap_milliseconds : CUnsignedInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_write(b : Ptr[BIO], data : Ptr[Byte], dlen : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def BIO_write_ex(b : Ptr[BIO], data : Ptr[Byte], dlen : size_t, written : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_convert(n : Ptr[BIGNUM], b : Ptr[BN_BLINDING], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_convert_ex(n : Ptr[BIGNUM], r : Ptr[BIGNUM], b : Ptr[BN_BLINDING], _3 : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_create_param(b : Ptr[BN_BLINDING], e : Ptr[BIGNUM], m : Ptr[BIGNUM], ctx : Ptr[BN_CTX], bn_mod_exp : CFuncPtr6[Ptr[BIGNUM], Ptr[BIGNUM], Ptr[BIGNUM], Ptr[BIGNUM], Ptr[BN_CTX], Ptr[BN_MONT_CTX], CInt], m_ctx : Ptr[BN_MONT_CTX]): Ptr[BN_BLINDING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_free(b : Ptr[BN_BLINDING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_get_flags(_0 : Ptr[BN_BLINDING]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_invert(n : Ptr[BIGNUM], b : Ptr[BN_BLINDING], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_invert_ex(n : Ptr[BIGNUM], r : Ptr[BIGNUM], b : Ptr[BN_BLINDING], _3 : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_is_current_thread(b : Ptr[BN_BLINDING]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_lock(b : Ptr[BN_BLINDING]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_new(A : Ptr[BIGNUM], Ai : Ptr[BIGNUM], mod : Ptr[BIGNUM]): Ptr[BN_BLINDING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_set_current_thread(b : Ptr[BN_BLINDING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_set_flags(_0 : Ptr[BN_BLINDING], _1 : CUnsignedLongInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_unlock(b : Ptr[BN_BLINDING]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_BLINDING_update(b : Ptr[BN_BLINDING], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_CTX_end(ctx : Ptr[BN_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_CTX_free(c : Ptr[BN_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_CTX_get(ctx : Ptr[BN_CTX]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_CTX_new(): Ptr[BN_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_CTX_new_ex(ctx : Ptr[OSSL_LIB_CTX]): Ptr[BN_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_CTX_secure_new(): Ptr[BN_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_CTX_secure_new_ex(ctx : Ptr[OSSL_LIB_CTX]): Ptr[BN_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_CTX_start(ctx : Ptr[BN_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GENCB_call(cb : Ptr[BN_GENCB], a : CInt, b : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GENCB_free(cb : Ptr[BN_GENCB]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GENCB_get_arg(cb : Ptr[BN_GENCB]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GENCB_new(): Ptr[BN_GENCB] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GENCB_set(gencb : Ptr[BN_GENCB], callback : CFuncPtr3[CInt, CInt, Ptr[BN_GENCB], CInt], cb_arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GENCB_set_old(gencb : Ptr[BN_GENCB], callback : CFuncPtr3[CInt, CInt, Ptr[Byte], Unit], cb_arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_add(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_arr2poly(p : Ptr[CInt], a : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_arr(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_div(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], p : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_div_arr(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], p : Ptr[CInt], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_exp(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], p : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_exp_arr(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], p : Ptr[CInt], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_inv(r : Ptr[BIGNUM], b : Ptr[BIGNUM], p : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_inv_arr(r : Ptr[BIGNUM], b : Ptr[BIGNUM], p : Ptr[CInt], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_mul(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], p : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_mul_arr(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], p : Ptr[CInt], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_solve_quad(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_solve_quad_arr(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[CInt], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_sqr(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_sqr_arr(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[CInt], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_sqrt(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_mod_sqrt_arr(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[CInt], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_GF2m_poly2arr(a : Ptr[BIGNUM], p : Ptr[CInt], max : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_MONT_CTX_copy(to : Ptr[BN_MONT_CTX], from : Ptr[BN_MONT_CTX]): Ptr[BN_MONT_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_MONT_CTX_free(mont : Ptr[BN_MONT_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_MONT_CTX_new(): Ptr[BN_MONT_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_MONT_CTX_set(mont : Ptr[BN_MONT_CTX], mod : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_MONT_CTX_set_locked(pmont : Ptr[Ptr[BN_MONT_CTX]], lock : Ptr[CRYPTO_RWLOCK], mod : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): Ptr[BN_MONT_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_RECP_CTX_free(recp : Ptr[BN_RECP_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_RECP_CTX_new(): Ptr[BN_RECP_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_RECP_CTX_set(recp : Ptr[BN_RECP_CTX], rdiv : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_X931_derive_prime_ex(p : Ptr[BIGNUM], p1 : Ptr[BIGNUM], p2 : Ptr[BIGNUM], Xp : Ptr[BIGNUM], Xp1 : Ptr[BIGNUM], Xp2 : Ptr[BIGNUM], e : Ptr[BIGNUM], ctx : Ptr[BN_CTX], cb : Ptr[BN_GENCB]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_X931_generate_Xpq(Xp : Ptr[BIGNUM], Xq : Ptr[BIGNUM], nbits : CInt, ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_X931_generate_prime_ex(p : Ptr[BIGNUM], p1 : Ptr[BIGNUM], p2 : Ptr[BIGNUM], Xp1 : Ptr[BIGNUM], Xp2 : Ptr[BIGNUM], Xp : Ptr[BIGNUM], e : Ptr[BIGNUM], ctx : Ptr[BN_CTX], cb : Ptr[BN_GENCB]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_abs_is_word(a : Ptr[BIGNUM], w : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_add(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_add_word(a : Ptr[BIGNUM], w : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_are_coprime(a : Ptr[BIGNUM], b : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_asc2bn(a : Ptr[Ptr[BIGNUM]], str : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_bin2bn(s : Ptr[CUnsignedChar], len : CInt, ret : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_bn2bin(a : Ptr[BIGNUM], to : Ptr[CUnsignedChar]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_bn2binpad(a : Ptr[BIGNUM], to : Ptr[CUnsignedChar], tolen : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_bn2dec(a : Ptr[BIGNUM]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_bn2hex(a : Ptr[BIGNUM]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_bn2lebinpad(a : Ptr[BIGNUM], to : Ptr[CUnsignedChar], tolen : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_bn2mpi(a : Ptr[BIGNUM], to : Ptr[CUnsignedChar]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_bn2nativepad(a : Ptr[BIGNUM], to : Ptr[CUnsignedChar], tolen : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_bntest_rand(rnd : Ptr[BIGNUM], bits : CInt, top : CInt, bottom : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_check_prime(p : Ptr[BIGNUM], ctx : Ptr[BN_CTX], cb : Ptr[BN_GENCB]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_clear(a : Ptr[BIGNUM]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_clear_bit(a : Ptr[BIGNUM], n : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_clear_free(a : Ptr[BIGNUM]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_cmp(a : Ptr[BIGNUM], b : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_consttime_swap(swap : CUnsignedLongInt, a : Ptr[BIGNUM], b : Ptr[BIGNUM], nwords : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_copy(a : Ptr[BIGNUM], b : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_dec2bn(a : Ptr[Ptr[BIGNUM]], str : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_div(dv : Ptr[BIGNUM], rem : Ptr[BIGNUM], m : Ptr[BIGNUM], d : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_div_recp(dv : Ptr[BIGNUM], rem : Ptr[BIGNUM], m : Ptr[BIGNUM], recp : Ptr[BN_RECP_CTX], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_div_word(a : Ptr[BIGNUM], w : CUnsignedLongInt): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_dup(a : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_exp(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_free(a : Ptr[BIGNUM]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_from_montgomery(r : Ptr[BIGNUM], a : Ptr[BIGNUM], mont : Ptr[BN_MONT_CTX], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_gcd(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_generate_dsa_nonce(out : Ptr[BIGNUM], range : Ptr[BIGNUM], priv : Ptr[BIGNUM], message : Ptr[CUnsignedChar], message_len : size_t, ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_generate_prime(ret : Ptr[BIGNUM], bits : CInt, safe : CInt, add : Ptr[BIGNUM], rem : Ptr[BIGNUM], callback : CFuncPtr3[CInt, CInt, Ptr[Byte], Unit], cb_arg : Ptr[Byte]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_generate_prime_ex(ret : Ptr[BIGNUM], bits : CInt, safe : CInt, add : Ptr[BIGNUM], rem : Ptr[BIGNUM], cb : Ptr[BN_GENCB]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_generate_prime_ex2(ret : Ptr[BIGNUM], bits : CInt, safe : CInt, add : Ptr[BIGNUM], rem : Ptr[BIGNUM], cb : Ptr[BN_GENCB], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get0_nist_prime_192(): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get0_nist_prime_224(): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get0_nist_prime_256(): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get0_nist_prime_384(): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get0_nist_prime_521(): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get_flags(b : Ptr[BIGNUM], n : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get_params(which : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get_rfc2409_prime_1024(bn : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get_rfc2409_prime_768(bn : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get_rfc3526_prime_1536(bn : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get_rfc3526_prime_2048(bn : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get_rfc3526_prime_3072(bn : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get_rfc3526_prime_4096(bn : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get_rfc3526_prime_6144(bn : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get_rfc3526_prime_8192(bn : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_get_word(a : Ptr[BIGNUM]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_hex2bn(a : Ptr[Ptr[BIGNUM]], str : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_is_bit_set(a : Ptr[BIGNUM], n : CInt): CInt = extern
 
   /**
    * BN_is_negative returns 1 if the BIGNUM is negative
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_is_negative(b : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_is_odd(a : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_is_one(a : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_is_prime(p : Ptr[BIGNUM], nchecks : CInt, callback : CFuncPtr3[CInt, CInt, Ptr[Byte], Unit], ctx : Ptr[BN_CTX], cb_arg : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_is_prime_ex(p : Ptr[BIGNUM], nchecks : CInt, ctx : Ptr[BN_CTX], cb : Ptr[BN_GENCB]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_is_prime_fasttest(p : Ptr[BIGNUM], nchecks : CInt, callback : CFuncPtr3[CInt, CInt, Ptr[Byte], Unit], ctx : Ptr[BN_CTX], cb_arg : Ptr[Byte], do_trial_division : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_is_prime_fasttest_ex(p : Ptr[BIGNUM], nchecks : CInt, ctx : Ptr[BN_CTX], do_trial_division : CInt, cb : Ptr[BN_GENCB]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_is_word(a : Ptr[BIGNUM], w : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_is_zero(a : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_kronecker(a : Ptr[BIGNUM], b : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_lebin2bn(s : Ptr[CUnsignedChar], len : CInt, ret : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_lshift(r : Ptr[BIGNUM], a : Ptr[BIGNUM], n : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_lshift1(r : Ptr[BIGNUM], a : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mask_bits(a : Ptr[BIGNUM], n : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_add(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], m : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_add_quick(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], m : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_exp(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], m : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_exp2_mont(r : Ptr[BIGNUM], a1 : Ptr[BIGNUM], p1 : Ptr[BIGNUM], a2 : Ptr[BIGNUM], p2 : Ptr[BIGNUM], m : Ptr[BIGNUM], ctx : Ptr[BN_CTX], m_ctx : Ptr[BN_MONT_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_exp_mont(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], m : Ptr[BIGNUM], ctx : Ptr[BN_CTX], m_ctx : Ptr[BN_MONT_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_exp_mont_consttime(rr : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], m : Ptr[BIGNUM], ctx : Ptr[BN_CTX], in_mont : Ptr[BN_MONT_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_exp_mont_consttime_x2(rr1 : Ptr[BIGNUM], a1 : Ptr[BIGNUM], p1 : Ptr[BIGNUM], m1 : Ptr[BIGNUM], in_mont1 : Ptr[BN_MONT_CTX], rr2 : Ptr[BIGNUM], a2 : Ptr[BIGNUM], p2 : Ptr[BIGNUM], m2 : Ptr[BIGNUM], in_mont2 : Ptr[BN_MONT_CTX], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_exp_mont_word(r : Ptr[BIGNUM], a : CUnsignedLongInt, p : Ptr[BIGNUM], m : Ptr[BIGNUM], ctx : Ptr[BN_CTX], m_ctx : Ptr[BN_MONT_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_exp_recp(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], m : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_exp_simple(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], m : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_inverse(ret : Ptr[BIGNUM], a : Ptr[BIGNUM], n : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_lshift(r : Ptr[BIGNUM], a : Ptr[BIGNUM], n : CInt, m : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_lshift1(r : Ptr[BIGNUM], a : Ptr[BIGNUM], m : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_lshift1_quick(r : Ptr[BIGNUM], a : Ptr[BIGNUM], m : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_lshift_quick(r : Ptr[BIGNUM], a : Ptr[BIGNUM], n : CInt, m : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_mul(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], m : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_mul_montgomery(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], mont : Ptr[BN_MONT_CTX], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_mul_reciprocal(r : Ptr[BIGNUM], x : Ptr[BIGNUM], y : Ptr[BIGNUM], recp : Ptr[BN_RECP_CTX], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_sqr(r : Ptr[BIGNUM], a : Ptr[BIGNUM], m : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_sqrt(ret : Ptr[BIGNUM], a : Ptr[BIGNUM], n : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_sub(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], m : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_sub_quick(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], m : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mod_word(a : Ptr[BIGNUM], w : CUnsignedLongInt): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mpi2bn(s : Ptr[CUnsignedChar], len : CInt, ret : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mul(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_mul_word(a : Ptr[BIGNUM], w : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_native2bn(s : Ptr[CUnsignedChar], len : CInt, ret : Ptr[BIGNUM]): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_new(): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_nist_mod_192(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_nist_mod_224(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_nist_mod_256(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_nist_mod_384(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_nist_mod_521(r : Ptr[BIGNUM], a : Ptr[BIGNUM], p : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_nist_mod_func(r : Ptr[BIGNUM]): CFuncPtr4[Ptr[BIGNUM], Ptr[BIGNUM], Ptr[BIGNUM], Ptr[BN_CTX], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_nnmod(r : Ptr[BIGNUM], m : Ptr[BIGNUM], d : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_num_bits(a : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_num_bits_word(l : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_options(): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_print(bio : Ptr[BIO], a : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_print_fp(fp : Ptr[FILE], a : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_priv_rand(rnd : Ptr[BIGNUM], bits : CInt, top : CInt, bottom : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_priv_rand_ex(rnd : Ptr[BIGNUM], bits : CInt, top : CInt, bottom : CInt, strength : CUnsignedInt, ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_priv_rand_range(rnd : Ptr[BIGNUM], range : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_priv_rand_range_ex(r : Ptr[BIGNUM], range : Ptr[BIGNUM], strength : CUnsignedInt, ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_pseudo_rand(rnd : Ptr[BIGNUM], bits : CInt, top : CInt, bottom : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_pseudo_rand_range(rnd : Ptr[BIGNUM], range : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_rand(rnd : Ptr[BIGNUM], bits : CInt, top : CInt, bottom : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_rand_ex(rnd : Ptr[BIGNUM], bits : CInt, top : CInt, bottom : CInt, strength : CUnsignedInt, ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_rand_range(rnd : Ptr[BIGNUM], range : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_rand_range_ex(r : Ptr[BIGNUM], range : Ptr[BIGNUM], strength : CUnsignedInt, ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_reciprocal(r : Ptr[BIGNUM], m : Ptr[BIGNUM], len : CInt, ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_rshift(r : Ptr[BIGNUM], a : Ptr[BIGNUM], n : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_rshift1(r : Ptr[BIGNUM], a : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_secure_new(): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_security_bits(L : CInt, N : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_set_bit(a : Ptr[BIGNUM], n : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_set_flags(b : Ptr[BIGNUM], n : CInt): Unit = extern
 
   /**
    * BN_set_negative sets sign of a BIGNUM
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_set_negative(b : Ptr[BIGNUM], n : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_set_params(mul : CInt, high : CInt, low : CInt, mont : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_set_word(a : Ptr[BIGNUM], w : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_sqr(r : Ptr[BIGNUM], a : Ptr[BIGNUM], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_sub(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_sub_word(a : Ptr[BIGNUM], w : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_swap(a : Ptr[BIGNUM], b : Ptr[BIGNUM]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def BN_to_ASN1_ENUMERATED(bn : Ptr[BIGNUM], ai : Ptr[ASN1_ENUMERATED]): Ptr[ASN1_ENUMERATED] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def BN_to_ASN1_INTEGER(bn : Ptr[BIGNUM], ai : Ptr[ASN1_INTEGER]): Ptr[ASN1_INTEGER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_to_montgomery(r : Ptr[BIGNUM], a : Ptr[BIGNUM], mont : Ptr[BN_MONT_CTX], ctx : Ptr[BN_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_uadd(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_ucmp(a : Ptr[BIGNUM], b : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_usub(r : Ptr[BIGNUM], a : Ptr[BIGNUM], b : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_value_one(): Ptr[BIGNUM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_with_flags(dest : Ptr[BIGNUM], b : Ptr[BIGNUM], flags : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bn.h
   */
   def BN_zero_ex(a : Ptr[BIGNUM]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_THREAD_cleanup_local(key : Ptr[CRYPTO_THREAD_LOCAL]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_THREAD_compare_id(a : CRYPTO_THREAD_ID, b : CRYPTO_THREAD_ID): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_THREAD_get_current_id(): CRYPTO_THREAD_ID = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_THREAD_get_local(key : Ptr[CRYPTO_THREAD_LOCAL]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_THREAD_init_local(key : Ptr[CRYPTO_THREAD_LOCAL], cleanup : CFuncPtr1[Ptr[Byte], Unit]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_THREAD_lock_free(lock : Ptr[CRYPTO_RWLOCK]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_THREAD_lock_new(): Ptr[CRYPTO_RWLOCK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_THREAD_read_lock(lock : Ptr[CRYPTO_RWLOCK]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_THREAD_run_once(once : Ptr[CRYPTO_ONCE], init : CFuncPtr0[Unit]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_THREAD_set_local(key : Ptr[CRYPTO_THREAD_LOCAL], `val` : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_THREAD_unlock(lock : Ptr[CRYPTO_RWLOCK]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_THREAD_write_lock(lock : Ptr[CRYPTO_RWLOCK]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_alloc_ex_data(class_index : CInt, obj : Ptr[Byte], ad : Ptr[CRYPTO_EX_DATA], idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_atomic_add(`val` : Ptr[CInt], amount : CInt, ret : Ptr[CInt], lock : Ptr[CRYPTO_RWLOCK]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_atomic_load(`val` : Ptr[uint64_t], ret : Ptr[uint64_t], lock : Ptr[CRYPTO_RWLOCK]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_atomic_or(`val` : Ptr[uint64_t], op : uint64_t, ret : Ptr[uint64_t], lock : Ptr[CRYPTO_RWLOCK]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_clear_free(ptr : Ptr[Byte], num : size_t, file : CString, line : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_clear_realloc(addr : Ptr[Byte], old_num : size_t, num : size_t, file : CString, line : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_dup_ex_data(class_index : CInt, to : Ptr[CRYPTO_EX_DATA], from : Ptr[CRYPTO_EX_DATA]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_free(ptr : Ptr[Byte], file : CString, line : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_free_ex_data(class_index : CInt, obj : Ptr[Byte], ad : Ptr[CRYPTO_EX_DATA]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_free_ex_index(class_index : CInt, idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_get_ex_data(ad : Ptr[CRYPTO_EX_DATA], idx : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_get_ex_new_index(class_index : CInt, argl : CLongInt, argp : Ptr[Byte], new_func : Ptr[CRYPTO_EX_new], dup_func : Ptr[CRYPTO_EX_dup], free_func : Ptr[CRYPTO_EX_free]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_get_mem_functions(malloc_fn : Ptr[CRYPTO_malloc_fn], realloc_fn : Ptr[CRYPTO_realloc_fn], free_fn : Ptr[CRYPTO_free_fn]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_malloc(num : size_t, file : CString, line : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_memcmp(in_a : Ptr[Byte], in_b : Ptr[Byte], len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_memdup(str : Ptr[Byte], siz : size_t, file : CString, line : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_new_ex_data(class_index : CInt, obj : Ptr[Byte], ad : Ptr[CRYPTO_EX_DATA]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_realloc(addr : Ptr[Byte], num : size_t, file : CString, line : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_secure_actual_size(ptr : Ptr[Byte]): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_secure_allocated(ptr : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_secure_clear_free(ptr : Ptr[Byte], num : size_t, file : CString, line : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_secure_free(ptr : Ptr[Byte], file : CString, line : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_secure_malloc(num : size_t, file : CString, line : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_secure_malloc_done(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_secure_malloc_init(sz : size_t, minsize : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_secure_malloc_initialized(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_secure_used(): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_secure_zalloc(num : size_t, file : CString, line : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_set_ex_data(ad : Ptr[CRYPTO_EX_DATA], idx : CInt, `val` : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_set_mem_functions(malloc_fn : CRYPTO_malloc_fn, realloc_fn : CRYPTO_realloc_fn, free_fn : CRYPTO_free_fn): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_strdup(str : CString, file : CString, line : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_strndup(str : CString, s : size_t, file : CString, line : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def CRYPTO_zalloc(num : size_t, file : CString, line : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def DIRECTORYSTRING_free(a : Ptr[ASN1_STRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def DIRECTORYSTRING_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def DIRECTORYSTRING_new(): Ptr[ASN1_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def DISPLAYTEXT_free(a : Ptr[ASN1_STRING]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def DISPLAYTEXT_it(): Ptr[ASN1_ITEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def DISPLAYTEXT_new(): Ptr[ASN1_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_ASN1_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_ASYNC_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_BIO_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_BN_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_BUF_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_CMS_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_COMP_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_CONF_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_CRYPTO_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_CT_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_DH_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_DSA_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_EC_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_ENGINE_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_ERR_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_EVP_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_KDF_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_OBJ_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_OCSP_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_OSSL_STORE_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_PEM_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_PKCS12_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_PKCS7_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_RAND_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_RSA_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_TS_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_UI_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_X509V3_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/cryptoerr_legacy.h
   */
   def ERR_load_X509_strings(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ASYM_CIPHER_do_all_provided(libctx : Ptr[OSSL_LIB_CTX], fn : CFuncPtr2[Ptr[EVP_ASYM_CIPHER], Ptr[Byte], Unit], arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ASYM_CIPHER_fetch(ctx : Ptr[OSSL_LIB_CTX], algorithm : CString, properties : CString): Ptr[EVP_ASYM_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ASYM_CIPHER_free(cipher : Ptr[EVP_ASYM_CIPHER]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ASYM_CIPHER_get0_description(cipher : Ptr[EVP_ASYM_CIPHER]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ASYM_CIPHER_get0_name(cipher : Ptr[EVP_ASYM_CIPHER]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ASYM_CIPHER_get0_provider(cipher : Ptr[EVP_ASYM_CIPHER]): Ptr[OSSL_PROVIDER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ASYM_CIPHER_gettable_ctx_params(ciph : Ptr[EVP_ASYM_CIPHER]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ASYM_CIPHER_is_a(cipher : Ptr[EVP_ASYM_CIPHER], name : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ASYM_CIPHER_names_do_all(cipher : Ptr[EVP_ASYM_CIPHER], fn : CFuncPtr2[CString, Ptr[Byte], Unit], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ASYM_CIPHER_settable_ctx_params(ciph : Ptr[EVP_ASYM_CIPHER]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ASYM_CIPHER_up_ref(cipher : Ptr[EVP_ASYM_CIPHER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_BytesToKey(`type` : Ptr[EVP_CIPHER], md : Ptr[EVP_MD], salt : Ptr[CUnsignedChar], data : Ptr[CUnsignedChar], datal : CInt, count : CInt, key : Ptr[CUnsignedChar], iv : Ptr[CUnsignedChar]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_buf_noconst(ctx : Ptr[EVP_CIPHER_CTX]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_cipher(ctx : Ptr[EVP_CIPHER_CTX]): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_clear_flags(ctx : Ptr[EVP_CIPHER_CTX], flags : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_copy(out : Ptr[EVP_CIPHER_CTX], in : Ptr[EVP_CIPHER_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_ctrl(ctx : Ptr[EVP_CIPHER_CTX], `type` : CInt, arg : CInt, ptr : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_dup(in : Ptr[EVP_CIPHER_CTX]): Ptr[EVP_CIPHER_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_free(c : Ptr[EVP_CIPHER_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_get0_cipher(ctx : Ptr[EVP_CIPHER_CTX]): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_get1_cipher(ctx : Ptr[EVP_CIPHER_CTX]): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_get_app_data(ctx : Ptr[EVP_CIPHER_CTX]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_get_block_size(ctx : Ptr[EVP_CIPHER_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_get_cipher_data(ctx : Ptr[EVP_CIPHER_CTX]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_get_iv_length(ctx : Ptr[EVP_CIPHER_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_get_key_length(ctx : Ptr[EVP_CIPHER_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_get_nid(ctx : Ptr[EVP_CIPHER_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_get_num(ctx : Ptr[EVP_CIPHER_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_get_original_iv(ctx : Ptr[EVP_CIPHER_CTX], buf : Ptr[Byte], len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_get_params(ctx : Ptr[EVP_CIPHER_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_get_tag_length(ctx : Ptr[EVP_CIPHER_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_get_updated_iv(ctx : Ptr[EVP_CIPHER_CTX], buf : Ptr[Byte], len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_gettable_params(ctx : Ptr[EVP_CIPHER_CTX]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_is_encrypting(ctx : Ptr[EVP_CIPHER_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_iv(ctx : Ptr[EVP_CIPHER_CTX]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_iv_noconst(ctx : Ptr[EVP_CIPHER_CTX]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_new(): Ptr[EVP_CIPHER_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_original_iv(ctx : Ptr[EVP_CIPHER_CTX]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_rand_key(ctx : Ptr[EVP_CIPHER_CTX], key : Ptr[CUnsignedChar]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_reset(c : Ptr[EVP_CIPHER_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_set_app_data(ctx : Ptr[EVP_CIPHER_CTX], data : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_set_cipher_data(ctx : Ptr[EVP_CIPHER_CTX], cipher_data : Ptr[Byte]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_set_flags(ctx : Ptr[EVP_CIPHER_CTX], flags : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_set_key_length(x : Ptr[EVP_CIPHER_CTX], keylen : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_set_num(ctx : Ptr[EVP_CIPHER_CTX], num : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_set_padding(c : Ptr[EVP_CIPHER_CTX], pad : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_set_params(ctx : Ptr[EVP_CIPHER_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_settable_params(ctx : Ptr[EVP_CIPHER_CTX]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_CTX_test_flags(ctx : Ptr[EVP_CIPHER_CTX], flags : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_asn1_to_param(c : Ptr[EVP_CIPHER_CTX], `type` : Ptr[ASN1_TYPE]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_do_all(fn : CFuncPtr4[Ptr[EVP_CIPHER], CString, CString, Ptr[Byte], Unit], arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_do_all_provided(libctx : Ptr[OSSL_LIB_CTX], fn : CFuncPtr2[Ptr[EVP_CIPHER], Ptr[Byte], Unit], arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_do_all_sorted(fn : CFuncPtr4[Ptr[EVP_CIPHER], CString, CString, Ptr[Byte], Unit], arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_fetch(ctx : Ptr[OSSL_LIB_CTX], algorithm : CString, properties : CString): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_free(cipher : Ptr[EVP_CIPHER]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_get0_description(cipher : Ptr[EVP_CIPHER]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_get0_name(cipher : Ptr[EVP_CIPHER]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_get0_provider(cipher : Ptr[EVP_CIPHER]): Ptr[OSSL_PROVIDER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_get_asn1_iv(c : Ptr[EVP_CIPHER_CTX], `type` : Ptr[ASN1_TYPE]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_get_block_size(cipher : Ptr[EVP_CIPHER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_get_flags(cipher : Ptr[EVP_CIPHER]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_get_iv_length(cipher : Ptr[EVP_CIPHER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_get_key_length(cipher : Ptr[EVP_CIPHER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_get_mode(cipher : Ptr[EVP_CIPHER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_get_nid(cipher : Ptr[EVP_CIPHER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_get_params(cipher : Ptr[EVP_CIPHER], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_get_type(cipher : Ptr[EVP_CIPHER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_gettable_ctx_params(cipher : Ptr[EVP_CIPHER]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_gettable_params(cipher : Ptr[EVP_CIPHER]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_impl_ctx_size(cipher : Ptr[EVP_CIPHER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_is_a(cipher : Ptr[EVP_CIPHER], name : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_dup(cipher : Ptr[EVP_CIPHER]): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_free(cipher : Ptr[EVP_CIPHER]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_get_cleanup(_0 : Ptr[EVP_CIPHER_CTX]): CFuncPtr1[Ptr[EVP_CIPHER_CTX], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_get_ctrl(_0 : Ptr[EVP_CIPHER_CTX]): CFuncPtr4[Ptr[EVP_CIPHER_CTX], CInt, CInt, Ptr[Byte], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_get_do_cipher(ctx : Ptr[EVP_CIPHER_CTX]): CFuncPtr4[Ptr[EVP_CIPHER_CTX], Ptr[CUnsignedChar], Ptr[CUnsignedChar], size_t, CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_get_get_asn1_params(_0 : Ptr[EVP_CIPHER_CTX]): CFuncPtr2[Ptr[EVP_CIPHER_CTX], Ptr[ASN1_TYPE], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_get_init(ctx : Ptr[EVP_CIPHER_CTX]): CFuncPtr4[Ptr[EVP_CIPHER_CTX], Ptr[CUnsignedChar], Ptr[CUnsignedChar], CInt, CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_get_set_asn1_params(_0 : Ptr[EVP_CIPHER_CTX]): CFuncPtr2[Ptr[EVP_CIPHER_CTX], Ptr[ASN1_TYPE], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_new(cipher_type : CInt, block_size : CInt, key_len : CInt): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_set_cleanup(cipher : Ptr[EVP_CIPHER], cleanup : CFuncPtr1[Ptr[EVP_CIPHER_CTX], CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_set_ctrl(cipher : Ptr[EVP_CIPHER], ctrl : CFuncPtr4[Ptr[EVP_CIPHER_CTX], CInt, CInt, Ptr[Byte], CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_set_do_cipher(cipher : Ptr[EVP_CIPHER], do_cipher : CFuncPtr4[Ptr[EVP_CIPHER_CTX], Ptr[CUnsignedChar], Ptr[CUnsignedChar], size_t, CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_set_flags(cipher : Ptr[EVP_CIPHER], flags : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_set_get_asn1_params(cipher : Ptr[EVP_CIPHER], get_asn1_parameters : CFuncPtr2[Ptr[EVP_CIPHER_CTX], Ptr[ASN1_TYPE], CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_set_impl_ctx_size(cipher : Ptr[EVP_CIPHER], ctx_size : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_set_init(cipher : Ptr[EVP_CIPHER], init : CFuncPtr4[Ptr[EVP_CIPHER_CTX], Ptr[CUnsignedChar], Ptr[CUnsignedChar], CInt, CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_set_iv_length(cipher : Ptr[EVP_CIPHER], iv_len : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_meth_set_set_asn1_params(cipher : Ptr[EVP_CIPHER], set_asn1_parameters : CFuncPtr2[Ptr[EVP_CIPHER_CTX], Ptr[ASN1_TYPE], CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_names_do_all(cipher : Ptr[EVP_CIPHER], fn : CFuncPtr2[CString, Ptr[Byte], Unit], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_param_to_asn1(c : Ptr[EVP_CIPHER_CTX], `type` : Ptr[ASN1_TYPE]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_set_asn1_iv(c : Ptr[EVP_CIPHER_CTX], `type` : Ptr[ASN1_TYPE]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_settable_ctx_params(cipher : Ptr[EVP_CIPHER]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CIPHER_up_ref(cipher : Ptr[EVP_CIPHER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_Cipher(c : Ptr[EVP_CIPHER_CTX], out : Ptr[CUnsignedChar], in : Ptr[CUnsignedChar], inl : CUnsignedInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CipherFinal(ctx : Ptr[EVP_CIPHER_CTX], outm : Ptr[CUnsignedChar], outl : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CipherFinal_ex(ctx : Ptr[EVP_CIPHER_CTX], outm : Ptr[CUnsignedChar], outl : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CipherInit(ctx : Ptr[EVP_CIPHER_CTX], cipher : Ptr[EVP_CIPHER], key : Ptr[CUnsignedChar], iv : Ptr[CUnsignedChar], enc : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CipherInit_ex(ctx : Ptr[EVP_CIPHER_CTX], cipher : Ptr[EVP_CIPHER], impl : Ptr[ENGINE], key : Ptr[CUnsignedChar], iv : Ptr[CUnsignedChar], enc : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CipherInit_ex2(ctx : Ptr[EVP_CIPHER_CTX], cipher : Ptr[EVP_CIPHER], key : Ptr[CUnsignedChar], iv : Ptr[CUnsignedChar], enc : CInt, params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_CipherUpdate(ctx : Ptr[EVP_CIPHER_CTX], out : Ptr[CUnsignedChar], outl : Ptr[CInt], in : Ptr[CUnsignedChar], inl : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DecodeBlock(t : Ptr[CUnsignedChar], f : Ptr[CUnsignedChar], n : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DecodeFinal(ctx : Ptr[EVP_ENCODE_CTX], out : Ptr[CUnsignedChar], outl : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DecodeInit(ctx : Ptr[EVP_ENCODE_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DecodeUpdate(ctx : Ptr[EVP_ENCODE_CTX], out : Ptr[CUnsignedChar], outl : Ptr[CInt], in : Ptr[CUnsignedChar], inl : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DecryptFinal(ctx : Ptr[EVP_CIPHER_CTX], outm : Ptr[CUnsignedChar], outl : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DecryptFinal_ex(ctx : Ptr[EVP_CIPHER_CTX], outm : Ptr[CUnsignedChar], outl : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DecryptInit(ctx : Ptr[EVP_CIPHER_CTX], cipher : Ptr[EVP_CIPHER], key : Ptr[CUnsignedChar], iv : Ptr[CUnsignedChar]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DecryptInit_ex(ctx : Ptr[EVP_CIPHER_CTX], cipher : Ptr[EVP_CIPHER], impl : Ptr[ENGINE], key : Ptr[CUnsignedChar], iv : Ptr[CUnsignedChar]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DecryptInit_ex2(ctx : Ptr[EVP_CIPHER_CTX], cipher : Ptr[EVP_CIPHER], key : Ptr[CUnsignedChar], iv : Ptr[CUnsignedChar], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DecryptUpdate(ctx : Ptr[EVP_CIPHER_CTX], out : Ptr[CUnsignedChar], outl : Ptr[CInt], in : Ptr[CUnsignedChar], inl : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_Digest(data : Ptr[Byte], count : size_t, md : Ptr[CUnsignedChar], size : Ptr[CUnsignedInt], `type` : Ptr[EVP_MD], impl : Ptr[ENGINE]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestFinal(ctx : Ptr[EVP_MD_CTX], md : Ptr[CUnsignedChar], s : Ptr[CUnsignedInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestFinalXOF(ctx : Ptr[EVP_MD_CTX], md : Ptr[CUnsignedChar], len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestFinal_ex(ctx : Ptr[EVP_MD_CTX], md : Ptr[CUnsignedChar], s : Ptr[CUnsignedInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestInit(ctx : Ptr[EVP_MD_CTX], `type` : Ptr[EVP_MD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestInit_ex(ctx : Ptr[EVP_MD_CTX], `type` : Ptr[EVP_MD], impl : Ptr[ENGINE]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestInit_ex2(ctx : Ptr[EVP_MD_CTX], `type` : Ptr[EVP_MD], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestSign(ctx : Ptr[EVP_MD_CTX], sigret : Ptr[CUnsignedChar], siglen : Ptr[size_t], tbs : Ptr[CUnsignedChar], tbslen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestSignFinal(ctx : Ptr[EVP_MD_CTX], sigret : Ptr[CUnsignedChar], siglen : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestSignInit(ctx : Ptr[EVP_MD_CTX], pctx : Ptr[Ptr[EVP_PKEY_CTX]], `type` : Ptr[EVP_MD], e : Ptr[ENGINE], pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestSignInit_ex(ctx : Ptr[EVP_MD_CTX], pctx : Ptr[Ptr[EVP_PKEY_CTX]], mdname : CString, libctx : Ptr[OSSL_LIB_CTX], props : CString, pkey : Ptr[EVP_PKEY], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestSignUpdate(ctx : Ptr[EVP_MD_CTX], data : Ptr[Byte], dsize : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestUpdate(ctx : Ptr[EVP_MD_CTX], d : Ptr[Byte], cnt : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestVerify(ctx : Ptr[EVP_MD_CTX], sigret : Ptr[CUnsignedChar], siglen : size_t, tbs : Ptr[CUnsignedChar], tbslen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestVerifyFinal(ctx : Ptr[EVP_MD_CTX], sig : Ptr[CUnsignedChar], siglen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestVerifyInit(ctx : Ptr[EVP_MD_CTX], pctx : Ptr[Ptr[EVP_PKEY_CTX]], `type` : Ptr[EVP_MD], e : Ptr[ENGINE], pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestVerifyInit_ex(ctx : Ptr[EVP_MD_CTX], pctx : Ptr[Ptr[EVP_PKEY_CTX]], mdname : CString, libctx : Ptr[OSSL_LIB_CTX], props : CString, pkey : Ptr[EVP_PKEY], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_DigestVerifyUpdate(ctx : Ptr[EVP_MD_CTX], data : Ptr[Byte], dsize : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ENCODE_CTX_copy(dctx : Ptr[EVP_ENCODE_CTX], sctx : Ptr[EVP_ENCODE_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ENCODE_CTX_free(ctx : Ptr[EVP_ENCODE_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ENCODE_CTX_new(): Ptr[EVP_ENCODE_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ENCODE_CTX_num(ctx : Ptr[EVP_ENCODE_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_EncodeBlock(t : Ptr[CUnsignedChar], f : Ptr[CUnsignedChar], n : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_EncodeFinal(ctx : Ptr[EVP_ENCODE_CTX], out : Ptr[CUnsignedChar], outl : Ptr[CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_EncodeInit(ctx : Ptr[EVP_ENCODE_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_EncodeUpdate(ctx : Ptr[EVP_ENCODE_CTX], out : Ptr[CUnsignedChar], outl : Ptr[CInt], in : Ptr[CUnsignedChar], inl : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_EncryptFinal(ctx : Ptr[EVP_CIPHER_CTX], out : Ptr[CUnsignedChar], outl : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_EncryptFinal_ex(ctx : Ptr[EVP_CIPHER_CTX], out : Ptr[CUnsignedChar], outl : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_EncryptInit(ctx : Ptr[EVP_CIPHER_CTX], cipher : Ptr[EVP_CIPHER], key : Ptr[CUnsignedChar], iv : Ptr[CUnsignedChar]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_EncryptInit_ex(ctx : Ptr[EVP_CIPHER_CTX], cipher : Ptr[EVP_CIPHER], impl : Ptr[ENGINE], key : Ptr[CUnsignedChar], iv : Ptr[CUnsignedChar]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_EncryptInit_ex2(ctx : Ptr[EVP_CIPHER_CTX], cipher : Ptr[EVP_CIPHER], key : Ptr[CUnsignedChar], iv : Ptr[CUnsignedChar], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_EncryptUpdate(ctx : Ptr[EVP_CIPHER_CTX], out : Ptr[CUnsignedChar], outl : Ptr[CInt], in : Ptr[CUnsignedChar], inl : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEM_do_all_provided(libctx : Ptr[OSSL_LIB_CTX], fn : CFuncPtr2[Ptr[EVP_KEM], Ptr[Byte], Unit], arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEM_fetch(ctx : Ptr[OSSL_LIB_CTX], algorithm : CString, properties : CString): Ptr[EVP_KEM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEM_free(wrap : Ptr[EVP_KEM]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEM_get0_description(wrap : Ptr[EVP_KEM]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEM_get0_name(wrap : Ptr[EVP_KEM]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEM_get0_provider(wrap : Ptr[EVP_KEM]): Ptr[OSSL_PROVIDER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEM_gettable_ctx_params(kem : Ptr[EVP_KEM]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEM_is_a(wrap : Ptr[EVP_KEM], name : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEM_names_do_all(wrap : Ptr[EVP_KEM], fn : CFuncPtr2[CString, Ptr[Byte], Unit], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEM_settable_ctx_params(kem : Ptr[EVP_KEM]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEM_up_ref(wrap : Ptr[EVP_KEM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYEXCH_do_all_provided(libctx : Ptr[OSSL_LIB_CTX], fn : CFuncPtr2[Ptr[EVP_KEYEXCH], Ptr[Byte], Unit], data : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYEXCH_fetch(ctx : Ptr[OSSL_LIB_CTX], algorithm : CString, properties : CString): Ptr[EVP_KEYEXCH] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYEXCH_free(exchange : Ptr[EVP_KEYEXCH]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYEXCH_get0_description(keyexch : Ptr[EVP_KEYEXCH]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYEXCH_get0_name(keyexch : Ptr[EVP_KEYEXCH]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYEXCH_get0_provider(exchange : Ptr[EVP_KEYEXCH]): Ptr[OSSL_PROVIDER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYEXCH_gettable_ctx_params(keyexch : Ptr[EVP_KEYEXCH]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYEXCH_is_a(keyexch : Ptr[EVP_KEYEXCH], name : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYEXCH_names_do_all(keyexch : Ptr[EVP_KEYEXCH], fn : CFuncPtr2[CString, Ptr[Byte], Unit], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYEXCH_settable_ctx_params(keyexch : Ptr[EVP_KEYEXCH]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYEXCH_up_ref(exchange : Ptr[EVP_KEYEXCH]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYMGMT_do_all_provided(libctx : Ptr[OSSL_LIB_CTX], fn : CFuncPtr2[Ptr[EVP_KEYMGMT], Ptr[Byte], Unit], arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYMGMT_fetch(ctx : Ptr[OSSL_LIB_CTX], algorithm : CString, properties : CString): Ptr[EVP_KEYMGMT] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYMGMT_free(keymgmt : Ptr[EVP_KEYMGMT]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYMGMT_gen_settable_params(keymgmt : Ptr[EVP_KEYMGMT]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYMGMT_get0_description(keymgmt : Ptr[EVP_KEYMGMT]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYMGMT_get0_name(keymgmt : Ptr[EVP_KEYMGMT]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYMGMT_get0_provider(keymgmt : Ptr[EVP_KEYMGMT]): Ptr[OSSL_PROVIDER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYMGMT_gettable_params(keymgmt : Ptr[EVP_KEYMGMT]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYMGMT_is_a(keymgmt : Ptr[EVP_KEYMGMT], name : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYMGMT_names_do_all(keymgmt : Ptr[EVP_KEYMGMT], fn : CFuncPtr2[CString, Ptr[Byte], Unit], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYMGMT_settable_params(keymgmt : Ptr[EVP_KEYMGMT]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_KEYMGMT_up_ref(keymgmt : Ptr[EVP_KEYMGMT]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_CTX_dup(src : Ptr[EVP_MAC_CTX]): Ptr[EVP_MAC_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_CTX_free(ctx : Ptr[EVP_MAC_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_CTX_get0_mac(ctx : Ptr[EVP_MAC_CTX]): Ptr[EVP_MAC] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_CTX_get_block_size(ctx : Ptr[EVP_MAC_CTX]): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_CTX_get_mac_size(ctx : Ptr[EVP_MAC_CTX]): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_CTX_get_params(ctx : Ptr[EVP_MAC_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_CTX_gettable_params(ctx : Ptr[EVP_MAC_CTX]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_CTX_new(mac : Ptr[EVP_MAC]): Ptr[EVP_MAC_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_CTX_set_params(ctx : Ptr[EVP_MAC_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_CTX_settable_params(ctx : Ptr[EVP_MAC_CTX]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_do_all_provided(libctx : Ptr[OSSL_LIB_CTX], fn : CFuncPtr2[Ptr[EVP_MAC], Ptr[Byte], Unit], arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_fetch(libctx : Ptr[OSSL_LIB_CTX], algorithm : CString, properties : CString): Ptr[EVP_MAC] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_final(ctx : Ptr[EVP_MAC_CTX], out : Ptr[CUnsignedChar], outl : Ptr[size_t], outsize : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_finalXOF(ctx : Ptr[EVP_MAC_CTX], out : Ptr[CUnsignedChar], outsize : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_free(mac : Ptr[EVP_MAC]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_get0_description(mac : Ptr[EVP_MAC]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_get0_name(mac : Ptr[EVP_MAC]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_get0_provider(mac : Ptr[EVP_MAC]): Ptr[OSSL_PROVIDER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_get_params(mac : Ptr[EVP_MAC], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_gettable_ctx_params(mac : Ptr[EVP_MAC]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_gettable_params(mac : Ptr[EVP_MAC]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_init(ctx : Ptr[EVP_MAC_CTX], key : Ptr[CUnsignedChar], keylen : size_t, params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_is_a(mac : Ptr[EVP_MAC], name : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_names_do_all(mac : Ptr[EVP_MAC], fn : CFuncPtr2[CString, Ptr[Byte], Unit], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_settable_ctx_params(mac : Ptr[EVP_MAC]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_up_ref(mac : Ptr[EVP_MAC]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MAC_update(ctx : Ptr[EVP_MAC_CTX], data : Ptr[CUnsignedChar], datalen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_clear_flags(ctx : Ptr[EVP_MD_CTX], flags : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_copy(out : Ptr[EVP_MD_CTX], in : Ptr[EVP_MD_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_copy_ex(out : Ptr[EVP_MD_CTX], in : Ptr[EVP_MD_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_ctrl(ctx : Ptr[EVP_MD_CTX], cmd : CInt, p1 : CInt, p2 : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_dup(in : Ptr[EVP_MD_CTX]): Ptr[EVP_MD_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_free(ctx : Ptr[EVP_MD_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_get0_md(ctx : Ptr[EVP_MD_CTX]): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_get0_md_data(ctx : Ptr[EVP_MD_CTX]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_get1_md(ctx : Ptr[EVP_MD_CTX]): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_get_params(ctx : Ptr[EVP_MD_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_get_pkey_ctx(ctx : Ptr[EVP_MD_CTX]): Ptr[EVP_PKEY_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_gettable_params(ctx : Ptr[EVP_MD_CTX]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_md(ctx : Ptr[EVP_MD_CTX]): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_new(): Ptr[EVP_MD_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_reset(ctx : Ptr[EVP_MD_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_set_flags(ctx : Ptr[EVP_MD_CTX], flags : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_set_params(ctx : Ptr[EVP_MD_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_set_pkey_ctx(ctx : Ptr[EVP_MD_CTX], pctx : Ptr[EVP_PKEY_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_set_update_fn(ctx : Ptr[EVP_MD_CTX], update : CFuncPtr3[Ptr[EVP_MD_CTX], Ptr[Byte], size_t, CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_settable_params(ctx : Ptr[EVP_MD_CTX]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_test_flags(ctx : Ptr[EVP_MD_CTX], flags : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_CTX_update_fn(ctx : Ptr[EVP_MD_CTX]): CFuncPtr3[Ptr[EVP_MD_CTX], Ptr[Byte], size_t, CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_do_all(fn : CFuncPtr4[Ptr[EVP_MD], CString, CString, Ptr[Byte], Unit], arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_do_all_provided(libctx : Ptr[OSSL_LIB_CTX], fn : CFuncPtr2[Ptr[EVP_MD], Ptr[Byte], Unit], arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_do_all_sorted(fn : CFuncPtr4[Ptr[EVP_MD], CString, CString, Ptr[Byte], Unit], arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_fetch(ctx : Ptr[OSSL_LIB_CTX], algorithm : CString, properties : CString): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_free(md : Ptr[EVP_MD]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_get0_description(md : Ptr[EVP_MD]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_get0_name(md : Ptr[EVP_MD]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_get0_provider(md : Ptr[EVP_MD]): Ptr[OSSL_PROVIDER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_get_block_size(md : Ptr[EVP_MD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_get_flags(md : Ptr[EVP_MD]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_get_params(digest : Ptr[EVP_MD], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_get_pkey_type(md : Ptr[EVP_MD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_get_size(md : Ptr[EVP_MD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_get_type(md : Ptr[EVP_MD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_gettable_ctx_params(md : Ptr[EVP_MD]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_gettable_params(digest : Ptr[EVP_MD]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_is_a(md : Ptr[EVP_MD], name : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_dup(md : Ptr[EVP_MD]): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_free(md : Ptr[EVP_MD]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_get_app_datasize(md : Ptr[EVP_MD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_get_cleanup(ctx : Ptr[EVP_MD_CTX]): CFuncPtr1[Ptr[EVP_MD_CTX], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_get_copy(to : Ptr[EVP_MD_CTX]): CFuncPtr2[Ptr[EVP_MD_CTX], Ptr[EVP_MD_CTX], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_get_ctrl(ctx : Ptr[EVP_MD_CTX]): CFuncPtr4[Ptr[EVP_MD_CTX], CInt, CInt, Ptr[Byte], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_get_final(ctx : Ptr[EVP_MD_CTX]): CFuncPtr2[Ptr[EVP_MD_CTX], Ptr[CUnsignedChar], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_get_flags(md : Ptr[EVP_MD]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_get_init(ctx : Ptr[EVP_MD_CTX]): CFuncPtr1[Ptr[EVP_MD_CTX], CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_get_input_blocksize(md : Ptr[EVP_MD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_get_result_size(md : Ptr[EVP_MD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_get_update(ctx : Ptr[EVP_MD_CTX]): CFuncPtr3[Ptr[EVP_MD_CTX], Ptr[Byte], size_t, CInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_new(md_type : CInt, pkey_type : CInt): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_set_app_datasize(md : Ptr[EVP_MD], datasize : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_set_cleanup(md : Ptr[EVP_MD], cleanup : CFuncPtr1[Ptr[EVP_MD_CTX], CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_set_copy(md : Ptr[EVP_MD], copy : CFuncPtr2[Ptr[EVP_MD_CTX], Ptr[EVP_MD_CTX], CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_set_ctrl(md : Ptr[EVP_MD], ctrl : CFuncPtr4[Ptr[EVP_MD_CTX], CInt, CInt, Ptr[Byte], CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_set_final(md : Ptr[EVP_MD], `final` : CFuncPtr2[Ptr[EVP_MD_CTX], Ptr[CUnsignedChar], CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_set_flags(md : Ptr[EVP_MD], flags : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_set_init(md : Ptr[EVP_MD], init : CFuncPtr1[Ptr[EVP_MD_CTX], CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_set_input_blocksize(md : Ptr[EVP_MD], blocksize : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_set_result_size(md : Ptr[EVP_MD], resultsize : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_meth_set_update(md : Ptr[EVP_MD], update : CFuncPtr3[Ptr[EVP_MD_CTX], Ptr[Byte], size_t, CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_names_do_all(md : Ptr[EVP_MD], fn : CFuncPtr2[CString, Ptr[Byte], Unit], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_settable_ctx_params(md : Ptr[EVP_MD]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_MD_up_ref(md : Ptr[EVP_MD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_OpenFinal(ctx : Ptr[EVP_CIPHER_CTX], out : Ptr[CUnsignedChar], outl : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_OpenInit(ctx : Ptr[EVP_CIPHER_CTX], `type` : Ptr[EVP_CIPHER], ek : Ptr[CUnsignedChar], ekl : CInt, iv : Ptr[CUnsignedChar], priv : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PBE_CipherInit(pbe_obj : Ptr[ASN1_OBJECT], pass : CString, passlen : CInt, param : Ptr[ASN1_TYPE], ctx : Ptr[EVP_CIPHER_CTX], en_de : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PBE_CipherInit_ex(pbe_obj : Ptr[ASN1_OBJECT], pass : CString, passlen : CInt, param : Ptr[ASN1_TYPE], ctx : Ptr[EVP_CIPHER_CTX], en_de : CInt, libctx : Ptr[OSSL_LIB_CTX], propq : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PBE_alg_add(nid : CInt, cipher : Ptr[EVP_CIPHER], md : Ptr[EVP_MD], keygen : Ptr[EVP_PBE_KEYGEN]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PBE_alg_add_type(pbe_type : CInt, pbe_nid : CInt, cipher_nid : CInt, md_nid : CInt, keygen : Ptr[EVP_PBE_KEYGEN]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PBE_cleanup(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PBE_find(`type` : CInt, pbe_nid : CInt, pcnid : Ptr[CInt], pmnid : Ptr[CInt], pkeygen : Ptr[Ptr[EVP_PBE_KEYGEN]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PBE_find_ex(`type` : CInt, pbe_nid : CInt, pcnid : Ptr[CInt], pmnid : Ptr[CInt], pkeygen : Ptr[Ptr[EVP_PBE_KEYGEN]], pkeygen_ex : Ptr[Ptr[EVP_PBE_KEYGEN_EX]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PBE_get(ptype : Ptr[CInt], ppbe_nid : Ptr[CInt], num : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PBE_scrypt(pass : CString, passlen : size_t, salt : Ptr[CUnsignedChar], saltlen : size_t, N : uint64_t, r : uint64_t, p : uint64_t, maxmem : uint64_t, key : Ptr[CUnsignedChar], keylen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PBE_scrypt_ex(pass : CString, passlen : size_t, salt : Ptr[CUnsignedChar], saltlen : size_t, N : uint64_t, r : uint64_t, p : uint64_t, maxmem : uint64_t, key : Ptr[CUnsignedChar], keylen : size_t, ctx : Ptr[OSSL_LIB_CTX], propq : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_ctrl(ctx : Ptr[EVP_PKEY_CTX], keytype : CInt, optype : CInt, cmd : CInt, p1 : CInt, p2 : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_ctrl_str(ctx : Ptr[EVP_PKEY_CTX], `type` : CString, value : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_ctrl_uint64(ctx : Ptr[EVP_PKEY_CTX], keytype : CInt, optype : CInt, cmd : CInt, value : uint64_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_dup(ctx : Ptr[EVP_PKEY_CTX]): Ptr[EVP_PKEY_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_free(ctx : Ptr[EVP_PKEY_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get0_libctx(ctx : Ptr[EVP_PKEY_CTX]): Ptr[OSSL_LIB_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get0_peerkey(ctx : Ptr[EVP_PKEY_CTX]): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get0_pkey(ctx : Ptr[EVP_PKEY_CTX]): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get0_propq(ctx : Ptr[EVP_PKEY_CTX]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get0_provider(ctx : Ptr[EVP_PKEY_CTX]): Ptr[OSSL_PROVIDER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get1_id(ctx : Ptr[EVP_PKEY_CTX], id : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get1_id_len(ctx : Ptr[EVP_PKEY_CTX], id_len : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get_app_data(ctx : Ptr[EVP_PKEY_CTX]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get_cb(ctx : Ptr[EVP_PKEY_CTX]): Ptr[EVP_PKEY_gen_cb] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get_data(ctx : Ptr[EVP_PKEY_CTX]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get_group_name(ctx : Ptr[EVP_PKEY_CTX], name : CString, namelen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get_keygen_info(ctx : Ptr[EVP_PKEY_CTX], idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get_operation(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get_params(ctx : Ptr[EVP_PKEY_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_get_signature_md(ctx : Ptr[EVP_PKEY_CTX], md : Ptr[Ptr[EVP_MD]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_gettable_params(ctx : Ptr[EVP_PKEY_CTX]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_hex2ctrl(ctx : Ptr[EVP_PKEY_CTX], cmd : CInt, hex : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_is_a(ctx : Ptr[EVP_PKEY_CTX], keytype : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_md(ctx : Ptr[EVP_PKEY_CTX], optype : CInt, cmd : CInt, md : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_new(pkey : Ptr[EVP_PKEY], e : Ptr[ENGINE]): Ptr[EVP_PKEY_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_new_from_name(libctx : Ptr[OSSL_LIB_CTX], name : CString, propquery : CString): Ptr[EVP_PKEY_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_new_from_pkey(libctx : Ptr[OSSL_LIB_CTX], pkey : Ptr[EVP_PKEY], propquery : CString): Ptr[EVP_PKEY_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_new_id(id : CInt, e : Ptr[ENGINE]): Ptr[EVP_PKEY_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_set0_keygen_info(ctx : Ptr[EVP_PKEY_CTX], dat : Ptr[CInt], datlen : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_set1_id(ctx : Ptr[EVP_PKEY_CTX], id : Ptr[Byte], len : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_set_app_data(ctx : Ptr[EVP_PKEY_CTX], data : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_set_cb(ctx : Ptr[EVP_PKEY_CTX], cb : Ptr[EVP_PKEY_gen_cb]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_set_data(ctx : Ptr[EVP_PKEY_CTX], data : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_set_group_name(ctx : Ptr[EVP_PKEY_CTX], name : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_set_kem_op(ctx : Ptr[EVP_PKEY_CTX], op : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_set_mac_key(ctx : Ptr[EVP_PKEY_CTX], key : Ptr[CUnsignedChar], keylen : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_set_params(ctx : Ptr[EVP_PKEY_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_set_signature_md(ctx : Ptr[EVP_PKEY_CTX], md : Ptr[EVP_MD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_settable_params(ctx : Ptr[EVP_PKEY_CTX]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_CTX_str2ctrl(ctx : Ptr[EVP_PKEY_CTX], cmd : CInt, str : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_Q_keygen(libctx : Ptr[OSSL_LIB_CTX], propq : CString, `type` : CString, rest: Any*): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_add0(ameth : Ptr[EVP_PKEY_ASN1_METHOD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_add_alias(to : CInt, from : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_copy(dst : Ptr[EVP_PKEY_ASN1_METHOD], src : Ptr[EVP_PKEY_ASN1_METHOD]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_find(pe : Ptr[Ptr[ENGINE]], `type` : CInt): Ptr[EVP_PKEY_ASN1_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_find_str(pe : Ptr[Ptr[ENGINE]], str : CString, len : CInt): Ptr[EVP_PKEY_ASN1_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_free(ameth : Ptr[EVP_PKEY_ASN1_METHOD]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_get0(idx : CInt): Ptr[EVP_PKEY_ASN1_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_get0_info(ppkey_id : Ptr[CInt], pkey_base_id : Ptr[CInt], ppkey_flags : Ptr[CInt], pinfo : Ptr[CString], ppem_str : Ptr[CString], ameth : Ptr[EVP_PKEY_ASN1_METHOD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_get_count(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_new(id : CInt, flags : CInt, pem_str : CString, info : CString): Ptr[EVP_PKEY_ASN1_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_check(ameth : Ptr[EVP_PKEY_ASN1_METHOD], pkey_check : CFuncPtr1[Ptr[EVP_PKEY], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_ctrl(ameth : Ptr[EVP_PKEY_ASN1_METHOD], pkey_ctrl : CFuncPtr4[Ptr[EVP_PKEY], CInt, CLongInt, Ptr[Byte], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_free(ameth : Ptr[EVP_PKEY_ASN1_METHOD], pkey_free : CFuncPtr1[Ptr[EVP_PKEY], Unit]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_get_priv_key(ameth : Ptr[EVP_PKEY_ASN1_METHOD], get_priv_key : CFuncPtr3[Ptr[EVP_PKEY], Ptr[CUnsignedChar], Ptr[size_t], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_get_pub_key(ameth : Ptr[EVP_PKEY_ASN1_METHOD], get_pub_key : CFuncPtr3[Ptr[EVP_PKEY], Ptr[CUnsignedChar], Ptr[size_t], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_item(ameth : Ptr[EVP_PKEY_ASN1_METHOD], item_verify : CFuncPtr6[Ptr[EVP_MD_CTX], Ptr[ASN1_ITEM], Ptr[Byte], Ptr[X509_ALGOR], Ptr[ASN1_BIT_STRING], Ptr[EVP_PKEY], CInt], item_sign : CFuncPtr6[Ptr[EVP_MD_CTX], Ptr[ASN1_ITEM], Ptr[Byte], Ptr[X509_ALGOR], Ptr[X509_ALGOR], Ptr[ASN1_BIT_STRING], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_param(ameth : Ptr[EVP_PKEY_ASN1_METHOD], param_decode : CFuncPtr3[Ptr[EVP_PKEY], Ptr[Ptr[CUnsignedChar]], CInt, CInt], param_encode : CFuncPtr2[Ptr[EVP_PKEY], Ptr[Ptr[CUnsignedChar]], CInt], param_missing : CFuncPtr1[Ptr[EVP_PKEY], CInt], param_copy : CFuncPtr2[Ptr[EVP_PKEY], Ptr[EVP_PKEY], CInt], param_cmp : CFuncPtr2[Ptr[EVP_PKEY], Ptr[EVP_PKEY], CInt], param_print : CFuncPtr4[Ptr[BIO], Ptr[EVP_PKEY], CInt, Ptr[ASN1_PCTX], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_param_check(ameth : Ptr[EVP_PKEY_ASN1_METHOD], pkey_param_check : CFuncPtr1[Ptr[EVP_PKEY], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_private(ameth : Ptr[EVP_PKEY_ASN1_METHOD], priv_decode : CFuncPtr2[Ptr[EVP_PKEY], Ptr[PKCS8_PRIV_KEY_INFO], CInt], priv_encode : CFuncPtr2[Ptr[PKCS8_PRIV_KEY_INFO], Ptr[EVP_PKEY], CInt], priv_print : CFuncPtr4[Ptr[BIO], Ptr[EVP_PKEY], CInt, Ptr[ASN1_PCTX], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_public(ameth : Ptr[EVP_PKEY_ASN1_METHOD], pub_decode : CFuncPtr2[Ptr[EVP_PKEY], Ptr[X509_PUBKEY], CInt], pub_encode : CFuncPtr2[Ptr[X509_PUBKEY], Ptr[EVP_PKEY], CInt], pub_cmp : CFuncPtr2[Ptr[EVP_PKEY], Ptr[EVP_PKEY], CInt], pub_print : CFuncPtr4[Ptr[BIO], Ptr[EVP_PKEY], CInt, Ptr[ASN1_PCTX], CInt], pkey_size : CFuncPtr1[Ptr[EVP_PKEY], CInt], pkey_bits : CFuncPtr1[Ptr[EVP_PKEY], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_public_check(ameth : Ptr[EVP_PKEY_ASN1_METHOD], pkey_pub_check : CFuncPtr1[Ptr[EVP_PKEY], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_security_bits(ameth : Ptr[EVP_PKEY_ASN1_METHOD], pkey_security_bits : CFuncPtr1[Ptr[EVP_PKEY], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_set_priv_key(ameth : Ptr[EVP_PKEY_ASN1_METHOD], set_priv_key : CFuncPtr3[Ptr[EVP_PKEY], Ptr[CUnsignedChar], size_t, CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_set_pub_key(ameth : Ptr[EVP_PKEY_ASN1_METHOD], set_pub_key : CFuncPtr3[Ptr[EVP_PKEY], Ptr[CUnsignedChar], size_t, CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_asn1_set_siginf(ameth : Ptr[EVP_PKEY_ASN1_METHOD], siginf_set : CFuncPtr3[Ptr[X509_SIG_INFO], Ptr[X509_ALGOR], Ptr[ASN1_STRING], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_assign(pkey : Ptr[EVP_PKEY], `type` : CInt, key : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_can_sign(pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_check(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_cmp(a : Ptr[EVP_PKEY], b : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_cmp_parameters(a : Ptr[EVP_PKEY], b : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_copy_parameters(to : Ptr[EVP_PKEY], from : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_decapsulate(ctx : Ptr[EVP_PKEY_CTX], unwrapped : Ptr[CUnsignedChar], unwrappedlen : Ptr[size_t], wrapped : Ptr[CUnsignedChar], wrappedlen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_decapsulate_init(ctx : Ptr[EVP_PKEY_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_decrypt(ctx : Ptr[EVP_PKEY_CTX], out : Ptr[CUnsignedChar], outlen : Ptr[size_t], in : Ptr[CUnsignedChar], inlen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_decrypt_init(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_decrypt_init_ex(ctx : Ptr[EVP_PKEY_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_decrypt_old(dec_key : Ptr[CUnsignedChar], enc_key : Ptr[CUnsignedChar], enc_key_len : CInt, private_key : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_derive(ctx : Ptr[EVP_PKEY_CTX], key : Ptr[CUnsignedChar], keylen : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_derive_init(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_derive_init_ex(ctx : Ptr[EVP_PKEY_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_derive_set_peer(ctx : Ptr[EVP_PKEY_CTX], peer : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_derive_set_peer_ex(ctx : Ptr[EVP_PKEY_CTX], peer : Ptr[EVP_PKEY], validate_peer : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_digestsign_supports_digest(pkey : Ptr[EVP_PKEY], libctx : Ptr[OSSL_LIB_CTX], name : CString, propq : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_dup(pkey : Ptr[EVP_PKEY]): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_encapsulate(ctx : Ptr[EVP_PKEY_CTX], wrappedkey : Ptr[CUnsignedChar], wrappedkeylen : Ptr[size_t], genkey : Ptr[CUnsignedChar], genkeylen : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_encapsulate_init(ctx : Ptr[EVP_PKEY_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_encrypt(ctx : Ptr[EVP_PKEY_CTX], out : Ptr[CUnsignedChar], outlen : Ptr[size_t], in : Ptr[CUnsignedChar], inlen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_encrypt_init(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_encrypt_init_ex(ctx : Ptr[EVP_PKEY_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_encrypt_old(enc_key : Ptr[CUnsignedChar], key : Ptr[CUnsignedChar], key_len : CInt, pub_key : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_eq(a : Ptr[EVP_PKEY], b : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_export(pkey : Ptr[EVP_PKEY], selection : CInt, export_cb : Ptr[OSSL_CALLBACK], export_cbarg : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_free(pkey : Ptr[EVP_PKEY]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_fromdata(ctx : Ptr[EVP_PKEY_CTX], ppkey : Ptr[Ptr[EVP_PKEY]], selection : CInt, param : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_fromdata_init(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_fromdata_settable(ctx : Ptr[EVP_PKEY_CTX], selection : CInt): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_generate(ctx : Ptr[EVP_PKEY_CTX], ppkey : Ptr[Ptr[EVP_PKEY]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get0(pkey : Ptr[EVP_PKEY]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get0_DH(pkey : Ptr[EVP_PKEY]): Ptr[dh_st] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get0_DSA(pkey : Ptr[EVP_PKEY]): Ptr[dsa_st] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get0_EC_KEY(pkey : Ptr[EVP_PKEY]): Ptr[ec_key_st] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get0_RSA(pkey : Ptr[EVP_PKEY]): Ptr[rsa_st] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get0_asn1(pkey : Ptr[EVP_PKEY]): Ptr[EVP_PKEY_ASN1_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get0_description(pkey : Ptr[EVP_PKEY]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get0_engine(pkey : Ptr[EVP_PKEY]): Ptr[ENGINE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get0_hmac(pkey : Ptr[EVP_PKEY], len : Ptr[size_t]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get0_poly1305(pkey : Ptr[EVP_PKEY], len : Ptr[size_t]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get0_provider(key : Ptr[EVP_PKEY]): Ptr[OSSL_PROVIDER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get0_siphash(pkey : Ptr[EVP_PKEY], len : Ptr[size_t]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get0_type_name(key : Ptr[EVP_PKEY]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get1_DH(pkey : Ptr[EVP_PKEY]): Ptr[dh_st] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get1_DSA(pkey : Ptr[EVP_PKEY]): Ptr[dsa_st] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get1_EC_KEY(pkey : Ptr[EVP_PKEY]): Ptr[ec_key_st] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get1_RSA(pkey : Ptr[EVP_PKEY]): Ptr[rsa_st] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get1_encoded_public_key(pkey : Ptr[EVP_PKEY], ppub : Ptr[Ptr[CUnsignedChar]]): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_base_id(pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_bits(pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_bn_param(pkey : Ptr[EVP_PKEY], key_name : CString, bn : Ptr[Ptr[BIGNUM]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_default_digest_name(pkey : Ptr[EVP_PKEY], mdname : CString, mdname_sz : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_default_digest_nid(pkey : Ptr[EVP_PKEY], pnid : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_ec_point_conv_form(pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_ex_data(key : Ptr[EVP_PKEY], idx : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_field_type(pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_group_name(pkey : Ptr[EVP_PKEY], name : CString, name_sz : size_t, gname_len : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_id(pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_int_param(pkey : Ptr[EVP_PKEY], key_name : CString, out : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_octet_string_param(pkey : Ptr[EVP_PKEY], key_name : CString, buf : Ptr[CUnsignedChar], max_buf_sz : size_t, out_sz : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_params(pkey : Ptr[EVP_PKEY], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_raw_private_key(pkey : Ptr[EVP_PKEY], priv : Ptr[CUnsignedChar], len : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_raw_public_key(pkey : Ptr[EVP_PKEY], pub : Ptr[CUnsignedChar], len : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_security_bits(pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_size(pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_size_t_param(pkey : Ptr[EVP_PKEY], key_name : CString, out : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_get_utf8_string_param(pkey : Ptr[EVP_PKEY], key_name : CString, str : CString, max_buf_sz : size_t, out_sz : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_gettable_params(pkey : Ptr[EVP_PKEY]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_is_a(pkey : Ptr[EVP_PKEY], name : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_keygen(ctx : Ptr[EVP_PKEY_CTX], ppkey : Ptr[Ptr[EVP_PKEY]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_keygen_init(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_add0(pmeth : Ptr[EVP_PKEY_METHOD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_copy(dst : Ptr[EVP_PKEY_METHOD], src : Ptr[EVP_PKEY_METHOD]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_find(`type` : CInt): Ptr[EVP_PKEY_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_free(pmeth : Ptr[EVP_PKEY_METHOD]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get0(idx : size_t): Ptr[EVP_PKEY_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get0_info(ppkey_id : Ptr[CInt], pflags : Ptr[CInt], meth : Ptr[EVP_PKEY_METHOD]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_check(pmeth : Ptr[EVP_PKEY_METHOD], pcheck : Ptr[CFuncPtr1[Ptr[EVP_PKEY], CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_cleanup(pmeth : Ptr[EVP_PKEY_METHOD], pcleanup : Ptr[CFuncPtr1[Ptr[EVP_PKEY_CTX], Unit]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_copy(pmeth : Ptr[EVP_PKEY_METHOD], pcopy : Ptr[CFuncPtr2[Ptr[EVP_PKEY_CTX], Ptr[EVP_PKEY_CTX], CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_count(): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_ctrl(pmeth : Ptr[EVP_PKEY_METHOD], pctrl : Ptr[CFuncPtr4[Ptr[EVP_PKEY_CTX], CInt, CInt, Ptr[Byte], CInt]], pctrl_str : Ptr[CFuncPtr3[Ptr[EVP_PKEY_CTX], CString, CString, CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_decrypt(pmeth : Ptr[EVP_PKEY_METHOD], pdecrypt_init : Ptr[CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]], pdecrypt : Ptr[CFuncPtr5[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_derive(pmeth : Ptr[EVP_PKEY_METHOD], pderive_init : Ptr[CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]], pderive : Ptr[CFuncPtr3[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], Ptr[size_t], CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_digest_custom(pmeth : Ptr[EVP_PKEY_METHOD], pdigest_custom : Ptr[CFuncPtr2[Ptr[EVP_PKEY_CTX], Ptr[EVP_MD_CTX], CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_digestsign(pmeth : Ptr[EVP_PKEY_METHOD], digestsign : Ptr[CFuncPtr5[Ptr[EVP_MD_CTX], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_digestverify(pmeth : Ptr[EVP_PKEY_METHOD], digestverify : Ptr[CFuncPtr5[Ptr[EVP_MD_CTX], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_encrypt(pmeth : Ptr[EVP_PKEY_METHOD], pencrypt_init : Ptr[CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]], pencryptfn : Ptr[CFuncPtr5[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_init(pmeth : Ptr[EVP_PKEY_METHOD], pinit : Ptr[CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_keygen(pmeth : Ptr[EVP_PKEY_METHOD], pkeygen_init : Ptr[CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]], pkeygen : Ptr[CFuncPtr2[Ptr[EVP_PKEY_CTX], Ptr[EVP_PKEY], CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_param_check(pmeth : Ptr[EVP_PKEY_METHOD], pcheck : Ptr[CFuncPtr1[Ptr[EVP_PKEY], CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_paramgen(pmeth : Ptr[EVP_PKEY_METHOD], pparamgen_init : Ptr[CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]], pparamgen : Ptr[CFuncPtr2[Ptr[EVP_PKEY_CTX], Ptr[EVP_PKEY], CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_public_check(pmeth : Ptr[EVP_PKEY_METHOD], pcheck : Ptr[CFuncPtr1[Ptr[EVP_PKEY], CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_sign(pmeth : Ptr[EVP_PKEY_METHOD], psign_init : Ptr[CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]], psign : Ptr[CFuncPtr5[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_signctx(pmeth : Ptr[EVP_PKEY_METHOD], psignctx_init : Ptr[CFuncPtr2[Ptr[EVP_PKEY_CTX], Ptr[EVP_MD_CTX], CInt]], psignctx : Ptr[CFuncPtr4[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], Ptr[size_t], Ptr[EVP_MD_CTX], CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_verify(pmeth : Ptr[EVP_PKEY_METHOD], pverify_init : Ptr[CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]], pverify : Ptr[CFuncPtr5[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_verify_recover(pmeth : Ptr[EVP_PKEY_METHOD], pverify_recover_init : Ptr[CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]], pverify_recover : Ptr[CFuncPtr5[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_get_verifyctx(pmeth : Ptr[EVP_PKEY_METHOD], pverifyctx_init : Ptr[CFuncPtr2[Ptr[EVP_PKEY_CTX], Ptr[EVP_MD_CTX], CInt]], pverifyctx : Ptr[CFuncPtr4[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], CInt, Ptr[EVP_MD_CTX], CInt]]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_new(id : CInt, flags : CInt): Ptr[EVP_PKEY_METHOD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_remove(pmeth : Ptr[EVP_PKEY_METHOD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_check(pmeth : Ptr[EVP_PKEY_METHOD], check : CFuncPtr1[Ptr[EVP_PKEY], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_cleanup(pmeth : Ptr[EVP_PKEY_METHOD], cleanup : CFuncPtr1[Ptr[EVP_PKEY_CTX], Unit]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_copy(pmeth : Ptr[EVP_PKEY_METHOD], copy : CFuncPtr2[Ptr[EVP_PKEY_CTX], Ptr[EVP_PKEY_CTX], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_ctrl(pmeth : Ptr[EVP_PKEY_METHOD], ctrl : CFuncPtr4[Ptr[EVP_PKEY_CTX], CInt, CInt, Ptr[Byte], CInt], ctrl_str : CFuncPtr3[Ptr[EVP_PKEY_CTX], CString, CString, CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_decrypt(pmeth : Ptr[EVP_PKEY_METHOD], decrypt_init : CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt], decrypt : CFuncPtr5[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_derive(pmeth : Ptr[EVP_PKEY_METHOD], derive_init : CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt], derive : CFuncPtr3[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], Ptr[size_t], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_digest_custom(pmeth : Ptr[EVP_PKEY_METHOD], digest_custom : CFuncPtr2[Ptr[EVP_PKEY_CTX], Ptr[EVP_MD_CTX], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_digestsign(pmeth : Ptr[EVP_PKEY_METHOD], digestsign : CFuncPtr5[Ptr[EVP_MD_CTX], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_digestverify(pmeth : Ptr[EVP_PKEY_METHOD], digestverify : CFuncPtr5[Ptr[EVP_MD_CTX], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_encrypt(pmeth : Ptr[EVP_PKEY_METHOD], encrypt_init : CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt], encryptfn : CFuncPtr5[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_init(pmeth : Ptr[EVP_PKEY_METHOD], init : CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_keygen(pmeth : Ptr[EVP_PKEY_METHOD], keygen_init : CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt], keygen : CFuncPtr2[Ptr[EVP_PKEY_CTX], Ptr[EVP_PKEY], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_param_check(pmeth : Ptr[EVP_PKEY_METHOD], check : CFuncPtr1[Ptr[EVP_PKEY], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_paramgen(pmeth : Ptr[EVP_PKEY_METHOD], paramgen_init : CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt], paramgen : CFuncPtr2[Ptr[EVP_PKEY_CTX], Ptr[EVP_PKEY], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_public_check(pmeth : Ptr[EVP_PKEY_METHOD], check : CFuncPtr1[Ptr[EVP_PKEY], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_sign(pmeth : Ptr[EVP_PKEY_METHOD], sign_init : CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt], sign : CFuncPtr5[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_signctx(pmeth : Ptr[EVP_PKEY_METHOD], signctx_init : CFuncPtr2[Ptr[EVP_PKEY_CTX], Ptr[EVP_MD_CTX], CInt], signctx : CFuncPtr4[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], Ptr[size_t], Ptr[EVP_MD_CTX], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_verify(pmeth : Ptr[EVP_PKEY_METHOD], verify_init : CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt], verify : CFuncPtr5[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_verify_recover(pmeth : Ptr[EVP_PKEY_METHOD], verify_recover_init : CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt], verify_recover : CFuncPtr5[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_meth_set_verifyctx(pmeth : Ptr[EVP_PKEY_METHOD], verifyctx_init : CFuncPtr2[Ptr[EVP_PKEY_CTX], Ptr[EVP_MD_CTX], CInt], verifyctx : CFuncPtr4[Ptr[EVP_PKEY_CTX], Ptr[CUnsignedChar], CInt, Ptr[EVP_MD_CTX], CInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_missing_parameters(pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_new(): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_new_CMAC_key(e : Ptr[ENGINE], priv : Ptr[CUnsignedChar], len : size_t, cipher : Ptr[EVP_CIPHER]): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_new_mac_key(`type` : CInt, e : Ptr[ENGINE], key : Ptr[CUnsignedChar], keylen : CInt): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_new_raw_private_key(`type` : CInt, e : Ptr[ENGINE], priv : Ptr[CUnsignedChar], len : size_t): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_new_raw_private_key_ex(libctx : Ptr[OSSL_LIB_CTX], keytype : CString, propq : CString, priv : Ptr[CUnsignedChar], len : size_t): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_new_raw_public_key(`type` : CInt, e : Ptr[ENGINE], pub : Ptr[CUnsignedChar], len : size_t): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_new_raw_public_key_ex(libctx : Ptr[OSSL_LIB_CTX], keytype : CString, propq : CString, pub : Ptr[CUnsignedChar], len : size_t): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_pairwise_check(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_param_check(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_param_check_quick(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_parameters_eq(a : Ptr[EVP_PKEY], b : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_paramgen(ctx : Ptr[EVP_PKEY_CTX], ppkey : Ptr[Ptr[EVP_PKEY]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_paramgen_init(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_print_params(out : Ptr[BIO], pkey : Ptr[EVP_PKEY], indent : CInt, pctx : Ptr[ASN1_PCTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_print_params_fp(fp : Ptr[FILE], pkey : Ptr[EVP_PKEY], indent : CInt, pctx : Ptr[ASN1_PCTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_print_private(out : Ptr[BIO], pkey : Ptr[EVP_PKEY], indent : CInt, pctx : Ptr[ASN1_PCTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_print_private_fp(fp : Ptr[FILE], pkey : Ptr[EVP_PKEY], indent : CInt, pctx : Ptr[ASN1_PCTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_print_public(out : Ptr[BIO], pkey : Ptr[EVP_PKEY], indent : CInt, pctx : Ptr[ASN1_PCTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_print_public_fp(fp : Ptr[FILE], pkey : Ptr[EVP_PKEY], indent : CInt, pctx : Ptr[ASN1_PCTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_private_check(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_public_check(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_public_check_quick(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_save_parameters(pkey : Ptr[EVP_PKEY], mode : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set1_DH(pkey : Ptr[EVP_PKEY], key : Ptr[dh_st]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set1_DSA(pkey : Ptr[EVP_PKEY], key : Ptr[dsa_st]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set1_EC_KEY(pkey : Ptr[EVP_PKEY], key : Ptr[ec_key_st]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set1_RSA(pkey : Ptr[EVP_PKEY], key : Ptr[rsa_st]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set1_encoded_public_key(pkey : Ptr[EVP_PKEY], pub : Ptr[CUnsignedChar], publen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set1_engine(pkey : Ptr[EVP_PKEY], e : Ptr[ENGINE]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set_bn_param(pkey : Ptr[EVP_PKEY], key_name : CString, bn : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set_ex_data(key : Ptr[EVP_PKEY], idx : CInt, arg : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set_int_param(pkey : Ptr[EVP_PKEY], key_name : CString, in : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set_octet_string_param(pkey : Ptr[EVP_PKEY], key_name : CString, buf : Ptr[CUnsignedChar], bsize : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set_params(pkey : Ptr[EVP_PKEY], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set_size_t_param(pkey : Ptr[EVP_PKEY], key_name : CString, in : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set_type(pkey : Ptr[EVP_PKEY], `type` : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set_type_by_keymgmt(pkey : Ptr[EVP_PKEY], keymgmt : Ptr[EVP_KEYMGMT]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set_type_str(pkey : Ptr[EVP_PKEY], str : CString, len : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_set_utf8_string_param(pkey : Ptr[EVP_PKEY], key_name : CString, str : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_settable_params(pkey : Ptr[EVP_PKEY]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_sign(ctx : Ptr[EVP_PKEY_CTX], sig : Ptr[CUnsignedChar], siglen : Ptr[size_t], tbs : Ptr[CUnsignedChar], tbslen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_sign_init(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_sign_init_ex(ctx : Ptr[EVP_PKEY_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_todata(pkey : Ptr[EVP_PKEY], selection : CInt, params : Ptr[Ptr[OSSL_PARAM]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_type(`type` : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_type_names_do_all(pkey : Ptr[EVP_PKEY], fn : CFuncPtr2[CString, Ptr[Byte], Unit], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_up_ref(pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_verify(ctx : Ptr[EVP_PKEY_CTX], sig : Ptr[CUnsignedChar], siglen : size_t, tbs : Ptr[CUnsignedChar], tbslen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_verify_init(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_verify_init_ex(ctx : Ptr[EVP_PKEY_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_verify_recover(ctx : Ptr[EVP_PKEY_CTX], rout : Ptr[CUnsignedChar], routlen : Ptr[size_t], sig : Ptr[CUnsignedChar], siglen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_verify_recover_init(ctx : Ptr[EVP_PKEY_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_PKEY_verify_recover_init_ex(ctx : Ptr[EVP_PKEY_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_Q_digest(libctx : Ptr[OSSL_LIB_CTX], name : CString, propq : CString, data : Ptr[Byte], datalen : size_t, md : Ptr[CUnsignedChar], mdlen : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_Q_mac(libctx : Ptr[OSSL_LIB_CTX], name : CString, propq : CString, subalg : CString, params : Ptr[OSSL_PARAM], key : Ptr[Byte], keylen : size_t, data : Ptr[CUnsignedChar], datalen : size_t, out : Ptr[CUnsignedChar], outsize : size_t, outlen : Ptr[size_t]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_CTX_free(ctx : Ptr[EVP_RAND_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_CTX_get0_rand(ctx : Ptr[EVP_RAND_CTX]): Ptr[EVP_RAND] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_CTX_get_params(ctx : Ptr[EVP_RAND_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_CTX_gettable_params(ctx : Ptr[EVP_RAND_CTX]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_CTX_new(rand : Ptr[EVP_RAND], parent : Ptr[EVP_RAND_CTX]): Ptr[EVP_RAND_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_CTX_set_params(ctx : Ptr[EVP_RAND_CTX], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_CTX_settable_params(ctx : Ptr[EVP_RAND_CTX]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_CTX_up_ref(ctx : Ptr[EVP_RAND_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_do_all_provided(libctx : Ptr[OSSL_LIB_CTX], fn : CFuncPtr2[Ptr[EVP_RAND], Ptr[Byte], Unit], arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_enable_locking(ctx : Ptr[EVP_RAND_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_fetch(libctx : Ptr[OSSL_LIB_CTX], algorithm : CString, properties : CString): Ptr[EVP_RAND] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_free(rand : Ptr[EVP_RAND]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_generate(ctx : Ptr[EVP_RAND_CTX], out : Ptr[CUnsignedChar], outlen : size_t, strength : CUnsignedInt, prediction_resistance : CInt, addin : Ptr[CUnsignedChar], addin_len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_get0_description(md : Ptr[EVP_RAND]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_get0_name(rand : Ptr[EVP_RAND]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_get0_provider(rand : Ptr[EVP_RAND]): Ptr[OSSL_PROVIDER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_get_params(rand : Ptr[EVP_RAND], params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_get_state(ctx : Ptr[EVP_RAND_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_get_strength(ctx : Ptr[EVP_RAND_CTX]): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_gettable_ctx_params(rand : Ptr[EVP_RAND]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_gettable_params(rand : Ptr[EVP_RAND]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_instantiate(ctx : Ptr[EVP_RAND_CTX], strength : CUnsignedInt, prediction_resistance : CInt, pstr : Ptr[CUnsignedChar], pstr_len : size_t, params : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_is_a(rand : Ptr[EVP_RAND], name : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_names_do_all(rand : Ptr[EVP_RAND], fn : CFuncPtr2[CString, Ptr[Byte], Unit], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_nonce(ctx : Ptr[EVP_RAND_CTX], out : Ptr[CUnsignedChar], outlen : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_reseed(ctx : Ptr[EVP_RAND_CTX], prediction_resistance : CInt, ent : Ptr[CUnsignedChar], ent_len : size_t, addin : Ptr[CUnsignedChar], addin_len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_settable_ctx_params(rand : Ptr[EVP_RAND]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_uninstantiate(ctx : Ptr[EVP_RAND_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_up_ref(rand : Ptr[EVP_RAND]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_RAND_verify_zeroization(ctx : Ptr[EVP_RAND_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SIGNATURE_do_all_provided(libctx : Ptr[OSSL_LIB_CTX], fn : CFuncPtr2[Ptr[EVP_SIGNATURE], Ptr[Byte], Unit], data : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SIGNATURE_fetch(ctx : Ptr[OSSL_LIB_CTX], algorithm : CString, properties : CString): Ptr[EVP_SIGNATURE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SIGNATURE_free(signature : Ptr[EVP_SIGNATURE]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SIGNATURE_get0_description(signature : Ptr[EVP_SIGNATURE]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SIGNATURE_get0_name(signature : Ptr[EVP_SIGNATURE]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SIGNATURE_get0_provider(signature : Ptr[EVP_SIGNATURE]): Ptr[OSSL_PROVIDER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SIGNATURE_gettable_ctx_params(sig : Ptr[EVP_SIGNATURE]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SIGNATURE_is_a(signature : Ptr[EVP_SIGNATURE], name : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SIGNATURE_names_do_all(signature : Ptr[EVP_SIGNATURE], fn : CFuncPtr2[CString, Ptr[Byte], Unit], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SIGNATURE_settable_ctx_params(sig : Ptr[EVP_SIGNATURE]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SIGNATURE_up_ref(signature : Ptr[EVP_SIGNATURE]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SealFinal(ctx : Ptr[EVP_CIPHER_CTX], out : Ptr[CUnsignedChar], outl : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SealInit(ctx : Ptr[EVP_CIPHER_CTX], `type` : Ptr[EVP_CIPHER], ek : Ptr[Ptr[CUnsignedChar]], ekl : Ptr[CInt], iv : Ptr[CUnsignedChar], pubk : Ptr[Ptr[EVP_PKEY]], npubk : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SignFinal(ctx : Ptr[EVP_MD_CTX], md : Ptr[CUnsignedChar], s : Ptr[CUnsignedInt], pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_SignFinal_ex(ctx : Ptr[EVP_MD_CTX], md : Ptr[CUnsignedChar], s : Ptr[CUnsignedInt], pkey : Ptr[EVP_PKEY], libctx : Ptr[OSSL_LIB_CTX], propq : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_VerifyFinal(ctx : Ptr[EVP_MD_CTX], sigbuf : Ptr[CUnsignedChar], siglen : CUnsignedInt, pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_VerifyFinal_ex(ctx : Ptr[EVP_MD_CTX], sigbuf : Ptr[CUnsignedChar], siglen : CUnsignedInt, pkey : Ptr[EVP_PKEY], libctx : Ptr[OSSL_LIB_CTX], propq : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_add_alg_module(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_add_cipher(cipher : Ptr[EVP_CIPHER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_add_digest(digest : Ptr[EVP_MD]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_cbc_hmac_sha1(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_cbc_hmac_sha256(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_ccm(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_cfb1(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_cfb128(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_cfb8(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_ctr(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_gcm(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_ocb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_wrap(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_wrap_pad(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_128_xts(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_192_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_192_ccm(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_192_cfb1(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_192_cfb128(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_192_cfb8(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_192_ctr(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_192_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_192_gcm(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_192_ocb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_192_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_192_wrap(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_192_wrap_pad(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_cbc_hmac_sha1(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_cbc_hmac_sha256(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_ccm(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_cfb1(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_cfb128(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_cfb8(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_ctr(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_gcm(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_ocb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_wrap(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_wrap_pad(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aes_256_xts(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_128_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_128_ccm(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_128_cfb1(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_128_cfb128(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_128_cfb8(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_128_ctr(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_128_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_128_gcm(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_128_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_192_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_192_ccm(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_192_cfb1(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_192_cfb128(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_192_cfb8(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_192_ctr(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_192_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_192_gcm(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_192_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_256_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_256_ccm(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_256_cfb1(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_256_cfb128(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_256_cfb8(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_256_ctr(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_256_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_256_gcm(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_aria_256_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_bf_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_bf_cfb64(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_bf_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_bf_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_blake2b512(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_blake2s256(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_128_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_128_cfb1(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_128_cfb128(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_128_cfb8(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_128_ctr(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_128_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_128_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_192_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_192_cfb1(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_192_cfb128(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_192_cfb8(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_192_ctr(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_192_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_192_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_256_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_256_cfb1(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_256_cfb128(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_256_cfb8(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_256_ctr(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_256_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_camellia_256_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_cast5_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_cast5_cfb64(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_cast5_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_cast5_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_chacha20(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_chacha20_poly1305(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_default_properties_enable_fips(libctx : Ptr[OSSL_LIB_CTX], enable : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_default_properties_is_fips_enabled(libctx : Ptr[OSSL_LIB_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_cfb1(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_cfb64(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_cfb8(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ede(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ede3(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ede3_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ede3_cfb1(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ede3_cfb64(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ede3_cfb8(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ede3_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ede3_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ede3_wrap(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ede_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ede_cfb64(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ede_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ede_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_des_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_desx_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_enc_null(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_get_cipherbyname(name : CString): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_get_digestbyname(name : CString): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_get_pw_prompt(): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_idea_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_idea_cfb64(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_idea_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_idea_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_md4(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_md5(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_md5_sha1(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_md_null(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_mdc2(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_rc2_40_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_rc2_64_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_rc2_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_rc2_cfb64(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_rc2_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_rc2_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_rc4(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_rc4_40(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_rc4_hmac_md5(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_read_pw_string(buf : CString, length : CInt, prompt : CString, verify : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_read_pw_string_min(buf : CString, minlen : CInt, maxlen : CInt, prompt : CString, verify : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_ripemd160(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_seed_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_seed_cfb128(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_seed_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_seed_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_set_default_properties(libctx : Ptr[OSSL_LIB_CTX], propq : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_set_pw_prompt(prompt : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sha1(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sha224(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sha256(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sha384(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sha3_224(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sha3_256(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sha3_384(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sha3_512(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sha512(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sha512_224(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sha512_256(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_shake128(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_shake256(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sm3(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sm4_cbc(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sm4_cfb128(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sm4_ctr(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sm4_ecb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_sm4_ofb(): Ptr[EVP_CIPHER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def EVP_whirlpool(): Ptr[EVP_MD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_NAME_add(name : CString, `type` : CInt, data : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_NAME_cleanup(`type` : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_NAME_do_all(`type` : CInt, fn : CFuncPtr2[Ptr[OBJ_NAME], Ptr[Byte], Unit], arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_NAME_do_all_sorted(`type` : CInt, fn : CFuncPtr2[Ptr[OBJ_NAME], Ptr[Byte], Unit], arg : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_NAME_get(name : CString, `type` : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_NAME_init(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_NAME_new_index(hash_func : CFuncPtr1[CString, CUnsignedLongInt], cmp_func : CFuncPtr2[CString, CString, CInt], free_func : CFuncPtr3[CString, CInt, CString, Unit]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_NAME_remove(name : CString, `type` : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_add_object(obj : Ptr[ASN1_OBJECT]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_add_sigid(signid : CInt, dig_id : CInt, pkey_id : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_bsearch_(key : Ptr[Byte], base : Ptr[Byte], num : CInt, size : CInt, cmp : CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_bsearch_ex_(key : Ptr[Byte], base : Ptr[Byte], num : CInt, size : CInt, cmp : CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt], flags : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_cmp(a : Ptr[ASN1_OBJECT], b : Ptr[ASN1_OBJECT]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_create(oid : CString, sn : CString, ln : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_create_objects(in : Ptr[BIO]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_dup(a : Ptr[ASN1_OBJECT]): Ptr[ASN1_OBJECT] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_find_sigid_algs(signid : CInt, pdig_nid : Ptr[CInt], ppkey_nid : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_find_sigid_by_algs(psignid : Ptr[CInt], dig_nid : CInt, pkey_nid : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_get0_data(obj : Ptr[ASN1_OBJECT]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_length(obj : Ptr[ASN1_OBJECT]): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_ln2nid(s : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_new_nid(num : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_nid2ln(n : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_nid2obj(n : CInt): Ptr[ASN1_OBJECT] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_nid2sn(n : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_obj2nid(o : Ptr[ASN1_OBJECT]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_obj2txt(buf : CString, buf_len : CInt, a : Ptr[ASN1_OBJECT], no_name : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_sigid_free(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_sn2nid(s : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_txt2nid(s : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/objects.h
   */
   def OBJ_txt2obj(s : CString, no_name : CInt): Ptr[ASN1_OBJECT] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_INIT_free(settings : Ptr[OPENSSL_INIT_SETTINGS]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_INIT_new(): Ptr[OPENSSL_INIT_SETTINGS] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_INIT_set_config_appname(settings : Ptr[OPENSSL_INIT_SETTINGS], config_appname : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_INIT_set_config_file_flags(settings : Ptr[OPENSSL_INIT_SETTINGS], flags : CUnsignedLongInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_INIT_set_config_filename(settings : Ptr[OPENSSL_INIT_SETTINGS], config_filename : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_atexit(handler : CFuncPtr0[Unit]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_buf2hexstr(buf : Ptr[CUnsignedChar], buflen : CLongInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_buf2hexstr_ex(str : CString, str_n : size_t, strlength : Ptr[size_t], buf : Ptr[CUnsignedChar], buflen : size_t, sep : CChar): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_cleanse(ptr : Ptr[Byte], len : size_t): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_cleanup(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_die(assertion : CString, file : CString, line : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_fork_child(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_fork_parent(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_fork_prepare(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_gmtime(timer : Ptr[time_t], result : Ptr[tm]): Ptr[tm] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_gmtime_adj(tm : Ptr[tm], offset_day : CInt, offset_sec : CLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_gmtime_diff(pday : Ptr[CInt], psec : Ptr[CInt], from : Ptr[tm], to : Ptr[tm]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_hexchar2int(c : CUnsignedChar): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_hexstr2buf(str : CString, buflen : Ptr[CLongInt]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_hexstr2buf_ex(buf : Ptr[CUnsignedChar], buf_n : size_t, buflen : Ptr[size_t], str : CString, sep : CChar): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_info(`type` : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_init(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_init_crypto(opts : uint64_t, settings : Ptr[OPENSSL_INIT_SETTINGS]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_isservice(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_issetugid(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_deep_copy(_0 : Ptr[OPENSSL_STACK], c : OPENSSL_sk_copyfunc, f : OPENSSL_sk_freefunc): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_delete(st : Ptr[OPENSSL_STACK], loc : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_delete_ptr(st : Ptr[OPENSSL_STACK], p : Ptr[Byte]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_dup(st : Ptr[OPENSSL_STACK]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_find(st : Ptr[OPENSSL_STACK], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_find_all(st : Ptr[OPENSSL_STACK], data : Ptr[Byte], pnum : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_find_ex(st : Ptr[OPENSSL_STACK], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_free(_0 : Ptr[OPENSSL_STACK]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_insert(sk : Ptr[OPENSSL_STACK], data : Ptr[Byte], where : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_is_sorted(st : Ptr[OPENSSL_STACK]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_new(cmp : OPENSSL_sk_compfunc): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_new_null(): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_new_reserve(c : OPENSSL_sk_compfunc, n : CInt): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_num(_0 : Ptr[OPENSSL_STACK]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_pop(st : Ptr[OPENSSL_STACK]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_pop_free(st : Ptr[OPENSSL_STACK], func : CFuncPtr1[Ptr[Byte], Unit]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_push(st : Ptr[OPENSSL_STACK], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_reserve(st : Ptr[OPENSSL_STACK], n : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_set(st : Ptr[OPENSSL_STACK], i : CInt, data : Ptr[Byte]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_set_cmp_func(sk : Ptr[OPENSSL_STACK], cmp : OPENSSL_sk_compfunc): OPENSSL_sk_compfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_shift(st : Ptr[OPENSSL_STACK]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_sort(st : Ptr[OPENSSL_STACK]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_unshift(st : Ptr[OPENSSL_STACK], data : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_value(_0 : Ptr[OPENSSL_STACK], _1 : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/stack.h
   */
   def OPENSSL_sk_zero(st : Ptr[OPENSSL_STACK]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_strcasecmp(s1 : CString, s2 : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_strlcat(dst : CString, src : CString, siz : size_t): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_strlcpy(dst : CString, src : CString, siz : size_t): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_strncasecmp(s1 : CString, s2 : CString, n : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_strnlen(str : CString, maxlen : size_t): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_thread_stop(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_thread_stop_ex(ctx : Ptr[OSSL_LIB_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_version_build_metadata(): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_version_major(): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_version_minor(): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_version_patch(): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OPENSSL_version_pre_release(): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_BIO_ctrl(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_BIO_ctrl_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_BIO_free(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_BIO_free_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_BIO_gets(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_BIO_gets_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_BIO_new_file(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_BIO_new_file_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_BIO_new_membuf(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_BIO_new_membuf_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_BIO_puts(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_BIO_puts_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_BIO_read_ex(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_BIO_read_ex_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_BIO_up_ref(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_BIO_up_ref_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_BIO_vprintf(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_BIO_vprintf_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_BIO_vsnprintf(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_BIO_vsnprintf_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_BIO_write_ex(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_BIO_write_ex_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_CRYPTO_clear_free(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_CRYPTO_clear_free_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_CRYPTO_clear_realloc(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_CRYPTO_clear_realloc_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_CRYPTO_free(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_CRYPTO_free_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_CRYPTO_malloc(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_CRYPTO_malloc_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_CRYPTO_realloc(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_CRYPTO_realloc_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_CRYPTO_secure_allocated(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_CRYPTO_secure_allocated_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_CRYPTO_secure_clear_free(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_CRYPTO_secure_clear_free_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_CRYPTO_secure_free(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_CRYPTO_secure_free_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_CRYPTO_secure_malloc(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_CRYPTO_secure_malloc_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_CRYPTO_secure_zalloc(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_CRYPTO_secure_zalloc_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_CRYPTO_zalloc(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_CRYPTO_zalloc_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_OPENSSL_cleanse(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_OPENSSL_cleanse_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_asym_cipher_decrypt(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_asym_cipher_decrypt_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_asym_cipher_decrypt_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_asym_cipher_decrypt_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_asym_cipher_dupctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_asym_cipher_dupctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_asym_cipher_encrypt(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_asym_cipher_encrypt_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_asym_cipher_encrypt_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_asym_cipher_encrypt_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_asym_cipher_freectx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_asym_cipher_freectx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_asym_cipher_get_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_asym_cipher_get_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_asym_cipher_gettable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_asym_cipher_gettable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_asym_cipher_newctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_asym_cipher_newctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_asym_cipher_set_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_asym_cipher_set_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_asym_cipher_settable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_asym_cipher_settable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_cipher(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_cipher_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_decrypt_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_decrypt_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_dupctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_dupctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_encrypt_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_encrypt_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_final(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_final_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_freectx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_freectx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_get_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_get_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_get_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_get_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_gettable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_gettable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_gettable_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_gettable_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_newctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_newctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_set_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_set_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_settable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_settable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cipher_update(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cipher_update_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cleanup_entropy(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cleanup_entropy_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_cleanup_nonce(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_cleanup_nonce_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_core_clear_last_error_mark(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_core_clear_last_error_mark_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_core_get_libctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_core_get_libctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_core_get_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_core_get_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_core_gettable_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_core_gettable_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_core_new_error(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_core_new_error_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_core_obj_add_sigid(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_core_obj_add_sigid_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_core_obj_create(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_core_obj_create_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_core_pop_error_to_mark(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_core_pop_error_to_mark_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_core_set_error_debug(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_core_set_error_debug_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_core_set_error_mark(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_core_set_error_mark_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_core_thread_start(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_core_thread_start_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_core_vset_error(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_core_vset_error_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_decoder_decode(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_decoder_decode_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_decoder_does_selection(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_decoder_does_selection_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_decoder_export_object(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_decoder_export_object_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_decoder_freectx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_decoder_freectx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_decoder_get_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_decoder_get_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_decoder_gettable_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_decoder_gettable_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_decoder_newctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_decoder_newctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_decoder_set_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_decoder_set_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_decoder_settable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_decoder_settable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_digest_digest(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_digest_digest_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_digest_dupctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_digest_dupctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_digest_final(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_digest_final_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_digest_freectx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_digest_freectx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_digest_get_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_digest_get_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_digest_get_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_digest_get_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_digest_gettable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_digest_gettable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_digest_gettable_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_digest_gettable_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_digest_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_digest_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_digest_newctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_digest_newctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_digest_set_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_digest_set_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_digest_settable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_digest_settable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_digest_update(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_digest_update_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_encoder_does_selection(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_encoder_does_selection_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_encoder_encode(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_encoder_encode_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_encoder_free_object(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_encoder_free_object_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_encoder_freectx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_encoder_freectx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_encoder_get_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_encoder_get_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_encoder_gettable_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_encoder_gettable_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_encoder_import_object(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_encoder_import_object_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_encoder_newctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_encoder_newctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_encoder_set_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_encoder_set_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_encoder_settable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_encoder_settable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_get_entropy(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_get_entropy_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_get_nonce(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_get_nonce_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kdf_derive(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kdf_derive_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kdf_dupctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kdf_dupctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kdf_freectx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kdf_freectx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kdf_get_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kdf_get_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kdf_get_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kdf_get_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kdf_gettable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kdf_gettable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kdf_gettable_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kdf_gettable_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kdf_newctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kdf_newctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kdf_reset(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kdf_reset_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kdf_set_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kdf_set_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kdf_settable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kdf_settable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kem_decapsulate(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kem_decapsulate_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kem_decapsulate_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kem_decapsulate_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kem_dupctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kem_dupctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kem_encapsulate(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kem_encapsulate_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kem_encapsulate_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kem_encapsulate_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kem_freectx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kem_freectx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kem_get_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kem_get_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kem_gettable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kem_gettable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kem_newctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kem_newctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kem_set_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kem_set_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_kem_settable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_kem_settable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keyexch_derive(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keyexch_derive_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keyexch_dupctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keyexch_dupctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keyexch_freectx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keyexch_freectx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keyexch_get_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keyexch_get_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keyexch_gettable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keyexch_gettable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keyexch_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keyexch_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keyexch_newctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keyexch_newctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keyexch_set_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keyexch_set_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keyexch_set_peer(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keyexch_set_peer_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keyexch_settable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keyexch_settable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_dup(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_dup_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_export(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_export_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_export_types(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_export_types_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_free(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_free_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_gen(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_gen_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_gen_cleanup(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_gen_cleanup_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_gen_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_gen_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_gen_set_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_gen_set_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_gen_set_template(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_gen_set_template_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_gen_settable_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_gen_settable_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_get_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_get_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_gettable_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_gettable_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_has(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_has_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_import(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_import_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_import_types(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_import_types_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_load(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_load_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_match(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_match_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_new(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_new_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_query_operation_name(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_query_operation_name_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_set_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_set_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_settable_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_settable_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_keymgmt_validate(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_keymgmt_validate_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_mac_dupctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_mac_dupctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_mac_final(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_mac_final_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_mac_freectx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_mac_freectx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_mac_get_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_mac_get_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_mac_get_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_mac_get_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_mac_gettable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_mac_gettable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_mac_gettable_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_mac_gettable_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_mac_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_mac_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_mac_newctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_mac_newctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_mac_set_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_mac_set_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_mac_settable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_mac_settable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_mac_update(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_mac_update_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_deregister_child_cb(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_deregister_child_cb_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_free(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_free_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_get0_dispatch(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_get0_dispatch_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_get0_provider_ctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_get0_provider_ctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_get_capabilities(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_get_capabilities_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_get_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_get_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_get_reason_strings(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_get_reason_strings_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_gettable_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_gettable_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_name(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_name_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_query_operation(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_query_operation_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_register_child_cb(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_register_child_cb_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_self_test(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_self_test_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_teardown(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_teardown_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_unquery_operation(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_unquery_operation_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_provider_up_ref(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_provider_up_ref_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_clear_seed(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_clear_seed_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_enable_locking(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_enable_locking_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_freectx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_freectx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_generate(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_generate_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_get_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_get_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_get_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_get_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_get_seed(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_get_seed_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_gettable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_gettable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_gettable_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_gettable_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_instantiate(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_instantiate_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_lock(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_lock_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_newctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_newctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_nonce(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_nonce_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_reseed(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_reseed_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_set_callbacks(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_set_callbacks_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_set_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_set_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_settable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_settable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_uninstantiate(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_uninstantiate_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_unlock(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_unlock_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_rand_verify_zeroization(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_rand_verify_zeroization_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_self_test_cb(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_self_test_cb_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_digest_sign(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_digest_sign_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_digest_sign_final(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_digest_sign_final_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_digest_sign_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_digest_sign_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_digest_sign_update(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_digest_sign_update_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_digest_verify(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_digest_verify_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_digest_verify_final(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_digest_verify_final_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_digest_verify_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_digest_verify_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_digest_verify_update(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_digest_verify_update_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_dupctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_dupctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_freectx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_freectx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_get_ctx_md_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_get_ctx_md_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_get_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_get_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_gettable_ctx_md_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_gettable_ctx_md_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_gettable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_gettable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_newctx(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_newctx_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_set_ctx_md_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_set_ctx_md_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_set_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_set_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_settable_ctx_md_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_settable_ctx_md_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_settable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_settable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_sign(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_sign_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_sign_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_sign_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_verify(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_verify_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_verify_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_verify_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_verify_recover(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_verify_recover_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_signature_verify_recover_init(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_signature_verify_recover_init_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_store_attach(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_store_attach_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_store_close(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_store_close_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_store_eof(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_store_eof_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_store_export_object(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_store_export_object_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_store_load(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_store_load_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_store_open(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_store_open_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_store_set_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_store_set_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core_dispatch.h
   */
   def OSSL_FUNC_store_settable_ctx_params(opf : Ptr[OSSL_DISPATCH]): Ptr[OSSL_FUNC_store_settable_ctx_params_fn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OSSL_LIB_CTX_free(_0 : Ptr[OSSL_LIB_CTX]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OSSL_LIB_CTX_get0_global_default(): Ptr[OSSL_LIB_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OSSL_LIB_CTX_load_config(ctx : Ptr[OSSL_LIB_CTX], config_file : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OSSL_LIB_CTX_new(): Ptr[OSSL_LIB_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OSSL_LIB_CTX_new_child(handle : Ptr[OSSL_CORE_HANDLE], in : Ptr[OSSL_DISPATCH]): Ptr[OSSL_LIB_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OSSL_LIB_CTX_new_from_dispatch(handle : Ptr[OSSL_CORE_HANDLE], in : Ptr[OSSL_DISPATCH]): Ptr[OSSL_LIB_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OSSL_LIB_CTX_set0_default(libctx : Ptr[OSSL_LIB_CTX]): Ptr[OSSL_LIB_CTX] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_allocate_from_text(to : Ptr[OSSL_PARAM], paramdefs : Ptr[OSSL_PARAM], key : CString, value : CString, value_n : size_t, found : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_dup(p : Ptr[OSSL_PARAM]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_free(p : Ptr[OSSL_PARAM]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_BN(p : Ptr[OSSL_PARAM], `val` : Ptr[Ptr[BIGNUM]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_double(p : Ptr[OSSL_PARAM], `val` : Ptr[Double]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_int(p : Ptr[OSSL_PARAM], `val` : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_int32(p : Ptr[OSSL_PARAM], `val` : Ptr[int32_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_int64(p : Ptr[OSSL_PARAM], `val` : Ptr[int64_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_long(p : Ptr[OSSL_PARAM], `val` : Ptr[CLongInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_octet_ptr(p : Ptr[OSSL_PARAM], `val` : Ptr[Ptr[Byte]], used_len : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_octet_string(p : Ptr[OSSL_PARAM], `val` : Ptr[Ptr[Byte]], max_len : size_t, used_len : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_octet_string_ptr(p : Ptr[OSSL_PARAM], `val` : Ptr[Ptr[Byte]], used_len : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_size_t(p : Ptr[OSSL_PARAM], `val` : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_time_t(p : Ptr[OSSL_PARAM], `val` : Ptr[time_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_uint(p : Ptr[OSSL_PARAM], `val` : Ptr[CUnsignedInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_uint32(p : Ptr[OSSL_PARAM], `val` : Ptr[uint32_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_uint64(p : Ptr[OSSL_PARAM], `val` : Ptr[uint64_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_ulong(p : Ptr[OSSL_PARAM], `val` : Ptr[CUnsignedLongInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_utf8_ptr(p : Ptr[OSSL_PARAM], `val` : Ptr[CString]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_utf8_string(p : Ptr[OSSL_PARAM], `val` : Ptr[CString], max_len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_get_utf8_string_ptr(p : Ptr[OSSL_PARAM], `val` : Ptr[CString]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_locate(p : Ptr[OSSL_PARAM], key : CString): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_locate_const(p : Ptr[OSSL_PARAM], key : CString): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_merge(p1 : Ptr[OSSL_PARAM], p2 : Ptr[OSSL_PARAM]): Ptr[OSSL_PARAM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_modified(p : Ptr[OSSL_PARAM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_BN(p : Ptr[OSSL_PARAM], `val` : Ptr[BIGNUM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_all_unmodified(p : Ptr[OSSL_PARAM]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_double(p : Ptr[OSSL_PARAM], `val` : Double): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_int(p : Ptr[OSSL_PARAM], `val` : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_int32(p : Ptr[OSSL_PARAM], `val` : int32_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_int64(p : Ptr[OSSL_PARAM], `val` : int64_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_long(p : Ptr[OSSL_PARAM], `val` : CLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_octet_ptr(p : Ptr[OSSL_PARAM], `val` : Ptr[Byte], used_len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_octet_string(p : Ptr[OSSL_PARAM], `val` : Ptr[Byte], len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_size_t(p : Ptr[OSSL_PARAM], `val` : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_time_t(p : Ptr[OSSL_PARAM], `val` : time_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_uint(p : Ptr[OSSL_PARAM], `val` : CUnsignedInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_uint32(p : Ptr[OSSL_PARAM], `val` : uint32_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_uint64(p : Ptr[OSSL_PARAM], `val` : uint64_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_ulong(p : Ptr[OSSL_PARAM], `val` : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_utf8_ptr(p : Ptr[OSSL_PARAM], `val` : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_set_utf8_string(p : Ptr[OSSL_PARAM], `val` : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/core.h
   */
   def OSSL_provider_init(): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OpenSSL_version(`type` : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def OpenSSL_version_num(): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def PEM_write_bio_ASN1_stream(out : Ptr[BIO], `val` : Ptr[ASN1_VALUE], in : Ptr[BIO], flags : CInt, hdr : CString, it : Ptr[ASN1_ITEM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def PKCS5_PBE_add(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def PKCS5_PBE_keyivgen(ctx : Ptr[EVP_CIPHER_CTX], pass : CString, passlen : CInt, param : Ptr[ASN1_TYPE], cipher : Ptr[EVP_CIPHER], md : Ptr[EVP_MD], en_de : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def PKCS5_PBE_keyivgen_ex(cctx : Ptr[EVP_CIPHER_CTX], pass : CString, passlen : CInt, param : Ptr[ASN1_TYPE], cipher : Ptr[EVP_CIPHER], md : Ptr[EVP_MD], en_de : CInt, libctx : Ptr[OSSL_LIB_CTX], propq : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def PKCS5_PBKDF2_HMAC(pass : CString, passlen : CInt, salt : Ptr[CUnsignedChar], saltlen : CInt, iter : CInt, digest : Ptr[EVP_MD], keylen : CInt, out : Ptr[CUnsignedChar]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def PKCS5_PBKDF2_HMAC_SHA1(pass : CString, passlen : CInt, salt : Ptr[CUnsignedChar], saltlen : CInt, iter : CInt, keylen : CInt, out : Ptr[CUnsignedChar]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def PKCS5_v2_PBE_keyivgen(ctx : Ptr[EVP_CIPHER_CTX], pass : CString, passlen : CInt, param : Ptr[ASN1_TYPE], cipher : Ptr[EVP_CIPHER], md : Ptr[EVP_MD], en_de : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def PKCS5_v2_PBE_keyivgen_ex(ctx : Ptr[EVP_CIPHER_CTX], pass : CString, passlen : CInt, param : Ptr[ASN1_TYPE], cipher : Ptr[EVP_CIPHER], md : Ptr[EVP_MD], en_de : CInt, libctx : Ptr[OSSL_LIB_CTX], propq : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def PKCS5_v2_scrypt_keyivgen(ctx : Ptr[EVP_CIPHER_CTX], pass : CString, passlen : CInt, param : Ptr[ASN1_TYPE], c : Ptr[EVP_CIPHER], md : Ptr[EVP_MD], en_de : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def PKCS5_v2_scrypt_keyivgen_ex(ctx : Ptr[EVP_CIPHER_CTX], pass : CString, passlen : CInt, param : Ptr[ASN1_TYPE], c : Ptr[EVP_CIPHER], md : Ptr[EVP_MD], en_de : CInt, libctx : Ptr[OSSL_LIB_CTX], propq : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA1(d : Ptr[CUnsignedChar], n : size_t, md : Ptr[CUnsignedChar]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA1_Final(md : Ptr[CUnsignedChar], c : Ptr[SHA_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA1_Init(c : Ptr[SHA_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA1_Transform(c : Ptr[SHA_CTX], data : Ptr[CUnsignedChar]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA1_Update(c : Ptr[SHA_CTX], data : Ptr[Byte], len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA224(d : Ptr[CUnsignedChar], n : size_t, md : Ptr[CUnsignedChar]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA224_Final(md : Ptr[CUnsignedChar], c : Ptr[SHA256_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA224_Init(c : Ptr[SHA256_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA224_Update(c : Ptr[SHA256_CTX], data : Ptr[Byte], len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA256(d : Ptr[CUnsignedChar], n : size_t, md : Ptr[CUnsignedChar]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA256_Final(md : Ptr[CUnsignedChar], c : Ptr[SHA256_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA256_Init(c : Ptr[SHA256_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA256_Transform(c : Ptr[SHA256_CTX], data : Ptr[CUnsignedChar]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA256_Update(c : Ptr[SHA256_CTX], data : Ptr[Byte], len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA384(d : Ptr[CUnsignedChar], n : size_t, md : Ptr[CUnsignedChar]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA384_Final(md : Ptr[CUnsignedChar], c : Ptr[SHA512_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA384_Init(c : Ptr[SHA512_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA384_Update(c : Ptr[SHA512_CTX], data : Ptr[Byte], len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA512(d : Ptr[CUnsignedChar], n : size_t, md : Ptr[CUnsignedChar]): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA512_Final(md : Ptr[CUnsignedChar], c : Ptr[SHA512_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA512_Init(c : Ptr[SHA512_CTX]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA512_Transform(c : Ptr[SHA512_CTX], data : Ptr[CUnsignedChar]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/sha.h
   */
   def SHA512_Update(c : Ptr[SHA512_CTX], data : Ptr[Byte], len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def SMIME_crlf_copy(in : Ptr[BIO], out : Ptr[BIO], flags : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def SMIME_read_ASN1(bio : Ptr[BIO], bcont : Ptr[Ptr[BIO]], it : Ptr[ASN1_ITEM]): Ptr[ASN1_VALUE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def SMIME_read_ASN1_ex(bio : Ptr[BIO], flags : CInt, bcont : Ptr[Ptr[BIO]], it : Ptr[ASN1_ITEM], x : Ptr[Ptr[ASN1_VALUE]], libctx : Ptr[OSSL_LIB_CTX], propq : CString): Ptr[ASN1_VALUE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def SMIME_text(in : Ptr[BIO], out : Ptr[BIO]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def SMIME_write_ASN1(bio : Ptr[BIO], `val` : Ptr[ASN1_VALUE], data : Ptr[BIO], flags : CInt, ctype_nid : CInt, econt_nid : CInt, mdalgs : Ptr[stack_st_X509_ALGOR], it : Ptr[ASN1_ITEM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def SMIME_write_ASN1_ex(bio : Ptr[BIO], `val` : Ptr[ASN1_VALUE], data : Ptr[BIO], flags : CInt, ctype_nid : CInt, econt_nid : CInt, mdalgs : Ptr[stack_st_X509_ALGOR], it : Ptr[ASN1_ITEM], libctx : Ptr[OSSL_LIB_CTX], propq : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def UTF8_getc(str : Ptr[CUnsignedChar], len : CInt, `val` : Ptr[CUnsignedLongInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def UTF8_putc(str : Ptr[CUnsignedChar], len : CInt, value : CUnsignedLongInt): CInt = extern
 
@@ -15743,702 +13312,562 @@ private[openssl] object extern_functions:
   private[openssl] def __sn_wrap_openssl_OSSL_PARAM_construct_utf8_string(key : CString, buf : CString, bsize : size_t, __return : Ptr[OSSL_PARAM]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def a2d_ASN1_OBJECT(out : Ptr[CUnsignedChar], olen : CInt, buf : CString, num : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def a2i_ASN1_ENUMERATED(bp : Ptr[BIO], bs : Ptr[ASN1_ENUMERATED], buf : CString, size : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def a2i_ASN1_INTEGER(bp : Ptr[BIO], bs : Ptr[ASN1_INTEGER], buf : CString, size : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def a2i_ASN1_STRING(bp : Ptr[BIO], bs : Ptr[ASN1_STRING], buf : CString, size : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_BIT_STRING(a : Ptr[Ptr[ASN1_BIT_STRING]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_BIT_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_BMPSTRING(a : Ptr[Ptr[ASN1_BMPSTRING]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_BMPSTRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_ENUMERATED(a : Ptr[Ptr[ASN1_ENUMERATED]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_ENUMERATED] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_GENERALIZEDTIME(a : Ptr[Ptr[ASN1_GENERALIZEDTIME]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_GENERALIZEDTIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_GENERALSTRING(a : Ptr[Ptr[ASN1_GENERALSTRING]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_GENERALSTRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_IA5STRING(a : Ptr[Ptr[ASN1_IA5STRING]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_IA5STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_INTEGER(a : Ptr[Ptr[ASN1_INTEGER]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_INTEGER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_NULL(a : Ptr[Ptr[ASN1_NULL]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_NULL] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_OBJECT(a : Ptr[Ptr[ASN1_OBJECT]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_OBJECT] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_OCTET_STRING(a : Ptr[Ptr[ASN1_OCTET_STRING]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_OCTET_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_PRINTABLE(a : Ptr[Ptr[ASN1_STRING]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_PRINTABLESTRING(a : Ptr[Ptr[ASN1_PRINTABLESTRING]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_PRINTABLESTRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_SEQUENCE_ANY(a : Ptr[Ptr[ASN1_SEQUENCE_ANY]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_SEQUENCE_ANY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_SET_ANY(a : Ptr[Ptr[ASN1_SEQUENCE_ANY]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_SEQUENCE_ANY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_T61STRING(a : Ptr[Ptr[ASN1_T61STRING]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_T61STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_TIME(a : Ptr[Ptr[ASN1_TIME]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_TIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_TYPE(a : Ptr[Ptr[ASN1_TYPE]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_TYPE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_UINTEGER(a : Ptr[Ptr[ASN1_INTEGER]], pp : Ptr[Ptr[CUnsignedChar]], length : CLongInt): Ptr[ASN1_INTEGER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_UNIVERSALSTRING(a : Ptr[Ptr[ASN1_UNIVERSALSTRING]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_UNIVERSALSTRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_UTCTIME(a : Ptr[Ptr[ASN1_UTCTIME]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_UTCTIME] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_UTF8STRING(a : Ptr[Ptr[ASN1_UTF8STRING]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_UTF8STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_ASN1_VISIBLESTRING(a : Ptr[Ptr[ASN1_VISIBLESTRING]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_VISIBLESTRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def d2i_AutoPrivateKey(a : Ptr[Ptr[EVP_PKEY]], pp : Ptr[Ptr[CUnsignedChar]], length : CLongInt): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def d2i_AutoPrivateKey_ex(a : Ptr[Ptr[EVP_PKEY]], pp : Ptr[Ptr[CUnsignedChar]], length : CLongInt, libctx : Ptr[OSSL_LIB_CTX], propq : CString): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_DIRECTORYSTRING(a : Ptr[Ptr[ASN1_STRING]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def d2i_DISPLAYTEXT(a : Ptr[Ptr[ASN1_STRING]], in : Ptr[Ptr[CUnsignedChar]], len : CLongInt): Ptr[ASN1_STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def d2i_KeyParams(`type` : CInt, a : Ptr[Ptr[EVP_PKEY]], pp : Ptr[Ptr[CUnsignedChar]], length : CLongInt): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def d2i_KeyParams_bio(`type` : CInt, a : Ptr[Ptr[EVP_PKEY]], in : Ptr[BIO]): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def d2i_PrivateKey(`type` : CInt, a : Ptr[Ptr[EVP_PKEY]], pp : Ptr[Ptr[CUnsignedChar]], length : CLongInt): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def d2i_PrivateKey_ex(`type` : CInt, a : Ptr[Ptr[EVP_PKEY]], pp : Ptr[Ptr[CUnsignedChar]], length : CLongInt, libctx : Ptr[OSSL_LIB_CTX], propq : CString): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def d2i_PublicKey(`type` : CInt, a : Ptr[Ptr[EVP_PKEY]], pp : Ptr[Ptr[CUnsignedChar]], length : CLongInt): Ptr[EVP_PKEY] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2a_ASN1_ENUMERATED(bp : Ptr[BIO], a : Ptr[ASN1_ENUMERATED]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2a_ASN1_INTEGER(bp : Ptr[BIO], a : Ptr[ASN1_INTEGER]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2a_ASN1_OBJECT(bp : Ptr[BIO], a : Ptr[ASN1_OBJECT]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2a_ASN1_STRING(bp : Ptr[BIO], a : Ptr[ASN1_STRING], `type` : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_BIT_STRING(a : Ptr[ASN1_BIT_STRING], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_BMPSTRING(a : Ptr[ASN1_BMPSTRING], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_ENUMERATED(a : Ptr[ASN1_ENUMERATED], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_GENERALIZEDTIME(a : Ptr[ASN1_GENERALIZEDTIME], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_GENERALSTRING(a : Ptr[ASN1_GENERALSTRING], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_IA5STRING(a : Ptr[ASN1_IA5STRING], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_INTEGER(a : Ptr[ASN1_INTEGER], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_NULL(a : Ptr[ASN1_NULL], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_OBJECT(a : Ptr[ASN1_OBJECT], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_OCTET_STRING(a : Ptr[ASN1_OCTET_STRING], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_PRINTABLE(a : Ptr[ASN1_STRING], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_PRINTABLESTRING(a : Ptr[ASN1_PRINTABLESTRING], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_SEQUENCE_ANY(a : Ptr[ASN1_SEQUENCE_ANY], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_SET_ANY(a : Ptr[ASN1_SEQUENCE_ANY], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_T61STRING(a : Ptr[ASN1_T61STRING], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_TIME(a : Ptr[ASN1_TIME], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_TYPE(a : Ptr[ASN1_TYPE], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_UNIVERSALSTRING(a : Ptr[ASN1_UNIVERSALSTRING], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_UTCTIME(a : Ptr[ASN1_UTCTIME], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_UTF8STRING(a : Ptr[ASN1_UTF8STRING], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_VISIBLESTRING(a : Ptr[ASN1_VISIBLESTRING], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_ASN1_bio_stream(out : Ptr[BIO], `val` : Ptr[ASN1_VALUE], in : Ptr[BIO], flags : CInt, it : Ptr[ASN1_ITEM]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_DIRECTORYSTRING(a : Ptr[ASN1_STRING], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2d_DISPLAYTEXT(a : Ptr[ASN1_STRING], out : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def i2d_KeyParams(a : Ptr[EVP_PKEY], pp : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def i2d_KeyParams_bio(bp : Ptr[BIO], pkey : Ptr[EVP_PKEY]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def i2d_PrivateKey(a : Ptr[EVP_PKEY], pp : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/evp.h
   */
   def i2d_PublicKey(a : Ptr[EVP_PKEY], pp : Ptr[Ptr[CUnsignedChar]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def i2t_ASN1_OBJECT(buf : CString, buf_len : CInt, a : Ptr[ASN1_OBJECT]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_GENERALSTRING_compfunc_type(cmp : sk_ASN1_GENERALSTRING_compfunc): OPENSSL_sk_compfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_GENERALSTRING_copyfunc_type(cpy : sk_ASN1_GENERALSTRING_copyfunc): OPENSSL_sk_copyfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_GENERALSTRING_freefunc_type(fr : sk_ASN1_GENERALSTRING_freefunc): OPENSSL_sk_freefunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_GENERALSTRING_sk_type(sk : Ptr[stack_st_ASN1_GENERALSTRING]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_GENERALSTRING_type(ptr : Ptr[ASN1_GENERALSTRING]): Ptr[ASN1_GENERALSTRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_INTEGER_compfunc_type(cmp : sk_ASN1_INTEGER_compfunc): OPENSSL_sk_compfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_INTEGER_copyfunc_type(cpy : sk_ASN1_INTEGER_copyfunc): OPENSSL_sk_copyfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_INTEGER_freefunc_type(fr : sk_ASN1_INTEGER_freefunc): OPENSSL_sk_freefunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_INTEGER_sk_type(sk : Ptr[stack_st_ASN1_INTEGER]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_INTEGER_type(ptr : Ptr[ASN1_INTEGER]): Ptr[ASN1_INTEGER] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_OBJECT_compfunc_type(cmp : sk_ASN1_OBJECT_compfunc): OPENSSL_sk_compfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_OBJECT_copyfunc_type(cpy : sk_ASN1_OBJECT_copyfunc): OPENSSL_sk_copyfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_OBJECT_freefunc_type(fr : sk_ASN1_OBJECT_freefunc): OPENSSL_sk_freefunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_OBJECT_sk_type(sk : Ptr[stack_st_ASN1_OBJECT]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_OBJECT_type(ptr : Ptr[ASN1_OBJECT]): Ptr[ASN1_OBJECT] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_STRING_TABLE_compfunc_type(cmp : sk_ASN1_STRING_TABLE_compfunc): OPENSSL_sk_compfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_STRING_TABLE_copyfunc_type(cpy : sk_ASN1_STRING_TABLE_copyfunc): OPENSSL_sk_copyfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_STRING_TABLE_freefunc_type(fr : sk_ASN1_STRING_TABLE_freefunc): OPENSSL_sk_freefunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_STRING_TABLE_sk_type(sk : Ptr[stack_st_ASN1_STRING_TABLE]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_STRING_TABLE_type(ptr : Ptr[ASN1_STRING_TABLE]): Ptr[ASN1_STRING_TABLE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_TYPE_compfunc_type(cmp : sk_ASN1_TYPE_compfunc): OPENSSL_sk_compfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_TYPE_copyfunc_type(cpy : sk_ASN1_TYPE_copyfunc): OPENSSL_sk_copyfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_TYPE_freefunc_type(fr : sk_ASN1_TYPE_freefunc): OPENSSL_sk_freefunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_TYPE_sk_type(sk : Ptr[stack_st_ASN1_TYPE]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_TYPE_type(ptr : Ptr[ASN1_TYPE]): Ptr[ASN1_TYPE] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_UTF8STRING_compfunc_type(cmp : sk_ASN1_UTF8STRING_compfunc): OPENSSL_sk_compfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_UTF8STRING_copyfunc_type(cpy : sk_ASN1_UTF8STRING_copyfunc): OPENSSL_sk_copyfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_UTF8STRING_freefunc_type(fr : sk_ASN1_UTF8STRING_freefunc): OPENSSL_sk_freefunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_UTF8STRING_sk_type(sk : Ptr[stack_st_ASN1_UTF8STRING]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_ASN1_UTF8STRING_type(ptr : Ptr[ASN1_UTF8STRING]): Ptr[ASN1_UTF8STRING] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def ossl_check_BIO_compfunc_type(cmp : sk_BIO_compfunc): OPENSSL_sk_compfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def ossl_check_BIO_copyfunc_type(cpy : sk_BIO_copyfunc): OPENSSL_sk_copyfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def ossl_check_BIO_freefunc_type(fr : sk_BIO_freefunc): OPENSSL_sk_freefunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def ossl_check_BIO_sk_type(sk : Ptr[stack_st_BIO]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def ossl_check_BIO_type(ptr : Ptr[BIO]): Ptr[BIO] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_BLOCK_compfunc_type(cmp : sk_OPENSSL_BLOCK_compfunc): OPENSSL_sk_compfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_BLOCK_copyfunc_type(cpy : sk_OPENSSL_BLOCK_copyfunc): OPENSSL_sk_copyfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_BLOCK_freefunc_type(fr : sk_OPENSSL_BLOCK_freefunc): OPENSSL_sk_freefunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_BLOCK_sk_type(sk : Ptr[stack_st_OPENSSL_BLOCK]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_BLOCK_type(ptr : Ptr[Byte]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_CSTRING_compfunc_type(cmp : sk_OPENSSL_CSTRING_compfunc): OPENSSL_sk_compfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_CSTRING_copyfunc_type(cpy : sk_OPENSSL_CSTRING_copyfunc): OPENSSL_sk_copyfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_CSTRING_freefunc_type(fr : sk_OPENSSL_CSTRING_freefunc): OPENSSL_sk_freefunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_CSTRING_sk_type(sk : Ptr[stack_st_OPENSSL_CSTRING]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_CSTRING_type(ptr : CString): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_STRING_compfunc_type(cmp : sk_OPENSSL_STRING_compfunc): OPENSSL_sk_compfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_STRING_copyfunc_type(cpy : sk_OPENSSL_STRING_copyfunc): OPENSSL_sk_copyfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_STRING_freefunc_type(fr : sk_OPENSSL_STRING_freefunc): OPENSSL_sk_freefunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_STRING_sk_type(sk : Ptr[stack_st_OPENSSL_STRING]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_OPENSSL_STRING_type(ptr : CString): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_X509_ALGOR_compfunc_type(cmp : sk_X509_ALGOR_compfunc): OPENSSL_sk_compfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_X509_ALGOR_copyfunc_type(cpy : sk_X509_ALGOR_copyfunc): OPENSSL_sk_copyfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_X509_ALGOR_freefunc_type(fr : sk_X509_ALGOR_freefunc): OPENSSL_sk_freefunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_X509_ALGOR_sk_type(sk : Ptr[stack_st_X509_ALGOR]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_X509_ALGOR_type(ptr : Ptr[X509_ALGOR]): Ptr[X509_ALGOR] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_const_ASN1_GENERALSTRING_sk_type(sk : Ptr[stack_st_ASN1_GENERALSTRING]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_const_ASN1_INTEGER_sk_type(sk : Ptr[stack_st_ASN1_INTEGER]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_const_ASN1_OBJECT_sk_type(sk : Ptr[stack_st_ASN1_OBJECT]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_const_ASN1_STRING_TABLE_sk_type(sk : Ptr[stack_st_ASN1_STRING_TABLE]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_const_ASN1_TYPE_sk_type(sk : Ptr[stack_st_ASN1_TYPE]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_const_ASN1_UTF8STRING_sk_type(sk : Ptr[stack_st_ASN1_UTF8STRING]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/bio.h
   */
   def ossl_check_const_BIO_sk_type(sk : Ptr[stack_st_BIO]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_const_OPENSSL_BLOCK_sk_type(sk : Ptr[stack_st_OPENSSL_BLOCK]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_const_OPENSSL_CSTRING_sk_type(sk : Ptr[stack_st_OPENSSL_CSTRING]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/safestack.h
   */
   def ossl_check_const_OPENSSL_STRING_sk_type(sk : Ptr[stack_st_OPENSSL_STRING]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/asn1.h
   */
   def ossl_check_const_X509_ALGOR_sk_type(sk : Ptr[stack_st_X509_ALGOR]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def ossl_check_const_void_sk_type(sk : Ptr[stack_st_void]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def ossl_check_void_compfunc_type(cmp : sk_void_compfunc): OPENSSL_sk_compfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def ossl_check_void_copyfunc_type(cpy : sk_void_copyfunc): OPENSSL_sk_copyfunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def ossl_check_void_freefunc_type(fr : sk_void_freefunc): OPENSSL_sk_freefunc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def ossl_check_void_sk_type(sk : Ptr[stack_st_void]): Ptr[OPENSSL_STACK] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/crypto.h
   */
   def ossl_check_void_type(ptr : Ptr[Byte]): Ptr[Byte] = extern
 
@@ -16453,7 +13882,6 @@ object functions:
   export extern_functions.*
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_BN(key : CString, buf : Ptr[CUnsignedChar], bsize : size_t)(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16461,19 +13889,11 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_BN(key : CString, buf : Ptr[CUnsignedChar], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_BN(key, buf, bsize, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
-  */
-  def OSSL_PARAM_construct_double(key : CString, buf : Ptr[Double])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_double(key, buf, __return)
-
-  /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_double(key : CString, buf : Ptr[Double])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16481,7 +13901,11 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
+  */
+  def OSSL_PARAM_construct_double(key : CString, buf : Ptr[Double])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_double(key, buf, __return)
+
+  /**
   */
   def OSSL_PARAM_construct_end()(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16489,13 +13913,16 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_end()(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_end(__return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
+  */
+  def OSSL_PARAM_construct_int(key : CString, buf : Ptr[CInt])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_int(key, buf, __return)
+
+  /**
   */
   def OSSL_PARAM_construct_int(key : CString, buf : Ptr[CInt])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16503,19 +13930,11 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
-  */
-  def OSSL_PARAM_construct_int(key : CString, buf : Ptr[CInt])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_int(key, buf, __return)
-
-  /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_int32(key : CString, buf : Ptr[int32_t])(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_int32(key, buf, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_int32(key : CString, buf : Ptr[int32_t])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16523,13 +13942,11 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_int64(key : CString, buf : Ptr[int64_t])(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_int64(key, buf, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_int64(key : CString, buf : Ptr[int64_t])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16537,13 +13954,11 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_long(key : CString, buf : Ptr[CLongInt])(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_long(key, buf, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_long(key : CString, buf : Ptr[CLongInt])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16551,13 +13966,11 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_octet_ptr(key : CString, buf : Ptr[Ptr[Byte]], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_octet_ptr(key, buf, bsize, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_octet_ptr(key : CString, buf : Ptr[Ptr[Byte]], bsize : size_t)(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16565,7 +13978,6 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_octet_string(key : CString, buf : Ptr[Byte], bsize : size_t)(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16573,19 +13985,11 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_octet_string(key : CString, buf : Ptr[Byte], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_octet_string(key, buf, bsize, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
-  */
-  def OSSL_PARAM_construct_size_t(key : CString, buf : Ptr[size_t])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_size_t(key, buf, __return)
-
-  /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_size_t(key : CString, buf : Ptr[size_t])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16593,13 +13997,11 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
-  def OSSL_PARAM_construct_time_t(key : CString, buf : Ptr[time_t])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_time_t(key, buf, __return)
+  def OSSL_PARAM_construct_size_t(key : CString, buf : Ptr[size_t])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_size_t(key, buf, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_time_t(key : CString, buf : Ptr[time_t])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16607,13 +14009,16 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
+  */
+  def OSSL_PARAM_construct_time_t(key : CString, buf : Ptr[time_t])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_time_t(key, buf, __return)
+
+  /**
   */
   def OSSL_PARAM_construct_uint(key : CString, buf : Ptr[CUnsignedInt])(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_uint(key, buf, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_uint(key : CString, buf : Ptr[CUnsignedInt])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16621,7 +14026,6 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_uint32(key : CString, buf : Ptr[uint32_t])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16629,19 +14033,16 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_uint32(key : CString, buf : Ptr[uint32_t])(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_uint32(key, buf, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_uint64(key : CString, buf : Ptr[uint64_t])(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_uint64(key, buf, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_uint64(key : CString, buf : Ptr[uint64_t])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16649,7 +14050,11 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
+  */
+  def OSSL_PARAM_construct_ulong(key : CString, buf : Ptr[CUnsignedLongInt])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_ulong(key, buf, __return)
+
+  /**
   */
   def OSSL_PARAM_construct_ulong(key : CString, buf : Ptr[CUnsignedLongInt])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16657,19 +14062,11 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
-  */
-  def OSSL_PARAM_construct_ulong(key : CString, buf : Ptr[CUnsignedLongInt])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_ulong(key, buf, __return)
-
-  /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_utf8_ptr(key : CString, buf : Ptr[CString], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_utf8_ptr(key, buf, bsize, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_utf8_ptr(key : CString, buf : Ptr[CString], bsize : size_t)(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -16677,13 +14074,11 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_utf8_string(key : CString, buf : CString, bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_utf8_string(key, buf, bsize, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/openssl_arm64-osx/include/openssl/params.h
   */
   def OSSL_PARAM_construct_utf8_string(key : CString, buf : CString, bsize : size_t)(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)

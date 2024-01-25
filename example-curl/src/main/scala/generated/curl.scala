@@ -22,7 +22,6 @@ object predef:
 object enumerations:
   import predef.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type CURLFORMcode = CUnsignedInt
   object CURLFORMcode extends CEnumU[CURLFORMcode]:
@@ -55,7 +54,6 @@ object enumerations:
       inline def is(b: CURLFORMcode): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/header.h
   */
   opaque type CURLHcode = CUnsignedInt
   object CURLHcode extends CEnumU[CURLHcode]:
@@ -86,7 +84,6 @@ object enumerations:
       inline def is(b: CURLHcode): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type CURLINFO = CUnsignedInt
   object CURLINFO extends CEnumU[CURLINFO]:
@@ -247,7 +244,6 @@ object enumerations:
       inline def is(b: CURLINFO): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   opaque type CURLMSG = CUnsignedInt
   object CURLMSG extends CEnumU[CURLMSG]:
@@ -268,7 +264,6 @@ object enumerations:
       inline def is(b: CURLMSG): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   opaque type CURLMcode = CInt
   object CURLMcode extends CEnum[CURLMcode]:
@@ -313,7 +308,6 @@ object enumerations:
       inline def is(b: CURLMcode): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   opaque type CURLMoption = CUnsignedInt
   object CURLMoption extends CEnumU[CURLMoption]:
@@ -362,7 +356,6 @@ object enumerations:
       inline def is(b: CURLMoption): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type CURLSHcode = CUnsignedInt
   object CURLSHcode extends CEnumU[CURLSHcode]:
@@ -391,7 +384,6 @@ object enumerations:
       inline def is(b: CURLSHcode): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type CURLSHoption = CUnsignedInt
   object CURLSHoption extends CEnumU[CURLSHoption]:
@@ -420,7 +412,6 @@ object enumerations:
       inline def is(b: CURLSHoption): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type CURLSTScode = CUnsignedInt
   object CURLSTScode extends CEnumU[CURLSTScode]:
@@ -441,7 +432,6 @@ object enumerations:
       inline def is(b: CURLSTScode): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/urlapi.h
   */
   opaque type CURLUPart = CUnsignedInt
   object CURLUPart extends CEnumU[CURLUPart]:
@@ -478,7 +468,6 @@ object enumerations:
       inline def is(b: CURLUPart): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/urlapi.h
   */
   opaque type CURLUcode = CUnsignedInt
   object CURLUcode extends CEnumU[CURLUcode]:
@@ -557,7 +546,6 @@ object enumerations:
       inline def is(b: CURLUcode): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type CURL_NETRC_OPTION = CUnsignedInt
   object CURL_NETRC_OPTION extends CEnumU[CURL_NETRC_OPTION]:
@@ -580,7 +568,6 @@ object enumerations:
       inline def is(b: CURL_NETRC_OPTION): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type CURL_TLSAUTH = CUnsignedInt
   object CURL_TLSAUTH extends CEnumU[CURL_TLSAUTH]:
@@ -601,7 +588,6 @@ object enumerations:
       inline def is(b: CURL_TLSAUTH): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type CURLcode = CUnsignedInt
   object CURLcode extends CEnumU[CURLcode]:
@@ -818,7 +804,6 @@ object enumerations:
       inline def is(b: CURLcode): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type CURLformoption = CUnsignedInt
   object CURLformoption extends CEnumU[CURLformoption]:
@@ -877,7 +862,6 @@ object enumerations:
       inline def is(b: CURLformoption): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type CURLoption = CUnsignedInt
   object CURLoption extends CEnumU[CURLoption]:
@@ -1504,7 +1488,6 @@ object enumerations:
       inline def is(b: CURLoption): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type CURLproxycode = CUnsignedInt
   object CURLproxycode extends CEnumU[CURLproxycode]:
@@ -1589,7 +1572,6 @@ object enumerations:
       inline def is(b: CURLproxycode): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type CURLsslset = CUnsignedInt
   object CURLsslset extends CEnumU[CURLsslset]:
@@ -1613,8 +1595,6 @@ object enumerations:
 
   /**
    * ************************************************************************** Structures for querying information about the curl library at runtime.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type CURLversion = CUnsignedInt
   object CURLversion extends CEnumU[CURLversion]:
@@ -1653,7 +1633,6 @@ object enumerations:
       inline def is(b: CURLversion): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_TimeCond = CUnsignedInt
   object curl_TimeCond extends CEnumU[curl_TimeCond]:
@@ -1678,7 +1657,6 @@ object enumerations:
       inline def is(b: curl_TimeCond): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_closepolicy = CUnsignedInt
   object curl_closepolicy extends CEnumU[curl_closepolicy]:
@@ -1707,7 +1685,6 @@ object enumerations:
       inline def is(b: curl_closepolicy): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/options.h
   */
   opaque type curl_easytype = CUnsignedInt
   object curl_easytype extends CEnumU[curl_easytype]:
@@ -1740,7 +1717,6 @@ object enumerations:
       inline def is(b: curl_easytype): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_ftpauth = CUnsignedInt
   object curl_ftpauth extends CEnumU[curl_ftpauth]:
@@ -1763,7 +1739,6 @@ object enumerations:
       inline def is(b: curl_ftpauth): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_ftpccc = CUnsignedInt
   object curl_ftpccc extends CEnumU[curl_ftpccc]:
@@ -1786,7 +1761,6 @@ object enumerations:
       inline def is(b: curl_ftpccc): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_ftpcreatedir = CUnsignedInt
   object curl_ftpcreatedir extends CEnumU[curl_ftpcreatedir]:
@@ -1809,7 +1783,6 @@ object enumerations:
       inline def is(b: curl_ftpcreatedir): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_ftpmethod = CUnsignedInt
   object curl_ftpmethod extends CEnumU[curl_ftpmethod]:
@@ -1834,7 +1807,6 @@ object enumerations:
       inline def is(b: curl_ftpmethod): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_infotype = CUnsignedInt
   object curl_infotype extends CEnumU[curl_infotype]:
@@ -1865,7 +1837,6 @@ object enumerations:
       inline def is(b: curl_infotype): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_khmatch = CUnsignedInt
   object curl_khmatch extends CEnumU[curl_khmatch]:
@@ -1888,7 +1859,6 @@ object enumerations:
       inline def is(b: curl_khmatch): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_khstat = CUnsignedInt
   object curl_khstat extends CEnumU[curl_khstat]:
@@ -1915,7 +1885,6 @@ object enumerations:
       inline def is(b: curl_khstat): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_khtype = CUnsignedInt
   object curl_khtype extends CEnumU[curl_khtype]:
@@ -1942,7 +1911,6 @@ object enumerations:
       inline def is(b: curl_khtype): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_lock_access = CUnsignedInt
   object curl_lock_access extends CEnumU[curl_lock_access]:
@@ -1966,8 +1934,6 @@ object enumerations:
 
   /**
    * *************************************************************************** Setup defines, protos etc for the sharing stuff.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_lock_data = CUnsignedInt
   object curl_lock_data extends CEnumU[curl_lock_data]:
@@ -2000,7 +1966,6 @@ object enumerations:
       inline def is(b: curl_lock_data): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_proxytype = CUnsignedInt
   object curl_proxytype extends CEnumU[curl_proxytype]:
@@ -2031,7 +1996,6 @@ object enumerations:
       inline def is(b: curl_proxytype): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_sslbackend = CUnsignedInt
   object curl_sslbackend extends CEnumU[curl_sslbackend]:
@@ -2076,7 +2040,6 @@ object enumerations:
       inline def is(b: curl_sslbackend): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_usessl = CUnsignedInt
   object curl_usessl extends CEnumU[curl_usessl]:
@@ -2101,7 +2064,6 @@ object enumerations:
       inline def is(b: curl_usessl): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curlfiletype = CUnsignedInt
   object curlfiletype extends CEnumU[curlfiletype]:
@@ -2134,7 +2096,6 @@ object enumerations:
       inline def is(b: curlfiletype): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curliocmd = CUnsignedInt
   object curliocmd extends CEnumU[curliocmd]:
@@ -2155,7 +2116,6 @@ object enumerations:
       inline def is(b: curliocmd): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curlioerr = CUnsignedInt
   object curlioerr extends CEnumU[curlioerr]:
@@ -2178,7 +2138,6 @@ object enumerations:
       inline def is(b: curlioerr): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curlsocktype = CUnsignedInt
   object curlsocktype extends CEnumU[curlsocktype]:
@@ -2204,7 +2163,6 @@ object aliases:
   import _root_.curl.aliases.*
   import _root_.curl.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   type CURL = Unit
   object CURL: 
@@ -2214,7 +2172,6 @@ object aliases:
       inline def value: Unit = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   type CURLM = Unit
   object CURLM: 
@@ -2224,7 +2181,6 @@ object aliases:
       inline def value: Unit = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   type CURLSH = Unit
   object CURLSH: 
@@ -2234,7 +2190,6 @@ object aliases:
       inline def value: Unit = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_calloc_callback = CFuncPtr2[size_t, size_t, Ptr[Byte]]
   object curl_calloc_callback: 
@@ -2246,7 +2201,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_chunk_bgn_callback = CFuncPtr3[Ptr[Byte], Ptr[Byte], CInt, CLongInt]
   object curl_chunk_bgn_callback: 
@@ -2258,7 +2212,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_chunk_end_callback = CFuncPtr1[Ptr[Byte], CLongInt]
   object curl_chunk_end_callback: 
@@ -2270,7 +2223,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_closesocket_callback = CFuncPtr2[Ptr[Byte], curl_socket_t, CInt]
   object curl_closesocket_callback: 
@@ -2282,7 +2234,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_conv_callback = CFuncPtr2[CString, size_t, CURLcode]
   object curl_conv_callback: 
@@ -2294,7 +2245,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_debug_callback = CFuncPtr5[Ptr[CURL], curl_infotype, CString, size_t, Ptr[Byte], CInt]
   object curl_debug_callback: 
@@ -2306,7 +2256,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_fnmatch_callback = CFuncPtr3[Ptr[Byte], CString, CString, CInt]
   object curl_fnmatch_callback: 
@@ -2318,7 +2267,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_formget_callback = CFuncPtr3[Ptr[Byte], CString, size_t, size_t]
   object curl_formget_callback: 
@@ -2330,7 +2278,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_free_callback = CFuncPtr1[Ptr[Byte], Unit]
   object curl_free_callback: 
@@ -2342,7 +2289,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_hstsread_callback = CFuncPtr3[Ptr[CURL], Ptr[curl_hstsentry], Ptr[Byte], CURLSTScode]
   object curl_hstsread_callback: 
@@ -2354,7 +2300,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_hstswrite_callback = CFuncPtr4[Ptr[CURL], Ptr[curl_hstsentry], Ptr[curl_index], Ptr[Byte], CURLSTScode]
   object curl_hstswrite_callback: 
@@ -2366,7 +2311,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_ioctl_callback = CFuncPtr3[Ptr[CURL], CInt, Ptr[Byte], curlioerr]
   object curl_ioctl_callback: 
@@ -2378,7 +2322,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_lock_function = CFuncPtr4[Ptr[CURL], curl_lock_data, curl_lock_access, Ptr[Byte], Unit]
   object curl_lock_function: 
@@ -2390,7 +2333,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_malloc_callback = CFuncPtr1[size_t, Ptr[Byte]]
   object curl_malloc_callback: 
@@ -2402,7 +2344,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   opaque type curl_multi_timer_callback = CFuncPtr3[Ptr[CURLM], CLongInt, Ptr[Byte], CInt]
   object curl_multi_timer_callback: 
@@ -2414,7 +2355,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/system.h
   */
   opaque type curl_off_t = CLongInt
   object curl_off_t: 
@@ -2424,7 +2364,6 @@ object aliases:
       inline def value: CLongInt = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_opensocket_callback = CFuncPtr3[Ptr[Byte], curlsocktype, Ptr[curl_sockaddr], curl_socket_t]
   object curl_opensocket_callback: 
@@ -2436,7 +2375,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_prereq_callback = CFuncPtr5[Ptr[Byte], CString, CString, CInt, CInt, CInt]
   object curl_prereq_callback: 
@@ -2448,7 +2386,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_progress_callback = CFuncPtr5[Ptr[Byte], Double, Double, Double, Double, CInt]
   object curl_progress_callback: 
@@ -2460,7 +2397,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   opaque type curl_push_callback = CFuncPtr5[Ptr[CURL], Ptr[CURL], size_t, Ptr[curl_pushheaders], Ptr[Byte], CInt]
   object curl_push_callback: 
@@ -2472,7 +2408,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_read_callback = CFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t]
   object curl_read_callback: 
@@ -2484,7 +2419,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_realloc_callback = CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]]
   object curl_realloc_callback: 
@@ -2496,7 +2430,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_resolver_start_callback = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt]
   object curl_resolver_start_callback: 
@@ -2508,7 +2441,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_seek_callback = CFuncPtr3[Ptr[Byte], curl_off_t, CInt, CInt]
   object curl_seek_callback: 
@@ -2520,7 +2452,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   opaque type curl_socket_callback = CFuncPtr5[Ptr[CURL], curl_socket_t, CInt, Ptr[Byte], Ptr[Byte], CInt]
   object curl_socket_callback: 
@@ -2532,7 +2463,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_socket_t = CInt
   object curl_socket_t: 
@@ -2542,7 +2472,6 @@ object aliases:
       inline def value: CInt = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/system.h
   */
   type curl_socklen_t = socklen_t
   object curl_socklen_t: 
@@ -2552,7 +2481,6 @@ object aliases:
       inline def value: socklen_t = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_sockopt_callback = CFuncPtr3[Ptr[Byte], curl_socket_t, curlsocktype, CInt]
   object curl_sockopt_callback: 
@@ -2564,7 +2492,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_sshhostkeycallback = CFuncPtr4[Ptr[Byte], CInt, CString, size_t, CInt]
   object curl_sshhostkeycallback: 
@@ -2576,7 +2503,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_sshkeycallback = CFuncPtr5[Ptr[CURL], Ptr[curl_khkey], Ptr[curl_khkey], curl_khmatch, Ptr[Byte], CInt]
   object curl_sshkeycallback: 
@@ -2588,7 +2514,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_ssl_ctx_callback = CFuncPtr3[Ptr[CURL], Ptr[Byte], Ptr[Byte], CURLcode]
   object curl_ssl_ctx_callback: 
@@ -2600,7 +2525,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_strdup_callback = CFuncPtr1[CString, CString]
   object curl_strdup_callback: 
@@ -2612,7 +2536,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_trailer_callback = CFuncPtr2[Ptr[Ptr[curl_slist]], Ptr[Byte], CInt]
   object curl_trailer_callback: 
@@ -2624,7 +2547,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_unlock_function = CFuncPtr3[Ptr[CURL], curl_lock_data, Ptr[Byte], Unit]
   object curl_unlock_function: 
@@ -2636,7 +2558,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_write_callback = CFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t]
   object curl_write_callback: 
@@ -2648,7 +2569,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_xferinfo_callback = CFuncPtr5[Ptr[Byte], curl_off_t, curl_off_t, curl_off_t, curl_off_t, CInt]
   object curl_xferinfo_callback: 
@@ -2700,12 +2620,10 @@ object structs:
   import _root_.curl.aliases.*
   import _root_.curl.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   opaque type CURLMsg = CStruct3[CURLMSG, Ptr[CURL], CURLMsg.Union0]
   object CURLMsg:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
     */
     opaque type Union0 = CArray[Byte, Nat._8]
     object Union0:
@@ -2747,21 +2665,18 @@ object structs:
       def data_=(value: CURLMsg.Union0): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/urlapi.h
   */
   opaque type CURLU = CStruct0
   object CURLU:
     given _tag: Tag[CURLU] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/urlapi.h
   */
   opaque type Curl_URL = CStruct0
   object Curl_URL:
     given _tag: Tag[Curl_URL] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/easy.h
   */
   opaque type curl_blob = CStruct3[Ptr[Byte], size_t, CUnsignedInt]
   object curl_blob:
@@ -2782,7 +2697,6 @@ object structs:
       def flags_=(value: CUnsignedInt): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_certinfo = CStruct2[CInt, Ptr[Byte]]
   object curl_certinfo:
@@ -2800,7 +2714,6 @@ object structs:
       def certinfo_=(value: Ptr[Ptr[curl_slist]]): Unit = !struct.at2 = value.asInstanceOf[Ptr[Byte]]
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/options.h
   */
   opaque type curl_easyoption = CStruct4[CString, CURLoption, curl_easytype, CUnsignedInt]
   object curl_easyoption:
@@ -2824,12 +2737,10 @@ object structs:
       def flags_=(value: CUnsignedInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_fileinfo = CStruct13[CString, curlfiletype, time_t, CUnsignedInt, CInt, CInt, curl_off_t, CLongInt, curl_fileinfo.Struct0, CUnsignedInt, CString, size_t, size_t]
   object curl_fileinfo:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
     */
     opaque type Struct0 = CStruct5[CString, CString, CString, CString, CString]
     object Struct0:
@@ -2901,7 +2812,6 @@ object structs:
       def b_used_=(value: size_t): Unit = !struct.at13 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_forms = CStruct2[CURLformoption, CString]
   object curl_forms:
@@ -2919,7 +2829,6 @@ object structs:
       def value_=(value: CString): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/header.h
   */
   opaque type curl_header = CStruct6[CString, CString, size_t, size_t, CUnsignedInt, Ptr[Byte]]
   object curl_header:
@@ -2949,7 +2858,6 @@ object structs:
       def anchor_=(value: Ptr[Byte]): Unit = !struct.at6 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_hstsentry = CStruct4[CString, size_t, CUnsignedInt, CArray[CChar, Nat.Digit2[Nat._1, Nat._8]]]
   object curl_hstsentry:
@@ -2973,12 +2881,10 @@ object structs:
       def expire_=(value: CArray[CChar, Nat.Digit2[Nat._1, Nat._8]]): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_httppost = CStruct14[Ptr[Byte], CString, CLongInt, CString, CLongInt, CString, CLongInt, CString, Ptr[Byte], Ptr[Byte], CLongInt, CString, Ptr[Byte], curl_off_t]
   object curl_httppost:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
     */
     opaque type Struct0 = CStruct0
     object Struct0:
@@ -3033,7 +2939,6 @@ object structs:
       def contentlen_=(value: curl_off_t): Unit = !struct.at14 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_index = CStruct2[size_t, size_t]
   object curl_index:
@@ -3051,7 +2956,6 @@ object structs:
       def total_=(value: size_t): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_khkey = CStruct3[CString, size_t, curl_khtype]
   object curl_khkey:
@@ -3072,28 +2976,24 @@ object structs:
       def keytype_=(value: curl_khtype): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_mime = CStruct0
   object curl_mime:
     given _tag: Tag[curl_mime] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_mimepart = CStruct0
   object curl_mimepart:
     given _tag: Tag[curl_mimepart] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   opaque type curl_pushheaders = CStruct0
   object curl_pushheaders:
     given _tag: Tag[curl_pushheaders] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_slist = CStruct2[CString, Ptr[Byte]]
   object curl_slist:
@@ -3111,7 +3011,6 @@ object structs:
       def next_=(value: Ptr[curl_slist]): Unit = !struct.at2 = value.asInstanceOf[Ptr[Byte]]
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_sockaddr = CStruct5[CInt, CInt, CInt, CUnsignedInt, sockaddr]
   object curl_sockaddr:
@@ -3138,7 +3037,6 @@ object structs:
       def addr_=(value: sockaddr): Unit = !struct.at5 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_ssl_backend = CStruct2[curl_sslbackend, CString]
   object curl_ssl_backend:
@@ -3156,7 +3054,6 @@ object structs:
       def name_=(value: CString): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_tlssessioninfo = CStruct2[curl_sslbackend, Ptr[Byte]]
   object curl_tlssessioninfo:
@@ -3174,7 +3071,6 @@ object structs:
       def internals_=(value: Ptr[Byte]): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   opaque type curl_version_info_data = CArray[CChar, Nat.Digit3[Nat._2, Nat._0, Nat._8]]
   object curl_version_info_data:
@@ -3264,7 +3160,6 @@ object structs:
       def feature_names_=(value: Ptr[CString]): Unit = !struct.at(200).asInstanceOf[Ptr[Ptr[CString]]] = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   opaque type curl_waitfd = CStruct3[curl_socket_t, CShort, CShort]
   object curl_waitfd:
@@ -3285,7 +3180,6 @@ object structs:
       def revents_=(value: CShort): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/websockets.h
   */
   opaque type curl_ws_frame = CStruct5[CInt, CInt, curl_off_t, curl_off_t, size_t]
   object curl_ws_frame:
@@ -3319,417 +3213,334 @@ private[curl] object extern_functions:
   import _root_.curl.aliases.*
   import _root_.curl.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/easy.h
   */
   def curl_easy_cleanup(curl : Ptr[CURL]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/easy.h
   */
   def curl_easy_duphandle(curl : Ptr[CURL]): Ptr[CURL] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_easy_escape(handle : Ptr[CURL], string : CString, length : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/easy.h
   */
   def curl_easy_getinfo(curl : Ptr[CURL], info : CURLINFO, rest: Any*): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/header.h
   */
   def curl_easy_header(easy : Ptr[CURL], name : CString, index : size_t, origin : CUnsignedInt, request : CInt, hout : Ptr[Ptr[curl_header]]): CURLHcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/easy.h
   */
   def curl_easy_init(): Ptr[CURL] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/header.h
   */
   def curl_easy_nextheader(easy : Ptr[CURL], origin : CUnsignedInt, request : CInt, prev : Ptr[curl_header]): Ptr[curl_header] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/options.h
   */
   def curl_easy_option_by_id(id : CURLoption): Ptr[curl_easyoption] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/options.h
   */
   def curl_easy_option_by_name(name : CString): Ptr[curl_easyoption] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/options.h
   */
   def curl_easy_option_next(prev : Ptr[curl_easyoption]): Ptr[curl_easyoption] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_easy_pause(handle : Ptr[CURL], bitmask : CInt): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/easy.h
   */
   def curl_easy_perform(curl : Ptr[CURL]): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/easy.h
   */
   def curl_easy_recv(curl : Ptr[CURL], buffer : Ptr[Byte], buflen : size_t, n : Ptr[size_t]): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/easy.h
   */
   def curl_easy_reset(curl : Ptr[CURL]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/easy.h
   */
   def curl_easy_send(curl : Ptr[CURL], buffer : Ptr[Byte], buflen : size_t, n : Ptr[size_t]): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/easy.h
   */
   def curl_easy_setopt(curl : Ptr[CURL], option : CURLoption, rest: Any*): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_easy_strerror(_0 : CURLcode): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_easy_unescape(handle : Ptr[CURL], string : CString, length : CInt, outlength : Ptr[CInt]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/easy.h
   */
   def curl_easy_upkeep(curl : Ptr[CURL]): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_escape(string : CString, length : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_formadd(httppost : Ptr[Ptr[curl_httppost]], last_post : Ptr[Ptr[curl_httppost]], rest: Any*): CURLFORMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_formfree(form : Ptr[curl_httppost]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_formget(form : Ptr[curl_httppost], arg : Ptr[Byte], append : curl_formget_callback): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_free(p : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_getdate(p : CString, unused : Ptr[time_t]): time_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_getenv(variable : CString): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_global_cleanup(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_global_init(flags : CLongInt): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_global_init_mem(flags : CLongInt, m : curl_malloc_callback, f : curl_free_callback, r : curl_realloc_callback, s : curl_strdup_callback, c : curl_calloc_callback): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_global_sslset(id : curl_sslbackend, name : CString, avail : Ptr[Ptr[Ptr[curl_ssl_backend]]]): CURLsslset = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_global_trace(config : CString): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_mime_addpart(mime : Ptr[curl_mime]): Ptr[curl_mimepart] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_mime_data(part : Ptr[curl_mimepart], data : CString, datasize : size_t): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_mime_data_cb(part : Ptr[curl_mimepart], datasize : curl_off_t, readfunc : curl_read_callback, seekfunc : curl_seek_callback, freefunc : curl_free_callback, arg : Ptr[Byte]): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_mime_encoder(part : Ptr[curl_mimepart], encoding : CString): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_mime_filedata(part : Ptr[curl_mimepart], filename : CString): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_mime_filename(part : Ptr[curl_mimepart], filename : CString): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_mime_free(mime : Ptr[curl_mime]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_mime_headers(part : Ptr[curl_mimepart], headers : Ptr[curl_slist], take_ownership : CInt): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_mime_init(easy : Ptr[CURL]): Ptr[curl_mime] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_mime_name(part : Ptr[curl_mimepart], name : CString): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_mime_subparts(part : Ptr[curl_mimepart], subparts : Ptr[curl_mime]): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_mime_type(part : Ptr[curl_mimepart], mimetype : CString): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_add_handle(multi_handle : Ptr[CURLM], curl_handle : Ptr[CURL]): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_assign(multi_handle : Ptr[CURLM], sockfd : curl_socket_t, sockp : Ptr[Byte]): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_cleanup(multi_handle : Ptr[CURLM]): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_fdset(multi_handle : Ptr[CURLM], read_fd_set : Ptr[fd_set], write_fd_set : Ptr[fd_set], exc_fd_set : Ptr[fd_set], max_fd : Ptr[CInt]): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_get_handles(multi_handle : Ptr[CURLM]): Ptr[Ptr[CURL]] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_info_read(multi_handle : Ptr[CURLM], msgs_in_queue : Ptr[CInt]): Ptr[CURLMsg] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_init(): Ptr[CURLM] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_perform(multi_handle : Ptr[CURLM], running_handles : Ptr[CInt]): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_poll(multi_handle : Ptr[CURLM], extra_fds : Ptr[curl_waitfd], extra_nfds : CUnsignedInt, timeout_ms : CInt, ret : Ptr[CInt]): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_remove_handle(multi_handle : Ptr[CURLM], curl_handle : Ptr[CURL]): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_setopt(multi_handle : Ptr[CURLM], option : CURLMoption, rest: Any*): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_socket(multi_handle : Ptr[CURLM], s : curl_socket_t, running_handles : Ptr[CInt]): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_socket_action(multi_handle : Ptr[CURLM], s : curl_socket_t, ev_bitmask : CInt, running_handles : Ptr[CInt]): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_socket_all(multi_handle : Ptr[CURLM], running_handles : Ptr[CInt]): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_strerror(_0 : CURLMcode): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_timeout(multi_handle : Ptr[CURLM], milliseconds : Ptr[CLongInt]): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_wait(multi_handle : Ptr[CURLM], extra_fds : Ptr[curl_waitfd], extra_nfds : CUnsignedInt, timeout_ms : CInt, ret : Ptr[CInt]): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_multi_wakeup(multi_handle : Ptr[CURLM]): CURLMcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_pushheader_byname(h : Ptr[curl_pushheaders], name : CString): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/multi.h
   */
   def curl_pushheader_bynum(h : Ptr[curl_pushheaders], num : size_t): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_share_cleanup(share : Ptr[CURLSH]): CURLSHcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_share_init(): Ptr[CURLSH] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_share_setopt(share : Ptr[CURLSH], option : CURLSHoption, rest: Any*): CURLSHcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_share_strerror(_0 : CURLSHcode): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_slist_append(list : Ptr[curl_slist], data : CString): Ptr[curl_slist] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_slist_free_all(list : Ptr[curl_slist]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_strequal(s1 : CString, s2 : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_strnequal(s1 : CString, s2 : CString, n : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_unescape(string : CString, length : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/urlapi.h
   */
   def curl_url(): Ptr[CURLU] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/urlapi.h
   */
   def curl_url_cleanup(handle : Ptr[CURLU]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/urlapi.h
   */
   def curl_url_dup(in : Ptr[CURLU]): Ptr[CURLU] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/urlapi.h
   */
   def curl_url_get(handle : Ptr[CURLU], what : CURLUPart, part : Ptr[CString], flags : CUnsignedInt): CURLUcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/urlapi.h
   */
   def curl_url_set(handle : Ptr[CURLU], what : CURLUPart, part : CString, flags : CUnsignedInt): CURLUcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/urlapi.h
   */
   def curl_url_strerror(_0 : CURLUcode): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_version(): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/curl.h
   */
   def curl_version_info(_0 : CURLversion): Ptr[curl_version_info_data] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/websockets.h
   */
   def curl_ws_meta(curl : Ptr[CURL]): Ptr[curl_ws_frame] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/websockets.h
   */
   def curl_ws_recv(curl : Ptr[CURL], buffer : Ptr[Byte], buflen : size_t, recv : Ptr[size_t], metap : Ptr[Ptr[curl_ws_frame]]): CURLcode = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/curl_arm64-osx/include/curl/websockets.h
   */
   def curl_ws_send(curl : Ptr[CURL], buffer : Ptr[Byte], buflen : size_t, sent : Ptr[size_t], fragsize : curl_off_t, flags : CUnsignedInt): CURLcode = extern
 

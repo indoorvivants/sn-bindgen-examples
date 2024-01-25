@@ -16,7 +16,6 @@ object aliases:
       inline def value: libc.stdio.FILE = v
 
   /**
-   * [bindgen] header: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/arm/_types.h
   */
   opaque type __darwin_intptr_t = CLongInt
   object __darwin_intptr_t: 
@@ -26,7 +25,6 @@ object aliases:
       inline def value: CLongInt = v
 
   /**
-   * [bindgen] header: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h
   */
   type intptr_t = __darwin_intptr_t
   object intptr_t: 
@@ -36,7 +34,6 @@ object aliases:
       inline def value: __darwin_intptr_t = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   opaque type lua_Alloc = CFuncPtr4[Ptr[Byte], Ptr[Byte], size_t, size_t, Ptr[Byte]]
   object lua_Alloc: 
@@ -48,7 +45,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   opaque type lua_CFunction = CFuncPtr1[Ptr[lua_State], CInt]
   object lua_CFunction: 
@@ -60,7 +56,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   opaque type lua_Hook = CFuncPtr2[Ptr[lua_State], Ptr[lua_Debug], Unit]
   object lua_Hook: 
@@ -72,7 +67,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   opaque type lua_Integer = CLongLong
   object lua_Integer: 
@@ -82,7 +76,6 @@ object aliases:
       inline def value: CLongLong = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   type lua_KContext = intptr_t
   object lua_KContext: 
@@ -92,7 +85,6 @@ object aliases:
       inline def value: intptr_t = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   opaque type lua_KFunction = CFuncPtr3[Ptr[lua_State], CInt, lua_KContext, CInt]
   object lua_KFunction: 
@@ -104,7 +96,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   opaque type lua_Number = Double
   object lua_Number: 
@@ -114,7 +105,6 @@ object aliases:
       inline def value: Double = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   opaque type lua_Reader = CFuncPtr3[Ptr[lua_State], Ptr[Byte], Ptr[size_t], CString]
   object lua_Reader: 
@@ -126,7 +116,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   opaque type lua_Unsigned = CUnsignedLongLong
   object lua_Unsigned: 
@@ -136,7 +125,6 @@ object aliases:
       inline def value: CUnsignedLongLong = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   opaque type lua_WarnFunction = CFuncPtr3[Ptr[Byte], CString, CInt, Unit]
   object lua_WarnFunction: 
@@ -148,7 +136,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   opaque type lua_Writer = CFuncPtr4[Ptr[lua_State], Ptr[Byte], size_t, Ptr[Byte], CInt]
   object lua_Writer: 
@@ -177,19 +164,16 @@ object structs:
   import _root_.lua.aliases.*
   import _root_.lua.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   opaque type CallInfo = CStruct0
   object CallInfo:
     given _tag: Tag[CallInfo] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   opaque type luaL_Buffer = CStruct5[CString, size_t, size_t, Ptr[lua_State], luaL_Buffer.Union0]
   object luaL_Buffer:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
     */
     opaque type Union0 = CArray[Byte, Nat.Digit4[Nat._1, Nat._0, Nat._2, Nat._4]]
     object Union0:
@@ -269,7 +253,6 @@ object structs:
       def init_=(value: luaL_Buffer.Union0): Unit = !struct.at5 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   opaque type luaL_Reg = CStruct2[CString, lua_CFunction]
   object luaL_Reg:
@@ -287,7 +270,6 @@ object structs:
       def func_=(value: lua_CFunction): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   opaque type luaL_Stream = CStruct2[Ptr[FILE], lua_CFunction]
   object luaL_Stream:
@@ -305,12 +287,10 @@ object structs:
       def closef_=(value: lua_CFunction): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   opaque type lua_Debug = CStruct17[CInt, CString, CString, CString, CString, size_t, CInt, CInt, CInt, CUnsignedChar, CUnsignedChar, CChar, CChar, CUnsignedShort, CUnsignedShort, CArray[CChar, Nat.Digit2[Nat._6, Nat._0]], Ptr[CallInfo]]
   object lua_Debug:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
     */
     opaque type Struct0 = CStruct0
     object Struct0:
@@ -374,7 +354,6 @@ object structs:
       def i_ci_=(value: Ptr[CallInfo]): Unit = !struct.at17 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   opaque type lua_State = CStruct0
   object lua_State:
@@ -386,772 +365,618 @@ private[lua] object extern_functions:
   import _root_.lua.aliases.*
   import _root_.lua.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_addgsub(b : Ptr[luaL_Buffer], s : CString, p : CString, r : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_addlstring(B : Ptr[luaL_Buffer], s : CString, l : size_t): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_addstring(B : Ptr[luaL_Buffer], s : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_addvalue(B : Ptr[luaL_Buffer]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_argerror(L : Ptr[lua_State], arg : CInt, extramsg : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_buffinit(L : Ptr[lua_State], B : Ptr[luaL_Buffer]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_buffinitsize(L : Ptr[lua_State], B : Ptr[luaL_Buffer], sz : size_t): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_callmeta(L : Ptr[lua_State], obj : CInt, e : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_checkany(L : Ptr[lua_State], arg : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_checkinteger(L : Ptr[lua_State], arg : CInt): lua_Integer = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_checklstring(L : Ptr[lua_State], arg : CInt, l : Ptr[size_t]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_checknumber(L : Ptr[lua_State], arg : CInt): lua_Number = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_checkoption(L : Ptr[lua_State], arg : CInt, `def` : CString, lst : Ptr[CString]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_checkstack(L : Ptr[lua_State], sz : CInt, msg : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_checktype(L : Ptr[lua_State], arg : CInt, t : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_checkudata(L : Ptr[lua_State], ud : CInt, tname : CString): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_checkversion_(L : Ptr[lua_State], ver : lua_Number, sz : size_t): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_error(L : Ptr[lua_State], fmt : CString, rest: Any*): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_execresult(L : Ptr[lua_State], stat : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_fileresult(L : Ptr[lua_State], stat : CInt, fname : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_getmetafield(L : Ptr[lua_State], obj : CInt, e : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_getsubtable(L : Ptr[lua_State], idx : CInt, fname : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_gsub(L : Ptr[lua_State], s : CString, p : CString, r : CString): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_len(L : Ptr[lua_State], idx : CInt): lua_Integer = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_loadbufferx(L : Ptr[lua_State], buff : CString, sz : size_t, name : CString, mode : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_loadfilex(L : Ptr[lua_State], filename : CString, mode : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_loadstring(L : Ptr[lua_State], s : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_newmetatable(L : Ptr[lua_State], tname : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_newstate(): Ptr[lua_State] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lualib.h
   */
   def luaL_openlibs(L : Ptr[lua_State]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_optinteger(L : Ptr[lua_State], arg : CInt, `def` : lua_Integer): lua_Integer = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_optlstring(L : Ptr[lua_State], arg : CInt, `def` : CString, l : Ptr[size_t]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_optnumber(L : Ptr[lua_State], arg : CInt, `def` : lua_Number): lua_Number = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_prepbuffsize(B : Ptr[luaL_Buffer], sz : size_t): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_pushresult(B : Ptr[luaL_Buffer]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_pushresultsize(B : Ptr[luaL_Buffer], sz : size_t): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_ref(L : Ptr[lua_State], t : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_requiref(L : Ptr[lua_State], modname : CString, openf : lua_CFunction, glb : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_setfuncs(L : Ptr[lua_State], l : Ptr[luaL_Reg], nup : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_setmetatable(L : Ptr[lua_State], tname : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_testudata(L : Ptr[lua_State], ud : CInt, tname : CString): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_tolstring(L : Ptr[lua_State], idx : CInt, len : Ptr[size_t]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_traceback(L : Ptr[lua_State], L1 : Ptr[lua_State], msg : CString, level : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_typeerror(L : Ptr[lua_State], arg : CInt, tname : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_unref(L : Ptr[lua_State], t : CInt, ref : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lauxlib.h
   */
   def luaL_where(L : Ptr[lua_State], lvl : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_absindex(L : Ptr[lua_State], idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_arith(L : Ptr[lua_State], op : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_atpanic(L : Ptr[lua_State], panicf : lua_CFunction): lua_CFunction = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_callk(L : Ptr[lua_State], nargs : CInt, nresults : CInt, ctx : lua_KContext, k : lua_KFunction): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_checkstack(L : Ptr[lua_State], n : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_close(L : Ptr[lua_State]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_closeslot(L : Ptr[lua_State], idx : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_closethread(L : Ptr[lua_State], from : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_compare(L : Ptr[lua_State], idx1 : CInt, idx2 : CInt, op : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_concat(L : Ptr[lua_State], n : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_copy(L : Ptr[lua_State], fromidx : CInt, toidx : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_createtable(L : Ptr[lua_State], narr : CInt, nrec : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_dump(L : Ptr[lua_State], writer : lua_Writer, data : Ptr[Byte], strip : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_error(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_gc(L : Ptr[lua_State], what : CInt, rest: Any*): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_getallocf(L : Ptr[lua_State], ud : Ptr[Ptr[Byte]]): lua_Alloc = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_getfield(L : Ptr[lua_State], idx : CInt, k : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_getglobal(L : Ptr[lua_State], name : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_gethook(L : Ptr[lua_State]): lua_Hook = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_gethookcount(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_gethookmask(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_geti(L : Ptr[lua_State], idx : CInt, n : lua_Integer): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_getinfo(L : Ptr[lua_State], what : CString, ar : Ptr[lua_Debug]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_getiuservalue(L : Ptr[lua_State], idx : CInt, n : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_getlocal(L : Ptr[lua_State], ar : Ptr[lua_Debug], n : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_getmetatable(L : Ptr[lua_State], objindex : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_getstack(L : Ptr[lua_State], level : CInt, ar : Ptr[lua_Debug]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_gettable(L : Ptr[lua_State], idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_gettop(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_getupvalue(L : Ptr[lua_State], funcindex : CInt, n : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_iscfunction(L : Ptr[lua_State], idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_isinteger(L : Ptr[lua_State], idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_isnumber(L : Ptr[lua_State], idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_isstring(L : Ptr[lua_State], idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_isuserdata(L : Ptr[lua_State], idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_isyieldable(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_len(L : Ptr[lua_State], idx : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_load(L : Ptr[lua_State], reader : lua_Reader, dt : Ptr[Byte], chunkname : CString, mode : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_newstate(f : lua_Alloc, ud : Ptr[Byte]): Ptr[lua_State] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_newthread(L : Ptr[lua_State]): Ptr[lua_State] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_newuserdatauv(L : Ptr[lua_State], sz : size_t, nuvalue : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_next(L : Ptr[lua_State], idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_pcallk(L : Ptr[lua_State], nargs : CInt, nresults : CInt, errfunc : CInt, ctx : lua_KContext, k : lua_KFunction): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_pushboolean(L : Ptr[lua_State], b : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_pushcclosure(L : Ptr[lua_State], fn : lua_CFunction, n : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_pushfstring(L : Ptr[lua_State], fmt : CString, rest: Any*): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_pushinteger(L : Ptr[lua_State], n : lua_Integer): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_pushlightuserdata(L : Ptr[lua_State], p : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_pushlstring(L : Ptr[lua_State], s : CString, len : size_t): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_pushnil(L : Ptr[lua_State]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_pushnumber(L : Ptr[lua_State], n : lua_Number): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_pushstring(L : Ptr[lua_State], s : CString): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_pushthread(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_pushvalue(L : Ptr[lua_State], idx : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_pushvfstring(L : Ptr[lua_State], fmt : CString, argp : va_list): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_rawequal(L : Ptr[lua_State], idx1 : CInt, idx2 : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_rawget(L : Ptr[lua_State], idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_rawgeti(L : Ptr[lua_State], idx : CInt, n : lua_Integer): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_rawgetp(L : Ptr[lua_State], idx : CInt, p : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_rawlen(L : Ptr[lua_State], idx : CInt): lua_Unsigned = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_rawset(L : Ptr[lua_State], idx : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_rawseti(L : Ptr[lua_State], idx : CInt, n : lua_Integer): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_rawsetp(L : Ptr[lua_State], idx : CInt, p : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_resetthread(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_resume(L : Ptr[lua_State], from : Ptr[lua_State], narg : CInt, nres : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_rotate(L : Ptr[lua_State], idx : CInt, n : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_setallocf(L : Ptr[lua_State], f : lua_Alloc, ud : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_setcstacklimit(L : Ptr[lua_State], limit : CUnsignedInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_setfield(L : Ptr[lua_State], idx : CInt, k : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_setglobal(L : Ptr[lua_State], name : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_sethook(L : Ptr[lua_State], func : lua_Hook, mask : CInt, count : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_seti(L : Ptr[lua_State], idx : CInt, n : lua_Integer): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_setiuservalue(L : Ptr[lua_State], idx : CInt, n : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_setlocal(L : Ptr[lua_State], ar : Ptr[lua_Debug], n : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_setmetatable(L : Ptr[lua_State], objindex : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_settable(L : Ptr[lua_State], idx : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_settop(L : Ptr[lua_State], idx : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_setupvalue(L : Ptr[lua_State], funcindex : CInt, n : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_setwarnf(L : Ptr[lua_State], f : lua_WarnFunction, ud : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_status(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_stringtonumber(L : Ptr[lua_State], s : CString): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_toboolean(L : Ptr[lua_State], idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_tocfunction(L : Ptr[lua_State], idx : CInt): lua_CFunction = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_toclose(L : Ptr[lua_State], idx : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_tointegerx(L : Ptr[lua_State], idx : CInt, isnum : Ptr[CInt]): lua_Integer = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_tolstring(L : Ptr[lua_State], idx : CInt, len : Ptr[size_t]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_tonumberx(L : Ptr[lua_State], idx : CInt, isnum : Ptr[CInt]): lua_Number = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_topointer(L : Ptr[lua_State], idx : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_tothread(L : Ptr[lua_State], idx : CInt): Ptr[lua_State] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_touserdata(L : Ptr[lua_State], idx : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_type(L : Ptr[lua_State], idx : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_typename(L : Ptr[lua_State], tp : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_upvalueid(L : Ptr[lua_State], fidx : CInt, n : CInt): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_upvaluejoin(L : Ptr[lua_State], fidx1 : CInt, n1 : CInt, fidx2 : CInt, n2 : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_version(L : Ptr[lua_State]): lua_Number = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_warning(L : Ptr[lua_State], msg : CString, tocont : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_xmove(from : Ptr[lua_State], to : Ptr[lua_State], n : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lua.h
   */
   def lua_yieldk(L : Ptr[lua_State], nresults : CInt, ctx : lua_KContext, k : lua_KFunction): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lualib.h
   */
   def luaopen_base(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lualib.h
   */
   def luaopen_coroutine(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lualib.h
   */
   def luaopen_debug(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lualib.h
   */
   def luaopen_io(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lualib.h
   */
   def luaopen_math(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lualib.h
   */
   def luaopen_os(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lualib.h
   */
   def luaopen_package(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lualib.h
   */
   def luaopen_string(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lualib.h
   */
   def luaopen_table(L : Ptr[lua_State]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/lua_arm64-osx/include/lualib.h
   */
   def luaopen_utf8(L : Ptr[lua_State]): CInt = extern
 

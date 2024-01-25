@@ -17,7 +17,6 @@ object predef:
 object enumerations:
   import predef.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   opaque type redisConnectionType = CUnsignedInt
   object redisConnectionType extends CEnumU[redisConnectionType]:
@@ -43,7 +42,6 @@ object aliases:
   import _root_.libredis.aliases.*
   import _root_.libredis.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   type redisAsyncPushFn = CFuncPtr2[Ptr[redisAsyncContext], Ptr[Byte], Unit]
   object redisAsyncPushFn: 
@@ -53,7 +51,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[redisAsyncContext], Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   opaque type redisFD = CInt
   object redisFD: 
@@ -63,7 +60,6 @@ object aliases:
       inline def value: CInt = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   type redisPushFn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit]
   object redisPushFn: 
@@ -73,7 +69,6 @@ object aliases:
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   opaque type sds = CString
   object sds: 
@@ -144,7 +139,6 @@ object structs:
   import _root_.libredis.aliases.*
   import _root_.libredis.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/alloc.h
   */
   opaque type hiredisAllocFuncs = CStruct5[CFuncPtr1[size_t, Ptr[Byte]], CFuncPtr2[size_t, size_t, Ptr[Byte]], CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], CFuncPtr1[CString, CString], CFuncPtr1[Ptr[Byte], Unit]]
   object hiredisAllocFuncs:
@@ -171,19 +165,16 @@ object structs:
       def freeFn_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at5 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   opaque type redisAsyncContext = CStruct0
   object redisAsyncContext:
     given _tag: Tag[redisAsyncContext] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   opaque type redisContext = CStruct18[Ptr[Byte], CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], redisFD, CInt, CString, Ptr[Byte], redisConnectionType, Ptr[timeval], Ptr[timeval], redisContext.Struct0, redisContext.Struct1, Ptr[sockaddr], size_t, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte], Ptr[redisPushFn]]
   object redisContext:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
     */
     opaque type Struct0 = CStruct3[CString, CString, CInt]
     object Struct0:
@@ -203,7 +194,6 @@ object structs:
         def port : CInt = struct._3
         def port_=(value: CInt): Unit = !struct.at3 = value
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
     */
     opaque type Struct1 = CStruct1[CString]
     object Struct1:
@@ -217,7 +207,6 @@ object structs:
         def path : CString = struct._1
         def path_=(value: CString): Unit = !struct.at1 = value
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
     */
     opaque type Struct2 = CStruct0
     object Struct2:
@@ -284,7 +273,6 @@ object structs:
       def push_cb_=(value: Ptr[redisPushFn]): Unit = !struct.at18 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   opaque type redisContextFuncs = CStruct6[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr3[Ptr[Byte], CString, size_t, ssize_t], CFuncPtr1[Ptr[Byte], ssize_t]]
   object redisContextFuncs:
@@ -314,19 +302,15 @@ object structs:
       def write_=(value: CFuncPtr1[Ptr[redisContext], ssize_t]): Unit = !struct.at6 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], ssize_t]]
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   opaque type redisOptions = CStruct9[CInt, CInt, Ptr[timeval], Ptr[timeval], redisOptions.Union0, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[redisPushFn], Ptr[redisAsyncPushFn]]
   object redisOptions:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
     */
     opaque type Union0 = CArray[Byte, Nat.Digit2[Nat._2, Nat._4]]
     object Union0:
       /**
        * use this field for tcp/ip connections
-      
-       * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
       */
       opaque type Struct0 = CStruct3[CString, CString, CInt]
       object Struct0:
@@ -409,7 +393,6 @@ object structs:
       def async_push_cb_=(value: Ptr[redisAsyncPushFn]): Unit = !struct.at9 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/read.h
   */
   opaque type redisReadTask = CStruct6[CInt, CLongLong, CInt, Ptr[Byte], Ptr[Byte], Ptr[Byte]]
   object redisReadTask:
@@ -439,7 +422,6 @@ object structs:
       def privdata_=(value: Ptr[Byte]): Unit = !struct.at6 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/read.h
   */
   opaque type redisReader = CStruct13[CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], CString, size_t, size_t, size_t, CLongLong, Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte], Ptr[Byte]]
   object redisReader:
@@ -490,7 +472,6 @@ object structs:
       def privdata_=(value: Ptr[Byte]): Unit = !struct.at13 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   opaque type redisReply = CStruct8[CInt, CLongLong, Double, size_t, CString, CArray[CChar, Nat._4], size_t, Ptr[Byte]]
   object redisReply:
@@ -526,7 +507,6 @@ object structs:
       def element_=(value: Ptr[Ptr[redisReply]]): Unit = !struct.at8 = value.asInstanceOf[Ptr[Byte]]
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/read.h
   */
   opaque type redisReplyObjectFunctions = CStruct7[CFuncPtr3[Ptr[Byte], CString, size_t, Ptr[Byte]], CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], CFuncPtr2[Ptr[Byte], CLongLong, Ptr[Byte]], CFuncPtr4[Ptr[Byte], Double, CString, size_t, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Ptr[Byte]], CFuncPtr2[Ptr[Byte], CInt, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit]]
   object redisReplyObjectFunctions:
@@ -559,14 +539,12 @@ object structs:
       def freeObject_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at7 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   opaque type redisSsl = CStruct0
   object redisSsl:
     given _tag: Tag[redisSsl] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   opaque type sdshdr16 = CStruct3[uint16_t, uint16_t, CUnsignedChar]
   object sdshdr16:
@@ -587,7 +565,6 @@ object structs:
       def flags_=(value: CUnsignedChar): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   opaque type sdshdr32 = CStruct3[uint32_t, uint32_t, CUnsignedChar]
   object sdshdr32:
@@ -608,7 +585,6 @@ object structs:
       def flags_=(value: CUnsignedChar): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   opaque type sdshdr5 = CStruct1[CUnsignedChar]
   object sdshdr5:
@@ -623,7 +599,6 @@ object structs:
       def flags_=(value: CUnsignedChar): Unit = !struct.at1 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   opaque type sdshdr64 = CStruct3[uint64_t, uint64_t, CUnsignedChar]
   object sdshdr64:
@@ -644,7 +619,6 @@ object structs:
       def flags_=(value: CUnsignedChar): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   opaque type sdshdr8 = CStruct3[uint8_t, uint8_t, CUnsignedChar]
   object sdshdr8:
@@ -665,7 +639,6 @@ object structs:
       def flags_=(value: CUnsignedChar): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   opaque type sockaddr = CStruct0
   object sockaddr:
@@ -681,454 +654,363 @@ private[libredis] object extern_functions:
   private[libredis] def __sn_wrap_libredis_hiredisSetAllocators(ha : Ptr[hiredisAllocFuncs], __return : Ptr[hiredisAllocFuncs]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def freeReplyObject(reply : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/alloc.h
   */
   def hi_calloc(nmemb : size_t, size : size_t): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/alloc.h
   */
   def hi_free(ptr : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/alloc.h
   */
   def hi_malloc(size : size_t): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/alloc.h
   */
   def hi_realloc(ptr : Ptr[Byte], size : size_t): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/alloc.h
   */
   def hi_strdup(str : CString): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/alloc.h
   */
   def hiredisResetAllocators(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisAppendCommand(c : Ptr[redisContext], format : CString, rest: Any*): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisAppendCommandArgv(c : Ptr[redisContext], argc : CInt, argv : Ptr[CString], argvlen : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisAppendFormattedCommand(c : Ptr[redisContext], cmd : CString, len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisBufferRead(c : Ptr[redisContext]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisBufferWrite(c : Ptr[redisContext], done : Ptr[CInt]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisCommand(c : Ptr[redisContext], format : CString, rest: Any*): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisCommandArgv(c : Ptr[redisContext], argc : CInt, argv : Ptr[CString], argvlen : Ptr[size_t]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisConnect(ip : CString, port : CInt): Ptr[redisContext] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisConnectBindNonBlock(ip : CString, port : CInt, source_addr : CString): Ptr[redisContext] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisConnectBindNonBlockWithReuse(ip : CString, port : CInt, source_addr : CString): Ptr[redisContext] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisConnectFd(fd : redisFD): Ptr[redisContext] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisConnectNonBlock(ip : CString, port : CInt): Ptr[redisContext] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisConnectUnix(path : CString): Ptr[redisContext] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisConnectUnixNonBlock(path : CString): Ptr[redisContext] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisConnectUnixWithTimeout(path : CString, tv : timeval): Ptr[redisContext] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisConnectWithOptions(options : Ptr[redisOptions]): Ptr[redisContext] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisConnectWithTimeout(ip : CString, port : CInt, tv : timeval): Ptr[redisContext] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisEnableKeepAlive(c : Ptr[redisContext]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisEnableKeepAliveWithInterval(c : Ptr[redisContext], interval : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisFormatCommand(target : Ptr[CString], format : CString, rest: Any*): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisFormatCommandArgv(target : Ptr[CString], argc : CInt, argv : Ptr[CString], argvlen : Ptr[size_t]): CLongLong = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisFormatSdsCommandArgv(target : Ptr[sds], argc : CInt, argv : Ptr[CString], argvlen : Ptr[size_t]): CLongLong = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisFree(c : Ptr[redisContext]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisFreeCommand(cmd : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisFreeKeepFd(c : Ptr[redisContext]): redisFD = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisFreeSdsCommand(cmd : sds): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisGetReply(c : Ptr[redisContext], reply : Ptr[Ptr[Byte]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisGetReplyFromReader(c : Ptr[redisContext], reply : Ptr[Ptr[Byte]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisReaderCreate(): Ptr[redisReader] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/read.h
   */
   def redisReaderCreateWithFunctions(fn : Ptr[redisReplyObjectFunctions]): Ptr[redisReader] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/read.h
   */
   def redisReaderFeed(r : Ptr[redisReader], buf : CString, len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/read.h
   */
   def redisReaderFree(r : Ptr[redisReader]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/read.h
   */
   def redisReaderGetReply(r : Ptr[redisReader], reply : Ptr[Ptr[Byte]]): CInt = extern
 
   /**
    * Reconnect the given context using the saved information.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisReconnect(c : Ptr[redisContext]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisSetPushCallback(c : Ptr[redisContext], fn : Ptr[redisPushFn]): Ptr[redisPushFn] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisSetTcpUserTimeout(c : Ptr[redisContext], timeout : CUnsignedInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisSetTimeout(c : Ptr[redisContext], tv : timeval): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisvAppendCommand(c : Ptr[redisContext], format : CString, ap : va_list): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisvCommand(c : Ptr[redisContext], format : CString, ap : va_list): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/hiredis.h
   */
   def redisvFormatCommand(target : Ptr[CString], format : CString, ap : va_list): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsAllocPtr(s : sds): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsAllocSize(s : sds): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsIncrLen(s : sds, incr : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsMakeRoomFor(s : sds, addlen : size_t): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsRemoveFreeSpace(s : sds): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sds_free(ptr : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sds_malloc(size : size_t): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sds_realloc(ptr : Ptr[Byte], size : size_t): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsalloc(s : sds): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsavail(s : sds): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdscat(s : sds, t : CString): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdscatfmt(s : sds, fmt : CString, rest: Any*): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdscatlen(s : sds, t : Ptr[Byte], len : size_t): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdscatprintf(s : sds, fmt : CString, rest: Any*): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdscatrepr(s : sds, p : CString, len : size_t): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdscatsds(s : sds, t : sds): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdscatvprintf(s : sds, fmt : CString, ap : va_list): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsclear(s : sds): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdscmp(s1 : sds, s2 : sds): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdscpy(s : sds, t : CString): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdscpylen(s : sds, t : CString, len : size_t): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsdup(s : sds): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsempty(): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsfree(s : sds): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsfreesplitres(tokens : Ptr[sds], count : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsfromlonglong(value : CLongLong): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsgrowzero(s : sds, len : size_t): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsinclen(s : sds, inc : size_t): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsjoin(argv : Ptr[CString], argc : CInt, sep : CString): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsjoinsds(argv : Ptr[sds], argc : CInt, sep : CString, seplen : size_t): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdslen(s : sds): size_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsmapchars(s : sds, from : CString, to : CString, setlen : size_t): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsnew(init : CString): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsnewlen(init : Ptr[Byte], initlen : size_t): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsrange(s : sds, start : ssize_t, end : ssize_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdssetalloc(s : sds, newlen : size_t): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdssetlen(s : sds, newlen : size_t): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdssplitargs(line : CString, argc : Ptr[CInt]): Ptr[sds] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdssplitlen(s : CString, len : CInt, sep : CString, seplen : CInt, count : Ptr[CInt]): Ptr[sds] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdstolower(s : sds): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdstoupper(s : sds): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdstrim(s : sds, cset : CString): sds = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/sds.h
   */
   def sdsupdatelen(s : sds): Unit = extern
 
@@ -1142,7 +1024,6 @@ object functions:
   export extern_functions.*
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/alloc.h
   */
   def hiredisSetAllocators(ha : Ptr[hiredisAllocFuncs])(using Zone): hiredisAllocFuncs = 
     val __ptr_0: Ptr[hiredisAllocFuncs] = alloc[hiredisAllocFuncs](1)
@@ -1150,7 +1031,6 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/hiredis_arm64-osx/include/hiredis/alloc.h
   */
   def hiredisSetAllocators(ha : Ptr[hiredisAllocFuncs])(__return : Ptr[hiredisAllocFuncs]): Unit = 
     __sn_wrap_libredis_hiredisSetAllocators(ha, __return)

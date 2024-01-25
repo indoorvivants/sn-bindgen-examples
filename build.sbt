@@ -314,7 +314,10 @@ val bindgenSettings = Seq(
   bindgenMode := BindgenMode.Manual(
     scalaDir = (Compile / sourceDirectory).value / "scala" / "generated",
     cDir = (Compile / resourceDirectory).value / "scala-native" / "generated"
-  )
+  ),
+  bindgenBindings := {
+    bindgenBindings.value.map(_.withNoLocation(true))
+  }
 )
 
 def configurePlatform(rename: String => String = identity) = Seq(

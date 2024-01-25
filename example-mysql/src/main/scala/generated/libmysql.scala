@@ -23,8 +23,6 @@ object enumerations:
   import predef.*
   /**
    * Type of the user defined function return slot and arguments
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/udf_registration_types.h
   */
   opaque type Item_result = CInt
   object Item_result extends CEnum[Item_result]:
@@ -51,7 +49,6 @@ object enumerations:
       inline def is(b: Item_result): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/udf_registration_types.h
   */
   opaque type Item_udftype = CUnsignedInt
   object Item_udftype extends CEnumU[Item_udftype]:
@@ -71,8 +68,6 @@ object enumerations:
 
   /**
    * The status flags are a bit-field
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   opaque type SERVER_STATUS_flags_enum = CUnsignedInt
   object SERVER_STATUS_flags_enum extends CEnumU[SERVER_STATUS_flags_enum]:
@@ -115,7 +110,6 @@ object enumerations:
       inline def is(b: SERVER_STATUS_flags_enum): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_compress.h
   */
   opaque type enum_compression_algorithm = CUnsignedInt
   object enum_compression_algorithm extends CEnumU[enum_compression_algorithm]:
@@ -138,7 +132,6 @@ object enumerations:
       inline def is(b: enum_compression_algorithm): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   opaque type enum_cursor_type = CUnsignedInt
   object enum_cursor_type extends CEnumU[enum_cursor_type]:
@@ -164,8 +157,6 @@ object enumerations:
 
   /**
    * Column types for MySQL
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/field_types.h
   */
   opaque type enum_field_types = CUnsignedInt
   object enum_field_types extends CEnumU[enum_field_types]:
@@ -249,8 +240,6 @@ object enumerations:
 
   /**
    * options for ::mysql_options()
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   opaque type enum_mysql_set_option = CUnsignedInt
   object enum_mysql_set_option extends CEnumU[enum_mysql_set_option]:
@@ -269,7 +258,6 @@ object enumerations:
       inline def is(b: enum_mysql_set_option): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type enum_mysql_stmt_state = CUnsignedInt
   object enum_mysql_stmt_state extends CEnumU[enum_mysql_stmt_state]:
@@ -293,8 +281,6 @@ object enumerations:
 
   /**
    * Time declarations shared between the server and client API: you should not add anything to this header unless it's used (and hence should be visible) in mysql.h. If you're looking for a place to add new time-related declaration, it's most likely my_time.h. See also "C API Handling of Date and Time Values" chapter in documentation.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_time.h
   */
   opaque type enum_mysql_timestamp_type = CInt
   object enum_mysql_timestamp_type extends CEnum[enum_mysql_timestamp_type]:
@@ -322,8 +308,6 @@ object enumerations:
 
   /**
    * @}
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   opaque type enum_resultset_metadata = CUnsignedInt
   object enum_resultset_metadata extends CEnumU[enum_resultset_metadata]:
@@ -343,8 +327,6 @@ object enumerations:
 
   /**
    * A list of all MySQL protocol commands.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_command.h
   */
   opaque type enum_server_command = CUnsignedInt
   object enum_server_command extends CEnumU[enum_server_command]:
@@ -430,8 +412,6 @@ object enumerations:
 
   /**
    * Type of state change information that the server can include in the Ok packet.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   opaque type enum_session_state_type = CUnsignedInt
   object enum_session_state_type extends CEnumU[enum_session_state_type]:
@@ -458,7 +438,6 @@ object enumerations:
       inline def is(b: enum_session_state_type): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type enum_stmt_attr_type = CUnsignedInt
   object enum_stmt_attr_type extends CEnumU[enum_stmt_attr_type]:
@@ -480,8 +459,6 @@ object enumerations:
 
   /**
    * We want levels to be in growing order of hardness (because we use number comparisons).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   opaque type mysql_enum_shutdown_level = CUnsignedInt
   object mysql_enum_shutdown_level extends CEnumU[mysql_enum_shutdown_level]:
@@ -512,7 +489,6 @@ object enumerations:
       inline def is(b: mysql_enum_shutdown_level): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type mysql_option = CUnsignedInt
   object mysql_option extends CEnumU[mysql_option]:
@@ -619,7 +595,6 @@ object enumerations:
       inline def is(b: mysql_option): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type mysql_protocol_type = CUnsignedInt
   object mysql_protocol_type extends CEnumU[mysql_protocol_type]:
@@ -644,7 +619,6 @@ object enumerations:
       inline def is(b: mysql_protocol_type): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type mysql_ssl_fips_mode = CUnsignedInt
   object mysql_ssl_fips_mode extends CEnumU[mysql_ssl_fips_mode]:
@@ -665,7 +639,6 @@ object enumerations:
       inline def is(b: mysql_ssl_fips_mode): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type mysql_ssl_mode = CUnsignedInt
   object mysql_ssl_mode extends CEnumU[mysql_ssl_mode]:
@@ -690,7 +663,6 @@ object enumerations:
       inline def is(b: mysql_ssl_mode): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type mysql_status = CUnsignedInt
   object mysql_status extends CEnumU[mysql_status]:
@@ -713,7 +685,6 @@ object enumerations:
       inline def is(b: mysql_status): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/plugin_auth_common.h
   */
   opaque type net_async_status = CUnsignedInt
   object net_async_status extends CEnumU[net_async_status]:
@@ -741,7 +712,6 @@ object aliases:
   import _root_.libmysql.aliases.*
   import _root_.libmysql.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MYSQL_FIELD_OFFSET = CUnsignedInt
   object MYSQL_FIELD_OFFSET: 
@@ -751,7 +721,6 @@ object aliases:
       inline def value: CUnsignedInt = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MYSQL_ROW = Ptr[CString]
   object MYSQL_ROW: 
@@ -761,7 +730,6 @@ object aliases:
       inline def value: Ptr[CString] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MYSQL_ROW_OFFSET = Ptr[MYSQL_ROWS]
   object MYSQL_ROW_OFFSET: 
@@ -771,7 +739,6 @@ object aliases:
       inline def value: Ptr[MYSQL_ROWS] = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/udf_registration_types.h
   */
   opaque type Udf_func_add = CFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Unit]
   object Udf_func_add: 
@@ -783,7 +750,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/udf_registration_types.h
   */
   opaque type Udf_func_any = CFuncPtr0[Unit]
   object Udf_func_any: 
@@ -795,7 +761,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/udf_registration_types.h
   */
   opaque type Udf_func_clear = CFuncPtr3[Ptr[UDF_INIT], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Unit]
   object Udf_func_clear: 
@@ -807,7 +772,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/udf_registration_types.h
   */
   opaque type Udf_func_deinit = CFuncPtr1[Ptr[UDF_INIT], Unit]
   object Udf_func_deinit: 
@@ -819,7 +783,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/udf_registration_types.h
   */
   opaque type Udf_func_double = CFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Double]
   object Udf_func_double: 
@@ -831,7 +794,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/udf_registration_types.h
   */
   opaque type Udf_func_init = CFuncPtr3[Ptr[UDF_INIT], Ptr[UDF_ARGS], CString, Boolean]
   object Udf_func_init: 
@@ -843,7 +805,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/udf_registration_types.h
   */
   opaque type Udf_func_longlong = CFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], CLongLong]
   object Udf_func_longlong: 
@@ -855,7 +816,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/udf_registration_types.h
   */
   opaque type Udf_func_string = CFuncPtr6[Ptr[UDF_INIT], Ptr[UDF_ARGS], CString, Ptr[CUnsignedLongInt], Ptr[CUnsignedChar], Ptr[CUnsignedChar], CString]
   object Udf_func_string: 
@@ -867,7 +827,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_list.h
   */
   opaque type list_walk_action = CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]
   object list_walk_action: 
@@ -879,7 +838,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type my_socket = CInt
   object my_socket: 
@@ -889,7 +847,6 @@ object aliases:
       inline def value: CInt = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   type my_ulonglong = uint64_t
   object my_ulonglong: 
@@ -925,22 +882,18 @@ object structs:
   import _root_.libmysql.aliases.*
   import _root_.libmysql.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type CHARSET_INFO = CStruct0
   object CHARSET_INFO:
     given _tag: Tag[CHARSET_INFO] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type Init_commands_array = CStruct0
   object Init_commands_array:
     given _tag: Tag[Init_commands_array] = Tag.materializeCStruct0Tag
 
   /**
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_list.h
   */
   opaque type LIST = CStruct3[Ptr[Byte], Ptr[Byte], Ptr[Byte]]
   object LIST:
@@ -961,19 +914,16 @@ object structs:
       def data_=(value: Ptr[Byte]): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MEM_ROOT = CStruct0
   object MEM_ROOT:
     given _tag: Tag[MEM_ROOT] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MYSQL = CArray[CChar, Nat.Digit4[Nat._1, Nat._1, Nat._4, Nat._4]]
   object MYSQL:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
     */
     opaque type Struct0 = CStruct0
     object Struct0:
@@ -1097,7 +1047,6 @@ object structs:
       def extension_=(value: Ptr[Byte]): Unit = !struct.at(1136).asInstanceOf[Ptr[Ptr[Byte]]] = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MYSQL_BIND = CStruct19[Ptr[CUnsignedLongInt], Ptr[Boolean], Ptr[Byte], Ptr[Boolean], Ptr[CUnsignedChar], CFuncPtr2[Ptr[NET], Ptr[Byte], Unit], CFuncPtr3[Ptr[Byte], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit], CFuncPtr3[Ptr[Byte], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit], CUnsignedLongInt, CUnsignedLongInt, CUnsignedLongInt, CUnsignedInt, CUnsignedInt, enum_field_types, Boolean, Boolean, Boolean, Boolean, Ptr[Byte]]
   object MYSQL_BIND:
@@ -1166,7 +1115,6 @@ object structs:
       def extension_=(value: Ptr[Byte]): Unit = !struct.at19 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MYSQL_DATA = CStruct4[Ptr[Byte], Ptr[MEM_ROOT], uint64_t, CUnsignedInt]
   object MYSQL_DATA:
@@ -1190,7 +1138,6 @@ object structs:
       def fields_=(value: CUnsignedInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MYSQL_FIELD = CStruct21[CString, CString, CString, CString, CString, CString, CString, CUnsignedLongInt, CUnsignedLongInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, enum_field_types, Ptr[Byte]]
   object MYSQL_FIELD:
@@ -1265,7 +1212,6 @@ object structs:
       def extension_=(value: Ptr[Byte]): Unit = !struct.at21 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MYSQL_METHODS = CStruct0
   object MYSQL_METHODS:
@@ -1273,8 +1219,6 @@ object structs:
 
   /**
    * Provides plugin access to communication channel
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/plugin_auth_common.h
   */
   opaque type MYSQL_PLUGIN_VIO = CStruct5[CFuncPtr2[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt], CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], CInt, CInt], CFuncPtr2[Ptr[Byte], Ptr[MYSQL_PLUGIN_VIO_INFO], Unit], CFuncPtr3[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], net_async_status], CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status]]
   object MYSQL_PLUGIN_VIO:
@@ -1301,12 +1245,10 @@ object structs:
       def write_packet_nonblocking_=(value: CFuncPtr4[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status]): Unit = !struct.at5 = value.asInstanceOf[CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status]]
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/plugin_auth_common.h
   */
   opaque type MYSQL_PLUGIN_VIO_INFO = CStruct2[MYSQL_PLUGIN_VIO_INFO.Enum0, CInt]
   object MYSQL_PLUGIN_VIO_INFO:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/plugin_auth_common.h
     */
     opaque type Enum0 = CUnsignedInt
     object Enum0 extends CEnumU[Enum0]:
@@ -1343,7 +1285,6 @@ object structs:
       def socket_=(value: CInt): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MYSQL_RES = CStruct16[uint64_t, Ptr[MYSQL_FIELD], Ptr[Byte], Ptr[Byte], Ptr[CUnsignedLongInt], Ptr[MYSQL], Ptr[MYSQL_METHODS], MYSQL_ROW, MYSQL_ROW, Ptr[MEM_ROOT], CUnsignedInt, CUnsignedInt, Boolean, Boolean, enum_resultset_metadata, Ptr[Byte]]
   object MYSQL_RES:
@@ -1403,7 +1344,6 @@ object structs:
       def extension_=(value: Ptr[Byte]): Unit = !struct.at16 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MYSQL_ROWS = CStruct3[Ptr[Byte], MYSQL_ROW, CUnsignedLongInt]
   object MYSQL_ROWS:
@@ -1425,8 +1365,6 @@ object structs:
 
   /**
    * Struct for information about a replication stream.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MYSQL_RPL = CStruct10[size_t, CString, uint64_t, CUnsignedInt, CUnsignedInt, size_t, CFuncPtr2[Ptr[Byte], Ptr[CUnsignedChar], Unit], Ptr[Byte], CUnsignedLongInt, Ptr[CUnsignedChar]]
   object MYSQL_RPL:
@@ -1468,7 +1406,6 @@ object structs:
       def buffer_=(value: Ptr[CUnsignedChar]): Unit = !struct.at10 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MYSQL_STMT = CArray[CChar, Nat.Digit3[Nat._7, Nat._0, Nat._4]]
   object MYSQL_STMT:
@@ -1561,14 +1498,12 @@ object structs:
       def extension_=(value: Ptr[MYSQL_STMT_EXT]): Unit = !struct.at(696).asInstanceOf[Ptr[Ptr[MYSQL_STMT_EXT]]] = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MYSQL_STMT_EXT = CStruct0
   object MYSQL_STMT_EXT:
     given _tag: Tag[MYSQL_STMT_EXT] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_time.h
   */
   opaque type MYSQL_TIME = CStruct10[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedLongInt, Boolean, enum_mysql_timestamp_type, CInt]
   object MYSQL_TIME:
@@ -1610,7 +1545,6 @@ object structs:
       def time_zone_displacement_=(value: CInt): Unit = !struct.at10 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type MY_CHARSET_INFO = CStruct8[CUnsignedInt, CUnsignedInt, CString, CString, CString, CString, CUnsignedInt, CUnsignedInt]
   object MY_CHARSET_INFO:
@@ -1646,7 +1580,6 @@ object structs:
       def mbmaxlen_=(value: CUnsignedInt): Unit = !struct.at8 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   opaque type NET = CArray[CChar, Nat.Digit3[Nat._6, Nat._6, Nat._4]]
   object NET:
@@ -1739,7 +1672,6 @@ object structs:
       def extension_=(value: Ptr[Byte]): Unit = !struct.at(656).asInstanceOf[Ptr[Ptr[Byte]]] = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/udf_registration_types.h
   */
   opaque type UDF_ARGS = CStruct8[CUnsignedInt, Ptr[Item_result], Ptr[CString], Ptr[CUnsignedLongInt], CString, Ptr[CString], Ptr[CUnsignedLongInt], Ptr[Byte]]
   object UDF_ARGS:
@@ -1776,8 +1708,6 @@ object structs:
 
   /**
    * Information about the result of a user defined function
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/udf_registration_types.h
   */
   opaque type UDF_INIT = CStruct6[Boolean, CUnsignedInt, CUnsignedLongInt, CString, Boolean, Ptr[Byte]]
   object UDF_INIT:
@@ -1807,42 +1737,36 @@ object structs:
       def extension_=(value: Ptr[Byte]): Unit = !struct.at6 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   opaque type Vio = CStruct0
   object Vio:
     given _tag: Tag[Vio] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_compress.h
   */
   opaque type ZSTD_CCtx = CStruct0
   object ZSTD_CCtx:
     given _tag: Tag[ZSTD_CCtx] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_compress.h
   */
   opaque type ZSTD_CCtx_s = CStruct0
   object ZSTD_CCtx_s:
     given _tag: Tag[ZSTD_CCtx_s] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_compress.h
   */
   opaque type ZSTD_DCtx = CStruct0
   object ZSTD_DCtx:
     given _tag: Tag[ZSTD_DCtx] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_compress.h
   */
   opaque type ZSTD_DCtx_s = CStruct0
   object ZSTD_DCtx_s:
     given _tag: Tag[ZSTD_DCtx_s] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/client_plugin.h
   */
   opaque type auth_plugin_t = CStruct14[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[Ptr[Byte], Ptr[MYSQL], CInt], CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
   object auth_plugin_t:
@@ -1896,7 +1820,6 @@ object structs:
       def authenticate_user_nonblocking_=(value: CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]): Unit = !struct.at14 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type character_set = CStruct8[CUnsignedInt, CUnsignedInt, CString, CString, CString, CString, CUnsignedInt, CUnsignedInt]
   object character_set:
@@ -1933,13 +1856,10 @@ object structs:
 
   /**
    * Compression context information. It encapsulate the context information based on compression method and presents a generic struct.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_compress.h
   */
   opaque type mysql_compress_context = CStruct2[enum_compression_algorithm, mysql_compress_context.Union0]
   object mysql_compress_context:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_compress.h
     */
     opaque type Union0 = CArray[Byte, Nat.Digit2[Nat._2, Nat._4]]
     object Union0:
@@ -1979,8 +1899,6 @@ object structs:
 
   /**
    * Compress context information. relating to zlib compression.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_compress.h
   */
   opaque type mysql_zlib_compress_context = CStruct1[CUnsignedInt]
   object mysql_zlib_compress_context:
@@ -1996,8 +1914,6 @@ object structs:
 
   /**
    * Compress context information relating to zstd compression.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_compress.h
   */
   opaque type mysql_zstd_compress_context = CStruct3[Ptr[ZSTD_CCtx], Ptr[ZSTD_DCtx], CUnsignedInt]
   object mysql_zstd_compress_context:
@@ -2018,7 +1934,6 @@ object structs:
       def compression_level_=(value: CUnsignedInt): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   opaque type rand_struct = CStruct4[CUnsignedLongInt, CUnsignedLongInt, CUnsignedLongInt, Double]
   object rand_struct:
@@ -2042,7 +1957,6 @@ object structs:
       def max_value_dbl_=(value: Double): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/client_plugin.h
   */
   opaque type st_mysql_client_plugin = CStruct12[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt]]
   object st_mysql_client_plugin:
@@ -2090,7 +2004,6 @@ object structs:
       def get_options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = !struct.at12 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/client_plugin.h
   */
   opaque type st_mysql_client_plugin_AUTHENTICATION = CStruct14[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[Ptr[Byte], Ptr[MYSQL], CInt], CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
   object st_mysql_client_plugin_AUTHENTICATION:
@@ -2144,12 +2057,10 @@ object structs:
       def authenticate_user_nonblocking_=(value: CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]): Unit = !struct.at14 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type st_mysql_options = CArray[CChar, Nat.Digit3[Nat._2, Nat._4, Nat._0]]
   object st_mysql_options:
     /**
-     * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
     */
     opaque type Struct0 = CStruct0
     object Struct0:
@@ -2261,8 +2172,6 @@ object structs:
       def extension_=(value: Ptr[st_mysql_options_extention]): Unit = !struct.at(232).asInstanceOf[Ptr[Ptr[st_mysql_options_extention]]] = value
 
   /**
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   opaque type st_mysql_options_extention = CStruct0
   object st_mysql_options_extention:
@@ -2276,949 +2185,753 @@ private[libmysql] object extern_functions:
   import _root_.libmysql.aliases.*
   import _root_.libmysql.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/errmsg.h
   */
   def ER_CLIENT(client_errno : CInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def check_scramble(reply : Ptr[CUnsignedChar], message : CString, hash_stage2 : Ptr[CUnsignedChar]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def check_scramble_323(reply : Ptr[CUnsignedChar], message : CString, salt : Ptr[CUnsignedLongInt]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def create_random_string(to : CString, length : CUnsignedInt, rand_st : Ptr[rand_struct]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/errmsg.h
   */
   def finish_client_errs(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def generate_sha256_scramble(dst : Ptr[CUnsignedChar], dst_size : size_t, src : CString, src_size : size_t, rnd : CString, rnd_size : size_t): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def get_salt_from_password(res : Ptr[CUnsignedChar], password : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def get_salt_from_password_323(res : Ptr[CUnsignedLongInt], password : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def get_tty_password(opt_message : CString): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def hash_password(to : Ptr[CUnsignedLongInt], password : CString, password_len : CUnsignedInt): Unit = extern
 
   /**
    * Error messages for MySQL clients. These are constant and use the CR_ prefix. <mysqlclient_ername.h> will contain auto-generated mappings containing the symbolic name and the number from this file, and the english error messages in libmysql/errmsg.c.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/errmsg.h
   */
   def init_client_errs(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_list.h
   */
   def list_add(root : Ptr[LIST], element : Ptr[LIST]): Ptr[LIST] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_list.h
   */
   def list_cons(data : Ptr[Byte], root : Ptr[LIST]): Ptr[LIST] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_list.h
   */
   def list_delete(root : Ptr[LIST], element : Ptr[LIST]): Ptr[LIST] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_list.h
   */
   def list_free(root : Ptr[LIST], free_data : CUnsignedInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_list.h
   */
   def list_length(_0 : Ptr[LIST]): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_list.h
   */
   def list_reverse(root : Ptr[LIST]): Ptr[LIST] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_list.h
   */
   def list_walk(_0 : Ptr[LIST], action : list_walk_action, argument : Ptr[CUnsignedChar]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def make_password_from_salt(to : CString, hash_stage2 : Ptr[CUnsignedChar]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def make_password_from_salt_323(to : CString, salt : Ptr[CUnsignedLongInt]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def make_scrambled_password(to : CString, password : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def make_scrambled_password_323(to : CString, password : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def my_net_init(net : Ptr[NET], vio : Ptr[Vio]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def my_net_local_init(net : Ptr[NET]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def my_net_read(net : Ptr[NET]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def my_net_set_read_timeout(net : Ptr[NET], timeout : CUnsignedInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def my_net_set_retry_count(net : Ptr[NET], retry_count : CUnsignedInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def my_net_set_write_timeout(net : Ptr[NET], timeout : CUnsignedInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def my_net_write(net : Ptr[NET], packet : Ptr[CUnsignedChar], len : size_t): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def my_rnd(_0 : Ptr[rand_struct]): Double = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def my_thread_end(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def my_thread_init(): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def myodbc_remove_escape(mysql : Ptr[MYSQL], name : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_affected_rows(mysql : Ptr[MYSQL]): uint64_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_autocommit(mysql : Ptr[MYSQL], auto_mode : Boolean): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_bind_param(mysql : Ptr[MYSQL], n_params : CUnsignedInt, binds : Ptr[MYSQL_BIND], names : Ptr[CString]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_binlog_close(mysql : Ptr[MYSQL], rpl : Ptr[MYSQL_RPL]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_binlog_fetch(mysql : Ptr[MYSQL], rpl : Ptr[MYSQL_RPL]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_binlog_open(mysql : Ptr[MYSQL], rpl : Ptr[MYSQL_RPL]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_change_user(mysql : Ptr[MYSQL], user : CString, passwd : CString, db : CString): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_character_set_name(mysql : Ptr[MYSQL]): CString = extern
 
   /**
    * finds an already loaded plugin by name, or loads it, if necessary
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/client_plugin.h
   */
   def mysql_client_find_plugin(mysql : Ptr[MYSQL], name : CString, `type` : CInt): Ptr[st_mysql_client_plugin] = extern
 
   /**
    * adds a plugin structure to the list of loaded plugins
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/client_plugin.h
   */
   def mysql_client_register_plugin(mysql : Ptr[MYSQL], plugin : Ptr[st_mysql_client_plugin]): Ptr[st_mysql_client_plugin] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_close(sock : Ptr[MYSQL]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_commit(mysql : Ptr[MYSQL]): Boolean = extern
 
   /**
    * Deinitialize the compression context allocated.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_compress.h
   */
   def mysql_compress_context_deinit(mysql_compress_ctx : Ptr[mysql_compress_context]): Unit = extern
 
   /**
    * Initialize a compress context object to be associated with a NET object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_compress.h
   */
   def mysql_compress_context_init(cmp_ctx : Ptr[mysql_compress_context], algorithm : enum_compression_algorithm, compression_level : CUnsignedInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_data_seek(result : Ptr[MYSQL_RES], offset : uint64_t): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_debug(debug : CString): Unit = extern
 
   /**
    * Get default compression level corresponding to a given compression method.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/my_compress.h
   */
   def mysql_default_compression_level(algorithm : enum_compression_algorithm): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_dump_debug_info(mysql : Ptr[MYSQL]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_eof(res : Ptr[MYSQL_RES]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_errno(mysql : Ptr[MYSQL]): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def mysql_errno_to_sqlstate(mysql_errno : CUnsignedInt): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_error(mysql : Ptr[MYSQL]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_escape_string(to : CString, from : CString, from_length : CUnsignedLongInt): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_fetch_field(result : Ptr[MYSQL_RES]): Ptr[MYSQL_FIELD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_fetch_field_direct(res : Ptr[MYSQL_RES], fieldnr : CUnsignedInt): Ptr[MYSQL_FIELD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_fetch_fields(res : Ptr[MYSQL_RES]): Ptr[MYSQL_FIELD] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_fetch_lengths(result : Ptr[MYSQL_RES]): Ptr[CUnsignedLongInt] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_fetch_row(result : Ptr[MYSQL_RES]): MYSQL_ROW = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_fetch_row_nonblocking(res : Ptr[MYSQL_RES], row : Ptr[MYSQL_ROW]): net_async_status = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_field_count(mysql : Ptr[MYSQL]): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_field_seek(result : Ptr[MYSQL_RES], offset : MYSQL_FIELD_OFFSET): MYSQL_FIELD_OFFSET = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_field_tell(res : Ptr[MYSQL_RES]): MYSQL_FIELD_OFFSET = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_free_result(result : Ptr[MYSQL_RES]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_free_result_nonblocking(result : Ptr[MYSQL_RES]): net_async_status = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_free_ssl_session_data(mysql : Ptr[MYSQL], data : Ptr[Byte]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_get_character_set_info(mysql : Ptr[MYSQL], charset : Ptr[MY_CHARSET_INFO]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_get_client_info(): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_get_client_version(): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_get_host_info(mysql : Ptr[MYSQL]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_get_option(mysql : Ptr[MYSQL], option : mysql_option, arg : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_get_proto_info(mysql : Ptr[MYSQL]): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_get_server_info(mysql : Ptr[MYSQL]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_get_server_version(mysql : Ptr[MYSQL]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_get_ssl_cipher(mysql : Ptr[MYSQL]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_get_ssl_session_data(mysql : Ptr[MYSQL], n_ticket : CUnsignedInt, out_len : Ptr[CUnsignedInt]): Ptr[Byte] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_get_ssl_session_reused(mysql : Ptr[MYSQL]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_hex_string(to : CString, from : CString, from_length : CUnsignedLongInt): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_info(mysql : Ptr[MYSQL]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_init(mysql : Ptr[MYSQL]): Ptr[MYSQL] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_insert_id(mysql : Ptr[MYSQL]): uint64_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_kill(mysql : Ptr[MYSQL], pid : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_list_dbs(mysql : Ptr[MYSQL], wild : CString): Ptr[MYSQL_RES] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_list_fields(mysql : Ptr[MYSQL], table : CString, wild : CString): Ptr[MYSQL_RES] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_list_processes(mysql : Ptr[MYSQL]): Ptr[MYSQL_RES] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_list_tables(mysql : Ptr[MYSQL], wild : CString): Ptr[MYSQL_RES] = extern
 
   /**
    * loads a plugin and initializes it
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/client_plugin.h
   */
   def mysql_load_plugin(mysql : Ptr[MYSQL], name : CString, `type` : CInt, argc : CInt, rest: Any*): Ptr[st_mysql_client_plugin] = extern
 
   /**
    * loads a plugin and initializes it, taking va_list as an argument
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/client_plugin.h
   */
   def mysql_load_plugin_v(mysql : Ptr[MYSQL], name : CString, `type` : CInt, argc : CInt, args : va_list): Ptr[st_mysql_client_plugin] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_more_results(mysql : Ptr[MYSQL]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_next_result(mysql : Ptr[MYSQL]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_next_result_nonblocking(mysql : Ptr[MYSQL]): net_async_status = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_num_fields(res : Ptr[MYSQL_RES]): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_num_rows(res : Ptr[MYSQL_RES]): uint64_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_options(mysql : Ptr[MYSQL], option : mysql_option, arg : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_options4(mysql : Ptr[MYSQL], option : mysql_option, arg1 : Ptr[Byte], arg2 : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_ping(mysql : Ptr[MYSQL]): CInt = extern
 
   /**
    * get plugin options
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/client_plugin.h
   */
   def mysql_plugin_get_option(plugin : Ptr[st_mysql_client_plugin], option : CString, value : Ptr[Byte]): CInt = extern
 
   /**
    * set plugin options
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql/client_plugin.h
   */
   def mysql_plugin_options(plugin : Ptr[st_mysql_client_plugin], option : CString, value : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_query(mysql : Ptr[MYSQL], q : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_read_query_result(mysql : Ptr[MYSQL]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_real_connect(mysql : Ptr[MYSQL], host : CString, user : CString, passwd : CString, db : CString, port : CUnsignedInt, unix_socket : CString, clientflag : CUnsignedLongInt): Ptr[MYSQL] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_real_connect_dns_srv(mysql : Ptr[MYSQL], dns_srv_name : CString, user : CString, passwd : CString, db : CString, client_flag : CUnsignedLongInt): Ptr[MYSQL] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_real_connect_nonblocking(mysql : Ptr[MYSQL], host : CString, user : CString, passwd : CString, db : CString, port : CUnsignedInt, unix_socket : CString, clientflag : CUnsignedLongInt): net_async_status = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_real_escape_string(mysql : Ptr[MYSQL], to : CString, from : CString, length : CUnsignedLongInt): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_real_escape_string_quote(mysql : Ptr[MYSQL], to : CString, from : CString, length : CUnsignedLongInt, quote : CChar): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_real_query(mysql : Ptr[MYSQL], q : CString, length : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_real_query_nonblocking(mysql : Ptr[MYSQL], query : CString, length : CUnsignedLongInt): net_async_status = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_refresh(mysql : Ptr[MYSQL], refresh_options : CUnsignedInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_reset_connection(mysql : Ptr[MYSQL]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_reset_server_public_key(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_result_metadata(result : Ptr[MYSQL_RES]): enum_resultset_metadata = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_rollback(mysql : Ptr[MYSQL]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_row_seek(result : Ptr[MYSQL_RES], offset : MYSQL_ROW_OFFSET): MYSQL_ROW_OFFSET = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_row_tell(res : Ptr[MYSQL_RES]): MYSQL_ROW_OFFSET = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_select_db(mysql : Ptr[MYSQL], db : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_select_db_nonblocking(mysql : Ptr[MYSQL], db : CString, error : Ptr[Boolean]): net_async_status = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_send_query(mysql : Ptr[MYSQL], q : CString, length : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_send_query_nonblocking(mysql : Ptr[MYSQL], query : CString, length : CUnsignedLongInt): net_async_status = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_server_end(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_server_init(argc : CInt, argv : Ptr[CString], groups : Ptr[CString]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_session_track_get_first(mysql : Ptr[MYSQL], `type` : enum_session_state_type, data : Ptr[CString], length : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_session_track_get_next(mysql : Ptr[MYSQL], `type` : enum_session_state_type, data : Ptr[CString], length : Ptr[size_t]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_set_character_set(mysql : Ptr[MYSQL], csname : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_set_local_infile_default(mysql : Ptr[MYSQL]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_set_local_infile_handler(mysql : Ptr[MYSQL], local_infile_init : CFuncPtr3[Ptr[Ptr[Byte]], CString, Ptr[Byte], CInt], local_infile_read : CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt], local_infile_end : CFuncPtr1[Ptr[Byte], Unit], local_infile_error : CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt], _5 : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_set_server_option(mysql : Ptr[MYSQL], option : enum_mysql_set_option): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_shutdown(mysql : Ptr[MYSQL], shutdown_level : mysql_enum_shutdown_level): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_sqlstate(mysql : Ptr[MYSQL]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_ssl_set(mysql : Ptr[MYSQL], key : CString, cert : CString, ca : CString, capath : CString, cipher : CString): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stat(mysql : Ptr[MYSQL]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_affected_rows(stmt : Ptr[MYSQL_STMT]): uint64_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_attr_get(stmt : Ptr[MYSQL_STMT], attr_type : enum_stmt_attr_type, attr : Ptr[Byte]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_attr_set(stmt : Ptr[MYSQL_STMT], attr_type : enum_stmt_attr_type, attr : Ptr[Byte]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_bind_param(stmt : Ptr[MYSQL_STMT], bnd : Ptr[MYSQL_BIND]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_bind_result(stmt : Ptr[MYSQL_STMT], bnd : Ptr[MYSQL_BIND]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_close(stmt : Ptr[MYSQL_STMT]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_data_seek(stmt : Ptr[MYSQL_STMT], offset : uint64_t): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_errno(stmt : Ptr[MYSQL_STMT]): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_error(stmt : Ptr[MYSQL_STMT]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_execute(stmt : Ptr[MYSQL_STMT]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_fetch(stmt : Ptr[MYSQL_STMT]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_fetch_column(stmt : Ptr[MYSQL_STMT], bind_arg : Ptr[MYSQL_BIND], column : CUnsignedInt, offset : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_field_count(stmt : Ptr[MYSQL_STMT]): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_free_result(stmt : Ptr[MYSQL_STMT]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_init(mysql : Ptr[MYSQL]): Ptr[MYSQL_STMT] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_insert_id(stmt : Ptr[MYSQL_STMT]): uint64_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_next_result(stmt : Ptr[MYSQL_STMT]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_num_rows(stmt : Ptr[MYSQL_STMT]): uint64_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_param_count(stmt : Ptr[MYSQL_STMT]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_param_metadata(stmt : Ptr[MYSQL_STMT]): Ptr[MYSQL_RES] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_prepare(stmt : Ptr[MYSQL_STMT], query : CString, length : CUnsignedLongInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_reset(stmt : Ptr[MYSQL_STMT]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_result_metadata(stmt : Ptr[MYSQL_STMT]): Ptr[MYSQL_RES] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_row_seek(stmt : Ptr[MYSQL_STMT], offset : MYSQL_ROW_OFFSET): MYSQL_ROW_OFFSET = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_row_tell(stmt : Ptr[MYSQL_STMT]): MYSQL_ROW_OFFSET = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_send_long_data(stmt : Ptr[MYSQL_STMT], param_number : CUnsignedInt, data : CString, length : CUnsignedLongInt): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_sqlstate(stmt : Ptr[MYSQL_STMT]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_stmt_store_result(stmt : Ptr[MYSQL_STMT]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_store_result(mysql : Ptr[MYSQL]): Ptr[MYSQL_RES] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_store_result_nonblocking(mysql : Ptr[MYSQL], result : Ptr[Ptr[MYSQL_RES]]): net_async_status = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_thread_end(): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_thread_id(mysql : Ptr[MYSQL]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_thread_init(): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_thread_safe(): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_use_result(mysql : Ptr[MYSQL]): Ptr[MYSQL_RES] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql.h
   */
   def mysql_warning_count(mysql : Ptr[MYSQL]): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def net_claim_memory_ownership(net : Ptr[NET], claim : Boolean): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def net_clear(net : Ptr[NET], check_buffer : Boolean): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def net_end(net : Ptr[NET]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def net_field_length(packet : Ptr[Ptr[CUnsignedChar]]): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def net_field_length_checked(packet : Ptr[Ptr[CUnsignedChar]], max_length : CUnsignedLongInt): CUnsignedLongInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def net_field_length_ll(packet : Ptr[Ptr[CUnsignedChar]]): uint64_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def net_field_length_size(pos : Ptr[CUnsignedChar]): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def net_flush(net : Ptr[NET]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def net_length_size(num : CUnsignedLongLong): CUnsignedInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def net_realloc(net : Ptr[NET], length : size_t): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def net_store_length(pkg : Ptr[CUnsignedChar], length : CUnsignedLongLong): Ptr[CUnsignedChar] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def net_write_command(net : Ptr[NET], command : CUnsignedChar, header : Ptr[CUnsignedChar], head_len : size_t, packet : Ptr[CUnsignedChar], len : size_t): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def net_write_packet(net : Ptr[NET], packet : Ptr[CUnsignedChar], length : size_t): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def octet2hex(to : CString, str : CString, len : CUnsignedInt): CString = extern
 
   /**
    * @}
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def randominit(_0 : Ptr[rand_struct], seed1 : CUnsignedLongInt, seed2 : CUnsignedLongInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def scramble(to : CString, message : CString, password : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/mysql/mysql_com.h
   */
   def scramble_323(to : CString, message : CString, password : CString): Unit = extern
 

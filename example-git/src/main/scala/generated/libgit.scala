@@ -23,8 +23,6 @@ object enumerations:
   import predef.*
   /**
    * Flags controlling the behavior of git_apply
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/apply.h
   */
   opaque type git_apply_flags_t = CUnsignedInt
   object git_apply_flags_t extends CEnumU[git_apply_flags_t]:
@@ -42,8 +40,6 @@ object enumerations:
 
   /**
    * Possible application locations for git_apply
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/apply.h
   */
   opaque type git_apply_location_t = CUnsignedInt
   object git_apply_location_t extends CEnumU[git_apply_location_t]:
@@ -65,8 +61,6 @@ object enumerations:
 
   /**
    * Possible states for an attribute
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/attr.h
   */
   opaque type git_attr_value_t = CUnsignedInt
   object git_attr_value_t extends CEnumU[git_attr_value_t]:
@@ -90,8 +84,6 @@ object enumerations:
 
   /**
    * Flags for indicating option behavior for git_blame APIs.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blame.h
   */
   opaque type git_blame_flag_t = CUnsignedInt
   object git_blame_flag_t extends CEnumU[git_blame_flag_t]:
@@ -123,8 +115,6 @@ object enumerations:
 
   /**
    * Flags to control the functionality of `git_blob_filter`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   opaque type git_blob_filter_flag_t = CUnsignedInt
   object git_blob_filter_flag_t extends CEnumU[git_blob_filter_flag_t]:
@@ -148,8 +138,6 @@ object enumerations:
 
   /**
    * Basic type of any Git branch.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_branch_t = CUnsignedInt
   object git_branch_t extends CEnumU[git_branch_t]:
@@ -170,7 +158,6 @@ object enumerations:
       inline def is(b: git_branch_t): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/cert.h
   */
   opaque type git_cert_ssh_raw_type_t = CUnsignedInt
   object git_cert_ssh_raw_type_t extends CEnumU[git_cert_ssh_raw_type_t]:
@@ -200,8 +187,6 @@ object enumerations:
 
   /**
    * Type of SSH host fingerprint
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/cert.h
   */
   opaque type git_cert_ssh_t = CUnsignedInt
   object git_cert_ssh_t extends CEnumU[git_cert_ssh_t]:
@@ -225,8 +210,6 @@ object enumerations:
 
   /**
    * Type of host certificate structure that is passed to the check callback
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/cert.h
   */
   opaque type git_cert_t = CUnsignedInt
   object git_cert_t extends CEnumU[git_cert_t]:
@@ -250,8 +233,6 @@ object enumerations:
 
   /**
    * Checkout notification flags
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/checkout.h
   */
   opaque type git_checkout_notify_t = CUnsignedInt
   object git_checkout_notify_t extends CEnumU[git_checkout_notify_t]:
@@ -281,8 +262,6 @@ object enumerations:
 
   /**
    * Checkout behavior flags
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/checkout.h
   */
   opaque type git_checkout_strategy_t = CUnsignedInt
   object git_checkout_strategy_t extends CEnumU[git_checkout_strategy_t]:
@@ -346,8 +325,6 @@ object enumerations:
 
   /**
    * Options for bypassing the git-aware transport on clone. Bypassing it means that instead of a fetch, libgit2 will copy the object database directory instead of figuring out what it needs, which is faster. If possible, it will hardlink the files to save space.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/clone.h
   */
   opaque type git_clone_local_t = CUnsignedInt
   object git_clone_local_t extends CEnumU[git_clone_local_t]:
@@ -371,8 +348,6 @@ object enumerations:
 
   /**
    * Priority level of a config file. These priority levels correspond to the natural escalation logic (from higher to lower) when searching for config entries in git.git.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   opaque type git_config_level_t = CInt
   object git_config_level_t extends CEnum[git_config_level_t]:
@@ -402,8 +377,6 @@ object enumerations:
 
   /**
    * Config var type
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   opaque type git_configmap_t = CUnsignedInt
   object git_configmap_t extends CEnumU[git_configmap_t]:
@@ -427,8 +400,6 @@ object enumerations:
 
   /**
    * Supported credential types
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   opaque type git_credential_t = CUnsignedInt
   object git_credential_t extends CEnumU[git_credential_t]:
@@ -458,8 +429,6 @@ object enumerations:
 
   /**
    * What type of change is described by a git_diff_delta?
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_delta_t = CUnsignedInt
   object git_delta_t extends CEnumU[git_delta_t]:
@@ -497,8 +466,6 @@ object enumerations:
 
   /**
    * Reference lookup strategy
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/describe.h
   */
   opaque type git_describe_strategy_t = CUnsignedInt
   object git_describe_strategy_t extends CEnumU[git_describe_strategy_t]:
@@ -520,8 +487,6 @@ object enumerations:
 
   /**
    * When producing a binary diff, the binary data returned will be either the deflated full ("literal") contents of the file, or the deflated binary delta between the two sides (whichever is smaller).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_binary_t = CUnsignedInt
   object git_diff_binary_t extends CEnumU[git_diff_binary_t]:
@@ -543,8 +508,6 @@ object enumerations:
 
   /**
    * Flags to control the behavior of diff rename/copy detection.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_find_t = CUnsignedInt
   object git_diff_find_t extends CEnumU[git_diff_find_t]:
@@ -592,8 +555,6 @@ object enumerations:
 
   /**
    * Flags for the delta object and the file objects on each side.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_flag_t = CUnsignedInt
   object git_diff_flag_t extends CEnumU[git_diff_flag_t]:
@@ -619,8 +580,6 @@ object enumerations:
 
   /**
    * Formatting options for diff e-mail generation
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   opaque type git_diff_format_email_flags_t = CUnsignedInt
   object git_diff_format_email_flags_t extends CEnumU[git_diff_format_email_flags_t]:
@@ -640,8 +599,6 @@ object enumerations:
 
   /**
    * Possible output formats for diff data
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_format_t = CUnsignedInt
   object git_diff_format_t extends CEnumU[git_diff_format_t]:
@@ -669,8 +626,6 @@ object enumerations:
 
   /**
    * Line origin constants.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_line_t = CUnsignedInt
   object git_diff_line_t extends CEnumU[git_diff_line_t]:
@@ -704,8 +659,6 @@ object enumerations:
 
   /**
    * Flags for diff options. A combination of these flags can be passed in via the `flags` value in the `git_diff_options`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_option_t = CUnsignedInt
   object git_diff_option_t extends CEnumU[git_diff_option_t]:
@@ -783,8 +736,6 @@ object enumerations:
 
   /**
    * Formatting options for diff stats
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_stats_format_t = CUnsignedInt
   object git_diff_stats_format_t extends CEnumU[git_diff_stats_format_t]:
@@ -810,8 +761,6 @@ object enumerations:
 
   /**
    * Direction of the connection.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/net.h
   */
   opaque type git_direction = CUnsignedInt
   object git_direction extends CEnumU[git_direction]:
@@ -831,8 +780,6 @@ object enumerations:
 
   /**
    * Formatting options for diff e-mail generation
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/email.h
   */
   opaque type git_email_create_flags_t = CUnsignedInt
   object git_email_create_flags_t extends CEnumU[git_email_create_flags_t]:
@@ -856,8 +803,6 @@ object enumerations:
 
   /**
    * Generic return codes
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/errors.h
   */
   opaque type git_error_code = CInt
   object git_error_code extends CEnum[git_error_code]:
@@ -935,8 +880,6 @@ object enumerations:
 
   /**
    * Error classes
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/errors.h
   */
   opaque type git_error_t = CUnsignedInt
   object git_error_t extends CEnumU[git_error_t]:
@@ -1024,8 +967,6 @@ object enumerations:
 
   /**
    * Combinations of these values describe the features with which libgit2 was compiled
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/common.h
   */
   opaque type git_feature_t = CUnsignedInt
   object git_feature_t extends CEnumU[git_feature_t]:
@@ -1049,8 +990,6 @@ object enumerations:
 
   /**
    * Acceptable prune settings when fetching
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_fetch_prune_t = CUnsignedInt
   object git_fetch_prune_t extends CEnumU[git_fetch_prune_t]:
@@ -1072,8 +1011,6 @@ object enumerations:
 
   /**
    * Valid modes for index and tree entries.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_filemode_t = CUnsignedInt
   object git_filemode_t extends CEnumU[git_filemode_t]:
@@ -1101,8 +1038,6 @@ object enumerations:
 
   /**
    * Filter option flags.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   opaque type git_filter_flag_t = CUnsignedInt
   object git_filter_flag_t extends CEnumU[git_filter_flag_t]:
@@ -1128,8 +1063,6 @@ object enumerations:
 
   /**
    * Filters are applied in one of two directions: smudging - which is exporting a file from the Git object database to the working directory, and cleaning - which is importing a file from the working directory to the Git object database. These values control which direction of change is being applied.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   opaque type git_filter_mode_t = CUnsignedInt
   object git_filter_mode_t extends CEnumU[git_filter_mode_t]:
@@ -1153,8 +1086,6 @@ object enumerations:
 
   /**
    * Flags for APIs that add files matching pathspec
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   opaque type git_index_add_option_t = CUnsignedInt
   object git_index_add_option_t extends CEnumU[git_index_add_option_t]:
@@ -1178,8 +1109,6 @@ object enumerations:
 
   /**
    * Capabilities of system that affect index actions.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   opaque type git_index_capability_t = CInt
   object git_index_capability_t extends CEnum[git_index_capability_t]:
@@ -1203,8 +1132,6 @@ object enumerations:
 
   /**
    * Bitmasks for on-disk fields of `git_index_entry`'s `flags_extended`
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   opaque type git_index_entry_extended_flag_t = CUnsignedInt
   object git_index_entry_extended_flag_t extends CEnumU[git_index_entry_extended_flag_t]:
@@ -1228,8 +1155,6 @@ object enumerations:
 
   /**
    * Flags for index entries
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   opaque type git_index_entry_flag_t = CUnsignedInt
   object git_index_entry_flag_t extends CEnumU[git_index_entry_flag_t]:
@@ -1249,8 +1174,6 @@ object enumerations:
 
   /**
    * Git index stage states
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   opaque type git_index_stage_t = CInt
   object git_index_stage_t extends CEnum[git_index_stage_t]:
@@ -1276,8 +1199,6 @@ object enumerations:
 
   /**
    * Global library options
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/common.h
   */
   opaque type git_libgit2_opt_t = CUnsignedInt
   object git_libgit2_opt_t extends CEnumU[git_libgit2_opt_t]:
@@ -1371,8 +1292,6 @@ object enumerations:
 
   /**
    * The results of `git_merge_analysis` indicate the merge opportunities.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   opaque type git_merge_analysis_t = CUnsignedInt
   object git_merge_analysis_t extends CEnumU[git_merge_analysis_t]:
@@ -1398,8 +1317,6 @@ object enumerations:
 
   /**
    * Merge file favor options for `git_merge_options` instruct the file-level merging functionality how to deal with conflicting regions of the files.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   opaque type git_merge_file_favor_t = CUnsignedInt
   object git_merge_file_favor_t extends CEnumU[git_merge_file_favor_t]:
@@ -1423,8 +1340,6 @@ object enumerations:
 
   /**
    * File merging flags
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   opaque type git_merge_file_flag_t = CUnsignedInt
   object git_merge_file_flag_t extends CEnumU[git_merge_file_flag_t]:
@@ -1462,8 +1377,6 @@ object enumerations:
 
   /**
    * Flags for `git_merge` options. A combination of these flags can be passed in via the `flags` value in the `git_merge_options`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   opaque type git_merge_flag_t = CUnsignedInt
   object git_merge_flag_t extends CEnumU[git_merge_flag_t]:
@@ -1489,8 +1402,6 @@ object enumerations:
 
   /**
    * The user's stated preference for merges.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   opaque type git_merge_preference_t = CUnsignedInt
   object git_merge_preference_t extends CEnumU[git_merge_preference_t]:
@@ -1512,8 +1423,6 @@ object enumerations:
 
   /**
    * Basic type (loose or packed) of any Git object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_object_t = CInt
   object git_object_t extends CEnum[git_object_t]:
@@ -1544,7 +1453,6 @@ object enumerations:
       inline def is(b: git_object_t): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb_backend.h
   */
   opaque type git_odb_backend_loose_flag_t = CUnsignedInt
   object git_odb_backend_loose_flag_t extends CEnumU[git_odb_backend_loose_flag_t]:
@@ -1562,8 +1470,6 @@ object enumerations:
 
   /**
    * Flags controlling the behavior of ODB lookup operations
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   opaque type git_odb_lookup_flags_t = CUnsignedInt
   object git_odb_lookup_flags_t extends CEnumU[git_odb_lookup_flags_t]:
@@ -1581,8 +1487,6 @@ object enumerations:
 
   /**
    * Streaming mode
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb_backend.h
   */
   opaque type git_odb_stream_t = CUnsignedInt
   object git_odb_stream_t extends CEnumU[git_odb_stream_t]:
@@ -1604,8 +1508,6 @@ object enumerations:
 
   /**
    * The type of object id.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   opaque type git_oid_t = CUnsignedInt
   object git_oid_t extends CEnumU[git_oid_t]:
@@ -1623,8 +1525,6 @@ object enumerations:
 
   /**
    * Stages that are reported by the packbuilder progress callback.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   opaque type git_packbuilder_stage_t = CUnsignedInt
   object git_packbuilder_stage_t extends CEnumU[git_packbuilder_stage_t]:
@@ -1644,8 +1544,6 @@ object enumerations:
 
   /**
    * Options controlling how pathspec match should be executed
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   opaque type git_pathspec_flag_t = CUnsignedInt
   object git_pathspec_flag_t extends CEnumU[git_pathspec_flag_t]:
@@ -1675,8 +1573,6 @@ object enumerations:
 
   /**
    * The type of proxy to use.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/proxy.h
   */
   opaque type git_proxy_t = CUnsignedInt
   object git_proxy_t extends CEnumU[git_proxy_t]:
@@ -1698,8 +1594,6 @@ object enumerations:
 
   /**
    * Type of rebase operation in-progress after calling `git_rebase_next`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   opaque type git_rebase_operation_t = CUnsignedInt
   object git_rebase_operation_t extends CEnumU[git_rebase_operation_t]:
@@ -1727,8 +1621,6 @@ object enumerations:
 
   /**
    * Normalization options for reference lookup
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   opaque type git_reference_format_t = CUnsignedInt
   object git_reference_format_t extends CEnumU[git_reference_format_t]:
@@ -1752,8 +1644,6 @@ object enumerations:
 
   /**
    * Basic type of any Git reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_reference_t = CUnsignedInt
   object git_reference_t extends CEnumU[git_reference_t]:
@@ -1777,8 +1667,6 @@ object enumerations:
 
   /**
    * Automatic tag following option
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_remote_autotag_option_t = CUnsignedInt
   object git_remote_autotag_option_t extends CEnumU[git_remote_autotag_option_t]:
@@ -1802,8 +1690,6 @@ object enumerations:
 
   /**
    * Argument to the completion callback which tells it which operation finished.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_remote_completion_t = CUnsignedInt
   object git_remote_completion_t extends CEnumU[git_remote_completion_t]:
@@ -1825,8 +1711,6 @@ object enumerations:
 
   /**
    * Remote creation options flags
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_remote_create_flags = CUnsignedInt
   object git_remote_create_flags extends CEnumU[git_remote_create_flags]:
@@ -1846,8 +1730,6 @@ object enumerations:
 
   /**
    * Remote redirection settings; whether redirects to another host are permitted. By default, git will follow a redirect on the initial request (`/info/refs`), but not subsequent requests.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_remote_redirect_t = CUnsignedInt
   object git_remote_redirect_t extends CEnumU[git_remote_redirect_t]:
@@ -1869,8 +1751,6 @@ object enumerations:
 
   /**
    * Option flags for `git_repository_init_ext`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   opaque type git_repository_init_flag_t = CUnsignedInt
   object git_repository_init_flag_t extends CEnumU[git_repository_init_flag_t]:
@@ -1900,8 +1780,6 @@ object enumerations:
 
   /**
    * Mode options for `git_repository_init_ext`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   opaque type git_repository_init_mode_t = CUnsignedInt
   object git_repository_init_mode_t extends CEnumU[git_repository_init_mode_t]:
@@ -1923,8 +1801,6 @@ object enumerations:
 
   /**
    * List of items which belong to the git repository layout
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   opaque type git_repository_item_t = CUnsignedInt
   object git_repository_item_t extends CEnumU[git_repository_item_t]:
@@ -1970,8 +1846,6 @@ object enumerations:
 
   /**
    * Option flags for `git_repository_open_ext`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   opaque type git_repository_open_flag_t = CUnsignedInt
   object git_repository_open_flag_t extends CEnumU[git_repository_open_flag_t]:
@@ -1997,8 +1871,6 @@ object enumerations:
 
   /**
    * Repository state
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   opaque type git_repository_state_t = CUnsignedInt
   object git_repository_state_t extends CEnumU[git_repository_state_t]:
@@ -2038,8 +1910,6 @@ object enumerations:
 
   /**
    * Kinds of reset operation
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reset.h
   */
   opaque type git_reset_t = CUnsignedInt
   object git_reset_t extends CEnumU[git_reset_t]:
@@ -2061,8 +1931,6 @@ object enumerations:
 
   /**
    * Revparse flags. These indicate the intended behavior of the spec passed to git_revparse.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revparse.h
   */
   opaque type git_revspec_t = CUnsignedInt
   object git_revspec_t extends CEnumU[git_revspec_t]:
@@ -2084,8 +1952,6 @@ object enumerations:
 
   /**
    * Flags to specify the sorting which a revwalk should perform.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   opaque type git_sort_t = CUnsignedInt
   object git_sort_t extends CEnumU[git_sort_t]:
@@ -2109,8 +1975,6 @@ object enumerations:
 
   /**
    * Stash application flags.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   opaque type git_stash_apply_flags = CUnsignedInt
   object git_stash_apply_flags extends CEnumU[git_stash_apply_flags]:
@@ -2130,8 +1994,6 @@ object enumerations:
 
   /**
    * Stash apply progression states
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   opaque type git_stash_apply_progress_t = CUnsignedInt
   object git_stash_apply_progress_t extends CEnumU[git_stash_apply_progress_t]:
@@ -2163,8 +2025,6 @@ object enumerations:
 
   /**
    * Stash flags
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   opaque type git_stash_flags = CUnsignedInt
   object git_stash_flags extends CEnumU[git_stash_flags]:
@@ -2190,8 +2050,6 @@ object enumerations:
 
   /**
    * Flags to control status callbacks
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   opaque type git_status_opt_t = CUnsignedInt
   object git_status_opt_t extends CEnumU[git_status_opt_t]:
@@ -2239,8 +2097,6 @@ object enumerations:
 
   /**
    * Select the files on which to report status.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   opaque type git_status_show_t = CUnsignedInt
   object git_status_show_t extends CEnumU[git_status_show_t]:
@@ -2262,8 +2118,6 @@ object enumerations:
 
   /**
    * Status flags for a single file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   opaque type git_status_t = CUnsignedInt
   object git_status_t extends CEnumU[git_status_t]:
@@ -2307,8 +2161,6 @@ object enumerations:
 
   /**
    * Submodule ignore values
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_submodule_ignore_t = CInt
   object git_submodule_ignore_t extends CEnum[git_submodule_ignore_t]:
@@ -2334,8 +2186,6 @@ object enumerations:
 
   /**
    * Options for submodule recurse.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_submodule_recurse_t = CUnsignedInt
   object git_submodule_recurse_t extends CEnumU[git_submodule_recurse_t]:
@@ -2357,8 +2207,6 @@ object enumerations:
 
   /**
    * Return codes for submodule status.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   opaque type git_submodule_status_t = CUnsignedInt
   object git_submodule_status_t extends CEnumU[git_submodule_status_t]:
@@ -2402,8 +2250,6 @@ object enumerations:
 
   /**
    * Submodule update values
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_submodule_update_t = CUnsignedInt
   object git_submodule_update_t extends CEnumU[git_submodule_update_t]:
@@ -2429,8 +2275,6 @@ object enumerations:
 
   /**
    * Available tracing levels. When tracing is set to a particular level, callers will be provided tracing at the given level and all lower levels.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/trace.h
   */
   opaque type git_trace_level_t = CUnsignedInt
   object git_trace_level_t extends CEnumU[git_trace_level_t]:
@@ -2460,8 +2304,6 @@ object enumerations:
 
   /**
    * The kind of update to perform
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   opaque type git_tree_update_t = CUnsignedInt
   object git_tree_update_t extends CEnumU[git_tree_update_t]:
@@ -2481,8 +2323,6 @@ object enumerations:
 
   /**
    * Tree traversal modes
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   opaque type git_treewalk_mode = CUnsignedInt
   object git_treewalk_mode extends CEnumU[git_treewalk_mode]:
@@ -2502,8 +2342,6 @@ object enumerations:
 
   /**
    * Flags which can be passed to git_worktree_prune to alter its behavior.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   opaque type git_worktree_prune_t = CUnsignedInt
   object git_worktree_prune_t extends CEnumU[git_worktree_prune_t]:
@@ -2530,8 +2368,6 @@ object aliases:
   import _root_.libgit.structs.*
   /**
    * When applying a patch, callback that will be made per delta (file).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/apply.h
   */
   opaque type git_apply_delta_cb = CFuncPtr2[Ptr[git_diff_delta], Ptr[Byte], CInt]
   object git_apply_delta_cb: 
@@ -2544,8 +2380,6 @@ object aliases:
 
   /**
    * When applying a patch, callback that will be made per hunk.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/apply.h
   */
   opaque type git_apply_hunk_cb = CFuncPtr2[Ptr[git_diff_hunk], Ptr[Byte], CInt]
   object git_apply_hunk_cb: 
@@ -2558,8 +2392,6 @@ object aliases:
 
   /**
    * The callback used with git_attr_foreach.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/attr.h
   */
   opaque type git_attr_foreach_cb = CFuncPtr3[CString, CString, Ptr[Byte], CInt]
   object git_attr_foreach_cb: 
@@ -2571,7 +2403,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_attr_t = git_attr_value_t
   object git_attr_t: 
@@ -2582,8 +2413,6 @@ object aliases:
 
   /**
    * Checkout notification callback function
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/checkout.h
   */
   opaque type git_checkout_notify_cb = CFuncPtr6[git_checkout_notify_t, CString, Ptr[git_diff_file], Ptr[git_diff_file], Ptr[git_diff_file], Ptr[Byte], CInt]
   object git_checkout_notify_cb: 
@@ -2596,8 +2425,6 @@ object aliases:
 
   /**
    * Checkout perfdata notification function
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/checkout.h
   */
   opaque type git_checkout_perfdata_cb = CFuncPtr2[Ptr[git_checkout_perfdata], Ptr[Byte], Unit]
   object git_checkout_perfdata_cb: 
@@ -2610,8 +2437,6 @@ object aliases:
 
   /**
    * Checkout progress notification function
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/checkout.h
   */
   opaque type git_checkout_progress_cb = CFuncPtr4[CString, size_t, size_t, Ptr[Byte], Unit]
   object git_checkout_progress_cb: 
@@ -2624,8 +2449,6 @@ object aliases:
 
   /**
    * Commit creation callback: used when a function is going to create commits (for example, in `git_rebase_commit`) to allow callers to override the commit creation behavior. For example, users may wish to sign commits by providing this information to `git_commit_create_buffer`, signing that buffer, then calling `git_commit_create_with_signature`. The resultant commit id should be set in the `out` object id parameter.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   opaque type git_commit_create_cb = CFuncPtr9[Ptr[git_oid], Ptr[git_signature], Ptr[git_signature], CString, CString, Ptr[git_tree], size_t, Ptr[Ptr[git_commit]], Ptr[Byte], CInt]
   object git_commit_create_cb: 
@@ -2638,8 +2461,6 @@ object aliases:
 
   /**
    * Provide a commit signature during commit creation.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   opaque type git_commit_signing_cb = CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt]
   object git_commit_signing_cb: 
@@ -2652,8 +2473,6 @@ object aliases:
 
   /**
    * A config enumeration callback
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   opaque type git_config_foreach_cb = CFuncPtr2[Ptr[git_config_entry], Ptr[Byte], CInt]
   object git_config_foreach_cb: 
@@ -2666,8 +2485,6 @@ object aliases:
 
   /**
    * These types are retained for backward compatibility. The newer versions of these values should be preferred in all new code.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cred = git_credential
   object git_cred: 
@@ -2677,7 +2494,6 @@ object aliases:
       inline def value: git_credential = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cred_acquire_cb = git_credential_acquire_cb
   object git_cred_acquire_cb: 
@@ -2687,7 +2503,6 @@ object aliases:
       inline def value: git_credential_acquire_cb = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cred_default = git_credential_default
   object git_cred_default: 
@@ -2697,7 +2512,6 @@ object aliases:
       inline def value: git_credential_default = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cred_sign_callback = git_credential_sign_cb
   object git_cred_sign_callback: 
@@ -2707,7 +2521,6 @@ object aliases:
       inline def value: git_credential_sign_cb = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cred_sign_cb = git_credential_sign_cb
   object git_cred_sign_cb: 
@@ -2717,7 +2530,6 @@ object aliases:
       inline def value: git_credential_sign_cb = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cred_ssh_custom = git_credential_ssh_custom
   object git_cred_ssh_custom: 
@@ -2727,7 +2539,6 @@ object aliases:
       inline def value: git_credential_ssh_custom = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cred_ssh_interactive = git_credential_ssh_interactive
   object git_cred_ssh_interactive: 
@@ -2737,7 +2548,6 @@ object aliases:
       inline def value: git_credential_ssh_interactive = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cred_ssh_interactive_callback = git_credential_ssh_interactive_cb
   object git_cred_ssh_interactive_callback: 
@@ -2747,7 +2557,6 @@ object aliases:
       inline def value: git_credential_ssh_interactive_cb = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cred_ssh_interactive_cb = git_credential_ssh_interactive_cb
   object git_cred_ssh_interactive_cb: 
@@ -2757,7 +2566,6 @@ object aliases:
       inline def value: git_credential_ssh_interactive_cb = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cred_ssh_key = git_credential_ssh_key
   object git_cred_ssh_key: 
@@ -2767,7 +2575,6 @@ object aliases:
       inline def value: git_credential_ssh_key = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cred_username = git_credential_username
   object git_cred_username: 
@@ -2777,7 +2584,6 @@ object aliases:
       inline def value: git_credential_username = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cred_userpass_payload = git_credential_userpass_payload
   object git_cred_userpass_payload: 
@@ -2787,7 +2593,6 @@ object aliases:
       inline def value: git_credential_userpass_payload = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cred_userpass_plaintext = git_credential_userpass_plaintext
   object git_cred_userpass_plaintext: 
@@ -2798,8 +2603,6 @@ object aliases:
 
   /**
    * Credential acquisition callback.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   opaque type git_credential_acquire_cb = CFuncPtr5[Ptr[Ptr[git_credential]], CString, CString, CUnsignedInt, Ptr[Byte], CInt]
   object git_credential_acquire_cb: 
@@ -2811,7 +2614,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   opaque type git_credential_sign_cb = CFuncPtr6[Ptr[LIBSSH2_SESSION], Ptr[Ptr[CUnsignedChar]], Ptr[size_t], Ptr[CUnsignedChar], size_t, Ptr[Ptr[Byte]], CInt]
   object git_credential_sign_cb: 
@@ -2823,7 +2625,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   opaque type git_credential_ssh_interactive_cb = CFuncPtr8[CString, CInt, CString, CInt, CInt, Ptr[LIBSSH2_USERAUTH_KBDINT_PROMPT], Ptr[LIBSSH2_USERAUTH_KBDINT_RESPONSE], Ptr[Ptr[Byte]], Unit]
   object git_credential_ssh_interactive_cb: 
@@ -2835,7 +2636,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_cvar_map = git_configmap
   object git_cvar_map: 
@@ -2846,8 +2646,6 @@ object aliases:
 
   /**
    * When iterating over a diff, callback that will be made for binary content within the diff.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_binary_cb = CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_binary], Ptr[Byte], CInt]
   object git_diff_binary_cb: 
@@ -2860,8 +2658,6 @@ object aliases:
 
   /**
    * When iterating over a diff, callback that will be made per file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_file_cb = CFuncPtr3[Ptr[git_diff_delta], Float, Ptr[Byte], CInt]
   object git_diff_file_cb: 
@@ -2874,8 +2670,6 @@ object aliases:
 
   /**
    * When iterating over a diff, callback that will be made per hunk.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_hunk_cb = CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[Byte], CInt]
   object git_diff_hunk_cb: 
@@ -2888,8 +2682,6 @@ object aliases:
 
   /**
    * When iterating over a diff, callback that will be made per text diff line. In this context, the provided range will be NULL.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_line_cb = CFuncPtr4[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[git_diff_line], Ptr[Byte], CInt]
   object git_diff_line_cb: 
@@ -2902,8 +2694,6 @@ object aliases:
 
   /**
    * Diff notification callback function.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_notify_cb = CFuncPtr4[Ptr[git_diff], Ptr[git_diff_delta], CString, Ptr[Byte], CInt]
   object git_diff_notify_cb: 
@@ -2916,8 +2706,6 @@ object aliases:
 
   /**
    * Diff progress callback.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_progress_cb = CFuncPtr4[Ptr[git_diff], CString, CString, Ptr[Byte], CInt]
   object git_diff_progress_cb: 
@@ -2930,8 +2718,6 @@ object aliases:
 
   /**
    * Callback for listing the remote heads
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   opaque type git_headlist_cb = CFuncPtr2[Ptr[git_remote_head], Ptr[Byte], CInt]
   object git_headlist_cb: 
@@ -2944,8 +2730,6 @@ object aliases:
 
   /**
    * Callback for APIs that add/remove/update files matching pathspec
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   opaque type git_index_matched_path_cb = CFuncPtr3[CString, CString, Ptr[Byte], CInt]
   object git_index_matched_path_cb: 
@@ -2958,8 +2742,6 @@ object aliases:
 
   /**
    * Type for progress callbacks during indexing. Return a value less than zero to cancel the indexing or download.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/indexer.h
   */
   opaque type git_indexer_progress_cb = CFuncPtr2[Ptr[git_indexer_progress], Ptr[Byte], CInt]
   object git_indexer_progress_cb: 
@@ -2972,8 +2754,6 @@ object aliases:
 
   /**
    * Callback for git_note_foreach.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   opaque type git_note_foreach_cb = CFuncPtr3[Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt]
   object git_note_foreach_cb: 
@@ -2986,8 +2766,6 @@ object aliases:
 
   /**
    * The maximum size of an object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   type git_object_size_t = uint64_t
   object git_object_size_t: 
@@ -2998,8 +2776,6 @@ object aliases:
 
   /**
    * Function type for callbacks from git_odb_foreach.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   opaque type git_odb_foreach_cb = CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
   object git_odb_foreach_cb: 
@@ -3011,7 +2787,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   type git_off_t = int64_t
   object git_off_t: 
@@ -3022,8 +2797,6 @@ object aliases:
 
   /**
    * Callback used to iterate over packed objects
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   opaque type git_packbuilder_foreach_cb = CFuncPtr3[Ptr[Byte], size_t, Ptr[Byte], CInt]
   object git_packbuilder_foreach_cb: 
@@ -3036,8 +2809,6 @@ object aliases:
 
   /**
    * Packbuilder progress notification function
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   opaque type git_packbuilder_progress = CFuncPtr4[CInt, uint32_t, uint32_t, Ptr[Byte], CInt]
   object git_packbuilder_progress: 
@@ -3050,8 +2821,6 @@ object aliases:
 
   /**
    * Callback used to inform of upcoming updates.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_push_negotiation = CFuncPtr3[Ptr[Ptr[git_push_update]], size_t, Ptr[Byte], CInt]
   object git_push_negotiation: 
@@ -3064,8 +2833,6 @@ object aliases:
 
   /**
    * Type definition for push transfer progress callbacks.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_push_transfer_progress = git_push_transfer_progress_cb
   object git_push_transfer_progress: 
@@ -3076,8 +2843,6 @@ object aliases:
 
   /**
    * Push network progress notification function
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_push_transfer_progress_cb = CFuncPtr4[CUnsignedInt, CUnsignedInt, size_t, Ptr[Byte], CInt]
   object git_push_transfer_progress_cb: 
@@ -3090,8 +2855,6 @@ object aliases:
 
   /**
    * Callback used to inform of the update status from the remote.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_push_update_reference_cb = CFuncPtr3[CString, CString, Ptr[Byte], CInt]
   object git_push_update_reference_cb: 
@@ -3104,8 +2867,6 @@ object aliases:
 
   /**
    * Callback used to iterate over references
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   opaque type git_reference_foreach_cb = CFuncPtr2[Ptr[git_reference], Ptr[Byte], CInt]
   object git_reference_foreach_cb: 
@@ -3118,8 +2879,6 @@ object aliases:
 
   /**
    * Callback used to iterate over reference names
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   opaque type git_reference_foreach_name_cb = CFuncPtr2[CString, Ptr[Byte], CInt]
   object git_reference_foreach_name_cb: 
@@ -3132,8 +2891,6 @@ object aliases:
 
   /**
    * The signature of a function matching git_remote_create, with an additional void* as a callback payload.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/clone.h
   */
   opaque type git_remote_create_cb = CFuncPtr5[Ptr[Ptr[git_remote]], Ptr[git_repository], CString, CString, Ptr[Byte], CInt]
   object git_remote_create_cb: 
@@ -3146,8 +2903,6 @@ object aliases:
 
   /**
    * Callback invoked immediately before we attempt to connect to the given url. Callers may change the URL before the connection by calling `git_remote_set_instance_url` in the callback.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_remote_ready_cb = CFuncPtr3[Ptr[git_remote], CInt, Ptr[Byte], CInt]
   object git_remote_ready_cb: 
@@ -3160,8 +2915,6 @@ object aliases:
 
   /**
    * The signature of a function matching git_repository_init, with an additional void * as callback payload.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/clone.h
   */
   opaque type git_repository_create_cb = CFuncPtr4[Ptr[Ptr[git_repository]], CString, CInt, Ptr[Byte], CInt]
   object git_repository_create_cb: 
@@ -3174,8 +2927,6 @@ object aliases:
 
   /**
    * Callback used to iterate over each FETCH_HEAD entry
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   opaque type git_repository_fetchhead_foreach_cb = CFuncPtr5[CString, CString, Ptr[git_oid], CUnsignedInt, Ptr[Byte], CInt]
   object git_repository_fetchhead_foreach_cb: 
@@ -3188,8 +2939,6 @@ object aliases:
 
   /**
    * Callback used to iterate over each MERGE_HEAD entry
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   opaque type git_repository_mergehead_foreach_cb = CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
   object git_repository_mergehead_foreach_cb: 
@@ -3202,8 +2951,6 @@ object aliases:
 
   /**
    * These enumeration values are retained for backward compatibility. The newer versions of these values should be preferred in all new code.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_revparse_mode_t = git_revspec_t
   object git_revparse_mode_t: 
@@ -3214,8 +2961,6 @@ object aliases:
 
   /**
    * This is a callback function that user can provide to hide a commit and its parents. If the callback function returns non-zero value, then this commit and its parents will be hidden.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   opaque type git_revwalk_hide_cb = CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
   object git_revwalk_hide_cb: 
@@ -3228,8 +2973,6 @@ object aliases:
 
   /**
    * Stash application progress notification function. Return 0 to continue processing, or a negative value to abort the stash application.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   opaque type git_stash_apply_progress_cb = CFuncPtr2[git_stash_apply_progress_t, Ptr[Byte], CInt]
   object git_stash_apply_progress_cb: 
@@ -3242,8 +2985,6 @@ object aliases:
 
   /**
    * This is a callback function you can provide to iterate over all the stashed states that will be invoked per entry.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   opaque type git_stash_cb = CFuncPtr4[size_t, CString, Ptr[git_oid], Ptr[Byte], CInt]
   object git_stash_cb: 
@@ -3256,8 +2997,6 @@ object aliases:
 
   /**
    * Function pointer to receive status on individual files
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   opaque type git_status_cb = CFuncPtr3[CString, CUnsignedInt, Ptr[Byte], CInt]
   object git_status_cb: 
@@ -3270,8 +3009,6 @@ object aliases:
 
   /**
    * Function pointer to receive each submodule
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   opaque type git_submodule_cb = CFuncPtr3[Ptr[git_submodule], CString, Ptr[Byte], CInt]
   object git_submodule_cb: 
@@ -3284,8 +3021,6 @@ object aliases:
 
   /**
    * Callback used to iterate over tag names
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   opaque type git_tag_foreach_cb = CFuncPtr3[CString, Ptr[git_oid], Ptr[Byte], CInt]
   object git_tag_foreach_cb: 
@@ -3297,7 +3032,6 @@ object aliases:
       inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   type git_time_t = int64_t
   object git_time_t: 
@@ -3308,8 +3042,6 @@ object aliases:
 
   /**
    * These types are retained for backward compatibility. The newer versions of these values should be preferred in all new code.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_trace_callback = git_trace_cb
   object git_trace_callback: 
@@ -3320,8 +3052,6 @@ object aliases:
 
   /**
    * An instance for a tracing function
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/trace.h
   */
   opaque type git_trace_cb = CFuncPtr2[git_trace_level_t, CString, Unit]
   object git_trace_cb: 
@@ -3334,8 +3064,6 @@ object aliases:
 
   /**
    * This structure is used to provide callers information about the progress of indexing a packfile.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_transfer_progress = git_indexer_progress
   object git_transfer_progress: 
@@ -3346,8 +3074,6 @@ object aliases:
 
   /**
    * Type definition for progress callbacks during indexing.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   type git_transfer_progress_cb = git_indexer_progress_cb
   object git_transfer_progress_cb: 
@@ -3358,8 +3084,6 @@ object aliases:
 
   /**
    * Signature of a function which creates a transport
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/transport.h
   */
   opaque type git_transport_cb = CFuncPtr3[Ptr[Ptr[git_transport]], Ptr[git_remote], Ptr[Byte], CInt]
   object git_transport_cb: 
@@ -3372,8 +3096,6 @@ object aliases:
 
   /**
    * Callback for the user's custom certificate checks.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/cert.h
   */
   opaque type git_transport_certificate_check_cb = CFuncPtr4[Ptr[git_cert], CInt, CString, Ptr[Byte], CInt]
   object git_transport_certificate_check_cb: 
@@ -3386,8 +3108,6 @@ object aliases:
 
   /**
    * Callback for messages received by the transport.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/transport.h
   */
   opaque type git_transport_message_cb = CFuncPtr3[CString, CInt, Ptr[Byte], CInt]
   object git_transport_message_cb: 
@@ -3400,8 +3120,6 @@ object aliases:
 
   /**
    * Callback for git_treebuilder_filter
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   opaque type git_treebuilder_filter_cb = CFuncPtr2[Ptr[git_tree_entry], Ptr[Byte], CInt]
   object git_treebuilder_filter_cb: 
@@ -3414,8 +3132,6 @@ object aliases:
 
   /**
    * Callback for the tree traversal method
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   opaque type git_treewalk_cb = CFuncPtr3[CString, Ptr[git_tree_entry], Ptr[Byte], CInt]
   object git_treewalk_cb: 
@@ -3428,8 +3144,6 @@ object aliases:
 
   /**
    * Callback to resolve URLs before connecting to remote
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_url_resolve_cb = CFuncPtr4[Ptr[git_buf], CString, CInt, Ptr[Byte], CInt]
   object git_url_resolve_cb: 
@@ -3488,49 +3202,42 @@ object structs:
   import _root_.libgit.aliases.*
   import _root_.libgit.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   opaque type LIBSSH2_SESSION = CStruct0
   object LIBSSH2_SESSION:
     given _tag: Tag[LIBSSH2_SESSION] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   opaque type LIBSSH2_USERAUTH_KBDINT_PROMPT = CStruct0
   object LIBSSH2_USERAUTH_KBDINT_PROMPT:
     given _tag: Tag[LIBSSH2_USERAUTH_KBDINT_PROMPT] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   opaque type LIBSSH2_USERAUTH_KBDINT_RESPONSE = CStruct0
   object LIBSSH2_USERAUTH_KBDINT_RESPONSE:
     given _tag: Tag[LIBSSH2_USERAUTH_KBDINT_RESPONSE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   opaque type _LIBSSH2_SESSION = CStruct0
   object _LIBSSH2_SESSION:
     given _tag: Tag[_LIBSSH2_SESSION] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   opaque type _LIBSSH2_USERAUTH_KBDINT_PROMPT = CStruct0
   object _LIBSSH2_USERAUTH_KBDINT_PROMPT:
     given _tag: Tag[_LIBSSH2_USERAUTH_KBDINT_PROMPT] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   opaque type _LIBSSH2_USERAUTH_KBDINT_RESPONSE = CStruct0
   object _LIBSSH2_USERAUTH_KBDINT_RESPONSE:
     given _tag: Tag[_LIBSSH2_USERAUTH_KBDINT_RESPONSE] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_annotated_commit = CStruct0
   object git_annotated_commit:
@@ -3538,8 +3245,6 @@ object structs:
 
   /**
    * Apply options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/apply.h
   */
   opaque type git_apply_options = CStruct5[CUnsignedInt, git_apply_delta_cb, git_apply_hunk_cb, Ptr[Byte], CUnsignedInt]
   object git_apply_options:
@@ -3567,8 +3272,6 @@ object structs:
 
   /**
    * An options structure for querying attributes.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/attr.h
   */
   opaque type git_attr_options = CStruct4[CUnsignedInt, CUnsignedInt, Ptr[git_oid], git_oid]
   object git_attr_options:
@@ -3592,7 +3295,6 @@ object structs:
       def attr_commit_id_=(value: git_oid): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blame.h
   */
   opaque type git_blame = CStruct0
   object git_blame:
@@ -3600,8 +3302,6 @@ object structs:
 
   /**
    * Structure that represents a blame hunk.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blame.h
   */
   opaque type git_blame_hunk = CStruct9[size_t, git_oid, size_t, Ptr[git_signature], git_oid, CString, size_t, Ptr[git_signature], CChar]
   object git_blame_hunk:
@@ -3641,8 +3341,6 @@ object structs:
 
   /**
    * Blame options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blame.h
   */
   opaque type git_blame_options = CStruct7[CUnsignedInt, uint32_t, uint16_t, git_oid, git_oid, size_t, size_t]
   object git_blame_options:
@@ -3675,7 +3373,6 @@ object structs:
       def max_line_=(value: size_t): Unit = !struct.at7 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_blob = CStruct0
   object git_blob:
@@ -3683,8 +3380,6 @@ object structs:
 
   /**
    * The options used when applying filter options to a file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   opaque type git_blob_filter_options = CStruct4[CInt, uint32_t, Ptr[git_oid], git_oid]
   object git_blob_filter_options:
@@ -3708,7 +3403,6 @@ object structs:
       def attr_commit_id_=(value: git_oid): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   opaque type git_branch_iterator = CStruct0
   object git_branch_iterator:
@@ -3716,8 +3410,6 @@ object structs:
 
   /**
    * A data buffer for exporting data from libgit2
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/buffer.h
   */
   opaque type git_buf = CStruct3[CString, size_t, size_t]
   object git_buf:
@@ -3739,8 +3431,6 @@ object structs:
 
   /**
    * Parent type for `git_cert_hostkey` and `git_cert_x509`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/cert.h
   */
   opaque type git_cert = CStruct1[git_cert_t]
   object git_cert:
@@ -3756,8 +3446,6 @@ object structs:
 
   /**
    * Hostkey information taken from libssh2
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/cert.h
   */
   opaque type git_cert_hostkey = CStruct8[git_cert, git_cert_ssh_t, CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]], CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]], CArray[CUnsignedChar, Nat.Digit2[Nat._3, Nat._2]], git_cert_ssh_raw_type_t, CString, size_t]
   object git_cert_hostkey:
@@ -3794,8 +3482,6 @@ object structs:
 
   /**
    * X.509 certificate information
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/cert.h
   */
   opaque type git_cert_x509 = CStruct3[git_cert, Ptr[Byte], size_t]
   object git_cert_x509:
@@ -3817,8 +3503,6 @@ object structs:
 
   /**
    * Checkout options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/checkout.h
   */
   opaque type git_checkout_options = CStruct20[CUnsignedInt, CUnsignedInt, CInt, CUnsignedInt, CUnsignedInt, CInt, CUnsignedInt, git_checkout_notify_cb, Ptr[Byte], git_checkout_progress_cb, Ptr[Byte], git_strarray, Ptr[git_tree], Ptr[git_index], CString, CString, CString, CString, git_checkout_perfdata_cb, Ptr[Byte]]
   object git_checkout_options:
@@ -3891,8 +3575,6 @@ object structs:
 
   /**
    * Checkout performance-reporting structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/checkout.h
   */
   opaque type git_checkout_perfdata = CStruct3[size_t, size_t, size_t]
   object git_checkout_perfdata:
@@ -3914,8 +3596,6 @@ object structs:
 
   /**
    * Cherry-pick options
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/cherrypick.h
   */
   opaque type git_cherrypick_options = CStruct4[CUnsignedInt, CUnsignedInt, git_merge_options, git_checkout_options]
   object git_cherrypick_options:
@@ -3940,8 +3620,6 @@ object structs:
 
   /**
    * Clone options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/clone.h
   */
   opaque type git_clone_options = CStruct10[CUnsignedInt, git_checkout_options, git_fetch_options, CInt, git_clone_local_t, CString, git_repository_create_cb, Ptr[Byte], git_remote_create_cb, Ptr[Byte]]
   object git_clone_options:
@@ -3983,35 +3661,30 @@ object structs:
       def remote_cb_payload_=(value: Ptr[Byte]): Unit = !struct.at10 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_commit = CStruct0
   object git_commit:
     given _tag: Tag[git_commit] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_commit_graph = CStruct0
   object git_commit_graph:
     given _tag: Tag[git_commit_graph] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_commit_graph_writer = CStruct0
   object git_commit_graph_writer:
     given _tag: Tag[git_commit_graph_writer] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_config = CStruct0
   object git_config:
     given _tag: Tag[git_config] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_config_backend = CStruct0
   object git_config_backend:
@@ -4019,8 +3692,6 @@ object structs:
 
   /**
    * An entry in a configuration file
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   opaque type git_config_entry = CStruct6[CString, CString, CUnsignedInt, git_config_level_t, CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte]]
   object git_config_entry:
@@ -4050,7 +3721,6 @@ object structs:
       def payload_=(value: Ptr[Byte]): Unit = !struct.at6 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   opaque type git_config_iterator = CStruct0
   object git_config_iterator:
@@ -4058,8 +3728,6 @@ object structs:
 
   /**
    * Mapping from config variables to values.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   opaque type git_configmap = CStruct3[git_configmap_t, CString, CInt]
   object git_configmap:
@@ -4081,8 +3749,6 @@ object structs:
 
   /**
    * The base structure for all credential types
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/sys/credential.h
   */
   opaque type git_credential = CStruct2[git_credential_t, CFuncPtr1[Ptr[Byte], Unit]]
   object git_credential:
@@ -4101,8 +3767,6 @@ object structs:
 
   /**
    * The base structure for all credential types
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/sys/credential.h
   */
   opaque type git_credential_default = CStruct2[git_credential_t, CFuncPtr1[Ptr[Byte], Unit]]
   object git_credential_default:
@@ -4121,8 +3785,6 @@ object structs:
 
   /**
    * A key with a custom signature function
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/sys/credential.h
   */
   opaque type git_credential_ssh_custom = CStruct6[git_credential, CString, CString, size_t, git_credential_sign_cb, Ptr[Byte]]
   object git_credential_ssh_custom:
@@ -4153,8 +3815,6 @@ object structs:
 
   /**
    * Keyboard-interactive based ssh authentication
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/sys/credential.h
   */
   opaque type git_credential_ssh_interactive = CStruct4[git_credential, CString, git_credential_ssh_interactive_cb, Ptr[Byte]]
   object git_credential_ssh_interactive:
@@ -4179,8 +3839,6 @@ object structs:
 
   /**
    * A ssh key from disk
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/sys/credential.h
   */
   opaque type git_credential_ssh_key = CStruct5[git_credential, CString, CString, CString, CString]
   object git_credential_ssh_key:
@@ -4208,8 +3866,6 @@ object structs:
 
   /**
    * Username-only credential information
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/sys/credential.h
   */
   opaque type git_credential_username = CStruct2[git_credential, CArray[CChar, Nat._1]]
   object git_credential_username:
@@ -4228,8 +3884,6 @@ object structs:
 
   /**
    * Payload for git_credential_userpass_plaintext.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential_helpers.h
   */
   opaque type git_credential_userpass_payload = CStruct2[CString, CString]
   object git_credential_userpass_payload:
@@ -4248,8 +3902,6 @@ object structs:
 
   /**
    * A plaintext username and password
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/sys/credential.h
   */
   opaque type git_credential_userpass_plaintext = CStruct3[git_credential, CString, CString]
   object git_credential_userpass_plaintext:
@@ -4271,8 +3923,6 @@ object structs:
 
   /**
    * Describe format options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/describe.h
   */
   opaque type git_describe_format_options = CStruct4[CUnsignedInt, CUnsignedInt, CInt, CString]
   object git_describe_format_options:
@@ -4297,8 +3947,6 @@ object structs:
 
   /**
    * Describe options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/describe.h
   */
   opaque type git_describe_options = CStruct6[CUnsignedInt, CUnsignedInt, CUnsignedInt, CString, CInt, CInt]
   object git_describe_options:
@@ -4328,14 +3976,12 @@ object structs:
       def show_commit_oid_as_fallback_=(value: CInt): Unit = !struct.at6 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/describe.h
   */
   opaque type git_describe_result = CStruct0
   object git_describe_result:
     given _tag: Tag[git_describe_result] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff = CStruct0
   object git_diff:
@@ -4343,8 +3989,6 @@ object structs:
 
   /**
    * Structure describing the binary contents of a diff.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_binary = CStruct3[CUnsignedInt, git_diff_binary_file, git_diff_binary_file]
   object git_diff_binary:
@@ -4366,8 +4010,6 @@ object structs:
 
   /**
    * The contents of one of the files in a binary diff.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_binary_file = CStruct4[git_diff_binary_t, CString, size_t, size_t]
   object git_diff_binary_file:
@@ -4392,8 +4034,6 @@ object structs:
 
   /**
    * Description of changes to one entry.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_delta = CStruct6[git_delta_t, uint32_t, uint16_t, uint16_t, git_diff_file, git_diff_file]
   object git_diff_delta:
@@ -4424,8 +4064,6 @@ object structs:
 
   /**
    * Description of one side of a delta.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_file = CStruct6[git_oid, CString, git_object_size_t, uint32_t, uint16_t, uint16_t]
   object git_diff_file:
@@ -4456,8 +4094,6 @@ object structs:
 
   /**
    * Control behavior of rename and copy detection
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_find_options = CStruct8[CUnsignedInt, uint32_t, uint16_t, uint16_t, uint16_t, uint16_t, size_t, Ptr[git_diff_similarity_metric]]
   object git_diff_find_options:
@@ -4494,8 +4130,6 @@ object structs:
 
   /**
    * Options for controlling the formatting of the generated e-mail.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   opaque type git_diff_format_email_options = CStruct8[CUnsignedInt, uint32_t, size_t, size_t, Ptr[git_oid], CString, CString, Ptr[git_signature]]
   object git_diff_format_email_options:
@@ -4532,8 +4166,6 @@ object structs:
 
   /**
    * Structure describing a hunk of a diff.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_hunk = CStruct6[CInt, CInt, CInt, CInt, size_t, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]
   object git_diff_hunk:
@@ -4564,8 +4196,6 @@ object structs:
 
   /**
    * Structure describing a line (or data span) of a diff.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_line = CStruct7[CChar, CInt, CInt, CInt, size_t, git_off_t, CString]
   object git_diff_line:
@@ -4599,8 +4229,6 @@ object structs:
 
   /**
    * Structure describing options about how the diff should be executed.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_options = CStruct13[CUnsignedInt, uint32_t, git_submodule_ignore_t, git_strarray, git_diff_notify_cb, git_diff_progress_cb, Ptr[Byte], uint32_t, uint32_t, uint16_t, git_off_t, CString, CString]
   object git_diff_options:
@@ -4652,8 +4280,6 @@ object structs:
 
   /**
    * Patch ID options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_patchid_options = CStruct1[CUnsignedInt]
   object git_diff_patchid_options:
@@ -4669,8 +4295,6 @@ object structs:
 
   /**
    * Pluggable similarity metric
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_similarity_metric = CStruct5[CFuncPtr4[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, Ptr[Byte], CInt], CFuncPtr5[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, size_t, Ptr[Byte], CInt], CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit], CFuncPtr4[Ptr[CInt], Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt], Ptr[Byte]]
   object git_diff_similarity_metric:
@@ -4697,7 +4321,6 @@ object structs:
       def payload_=(value: Ptr[Byte]): Unit = !struct.at5 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   opaque type git_diff_stats = CStruct0
   object git_diff_stats:
@@ -4705,8 +4328,6 @@ object structs:
 
   /**
    * Options for controlling the formatting of the generated e-mail.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/email.h
   */
   opaque type git_email_create_options = CStruct7[CUnsignedInt, uint32_t, git_diff_options, git_diff_find_options, CString, size_t, size_t]
   object git_email_create_options:
@@ -4740,8 +4361,6 @@ object structs:
 
   /**
    * Structure to store extra details of the last error that occurred.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/errors.h
   */
   opaque type git_error = CStruct2[CString, CInt]
   object git_error:
@@ -4760,8 +4379,6 @@ object structs:
 
   /**
    * Fetch options structure.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_fetch_options = CStruct8[CInt, git_remote_callbacks, git_fetch_prune_t, CInt, git_remote_autotag_option_t, git_proxy_options, git_remote_redirect_t, git_strarray]
   object git_fetch_options:
@@ -4797,14 +4414,12 @@ object structs:
       def custom_headers_=(value: git_strarray): Unit = !struct.at8 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   opaque type git_filter = CStruct0
   object git_filter:
     given _tag: Tag[git_filter] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   opaque type git_filter_list = CStruct0
   object git_filter_list:
@@ -4812,8 +4427,6 @@ object structs:
 
   /**
    * Filtering options
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   opaque type git_filter_options = CStruct4[CUnsignedInt, uint32_t, Ptr[git_oid], git_oid]
   object git_filter_options:
@@ -4837,14 +4450,12 @@ object structs:
       def attr_commit_id_=(value: git_oid): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_index = CStruct0
   object git_index:
     given _tag: Tag[git_index] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_index_conflict_iterator = CStruct0
   object git_index_conflict_iterator:
@@ -4852,8 +4463,6 @@ object structs:
 
   /**
    * In-memory representation of a file entry in the index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   opaque type git_index_entry = CStruct12[git_index_time, git_index_time, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, git_oid, uint16_t, uint16_t, CString]
   object git_index_entry:
@@ -4901,7 +4510,6 @@ object structs:
       def path_=(value: CString): Unit = !struct.at12 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_index_iterator = CStruct0
   object git_index_iterator:
@@ -4909,8 +4517,6 @@ object structs:
 
   /**
    * Time structure used in a git index entry
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   opaque type git_index_time = CStruct2[int32_t, uint32_t]
   object git_index_time:
@@ -4928,7 +4534,6 @@ object structs:
       def nanoseconds_=(value: uint32_t): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/indexer.h
   */
   opaque type git_indexer = CStruct0
   object git_indexer:
@@ -4936,8 +4541,6 @@ object structs:
 
   /**
    * Options for indexer configuration
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/indexer.h
   */
   opaque type git_indexer_options = CStruct4[CUnsignedInt, git_indexer_progress_cb, Ptr[Byte], CUnsignedChar]
   object git_indexer_options:
@@ -4962,8 +4565,6 @@ object structs:
 
   /**
    * This structure is used to provide callers information about the progress of indexing a packfile, either directly or part of a fetch or clone that downloads a packfile.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/indexer.h
   */
   opaque type git_indexer_progress = CStruct7[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, size_t]
   object git_indexer_progress:
@@ -4996,14 +4597,12 @@ object structs:
       def received_bytes_=(value: size_t): Unit = !struct.at7 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   opaque type git_iterator = CStruct0
   object git_iterator:
     given _tag: Tag[git_iterator] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_mailmap = CStruct0
   object git_mailmap:
@@ -5011,8 +4610,6 @@ object structs:
 
   /**
    * The file inputs to `git_merge_file`. Callers should populate the `git_merge_file_input` structure with descriptions of the files in each side of the conflict for use in producing the merge file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   opaque type git_merge_file_input = CStruct5[CUnsignedInt, CString, size_t, CString, CUnsignedInt]
   object git_merge_file_input:
@@ -5040,8 +4637,6 @@ object structs:
 
   /**
    * Options for merging a file
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   opaque type git_merge_file_options = CStruct7[CUnsignedInt, CString, CString, CString, git_merge_file_favor_t, uint32_t, CUnsignedShort]
   object git_merge_file_options:
@@ -5075,8 +4670,6 @@ object structs:
 
   /**
    * Information about file-level merging
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   opaque type git_merge_file_result = CStruct5[CUnsignedInt, CString, CUnsignedInt, CString, size_t]
   object git_merge_file_result:
@@ -5104,8 +4697,6 @@ object structs:
 
   /**
    * Merging options
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   opaque type git_merge_options = CStruct9[CUnsignedInt, uint32_t, CUnsignedInt, CUnsignedInt, Ptr[git_diff_similarity_metric], CUnsignedInt, CString, git_merge_file_favor_t, uint32_t]
   object git_merge_options:
@@ -5145,8 +4736,6 @@ object structs:
 
   /**
    * Represents a single git message trailer.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/message.h
   */
   opaque type git_message_trailer = CStruct2[CString, CString]
   object git_message_trailer:
@@ -5165,8 +4754,6 @@ object structs:
 
   /**
    * Represents an array of git message trailers.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/message.h
   */
   opaque type git_message_trailer_array = CStruct3[Ptr[git_message_trailer], size_t, CString]
   object git_message_trailer_array:
@@ -5187,42 +4774,36 @@ object structs:
       def _trailer_block_=(value: CString): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_midx_writer = CStruct0
   object git_midx_writer:
     given _tag: Tag[git_midx_writer] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_note = CStruct0
   object git_note:
     given _tag: Tag[git_note] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   opaque type git_note_iterator = CStruct0
   object git_note_iterator:
     given _tag: Tag[git_note_iterator] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_object = CStruct0
   object git_object:
     given _tag: Tag[git_object] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_odb = CStruct0
   object git_odb:
     given _tag: Tag[git_odb] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_odb_backend = CStruct0
   object git_odb_backend:
@@ -5230,8 +4811,6 @@ object structs:
 
   /**
    * Options for configuring a loose object backend.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb_backend.h
   */
   opaque type git_odb_backend_loose_options = CStruct6[CUnsignedInt, uint32_t, CInt, CUnsignedInt, CUnsignedInt, git_oid_t]
   object git_odb_backend_loose_options:
@@ -5262,8 +4841,6 @@ object structs:
 
   /**
    * Options for configuring a packfile object backend.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb_backend.h
   */
   opaque type git_odb_backend_pack_options = CStruct2[CUnsignedInt, git_oid_t]
   object git_odb_backend_pack_options:
@@ -5282,8 +4859,6 @@ object structs:
 
   /**
    * The information about object IDs to query in `git_odb_expand_ids`, which will be populated upon return.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   opaque type git_odb_expand_id = CStruct3[git_oid, CUnsignedShort, git_object_t]
   object git_odb_expand_id:
@@ -5304,7 +4879,6 @@ object structs:
       def type_=(value: git_object_t): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_odb_object = CStruct0
   object git_odb_object:
@@ -5312,8 +4886,6 @@ object structs:
 
   /**
    * Options for configuring a loose object backend.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   opaque type git_odb_options = CStruct2[CUnsignedInt, git_oid_t]
   object git_odb_options:
@@ -5332,8 +4904,6 @@ object structs:
 
   /**
    * A stream to read/write from a backend.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb_backend.h
   */
   opaque type git_odb_stream = CStruct9[Ptr[git_odb_backend], CUnsignedInt, Ptr[Byte], git_object_size_t, git_object_size_t, CFuncPtr3[Ptr[Byte], CString, size_t, CInt], CFuncPtr3[Ptr[Byte], CString, size_t, CInt], CFuncPtr2[Ptr[Byte], Ptr[git_oid], CInt], CFuncPtr1[Ptr[Byte], Unit]]
   object git_odb_stream:
@@ -5373,8 +4943,6 @@ object structs:
 
   /**
    * A stream to write a pack file to the ODB
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb_backend.h
   */
   opaque type git_odb_writepack = CStruct4[Ptr[git_odb_backend], CFuncPtr4[Ptr[Byte], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt], CFuncPtr2[Ptr[Byte], Ptr[git_indexer_progress], CInt], CFuncPtr1[Ptr[Byte], Unit]]
   object git_odb_writepack:
@@ -5399,8 +4967,6 @@ object structs:
 
   /**
    * Unique identity of any object (commit, tree, blob, tag).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   opaque type git_oid = CStruct1[CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]]]
   object git_oid:
@@ -5415,7 +4981,6 @@ object structs:
       def id_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]]): Unit = !struct.at1 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   opaque type git_oid_shorten = CStruct0
   object git_oid_shorten:
@@ -5423,8 +4988,6 @@ object structs:
 
   /**
    * Array of object ids
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oidarray.h
   */
   opaque type git_oidarray = CStruct2[Ptr[git_oid], size_t]
   object git_oidarray:
@@ -5442,28 +5005,24 @@ object structs:
       def count_=(value: size_t): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_packbuilder = CStruct0
   object git_packbuilder:
     given _tag: Tag[git_packbuilder] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   opaque type git_patch = CStruct0
   object git_patch:
     given _tag: Tag[git_patch] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   opaque type git_pathspec = CStruct0
   object git_pathspec:
     given _tag: Tag[git_pathspec] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   opaque type git_pathspec_match_list = CStruct0
   object git_pathspec_match_list:
@@ -5471,8 +5030,6 @@ object structs:
 
   /**
    * Options for connecting through a proxy
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/proxy.h
   */
   opaque type git_proxy_options = CStruct6[CUnsignedInt, git_proxy_t, CString, Ptr[Byte], git_transport_certificate_check_cb, Ptr[Byte]]
   object git_proxy_options:
@@ -5502,7 +5059,6 @@ object structs:
       def payload_=(value: Ptr[Byte]): Unit = !struct.at6 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_push = CStruct0
   object git_push:
@@ -5510,8 +5066,6 @@ object structs:
 
   /**
    * Controls the behavior of a git_push object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_push_options = CStruct6[CUnsignedInt, CUnsignedInt, git_remote_callbacks, git_proxy_options, git_remote_redirect_t, git_strarray]
   object git_push_options:
@@ -5542,8 +5096,6 @@ object structs:
 
   /**
    * Represents an update which will be performed on the remote during push
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_push_update = CStruct4[CString, CString, git_oid, git_oid]
   object git_push_update:
@@ -5567,7 +5119,6 @@ object structs:
       def dst_=(value: git_oid): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_rebase = CStruct0
   object git_rebase:
@@ -5575,8 +5126,6 @@ object structs:
 
   /**
    * A rebase operation
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   opaque type git_rebase_operation = CStruct3[git_rebase_operation_t, git_oid, CString]
   object git_rebase_operation:
@@ -5598,8 +5147,6 @@ object structs:
 
   /**
    * Rebase options
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   opaque type git_rebase_options = CStruct9[CUnsignedInt, CInt, CInt, CString, git_merge_options, git_checkout_options, git_commit_create_cb, CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt], Ptr[Byte]]
   object git_rebase_options:
@@ -5638,56 +5185,48 @@ object structs:
       def payload_=(value: Ptr[Byte]): Unit = !struct.at9 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_refdb = CStruct0
   object git_refdb:
     given _tag: Tag[git_refdb] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_refdb_backend = CStruct0
   object git_refdb_backend:
     given _tag: Tag[git_refdb_backend] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_reference = CStruct0
   object git_reference:
     given _tag: Tag[git_reference] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_reference_iterator = CStruct0
   object git_reference_iterator:
     given _tag: Tag[git_reference_iterator] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_reflog = CStruct0
   object git_reflog:
     given _tag: Tag[git_reflog] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_reflog_entry = CStruct0
   object git_reflog_entry:
     given _tag: Tag[git_reflog_entry] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_refspec = CStruct0
   object git_refspec:
     given _tag: Tag[git_refspec] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_remote = CStruct0
   object git_remote:
@@ -5695,8 +5234,6 @@ object structs:
 
   /**
    * The callback settings structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_remote_callbacks = CStruct15[CUnsignedInt, git_transport_message_cb, CFuncPtr2[git_remote_completion_t, Ptr[Byte], CInt], Ptr[Byte], git_transport_certificate_check_cb, git_indexer_progress_cb, CFuncPtr4[CString, Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt], git_packbuilder_progress, git_push_transfer_progress_cb, git_push_update_reference_cb, git_push_negotiation, git_transport_cb, git_remote_ready_cb, Ptr[Byte], git_url_resolve_cb]
   object git_remote_callbacks:
@@ -5754,8 +5291,6 @@ object structs:
 
   /**
    * Remote creation options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_remote_connect_options = CStruct5[CUnsignedInt, git_remote_callbacks, git_proxy_options, git_remote_redirect_t, git_strarray]
   object git_remote_connect_options:
@@ -5783,8 +5318,6 @@ object structs:
 
   /**
    * Remote creation options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   opaque type git_remote_create_options = CStruct5[CUnsignedInt, Ptr[git_repository], CString, CString, CUnsignedInt]
   object git_remote_create_options:
@@ -5812,8 +5345,6 @@ object structs:
 
   /**
    * Description of a reference advertised by a remote server, given out on `ls` calls.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/net.h
   */
   opaque type git_remote_head = CStruct5[CInt, git_oid, git_oid, CString, CString]
   object git_remote_head:
@@ -5840,7 +5371,6 @@ object structs:
       def symref_target_=(value: CString): Unit = !struct.at5 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_repository = CStruct0
   object git_repository:
@@ -5848,8 +5378,6 @@ object structs:
 
   /**
    * Extended options structure for `git_repository_init_ext`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   opaque type git_repository_init_options = CStruct8[CUnsignedInt, uint32_t, uint32_t, CString, CString, CString, CString, CString]
   object git_repository_init_options:
@@ -5886,8 +5414,6 @@ object structs:
 
   /**
    * Options for revert
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revert.h
   */
   opaque type git_revert_options = CStruct4[CUnsignedInt, CUnsignedInt, git_merge_options, git_checkout_options]
   object git_revert_options:
@@ -5912,8 +5438,6 @@ object structs:
 
   /**
    * Git Revision Spec: output of a `git_revparse` operation
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revparse.h
   */
   opaque type git_revspec = CStruct3[Ptr[git_object], Ptr[git_object], CUnsignedInt]
   object git_revspec:
@@ -5934,7 +5458,6 @@ object structs:
       def flags_=(value: CUnsignedInt): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_revwalk = CStruct0
   object git_revwalk:
@@ -5942,8 +5465,6 @@ object structs:
 
   /**
    * An action signature (e.g. for committers, taggers, etc)
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_signature = CStruct3[CString, CString, git_time]
   object git_signature:
@@ -5965,8 +5486,6 @@ object structs:
 
   /**
    * Stash application options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   opaque type git_stash_apply_options = CStruct5[CUnsignedInt, uint32_t, git_checkout_options, git_stash_apply_progress_cb, Ptr[Byte]]
   object git_stash_apply_options:
@@ -5994,8 +5513,6 @@ object structs:
 
   /**
    * Stash save options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   opaque type git_stash_save_options = CStruct5[CUnsignedInt, uint32_t, Ptr[git_signature], CString, git_strarray]
   object git_stash_save_options:
@@ -6023,8 +5540,6 @@ object structs:
 
   /**
    * A status entry, providing the differences between the file as it exists in HEAD and the index, and providing the differences between the index and the working directory.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   opaque type git_status_entry = CStruct3[git_status_t, Ptr[git_diff_delta], Ptr[git_diff_delta]]
   object git_status_entry:
@@ -6045,7 +5560,6 @@ object structs:
       def index_to_workdir_=(value: Ptr[git_diff_delta]): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_status_list = CStruct0
   object git_status_list:
@@ -6053,8 +5567,6 @@ object structs:
 
   /**
    * Options to control how `git_status_foreach_ext()` will issue callbacks.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   opaque type git_status_options = CStruct6[CUnsignedInt, git_status_show_t, CUnsignedInt, git_strarray, Ptr[git_tree], uint16_t]
   object git_status_options:
@@ -6085,8 +5597,6 @@ object structs:
 
   /**
    * Array of strings
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/strarray.h
   */
   opaque type git_strarray = CStruct2[Ptr[CString], size_t]
   object git_strarray:
@@ -6104,7 +5614,6 @@ object structs:
       def count_=(value: size_t): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_submodule = CStruct0
   object git_submodule:
@@ -6112,8 +5621,6 @@ object structs:
 
   /**
    * Submodule update options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   opaque type git_submodule_update_options = CStruct4[CUnsignedInt, git_checkout_options, git_fetch_options, CInt]
   object git_submodule_update_options:
@@ -6137,7 +5644,6 @@ object structs:
       def allow_fetch_=(value: CInt): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_tag = CStruct0
   object git_tag:
@@ -6145,8 +5651,6 @@ object structs:
 
   /**
    * Time in a signature
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_time = CStruct3[git_time_t, CInt, CChar]
   object git_time:
@@ -6167,28 +5671,24 @@ object structs:
       def sign_=(value: CChar): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_transaction = CStruct0
   object git_transaction:
     given _tag: Tag[git_transaction] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_transport = CStruct0
   object git_transport:
     given _tag: Tag[git_transport] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_tree = CStruct0
   object git_tree:
     given _tag: Tag[git_tree] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_tree_entry = CStruct0
   object git_tree_entry:
@@ -6196,8 +5696,6 @@ object structs:
 
   /**
    * An action to perform during the update of a tree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   opaque type git_tree_update = CStruct4[git_tree_update_t, git_oid, git_filemode_t, CString]
   object git_tree_update:
@@ -6221,14 +5719,12 @@ object structs:
       def path_=(value: CString): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_treebuilder = CStruct0
   object git_treebuilder:
     given _tag: Tag[git_treebuilder] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_worktree = CStruct0
   object git_worktree:
@@ -6236,8 +5732,6 @@ object structs:
 
   /**
    * Worktree add options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   opaque type git_worktree_add_options = CStruct4[CUnsignedInt, CInt, Ptr[git_reference], git_checkout_options]
   object git_worktree_add_options:
@@ -6262,8 +5756,6 @@ object structs:
 
   /**
    * Worktree prune options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   opaque type git_worktree_prune_options = CStruct2[CUnsignedInt, uint32_t]
   object git_worktree_prune_options:
@@ -6282,8 +5774,6 @@ object structs:
 
   /**
    * A type to write in a streaming fashion, for example, for filters.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/types.h
   */
   opaque type git_writestream = CStruct3[CFuncPtr3[Ptr[Byte], CString, size_t, CInt], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], Unit]]
   object git_writestream:
@@ -6312,5769 +5802,4145 @@ private[libgit] object extern_functions:
   import _root_.libgit.structs.*
   /**
    * Frees a `git_annotated_commit`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/annotated_commit.h
   */
   def git_annotated_commit_free(commit : Ptr[git_annotated_commit]): Unit = extern
 
   /**
    * Creates a `git_annotated_commit` from the given fetch head data. The resulting git_annotated_commit must be freed with `git_annotated_commit_free`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/annotated_commit.h
   */
   def git_annotated_commit_from_fetchhead(out : Ptr[Ptr[git_annotated_commit]], repo : Ptr[git_repository], branch_name : CString, remote_url : CString, id : Ptr[git_oid]): CInt = extern
 
   /**
    * Creates a `git_annotated_commit` from the given reference. The resulting git_annotated_commit must be freed with `git_annotated_commit_free`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/annotated_commit.h
   */
   def git_annotated_commit_from_ref(out : Ptr[Ptr[git_annotated_commit]], repo : Ptr[git_repository], ref : Ptr[git_reference]): CInt = extern
 
   /**
    * Creates a `git_annotated_commit` from a revision string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/annotated_commit.h
   */
   def git_annotated_commit_from_revspec(out : Ptr[Ptr[git_annotated_commit]], repo : Ptr[git_repository], revspec : CString): CInt = extern
 
   /**
    * Gets the commit ID that the given `git_annotated_commit` refers to.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/annotated_commit.h
   */
   def git_annotated_commit_id(commit : Ptr[git_annotated_commit]): Ptr[git_oid] = extern
 
   /**
    * Creates a `git_annotated_commit` from the given commit id. The resulting git_annotated_commit must be freed with `git_annotated_commit_free`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/annotated_commit.h
   */
   def git_annotated_commit_lookup(out : Ptr[Ptr[git_annotated_commit]], repo : Ptr[git_repository], id : Ptr[git_oid]): CInt = extern
 
   /**
    * Get the refname that the given `git_annotated_commit` refers to.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/annotated_commit.h
   */
   def git_annotated_commit_ref(commit : Ptr[git_annotated_commit]): CString = extern
 
   /**
    * Apply a `git_diff` to the given repository, making changes directly in the working directory, the index, or both.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/apply.h
   */
   def git_apply(repo : Ptr[git_repository], diff : Ptr[git_diff], location : git_apply_location_t, options : Ptr[git_apply_options]): CInt = extern
 
   /**
    * Initialize git_apply_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/apply.h
   */
   def git_apply_options_init(opts : Ptr[git_apply_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Apply a `git_diff` to a `git_tree`, and return the resulting image as an index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/apply.h
   */
   def git_apply_to_tree(out : Ptr[Ptr[git_index]], repo : Ptr[git_repository], preimage : Ptr[git_tree], diff : Ptr[git_diff], options : Ptr[git_apply_options]): CInt = extern
 
   /**
    * Add a macro definition.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/attr.h
   */
   def git_attr_add_macro(repo : Ptr[git_repository], name : CString, values : CString): CInt = extern
 
   /**
    * Flush the gitattributes cache.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/attr.h
   */
   def git_attr_cache_flush(repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Loop over all the git attributes for a path.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/attr.h
   */
   def git_attr_foreach(repo : Ptr[git_repository], flags : uint32_t, path : CString, callback : git_attr_foreach_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Loop over all the git attributes for a path with extended options.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/attr.h
   */
   def git_attr_foreach_ext(repo : Ptr[git_repository], opts : Ptr[git_attr_options], path : CString, callback : git_attr_foreach_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Look up the value of one git attribute for path.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/attr.h
   */
   def git_attr_get(value_out : Ptr[CString], repo : Ptr[git_repository], flags : uint32_t, path : CString, name : CString): CInt = extern
 
   /**
    * Look up the value of one git attribute for path with extended options.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/attr.h
   */
   def git_attr_get_ext(value_out : Ptr[CString], repo : Ptr[git_repository], opts : Ptr[git_attr_options], path : CString, name : CString): CInt = extern
 
   /**
    * Look up a list of git attributes for path.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/attr.h
   */
   def git_attr_get_many(values_out : Ptr[CString], repo : Ptr[git_repository], flags : uint32_t, path : CString, num_attr : size_t, names : Ptr[CString]): CInt = extern
 
   /**
    * Look up a list of git attributes for path with extended options.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/attr.h
   */
   def git_attr_get_many_ext(values_out : Ptr[CString], repo : Ptr[git_repository], opts : Ptr[git_attr_options], path : CString, num_attr : size_t, names : Ptr[CString]): CInt = extern
 
   /**
    * Return the value type for a given attribute.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/attr.h
   */
   def git_attr_value(attr : CString): git_attr_value_t = extern
 
   /**
    * Get blame data for a file that has been modified in memory. The `reference` parameter is a pre-calculated blame for the in-odb history of the file. This means that once a file blame is completed (which can be expensive), updating the buffer blame is very fast.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blame.h
   */
   def git_blame_buffer(out : Ptr[Ptr[git_blame]], reference : Ptr[git_blame], buffer : CString, buffer_len : size_t): CInt = extern
 
   /**
    * Get the blame for a single file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blame.h
   */
   def git_blame_file(out : Ptr[Ptr[git_blame]], repo : Ptr[git_repository], path : CString, options : Ptr[git_blame_options]): CInt = extern
 
   /**
    * Free memory allocated by git_blame_file or git_blame_buffer.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blame.h
   */
   def git_blame_free(blame : Ptr[git_blame]): Unit = extern
 
   /**
    * Gets the blame hunk at the given index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blame.h
   */
   def git_blame_get_hunk_byindex(blame : Ptr[git_blame], index : uint32_t): Ptr[git_blame_hunk] = extern
 
   /**
    * Gets the hunk that relates to the given line number in the newest commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blame.h
   */
   def git_blame_get_hunk_byline(blame : Ptr[git_blame], lineno : size_t): Ptr[git_blame_hunk] = extern
 
   /**
    * Gets the number of hunks that exist in the blame structure.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blame.h
   */
   def git_blame_get_hunk_count(blame : Ptr[git_blame]): uint32_t = extern
 
   /**
    * These functions are retained for backward compatibility. The newer versions of these functions should be preferred in all new code.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_blame_init_options(opts : Ptr[git_blame_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_blame_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blame.h
   */
   def git_blame_options_init(opts : Ptr[git_blame_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Write an in-memory buffer to the ODB as a blob
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_create_from_buffer(id : Ptr[git_oid], repo : Ptr[git_repository], buffer : Ptr[Byte], len : size_t): CInt = extern
 
   /**
    * Read a file from the filesystem and write its content to the Object Database as a loose blob
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_create_from_disk(id : Ptr[git_oid], repo : Ptr[git_repository], path : CString): CInt = extern
 
   /**
    * Create a stream to write a new blob into the object db
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_create_from_stream(out : Ptr[Ptr[git_writestream]], repo : Ptr[git_repository], hintpath : CString): CInt = extern
 
   /**
    * Close the stream and write the blob to the object db
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_create_from_stream_commit(out : Ptr[git_oid], stream : Ptr[git_writestream]): CInt = extern
 
   /**
    * Read a file from the working folder of a repository and write it to the Object Database as a loose blob
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_create_from_workdir(id : Ptr[git_oid], repo : Ptr[git_repository], relative_path : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_blob_create_frombuffer(id : Ptr[git_oid], repo : Ptr[git_repository], buffer : Ptr[Byte], len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_blob_create_fromdisk(id : Ptr[git_oid], repo : Ptr[git_repository], path : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_blob_create_fromstream(out : Ptr[Ptr[git_writestream]], repo : Ptr[git_repository], hintpath : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_blob_create_fromstream_commit(out : Ptr[git_oid], stream : Ptr[git_writestream]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_blob_create_fromworkdir(id : Ptr[git_oid], repo : Ptr[git_repository], relative_path : CString): CInt = extern
 
   /**
    * Determine if the given content is most certainly binary or not; this is the same mechanism used by `git_blob_is_binary` but only looking at raw data.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_data_is_binary(data : CString, len : size_t): CInt = extern
 
   /**
    * Create an in-memory copy of a blob. The copy must be explicitly free'd or it will leak.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_dup(out : Ptr[Ptr[git_blob]], source : Ptr[git_blob]): CInt = extern
 
   /**
    * Get a buffer with the filtered content of a blob.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_filter(out : Ptr[git_buf], blob : Ptr[git_blob], as_path : CString, opts : Ptr[git_blob_filter_options]): CInt = extern
 
   /**
    * Initialize git_blob_filter_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_filter_options_init(opts : Ptr[git_blob_filter_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Deprecated in favor of `git_blob_filter`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_blob_filtered_content(out : Ptr[git_buf], blob : Ptr[git_blob], as_path : CString, check_for_binary_data : CInt): CInt = extern
 
   /**
    * Close an open blob
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_free(blob : Ptr[git_blob]): Unit = extern
 
   /**
    * Get the id of a blob.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_id(blob : Ptr[git_blob]): Ptr[git_oid] = extern
 
   /**
    * Determine if the blob content is most certainly binary or not.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_is_binary(blob : Ptr[git_blob]): CInt = extern
 
   /**
    * Lookup a blob object from a repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_lookup(blob : Ptr[Ptr[git_blob]], repo : Ptr[git_repository], id : Ptr[git_oid]): CInt = extern
 
   /**
    * Lookup a blob object from a repository, given a prefix of its identifier (short id).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_lookup_prefix(blob : Ptr[Ptr[git_blob]], repo : Ptr[git_repository], id : Ptr[git_oid], len : size_t): CInt = extern
 
   /**
    * Get the repository that contains the blob.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_owner(blob : Ptr[git_blob]): Ptr[git_repository] = extern
 
   /**
    * Get a read-only buffer with the raw content of a blob.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_rawcontent(blob : Ptr[git_blob]): Ptr[Byte] = extern
 
   /**
    * Get the size in bytes of the contents of a blob
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/blob.h
   */
   def git_blob_rawsize(blob : Ptr[git_blob]): git_object_size_t = extern
 
   /**
    * Create a new branch pointing at a target commit
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_create(out : Ptr[Ptr[git_reference]], repo : Ptr[git_repository], branch_name : CString, target : Ptr[git_commit], force : CInt): CInt = extern
 
   /**
    * Create a new branch pointing at a target commit
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_create_from_annotated(ref_out : Ptr[Ptr[git_reference]], repository : Ptr[git_repository], branch_name : CString, commit : Ptr[git_annotated_commit], force : CInt): CInt = extern
 
   /**
    * Delete an existing branch reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_delete(branch : Ptr[git_reference]): CInt = extern
 
   /**
    * Determine if any HEAD points to the current branch
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_is_checked_out(branch : Ptr[git_reference]): CInt = extern
 
   /**
    * Determine if HEAD points to the given branch
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_is_head(branch : Ptr[git_reference]): CInt = extern
 
   /**
    * Free a branch iterator
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_iterator_free(iter : Ptr[git_branch_iterator]): Unit = extern
 
   /**
    * Create an iterator which loops over the requested branches.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_iterator_new(out : Ptr[Ptr[git_branch_iterator]], repo : Ptr[git_repository], list_flags : git_branch_t): CInt = extern
 
   /**
    * Lookup a branch by its name in a repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_lookup(out : Ptr[Ptr[git_reference]], repo : Ptr[git_repository], branch_name : CString, branch_type : git_branch_t): CInt = extern
 
   /**
    * Move/rename an existing local branch reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_move(out : Ptr[Ptr[git_reference]], branch : Ptr[git_reference], new_branch_name : CString, force : CInt): CInt = extern
 
   /**
    * Get the branch name
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_name(out : Ptr[CString], ref : Ptr[git_reference]): CInt = extern
 
   /**
    * Determine whether a branch name is valid, meaning that (when prefixed with `refs/heads/`) that it is a valid reference name, and that any additional branch name restrictions are imposed (eg, it cannot start with a `-`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_name_is_valid(valid : Ptr[CInt], name : CString): CInt = extern
 
   /**
    * Retrieve the next branch from the iterator
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_next(out : Ptr[Ptr[git_reference]], out_type : Ptr[git_branch_t], iter : Ptr[git_branch_iterator]): CInt = extern
 
   /**
    * Find the remote name of a remote-tracking branch
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_remote_name(out : Ptr[git_buf], repo : Ptr[git_repository], refname : CString): CInt = extern
 
   /**
    * Set a branch's upstream branch
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_set_upstream(branch : Ptr[git_reference], branch_name : CString): CInt = extern
 
   /**
    * Get the upstream of a branch
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_upstream(out : Ptr[Ptr[git_reference]], branch : Ptr[git_reference]): CInt = extern
 
   /**
    * Retrieve the upstream merge of a local branch
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_upstream_merge(buf : Ptr[git_buf], repo : Ptr[git_repository], refname : CString): CInt = extern
 
   /**
    * Get the upstream name of a branch
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_upstream_name(out : Ptr[git_buf], repo : Ptr[git_repository], refname : CString): CInt = extern
 
   /**
    * Retrieve the upstream remote of a local branch
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/branch.h
   */
   def git_branch_upstream_remote(buf : Ptr[git_buf], repo : Ptr[git_repository], refname : CString): CInt = extern
 
   /**
    * Check quickly if buffer contains a NUL byte
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_buf_contains_nul(buf : Ptr[git_buf]): CInt = extern
 
   /**
    * Free the memory referred to by the git_buf.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/buffer.h
   */
   def git_buf_dispose(buffer : Ptr[git_buf]): Unit = extern
 
   /**
    * Free the memory referred to by the git_buf. This is an alias of `git_buf_dispose` and is preserved for backward compatibility.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_buf_free(buffer : Ptr[git_buf]): Unit = extern
 
   /**
    * Resize the buffer allocation to make more space.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_buf_grow(buffer : Ptr[git_buf], target_size : size_t): CInt = extern
 
   /**
    * Check quickly if buffer looks like it contains binary data
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_buf_is_binary(buf : Ptr[git_buf]): CInt = extern
 
   /**
    * Set buffer to a copy of some raw data.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_buf_set(buffer : Ptr[git_buf], data : Ptr[Byte], datalen : size_t): CInt = extern
 
   /**
    * Updates files in the index and the working tree to match the content of the commit pointed at by HEAD.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/checkout.h
   */
   def git_checkout_head(repo : Ptr[git_repository], opts : Ptr[git_checkout_options]): CInt = extern
 
   /**
    * Updates files in the working tree to match the content of the index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/checkout.h
   */
   def git_checkout_index(repo : Ptr[git_repository], index : Ptr[git_index], opts : Ptr[git_checkout_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_checkout_init_options(opts : Ptr[git_checkout_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_checkout_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/checkout.h
   */
   def git_checkout_options_init(opts : Ptr[git_checkout_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Updates files in the index and working tree to match the content of the tree pointed at by the treeish.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/checkout.h
   */
   def git_checkout_tree(repo : Ptr[git_repository], treeish : Ptr[git_object], opts : Ptr[git_checkout_options]): CInt = extern
 
   /**
    * Cherry-pick the given commit, producing changes in the index and working directory.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/cherrypick.h
   */
   def git_cherrypick(repo : Ptr[git_repository], commit : Ptr[git_commit], cherrypick_options : Ptr[git_cherrypick_options]): CInt = extern
 
   /**
    * Cherry-picks the given commit against the given "our" commit, producing an index that reflects the result of the cherry-pick.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/cherrypick.h
   */
   def git_cherrypick_commit(out : Ptr[Ptr[git_index]], repo : Ptr[git_repository], cherrypick_commit : Ptr[git_commit], our_commit : Ptr[git_commit], mainline : CUnsignedInt, merge_options : Ptr[git_merge_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_cherrypick_init_options(opts : Ptr[git_cherrypick_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_cherrypick_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/cherrypick.h
   */
   def git_cherrypick_options_init(opts : Ptr[git_cherrypick_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Clone a remote repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/clone.h
   */
   def git_clone(out : Ptr[Ptr[git_repository]], url : CString, local_path : CString, options : Ptr[git_clone_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_clone_init_options(opts : Ptr[git_clone_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_clone_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/clone.h
   */
   def git_clone_options_init(opts : Ptr[git_clone_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Amend an existing commit by replacing only non-NULL values.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_amend(id : Ptr[git_oid], commit_to_amend : Ptr[git_commit], update_ref : CString, author : Ptr[git_signature], committer : Ptr[git_signature], message_encoding : CString, message : CString, tree : Ptr[git_tree]): CInt = extern
 
   /**
    * Get the author of a commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_author(commit : Ptr[git_commit]): Ptr[git_signature] = extern
 
   /**
    * Get the author of a commit, using the mailmap to map names and email addresses to canonical real names and email addresses.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_author_with_mailmap(out : Ptr[Ptr[git_signature]], commit : Ptr[git_commit], mailmap : Ptr[git_mailmap]): CInt = extern
 
   /**
    * Get the long "body" of the git commit message.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_body(commit : Ptr[git_commit]): CString = extern
 
   /**
    * Get the committer of a commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_committer(commit : Ptr[git_commit]): Ptr[git_signature] = extern
 
   /**
    * Get the committer of a commit, using the mailmap to map names and email addresses to canonical real names and email addresses.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_committer_with_mailmap(out : Ptr[Ptr[git_signature]], commit : Ptr[git_commit], mailmap : Ptr[git_mailmap]): CInt = extern
 
   /**
    * Create new commit in the repository from a list of `git_object` pointers
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_create(id : Ptr[git_oid], repo : Ptr[git_repository], update_ref : CString, author : Ptr[git_signature], committer : Ptr[git_signature], message_encoding : CString, message : CString, tree : Ptr[git_tree], parent_count : size_t, parents : Ptr[Ptr[git_commit]]): CInt = extern
 
   /**
    * Create a commit and write it into a buffer
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_create_buffer(out : Ptr[git_buf], repo : Ptr[git_repository], author : Ptr[git_signature], committer : Ptr[git_signature], message_encoding : CString, message : CString, tree : Ptr[git_tree], parent_count : size_t, parents : Ptr[Ptr[git_commit]]): CInt = extern
 
   /**
    * Create new commit in the repository using a variable argument list.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_create_v(id : Ptr[git_oid], repo : Ptr[git_repository], update_ref : CString, author : Ptr[git_signature], committer : Ptr[git_signature], message_encoding : CString, message : CString, tree : Ptr[git_tree], parent_count : size_t, rest: Any*): CInt = extern
 
   /**
    * Create a commit object from the given buffer and signature
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_create_with_signature(out : Ptr[git_oid], repo : Ptr[git_repository], commit_content : CString, signature : CString, signature_field : CString): CInt = extern
 
   /**
    * Create an in-memory copy of a commit. The copy must be explicitly free'd or it will leak.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_dup(out : Ptr[Ptr[git_commit]], source : Ptr[git_commit]): CInt = extern
 
   /**
    * Extract the signature from a commit
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_extract_signature(signature : Ptr[git_buf], signed_data : Ptr[git_buf], repo : Ptr[git_repository], commit_id : Ptr[git_oid], field : CString): CInt = extern
 
   /**
    * Close an open commit
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_free(commit : Ptr[git_commit]): Unit = extern
 
   /**
    * Get an arbitrary header field
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_header_field(out : Ptr[git_buf], commit : Ptr[git_commit], field : CString): CInt = extern
 
   /**
    * Get the id of a commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_id(commit : Ptr[git_commit]): Ptr[git_oid] = extern
 
   /**
    * Lookup a commit object from a repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_lookup(commit : Ptr[Ptr[git_commit]], repo : Ptr[git_repository], id : Ptr[git_oid]): CInt = extern
 
   /**
    * Lookup a commit object from a repository, given a prefix of its identifier (short id).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_lookup_prefix(commit : Ptr[Ptr[git_commit]], repo : Ptr[git_repository], id : Ptr[git_oid], len : size_t): CInt = extern
 
   /**
    * Get the full message of a commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_message(commit : Ptr[git_commit]): CString = extern
 
   /**
    * Get the encoding for the message of a commit, as a string representing a standard encoding name.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_message_encoding(commit : Ptr[git_commit]): CString = extern
 
   /**
    * Get the full raw message of a commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_message_raw(commit : Ptr[git_commit]): CString = extern
 
   /**
    * Get the commit object that is the <n>th generation ancestor of the named commit object, following only the first parents. The returned commit has to be freed by the caller.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_nth_gen_ancestor(ancestor : Ptr[Ptr[git_commit]], commit : Ptr[git_commit], n : CUnsignedInt): CInt = extern
 
   /**
    * Get the repository that contains the commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_owner(commit : Ptr[git_commit]): Ptr[git_repository] = extern
 
   /**
    * Get the specified parent of the commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_parent(out : Ptr[Ptr[git_commit]], commit : Ptr[git_commit], n : CUnsignedInt): CInt = extern
 
   /**
    * Get the oid of a specified parent for a commit. This is different from `git_commit_parent`, which will attempt to load the parent commit from the ODB.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_parent_id(commit : Ptr[git_commit], n : CUnsignedInt): Ptr[git_oid] = extern
 
   /**
    * Get the number of parents of this commit
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_parentcount(commit : Ptr[git_commit]): CUnsignedInt = extern
 
   /**
    * Get the full raw text of the commit header.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_raw_header(commit : Ptr[git_commit]): CString = extern
 
   /**
    * Get the short "summary" of the git commit message.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_summary(commit : Ptr[git_commit]): CString = extern
 
   /**
    * Get the commit time (i.e. committer time) of a commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_time(commit : Ptr[git_commit]): git_time_t = extern
 
   /**
    * Get the commit timezone offset (i.e. committer's preferred timezone) of a commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_time_offset(commit : Ptr[git_commit]): CInt = extern
 
   /**
    * Get the tree pointed to by a commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_tree(tree_out : Ptr[Ptr[git_tree]], commit : Ptr[git_commit]): CInt = extern
 
   /**
    * Get the id of the tree pointed to by a commit. This differs from `git_commit_tree` in that no attempts are made to fetch an object from the ODB.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/commit.h
   */
   def git_commit_tree_id(commit : Ptr[git_commit]): Ptr[git_oid] = extern
 
   /**
    * Add an on-disk config file instance to an existing config
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_add_file_ondisk(cfg : Ptr[git_config], path : CString, level : git_config_level_t, repo : Ptr[git_repository], force : CInt): CInt = extern
 
   /**
    * Perform an operation on each config variable in a given config backend, matching a regular expression.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_backend_foreach_match(backend : Ptr[git_config_backend], regexp : CString, callback : git_config_foreach_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Delete a config variable from the config file with the highest level (usually the local one).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_delete_entry(cfg : Ptr[git_config], name : CString): CInt = extern
 
   /**
    * Deletes one or several entries from a multivar in the local config file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_delete_multivar(cfg : Ptr[git_config], name : CString, regexp : CString): CInt = extern
 
   /**
    * Free a config entry
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_entry_free(entry : Ptr[git_config_entry]): Unit = extern
 
   /**
    * Locate the path to the global configuration file
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_find_global(out : Ptr[git_buf]): CInt = extern
 
   /**
    * Locate the path to the configuration file in ProgramData
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_find_programdata(out : Ptr[git_buf]): CInt = extern
 
   /**
    * Locate the path to the system configuration file
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_find_system(out : Ptr[git_buf]): CInt = extern
 
   /**
    * Locate the path to the global xdg compatible configuration file
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_find_xdg(out : Ptr[git_buf]): CInt = extern
 
   /**
    * Perform an operation on each config variable.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_foreach(cfg : Ptr[git_config], callback : git_config_foreach_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Perform an operation on each config variable matching a regular expression.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_foreach_match(cfg : Ptr[git_config], regexp : CString, callback : git_config_foreach_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Free the configuration and its associated memory and files
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_free(cfg : Ptr[git_config]): Unit = extern
 
   /**
    * Get the value of a boolean config variable.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_get_bool(out : Ptr[CInt], cfg : Ptr[git_config], name : CString): CInt = extern
 
   /**
    * Get the git_config_entry of a config variable.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_get_entry(out : Ptr[Ptr[git_config_entry]], cfg : Ptr[git_config], name : CString): CInt = extern
 
   /**
    * Get the value of an integer config variable.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_get_int32(out : Ptr[int32_t], cfg : Ptr[git_config], name : CString): CInt = extern
 
   /**
    * Get the value of a long integer config variable.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_get_int64(out : Ptr[int64_t], cfg : Ptr[git_config], name : CString): CInt = extern
 
   /**
    * Query the value of a config variable and return it mapped to an integer constant.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_get_mapped(out : Ptr[CInt], cfg : Ptr[git_config], name : CString, maps : Ptr[git_configmap], map_n : size_t): CInt = extern
 
   /**
    * Get each value of a multivar in a foreach callback
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_get_multivar_foreach(cfg : Ptr[git_config], name : CString, regexp : CString, callback : git_config_foreach_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Get the value of a path config variable.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_get_path(out : Ptr[git_buf], cfg : Ptr[git_config], name : CString): CInt = extern
 
   /**
    * Get the value of a string config variable.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_get_string(out : Ptr[CString], cfg : Ptr[git_config], name : CString): CInt = extern
 
   /**
    * Get the value of a string config variable.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_get_string_buf(out : Ptr[git_buf], cfg : Ptr[git_config], name : CString): CInt = extern
 
   /**
    * Free a config iterator
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_iterator_free(iter : Ptr[git_config_iterator]): Unit = extern
 
   /**
    * Iterate over all the config variables whose name matches a pattern
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_iterator_glob_new(out : Ptr[Ptr[git_config_iterator]], cfg : Ptr[git_config], regexp : CString): CInt = extern
 
   /**
    * Iterate over all the config variables
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_iterator_new(out : Ptr[Ptr[git_config_iterator]], cfg : Ptr[git_config]): CInt = extern
 
   /**
    * Lock the backend with the highest priority
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_lock(tx : Ptr[Ptr[git_transaction]], cfg : Ptr[git_config]): CInt = extern
 
   /**
    * Maps a string value to an integer constant
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_lookup_map_value(out : Ptr[CInt], maps : Ptr[git_configmap], map_n : size_t, value : CString): CInt = extern
 
   /**
    * Get each value of a multivar
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_multivar_iterator_new(out : Ptr[Ptr[git_config_iterator]], cfg : Ptr[git_config], name : CString, regexp : CString): CInt = extern
 
   /**
    * Allocate a new configuration object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_new(out : Ptr[Ptr[git_config]]): CInt = extern
 
   /**
    * Return the current entry and advance the iterator
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_next(entry : Ptr[Ptr[git_config_entry]], iter : Ptr[git_config_iterator]): CInt = extern
 
   /**
    * Open the global, XDG and system configuration files
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_open_default(out : Ptr[Ptr[git_config]]): CInt = extern
 
   /**
    * Open the global/XDG configuration file according to git's rules
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_open_global(out : Ptr[Ptr[git_config]], config : Ptr[git_config]): CInt = extern
 
   /**
    * Build a single-level focused config object from a multi-level one.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_open_level(out : Ptr[Ptr[git_config]], parent : Ptr[git_config], level : git_config_level_t): CInt = extern
 
   /**
    * Create a new config instance containing a single on-disk file
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_open_ondisk(out : Ptr[Ptr[git_config]], path : CString): CInt = extern
 
   /**
    * Parse a string value as a bool.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_parse_bool(out : Ptr[CInt], value : CString): CInt = extern
 
   /**
    * Parse a string value as an int32.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_parse_int32(out : Ptr[int32_t], value : CString): CInt = extern
 
   /**
    * Parse a string value as an int64.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_parse_int64(out : Ptr[int64_t], value : CString): CInt = extern
 
   /**
    * Parse a string value as a path.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_parse_path(out : Ptr[git_buf], value : CString): CInt = extern
 
   /**
    * Set the value of a boolean config variable in the config file with the highest level (usually the local one).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_set_bool(cfg : Ptr[git_config], name : CString, value : CInt): CInt = extern
 
   /**
    * Set the value of an integer config variable in the config file with the highest level (usually the local one).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_set_int32(cfg : Ptr[git_config], name : CString, value : int32_t): CInt = extern
 
   /**
    * Set the value of a long integer config variable in the config file with the highest level (usually the local one).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_set_int64(cfg : Ptr[git_config], name : CString, value : int64_t): CInt = extern
 
   /**
    * Set a multivar in the local config file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_set_multivar(cfg : Ptr[git_config], name : CString, regexp : CString, value : CString): CInt = extern
 
   /**
    * Set the value of a string config variable in the config file with the highest level (usually the local one).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_set_string(cfg : Ptr[git_config], name : CString, value : CString): CInt = extern
 
   /**
    * Create a snapshot of the configuration
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/config.h
   */
   def git_config_snapshot(out : Ptr[Ptr[git_config]], config : Ptr[git_config]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_cred_default_new(out : Ptr[Ptr[git_credential]]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_cred_free(cred : Ptr[git_credential]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_cred_get_username(cred : Ptr[git_credential]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_cred_has_username(cred : Ptr[git_credential]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_cred_ssh_custom_new(out : Ptr[Ptr[git_credential]], username : CString, publickey : CString, publickey_len : size_t, sign_callback : git_credential_sign_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_cred_ssh_interactive_new(out : Ptr[Ptr[git_credential]], username : CString, prompt_callback : git_credential_ssh_interactive_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_cred_ssh_key_from_agent(out : Ptr[Ptr[git_credential]], username : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_cred_ssh_key_memory_new(out : Ptr[Ptr[git_credential]], username : CString, publickey : CString, privatekey : CString, passphrase : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_cred_ssh_key_new(out : Ptr[Ptr[git_credential]], username : CString, publickey : CString, privatekey : CString, passphrase : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_cred_username_new(out : Ptr[Ptr[git_credential]], username : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_cred_userpass(out : Ptr[Ptr[git_credential]], url : CString, user_from_url : CString, allowed_types : CUnsignedInt, payload : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_cred_userpass_plaintext_new(out : Ptr[Ptr[git_credential]], username : CString, password : CString): CInt = extern
 
   /**
    * Create a "default" credential usable for Negotiate mechanisms like NTLM or Kerberos authentication.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   def git_credential_default_new(out : Ptr[Ptr[git_credential]]): CInt = extern
 
   /**
    * Free a credential.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   def git_credential_free(cred : Ptr[git_credential]): Unit = extern
 
   /**
    * Return the username associated with a credential object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   def git_credential_get_username(cred : Ptr[git_credential]): CString = extern
 
   /**
    * Check whether a credential object contains username information.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   def git_credential_has_username(cred : Ptr[git_credential]): CInt = extern
 
   /**
    * Create an ssh key credential with a custom signing function.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   def git_credential_ssh_custom_new(out : Ptr[Ptr[git_credential]], username : CString, publickey : CString, publickey_len : size_t, sign_callback : git_credential_sign_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Create a new ssh keyboard-interactive based credential object. The supplied credential parameter will be internally duplicated.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   def git_credential_ssh_interactive_new(out : Ptr[Ptr[git_credential]], username : CString, prompt_callback : git_credential_ssh_interactive_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Create a new ssh key credential object used for querying an ssh-agent. The supplied credential parameter will be internally duplicated.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   def git_credential_ssh_key_from_agent(out : Ptr[Ptr[git_credential]], username : CString): CInt = extern
 
   /**
    * Create a new ssh key credential object reading the keys from memory.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   def git_credential_ssh_key_memory_new(out : Ptr[Ptr[git_credential]], username : CString, publickey : CString, privatekey : CString, passphrase : CString): CInt = extern
 
   /**
    * Create a new passphrase-protected ssh key credential object. The supplied credential parameter will be internally duplicated.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   def git_credential_ssh_key_new(out : Ptr[Ptr[git_credential]], username : CString, publickey : CString, privatekey : CString, passphrase : CString): CInt = extern
 
   /**
    * Create a credential to specify a username.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   def git_credential_username_new(out : Ptr[Ptr[git_credential]], username : CString): CInt = extern
 
   /**
    * Stock callback usable as a git_credential_acquire_cb. This calls git_cred_userpass_plaintext_new unless the protocol has not specified `GIT_CREDENTIAL_USERPASS_PLAINTEXT` as an allowed type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential_helpers.h
   */
   def git_credential_userpass(out : Ptr[Ptr[git_credential]], url : CString, user_from_url : CString, allowed_types : CUnsignedInt, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Create a new plain-text username and password credential object. The supplied credential parameter will be internally duplicated.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/credential.h
   */
   def git_credential_userpass_plaintext_new(out : Ptr[Ptr[git_credential]], username : CString, password : CString): CInt = extern
 
   /**
    * Describe a commit
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/describe.h
   */
   def git_describe_commit(result : Ptr[Ptr[git_describe_result]], committish : Ptr[git_object], opts : Ptr[git_describe_options]): CInt = extern
 
   /**
    * Print the describe result to a buffer
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/describe.h
   */
   def git_describe_format(out : Ptr[git_buf], result : Ptr[git_describe_result], opts : Ptr[git_describe_format_options]): CInt = extern
 
   /**
    * Initialize git_describe_format_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/describe.h
   */
   def git_describe_format_options_init(opts : Ptr[git_describe_format_options], version : CUnsignedInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_describe_init_format_options(opts : Ptr[git_describe_format_options], version : CUnsignedInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_describe_init_options(opts : Ptr[git_describe_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_describe_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/describe.h
   */
   def git_describe_options_init(opts : Ptr[git_describe_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Free the describe result.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/describe.h
   */
   def git_describe_result_free(result : Ptr[git_describe_result]): Unit = extern
 
   /**
    * Describe a commit
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/describe.h
   */
   def git_describe_workdir(out : Ptr[Ptr[git_describe_result]], repo : Ptr[git_repository], opts : Ptr[git_describe_options]): CInt = extern
 
   /**
    * Directly run a diff between a blob and a buffer.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_blob_to_buffer(old_blob : Ptr[git_blob], old_as_path : CString, buffer : CString, buffer_len : size_t, buffer_as_path : CString, options : Ptr[git_diff_options], file_cb : git_diff_file_cb, binary_cb : git_diff_binary_cb, hunk_cb : git_diff_hunk_cb, line_cb : git_diff_line_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Directly run a diff on two blobs.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_blobs(old_blob : Ptr[git_blob], old_as_path : CString, new_blob : Ptr[git_blob], new_as_path : CString, options : Ptr[git_diff_options], file_cb : git_diff_file_cb, binary_cb : git_diff_binary_cb, hunk_cb : git_diff_hunk_cb, line_cb : git_diff_line_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Directly run a diff between two buffers.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_buffers(old_buffer : Ptr[Byte], old_len : size_t, old_as_path : CString, new_buffer : Ptr[Byte], new_len : size_t, new_as_path : CString, options : Ptr[git_diff_options], file_cb : git_diff_file_cb, binary_cb : git_diff_binary_cb, hunk_cb : git_diff_hunk_cb, line_cb : git_diff_line_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Create an e-mail ready patch for a commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_diff_commit_as_email(out : Ptr[git_buf], repo : Ptr[git_repository], commit : Ptr[git_commit], patch_no : size_t, total_patches : size_t, flags : uint32_t, diff_opts : Ptr[git_diff_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_diff_find_init_options(opts : Ptr[git_diff_find_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_diff_find_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_find_options_init(opts : Ptr[git_diff_find_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Transform a diff marking file renames, copies, etc.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_find_similar(diff : Ptr[git_diff], options : Ptr[git_diff_find_options]): CInt = extern
 
   /**
    * Loop over all deltas in a diff issuing callbacks.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_foreach(diff : Ptr[git_diff], file_cb : git_diff_file_cb, binary_cb : git_diff_binary_cb, hunk_cb : git_diff_hunk_cb, line_cb : git_diff_line_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Create an e-mail ready patch from a diff.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_diff_format_email(out : Ptr[git_buf], diff : Ptr[git_diff], opts : Ptr[git_diff_format_email_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_diff_format_email_init_options(opts : Ptr[git_diff_format_email_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_diff_format_email_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_diff_format_email_options_init(opts : Ptr[git_diff_format_email_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Deallocate a diff.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_free(diff : Ptr[git_diff]): Unit = extern
 
   /**
    * Read the contents of a git patch file into a `git_diff` object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_from_buffer(out : Ptr[Ptr[git_diff]], content : CString, content_len : size_t): CInt = extern
 
   /**
    * Return the diff delta for an entry in the diff list.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_get_delta(diff : Ptr[git_diff], idx : size_t): Ptr[git_diff_delta] = extern
 
   /**
    * Accumulate diff statistics for all patches.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_get_stats(out : Ptr[Ptr[git_diff_stats]], diff : Ptr[git_diff]): CInt = extern
 
   /**
    * Create a diff with the difference between two index objects.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_index_to_index(diff : Ptr[Ptr[git_diff]], repo : Ptr[git_repository], old_index : Ptr[git_index], new_index : Ptr[git_index], opts : Ptr[git_diff_options]): CInt = extern
 
   /**
    * Create a diff between the repository index and the workdir directory.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_index_to_workdir(diff : Ptr[Ptr[git_diff]], repo : Ptr[git_repository], index : Ptr[git_index], opts : Ptr[git_diff_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_diff_init_options(opts : Ptr[git_diff_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Check if deltas are sorted case sensitively or insensitively.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_is_sorted_icase(diff : Ptr[git_diff]): CInt = extern
 
   /**
    * Merge one diff into another.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_merge(onto : Ptr[git_diff], from : Ptr[git_diff]): CInt = extern
 
   /**
    * Query how many diff records are there in a diff.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_num_deltas(diff : Ptr[git_diff]): size_t = extern
 
   /**
    * Query how many diff deltas are there in a diff filtered by type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_num_deltas_of_type(diff : Ptr[git_diff], `type` : git_delta_t): size_t = extern
 
   /**
    * Initialize git_diff_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_options_init(opts : Ptr[git_diff_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Calculate the patch ID for the given patch.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_patchid(out : Ptr[git_oid], diff : Ptr[git_diff], opts : Ptr[git_diff_patchid_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_diff_patchid_init_options(opts : Ptr[git_diff_patchid_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_diff_patchid_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_patchid_options_init(opts : Ptr[git_diff_patchid_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Iterate over a diff generating formatted text output.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_print(diff : Ptr[git_diff], format : git_diff_format_t, print_cb : git_diff_line_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Get the total number of deletions in a diff
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_stats_deletions(stats : Ptr[git_diff_stats]): size_t = extern
 
   /**
    * Get the total number of files changed in a diff
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_stats_files_changed(stats : Ptr[git_diff_stats]): size_t = extern
 
   /**
    * Deallocate a `git_diff_stats`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_stats_free(stats : Ptr[git_diff_stats]): Unit = extern
 
   /**
    * Get the total number of insertions in a diff
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_stats_insertions(stats : Ptr[git_diff_stats]): size_t = extern
 
   /**
    * Print diff statistics to a `git_buf`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_stats_to_buf(out : Ptr[git_buf], stats : Ptr[git_diff_stats], format : git_diff_stats_format_t, width : size_t): CInt = extern
 
   /**
    * Look up the single character abbreviation for a delta status code.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_status_char(status : git_delta_t): CChar = extern
 
   /**
    * Produce the complete formatted text output from a diff into a buffer.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_to_buf(out : Ptr[git_buf], diff : Ptr[git_diff], format : git_diff_format_t): CInt = extern
 
   /**
    * Create a diff between a tree and repository index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_tree_to_index(diff : Ptr[Ptr[git_diff]], repo : Ptr[git_repository], old_tree : Ptr[git_tree], index : Ptr[git_index], opts : Ptr[git_diff_options]): CInt = extern
 
   /**
    * Create a diff with the difference between two tree objects.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_tree_to_tree(diff : Ptr[Ptr[git_diff]], repo : Ptr[git_repository], old_tree : Ptr[git_tree], new_tree : Ptr[git_tree], opts : Ptr[git_diff_options]): CInt = extern
 
   /**
    * Create a diff between a tree and the working directory.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_tree_to_workdir(diff : Ptr[Ptr[git_diff]], repo : Ptr[git_repository], old_tree : Ptr[git_tree], opts : Ptr[git_diff_options]): CInt = extern
 
   /**
    * Create a diff between a tree and the working directory using index data to account for staged deletes, tracked files, etc.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/diff.h
   */
   def git_diff_tree_to_workdir_with_index(diff : Ptr[Ptr[git_diff]], repo : Ptr[git_repository], old_tree : Ptr[git_tree], opts : Ptr[git_diff_options]): CInt = extern
 
   /**
    * Create a diff for a commit in mbox format for sending via email. The commit must not be a merge commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/email.h
   */
   def git_email_create_from_commit(out : Ptr[git_buf], commit : Ptr[git_commit], opts : Ptr[git_email_create_options]): CInt = extern
 
   /**
    * Create a diff for a commit in mbox format for sending via email.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/email.h
   */
   def git_email_create_from_diff(out : Ptr[git_buf], diff : Ptr[git_diff], patch_idx : size_t, patch_count : size_t, commit_id : Ptr[git_oid], summary : CString, body : CString, author : Ptr[git_signature], opts : Ptr[git_email_create_options]): CInt = extern
 
   /**
    * Clear the last library error that occurred for this thread.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/errors.h
   */
   def git_error_clear(): Unit = extern
 
   /**
    * Return the last `git_error` object that was generated for the current thread.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/errors.h
   */
   def git_error_last(): Ptr[git_error] = extern
 
   /**
    * Set the error message string for this thread, using `printf`-style formatting.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/errors.h
   */
   def git_error_set(error_class : CInt, fmt : CString, rest: Any*): Unit = extern
 
   /**
    * Set the error message to a special value for memory allocation failure.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/errors.h
   */
   def git_error_set_oom(): Unit = extern
 
   /**
    * Set the error message string for this thread. This function is like `git_error_set` but takes a static string instead of a `printf`-style format.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/errors.h
   */
   def git_error_set_str(error_class : CInt, string : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_fetch_init_options(opts : Ptr[git_fetch_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_fetch_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_fetch_options_init(opts : Ptr[git_fetch_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Apply a filter list to the contents of a blob
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   def git_filter_list_apply_to_blob(out : Ptr[git_buf], filters : Ptr[git_filter_list], blob : Ptr[git_blob]): CInt = extern
 
   /**
    * Apply filter list to a data buffer.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   def git_filter_list_apply_to_buffer(out : Ptr[git_buf], filters : Ptr[git_filter_list], in : CString, in_len : size_t): CInt = extern
 
   /**
    * Deprecated in favor of `git_filter_list_apply_to_buffer`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_filter_list_apply_to_data(out : Ptr[git_buf], filters : Ptr[git_filter_list], in : Ptr[git_buf]): CInt = extern
 
   /**
    * Apply a filter list to the contents of a file on disk
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   def git_filter_list_apply_to_file(out : Ptr[git_buf], filters : Ptr[git_filter_list], repo : Ptr[git_repository], path : CString): CInt = extern
 
   /**
    * Query the filter list to see if a given filter (by name) will run. The built-in filters "crlf" and "ident" can be queried, otherwise this is the name of the filter specified by the filter attribute.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   def git_filter_list_contains(filters : Ptr[git_filter_list], name : CString): CInt = extern
 
   /**
    * Free a git_filter_list
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   def git_filter_list_free(filters : Ptr[git_filter_list]): Unit = extern
 
   /**
    * Load the filter list for a given path.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   def git_filter_list_load(filters : Ptr[Ptr[git_filter_list]], repo : Ptr[git_repository], blob : Ptr[git_blob], path : CString, mode : git_filter_mode_t, flags : uint32_t): CInt = extern
 
   /**
    * Load the filter list for a given path.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   def git_filter_list_load_ext(filters : Ptr[Ptr[git_filter_list]], repo : Ptr[git_repository], blob : Ptr[git_blob], path : CString, mode : git_filter_mode_t, opts : Ptr[git_filter_options]): CInt = extern
 
   /**
    * Apply a filter list to a blob as a stream
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   def git_filter_list_stream_blob(filters : Ptr[git_filter_list], blob : Ptr[git_blob], target : Ptr[git_writestream]): CInt = extern
 
   /**
    * Apply a filter list to an arbitrary buffer as a stream
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   def git_filter_list_stream_buffer(filters : Ptr[git_filter_list], buffer : CString, len : size_t, target : Ptr[git_writestream]): CInt = extern
 
   /**
    * Deprecated in favor of `git_filter_list_stream_buffer`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_filter_list_stream_data(filters : Ptr[git_filter_list], data : Ptr[git_buf], target : Ptr[git_writestream]): CInt = extern
 
   /**
    * Apply a filter list to a file as a stream
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/filter.h
   */
   def git_filter_list_stream_file(filters : Ptr[git_filter_list], repo : Ptr[git_repository], path : CString, target : Ptr[git_writestream]): CInt = extern
 
   /**
    * Count the number of unique commits between two commit objects
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/graph.h
   */
   def git_graph_ahead_behind(ahead : Ptr[size_t], behind : Ptr[size_t], repo : Ptr[git_repository], local : Ptr[git_oid], upstream : Ptr[git_oid]): CInt = extern
 
   /**
    * Determine if a commit is the descendant of another commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/graph.h
   */
   def git_graph_descendant_of(repo : Ptr[git_repository], commit : Ptr[git_oid], ancestor : Ptr[git_oid]): CInt = extern
 
   /**
    * Determine if a commit is reachable from any of a list of commits by following parent edges.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/graph.h
   */
   def git_graph_reachable_from_any(repo : Ptr[git_repository], commit : Ptr[git_oid], descendant_array : Ptr[git_oid], length : size_t): CInt = extern
 
   /**
    * Add ignore rules for a repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/ignore.h
   */
   def git_ignore_add_rule(repo : Ptr[git_repository], rules : CString): CInt = extern
 
   /**
    * Clear ignore rules that were explicitly added.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/ignore.h
   */
   def git_ignore_clear_internal_rules(repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Test if the ignore rules apply to a given path.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/ignore.h
   */
   def git_ignore_path_is_ignored(ignored : Ptr[CInt], repo : Ptr[git_repository], path : CString): CInt = extern
 
   /**
    * Add or update an index entry from an in-memory struct
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_add(index : Ptr[git_index], source_entry : Ptr[git_index_entry]): CInt = extern
 
   /**
    * Add or update index entries matching files in the working directory.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_add_all(index : Ptr[git_index], pathspec : Ptr[git_strarray], flags : CUnsignedInt, callback : git_index_matched_path_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Add or update an index entry from a file on disk
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_add_bypath(index : Ptr[git_index], path : CString): CInt = extern
 
   /**
    * Add or update an index entry from a buffer in memory
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_add_from_buffer(index : Ptr[git_index], entry : Ptr[git_index_entry], buffer : Ptr[Byte], len : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_index_add_frombuffer(index : Ptr[git_index], entry : Ptr[git_index_entry], buffer : Ptr[Byte], len : size_t): CInt = extern
 
   /**
    * Read index capabilities flags.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_caps(index : Ptr[git_index]): CInt = extern
 
   /**
    * Get the checksum of the index
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_checksum(index : Ptr[git_index]): Ptr[git_oid] = extern
 
   /**
    * Clear the contents (all the entries) of an index object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_clear(index : Ptr[git_index]): CInt = extern
 
   /**
    * Add or update index entries to represent a conflict. Any staged entries that exist at the given paths will be removed.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_conflict_add(index : Ptr[git_index], ancestor_entry : Ptr[git_index_entry], our_entry : Ptr[git_index_entry], their_entry : Ptr[git_index_entry]): CInt = extern
 
   /**
    * Remove all conflicts in the index (entries with a stage greater than 0).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_conflict_cleanup(index : Ptr[git_index]): CInt = extern
 
   /**
    * Get the index entries that represent a conflict of a single file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_conflict_get(ancestor_out : Ptr[Ptr[git_index_entry]], our_out : Ptr[Ptr[git_index_entry]], their_out : Ptr[Ptr[git_index_entry]], index : Ptr[git_index], path : CString): CInt = extern
 
   /**
    * Frees a `git_index_conflict_iterator`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_conflict_iterator_free(iterator : Ptr[git_index_conflict_iterator]): Unit = extern
 
   /**
    * Create an iterator for the conflicts in the index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_conflict_iterator_new(iterator_out : Ptr[Ptr[git_index_conflict_iterator]], index : Ptr[git_index]): CInt = extern
 
   /**
    * Returns the current conflict (ancestor, ours and theirs entry) and advance the iterator internally to the next value.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_conflict_next(ancestor_out : Ptr[Ptr[git_index_entry]], our_out : Ptr[Ptr[git_index_entry]], their_out : Ptr[Ptr[git_index_entry]], iterator : Ptr[git_index_conflict_iterator]): CInt = extern
 
   /**
    * Removes the index entries that represent a conflict of a single file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_conflict_remove(index : Ptr[git_index], path : CString): CInt = extern
 
   /**
    * Return whether the given index entry is a conflict (has a high stage entry). This is simply shorthand for `git_index_entry_stage > 0`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_entry_is_conflict(entry : Ptr[git_index_entry]): CInt = extern
 
   /**
    * Return the stage number from a git index entry
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_entry_stage(entry : Ptr[git_index_entry]): CInt = extern
 
   /**
    * Get the count of entries currently in the index
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_entrycount(index : Ptr[git_index]): size_t = extern
 
   /**
    * Find the first position of any entries which point to given path in the Git index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_find(at_pos : Ptr[size_t], index : Ptr[git_index], path : CString): CInt = extern
 
   /**
    * Find the first position of any entries matching a prefix. To find the first position of a path inside a given folder, suffix the prefix with a '/'.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_find_prefix(at_pos : Ptr[size_t], index : Ptr[git_index], prefix : CString): CInt = extern
 
   /**
    * Free an existing index object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_free(index : Ptr[git_index]): Unit = extern
 
   /**
    * Get a pointer to one of the entries in the index
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_get_byindex(index : Ptr[git_index], n : size_t): Ptr[git_index_entry] = extern
 
   /**
    * Get a pointer to one of the entries in the index
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_get_bypath(index : Ptr[git_index], path : CString, stage : CInt): Ptr[git_index_entry] = extern
 
   /**
    * Determine if the index contains entries representing file conflicts.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_has_conflicts(index : Ptr[git_index]): CInt = extern
 
   /**
    * Free the index iterator
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_iterator_free(iterator : Ptr[git_index_iterator]): Unit = extern
 
   /**
    * Create an iterator that will return every entry contained in the index at the time of creation. Entries are returned in order, sorted by path. This iterator is backed by a snapshot that allows callers to modify the index while iterating without affecting the iterator.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_iterator_new(iterator_out : Ptr[Ptr[git_index_iterator]], index : Ptr[git_index]): CInt = extern
 
   /**
    * Return the next index entry in-order from the iterator.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_iterator_next(out : Ptr[Ptr[git_index_entry]], iterator : Ptr[git_index_iterator]): CInt = extern
 
   /**
    * Create an in-memory index object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_new(out : Ptr[Ptr[git_index]]): CInt = extern
 
   /**
    * Create a new bare Git index object as a memory representation of the Git index file in 'index_path', without a repository to back it.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_open(out : Ptr[Ptr[git_index]], index_path : CString): CInt = extern
 
   /**
    * Get the repository this index relates to
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_owner(index : Ptr[git_index]): Ptr[git_repository] = extern
 
   /**
    * Get the full path to the index file on disk.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_path(index : Ptr[git_index]): CString = extern
 
   /**
    * Update the contents of an existing index object in memory by reading from the hard disk.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_read(index : Ptr[git_index], force : CInt): CInt = extern
 
   /**
    * Read a tree into the index file with stats
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_read_tree(index : Ptr[git_index], tree : Ptr[git_tree]): CInt = extern
 
   /**
    * Remove an entry from the index
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_remove(index : Ptr[git_index], path : CString, stage : CInt): CInt = extern
 
   /**
    * Remove all matching index entries.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_remove_all(index : Ptr[git_index], pathspec : Ptr[git_strarray], callback : git_index_matched_path_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Remove an index entry corresponding to a file on disk
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_remove_bypath(index : Ptr[git_index], path : CString): CInt = extern
 
   /**
    * Remove all entries from the index under a given directory
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_remove_directory(index : Ptr[git_index], dir : CString, stage : CInt): CInt = extern
 
   /**
    * Set index capabilities flags.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_set_caps(index : Ptr[git_index], caps : CInt): CInt = extern
 
   /**
    * Set index on-disk version.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_set_version(index : Ptr[git_index], version : CUnsignedInt): CInt = extern
 
   /**
    * Update all index entries to match the working directory
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_update_all(index : Ptr[git_index], pathspec : Ptr[git_strarray], callback : git_index_matched_path_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Get index on-disk version.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_version(index : Ptr[git_index]): CUnsignedInt = extern
 
   /**
    * Write an existing index object from memory back to disk using an atomic file lock.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_write(index : Ptr[git_index]): CInt = extern
 
   /**
    * Write the index as a tree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_write_tree(out : Ptr[git_oid], index : Ptr[git_index]): CInt = extern
 
   /**
    * Write the index as a tree to the given repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/index.h
   */
   def git_index_write_tree_to(out : Ptr[git_oid], index : Ptr[git_index], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Add data to the indexer
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/indexer.h
   */
   def git_indexer_append(idx : Ptr[git_indexer], data : Ptr[Byte], size : size_t, stats : Ptr[git_indexer_progress]): CInt = extern
 
   /**
    * Finalize the pack and index
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/indexer.h
   */
   def git_indexer_commit(idx : Ptr[git_indexer], stats : Ptr[git_indexer_progress]): CInt = extern
 
   /**
    * Free the indexer and its resources
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/indexer.h
   */
   def git_indexer_free(idx : Ptr[git_indexer]): Unit = extern
 
   /**
    * Get the packfile's hash
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/indexer.h
   */
   def git_indexer_hash(idx : Ptr[git_indexer]): Ptr[git_oid] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_indexer_init_options(opts : Ptr[git_indexer_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Get the unique name for the resulting packfile.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/indexer.h
   */
   def git_indexer_name(idx : Ptr[git_indexer]): CString = extern
 
   /**
    * Create a new indexer instance
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/indexer.h
   */
   def git_indexer_new(out : Ptr[Ptr[git_indexer]], path : CString, mode : CUnsignedInt, odb : Ptr[git_odb], opts : Ptr[git_indexer_options]): CInt = extern
 
   /**
    * Initializes a `git_indexer_options` with default values. Equivalent to creating an instance with GIT_INDEXER_OPTIONS_INIT.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/indexer.h
   */
   def git_indexer_options_init(opts : Ptr[git_indexer_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Query compile time options for libgit2.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/common.h
   */
   def git_libgit2_features(): CInt = extern
 
   /**
    * Init the global state
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/global.h
   */
   def git_libgit2_init(): CInt = extern
 
   /**
    * Set or query a library global option
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/common.h
   */
   def git_libgit2_opts(option : CInt, rest: Any*): CInt = extern
 
   /**
    * Return the prerelease state of the libgit2 library currently being used. For nightly builds during active development, this will be "alpha". Releases may have a "beta" or release candidate ("rc1", "rc2", etc) prerelease. For a final release, this function returns NULL.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/common.h
   */
   def git_libgit2_prerelease(): CString = extern
 
   /**
    * Shutdown the global state
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/global.h
   */
   def git_libgit2_shutdown(): CInt = extern
 
   /**
    * Return the version of the libgit2 library being currently used.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/common.h
   */
   def git_libgit2_version(major : Ptr[CInt], minor : Ptr[CInt], rev : Ptr[CInt]): CInt = extern
 
   /**
    * Add a single entry to the given mailmap object. If the entry already exists, it will be replaced with the new entry.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/mailmap.h
   */
   def git_mailmap_add_entry(mm : Ptr[git_mailmap], real_name : CString, real_email : CString, replace_name : CString, replace_email : CString): CInt = extern
 
   /**
    * Free the mailmap and its associated memory.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/mailmap.h
   */
   def git_mailmap_free(mm : Ptr[git_mailmap]): Unit = extern
 
   /**
    * Create a new mailmap instance containing a single mailmap file
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/mailmap.h
   */
   def git_mailmap_from_buffer(out : Ptr[Ptr[git_mailmap]], buf : CString, len : size_t): CInt = extern
 
   /**
    * Create a new mailmap instance from a repository, loading mailmap files based on the repository's configuration.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/mailmap.h
   */
   def git_mailmap_from_repository(out : Ptr[Ptr[git_mailmap]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Allocate a new mailmap object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/mailmap.h
   */
   def git_mailmap_new(out : Ptr[Ptr[git_mailmap]]): CInt = extern
 
   /**
    * Resolve a name and email to the corresponding real name and email.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/mailmap.h
   */
   def git_mailmap_resolve(real_name : Ptr[CString], real_email : Ptr[CString], mm : Ptr[git_mailmap], name : CString, email : CString): CInt = extern
 
   /**
    * Resolve a signature to use real names and emails with a mailmap.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/mailmap.h
   */
   def git_mailmap_resolve_signature(out : Ptr[Ptr[git_signature]], mm : Ptr[git_mailmap], sig : Ptr[git_signature]): CInt = extern
 
   /**
    * Merges the given commit(s) into HEAD, writing the results into the working directory. Any changes are staged for commit and any conflicts are written to the index. Callers should inspect the repository's index after this completes, resolve any conflicts and prepare a commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge(repo : Ptr[git_repository], their_heads : Ptr[Ptr[git_annotated_commit]], their_heads_len : size_t, merge_opts : Ptr[git_merge_options], checkout_opts : Ptr[git_checkout_options]): CInt = extern
 
   /**
    * Analyzes the given branch(es) and determines the opportunities for merging them into the HEAD of the repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_analysis(analysis_out : Ptr[git_merge_analysis_t], preference_out : Ptr[git_merge_preference_t], repo : Ptr[git_repository], their_heads : Ptr[Ptr[git_annotated_commit]], their_heads_len : size_t): CInt = extern
 
   /**
    * Analyzes the given branch(es) and determines the opportunities for merging them into a reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_analysis_for_ref(analysis_out : Ptr[git_merge_analysis_t], preference_out : Ptr[git_merge_preference_t], repo : Ptr[git_repository], our_ref : Ptr[git_reference], their_heads : Ptr[Ptr[git_annotated_commit]], their_heads_len : size_t): CInt = extern
 
   /**
    * Find a merge base between two commits
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_base(out : Ptr[git_oid], repo : Ptr[git_repository], one : Ptr[git_oid], two : Ptr[git_oid]): CInt = extern
 
   /**
    * Find a merge base given a list of commits
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_base_many(out : Ptr[git_oid], repo : Ptr[git_repository], length : size_t, input_array : Ptr[git_oid]): CInt = extern
 
   /**
    * Find a merge base in preparation for an octopus merge
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_base_octopus(out : Ptr[git_oid], repo : Ptr[git_repository], length : size_t, input_array : Ptr[git_oid]): CInt = extern
 
   /**
    * Find merge bases between two commits
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_bases(out : Ptr[git_oidarray], repo : Ptr[git_repository], one : Ptr[git_oid], two : Ptr[git_oid]): CInt = extern
 
   /**
    * Find all merge bases given a list of commits
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_bases_many(out : Ptr[git_oidarray], repo : Ptr[git_repository], length : size_t, input_array : Ptr[git_oid]): CInt = extern
 
   /**
    * Merge two commits, producing a `git_index` that reflects the result of the merge. The index may be written as-is to the working directory or checked out. If the index is to be converted to a tree, the caller should resolve any conflicts that arose as part of the merge.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_commits(out : Ptr[Ptr[git_index]], repo : Ptr[git_repository], our_commit : Ptr[git_commit], their_commit : Ptr[git_commit], opts : Ptr[git_merge_options]): CInt = extern
 
   /**
    * Merge two files as they exist in the in-memory data structures, using the given common ancestor as the baseline, producing a `git_merge_file_result` that reflects the merge result. The `git_merge_file_result` must be freed with `git_merge_file_result_free`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_file(out : Ptr[git_merge_file_result], ancestor : Ptr[git_merge_file_input], ours : Ptr[git_merge_file_input], theirs : Ptr[git_merge_file_input], opts : Ptr[git_merge_file_options]): CInt = extern
 
   /**
    * Merge two files as they exist in the index, using the given common ancestor as the baseline, producing a `git_merge_file_result` that reflects the merge result. The `git_merge_file_result` must be freed with `git_merge_file_result_free`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_file_from_index(out : Ptr[git_merge_file_result], repo : Ptr[git_repository], ancestor : Ptr[git_index_entry], ours : Ptr[git_index_entry], theirs : Ptr[git_index_entry], opts : Ptr[git_merge_file_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_merge_file_init_input(input : Ptr[git_merge_file_input], version : CUnsignedInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_merge_file_init_options(opts : Ptr[git_merge_file_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initializes a `git_merge_file_input` with default values. Equivalent to creating an instance with GIT_MERGE_FILE_INPUT_INIT.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_file_input_init(opts : Ptr[git_merge_file_input], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_merge_file_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_file_options_init(opts : Ptr[git_merge_file_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Frees a `git_merge_file_result`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_file_result_free(result : Ptr[git_merge_file_result]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_merge_init_options(opts : Ptr[git_merge_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_merge_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_options_init(opts : Ptr[git_merge_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Merge two trees, producing a `git_index` that reflects the result of the merge. The index may be written as-is to the working directory or checked out. If the index is to be converted to a tree, the caller should resolve any conflicts that arose as part of the merge.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/merge.h
   */
   def git_merge_trees(out : Ptr[Ptr[git_index]], repo : Ptr[git_repository], ancestor_tree : Ptr[git_tree], our_tree : Ptr[git_tree], their_tree : Ptr[git_tree], opts : Ptr[git_merge_options]): CInt = extern
 
   /**
    * Clean up excess whitespace and make sure there is a trailing newline in the message.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/message.h
   */
   def git_message_prettify(out : Ptr[git_buf], message : CString, strip_comments : CInt, comment_char : CChar): CInt = extern
 
   /**
    * Clean's up any allocated memory in the git_message_trailer_array filled by a call to git_message_trailers.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/message.h
   */
   def git_message_trailer_array_free(arr : Ptr[git_message_trailer_array]): Unit = extern
 
   /**
    * Parse trailers out of a message, filling the array pointed to by +arr+.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/message.h
   */
   def git_message_trailers(arr : Ptr[git_message_trailer_array], message : CString): CInt = extern
 
   /**
    * Get the note author
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_author(note : Ptr[git_note]): Ptr[git_signature] = extern
 
   /**
    * Add a note for an object from a commit
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_commit_create(notes_commit_out : Ptr[git_oid], notes_blob_out : Ptr[git_oid], repo : Ptr[git_repository], parent : Ptr[git_commit], author : Ptr[git_signature], committer : Ptr[git_signature], oid : Ptr[git_oid], note : CString, allow_note_overwrite : CInt): CInt = extern
 
   /**
    * Creates a new iterator for notes from a commit
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_commit_iterator_new(out : Ptr[Ptr[git_note_iterator]], notes_commit : Ptr[git_commit]): CInt = extern
 
   /**
    * Read the note for an object from a note commit
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_commit_read(out : Ptr[Ptr[git_note]], repo : Ptr[git_repository], notes_commit : Ptr[git_commit], oid : Ptr[git_oid]): CInt = extern
 
   /**
    * Remove the note for an object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_commit_remove(notes_commit_out : Ptr[git_oid], repo : Ptr[git_repository], notes_commit : Ptr[git_commit], author : Ptr[git_signature], committer : Ptr[git_signature], oid : Ptr[git_oid]): CInt = extern
 
   /**
    * Get the note committer
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_committer(note : Ptr[git_note]): Ptr[git_signature] = extern
 
   /**
    * Add a note for an object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_create(out : Ptr[git_oid], repo : Ptr[git_repository], notes_ref : CString, author : Ptr[git_signature], committer : Ptr[git_signature], oid : Ptr[git_oid], note : CString, force : CInt): CInt = extern
 
   /**
    * Get the default notes reference for a repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_default_ref(out : Ptr[git_buf], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Loop over all the notes within a specified namespace and issue a callback for each one.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_foreach(repo : Ptr[git_repository], notes_ref : CString, note_cb : git_note_foreach_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Free a git_note object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_free(note : Ptr[git_note]): Unit = extern
 
   /**
    * Get the note object's id
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_id(note : Ptr[git_note]): Ptr[git_oid] = extern
 
   /**
    * Frees an git_note_iterator
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_iterator_free(it : Ptr[git_note_iterator]): Unit = extern
 
   /**
    * Creates a new iterator for notes
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_iterator_new(out : Ptr[Ptr[git_note_iterator]], repo : Ptr[git_repository], notes_ref : CString): CInt = extern
 
   /**
    * Get the note message
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_message(note : Ptr[git_note]): CString = extern
 
   /**
    * Return the current item (note_id and annotated_id) and advance the iterator internally to the next value
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_next(note_id : Ptr[git_oid], annotated_id : Ptr[git_oid], it : Ptr[git_note_iterator]): CInt = extern
 
   /**
    * Read the note for an object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_read(out : Ptr[Ptr[git_note]], repo : Ptr[git_repository], notes_ref : CString, oid : Ptr[git_oid]): CInt = extern
 
   /**
    * Remove the note for an object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/notes.h
   */
   def git_note_remove(repo : Ptr[git_repository], notes_ref : CString, author : Ptr[git_signature], committer : Ptr[git_signature], oid : Ptr[git_oid]): CInt = extern
 
   /**
    * Get the size in bytes for the structure which acts as an in-memory representation of any given object type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_object__size(`type` : git_object_t): size_t = extern
 
   /**
    * Create an in-memory copy of a Git object. The copy must be explicitly free'd or it will leak.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_dup(dest : Ptr[Ptr[git_object]], source : Ptr[git_object]): CInt = extern
 
   /**
    * Close an open object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_free(`object` : Ptr[git_object]): Unit = extern
 
   /**
    * Get the id (SHA1) of a repository object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_id(obj : Ptr[git_object]): Ptr[git_oid] = extern
 
   /**
    * Lookup a reference to one of the objects in a repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_lookup(`object` : Ptr[Ptr[git_object]], repo : Ptr[git_repository], id : Ptr[git_oid], `type` : git_object_t): CInt = extern
 
   /**
    * Lookup an object that represents a tree entry.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_lookup_bypath(out : Ptr[Ptr[git_object]], treeish : Ptr[git_object], path : CString, `type` : git_object_t): CInt = extern
 
   /**
    * Lookup a reference to one of the objects in a repository, given a prefix of its identifier (short id).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_lookup_prefix(object_out : Ptr[Ptr[git_object]], repo : Ptr[git_repository], id : Ptr[git_oid], len : size_t, `type` : git_object_t): CInt = extern
 
   /**
    * Get the repository that owns this object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_owner(obj : Ptr[git_object]): Ptr[git_repository] = extern
 
   /**
    * Recursively peel an object until an object of the specified type is met.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_peel(peeled : Ptr[Ptr[git_object]], `object` : Ptr[git_object], target_type : git_object_t): CInt = extern
 
   /**
    * Analyzes a buffer of raw object content and determines its validity. Tree, commit, and tag objects will be parsed and ensured that they are valid, parseable content. (Blobs are always valid by definition.) An error message will be set with an informative message if the object is not valid.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_rawcontent_is_valid(valid : Ptr[CInt], buf : CString, len : size_t, object_type : git_object_t): CInt = extern
 
   /**
    * Get a short abbreviated OID string for the object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_short_id(out : Ptr[git_buf], obj : Ptr[git_object]): CInt = extern
 
   /**
    * Convert a string object type representation to it's git_object_t.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_string2type(str : CString): git_object_t = extern
 
   /**
    * Get the object type of an object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_type(obj : Ptr[git_object]): git_object_t = extern
 
   /**
    * Convert an object type to its string representation.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_type2string(`type` : git_object_t): CString = extern
 
   /**
    * Determine if the given git_object_t is a valid loose object type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/object.h
   */
   def git_object_typeisloose(`type` : git_object_t): CInt = extern
 
   /**
    * Add a custom backend to an existing Object DB; this backend will work as an alternate.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_add_alternate(odb : Ptr[git_odb], backend : Ptr[git_odb_backend], priority : CInt): CInt = extern
 
   /**
    * Add a custom backend to an existing Object DB
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_add_backend(odb : Ptr[git_odb], backend : Ptr[git_odb_backend], priority : CInt): CInt = extern
 
   /**
    * Add an on-disk alternate to an existing Object DB.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_add_disk_alternate(odb : Ptr[git_odb], path : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb_backend.h
   */
   def git_odb_backend_loose(out : Ptr[Ptr[git_odb_backend]], objects_dir : CString, compression_level : CInt, do_fsync : CInt, dir_mode : CUnsignedInt, file_mode : CUnsignedInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb_backend.h
   */
   def git_odb_backend_one_pack(out : Ptr[Ptr[git_odb_backend]], index_file : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb_backend.h
   */
   def git_odb_backend_pack(out : Ptr[Ptr[git_odb_backend]], objects_dir : CString): CInt = extern
 
   /**
    * Determine if the given object can be found in the object database.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_exists(db : Ptr[git_odb], id : Ptr[git_oid]): CInt = extern
 
   /**
    * Determine if the given object can be found in the object database, with extended options.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_exists_ext(db : Ptr[git_odb], id : Ptr[git_oid], flags : CUnsignedInt): CInt = extern
 
   /**
    * Determine if an object can be found in the object database by an abbreviated object ID.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_exists_prefix(out : Ptr[git_oid], db : Ptr[git_odb], short_id : Ptr[git_oid], len : size_t): CInt = extern
 
   /**
    * Determine if one or more objects can be found in the object database by their abbreviated object ID and type.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_expand_ids(db : Ptr[git_odb], ids : Ptr[git_odb_expand_id], count : size_t): CInt = extern
 
   /**
    * List all objects available in the database
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_foreach(db : Ptr[git_odb], cb : git_odb_foreach_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Close an open object database.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_free(db : Ptr[git_odb]): Unit = extern
 
   /**
    * Lookup an ODB backend object by index
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_get_backend(out : Ptr[Ptr[git_odb_backend]], odb : Ptr[git_odb], pos : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_hash(out : Ptr[git_oid], data : Ptr[Byte], len : size_t, `type` : git_object_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_hashfile(out : Ptr[git_oid], path : CString, `type` : git_object_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_new(out : Ptr[Ptr[git_odb]]): CInt = extern
 
   /**
    * Get the number of ODB backend objects
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_num_backends(odb : Ptr[git_odb]): size_t = extern
 
   /**
    * Return the data of an ODB object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_object_data(`object` : Ptr[git_odb_object]): Ptr[Byte] = extern
 
   /**
    * Create a copy of an odb_object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_object_dup(dest : Ptr[Ptr[git_odb_object]], source : Ptr[git_odb_object]): CInt = extern
 
   /**
    * Close an ODB object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_object_free(`object` : Ptr[git_odb_object]): Unit = extern
 
   /**
    * Return the OID of an ODB object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_object_id(`object` : Ptr[git_odb_object]): Ptr[git_oid] = extern
 
   /**
    * Return the size of an ODB object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_object_size(`object` : Ptr[git_odb_object]): size_t = extern
 
   /**
    * Return the type of an ODB object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_object_type(`object` : Ptr[git_odb_object]): git_object_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_open(out : Ptr[Ptr[git_odb]], objects_dir : CString): CInt = extern
 
   /**
    * Open a stream to read an object from the ODB
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_open_rstream(out : Ptr[Ptr[git_odb_stream]], len : Ptr[size_t], `type` : Ptr[git_object_t], db : Ptr[git_odb], oid : Ptr[git_oid]): CInt = extern
 
   /**
    * Open a stream to write an object into the ODB
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_open_wstream(out : Ptr[Ptr[git_odb_stream]], db : Ptr[git_odb], size : git_object_size_t, `type` : git_object_t): CInt = extern
 
   /**
    * Read an object from the database.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_read(out : Ptr[Ptr[git_odb_object]], db : Ptr[git_odb], id : Ptr[git_oid]): CInt = extern
 
   /**
    * Read the header of an object from the database, without reading its full contents.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_read_header(len_out : Ptr[size_t], type_out : Ptr[git_object_t], db : Ptr[git_odb], id : Ptr[git_oid]): CInt = extern
 
   /**
    * Read an object from the database, given a prefix of its identifier.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_read_prefix(out : Ptr[Ptr[git_odb_object]], db : Ptr[git_odb], short_id : Ptr[git_oid], len : size_t): CInt = extern
 
   /**
    * Refresh the object database to load newly added files.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_refresh(db : Ptr[git_odb]): CInt = extern
 
   /**
    * Set the git commit-graph for the ODB.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_set_commit_graph(odb : Ptr[git_odb], cgraph : Ptr[git_commit_graph]): CInt = extern
 
   /**
    * Finish writing to an odb stream
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_stream_finalize_write(out : Ptr[git_oid], stream : Ptr[git_odb_stream]): CInt = extern
 
   /**
    * Free an odb stream
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_stream_free(stream : Ptr[git_odb_stream]): Unit = extern
 
   /**
    * Read from an odb stream
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_stream_read(stream : Ptr[git_odb_stream], buffer : CString, len : size_t): CInt = extern
 
   /**
    * Write to an odb stream
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_stream_write(stream : Ptr[git_odb_stream], buffer : CString, len : size_t): CInt = extern
 
   /**
    * Write an object directly into the ODB
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_write(out : Ptr[git_oid], odb : Ptr[git_odb], data : Ptr[Byte], len : size_t, `type` : git_object_t): CInt = extern
 
   /**
    * Write a `multi-pack-index` file from all the `.pack` files in the ODB.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_write_multi_pack_index(db : Ptr[git_odb]): CInt = extern
 
   /**
    * Open a stream for writing a pack file to the ODB.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/odb.h
   */
   def git_odb_write_pack(out : Ptr[Ptr[git_odb_writepack]], db : Ptr[git_odb], progress_cb : git_indexer_progress_cb, progress_payload : Ptr[Byte]): CInt = extern
 
   /**
    * Compare two oid structures.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_cmp(a : Ptr[git_oid], b : Ptr[git_oid]): CInt = extern
 
   /**
    * Copy an oid from one structure to another.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_cpy(out : Ptr[git_oid], src : Ptr[git_oid]): CInt = extern
 
   /**
    * Compare two oid structures for equality
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_equal(a : Ptr[git_oid], b : Ptr[git_oid]): CInt = extern
 
   /**
    * Format a git_oid into a hex string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_fmt(out : CString, id : Ptr[git_oid]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_fromraw(out : Ptr[git_oid], raw : Ptr[CUnsignedChar]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_fromstr(out : Ptr[git_oid], str : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_fromstrn(out : Ptr[git_oid], str : CString, length : size_t): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_fromstrp(out : Ptr[git_oid], str : CString): CInt = extern
 
   /**
    * Check is an oid is all zeros.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_is_zero(id : Ptr[git_oid]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_oid_iszero(id : Ptr[git_oid]): CInt = extern
 
   /**
    * Compare the first 'len' hexadecimal characters (packets of 4 bits) of two oid structures.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_ncmp(a : Ptr[git_oid], b : Ptr[git_oid], len : size_t): CInt = extern
 
   /**
    * Format a git_oid into a partial hex string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_nfmt(out : CString, n : size_t, id : Ptr[git_oid]): CInt = extern
 
   /**
    * Format a git_oid into a loose-object path string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_pathfmt(out : CString, id : Ptr[git_oid]): CInt = extern
 
   /**
    * Add a new OID to set of shortened OIDs and calculate the minimal length to uniquely identify all the OIDs in the set.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_shorten_add(os : Ptr[git_oid_shorten], text_id : CString): CInt = extern
 
   /**
    * Free an OID shortener instance
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_shorten_free(os : Ptr[git_oid_shorten]): Unit = extern
 
   /**
    * Create a new OID shortener.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_shorten_new(min_length : size_t): Ptr[git_oid_shorten] = extern
 
   /**
    * Compare an oid to an hex formatted object id.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_strcmp(id : Ptr[git_oid], str : CString): CInt = extern
 
   /**
    * Check if an oid equals an hex formatted object id.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_streq(id : Ptr[git_oid], str : CString): CInt = extern
 
   /**
    * Format a git_oid into a buffer as a hex format c-string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_tostr(out : CString, n : size_t, id : Ptr[git_oid]): CString = extern
 
   /**
    * Format a git_oid into a statically allocated c-string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oid.h
   */
   def git_oid_tostr_s(oid : Ptr[git_oid]): CString = extern
 
   /**
    * Free the object IDs contained in an oid_array. This method should be called on `git_oidarray` objects that were provided by the library. Not doing so will result in a memory leak.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/oidarray.h
   */
   def git_oidarray_dispose(array : Ptr[git_oidarray]): Unit = extern
 
   /**
    * Free the memory referred to by the git_oidarray. This is an alias of `git_oidarray_dispose` and is preserved for backward compatibility.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_oidarray_free(array : Ptr[git_oidarray]): Unit = extern
 
   /**
    * Create the new pack and pass each object to the callback
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_foreach(pb : Ptr[git_packbuilder], cb : git_packbuilder_foreach_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Free the packbuilder and all associated data
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_free(pb : Ptr[git_packbuilder]): Unit = extern
 
   /**
    * Get the packfile's hash
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_hash(pb : Ptr[git_packbuilder]): Ptr[git_oid] = extern
 
   /**
    * Insert a single object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_insert(pb : Ptr[git_packbuilder], id : Ptr[git_oid], name : CString): CInt = extern
 
   /**
    * Insert a commit object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_insert_commit(pb : Ptr[git_packbuilder], id : Ptr[git_oid]): CInt = extern
 
   /**
    * Recursively insert an object and its referenced objects
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_insert_recur(pb : Ptr[git_packbuilder], id : Ptr[git_oid], name : CString): CInt = extern
 
   /**
    * Insert a root tree object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_insert_tree(pb : Ptr[git_packbuilder], id : Ptr[git_oid]): CInt = extern
 
   /**
    * Insert objects as given by the walk
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_insert_walk(pb : Ptr[git_packbuilder], walk : Ptr[git_revwalk]): CInt = extern
 
   /**
    * Get the unique name for the resulting packfile.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_name(pb : Ptr[git_packbuilder]): CString = extern
 
   /**
    * Initialize a new packbuilder
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_new(out : Ptr[Ptr[git_packbuilder]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Get the total number of objects the packbuilder will write out
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_object_count(pb : Ptr[git_packbuilder]): size_t = extern
 
   /**
    * Set the callbacks for a packbuilder
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_set_callbacks(pb : Ptr[git_packbuilder], progress_cb : git_packbuilder_progress, progress_cb_payload : Ptr[Byte]): CInt = extern
 
   /**
    * Set number of threads to spawn
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_set_threads(pb : Ptr[git_packbuilder], n : CUnsignedInt): CUnsignedInt = extern
 
   /**
    * Write the new pack and corresponding index file to path.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_write(pb : Ptr[git_packbuilder], path : CString, mode : CUnsignedInt, progress_cb : git_indexer_progress_cb, progress_cb_payload : Ptr[Byte]): CInt = extern
 
   /**
    * Write the contents of the packfile to an in-memory buffer
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_write_buf(buf : Ptr[git_buf], pb : Ptr[git_packbuilder]): CInt = extern
 
   /**
    * Get the number of objects the packbuilder has already written out
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pack.h
   */
   def git_packbuilder_written(pb : Ptr[git_packbuilder]): size_t = extern
 
   /**
    * Free a git_patch object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_free(patch : Ptr[git_patch]): Unit = extern
 
   /**
    * Directly generate a patch from the difference between a blob and a buffer.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_from_blob_and_buffer(out : Ptr[Ptr[git_patch]], old_blob : Ptr[git_blob], old_as_path : CString, buffer : Ptr[Byte], buffer_len : size_t, buffer_as_path : CString, opts : Ptr[git_diff_options]): CInt = extern
 
   /**
    * Directly generate a patch from the difference between two blobs.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_from_blobs(out : Ptr[Ptr[git_patch]], old_blob : Ptr[git_blob], old_as_path : CString, new_blob : Ptr[git_blob], new_as_path : CString, opts : Ptr[git_diff_options]): CInt = extern
 
   /**
    * Directly generate a patch from the difference between two buffers.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_from_buffers(out : Ptr[Ptr[git_patch]], old_buffer : Ptr[Byte], old_len : size_t, old_as_path : CString, new_buffer : Ptr[Byte], new_len : size_t, new_as_path : CString, opts : Ptr[git_diff_options]): CInt = extern
 
   /**
    * Return a patch for an entry in the diff list.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_from_diff(out : Ptr[Ptr[git_patch]], diff : Ptr[git_diff], idx : size_t): CInt = extern
 
   /**
    * Get the delta associated with a patch. This delta points to internal data and you do not have to release it when you are done with it.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_get_delta(patch : Ptr[git_patch]): Ptr[git_diff_delta] = extern
 
   /**
    * Get the information about a hunk in a patch
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_get_hunk(out : Ptr[Ptr[git_diff_hunk]], lines_in_hunk : Ptr[size_t], patch : Ptr[git_patch], hunk_idx : size_t): CInt = extern
 
   /**
    * Get data about a line in a hunk of a patch.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_get_line_in_hunk(out : Ptr[Ptr[git_diff_line]], patch : Ptr[git_patch], hunk_idx : size_t, line_of_hunk : size_t): CInt = extern
 
   /**
    * Get line counts of each type in a patch.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_line_stats(total_context : Ptr[size_t], total_additions : Ptr[size_t], total_deletions : Ptr[size_t], patch : Ptr[git_patch]): CInt = extern
 
   /**
    * Get the number of hunks in a patch
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_num_hunks(patch : Ptr[git_patch]): size_t = extern
 
   /**
    * Get the number of lines in a hunk.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_num_lines_in_hunk(patch : Ptr[git_patch], hunk_idx : size_t): CInt = extern
 
   /**
    * Get the repository associated with this patch. May be NULL.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_owner(patch : Ptr[git_patch]): Ptr[git_repository] = extern
 
   /**
    * Serialize the patch to text via callback.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_print(patch : Ptr[git_patch], print_cb : git_diff_line_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Look up size of patch diff data in bytes
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_size(patch : Ptr[git_patch], include_context : CInt, include_hunk_headers : CInt, include_file_headers : CInt): size_t = extern
 
   /**
    * Get the content of a patch as a single diff text.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/patch.h
   */
   def git_patch_to_buf(out : Ptr[git_buf], patch : Ptr[git_patch]): CInt = extern
 
   /**
    * Free a pathspec
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   def git_pathspec_free(ps : Ptr[git_pathspec]): Unit = extern
 
   /**
    * Match a pathspec against files in a diff list.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   def git_pathspec_match_diff(out : Ptr[Ptr[git_pathspec_match_list]], diff : Ptr[git_diff], flags : uint32_t, ps : Ptr[git_pathspec]): CInt = extern
 
   /**
    * Match a pathspec against entries in an index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   def git_pathspec_match_index(out : Ptr[Ptr[git_pathspec_match_list]], index : Ptr[git_index], flags : uint32_t, ps : Ptr[git_pathspec]): CInt = extern
 
   /**
    * Get a matching diff delta by position.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   def git_pathspec_match_list_diff_entry(m : Ptr[git_pathspec_match_list], pos : size_t): Ptr[git_diff_delta] = extern
 
   /**
    * Get a matching filename by position.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   def git_pathspec_match_list_entry(m : Ptr[git_pathspec_match_list], pos : size_t): CString = extern
 
   /**
    * Get the number of items in a match list.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   def git_pathspec_match_list_entrycount(m : Ptr[git_pathspec_match_list]): size_t = extern
 
   /**
    * Get an original pathspec string that had no matches.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   def git_pathspec_match_list_failed_entry(m : Ptr[git_pathspec_match_list], pos : size_t): CString = extern
 
   /**
    * Get the number of pathspec items that did not match.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   def git_pathspec_match_list_failed_entrycount(m : Ptr[git_pathspec_match_list]): size_t = extern
 
   /**
    * Free memory associates with a git_pathspec_match_list
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   def git_pathspec_match_list_free(m : Ptr[git_pathspec_match_list]): Unit = extern
 
   /**
    * Match a pathspec against files in a tree.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   def git_pathspec_match_tree(out : Ptr[Ptr[git_pathspec_match_list]], tree : Ptr[git_tree], flags : uint32_t, ps : Ptr[git_pathspec]): CInt = extern
 
   /**
    * Match a pathspec against the working directory of a repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   def git_pathspec_match_workdir(out : Ptr[Ptr[git_pathspec_match_list]], repo : Ptr[git_repository], flags : uint32_t, ps : Ptr[git_pathspec]): CInt = extern
 
   /**
    * Try to match a path against a pathspec
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   def git_pathspec_matches_path(ps : Ptr[git_pathspec], flags : uint32_t, path : CString): CInt = extern
 
   /**
    * Compile a pathspec
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/pathspec.h
   */
   def git_pathspec_new(out : Ptr[Ptr[git_pathspec]], pathspec : Ptr[git_strarray]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_proxy_init_options(opts : Ptr[git_proxy_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_proxy_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/proxy.h
   */
   def git_proxy_options_init(opts : Ptr[git_proxy_options], version : CUnsignedInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_push_init_options(opts : Ptr[git_push_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_push_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_push_options_init(opts : Ptr[git_push_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Aborts a rebase that is currently in progress, resetting the repository and working directory to their state before rebase began.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_abort(rebase : Ptr[git_rebase]): CInt = extern
 
   /**
    * Commits the current patch. You must have resolved any conflicts that were introduced during the patch application from the `git_rebase_next` invocation.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_commit(id : Ptr[git_oid], rebase : Ptr[git_rebase], author : Ptr[git_signature], committer : Ptr[git_signature], message_encoding : CString, message : CString): CInt = extern
 
   /**
    * Finishes a rebase that is currently in progress once all patches have been applied.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_finish(rebase : Ptr[git_rebase], signature : Ptr[git_signature]): CInt = extern
 
   /**
    * Frees the `git_rebase` object.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_free(rebase : Ptr[git_rebase]): Unit = extern
 
   /**
    * Initializes a rebase operation to rebase the changes in `branch` relative to `upstream` onto another branch. To begin the rebase process, call `git_rebase_next`. When you have finished with this object, call `git_rebase_free`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_init(out : Ptr[Ptr[git_rebase]], repo : Ptr[git_repository], branch : Ptr[git_annotated_commit], upstream : Ptr[git_annotated_commit], onto : Ptr[git_annotated_commit], opts : Ptr[git_rebase_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_rebase_init_options(opts : Ptr[git_rebase_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Gets the index produced by the last operation, which is the result of `git_rebase_next` and which will be committed by the next invocation of `git_rebase_commit`. This is useful for resolving conflicts in an in-memory rebase before committing them. You must call `git_index_free` when you are finished with this.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_inmemory_index(index : Ptr[Ptr[git_index]], rebase : Ptr[git_rebase]): CInt = extern
 
   /**
    * Performs the next rebase operation and returns the information about it. If the operation is one that applies a patch (which is any operation except GIT_REBASE_OPERATION_EXEC) then the patch will be applied and the index and working directory will be updated with the changes. If there are conflicts, you will need to address those before committing the changes.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_next(operation : Ptr[Ptr[git_rebase_operation]], rebase : Ptr[git_rebase]): CInt = extern
 
   /**
    * Gets the `onto` id for merge rebases.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_onto_id(rebase : Ptr[git_rebase]): Ptr[git_oid] = extern
 
   /**
    * Gets the `onto` ref name for merge rebases.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_onto_name(rebase : Ptr[git_rebase]): CString = extern
 
   /**
    * Opens an existing rebase that was previously started by either an invocation of `git_rebase_init` or by another client.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_open(out : Ptr[Ptr[git_rebase]], repo : Ptr[git_repository], opts : Ptr[git_rebase_options]): CInt = extern
 
   /**
    * Gets the rebase operation specified by the given index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_operation_byindex(rebase : Ptr[git_rebase], idx : size_t): Ptr[git_rebase_operation] = extern
 
   /**
    * Gets the index of the rebase operation that is currently being applied. If the first operation has not yet been applied (because you have called `init` but not yet `next`) then this returns `GIT_REBASE_NO_OPERATION`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_operation_current(rebase : Ptr[git_rebase]): size_t = extern
 
   /**
    * Gets the count of rebase operations that are to be applied.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_operation_entrycount(rebase : Ptr[git_rebase]): size_t = extern
 
   /**
    * Initialize git_rebase_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_options_init(opts : Ptr[git_rebase_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Gets the original `HEAD` id for merge rebases.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_orig_head_id(rebase : Ptr[git_rebase]): Ptr[git_oid] = extern
 
   /**
    * Gets the original `HEAD` ref name for merge rebases.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/rebase.h
   */
   def git_rebase_orig_head_name(rebase : Ptr[git_rebase]): CString = extern
 
   /**
    * Suggests that the given refdb compress or optimize its references. This mechanism is implementation specific. For on-disk reference databases, for example, this may pack all loose references.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refdb.h
   */
   def git_refdb_compress(refdb : Ptr[git_refdb]): CInt = extern
 
   /**
    * Close an open reference database.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refdb.h
   */
   def git_refdb_free(refdb : Ptr[git_refdb]): Unit = extern
 
   /**
    * Create a new reference database with no backends.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refdb.h
   */
   def git_refdb_new(out : Ptr[Ptr[git_refdb]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Create a new reference database and automatically add the default backends:
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refdb.h
   */
   def git_refdb_open(out : Ptr[Ptr[git_refdb]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Compare two references.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_cmp(ref1 : Ptr[git_reference], ref2 : Ptr[git_reference]): CInt = extern
 
   /**
    * Create a new direct reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_create(out : Ptr[Ptr[git_reference]], repo : Ptr[git_repository], name : CString, id : Ptr[git_oid], force : CInt, log_message : CString): CInt = extern
 
   /**
    * Conditionally create new direct reference
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_create_matching(out : Ptr[Ptr[git_reference]], repo : Ptr[git_repository], name : CString, id : Ptr[git_oid], force : CInt, current_id : Ptr[git_oid], log_message : CString): CInt = extern
 
   /**
    * Delete an existing reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_delete(ref : Ptr[git_reference]): CInt = extern
 
   /**
    * Create a copy of an existing reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_dup(dest : Ptr[Ptr[git_reference]], source : Ptr[git_reference]): CInt = extern
 
   /**
    * Lookup a reference by DWIMing its short name
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_dwim(out : Ptr[Ptr[git_reference]], repo : Ptr[git_repository], shorthand : CString): CInt = extern
 
   /**
    * Ensure there is a reflog for a particular reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_ensure_log(repo : Ptr[git_repository], refname : CString): CInt = extern
 
   /**
    * Perform a callback on each reference in the repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_foreach(repo : Ptr[git_repository], callback : git_reference_foreach_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Perform a callback on each reference in the repository whose name matches the given pattern.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_foreach_glob(repo : Ptr[git_repository], glob : CString, callback : git_reference_foreach_name_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Perform a callback on the fully-qualified name of each reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_foreach_name(repo : Ptr[git_repository], callback : git_reference_foreach_name_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Free the given reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_free(ref : Ptr[git_reference]): Unit = extern
 
   /**
    * Check if a reflog exists for the specified reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_has_log(repo : Ptr[git_repository], refname : CString): CInt = extern
 
   /**
    * Check if a reference is a local branch.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_is_branch(ref : Ptr[git_reference]): CInt = extern
 
   /**
    * Check if a reference is a note
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_is_note(ref : Ptr[git_reference]): CInt = extern
 
   /**
    * Check if a reference is a remote tracking branch
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_is_remote(ref : Ptr[git_reference]): CInt = extern
 
   /**
    * Check if a reference is a tag
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_is_tag(ref : Ptr[git_reference]): CInt = extern
 
   /**
    * Ensure the reference name is well-formed.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_reference_is_valid_name(refname : CString): CInt = extern
 
   /**
    * Free the iterator and its associated resources
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_iterator_free(iter : Ptr[git_reference_iterator]): Unit = extern
 
   /**
    * Create an iterator for the repo's references that match the specified glob
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_iterator_glob_new(out : Ptr[Ptr[git_reference_iterator]], repo : Ptr[git_repository], glob : CString): CInt = extern
 
   /**
    * Create an iterator for the repo's references
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_iterator_new(out : Ptr[Ptr[git_reference_iterator]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Fill a list with all the references that can be found in a repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_list(array : Ptr[git_strarray], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Lookup a reference by name in a repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_lookup(out : Ptr[Ptr[git_reference]], repo : Ptr[git_repository], name : CString): CInt = extern
 
   /**
    * Get the full name of a reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_name(ref : Ptr[git_reference]): CString = extern
 
   /**
    * Ensure the reference name is well-formed.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_name_is_valid(valid : Ptr[CInt], refname : CString): CInt = extern
 
   /**
    * Lookup a reference by name and resolve immediately to OID.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_name_to_id(out : Ptr[git_oid], repo : Ptr[git_repository], name : CString): CInt = extern
 
   /**
    * Get the next reference
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_next(out : Ptr[Ptr[git_reference]], iter : Ptr[git_reference_iterator]): CInt = extern
 
   /**
    * Get the next reference's name
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_next_name(out : Ptr[CString], iter : Ptr[git_reference_iterator]): CInt = extern
 
   /**
    * Normalize reference name and check validity.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_normalize_name(buffer_out : CString, buffer_size : size_t, name : CString, flags : CUnsignedInt): CInt = extern
 
   /**
    * Get the repository where a reference resides.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_owner(ref : Ptr[git_reference]): Ptr[git_repository] = extern
 
   /**
    * Recursively peel reference until object of the specified type is found.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_peel(out : Ptr[Ptr[git_object]], ref : Ptr[git_reference], `type` : git_object_t): CInt = extern
 
   /**
    * Delete an existing reference by name
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_remove(repo : Ptr[git_repository], name : CString): CInt = extern
 
   /**
    * Rename an existing reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_rename(new_ref : Ptr[Ptr[git_reference]], ref : Ptr[git_reference], new_name : CString, force : CInt, log_message : CString): CInt = extern
 
   /**
    * Resolve a symbolic reference to a direct reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_resolve(out : Ptr[Ptr[git_reference]], ref : Ptr[git_reference]): CInt = extern
 
   /**
    * Conditionally create a new reference with the same name as the given reference but a different OID target. The reference must be a direct reference, otherwise this will fail.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_set_target(out : Ptr[Ptr[git_reference]], ref : Ptr[git_reference], id : Ptr[git_oid], log_message : CString): CInt = extern
 
   /**
    * Get the reference's short name
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_shorthand(ref : Ptr[git_reference]): CString = extern
 
   /**
    * Create a new symbolic reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_symbolic_create(out : Ptr[Ptr[git_reference]], repo : Ptr[git_repository], name : CString, target : CString, force : CInt, log_message : CString): CInt = extern
 
   /**
    * Conditionally create a new symbolic reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_symbolic_create_matching(out : Ptr[Ptr[git_reference]], repo : Ptr[git_repository], name : CString, target : CString, force : CInt, current_value : CString, log_message : CString): CInt = extern
 
   /**
    * Create a new reference with the same name as the given reference but a different symbolic target. The reference must be a symbolic reference, otherwise this will fail.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_symbolic_set_target(out : Ptr[Ptr[git_reference]], ref : Ptr[git_reference], target : CString, log_message : CString): CInt = extern
 
   /**
    * Get full name to the reference pointed to by a symbolic reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_symbolic_target(ref : Ptr[git_reference]): CString = extern
 
   /**
    * Get the OID pointed to by a direct reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_target(ref : Ptr[git_reference]): Ptr[git_oid] = extern
 
   /**
    * Return the peeled OID target of this reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_target_peel(ref : Ptr[git_reference]): Ptr[git_oid] = extern
 
   /**
    * Get the type of a reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refs.h
   */
   def git_reference_type(ref : Ptr[git_reference]): git_reference_t = extern
 
   /**
    * Add a new entry to the in-memory reflog.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reflog.h
   */
   def git_reflog_append(reflog : Ptr[git_reflog], id : Ptr[git_oid], committer : Ptr[git_signature], msg : CString): CInt = extern
 
   /**
    * Delete the reflog for the given reference
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reflog.h
   */
   def git_reflog_delete(repo : Ptr[git_repository], name : CString): CInt = extern
 
   /**
    * Remove an entry from the reflog by its index
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reflog.h
   */
   def git_reflog_drop(reflog : Ptr[git_reflog], idx : size_t, rewrite_previous_entry : CInt): CInt = extern
 
   /**
    * Lookup an entry by its index
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reflog.h
   */
   def git_reflog_entry_byindex(reflog : Ptr[git_reflog], idx : size_t): Ptr[git_reflog_entry] = extern
 
   /**
    * Get the committer of this entry
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reflog.h
   */
   def git_reflog_entry_committer(entry : Ptr[git_reflog_entry]): Ptr[git_signature] = extern
 
   /**
    * Get the new oid
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reflog.h
   */
   def git_reflog_entry_id_new(entry : Ptr[git_reflog_entry]): Ptr[git_oid] = extern
 
   /**
    * Get the old oid
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reflog.h
   */
   def git_reflog_entry_id_old(entry : Ptr[git_reflog_entry]): Ptr[git_oid] = extern
 
   /**
    * Get the log message
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reflog.h
   */
   def git_reflog_entry_message(entry : Ptr[git_reflog_entry]): CString = extern
 
   /**
    * Get the number of log entries in a reflog
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reflog.h
   */
   def git_reflog_entrycount(reflog : Ptr[git_reflog]): size_t = extern
 
   /**
    * Free the reflog
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reflog.h
   */
   def git_reflog_free(reflog : Ptr[git_reflog]): Unit = extern
 
   /**
    * Read the reflog for the given reference
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reflog.h
   */
   def git_reflog_read(out : Ptr[Ptr[git_reflog]], repo : Ptr[git_repository], name : CString): CInt = extern
 
   /**
    * Rename a reflog
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reflog.h
   */
   def git_reflog_rename(repo : Ptr[git_repository], old_name : CString, name : CString): CInt = extern
 
   /**
    * Write an existing in-memory reflog object back to disk using an atomic file lock.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reflog.h
   */
   def git_reflog_write(reflog : Ptr[git_reflog]): CInt = extern
 
   /**
    * Get the refspec's direction.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refspec.h
   */
   def git_refspec_direction(spec : Ptr[git_refspec]): git_direction = extern
 
   /**
    * Get the destination specifier
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refspec.h
   */
   def git_refspec_dst(refspec : Ptr[git_refspec]): CString = extern
 
   /**
    * Check if a refspec's destination descriptor matches a reference
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refspec.h
   */
   def git_refspec_dst_matches(refspec : Ptr[git_refspec], refname : CString): CInt = extern
 
   /**
    * Get the force update setting
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refspec.h
   */
   def git_refspec_force(refspec : Ptr[git_refspec]): CInt = extern
 
   /**
    * Free a refspec object which has been created by git_refspec_parse
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refspec.h
   */
   def git_refspec_free(refspec : Ptr[git_refspec]): Unit = extern
 
   /**
    * Parse a given refspec string
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refspec.h
   */
   def git_refspec_parse(refspec : Ptr[Ptr[git_refspec]], input : CString, is_fetch : CInt): CInt = extern
 
   /**
    * Transform a target reference to its source reference following the refspec's rules
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refspec.h
   */
   def git_refspec_rtransform(out : Ptr[git_buf], spec : Ptr[git_refspec], name : CString): CInt = extern
 
   /**
    * Get the source specifier
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refspec.h
   */
   def git_refspec_src(refspec : Ptr[git_refspec]): CString = extern
 
   /**
    * Check if a refspec's source descriptor matches a reference
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refspec.h
   */
   def git_refspec_src_matches(refspec : Ptr[git_refspec], refname : CString): CInt = extern
 
   /**
    * Get the refspec's string
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refspec.h
   */
   def git_refspec_string(refspec : Ptr[git_refspec]): CString = extern
 
   /**
    * Transform a reference to its target following the refspec's rules
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/refspec.h
   */
   def git_refspec_transform(out : Ptr[git_buf], spec : Ptr[git_refspec], name : CString): CInt = extern
 
   /**
    * Add a fetch refspec to the remote's configuration
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_add_fetch(repo : Ptr[git_repository], remote : CString, refspec : CString): CInt = extern
 
   /**
    * Add a push refspec to the remote's configuration
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_add_push(repo : Ptr[git_repository], remote : CString, refspec : CString): CInt = extern
 
   /**
    * Retrieve the tag auto-follow setting
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_autotag(remote : Ptr[git_remote]): git_remote_autotag_option_t = extern
 
   /**
    * Open a connection to a remote.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_connect(remote : Ptr[git_remote], direction : git_direction, callbacks : Ptr[git_remote_callbacks], proxy_opts : Ptr[git_proxy_options], custom_headers : Ptr[git_strarray]): CInt = extern
 
   /**
    * Open a connection to a remote with extended options.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_connect_ext(remote : Ptr[git_remote], direction : git_direction, opts : Ptr[git_remote_connect_options]): CInt = extern
 
   /**
    * Initialize git_remote_connect_options structure.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_connect_options_init(opts : Ptr[git_remote_connect_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Check whether the remote is connected
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_connected(remote : Ptr[git_remote]): CInt = extern
 
   /**
    * Add a remote with the default fetch refspec to the repository's configuration.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_create(out : Ptr[Ptr[git_remote]], repo : Ptr[git_repository], name : CString, url : CString): CInt = extern
 
   /**
    * Create an anonymous remote
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_create_anonymous(out : Ptr[Ptr[git_remote]], repo : Ptr[git_repository], url : CString): CInt = extern
 
   /**
    * Create a remote without a connected local repo
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_create_detached(out : Ptr[Ptr[git_remote]], url : CString): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_remote_create_init_options(opts : Ptr[git_remote_create_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_remote_create_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_create_options_init(opts : Ptr[git_remote_create_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Add a remote with the provided fetch refspec (or default if NULL) to the repository's configuration.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_create_with_fetchspec(out : Ptr[Ptr[git_remote]], repo : Ptr[git_repository], name : CString, url : CString, fetch : CString): CInt = extern
 
   /**
    * Create a remote, with options.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_create_with_opts(out : Ptr[Ptr[git_remote]], url : CString, opts : Ptr[git_remote_create_options]): CInt = extern
 
   /**
    * Retrieve the name of the remote's default branch
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_default_branch(out : Ptr[git_buf], remote : Ptr[git_remote]): CInt = extern
 
   /**
    * Delete an existing persisted remote.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_delete(repo : Ptr[git_repository], name : CString): CInt = extern
 
   /**
    * Disconnect from the remote
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_disconnect(remote : Ptr[git_remote]): CInt = extern
 
   /**
    * Download and index the packfile.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_download(remote : Ptr[git_remote], refspecs : Ptr[git_strarray], opts : Ptr[git_fetch_options]): CInt = extern
 
   /**
    * Create a copy of an existing remote. All internal strings are also duplicated. Callbacks are not duplicated.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_dup(dest : Ptr[Ptr[git_remote]], source : Ptr[git_remote]): CInt = extern
 
   /**
    * Download new data and update tips.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_fetch(remote : Ptr[git_remote], refspecs : Ptr[git_strarray], opts : Ptr[git_fetch_options], reflog_message : CString): CInt = extern
 
   /**
    * Free the memory associated with a remote
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_free(remote : Ptr[git_remote]): Unit = extern
 
   /**
    * Get the remote's list of fetch refspecs
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_get_fetch_refspecs(array : Ptr[git_strarray], remote : Ptr[git_remote]): CInt = extern
 
   /**
    * Get the remote's list of push refspecs
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_get_push_refspecs(array : Ptr[git_strarray], remote : Ptr[git_remote]): CInt = extern
 
   /**
    * Get a refspec from the remote
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_get_refspec(remote : Ptr[git_remote], n : size_t): Ptr[git_refspec] = extern
 
   /**
    * Initializes a `git_remote_callbacks` with default values. Equivalent to creating an instance with GIT_REMOTE_CALLBACKS_INIT.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_init_callbacks(opts : Ptr[git_remote_callbacks], version : CUnsignedInt): CInt = extern
 
   /**
    * Ensure the remote name is well-formed.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_remote_is_valid_name(remote_name : CString): CInt = extern
 
   /**
    * Get a list of the configured remotes for a repo
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_list(out : Ptr[git_strarray], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Get the information for a particular remote
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_lookup(out : Ptr[Ptr[git_remote]], repo : Ptr[git_repository], name : CString): CInt = extern
 
   /**
    * Get the remote repository's reference advertisement list
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_ls(out : Ptr[Ptr[Ptr[git_remote_head]]], size : Ptr[size_t], remote : Ptr[git_remote]): CInt = extern
 
   /**
    * Get the remote's name
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_name(remote : Ptr[git_remote]): CString = extern
 
   /**
    * Ensure the remote name is well-formed.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_name_is_valid(valid : Ptr[CInt], remote_name : CString): CInt = extern
 
   /**
    * Get the remote's repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_owner(remote : Ptr[git_remote]): Ptr[git_repository] = extern
 
   /**
    * Prune tracking refs that are no longer present on remote.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_prune(remote : Ptr[git_remote], callbacks : Ptr[git_remote_callbacks]): CInt = extern
 
   /**
    * Retrieve the ref-prune setting
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_prune_refs(remote : Ptr[git_remote]): CInt = extern
 
   /**
    * Perform a push.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_push(remote : Ptr[git_remote], refspecs : Ptr[git_strarray], opts : Ptr[git_push_options]): CInt = extern
 
   /**
    * Get the remote's url for pushing.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_pushurl(remote : Ptr[git_remote]): CString = extern
 
   /**
    * Get the number of refspecs for a remote
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_refspec_count(remote : Ptr[git_remote]): size_t = extern
 
   /**
    * Give the remote a new name
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_rename(problems : Ptr[git_strarray], repo : Ptr[git_repository], name : CString, new_name : CString): CInt = extern
 
   /**
    * Set the remote's tag following setting.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_set_autotag(repo : Ptr[git_repository], remote : CString, value : git_remote_autotag_option_t): CInt = extern
 
   /**
    * Set the push url for this particular url instance. The URL in the configuration will be ignored, and will not be changed.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_set_instance_pushurl(remote : Ptr[git_remote], url : CString): CInt = extern
 
   /**
    * Set the url for this particular url instance. The URL in the configuration will be ignored, and will not be changed.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_set_instance_url(remote : Ptr[git_remote], url : CString): CInt = extern
 
   /**
    * Set the remote's url for pushing in the configuration.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_set_pushurl(repo : Ptr[git_repository], remote : CString, url : CString): CInt = extern
 
   /**
    * Set the remote's url in the configuration
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_set_url(repo : Ptr[git_repository], remote : CString, url : CString): CInt = extern
 
   /**
    * Get the statistics structure that is filled in by the fetch operation.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_stats(remote : Ptr[git_remote]): Ptr[git_indexer_progress] = extern
 
   /**
    * Cancel the operation
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_stop(remote : Ptr[git_remote]): CInt = extern
 
   /**
    * Update the tips to the new state.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_update_tips(remote : Ptr[git_remote], callbacks : Ptr[git_remote_callbacks], update_fetchhead : CInt, download_tags : git_remote_autotag_option_t, reflog_message : CString): CInt = extern
 
   /**
    * Create a packfile and send it to the server
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_upload(remote : Ptr[git_remote], refspecs : Ptr[git_strarray], opts : Ptr[git_push_options]): CInt = extern
 
   /**
    * Get the remote's url
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/remote.h
   */
   def git_remote_url(remote : Ptr[git_remote]): CString = extern
 
   /**
    * Get the path of the shared common directory for this repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_commondir(repo : Ptr[git_repository]): CString = extern
 
   /**
    * Get the configuration file for this repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_config(out : Ptr[Ptr[git_config]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Get a snapshot of the repository's configuration
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_config_snapshot(out : Ptr[Ptr[git_config]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Detach the HEAD.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_detach_head(repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Look for a git repository and copy its path in the given buffer. The lookup start from base_path and walk across parent directories if nothing has been found. The lookup ends when the first repository is found, or when reaching a directory referenced in ceiling_dirs or when the filesystem changes (in case across_fs is true).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_discover(out : Ptr[git_buf], start_path : CString, across_fs : CInt, ceiling_dirs : CString): CInt = extern
 
   /**
    * Invoke 'callback' for each entry in the given FETCH_HEAD file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_fetchhead_foreach(repo : Ptr[git_repository], callback : git_repository_fetchhead_foreach_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Free a previously allocated repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_free(repo : Ptr[git_repository]): Unit = extern
 
   /**
    * Get the currently active namespace for this repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_get_namespace(repo : Ptr[git_repository]): CString = extern
 
   /**
    * Calculate hash of file using repository filtering rules.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_hashfile(out : Ptr[git_oid], repo : Ptr[git_repository], path : CString, `type` : git_object_t, as_path : CString): CInt = extern
 
   /**
    * Retrieve and resolve the reference pointed at by HEAD.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_head(out : Ptr[Ptr[git_reference]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Check if a repository's HEAD is detached
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_head_detached(repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Check if a worktree's HEAD is detached
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_head_detached_for_worktree(repo : Ptr[git_repository], name : CString): CInt = extern
 
   /**
    * Retrieve the referenced HEAD for the worktree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_head_for_worktree(out : Ptr[Ptr[git_reference]], repo : Ptr[git_repository], name : CString): CInt = extern
 
   /**
    * Check if the current branch is unborn
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_head_unborn(repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Retrieve the configured identity to use for reflogs
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_ident(name : Ptr[CString], email : Ptr[CString], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Get the Index file for this repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_index(out : Ptr[Ptr[git_index]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Creates a new Git repository in the given folder.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_init(out : Ptr[Ptr[git_repository]], path : CString, is_bare : CUnsignedInt): CInt = extern
 
   /**
    * Create a new Git repository in the given folder with extended controls.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_init_ext(out : Ptr[Ptr[git_repository]], repo_path : CString, opts : Ptr[git_repository_init_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_repository_init_init_options(opts : Ptr[git_repository_init_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_repository_init_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_init_options_init(opts : Ptr[git_repository_init_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Check if a repository is bare
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_is_bare(repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Check if a repository is empty
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_is_empty(repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Determine if the repository was a shallow clone
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_is_shallow(repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Check if a repository is a linked work tree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_is_worktree(repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Get the location of a specific repository file or directory
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_item_path(out : Ptr[git_buf], repo : Ptr[git_repository], item : git_repository_item_t): CInt = extern
 
   /**
    * If a merge is in progress, invoke 'callback' for each commit ID in the MERGE_HEAD file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_mergehead_foreach(repo : Ptr[git_repository], callback : git_repository_mergehead_foreach_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Retrieve git's prepared message
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_message(out : Ptr[git_buf], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Remove git's prepared message.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_message_remove(repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Get the Object Database for this repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_odb(out : Ptr[Ptr[git_odb]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Gets the object type used by this repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_oid_type(repo : Ptr[git_repository]): git_oid_t = extern
 
   /**
    * Open a git repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_open(out : Ptr[Ptr[git_repository]], path : CString): CInt = extern
 
   /**
    * Open a bare repository on the serverside.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_open_bare(out : Ptr[Ptr[git_repository]], bare_path : CString): CInt = extern
 
   /**
    * Find and open a repository with extended controls.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_open_ext(out : Ptr[Ptr[git_repository]], path : CString, flags : CUnsignedInt, ceiling_dirs : CString): CInt = extern
 
   /**
    * Open working tree as a repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_open_from_worktree(out : Ptr[Ptr[git_repository]], wt : Ptr[git_worktree]): CInt = extern
 
   /**
    * Get the path of this repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_path(repo : Ptr[git_repository]): CString = extern
 
   /**
    * Get the Reference Database Backend for this repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_refdb(out : Ptr[Ptr[git_refdb]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Make the repository HEAD point to the specified reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_set_head(repo : Ptr[git_repository], refname : CString): CInt = extern
 
   /**
    * Make the repository HEAD directly point to the Commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_set_head_detached(repo : Ptr[git_repository], committish : Ptr[git_oid]): CInt = extern
 
   /**
    * Make the repository HEAD directly point to the Commit.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_set_head_detached_from_annotated(repo : Ptr[git_repository], committish : Ptr[git_annotated_commit]): CInt = extern
 
   /**
    * Set the identity to be used for writing reflogs
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_set_ident(repo : Ptr[git_repository], name : CString, email : CString): CInt = extern
 
   /**
    * Sets the active namespace for this Git Repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_set_namespace(repo : Ptr[git_repository], nmspace : CString): CInt = extern
 
   /**
    * Set the path to the working directory for this repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_set_workdir(repo : Ptr[git_repository], workdir : CString, update_gitlink : CInt): CInt = extern
 
   /**
    * Determines the status of a git repository - ie, whether an operation (merge, cherry-pick, etc) is in progress.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_state(repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Remove all the metadata associated with an ongoing command like merge, revert, cherry-pick, etc. For example: MERGE_HEAD, MERGE_MSG, etc.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_state_cleanup(repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Get the path of the working directory for this repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_workdir(repo : Ptr[git_repository]): CString = extern
 
   /**
    * Create a "fake" repository to wrap an object database
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/repository.h
   */
   def git_repository_wrap_odb(out : Ptr[Ptr[git_repository]], odb : Ptr[git_odb]): CInt = extern
 
   /**
    * Sets the current head to the specified commit oid and optionally resets the index and working tree to match.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reset.h
   */
   def git_reset(repo : Ptr[git_repository], target : Ptr[git_object], reset_type : git_reset_t, checkout_opts : Ptr[git_checkout_options]): CInt = extern
 
   /**
    * Updates some entries in the index from the target commit tree.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reset.h
   */
   def git_reset_default(repo : Ptr[git_repository], target : Ptr[git_object], pathspecs : Ptr[git_strarray]): CInt = extern
 
   /**
    * Sets the current head to the specified commit oid and optionally resets the index and working tree to match.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/reset.h
   */
   def git_reset_from_annotated(repo : Ptr[git_repository], commit : Ptr[git_annotated_commit], reset_type : git_reset_t, checkout_opts : Ptr[git_checkout_options]): CInt = extern
 
   /**
    * Reverts the given commit, producing changes in the index and working directory.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revert.h
   */
   def git_revert(repo : Ptr[git_repository], commit : Ptr[git_commit], given_opts : Ptr[git_revert_options]): CInt = extern
 
   /**
    * Reverts the given commit against the given "our" commit, producing an index that reflects the result of the revert.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revert.h
   */
   def git_revert_commit(out : Ptr[Ptr[git_index]], repo : Ptr[git_repository], revert_commit : Ptr[git_commit], our_commit : Ptr[git_commit], mainline : CUnsignedInt, merge_options : Ptr[git_merge_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_revert_init_options(opts : Ptr[git_revert_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_revert_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revert.h
   */
   def git_revert_options_init(opts : Ptr[git_revert_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Parse a revision string for `from`, `to`, and intent.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revparse.h
   */
   def git_revparse(revspec : Ptr[git_revspec], repo : Ptr[git_repository], spec : CString): CInt = extern
 
   /**
    * Find a single object and intermediate reference by a revision string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revparse.h
   */
   def git_revparse_ext(object_out : Ptr[Ptr[git_object]], reference_out : Ptr[Ptr[git_reference]], repo : Ptr[git_repository], spec : CString): CInt = extern
 
   /**
    * Find a single object, as specified by a revision string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revparse.h
   */
   def git_revparse_single(out : Ptr[Ptr[git_object]], repo : Ptr[git_repository], spec : CString): CInt = extern
 
   /**
    * Adds, changes or removes a callback function to hide a commit and its parents
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_add_hide_cb(walk : Ptr[git_revwalk], hide_cb : git_revwalk_hide_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Free a revision walker previously allocated.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_free(walk : Ptr[git_revwalk]): Unit = extern
 
   /**
    * Mark a commit (and its ancestors) uninteresting for the output.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_hide(walk : Ptr[git_revwalk], commit_id : Ptr[git_oid]): CInt = extern
 
   /**
    * Hide matching references.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_hide_glob(walk : Ptr[git_revwalk], glob : CString): CInt = extern
 
   /**
    * Hide the repository's HEAD
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_hide_head(walk : Ptr[git_revwalk]): CInt = extern
 
   /**
    * Hide the OID pointed to by a reference
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_hide_ref(walk : Ptr[git_revwalk], refname : CString): CInt = extern
 
   /**
    * Allocate a new revision walker to iterate through a repo.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_new(out : Ptr[Ptr[git_revwalk]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Get the next commit from the revision walk.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_next(out : Ptr[git_oid], walk : Ptr[git_revwalk]): CInt = extern
 
   /**
    * Add a new root for the traversal
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_push(walk : Ptr[git_revwalk], id : Ptr[git_oid]): CInt = extern
 
   /**
    * Push matching references
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_push_glob(walk : Ptr[git_revwalk], glob : CString): CInt = extern
 
   /**
    * Push the repository's HEAD
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_push_head(walk : Ptr[git_revwalk]): CInt = extern
 
   /**
    * Push and hide the respective endpoints of the given range.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_push_range(walk : Ptr[git_revwalk], range : CString): CInt = extern
 
   /**
    * Push the OID pointed to by a reference
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_push_ref(walk : Ptr[git_revwalk], refname : CString): CInt = extern
 
   /**
    * Return the repository on which this walker is operating.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_repository(walk : Ptr[git_revwalk]): Ptr[git_repository] = extern
 
   /**
    * Reset the revision walker for reuse.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_reset(walker : Ptr[git_revwalk]): CInt = extern
 
   /**
    * Simplify the history by first-parent
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_simplify_first_parent(walk : Ptr[git_revwalk]): CInt = extern
 
   /**
    * Change the sorting mode when iterating through the repository's contents.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/revwalk.h
   */
   def git_revwalk_sorting(walk : Ptr[git_revwalk], sort_mode : CUnsignedInt): CInt = extern
 
   /**
    * Create a new action signature with default user and now timestamp.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/signature.h
   */
   def git_signature_default(out : Ptr[Ptr[git_signature]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Create a copy of an existing signature. All internal strings are also duplicated.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/signature.h
   */
   def git_signature_dup(dest : Ptr[Ptr[git_signature]], sig : Ptr[git_signature]): CInt = extern
 
   /**
    * Free an existing signature.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/signature.h
   */
   def git_signature_free(sig : Ptr[git_signature]): Unit = extern
 
   /**
    * Create a new signature by parsing the given buffer, which is expected to be in the format "Real Name <email> timestamp tzoffset", where `timestamp` is the number of seconds since the Unix epoch and `tzoffset` is the timezone offset in `hhmm` format (note the lack of a colon separator).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/signature.h
   */
   def git_signature_from_buffer(out : Ptr[Ptr[git_signature]], buf : CString): CInt = extern
 
   /**
    * Create a new action signature.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/signature.h
   */
   def git_signature_new(out : Ptr[Ptr[git_signature]], name : CString, email : CString, time : git_time_t, offset : CInt): CInt = extern
 
   /**
    * Create a new action signature with a timestamp of 'now'.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/signature.h
   */
   def git_signature_now(out : Ptr[Ptr[git_signature]], name : CString, email : CString): CInt = extern
 
   /**
    * Apply a single stashed state from the stash list.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   def git_stash_apply(repo : Ptr[git_repository], index : size_t, options : Ptr[git_stash_apply_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_stash_apply_init_options(opts : Ptr[git_stash_apply_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_stash_apply_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   def git_stash_apply_options_init(opts : Ptr[git_stash_apply_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Remove a single stashed state from the stash list.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   def git_stash_drop(repo : Ptr[git_repository], index : size_t): CInt = extern
 
   /**
    * Loop over all the stashed states and issue a callback for each one.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   def git_stash_foreach(repo : Ptr[git_repository], callback : git_stash_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Apply a single stashed state from the stash list and remove it from the list if successful.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   def git_stash_pop(repo : Ptr[git_repository], index : size_t, options : Ptr[git_stash_apply_options]): CInt = extern
 
   /**
    * Save the local modifications to a new stash.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   def git_stash_save(out : Ptr[git_oid], repo : Ptr[git_repository], stasher : Ptr[git_signature], message : CString, flags : uint32_t): CInt = extern
 
   /**
    * Initialize git_stash_save_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   def git_stash_save_options_init(opts : Ptr[git_stash_save_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Save the local modifications to a new stash, with options.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/stash.h
   */
   def git_stash_save_with_opts(out : Ptr[git_oid], repo : Ptr[git_repository], opts : Ptr[git_stash_save_options]): CInt = extern
 
   /**
    * Get a pointer to one of the entries in the status list.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   def git_status_byindex(statuslist : Ptr[git_status_list], idx : size_t): Ptr[git_status_entry] = extern
 
   /**
    * Get file status for a single file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   def git_status_file(status_flags : Ptr[CUnsignedInt], repo : Ptr[git_repository], path : CString): CInt = extern
 
   /**
    * Gather file statuses and run a callback for each one.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   def git_status_foreach(repo : Ptr[git_repository], callback : git_status_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Gather file status information and run callbacks as requested.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   def git_status_foreach_ext(repo : Ptr[git_repository], opts : Ptr[git_status_options], callback : git_status_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_status_init_options(opts : Ptr[git_status_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Gets the count of status entries in this list.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   def git_status_list_entrycount(statuslist : Ptr[git_status_list]): size_t = extern
 
   /**
    * Free an existing status list
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   def git_status_list_free(statuslist : Ptr[git_status_list]): Unit = extern
 
   /**
    * Gather file status information and populate the `git_status_list`.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   def git_status_list_new(out : Ptr[Ptr[git_status_list]], repo : Ptr[git_repository], opts : Ptr[git_status_options]): CInt = extern
 
   /**
    * Initialize git_status_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   def git_status_options_init(opts : Ptr[git_status_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Test if the ignore rules apply to a given file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/status.h
   */
   def git_status_should_ignore(ignored : Ptr[CInt], repo : Ptr[git_repository], path : CString): CInt = extern
 
   /**
    * Copy a string array object from source to target.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_strarray_copy(tgt : Ptr[git_strarray], src : Ptr[git_strarray]): CInt = extern
 
   /**
    * Free the strings contained in a string array. This method should be called on `git_strarray` objects that were provided by the library. Not doing so, will result in a memory leak.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/strarray.h
   */
   def git_strarray_dispose(array : Ptr[git_strarray]): Unit = extern
 
   /**
    * Free the memory referred to by the git_strarray. This is an alias of `git_strarray_dispose` and is preserved for backward compatibility.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_strarray_free(array : Ptr[git_strarray]): Unit = extern
 
   /**
    * Resolve the setup of a new git submodule.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_add_finalize(submodule : Ptr[git_submodule]): CInt = extern
 
   /**
    * Set up a new git submodule for checkout.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_add_setup(out : Ptr[Ptr[git_submodule]], repo : Ptr[git_repository], url : CString, path : CString, use_gitlink : CInt): CInt = extern
 
   /**
    * Add current submodule HEAD commit to index of superproject.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_add_to_index(submodule : Ptr[git_submodule], write_index : CInt): CInt = extern
 
   /**
    * Get the branch for the submodule.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_branch(submodule : Ptr[git_submodule]): CString = extern
 
   /**
    * Perform the clone step for a newly created submodule.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_clone(out : Ptr[Ptr[git_repository]], submodule : Ptr[git_submodule], opts : Ptr[git_submodule_update_options]): CInt = extern
 
   /**
    * Create an in-memory copy of a submodule. The copy must be explicitly free'd or it will leak.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_dup(out : Ptr[Ptr[git_submodule]], source : Ptr[git_submodule]): CInt = extern
 
   /**
    * Read the fetchRecurseSubmodules rule for a submodule.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_fetch_recurse_submodules(submodule : Ptr[git_submodule]): git_submodule_recurse_t = extern
 
   /**
    * Iterate over all tracked submodules of a repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_foreach(repo : Ptr[git_repository], callback : git_submodule_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Release a submodule
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_free(submodule : Ptr[git_submodule]): Unit = extern
 
   /**
    * Get the OID for the submodule in the current HEAD tree.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_head_id(submodule : Ptr[git_submodule]): Ptr[git_oid] = extern
 
   /**
    * Get the ignore rule that will be used for the submodule.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_ignore(submodule : Ptr[git_submodule]): git_submodule_ignore_t = extern
 
   /**
    * Get the OID for the submodule in the index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_index_id(submodule : Ptr[git_submodule]): Ptr[git_oid] = extern
 
   /**
    * Copy submodule info into ".git/config" file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_init(submodule : Ptr[git_submodule], overwrite : CInt): CInt = extern
 
   /**
    * Get the locations of submodule information.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_location(location_status : Ptr[CUnsignedInt], submodule : Ptr[git_submodule]): CInt = extern
 
   /**
    * Lookup submodule information by name or path.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_lookup(out : Ptr[Ptr[git_submodule]], repo : Ptr[git_repository], name : CString): CInt = extern
 
   /**
    * Get the name of submodule.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_name(submodule : Ptr[git_submodule]): CString = extern
 
   /**
    * Open the repository for a submodule.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_open(repo : Ptr[Ptr[git_repository]], submodule : Ptr[git_submodule]): CInt = extern
 
   /**
    * Get the containing repository for a submodule.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_owner(submodule : Ptr[git_submodule]): Ptr[git_repository] = extern
 
   /**
    * Get the path to the submodule.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_path(submodule : Ptr[git_submodule]): CString = extern
 
   /**
    * Reread submodule info from config, index, and HEAD.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_reload(submodule : Ptr[git_submodule], force : CInt): CInt = extern
 
   /**
    * Set up the subrepository for a submodule in preparation for clone.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_repo_init(out : Ptr[Ptr[git_repository]], sm : Ptr[git_submodule], use_gitlink : CInt): CInt = extern
 
   /**
    * Resolve a submodule url relative to the given repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_resolve_url(out : Ptr[git_buf], repo : Ptr[git_repository], url : CString): CInt = extern
 
   /**
    * Set the branch for the submodule in the configuration
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_set_branch(repo : Ptr[git_repository], name : CString, branch : CString): CInt = extern
 
   /**
    * Set the fetchRecurseSubmodules rule for a submodule in the configuration
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_set_fetch_recurse_submodules(repo : Ptr[git_repository], name : CString, fetch_recurse_submodules : git_submodule_recurse_t): CInt = extern
 
   /**
    * Set the ignore rule for the submodule in the configuration
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_set_ignore(repo : Ptr[git_repository], name : CString, ignore : git_submodule_ignore_t): CInt = extern
 
   /**
    * Set the update rule for the submodule in the configuration
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_set_update(repo : Ptr[git_repository], name : CString, update : git_submodule_update_t): CInt = extern
 
   /**
    * Set the URL for the submodule in the configuration
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_set_url(repo : Ptr[git_repository], name : CString, url : CString): CInt = extern
 
   /**
    * Get the status for a submodule.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_status(status : Ptr[CUnsignedInt], repo : Ptr[git_repository], name : CString, ignore : git_submodule_ignore_t): CInt = extern
 
   /**
    * Copy submodule remote info into submodule repo.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_sync(submodule : Ptr[git_submodule]): CInt = extern
 
   /**
    * Update a submodule. This will clone a missing submodule and checkout the subrepository to the commit specified in the index of the containing repository. If the submodule repository doesn't contain the target commit (e.g. because fetchRecurseSubmodules isn't set), then the submodule is fetched using the fetch options supplied in options.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_update(submodule : Ptr[git_submodule], init : CInt, options : Ptr[git_submodule_update_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_submodule_update_init_options(opts : Ptr[git_submodule_update_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_submodule_update_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_update_options_init(opts : Ptr[git_submodule_update_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Get the update rule that will be used for the submodule.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_update_strategy(submodule : Ptr[git_submodule]): git_submodule_update_t = extern
 
   /**
    * Get the URL for the submodule.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_url(submodule : Ptr[git_submodule]): CString = extern
 
   /**
    * Get the OID for the submodule in the current working directory.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/submodule.h
   */
   def git_submodule_wd_id(submodule : Ptr[git_submodule]): Ptr[git_oid] = extern
 
   /**
    * Create a new tag in the object database pointing to a git_object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_annotation_create(oid : Ptr[git_oid], repo : Ptr[git_repository], tag_name : CString, target : Ptr[git_object], tagger : Ptr[git_signature], message : CString): CInt = extern
 
   /**
    * Create a new tag in the repository from an object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_create(oid : Ptr[git_oid], repo : Ptr[git_repository], tag_name : CString, target : Ptr[git_object], tagger : Ptr[git_signature], message : CString, force : CInt): CInt = extern
 
   /**
    * Create a new tag in the repository from a buffer
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_create_from_buffer(oid : Ptr[git_oid], repo : Ptr[git_repository], buffer : CString, force : CInt): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_tag_create_frombuffer(oid : Ptr[git_oid], repo : Ptr[git_repository], buffer : CString, force : CInt): CInt = extern
 
   /**
    * Create a new lightweight tag pointing at a target object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_create_lightweight(oid : Ptr[git_oid], repo : Ptr[git_repository], tag_name : CString, target : Ptr[git_object], force : CInt): CInt = extern
 
   /**
    * Delete an existing tag reference.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_delete(repo : Ptr[git_repository], tag_name : CString): CInt = extern
 
   /**
    * Create an in-memory copy of a tag. The copy must be explicitly free'd or it will leak.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_dup(out : Ptr[Ptr[git_tag]], source : Ptr[git_tag]): CInt = extern
 
   /**
    * Call callback `cb' for each tag in the repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_foreach(repo : Ptr[git_repository], callback : git_tag_foreach_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Close an open tag
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_free(tag : Ptr[git_tag]): Unit = extern
 
   /**
    * Get the id of a tag.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_id(tag : Ptr[git_tag]): Ptr[git_oid] = extern
 
   /**
    * Fill a list with all the tags in the Repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_list(tag_names : Ptr[git_strarray], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Fill a list with all the tags in the Repository which name match a defined pattern
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_list_match(tag_names : Ptr[git_strarray], pattern : CString, repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Lookup a tag object from the repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_lookup(out : Ptr[Ptr[git_tag]], repo : Ptr[git_repository], id : Ptr[git_oid]): CInt = extern
 
   /**
    * Lookup a tag object from the repository, given a prefix of its identifier (short id).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_lookup_prefix(out : Ptr[Ptr[git_tag]], repo : Ptr[git_repository], id : Ptr[git_oid], len : size_t): CInt = extern
 
   /**
    * Get the message of a tag
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_message(tag : Ptr[git_tag]): CString = extern
 
   /**
    * Get the name of a tag
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_name(tag : Ptr[git_tag]): CString = extern
 
   /**
    * Determine whether a tag name is valid, meaning that (when prefixed with `refs/tags/`) that it is a valid reference name, and that any additional tag name restrictions are imposed (eg, it cannot start with a `-`).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_name_is_valid(valid : Ptr[CInt], name : CString): CInt = extern
 
   /**
    * Get the repository that contains the tag.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_owner(tag : Ptr[git_tag]): Ptr[git_repository] = extern
 
   /**
    * Recursively peel a tag until a non tag git_object is found
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_peel(tag_target_out : Ptr[Ptr[git_object]], tag : Ptr[git_tag]): CInt = extern
 
   /**
    * Get the tagger (author) of a tag
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_tagger(tag : Ptr[git_tag]): Ptr[git_signature] = extern
 
   /**
    * Get the tagged object of a tag
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_target(target_out : Ptr[Ptr[git_object]], tag : Ptr[git_tag]): CInt = extern
 
   /**
    * Get the OID of the tagged object of a tag
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_target_id(tag : Ptr[git_tag]): Ptr[git_oid] = extern
 
   /**
    * Get the type of a tag's tagged object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tag.h
   */
   def git_tag_target_type(tag : Ptr[git_tag]): git_object_t = extern
 
   /**
    * Sets the system tracing configuration to the specified level with the specified callback. When system events occur at a level equal to, or lower than, the given level they will be reported to the given callback.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/trace.h
   */
   def git_trace_set(level : git_trace_level_t, cb : git_trace_cb): CInt = extern
 
   /**
    * Commit the changes from the transaction
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/transaction.h
   */
   def git_transaction_commit(tx : Ptr[git_transaction]): CInt = extern
 
   /**
    * Free the resources allocated by this transaction
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/transaction.h
   */
   def git_transaction_free(tx : Ptr[git_transaction]): Unit = extern
 
   /**
    * Lock a reference
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/transaction.h
   */
   def git_transaction_lock_ref(tx : Ptr[git_transaction], refname : CString): CInt = extern
 
   /**
    * Create a new transaction object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/transaction.h
   */
   def git_transaction_new(out : Ptr[Ptr[git_transaction]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Remove a reference
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/transaction.h
   */
   def git_transaction_remove(tx : Ptr[git_transaction], refname : CString): CInt = extern
 
   /**
    * Set the reflog of a reference
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/transaction.h
   */
   def git_transaction_set_reflog(tx : Ptr[git_transaction], refname : CString, reflog : Ptr[git_reflog]): CInt = extern
 
   /**
    * Set the target of a reference
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/transaction.h
   */
   def git_transaction_set_symbolic_target(tx : Ptr[git_transaction], refname : CString, target : CString, sig : Ptr[git_signature], msg : CString): CInt = extern
 
   /**
    * Set the target of a reference
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/transaction.h
   */
   def git_transaction_set_target(tx : Ptr[git_transaction], refname : CString, target : Ptr[git_oid], sig : Ptr[git_signature], msg : CString): CInt = extern
 
   /**
    * Create a tree based on another one with the specified modifications
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_create_updated(out : Ptr[git_oid], repo : Ptr[git_repository], baseline : Ptr[git_tree], nupdates : size_t, updates : Ptr[git_tree_update]): CInt = extern
 
   /**
    * Create an in-memory copy of a tree. The copy must be explicitly free'd or it will leak.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_dup(out : Ptr[Ptr[git_tree]], source : Ptr[git_tree]): CInt = extern
 
   /**
    * Lookup a tree entry by SHA value.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entry_byid(tree : Ptr[git_tree], id : Ptr[git_oid]): Ptr[git_tree_entry] = extern
 
   /**
    * Lookup a tree entry by its position in the tree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entry_byindex(tree : Ptr[git_tree], idx : size_t): Ptr[git_tree_entry] = extern
 
   /**
    * Lookup a tree entry by its filename
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entry_byname(tree : Ptr[git_tree], filename : CString): Ptr[git_tree_entry] = extern
 
   /**
    * Retrieve a tree entry contained in a tree or in any of its subtrees, given its relative path.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entry_bypath(out : Ptr[Ptr[git_tree_entry]], root : Ptr[git_tree], path : CString): CInt = extern
 
   /**
    * Compare two tree entries
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entry_cmp(e1 : Ptr[git_tree_entry], e2 : Ptr[git_tree_entry]): CInt = extern
 
   /**
    * Duplicate a tree entry
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entry_dup(dest : Ptr[Ptr[git_tree_entry]], source : Ptr[git_tree_entry]): CInt = extern
 
   /**
    * Get the UNIX file attributes of a tree entry
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entry_filemode(entry : Ptr[git_tree_entry]): git_filemode_t = extern
 
   /**
    * Get the raw UNIX file attributes of a tree entry
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entry_filemode_raw(entry : Ptr[git_tree_entry]): git_filemode_t = extern
 
   /**
    * Free a user-owned tree entry
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entry_free(entry : Ptr[git_tree_entry]): Unit = extern
 
   /**
    * Get the id of the object pointed by the entry
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entry_id(entry : Ptr[git_tree_entry]): Ptr[git_oid] = extern
 
   /**
    * Get the filename of a tree entry
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entry_name(entry : Ptr[git_tree_entry]): CString = extern
 
   /**
    * Convert a tree entry to the git_object it points to.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entry_to_object(object_out : Ptr[Ptr[git_object]], repo : Ptr[git_repository], entry : Ptr[git_tree_entry]): CInt = extern
 
   /**
    * Get the type of the object pointed by the entry
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entry_type(entry : Ptr[git_tree_entry]): git_object_t = extern
 
   /**
    * Get the number of entries listed in a tree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_entrycount(tree : Ptr[git_tree]): size_t = extern
 
   /**
    * Close an open tree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_free(tree : Ptr[git_tree]): Unit = extern
 
   /**
    * Get the id of a tree.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_id(tree : Ptr[git_tree]): Ptr[git_oid] = extern
 
   /**
    * Lookup a tree object from the repository.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_lookup(out : Ptr[Ptr[git_tree]], repo : Ptr[git_repository], id : Ptr[git_oid]): CInt = extern
 
   /**
    * Lookup a tree object from the repository, given a prefix of its identifier (short id).
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_lookup_prefix(out : Ptr[Ptr[git_tree]], repo : Ptr[git_repository], id : Ptr[git_oid], len : size_t): CInt = extern
 
   /**
    * Get the repository that contains the tree.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_owner(tree : Ptr[git_tree]): Ptr[git_repository] = extern
 
   /**
    * Traverse the entries in a tree and its subtrees in post or pre order.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_tree_walk(tree : Ptr[git_tree], mode : git_treewalk_mode, callback : git_treewalk_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Clear all the entries in the builder
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_treebuilder_clear(bld : Ptr[git_treebuilder]): CInt = extern
 
   /**
    * Get the number of entries listed in a treebuilder
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_treebuilder_entrycount(bld : Ptr[git_treebuilder]): size_t = extern
 
   /**
    * Selectively remove entries in the tree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_treebuilder_filter(bld : Ptr[git_treebuilder], filter : git_treebuilder_filter_cb, payload : Ptr[Byte]): CInt = extern
 
   /**
    * Free a tree builder
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_treebuilder_free(bld : Ptr[git_treebuilder]): Unit = extern
 
   /**
    * Get an entry from the builder from its filename
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_treebuilder_get(bld : Ptr[git_treebuilder], filename : CString): Ptr[git_tree_entry] = extern
 
   /**
    * Add or update an entry to the builder
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_treebuilder_insert(out : Ptr[Ptr[git_tree_entry]], bld : Ptr[git_treebuilder], filename : CString, id : Ptr[git_oid], filemode : git_filemode_t): CInt = extern
 
   /**
    * Create a new tree builder.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_treebuilder_new(out : Ptr[Ptr[git_treebuilder]], repo : Ptr[git_repository], source : Ptr[git_tree]): CInt = extern
 
   /**
    * Remove an entry from the builder by its filename
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_treebuilder_remove(bld : Ptr[git_treebuilder], filename : CString): CInt = extern
 
   /**
    * Write the contents of the tree builder as a tree object
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/tree.h
   */
   def git_treebuilder_write(id : Ptr[git_oid], bld : Ptr[git_treebuilder]): CInt = extern
 
   /**
    * Write the contents of the tree builder as a tree object. This is an alias of `git_treebuilder_write` and is preserved for backward compatibility.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_treebuilder_write_with_buffer(oid : Ptr[git_oid], bld : Ptr[git_treebuilder], tree : Ptr[git_buf]): CInt = extern
 
   /**
    * Add a new working tree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_add(out : Ptr[Ptr[git_worktree]], repo : Ptr[git_repository], name : CString, path : CString, opts : Ptr[git_worktree_add_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_worktree_add_init_options(opts : Ptr[git_worktree_add_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_worktree_add_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_add_options_init(opts : Ptr[git_worktree_add_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Free a previously allocated worktree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_free(wt : Ptr[git_worktree]): Unit = extern
 
   /**
    * Check if worktree is locked
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_is_locked(reason : Ptr[git_buf], wt : Ptr[git_worktree]): CInt = extern
 
   /**
    * Is the worktree prunable with the given options?
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_is_prunable(wt : Ptr[git_worktree], opts : Ptr[git_worktree_prune_options]): CInt = extern
 
   /**
    * List names of linked working trees
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_list(out : Ptr[git_strarray], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Lock worktree if not already locked
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_lock(wt : Ptr[git_worktree], reason : CString): CInt = extern
 
   /**
    * Lookup a working tree by its name for a given repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_lookup(out : Ptr[Ptr[git_worktree]], repo : Ptr[git_repository], name : CString): CInt = extern
 
   /**
    * Retrieve the name of the worktree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_name(wt : Ptr[git_worktree]): CString = extern
 
   /**
    * Open a worktree of a given repository
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_open_from_repository(out : Ptr[Ptr[git_worktree]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Retrieve the filesystem path for the worktree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_path(wt : Ptr[git_worktree]): CString = extern
 
   /**
    * Prune working tree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_prune(wt : Ptr[git_worktree], opts : Ptr[git_worktree_prune_options]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def git_worktree_prune_init_options(opts : Ptr[git_worktree_prune_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Initialize git_worktree_prune_options structure
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_prune_options_init(opts : Ptr[git_worktree_prune_options], version : CUnsignedInt): CInt = extern
 
   /**
    * Unlock a locked worktree
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_unlock(wt : Ptr[git_worktree]): CInt = extern
 
   /**
    * Check if worktree is valid
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/worktree.h
   */
   def git_worktree_validate(wt : Ptr[git_worktree]): CInt = extern
 
   /**
    * Clear the last error. This is an alias of `git_error_last` and is preserved for backward compatibility.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def giterr_clear(): Unit = extern
 
   /**
    * Return the last `git_error` object that was generated for the current thread. This is an alias of `git_error_last` and is preserved for backward compatibility.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def giterr_last(): Ptr[git_error] = extern
 
   /**
    * Indicates that an out-of-memory situation occurred. This is an alias of `git_error_set_oom` and is preserved for backward compatibility.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def giterr_set_oom(): Unit = extern
 
   /**
    * Sets the error message to the given string. This is an alias of `git_error_set_str` and is preserved for backward compatibility.
-  
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/libgit2_arm64-osx/include/git2/deprecated.h
   */
   def giterr_set_str(error_class : CInt, string : CString): Unit = extern
 

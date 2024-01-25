@@ -9,7 +9,6 @@ object aliases:
   import _root_.cjson.aliases.*
   import _root_.cjson.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   opaque type cJSON_bool = CInt
   object cJSON_bool: 
@@ -29,7 +28,6 @@ object structs:
   import _root_.cjson.aliases.*
   import _root_.cjson.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   opaque type cJSON = CStruct8[Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt, CString, CInt, Double, CString]
   object cJSON:
@@ -65,7 +63,6 @@ object structs:
       def string_=(value: CString): Unit = !struct.at8 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   opaque type cJSON_Hooks = CStruct2[CFuncPtr1[size_t, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit]]
   object cJSON_Hooks:
@@ -88,392 +85,314 @@ private[cjson] object extern_functions:
   import _root_.cjson.aliases.*
   import _root_.cjson.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddArrayToObject(`object` : Ptr[cJSON], name : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddBoolToObject(`object` : Ptr[cJSON], name : CString, boolean : cJSON_bool): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddFalseToObject(`object` : Ptr[cJSON], name : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddItemReferenceToArray(array : Ptr[cJSON], item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddItemReferenceToObject(`object` : Ptr[cJSON], string : CString, item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddItemToArray(array : Ptr[cJSON], item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddItemToObject(`object` : Ptr[cJSON], string : CString, item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddItemToObjectCS(`object` : Ptr[cJSON], string : CString, item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddNullToObject(`object` : Ptr[cJSON], name : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddNumberToObject(`object` : Ptr[cJSON], name : CString, number : Double): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddObjectToObject(`object` : Ptr[cJSON], name : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddRawToObject(`object` : Ptr[cJSON], name : CString, raw : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddStringToObject(`object` : Ptr[cJSON], name : CString, string : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_AddTrueToObject(`object` : Ptr[cJSON], name : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_Compare(a : Ptr[cJSON], b : Ptr[cJSON], case_sensitive : cJSON_bool): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateArray(): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateArrayReference(child : Ptr[cJSON]): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateBool(boolean : cJSON_bool): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateDoubleArray(numbers : Ptr[Double], count : CInt): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateFalse(): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateFloatArray(numbers : Ptr[Float], count : CInt): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateIntArray(numbers : Ptr[CInt], count : CInt): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateNull(): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateNumber(num : Double): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateObject(): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateObjectReference(child : Ptr[cJSON]): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateRaw(raw : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateString(string : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateStringArray(strings : Ptr[CString], count : CInt): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateStringReference(string : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_CreateTrue(): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_Delete(item : Ptr[cJSON]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_DeleteItemFromArray(array : Ptr[cJSON], which : CInt): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_DeleteItemFromObject(`object` : Ptr[cJSON], string : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_DeleteItemFromObjectCaseSensitive(`object` : Ptr[cJSON], string : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_DetachItemFromArray(array : Ptr[cJSON], which : CInt): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_DetachItemFromObject(`object` : Ptr[cJSON], string : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_DetachItemFromObjectCaseSensitive(`object` : Ptr[cJSON], string : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_DetachItemViaPointer(parent : Ptr[cJSON], item : Ptr[cJSON]): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_Duplicate(item : Ptr[cJSON], recurse : cJSON_bool): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_GetArrayItem(array : Ptr[cJSON], index : CInt): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_GetArraySize(array : Ptr[cJSON]): CInt = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_GetErrorPtr(): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_GetNumberValue(item : Ptr[cJSON]): Double = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_GetObjectItem(`object` : Ptr[cJSON], string : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_GetObjectItemCaseSensitive(`object` : Ptr[cJSON], string : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_GetStringValue(item : Ptr[cJSON]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_HasObjectItem(`object` : Ptr[cJSON], string : CString): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_InitHooks(hooks : Ptr[cJSON_Hooks]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_InsertItemInArray(array : Ptr[cJSON], which : CInt, newitem : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_IsArray(item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_IsBool(item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_IsFalse(item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_IsInvalid(item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_IsNull(item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_IsNumber(item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_IsObject(item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_IsRaw(item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_IsString(item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_IsTrue(item : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_Minify(json : CString): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_Parse(value : CString): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_ParseWithLength(value : CString, buffer_length : size_t): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_ParseWithLengthOpts(value : CString, buffer_length : size_t, return_parse_end : Ptr[CString], require_null_terminated : cJSON_bool): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_ParseWithOpts(value : CString, return_parse_end : Ptr[CString], require_null_terminated : cJSON_bool): Ptr[cJSON] = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_Print(item : Ptr[cJSON]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_PrintBuffered(item : Ptr[cJSON], prebuffer : CInt, fmt : cJSON_bool): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_PrintPreallocated(item : Ptr[cJSON], buffer : CString, length : CInt, format : cJSON_bool): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_PrintUnformatted(item : Ptr[cJSON]): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_ReplaceItemInArray(array : Ptr[cJSON], which : CInt, newitem : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_ReplaceItemInObject(`object` : Ptr[cJSON], string : CString, newitem : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_ReplaceItemInObjectCaseSensitive(`object` : Ptr[cJSON], string : CString, newitem : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_ReplaceItemViaPointer(parent : Ptr[cJSON], item : Ptr[cJSON], replacement : Ptr[cJSON]): cJSON_bool = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_SetNumberHelper(`object` : Ptr[cJSON], number : Double): Double = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_SetValuestring(`object` : Ptr[cJSON], valuestring : CString): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_Version(): CString = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_free(`object` : Ptr[Byte]): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg/packages/cjson_arm64-osx/include/cjson/cJSON.h
   */
   def cJSON_malloc(size : size_t): Ptr[Byte] = extern
 

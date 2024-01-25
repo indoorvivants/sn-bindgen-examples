@@ -17,7 +17,6 @@ object predef:
 object enumerations:
   import predef.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSInputEncoding = CUnsignedInt
   object TSInputEncoding extends CEnumU[TSInputEncoding]:
@@ -36,7 +35,6 @@ object enumerations:
       inline def is(b: TSInputEncoding): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSLogType = CUnsignedInt
   object TSLogType extends CEnumU[TSLogType]:
@@ -55,7 +53,6 @@ object enumerations:
       inline def is(b: TSLogType): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSQuantifier = CUnsignedInt
   object TSQuantifier extends CEnumU[TSQuantifier]:
@@ -80,7 +77,6 @@ object enumerations:
       inline def is(b: TSQuantifier): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSQueryError = CUnsignedInt
   object TSQueryError extends CEnumU[TSQueryError]:
@@ -109,7 +105,6 @@ object enumerations:
       inline def is(b: TSQueryError): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSQueryPredicateStepType = CUnsignedInt
   object TSQueryPredicateStepType extends CEnumU[TSQueryPredicateStepType]:
@@ -130,7 +125,6 @@ object enumerations:
       inline def is(b: TSQueryPredicateStepType): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSSymbolType = CUnsignedInt
   object TSSymbolType extends CEnumU[TSSymbolType]:
@@ -151,7 +145,6 @@ object enumerations:
       inline def is(b: TSSymbolType): Boolean = (a & b) == b
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSWasmErrorKind = CUnsignedInt
   object TSWasmErrorKind extends CEnumU[TSWasmErrorKind]:
@@ -181,7 +174,6 @@ object aliases:
   import _root_.treesitter.aliases.*
   import _root_.treesitter.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   type TSFieldId = uint16_t
   object TSFieldId: 
@@ -192,8 +184,6 @@ object aliases:
 
   /**
    * ****************
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   type TSStateId = uint16_t
   object TSStateId: 
@@ -203,7 +193,6 @@ object aliases:
       inline def value: uint16_t = v
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   type TSSymbol = uint16_t
   object TSSymbol: 
@@ -253,7 +242,6 @@ object structs:
   import _root_.treesitter.aliases.*
   import _root_.treesitter.structs.*
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSInput = CStruct3[Ptr[Byte], CFuncPtr4[Ptr[Byte], uint32_t, TSPoint, Ptr[uint32_t], CString], TSInputEncoding]
   object TSInput:
@@ -274,7 +262,6 @@ object structs:
       def encoding_=(value: TSInputEncoding): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSInputEdit = CStruct6[uint32_t, uint32_t, uint32_t, TSPoint, TSPoint, TSPoint]
   object TSInputEdit:
@@ -304,14 +291,12 @@ object structs:
       def new_end_point_=(value: TSPoint): Unit = !struct.at6 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSLanguage = CStruct0
   object TSLanguage:
     given _tag: Tag[TSLanguage] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSLogger = CStruct2[Ptr[Byte], CFuncPtr3[Ptr[Byte], TSLogType, CString, Unit]]
   object TSLogger:
@@ -329,14 +314,12 @@ object structs:
       def log_=(value: CFuncPtr3[Ptr[Byte], TSLogType, CString, Unit]): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSLookaheadIterator = CStruct0
   object TSLookaheadIterator:
     given _tag: Tag[TSLookaheadIterator] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSNode = CStruct3[CArray[uint32_t, Nat._4], Ptr[Byte], Ptr[TSTree]]
   object TSNode:
@@ -357,14 +340,12 @@ object structs:
       def tree_=(value: Ptr[TSTree]): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSParser = CStruct0
   object TSParser:
     given _tag: Tag[TSParser] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSPoint = CStruct2[uint32_t, uint32_t]
   object TSPoint:
@@ -382,14 +363,12 @@ object structs:
       def column_=(value: uint32_t): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSQuery = CStruct0
   object TSQuery:
     given _tag: Tag[TSQuery] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSQueryCapture = CStruct2[TSNode, uint32_t]
   object TSQueryCapture:
@@ -407,14 +386,12 @@ object structs:
       def index_=(value: uint32_t): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSQueryCursor = CStruct0
   object TSQueryCursor:
     given _tag: Tag[TSQueryCursor] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSQueryMatch = CStruct4[uint32_t, uint16_t, uint16_t, Ptr[TSQueryCapture]]
   object TSQueryMatch:
@@ -438,7 +415,6 @@ object structs:
       def captures_=(value: Ptr[TSQueryCapture]): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSQueryPredicateStep = CStruct2[TSQueryPredicateStepType, uint32_t]
   object TSQueryPredicateStep:
@@ -456,7 +432,6 @@ object structs:
       def value_id_=(value: uint32_t): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSRange = CStruct4[TSPoint, TSPoint, uint32_t, uint32_t]
   object TSRange:
@@ -480,14 +455,12 @@ object structs:
       def end_byte_=(value: uint32_t): Unit = !struct.at4 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSTree = CStruct0
   object TSTree:
     given _tag: Tag[TSTree] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSTreeCursor = CStruct3[Ptr[Byte], Ptr[Byte], CArray[uint32_t, Nat._2]]
   object TSTreeCursor:
@@ -508,14 +481,12 @@ object structs:
       def context_=(value: CArray[uint32_t, Nat._2]): Unit = !struct.at3 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSWasmEngine = CStruct0
   object TSWasmEngine:
     given _tag: Tag[TSWasmEngine] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSWasmError = CStruct2[TSWasmErrorKind, CString]
   object TSWasmError:
@@ -533,14 +504,12 @@ object structs:
       def message_=(value: CString): Unit = !struct.at2 = value
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type TSWasmStore = CStruct0
   object TSWasmStore:
     given _tag: Tag[TSWasmStore] = Tag.materializeCStruct0Tag
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   opaque type wasm_engine_t = CStruct0
   object wasm_engine_t:
@@ -657,578 +626,417 @@ private[treesitter] object extern_functions:
 
   /**
    * Get the number of distinct field names in the language.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_language_field_count(self : Ptr[TSLanguage]): uint32_t = extern
 
   /**
    * Get the numerical id for the given field name string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_language_field_id_for_name(self : Ptr[TSLanguage], name : CString, name_length : uint32_t): TSFieldId = extern
 
   /**
    * Get the field name string for the given numerical id.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_language_field_name_for_id(self : Ptr[TSLanguage], id : TSFieldId): CString = extern
 
   /**
    * Check if the language came from a Wasm module. If so, then in order to use this langauge with a Parser, that parser must have a Wasm store assigned.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_language_is_wasm(_0 : Ptr[TSLanguage]): Boolean = extern
 
   /**
    * Get the next parse state. Combine this with lookahead iterators to generate completion suggestions or valid symbols in error nodes. Use [`ts_node_grammar_symbol`] for valid symbols.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_language_next_state(self : Ptr[TSLanguage], state : TSStateId, symbol : TSSymbol): TSStateId = extern
 
   /**
    * Get the number of valid states in this language.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_language_state_count(self : Ptr[TSLanguage]): uint32_t = extern
 
   /**
    * Get the number of distinct node types in the language.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_language_symbol_count(self : Ptr[TSLanguage]): uint32_t = extern
 
   /**
    * Get the numerical id for the given node type string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_language_symbol_for_name(self : Ptr[TSLanguage], string : CString, length : uint32_t, is_named : Boolean): TSSymbol = extern
 
   /**
    * Get a node type string for the given numerical id.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_language_symbol_name(self : Ptr[TSLanguage], symbol : TSSymbol): CString = extern
 
   /**
    * Check whether the given node type id belongs to named nodes, anonymous nodes, or a hidden nodes.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_language_symbol_type(self : Ptr[TSLanguage], symbol : TSSymbol): TSSymbolType = extern
 
   /**
    * Get the ABI version number for this language. This version number is used to ensure that languages were generated by a compatible version of Tree-sitter.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_language_version(self : Ptr[TSLanguage]): uint32_t = extern
 
   /**
    * Get the current symbol of the lookahead iterator;
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_lookahead_iterator_current_symbol(self : Ptr[TSLookaheadIterator]): TSSymbol = extern
 
   /**
    * Get the current symbol type of the lookahead iterator as a null terminated string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_lookahead_iterator_current_symbol_name(self : Ptr[TSLookaheadIterator]): CString = extern
 
   /**
    * Delete a lookahead iterator freeing all the memory used.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_lookahead_iterator_delete(self : Ptr[TSLookaheadIterator]): Unit = extern
 
   /**
    * Get the current language of the lookahead iterator.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_lookahead_iterator_language(self : Ptr[TSLookaheadIterator]): Ptr[TSLanguage] = extern
 
   /**
    * Create a new lookahead iterator for the given language and parse state.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_lookahead_iterator_new(self : Ptr[TSLanguage], state : TSStateId): Ptr[TSLookaheadIterator] = extern
 
   /**
    * Advance the lookahead iterator to the next symbol.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_lookahead_iterator_next(self : Ptr[TSLookaheadIterator]): Boolean = extern
 
   /**
    * Reset the lookahead iterator.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_lookahead_iterator_reset(self : Ptr[TSLookaheadIterator], language : Ptr[TSLanguage], state : TSStateId): Boolean = extern
 
   /**
    * Reset the lookahead iterator to another state.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_lookahead_iterator_reset_state(self : Ptr[TSLookaheadIterator], state : TSStateId): Boolean = extern
 
   /**
    * Edit the node to keep it in-sync with source code that has been edited.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_edit(self : Ptr[TSNode], edit : Ptr[TSInputEdit]): Unit = extern
 
   /**
    * Get the parser's current cancellation flag pointer.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_cancellation_flag(self : Ptr[TSParser]): Ptr[size_t] = extern
 
   /**
    * Delete the parser, freeing all of the memory that it used.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_delete(self : Ptr[TSParser]): Unit = extern
 
   /**
    * Get the ranges of text that the parser will include when parsing.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_included_ranges(self : Ptr[TSParser], count : Ptr[uint32_t]): Ptr[TSRange] = extern
 
   /**
    * Get the parser's current language.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_language(self : Ptr[TSParser]): Ptr[TSLanguage] = extern
 
   /**
    * Create a new parser.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_new(): Ptr[TSParser] = extern
 
   /**
    * Use the parser to parse some source code stored in one contiguous buffer. The first two parameters are the same as in the [`ts_parser_parse`] function above. The second two parameters indicate the location of the buffer and its length in bytes.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_parse_string(self : Ptr[TSParser], old_tree : Ptr[TSTree], string : CString, length : uint32_t): Ptr[TSTree] = extern
 
   /**
    * Use the parser to parse some source code stored in one contiguous buffer with a given encoding. The first four parameters work the same as in the [`ts_parser_parse_string`] method above. The final parameter indicates whether the text is encoded as UTF8 or UTF16.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_parse_string_encoding(self : Ptr[TSParser], old_tree : Ptr[TSTree], string : CString, length : uint32_t, encoding : TSInputEncoding): Ptr[TSTree] = extern
 
   /**
    * Set the file descriptor to which the parser should write debugging graphs during parsing. The graphs are formatted in the DOT language. You may want to pipe these graphs directly to a `dot(1)` process in order to generate SVG output. You can turn off this logging by passing a negative number.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_print_dot_graphs(self : Ptr[TSParser], fd : CInt): Unit = extern
 
   /**
    * Instruct the parser to start the next parse from the beginning.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_reset(self : Ptr[TSParser]): Unit = extern
 
   /**
    * Set the parser's current cancellation flag pointer.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_set_cancellation_flag(self : Ptr[TSParser], flag : Ptr[size_t]): Unit = extern
 
   /**
    * Set the ranges of text that the parser should include when parsing.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_set_included_ranges(self : Ptr[TSParser], ranges : Ptr[TSRange], count : uint32_t): Boolean = extern
 
   /**
    * Set the language that the parser should use for parsing.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_set_language(self : Ptr[TSParser], language : Ptr[TSLanguage]): Boolean = extern
 
   /**
    * Set the maximum duration in microseconds that parsing should be allowed to take before halting.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_set_timeout_micros(self : Ptr[TSParser], timeout_micros : uint64_t): Unit = extern
 
   /**
    * Assign the given Wasm store to the parser. A parser must have a Wasm store in order to use Wasm languages.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_set_wasm_store(_0 : Ptr[TSParser], _1 : Ptr[TSWasmStore]): Unit = extern
 
   /**
    * Remove the parser's current Wasm store and return it. This returns NULL if the parser doesn't have a Wasm store.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_take_wasm_store(_0 : Ptr[TSParser]): Ptr[TSWasmStore] = extern
 
   /**
    * Get the duration in microseconds that parsing is allowed to take.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_timeout_micros(self : Ptr[TSParser]): uint64_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_capture_count(self : Ptr[TSQuery]): uint32_t = extern
 
   /**
    * Get the name and length of one of the query's captures, or one of the query's string literals. Each capture and string is associated with a numeric id based on the order that it appeared in the query's source.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_capture_name_for_id(self : Ptr[TSQuery], index : uint32_t, length : Ptr[uint32_t]): CString = extern
 
   /**
    * Get the quantifier of the query's captures. Each capture is * associated with a numeric id based on the order that it appeared in the query's source.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_capture_quantifier_for_id(self : Ptr[TSQuery], pattern_index : uint32_t, capture_index : uint32_t): TSQuantifier = extern
 
   /**
    * Delete a query cursor, freeing all of the memory that it used.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_cursor_delete(self : Ptr[TSQueryCursor]): Unit = extern
 
   /**
    * Manage the maximum number of in-progress matches allowed by this query cursor.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_cursor_did_exceed_match_limit(self : Ptr[TSQueryCursor]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_cursor_match_limit(self : Ptr[TSQueryCursor]): uint32_t = extern
 
   /**
    * Create a new cursor for executing a given query.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_cursor_new(): Ptr[TSQueryCursor] = extern
 
   /**
    * Advance to the next capture of the currently running query.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_cursor_next_capture(self : Ptr[TSQueryCursor], `match` : Ptr[TSQueryMatch], capture_index : Ptr[uint32_t]): Boolean = extern
 
   /**
    * Advance to the next match of the currently running query.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_cursor_next_match(self : Ptr[TSQueryCursor], `match` : Ptr[TSQueryMatch]): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_cursor_remove_match(self : Ptr[TSQueryCursor], match_id : uint32_t): Unit = extern
 
   /**
    * Set the range of bytes or (row, column) positions in which the query will be executed.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_cursor_set_byte_range(self : Ptr[TSQueryCursor], start_byte : uint32_t, end_byte : uint32_t): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_cursor_set_match_limit(self : Ptr[TSQueryCursor], limit : uint32_t): Unit = extern
 
   /**
    * Set the maximum start depth for a query cursor.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_cursor_set_max_start_depth(self : Ptr[TSQueryCursor], max_start_depth : uint32_t): Unit = extern
 
   /**
    * Delete a query, freeing all of the memory that it used.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_delete(self : Ptr[TSQuery]): Unit = extern
 
   /**
    * Disable a certain capture within a query.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_disable_capture(self : Ptr[TSQuery], name : CString, length : uint32_t): Unit = extern
 
   /**
    * Disable a certain pattern within a query.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_disable_pattern(self : Ptr[TSQuery], pattern_index : uint32_t): Unit = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_is_pattern_guaranteed_at_step(self : Ptr[TSQuery], byte_offset : uint32_t): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_is_pattern_non_local(self : Ptr[TSQuery], pattern_index : uint32_t): Boolean = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_is_pattern_rooted(self : Ptr[TSQuery], pattern_index : uint32_t): Boolean = extern
 
   /**
    * Create a new query from a string containing one or more S-expression patterns. The query is associated with a particular language, and can only be run on syntax nodes parsed with that language.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_new(language : Ptr[TSLanguage], source : CString, source_len : uint32_t, error_offset : Ptr[uint32_t], error_type : Ptr[TSQueryError]): Ptr[TSQuery] = extern
 
   /**
    * Get the number of patterns, captures, or string literals in the query.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_pattern_count(self : Ptr[TSQuery]): uint32_t = extern
 
   /**
    * Get all of the predicates for the given pattern in the query.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_predicates_for_pattern(self : Ptr[TSQuery], pattern_index : uint32_t, step_count : Ptr[uint32_t]): Ptr[TSQueryPredicateStep] = extern
 
   /**
    * Get the byte offset where the given pattern starts in the query's source.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_start_byte_for_pattern(self : Ptr[TSQuery], pattern_index : uint32_t): uint32_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_string_count(self : Ptr[TSQuery]): uint32_t = extern
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_string_value_for_id(self : Ptr[TSQuery], index : uint32_t, length : Ptr[uint32_t]): CString = extern
 
   /**
    * Set the allocation functions used by the library.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_set_allocator(new_malloc : CFuncPtr1[size_t, Ptr[Byte]], new_calloc : CFuncPtr2[size_t, size_t, Ptr[Byte]], new_realloc : CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], new_free : CFuncPtr1[Ptr[Byte], Unit]): Unit = extern
 
   /**
    * Create a shallow copy of the syntax tree. This is very fast.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_copy(self : Ptr[TSTree]): Ptr[TSTree] = extern
 
   /**
    * Get the depth of the cursor's current node relative to the original node that the cursor was constructed with.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_current_depth(self : Ptr[TSTreeCursor]): uint32_t = extern
 
   /**
    * Get the index of the cursor's current node out of all of the descendants of the original node that the cursor was constructed with.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_current_descendant_index(self : Ptr[TSTreeCursor]): uint32_t = extern
 
   /**
    * Get the field id of the tree cursor's current node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_current_field_id(self : Ptr[TSTreeCursor]): TSFieldId = extern
 
   /**
    * Get the field name of the tree cursor's current node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_current_field_name(self : Ptr[TSTreeCursor]): CString = extern
 
   /**
    * Delete a tree cursor, freeing all of the memory that it used.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_delete(self : Ptr[TSTreeCursor]): Unit = extern
 
   /**
    * Move the cursor to the node that is the nth descendant of the original node that the cursor was constructed with, where zero represents the original node itself.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_goto_descendant(self : Ptr[TSTreeCursor], goal_descendant_index : uint32_t): Unit = extern
 
   /**
    * Move the cursor to the first child of its current node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_goto_first_child(self : Ptr[TSTreeCursor]): Boolean = extern
 
   /**
    * Move the cursor to the first child of its current node that extends beyond the given byte offset or point.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_goto_first_child_for_byte(self : Ptr[TSTreeCursor], goal_byte : uint32_t): int64_t = extern
 
   /**
    * Move the cursor to the last child of its current node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_goto_last_child(self : Ptr[TSTreeCursor]): Boolean = extern
 
   /**
    * Move the cursor to the next sibling of its current node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_goto_next_sibling(self : Ptr[TSTreeCursor]): Boolean = extern
 
   /**
    * Move the cursor to the parent of its current node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_goto_parent(self : Ptr[TSTreeCursor]): Boolean = extern
 
   /**
    * Move the cursor to the previous sibling of its current node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_goto_previous_sibling(self : Ptr[TSTreeCursor]): Boolean = extern
 
   /**
    * Re-initialize a tree cursor to the same position as another cursor.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_reset_to(dst : Ptr[TSTreeCursor], src : Ptr[TSTreeCursor]): Unit = extern
 
   /**
    * Delete the syntax tree, freeing all of the memory that it used.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_delete(self : Ptr[TSTree]): Unit = extern
 
   /**
    * Edit the syntax tree to keep it in sync with source code that has been edited.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_edit(self : Ptr[TSTree], edit : Ptr[TSInputEdit]): Unit = extern
 
   /**
    * Compare an old edited syntax tree to a new syntax tree representing the same document, returning an array of ranges whose syntactic structure has changed.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_get_changed_ranges(old_tree : Ptr[TSTree], new_tree : Ptr[TSTree], length : Ptr[uint32_t]): Ptr[TSRange] = extern
 
   /**
    * Get the array of included ranges that was used to parse the syntax tree.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_included_ranges(self : Ptr[TSTree], length : Ptr[uint32_t]): Ptr[TSRange] = extern
 
   /**
    * Get the language that was used to parse the syntax tree.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_language(self : Ptr[TSTree]): Ptr[TSLanguage] = extern
 
   /**
    * Write a DOT graph describing the syntax tree to the given file.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_print_dot_graph(self : Ptr[TSTree], file_descriptor : CInt): Unit = extern
 
   /**
    * Free the memory associated with the given Wasm store.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_wasm_store_delete(_0 : Ptr[TSWasmStore]): Unit = extern
 
   /**
    * Create a language from a buffer of Wasm. The resulting language behaves like any other Tree-sitter language, except that in order to use it with a parser, that parser must have a Wasm store. Note that the language can be used with any Wasm store, it doesn't need to be the same store that was used to originally load it.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_wasm_store_load_language(_0 : Ptr[TSWasmStore], name : CString, wasm : CString, wasm_len : uint32_t, error : Ptr[TSWasmError]): Ptr[TSLanguage] = extern
 
   /**
    * Create a Wasm store.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_wasm_store_new(engine : Ptr[TSWasmEngine], error : Ptr[TSWasmError]): Ptr[TSWasmStore] = extern
 
@@ -1243,16 +1051,6 @@ object functions:
 
   /**
    * Get the node's child at the given index, where zero represents the first child.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_child(self : Ptr[TSNode], child_index : uint32_t)(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_child(self, child_index, __return)
-
-  /**
-   * Get the node's child at the given index, where zero represents the first child.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_child(self : TSNode, child_index : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1262,8 +1060,12 @@ object functions:
 
   /**
    * Get the node's child at the given index, where zero represents the first child.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+  */
+  def ts_node_child(self : Ptr[TSNode], child_index : uint32_t)(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_child(self, child_index, __return)
+
+  /**
+   * Get the node's child at the given index, where zero represents the first child.
   */
   def ts_node_child(self : Ptr[TSNode], child_index : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1272,8 +1074,6 @@ object functions:
 
   /**
    * Get the node's child with the given numerical field id.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_child_by_field_id(self : Ptr[TSNode], field_id : TSFieldId)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1282,16 +1082,6 @@ object functions:
 
   /**
    * Get the node's child with the given numerical field id.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_child_by_field_id(self : Ptr[TSNode], field_id : TSFieldId)(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_child_by_field_id(self, field_id, __return)
-
-  /**
-   * Get the node's child with the given numerical field id.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_child_by_field_id(self : TSNode, field_id : TSFieldId)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1300,9 +1090,19 @@ object functions:
     !(__ptr_0 + 1)
 
   /**
+   * Get the node's child with the given numerical field id.
+  */
+  def ts_node_child_by_field_id(self : Ptr[TSNode], field_id : TSFieldId)(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_child_by_field_id(self, field_id, __return)
+
+  /**
    * Get the node's child with the given field name.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+  */
+  def ts_node_child_by_field_name(self : Ptr[TSNode], name : CString, name_length : uint32_t)(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_child_by_field_name(self, name, name_length, __return)
+
+  /**
+   * Get the node's child with the given field name.
   */
   def ts_node_child_by_field_name(self : TSNode, name : CString, name_length : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1312,8 +1112,6 @@ object functions:
 
   /**
    * Get the node's child with the given field name.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_child_by_field_name(self : Ptr[TSNode], name : CString, name_length : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1321,17 +1119,7 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * Get the node's child with the given field name.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_child_by_field_name(self : Ptr[TSNode], name : CString, name_length : uint32_t)(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_child_by_field_name(self, name, name_length, __return)
-
-  /**
    * Get the node's number of children.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_child_count(self : TSNode)(using Zone): uint32_t = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1340,24 +1128,12 @@ object functions:
 
   /**
    * Get the node's number of children.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_child_count(self : Ptr[TSNode]): uint32_t = 
     __sn_wrap_treesitter_ts_node_child_count(self)
 
   /**
    * Get the node's number of descendants, including one for the node itself.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_descendant_count(self : Ptr[TSNode]): uint32_t = 
-    __sn_wrap_treesitter_ts_node_descendant_count(self)
-
-  /**
-   * Get the node's number of descendants, including one for the node itself.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_descendant_count(self : TSNode)(using Zone): uint32_t = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1365,17 +1141,19 @@ object functions:
     __sn_wrap_treesitter_ts_node_descendant_count((__ptr_0 + 0))
 
   /**
+   * Get the node's number of descendants, including one for the node itself.
+  */
+  def ts_node_descendant_count(self : Ptr[TSNode]): uint32_t = 
+    __sn_wrap_treesitter_ts_node_descendant_count(self)
+
+  /**
    * Get the smallest node within this node that spans the given range of bytes or (row, column) positions.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_descendant_for_byte_range(self : Ptr[TSNode], start : uint32_t, end : uint32_t)(__return : Ptr[TSNode]): Unit = 
     __sn_wrap_treesitter_ts_node_descendant_for_byte_range(self, start, end, __return)
 
   /**
    * Get the smallest node within this node that spans the given range of bytes or (row, column) positions.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_descendant_for_byte_range(self : Ptr[TSNode], start : uint32_t, end : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1384,8 +1162,6 @@ object functions:
 
   /**
    * Get the smallest node within this node that spans the given range of bytes or (row, column) positions.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_descendant_for_byte_range(self : TSNode, start : uint32_t, end : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1394,13 +1170,11 @@ object functions:
     !(__ptr_0 + 1)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_descendant_for_point_range(self : Ptr[TSNode], start : Ptr[TSPoint], end : Ptr[TSPoint])(__return : Ptr[TSNode]): Unit = 
     __sn_wrap_treesitter_ts_node_descendant_for_point_range(self, start, end, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_descendant_for_point_range(self : TSNode, start : TSPoint, end : TSPoint)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1412,7 +1186,6 @@ object functions:
     !(__ptr_0 + 1)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_descendant_for_point_range(self : Ptr[TSNode], start : Ptr[TSPoint], end : Ptr[TSPoint])(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1421,8 +1194,6 @@ object functions:
 
   /**
    * Get the node's end byte.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_end_byte(self : TSNode)(using Zone): uint32_t = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1431,16 +1202,12 @@ object functions:
 
   /**
    * Get the node's end byte.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_end_byte(self : Ptr[TSNode]): uint32_t = 
     __sn_wrap_treesitter_ts_node_end_byte(self)
 
   /**
    * Get the node's end position in terms of rows and columns.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_end_point(self : Ptr[TSNode])(using Zone): TSPoint = 
     val __ptr_0: Ptr[TSPoint] = alloc[TSPoint](1)
@@ -1449,8 +1216,6 @@ object functions:
 
   /**
    * Get the node's end position in terms of rows and columns.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_end_point(self : TSNode)(using Zone): TSPoint = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1461,16 +1226,18 @@ object functions:
 
   /**
    * Get the node's end position in terms of rows and columns.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_end_point(self : Ptr[TSNode])(__return : Ptr[TSPoint]): Unit = 
     __sn_wrap_treesitter_ts_node_end_point(self, __return)
 
   /**
    * Check if two nodes are identical.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+  */
+  def ts_node_eq(self : Ptr[TSNode], other : Ptr[TSNode]): Boolean = 
+    __sn_wrap_treesitter_ts_node_eq(self, other)
+
+  /**
+   * Check if two nodes are identical.
   */
   def ts_node_eq(self : TSNode, other : TSNode)(using Zone): Boolean = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1479,25 +1246,7 @@ object functions:
     __sn_wrap_treesitter_ts_node_eq((__ptr_0 + 0), (__ptr_0 + 1))
 
   /**
-   * Check if two nodes are identical.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_eq(self : Ptr[TSNode], other : Ptr[TSNode]): Boolean = 
-    __sn_wrap_treesitter_ts_node_eq(self, other)
-
-  /**
    * Get the field name for node's child at the given index, where zero represents the first child. Returns NULL, if no field is found.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_field_name_for_child(self : Ptr[TSNode], child_index : uint32_t): CString = 
-    __sn_wrap_treesitter_ts_node_field_name_for_child(self, child_index)
-
-  /**
-   * Get the field name for node's child at the given index, where zero represents the first child. Returns NULL, if no field is found.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_field_name_for_child(self : TSNode, child_index : uint32_t)(using Zone): CString = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1505,17 +1254,13 @@ object functions:
     __sn_wrap_treesitter_ts_node_field_name_for_child((__ptr_0 + 0), child_index)
 
   /**
-   * Get the node's first child that extends beyond the given byte offset.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+   * Get the field name for node's child at the given index, where zero represents the first child. Returns NULL, if no field is found.
   */
-  def ts_node_first_child_for_byte(self : Ptr[TSNode], byte : uint32_t)(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_first_child_for_byte(self, byte, __return)
+  def ts_node_field_name_for_child(self : Ptr[TSNode], child_index : uint32_t): CString = 
+    __sn_wrap_treesitter_ts_node_field_name_for_child(self, child_index)
 
   /**
    * Get the node's first child that extends beyond the given byte offset.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_first_child_for_byte(self : TSNode, byte : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1525,8 +1270,6 @@ object functions:
 
   /**
    * Get the node's first child that extends beyond the given byte offset.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_first_child_for_byte(self : Ptr[TSNode], byte : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1534,9 +1277,13 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
+   * Get the node's first child that extends beyond the given byte offset.
+  */
+  def ts_node_first_child_for_byte(self : Ptr[TSNode], byte : uint32_t)(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_first_child_for_byte(self, byte, __return)
+
+  /**
    * Get the node's first named child that extends beyond the given byte offset.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_first_named_child_for_byte(self : TSNode, byte : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1546,8 +1293,6 @@ object functions:
 
   /**
    * Get the node's first named child that extends beyond the given byte offset.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_first_named_child_for_byte(self : Ptr[TSNode], byte : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1556,16 +1301,12 @@ object functions:
 
   /**
    * Get the node's first named child that extends beyond the given byte offset.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_first_named_child_for_byte(self : Ptr[TSNode], byte : uint32_t)(__return : Ptr[TSNode]): Unit = 
     __sn_wrap_treesitter_ts_node_first_named_child_for_byte(self, byte, __return)
 
   /**
    * Get the node's type as a numerical id as it appears in the grammar ignoring aliases. This should be used in [`ts_language_next_state`] instead of [`ts_node_symbol`].
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_grammar_symbol(self : TSNode)(using Zone): TSSymbol = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1574,16 +1315,18 @@ object functions:
 
   /**
    * Get the node's type as a numerical id as it appears in the grammar ignoring aliases. This should be used in [`ts_language_next_state`] instead of [`ts_node_symbol`].
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_grammar_symbol(self : Ptr[TSNode]): TSSymbol = 
     __sn_wrap_treesitter_ts_node_grammar_symbol(self)
 
   /**
    * Get the node's type as it appears in the grammar ignoring aliases as a null-terminated string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+  */
+  def ts_node_grammar_type(self : Ptr[TSNode]): CString = 
+    __sn_wrap_treesitter_ts_node_grammar_type(self)
+
+  /**
+   * Get the node's type as it appears in the grammar ignoring aliases as a null-terminated string.
   */
   def ts_node_grammar_type(self : TSNode)(using Zone): CString = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1591,17 +1334,13 @@ object functions:
     __sn_wrap_treesitter_ts_node_grammar_type((__ptr_0 + 0))
 
   /**
-   * Get the node's type as it appears in the grammar ignoring aliases as a null-terminated string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+   * Check if a syntax node has been edited.
   */
-  def ts_node_grammar_type(self : Ptr[TSNode]): CString = 
-    __sn_wrap_treesitter_ts_node_grammar_type(self)
+  def ts_node_has_changes(self : Ptr[TSNode]): Boolean = 
+    __sn_wrap_treesitter_ts_node_has_changes(self)
 
   /**
    * Check if a syntax node has been edited.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_has_changes(self : TSNode)(using Zone): Boolean = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1609,25 +1348,7 @@ object functions:
     __sn_wrap_treesitter_ts_node_has_changes((__ptr_0 + 0))
 
   /**
-   * Check if a syntax node has been edited.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_has_changes(self : Ptr[TSNode]): Boolean = 
-    __sn_wrap_treesitter_ts_node_has_changes(self)
-
-  /**
    * Check if the node is a syntax error or contains any syntax errors.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_has_error(self : Ptr[TSNode]): Boolean = 
-    __sn_wrap_treesitter_ts_node_has_error(self)
-
-  /**
-   * Check if the node is a syntax error or contains any syntax errors.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_has_error(self : TSNode)(using Zone): Boolean = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1635,17 +1356,13 @@ object functions:
     __sn_wrap_treesitter_ts_node_has_error((__ptr_0 + 0))
 
   /**
-   * Check if the node is a syntax error.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+   * Check if the node is a syntax error or contains any syntax errors.
   */
-  def ts_node_is_error(self : Ptr[TSNode]): Boolean = 
-    __sn_wrap_treesitter_ts_node_is_error(self)
+  def ts_node_has_error(self : Ptr[TSNode]): Boolean = 
+    __sn_wrap_treesitter_ts_node_has_error(self)
 
   /**
    * Check if the node is a syntax error.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_is_error(self : TSNode)(using Zone): Boolean = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1653,17 +1370,13 @@ object functions:
     __sn_wrap_treesitter_ts_node_is_error((__ptr_0 + 0))
 
   /**
-   * Check if the node is *extra*. Extra nodes represent things like comments, which are not required the grammar, but can appear anywhere.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+   * Check if the node is a syntax error.
   */
-  def ts_node_is_extra(self : Ptr[TSNode]): Boolean = 
-    __sn_wrap_treesitter_ts_node_is_extra(self)
+  def ts_node_is_error(self : Ptr[TSNode]): Boolean = 
+    __sn_wrap_treesitter_ts_node_is_error(self)
 
   /**
    * Check if the node is *extra*. Extra nodes represent things like comments, which are not required the grammar, but can appear anywhere.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_is_extra(self : TSNode)(using Zone): Boolean = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1671,9 +1384,13 @@ object functions:
     __sn_wrap_treesitter_ts_node_is_extra((__ptr_0 + 0))
 
   /**
+   * Check if the node is *extra*. Extra nodes represent things like comments, which are not required the grammar, but can appear anywhere.
+  */
+  def ts_node_is_extra(self : Ptr[TSNode]): Boolean = 
+    __sn_wrap_treesitter_ts_node_is_extra(self)
+
+  /**
    * Check if the node is *missing*. Missing nodes are inserted by the parser in order to recover from certain kinds of syntax errors.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_is_missing(self : TSNode)(using Zone): Boolean = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1682,16 +1399,18 @@ object functions:
 
   /**
    * Check if the node is *missing*. Missing nodes are inserted by the parser in order to recover from certain kinds of syntax errors.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_is_missing(self : Ptr[TSNode]): Boolean = 
     __sn_wrap_treesitter_ts_node_is_missing(self)
 
   /**
    * Check if the node is *named*. Named nodes correspond to named rules in the grammar, whereas *anonymous* nodes correspond to string literals in the grammar.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+  */
+  def ts_node_is_named(self : Ptr[TSNode]): Boolean = 
+    __sn_wrap_treesitter_ts_node_is_named(self)
+
+  /**
+   * Check if the node is *named*. Named nodes correspond to named rules in the grammar, whereas *anonymous* nodes correspond to string literals in the grammar.
   */
   def ts_node_is_named(self : TSNode)(using Zone): Boolean = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1699,17 +1418,7 @@ object functions:
     __sn_wrap_treesitter_ts_node_is_named((__ptr_0 + 0))
 
   /**
-   * Check if the node is *named*. Named nodes correspond to named rules in the grammar, whereas *anonymous* nodes correspond to string literals in the grammar.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_is_named(self : Ptr[TSNode]): Boolean = 
-    __sn_wrap_treesitter_ts_node_is_named(self)
-
-  /**
    * Check if the node is null. Functions like [`ts_node_child`] and [`ts_node_next_sibling`] will return a null node to indicate that no such node was found.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_is_null(self : TSNode)(using Zone): Boolean = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1718,16 +1427,12 @@ object functions:
 
   /**
    * Check if the node is null. Functions like [`ts_node_child`] and [`ts_node_next_sibling`] will return a null node to indicate that no such node was found.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_is_null(self : Ptr[TSNode]): Boolean = 
     __sn_wrap_treesitter_ts_node_is_null(self)
 
   /**
    * Get the node's language.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_language(self : TSNode)(using Zone): Ptr[TSLanguage] = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1736,16 +1441,18 @@ object functions:
 
   /**
    * Get the node's language.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_language(self : Ptr[TSNode]): Ptr[TSLanguage] = 
     __sn_wrap_treesitter_ts_node_language(self)
 
   /**
    * Get the node's *named* child at the given index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+  */
+  def ts_node_named_child(self : Ptr[TSNode], child_index : uint32_t)(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_named_child(self, child_index, __return)
+
+  /**
+   * Get the node's *named* child at the given index.
   */
   def ts_node_named_child(self : TSNode, child_index : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1755,8 +1462,6 @@ object functions:
 
   /**
    * Get the node's *named* child at the given index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_named_child(self : Ptr[TSNode], child_index : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1764,25 +1469,13 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * Get the node's *named* child at the given index.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_named_child(self : Ptr[TSNode], child_index : uint32_t)(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_named_child(self, child_index, __return)
-
-  /**
    * Get the node's number of *named* children.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_named_child_count(self : Ptr[TSNode]): uint32_t = 
     __sn_wrap_treesitter_ts_node_named_child_count(self)
 
   /**
    * Get the node's number of *named* children.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_named_child_count(self : TSNode)(using Zone): uint32_t = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1791,8 +1484,6 @@ object functions:
 
   /**
    * Get the smallest named node within this node that spans the given range of bytes or (row, column) positions.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_named_descendant_for_byte_range(self : Ptr[TSNode], start : uint32_t, end : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1801,8 +1492,6 @@ object functions:
 
   /**
    * Get the smallest named node within this node that spans the given range of bytes or (row, column) positions.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_named_descendant_for_byte_range(self : TSNode, start : uint32_t, end : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1812,14 +1501,11 @@ object functions:
 
   /**
    * Get the smallest named node within this node that spans the given range of bytes or (row, column) positions.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_named_descendant_for_byte_range(self : Ptr[TSNode], start : uint32_t, end : uint32_t)(__return : Ptr[TSNode]): Unit = 
     __sn_wrap_treesitter_ts_node_named_descendant_for_byte_range(self, start, end, __return)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_named_descendant_for_point_range(self : TSNode, start : TSPoint, end : TSPoint)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1831,7 +1517,11 @@ object functions:
     !(__ptr_0 + 1)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+  */
+  def ts_node_named_descendant_for_point_range(self : Ptr[TSNode], start : Ptr[TSPoint], end : Ptr[TSPoint])(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_named_descendant_for_point_range(self, start, end, __return)
+
+  /**
   */
   def ts_node_named_descendant_for_point_range(self : Ptr[TSNode], start : Ptr[TSPoint], end : Ptr[TSPoint])(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1839,23 +1529,7 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_named_descendant_for_point_range(self : Ptr[TSNode], start : Ptr[TSPoint], end : Ptr[TSPoint])(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_named_descendant_for_point_range(self, start, end, __return)
-
-  /**
    * Get the node's next / previous *named* sibling.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_next_named_sibling(self : Ptr[TSNode])(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_next_named_sibling(self, __return)
-
-  /**
-   * Get the node's next / previous *named* sibling.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_next_named_sibling(self : TSNode)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1865,8 +1539,6 @@ object functions:
 
   /**
    * Get the node's next / previous *named* sibling.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_next_named_sibling(self : Ptr[TSNode])(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1874,17 +1546,19 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
+   * Get the node's next / previous *named* sibling.
+  */
+  def ts_node_next_named_sibling(self : Ptr[TSNode])(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_next_named_sibling(self, __return)
+
+  /**
    * Get the parse state after this node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_next_parse_state(self : Ptr[TSNode]): TSStateId = 
     __sn_wrap_treesitter_ts_node_next_parse_state(self)
 
   /**
    * Get the parse state after this node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_next_parse_state(self : TSNode)(using Zone): TSStateId = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1893,8 +1567,6 @@ object functions:
 
   /**
    * Get the node's next / previous sibling.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_next_sibling(self : TSNode)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1904,16 +1576,6 @@ object functions:
 
   /**
    * Get the node's next / previous sibling.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_next_sibling(self : Ptr[TSNode])(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_next_sibling(self, __return)
-
-  /**
-   * Get the node's next / previous sibling.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_next_sibling(self : Ptr[TSNode])(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1921,9 +1583,13 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
+   * Get the node's next / previous sibling.
+  */
+  def ts_node_next_sibling(self : Ptr[TSNode])(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_next_sibling(self, __return)
+
+  /**
    * Get the node's immediate parent.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_parent(self : TSNode)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1933,16 +1599,12 @@ object functions:
 
   /**
    * Get the node's immediate parent.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_parent(self : Ptr[TSNode])(__return : Ptr[TSNode]): Unit = 
     __sn_wrap_treesitter_ts_node_parent(self, __return)
 
   /**
    * Get the node's immediate parent.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_parent(self : Ptr[TSNode])(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1951,16 +1613,12 @@ object functions:
 
   /**
    * Get this node's parse state.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_parse_state(self : Ptr[TSNode]): TSStateId = 
     __sn_wrap_treesitter_ts_node_parse_state(self)
 
   /**
    * Get this node's parse state.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_parse_state(self : TSNode)(using Zone): TSStateId = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1968,7 +1626,6 @@ object functions:
     __sn_wrap_treesitter_ts_node_parse_state((__ptr_0 + 0))
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_prev_named_sibling(self : Ptr[TSNode])(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -1976,7 +1633,11 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+  */
+  def ts_node_prev_named_sibling(self : Ptr[TSNode])(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_prev_named_sibling(self, __return)
+
+  /**
   */
   def ts_node_prev_named_sibling(self : TSNode)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -1985,19 +1646,6 @@ object functions:
     !(__ptr_0 + 1)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_prev_named_sibling(self : Ptr[TSNode])(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_prev_named_sibling(self, __return)
-
-  /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_prev_sibling(self : Ptr[TSNode])(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_prev_sibling(self, __return)
-
-  /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_prev_sibling(self : Ptr[TSNode])(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -2005,7 +1653,6 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_prev_sibling(self : TSNode)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
@@ -2014,9 +1661,12 @@ object functions:
     !(__ptr_0 + 1)
 
   /**
+  */
+  def ts_node_prev_sibling(self : Ptr[TSNode])(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_prev_sibling(self, __return)
+
+  /**
    * Get the node's start byte.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_start_byte(self : TSNode)(using Zone): uint32_t = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -2025,24 +1675,18 @@ object functions:
 
   /**
    * Get the node's start byte.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_start_byte(self : Ptr[TSNode]): uint32_t = 
     __sn_wrap_treesitter_ts_node_start_byte(self)
 
   /**
    * Get the node's start position in terms of rows and columns.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_start_point(self : Ptr[TSNode])(__return : Ptr[TSPoint]): Unit = 
     __sn_wrap_treesitter_ts_node_start_point(self, __return)
 
   /**
    * Get the node's start position in terms of rows and columns.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_start_point(self : TSNode)(using Zone): TSPoint = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -2053,8 +1697,6 @@ object functions:
 
   /**
    * Get the node's start position in terms of rows and columns.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_start_point(self : Ptr[TSNode])(using Zone): TSPoint = 
     val __ptr_0: Ptr[TSPoint] = alloc[TSPoint](1)
@@ -2063,16 +1705,12 @@ object functions:
 
   /**
    * Get an S-expression representing the node as a string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_string(self : Ptr[TSNode]): CString = 
     __sn_wrap_treesitter_ts_node_string(self)
 
   /**
    * Get an S-expression representing the node as a string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_string(self : TSNode)(using Zone): CString = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -2081,8 +1719,12 @@ object functions:
 
   /**
    * Get the node's type as a numerical id.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+  */
+  def ts_node_symbol(self : Ptr[TSNode]): TSSymbol = 
+    __sn_wrap_treesitter_ts_node_symbol(self)
+
+  /**
+   * Get the node's type as a numerical id.
   */
   def ts_node_symbol(self : TSNode)(using Zone): TSSymbol = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -2090,25 +1732,7 @@ object functions:
     __sn_wrap_treesitter_ts_node_symbol((__ptr_0 + 0))
 
   /**
-   * Get the node's type as a numerical id.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_symbol(self : Ptr[TSNode]): TSSymbol = 
-    __sn_wrap_treesitter_ts_node_symbol(self)
-
-  /**
    * Get the node's type as a null-terminated string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_node_type(self : Ptr[TSNode]): CString = 
-    __sn_wrap_treesitter_ts_node_type(self)
-
-  /**
-   * Get the node's type as a null-terminated string.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_node_type(self : TSNode)(using Zone): CString = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -2116,9 +1740,13 @@ object functions:
     __sn_wrap_treesitter_ts_node_type((__ptr_0 + 0))
 
   /**
+   * Get the node's type as a null-terminated string.
+  */
+  def ts_node_type(self : Ptr[TSNode]): CString = 
+    __sn_wrap_treesitter_ts_node_type(self)
+
+  /**
    * Get the parser's current logger.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_logger(self : Ptr[TSParser])(using Zone): TSLogger = 
     val __ptr_0: Ptr[TSLogger] = alloc[TSLogger](1)
@@ -2127,16 +1755,12 @@ object functions:
 
   /**
    * Get the parser's current logger.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_logger(self : Ptr[TSParser])(__return : Ptr[TSLogger]): Unit = 
     __sn_wrap_treesitter_ts_parser_logger(self, __return)
 
   /**
    * Use the parser to parse some source code and create a syntax tree.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_parse(self : Ptr[TSParser], old_tree : Ptr[TSTree], input : TSInput)(using Zone): Ptr[TSTree] = 
     val __ptr_0: Ptr[TSInput] = alloc[TSInput](1)
@@ -2145,16 +1769,18 @@ object functions:
 
   /**
    * Use the parser to parse some source code and create a syntax tree.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_parser_parse(self : Ptr[TSParser], old_tree : Ptr[TSTree], input : Ptr[TSInput]): Ptr[TSTree] = 
     __sn_wrap_treesitter_ts_parser_parse(self, old_tree, input)
 
   /**
    * Set the logger that a parser should use during parsing.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+  */
+  def ts_parser_set_logger(self : Ptr[TSParser], logger : Ptr[TSLogger]): Unit = 
+    __sn_wrap_treesitter_ts_parser_set_logger(self, logger)
+
+  /**
+   * Set the logger that a parser should use during parsing.
   */
   def ts_parser_set_logger(self : Ptr[TSParser], logger : TSLogger)(using Zone): Unit = 
     val __ptr_0: Ptr[TSLogger] = alloc[TSLogger](1)
@@ -2162,25 +1788,7 @@ object functions:
     __sn_wrap_treesitter_ts_parser_set_logger(self, (__ptr_0 + 0))
 
   /**
-   * Set the logger that a parser should use during parsing.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_parser_set_logger(self : Ptr[TSParser], logger : Ptr[TSLogger]): Unit = 
-    __sn_wrap_treesitter_ts_parser_set_logger(self, logger)
-
-  /**
    * Start running a given query on a given node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_query_cursor_exec(self : Ptr[TSQueryCursor], query : Ptr[TSQuery], node : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_query_cursor_exec(self, query, node)
-
-  /**
-   * Start running a given query on a given node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_cursor_exec(self : Ptr[TSQueryCursor], query : Ptr[TSQuery], node : TSNode)(using Zone): Unit = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -2188,7 +1796,12 @@ object functions:
     __sn_wrap_treesitter_ts_query_cursor_exec(self, query, (__ptr_0 + 0))
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
+   * Start running a given query on a given node.
+  */
+  def ts_query_cursor_exec(self : Ptr[TSQueryCursor], query : Ptr[TSQuery], node : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_query_cursor_exec(self, query, node)
+
+  /**
   */
   def ts_query_cursor_set_point_range(self : Ptr[TSQueryCursor], start_point : TSPoint, end_point : TSPoint)(using Zone): Unit = 
     val __ptr_0: Ptr[TSPoint] = alloc[TSPoint](2)
@@ -2197,13 +1810,11 @@ object functions:
     __sn_wrap_treesitter_ts_query_cursor_set_point_range(self, (__ptr_0 + 0), (__ptr_0 + 1))
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_query_cursor_set_point_range(self : Ptr[TSQueryCursor], start_point : Ptr[TSPoint], end_point : Ptr[TSPoint]): Unit = 
     __sn_wrap_treesitter_ts_query_cursor_set_point_range(self, start_point, end_point)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_copy(cursor : Ptr[TSTreeCursor])(using Zone): TSTreeCursor = 
     val __ptr_0: Ptr[TSTreeCursor] = alloc[TSTreeCursor](1)
@@ -2211,23 +1822,18 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_copy(cursor : Ptr[TSTreeCursor])(__return : Ptr[TSTreeCursor]): Unit = 
     __sn_wrap_treesitter_ts_tree_cursor_copy(cursor, __return)
 
   /**
    * Get the tree cursor's current node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_current_node(self : Ptr[TSTreeCursor])(__return : Ptr[TSNode]): Unit = 
     __sn_wrap_treesitter_ts_tree_cursor_current_node(self, __return)
 
   /**
    * Get the tree cursor's current node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_current_node(self : Ptr[TSTreeCursor])(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -2235,13 +1841,11 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_goto_first_child_for_point(self : Ptr[TSTreeCursor], goal_point : Ptr[TSPoint]): int64_t = 
     __sn_wrap_treesitter_ts_tree_cursor_goto_first_child_for_point(self, goal_point)
 
   /**
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_goto_first_child_for_point(self : Ptr[TSTreeCursor], goal_point : TSPoint)(using Zone): int64_t = 
     val __ptr_0: Ptr[TSPoint] = alloc[TSPoint](1)
@@ -2250,8 +1854,6 @@ object functions:
 
   /**
    * Create a new tree cursor starting from the given node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_new(node : TSNode)(using Zone): TSTreeCursor = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -2262,16 +1864,12 @@ object functions:
 
   /**
    * Create a new tree cursor starting from the given node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_new(node : Ptr[TSNode])(__return : Ptr[TSTreeCursor]): Unit = 
     __sn_wrap_treesitter_ts_tree_cursor_new(node, __return)
 
   /**
    * Create a new tree cursor starting from the given node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_new(node : Ptr[TSNode])(using Zone): TSTreeCursor = 
     val __ptr_0: Ptr[TSTreeCursor] = alloc[TSTreeCursor](1)
@@ -2280,8 +1878,6 @@ object functions:
 
   /**
    * Re-initialize a tree cursor to start at a different node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_reset(self : Ptr[TSTreeCursor], node : TSNode)(using Zone): Unit = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -2290,16 +1886,12 @@ object functions:
 
   /**
    * Re-initialize a tree cursor to start at a different node.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_cursor_reset(self : Ptr[TSTreeCursor], node : Ptr[TSNode]): Unit = 
     __sn_wrap_treesitter_ts_tree_cursor_reset(self, node)
 
   /**
    * Get the root node of the syntax tree.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_root_node(self : Ptr[TSTree])(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -2308,28 +1900,12 @@ object functions:
 
   /**
    * Get the root node of the syntax tree.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_root_node(self : Ptr[TSTree])(__return : Ptr[TSNode]): Unit = 
     __sn_wrap_treesitter_ts_tree_root_node(self, __return)
 
   /**
    * Get the root node of the syntax tree, but with its position shifted forward by the given offset.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
-  */
-  def ts_tree_root_node_with_offset(self : Ptr[TSTree], offset_bytes : uint32_t, offset_extent : TSPoint)(using Zone): TSNode = 
-    val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
-    val __ptr_1: Ptr[TSPoint] = alloc[TSPoint](1)
-    !(__ptr_1 + 0) = offset_extent
-    __sn_wrap_treesitter_ts_tree_root_node_with_offset(self, offset_bytes, (__ptr_1 + 0), (__ptr_0 + 0))
-    !(__ptr_0 + 0)
-
-  /**
-   * Get the root node of the syntax tree, but with its position shifted forward by the given offset.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_root_node_with_offset(self : Ptr[TSTree], offset_bytes : uint32_t, offset_extent : Ptr[TSPoint])(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
@@ -2338,11 +1914,19 @@ object functions:
 
   /**
    * Get the root node of the syntax tree, but with its position shifted forward by the given offset.
-  
-   * [bindgen] header: /Users/velvetbaldmime/projects/sn-bindgen-examples/example-tree-sitter/tree-sitter/lib/include/tree_sitter/api.h
   */
   def ts_tree_root_node_with_offset(self : Ptr[TSTree], offset_bytes : uint32_t, offset_extent : Ptr[TSPoint])(__return : Ptr[TSNode]): Unit = 
     __sn_wrap_treesitter_ts_tree_root_node_with_offset(self, offset_bytes, offset_extent, __return)
+
+  /**
+   * Get the root node of the syntax tree, but with its position shifted forward by the given offset.
+  */
+  def ts_tree_root_node_with_offset(self : Ptr[TSTree], offset_bytes : uint32_t, offset_extent : TSPoint)(using Zone): TSNode = 
+    val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
+    val __ptr_1: Ptr[TSPoint] = alloc[TSPoint](1)
+    !(__ptr_1 + 0) = offset_extent
+    __sn_wrap_treesitter_ts_tree_root_node_with_offset(self, offset_bytes, (__ptr_1 + 0), (__ptr_0 + 0))
+    !(__ptr_0 + 0)
 
 object types:
   export _root_.treesitter.structs.*
