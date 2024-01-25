@@ -14,9 +14,12 @@ def tree_sitter_scala(): Ptr[TSLanguage] = extern
     ts_parser_set_language(parser, tree_sitter_scala())
 
     val source = c"""
-      object Hello {
-        def main(args: Array[String]) = println("yo!")
-      }
+      object Hello:
+        def main(args: Array[String]) = 
+          for 
+            x <- 1 to 20
+          do 
+            println("yo!")
       """
 
     val tree =
