@@ -7,7 +7,7 @@ import java.nio.file.Paths
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
-ThisBuild / resolvers += Resolver.sonatypeRepo("snapshots")
+ThisBuild / resolvers ++= Resolver.sonatypeOssRepos("snapshots")
 
 lazy val Versions = new {
   val Scala = "3.3.1"
@@ -48,9 +48,11 @@ lazy val `tree-sitter` = project
     bindgenBindings += {
       Binding(
         baseDirectory.value / "tree-sitter" / "lib" / "include" / "tree_sitter" / "api.h",
-        "treesitter",
-        cImports = List("tree_sitter/api.h")
+        "treesitter"
       )
+        .withCImports(
+          List("tree_sitter/api.h")
+        )
     },
     // Copy generated Scala parser
     Compile / resourceGenerators += Def.task {
@@ -82,6 +84,7 @@ lazy val `tree-sitter` = project
         )
     }
   )
+  .settings(bindgenSettings)
 
 lazy val cjson = project
   .in(file("example-cjson"))
@@ -93,11 +96,14 @@ lazy val cjson = project
     bindgenBindings += {
       Binding(
         vcpkgConfigurator.value.includes("cjson") / "cjson" / "cJSON.h",
-        "cjson",
-        cImports = List("cJSON.h")
+        "cjson"
       )
+        .withCImports(
+          List("cJSON.h")
+        )
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
 
 lazy val curl = project
@@ -110,11 +116,14 @@ lazy val curl = project
     bindgenBindings += {
       Binding(
         vcpkgConfigurator.value.includes("curl") / "curl" / "curl.h",
-        "curl",
-        cImports = List("curl/curl.h")
+        "curl"
       )
+        .withCImports(
+          List("curl/curl.h")
+        )
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
 
 lazy val git = project
@@ -124,17 +133,17 @@ lazy val git = project
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("libgit2"),
     bindgenBindings += {
-      Binding(
-        vcpkgConfigurator.value.includes("libgit2") / "git2.h",
-        "libgit",
-        linkName = Some("git2"),
-        cImports = List("git2.h"),
-        clangFlags = vcpkgConfigurator.value.pkgConfig
-          .updateCompilationFlags(List("-fsigned-char"), "libgit2")
-          .toList
-      )
+      Binding(vcpkgConfigurator.value.includes("libgit2") / "git2.h", "libgit")
+        .withLinkName("git2")
+        .withCImports(List("git2.h"))
+        .withClangFlags(
+          vcpkgConfigurator.value.pkgConfig
+            .updateCompilationFlags(List("-fsigned-char"), "libgit2")
+            .toList
+        )
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
 
 lazy val postgres =
@@ -147,15 +156,18 @@ lazy val postgres =
       bindgenBindings += {
         Binding(
           vcpkgConfigurator.value.includes("libpq") / "libpq-fe.h",
-          "libpq",
-          linkName = Some("pq"),
-          cImports = List("libpq-fe.h"),
-          clangFlags = vcpkgConfigurator.value.pkgConfig
-            .updateCompilationFlags(List("-std=gnu99"), "libpq")
-            .toList
+          "libpq"
         )
+          .withLinkName("pq")
+          .withCImports(List("libpq-fe.h"))
+          .withClangFlags(
+            vcpkgConfigurator.value.pkgConfig
+              .updateCompilationFlags(List("-std=gnu99"), "libpq")
+              .toList
+          )
       }
     )
+    .settings(bindgenSettings)
     .settings(configurePlatform())
 
 lazy val mysql =
@@ -187,21 +199,17 @@ lazy val mysql =
             .stripPrefix("-I")
         )
 
-        Binding(
-          actualIncludeFolder / "mysql.h",
-          "libmysql",
-          linkName = Some("mysqlclient"),
-          cImports = List("mysql/mysql.h"),
-          clangFlags = vcpkgConfigurator.value.pkgConfig
-            .updateCompilationFlags(List("-std=gnu99"), "mysqlclient")
-            .toList
-        )
-      },
-      bindgenMode := BindgenMode.Manual(
-        scalaDir = sourceDirectory.value / "main" / "scala" / "generated",
-        cDir = (Compile / resourceDirectory).value / "scala-native"
-      )
+        Binding(actualIncludeFolder / "mysql.h", "libmysql")
+          .withLinkName("mysqlclient")
+          .withCImports(List("mysql/mysql.h"))
+          .withClangFlags(
+            vcpkgConfigurator.value.pkgConfig
+              .updateCompilationFlags(List("-std=gnu99"), "mysqlclient")
+              .toList
+          )
+      }
     )
+    .settings(bindgenSettings)
     .settings(configurePlatform())
 
 lazy val sqlite =
@@ -214,12 +222,14 @@ lazy val sqlite =
       bindgenBindings += {
         Binding(
           vcpkgConfigurator.value.includes("sqlite3") / "sqlite3.h",
-          "libsqlite",
-          cImports = List("sqlite.h"),
-          clangFlags = List("-fsigned-char")
+          "libsqlite"
         )
+          .withCImports(List("sqlite.h"))
+          .withClangFlags(List("-fsigned-char"))
+
       }
     )
+    .settings(bindgenSettings)
     .settings(configurePlatform())
 
 lazy val redis =
@@ -232,12 +242,14 @@ lazy val redis =
       bindgenBindings += {
         Binding(
           vcpkgConfigurator.value.includes("hiredis") / "hiredis" / "hiredis.h",
-          "libredis",
-          cImports = List("hiredis.h"),
-          clangFlags = List("-fsigned-char")
+          "libredis"
         )
+          .withCImports(List("hiredis.h"))
+          .withClangFlags(List("-fsigned-char"))
+
       }
     )
+    .settings(bindgenSettings)
     .settings(configurePlatform())
 
 lazy val cmark = project
@@ -248,16 +260,16 @@ lazy val cmark = project
     vcpkgDependencies := VcpkgDependencies("cmark"),
     vcpkgNativeConfig ~= { _.addRenamedLibrary("cmark", "libcmark") },
     bindgenBindings += {
-      Binding(
-        vcpkgConfigurator.value.includes("cmark") / "cmark.h",
-        "cmark",
-        cImports = List("cmark.h"),
-        clangFlags = vcpkgConfigurator.value.pkgConfig
-          .updateCompilationFlags(List("-DCMARK_STATIC_DEFINE="), "libcmark")
-          .toList
-      )
+      Binding(vcpkgConfigurator.value.includes("cmark") / "cmark.h", "cmark")
+        .withCImports(List("cmark.h"))
+        .withClangFlags(
+          vcpkgConfigurator.value.pkgConfig
+            .updateCompilationFlags(List("-DCMARK_STATIC_DEFINE="), "libcmark")
+            .toList
+        )
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
 
 lazy val rocksdb = project
@@ -269,12 +281,16 @@ lazy val rocksdb = project
     bindgenBindings += {
       Binding(
         vcpkgConfigurator.value.includes("rocksdb") / "rocksdb" / "c.h",
-        "rocksdb",
-        cImports = List("rocksdb/c.h"),
-        clangFlags = List("-I" + vcpkgConfigurator.value.includes("rocksdb"))
+        "rocksdb"
       )
+        .withCImports(List("rocksdb/c.h"))
+        .withClangFlags(
+          List("-I" + vcpkgConfigurator.value.includes("rocksdb"))
+        )
+
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
 
 lazy val s2n = project
@@ -285,15 +301,24 @@ lazy val s2n = project
     vcpkgDependencies := VcpkgDependencies("s2n", "openssl"),
     Compile / run / envVars := Map("S2N_DONT_MLOCK" -> "1"),
     bindgenBindings += {
-      Binding(
-        vcpkgConfigurator.value.includes("s2n") / "s2n.h",
-        "s2n",
-        cImports = List("s2n.h"),
-        clangFlags = List("-I" + vcpkgConfigurator.value.includes("s2n"))
-      )
+      Binding(vcpkgConfigurator.value.includes("s2n") / "s2n.h", "s2n")
+        .withCImports(List("s2n.h"))
+        .withClangFlags(List("-I" + vcpkgConfigurator.value.includes("s2n")))
+
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
+
+val bindgenSettings = Seq(
+  bindgenMode := BindgenMode.Manual(
+    scalaDir = (Compile / sourceDirectory).value / "scala" / "generated",
+    cDir = (Compile / resourceDirectory).value / "scala-native" / "generated"
+  ),
+  bindgenBindings := {
+    bindgenBindings.value.map(_.withNoLocation(true))
+  }
+)
 
 def configurePlatform(rename: String => String = identity) = Seq(
   nativeConfig := {
@@ -329,11 +354,12 @@ lazy val duckdb = project
       val bd = (baseDirectory.value / "duckdb" / "src" / "include")
       Binding(
         baseDirectory.value / "duckdb" / "src" / "include" / "duckdb.h",
-        "duckdb",
-        linkName = Some("duckdb"),
-        cImports = List("duckdb.h"),
-        clangFlags = List(s"-I$bd", "-fsigned-char")
+        "duckdb"
       )
+        .withLinkName("duckdb")
+        .withCImports(List("duckdb.h"))
+        .withClangFlags(List(s"-I$bd", "-fsigned-char"))
+
     },
     nativeConfig := {
       val base = baseDirectory.value / "duckdb"
@@ -353,6 +379,7 @@ lazy val duckdb = project
         )
     }
   )
+  .settings(bindgenSettings)
 
 lazy val libuv = project
   .in(file("example-libuv"))
@@ -362,17 +389,17 @@ lazy val libuv = project
     vcpkgDependencies := VcpkgDependencies("libuv"),
     bindgenBindings := {
       Seq(
-        Binding(
-          vcpkgConfigurator.value.includes("libuv") / "uv.h",
-          "libuv",
-          cImports = List("uv.h"),
-          clangFlags = List(
-            "-I" + vcpkgConfigurator.value.includes("libuv").toString
+        Binding(vcpkgConfigurator.value.includes("libuv") / "uv.h", "libuv")
+          .withCImports(List("uv.h"))
+          .withClangFlags(
+            List(
+              "-I" + vcpkgConfigurator.value.includes("libuv").toString
+            )
           )
-        )
       )
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
 
 lazy val lua = project
@@ -383,17 +410,17 @@ lazy val lua = project
     scalaVersion := Versions.Scala,
     bindgenBindings := {
       Seq(
-        Binding(
-          (Compile / baseDirectory).value / "lua-amalgam.h",
-          "lua",
-          cImports = List("lua.h", "lauxlib.h", "lualib.h"),
-          clangFlags = List(
-            "-I" + vcpkgConfigurator.value.includes("lua").toString
+        Binding((Compile / baseDirectory).value / "lua-amalgam.h", "lua")
+          .withCImports(List("lua.h", "lauxlib.h", "lualib.h"))
+          .withClangFlags(
+            List(
+              "-I" + vcpkgConfigurator.value.includes("lua").toString
+            )
           )
-        )
       )
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
 
 lazy val openssl = project
@@ -406,13 +433,18 @@ lazy val openssl = project
       Seq(
         Binding(
           (Compile / baseDirectory).value / "openssl-amalgam.h",
-          "openssl",
-          cImports = List("openssl/sha.h", "openssl/evp.h"),
-          clangFlags = List("-I" + vcpkgConfigurator.value.includes("openssl"))
+          "openssl"
         )
+          .withCImports(
+            List("openssl/sha.h", "openssl/evp.h")
+          )
+          .withClangFlags(
+            List("-I" + vcpkgConfigurator.value.includes("openssl"))
+          )
       )
     }
   )
+  .settings(bindgenSettings)
   .settings(configurePlatform())
 
 def getProjects(s: State): Seq[String] = {
