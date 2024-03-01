@@ -1061,16 +1061,16 @@ object functions:
   /**
    * Get the node's child at the given index, where zero represents the first child.
   */
-  def ts_node_child(self : Ptr[TSNode], child_index : uint32_t)(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_child(self, child_index, __return)
-
-  /**
-   * Get the node's child at the given index, where zero represents the first child.
-  */
   def ts_node_child(self : Ptr[TSNode], child_index : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
     __sn_wrap_treesitter_ts_node_child(self, child_index, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  /**
+   * Get the node's child at the given index, where zero represents the first child.
+  */
+  def ts_node_child(self : Ptr[TSNode], child_index : uint32_t)(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_child(self, child_index, __return)
 
   /**
    * Get the node's child with the given numerical field id.
@@ -1083,23 +1083,17 @@ object functions:
   /**
    * Get the node's child with the given numerical field id.
   */
+  def ts_node_child_by_field_id(self : Ptr[TSNode], field_id : TSFieldId)(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_child_by_field_id(self, field_id, __return)
+
+  /**
+   * Get the node's child with the given numerical field id.
+  */
   def ts_node_child_by_field_id(self : TSNode, field_id : TSFieldId)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
     !(__ptr_0 + 0) = self
     __sn_wrap_treesitter_ts_node_child_by_field_id((__ptr_0 + 0), field_id, (__ptr_0 + 1))
     !(__ptr_0 + 1)
-
-  /**
-   * Get the node's child with the given numerical field id.
-  */
-  def ts_node_child_by_field_id(self : Ptr[TSNode], field_id : TSFieldId)(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_child_by_field_id(self, field_id, __return)
-
-  /**
-   * Get the node's child with the given field name.
-  */
-  def ts_node_child_by_field_name(self : Ptr[TSNode], name : CString, name_length : uint32_t)(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_child_by_field_name(self, name, name_length, __return)
 
   /**
    * Get the node's child with the given field name.
@@ -1117,6 +1111,12 @@ object functions:
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
     __sn_wrap_treesitter_ts_node_child_by_field_name(self, name, name_length, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  /**
+   * Get the node's child with the given field name.
+  */
+  def ts_node_child_by_field_name(self : Ptr[TSNode], name : CString, name_length : uint32_t)(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_child_by_field_name(self, name, name_length, __return)
 
   /**
    * Get the node's number of children.
@@ -1209,6 +1209,12 @@ object functions:
   /**
    * Get the node's end position in terms of rows and columns.
   */
+  def ts_node_end_point(self : Ptr[TSNode])(__return : Ptr[TSPoint]): Unit = 
+    __sn_wrap_treesitter_ts_node_end_point(self, __return)
+
+  /**
+   * Get the node's end position in terms of rows and columns.
+  */
   def ts_node_end_point(self : Ptr[TSNode])(using Zone): TSPoint = 
     val __ptr_0: Ptr[TSPoint] = alloc[TSPoint](1)
     __sn_wrap_treesitter_ts_node_end_point(self, (__ptr_0 + 0))
@@ -1225,18 +1231,6 @@ object functions:
     !(__ptr_1 + 0)
 
   /**
-   * Get the node's end position in terms of rows and columns.
-  */
-  def ts_node_end_point(self : Ptr[TSNode])(__return : Ptr[TSPoint]): Unit = 
-    __sn_wrap_treesitter_ts_node_end_point(self, __return)
-
-  /**
-   * Check if two nodes are identical.
-  */
-  def ts_node_eq(self : Ptr[TSNode], other : Ptr[TSNode]): Boolean = 
-    __sn_wrap_treesitter_ts_node_eq(self, other)
-
-  /**
    * Check if two nodes are identical.
   */
   def ts_node_eq(self : TSNode, other : TSNode)(using Zone): Boolean = 
@@ -1244,6 +1238,12 @@ object functions:
     !(__ptr_0 + 0) = self
     !(__ptr_0 + 1) = other
     __sn_wrap_treesitter_ts_node_eq((__ptr_0 + 0), (__ptr_0 + 1))
+
+  /**
+   * Check if two nodes are identical.
+  */
+  def ts_node_eq(self : Ptr[TSNode], other : Ptr[TSNode]): Boolean = 
+    __sn_wrap_treesitter_ts_node_eq(self, other)
 
   /**
    * Get the field name for node's child at the given index, where zero represents the first child. Returns NULL, if no field is found.
@@ -1350,16 +1350,16 @@ object functions:
   /**
    * Check if the node is a syntax error or contains any syntax errors.
   */
-  def ts_node_has_error(self : TSNode)(using Zone): Boolean = 
-    val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
-    !(__ptr_0 + 0) = self
-    __sn_wrap_treesitter_ts_node_has_error((__ptr_0 + 0))
+  def ts_node_has_error(self : Ptr[TSNode]): Boolean = 
+    __sn_wrap_treesitter_ts_node_has_error(self)
 
   /**
    * Check if the node is a syntax error or contains any syntax errors.
   */
-  def ts_node_has_error(self : Ptr[TSNode]): Boolean = 
-    __sn_wrap_treesitter_ts_node_has_error(self)
+  def ts_node_has_error(self : TSNode)(using Zone): Boolean = 
+    val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
+    !(__ptr_0 + 0) = self
+    __sn_wrap_treesitter_ts_node_has_error((__ptr_0 + 0))
 
   /**
    * Check if the node is a syntax error.
@@ -1378,16 +1378,22 @@ object functions:
   /**
    * Check if the node is *extra*. Extra nodes represent things like comments, which are not required the grammar, but can appear anywhere.
   */
+  def ts_node_is_extra(self : Ptr[TSNode]): Boolean = 
+    __sn_wrap_treesitter_ts_node_is_extra(self)
+
+  /**
+   * Check if the node is *extra*. Extra nodes represent things like comments, which are not required the grammar, but can appear anywhere.
+  */
   def ts_node_is_extra(self : TSNode)(using Zone): Boolean = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
     !(__ptr_0 + 0) = self
     __sn_wrap_treesitter_ts_node_is_extra((__ptr_0 + 0))
 
   /**
-   * Check if the node is *extra*. Extra nodes represent things like comments, which are not required the grammar, but can appear anywhere.
+   * Check if the node is *missing*. Missing nodes are inserted by the parser in order to recover from certain kinds of syntax errors.
   */
-  def ts_node_is_extra(self : Ptr[TSNode]): Boolean = 
-    __sn_wrap_treesitter_ts_node_is_extra(self)
+  def ts_node_is_missing(self : Ptr[TSNode]): Boolean = 
+    __sn_wrap_treesitter_ts_node_is_missing(self)
 
   /**
    * Check if the node is *missing*. Missing nodes are inserted by the parser in order to recover from certain kinds of syntax errors.
@@ -1398,18 +1404,6 @@ object functions:
     __sn_wrap_treesitter_ts_node_is_missing((__ptr_0 + 0))
 
   /**
-   * Check if the node is *missing*. Missing nodes are inserted by the parser in order to recover from certain kinds of syntax errors.
-  */
-  def ts_node_is_missing(self : Ptr[TSNode]): Boolean = 
-    __sn_wrap_treesitter_ts_node_is_missing(self)
-
-  /**
-   * Check if the node is *named*. Named nodes correspond to named rules in the grammar, whereas *anonymous* nodes correspond to string literals in the grammar.
-  */
-  def ts_node_is_named(self : Ptr[TSNode]): Boolean = 
-    __sn_wrap_treesitter_ts_node_is_named(self)
-
-  /**
    * Check if the node is *named*. Named nodes correspond to named rules in the grammar, whereas *anonymous* nodes correspond to string literals in the grammar.
   */
   def ts_node_is_named(self : TSNode)(using Zone): Boolean = 
@@ -1418,18 +1412,24 @@ object functions:
     __sn_wrap_treesitter_ts_node_is_named((__ptr_0 + 0))
 
   /**
-   * Check if the node is null. Functions like [`ts_node_child`] and [`ts_node_next_sibling`] will return a null node to indicate that no such node was found.
+   * Check if the node is *named*. Named nodes correspond to named rules in the grammar, whereas *anonymous* nodes correspond to string literals in the grammar.
   */
-  def ts_node_is_null(self : TSNode)(using Zone): Boolean = 
-    val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
-    !(__ptr_0 + 0) = self
-    __sn_wrap_treesitter_ts_node_is_null((__ptr_0 + 0))
+  def ts_node_is_named(self : Ptr[TSNode]): Boolean = 
+    __sn_wrap_treesitter_ts_node_is_named(self)
 
   /**
    * Check if the node is null. Functions like [`ts_node_child`] and [`ts_node_next_sibling`] will return a null node to indicate that no such node was found.
   */
   def ts_node_is_null(self : Ptr[TSNode]): Boolean = 
     __sn_wrap_treesitter_ts_node_is_null(self)
+
+  /**
+   * Check if the node is null. Functions like [`ts_node_child`] and [`ts_node_next_sibling`] will return a null node to indicate that no such node was found.
+  */
+  def ts_node_is_null(self : TSNode)(using Zone): Boolean = 
+    val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
+    !(__ptr_0 + 0) = self
+    __sn_wrap_treesitter_ts_node_is_null((__ptr_0 + 0))
 
   /**
    * Get the node's language.
@@ -1448,8 +1448,10 @@ object functions:
   /**
    * Get the node's *named* child at the given index.
   */
-  def ts_node_named_child(self : Ptr[TSNode], child_index : uint32_t)(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_named_child(self, child_index, __return)
+  def ts_node_named_child(self : Ptr[TSNode], child_index : uint32_t)(using Zone): TSNode = 
+    val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
+    __sn_wrap_treesitter_ts_node_named_child(self, child_index, (__ptr_0 + 0))
+    !(__ptr_0 + 0)
 
   /**
    * Get the node's *named* child at the given index.
@@ -1463,10 +1465,8 @@ object functions:
   /**
    * Get the node's *named* child at the given index.
   */
-  def ts_node_named_child(self : Ptr[TSNode], child_index : uint32_t)(using Zone): TSNode = 
-    val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
-    __sn_wrap_treesitter_ts_node_named_child(self, child_index, (__ptr_0 + 0))
-    !(__ptr_0 + 0)
+  def ts_node_named_child(self : Ptr[TSNode], child_index : uint32_t)(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_named_child(self, child_index, __return)
 
   /**
    * Get the node's number of *named* children.
@@ -1485,6 +1485,12 @@ object functions:
   /**
    * Get the smallest named node within this node that spans the given range of bytes or (row, column) positions.
   */
+  def ts_node_named_descendant_for_byte_range(self : Ptr[TSNode], start : uint32_t, end : uint32_t)(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_named_descendant_for_byte_range(self, start, end, __return)
+
+  /**
+   * Get the smallest named node within this node that spans the given range of bytes or (row, column) positions.
+  */
   def ts_node_named_descendant_for_byte_range(self : Ptr[TSNode], start : uint32_t, end : uint32_t)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
     __sn_wrap_treesitter_ts_node_named_descendant_for_byte_range(self, start, end, (__ptr_0 + 0))
@@ -1498,12 +1504,6 @@ object functions:
     !(__ptr_0 + 0) = self
     __sn_wrap_treesitter_ts_node_named_descendant_for_byte_range((__ptr_0 + 0), start, end, (__ptr_0 + 1))
     !(__ptr_0 + 1)
-
-  /**
-   * Get the smallest named node within this node that spans the given range of bytes or (row, column) positions.
-  */
-  def ts_node_named_descendant_for_byte_range(self : Ptr[TSNode], start : uint32_t, end : uint32_t)(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_named_descendant_for_byte_range(self, start, end, __return)
 
   /**
   */
@@ -1634,16 +1634,21 @@ object functions:
 
   /**
   */
-  def ts_node_prev_named_sibling(self : Ptr[TSNode])(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_prev_named_sibling(self, __return)
-
-  /**
-  */
   def ts_node_prev_named_sibling(self : TSNode)(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](2)
     !(__ptr_0 + 0) = self
     __sn_wrap_treesitter_ts_node_prev_named_sibling((__ptr_0 + 0), (__ptr_0 + 1))
     !(__ptr_0 + 1)
+
+  /**
+  */
+  def ts_node_prev_named_sibling(self : Ptr[TSNode])(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_prev_named_sibling(self, __return)
+
+  /**
+  */
+  def ts_node_prev_sibling(self : Ptr[TSNode])(__return : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_node_prev_sibling(self, __return)
 
   /**
   */
@@ -1659,11 +1664,6 @@ object functions:
     !(__ptr_0 + 0) = self
     __sn_wrap_treesitter_ts_node_prev_sibling((__ptr_0 + 0), (__ptr_0 + 1))
     !(__ptr_0 + 1)
-
-  /**
-  */
-  def ts_node_prev_sibling(self : Ptr[TSNode])(__return : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_node_prev_sibling(self, __return)
 
   /**
    * Get the node's start byte.
@@ -1682,18 +1682,18 @@ object functions:
   /**
    * Get the node's start position in terms of rows and columns.
   */
-  def ts_node_start_point(self : Ptr[TSNode])(__return : Ptr[TSPoint]): Unit = 
-    __sn_wrap_treesitter_ts_node_start_point(self, __return)
-
-  /**
-   * Get the node's start position in terms of rows and columns.
-  */
   def ts_node_start_point(self : TSNode)(using Zone): TSPoint = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
     val __ptr_1: Ptr[TSPoint] = alloc[TSPoint](1)
     !(__ptr_0 + 0) = self
     __sn_wrap_treesitter_ts_node_start_point((__ptr_0 + 0), (__ptr_1 + 0))
     !(__ptr_1 + 0)
+
+  /**
+   * Get the node's start position in terms of rows and columns.
+  */
+  def ts_node_start_point(self : Ptr[TSNode])(__return : Ptr[TSPoint]): Unit = 
+    __sn_wrap_treesitter_ts_node_start_point(self, __return)
 
   /**
    * Get the node's start position in terms of rows and columns.
@@ -1776,16 +1776,22 @@ object functions:
   /**
    * Set the logger that a parser should use during parsing.
   */
-  def ts_parser_set_logger(self : Ptr[TSParser], logger : Ptr[TSLogger]): Unit = 
-    __sn_wrap_treesitter_ts_parser_set_logger(self, logger)
-
-  /**
-   * Set the logger that a parser should use during parsing.
-  */
   def ts_parser_set_logger(self : Ptr[TSParser], logger : TSLogger)(using Zone): Unit = 
     val __ptr_0: Ptr[TSLogger] = alloc[TSLogger](1)
     !(__ptr_0 + 0) = logger
     __sn_wrap_treesitter_ts_parser_set_logger(self, (__ptr_0 + 0))
+
+  /**
+   * Set the logger that a parser should use during parsing.
+  */
+  def ts_parser_set_logger(self : Ptr[TSParser], logger : Ptr[TSLogger]): Unit = 
+    __sn_wrap_treesitter_ts_parser_set_logger(self, logger)
+
+  /**
+   * Start running a given query on a given node.
+  */
+  def ts_query_cursor_exec(self : Ptr[TSQueryCursor], query : Ptr[TSQuery], node : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_query_cursor_exec(self, query, node)
 
   /**
    * Start running a given query on a given node.
@@ -1794,12 +1800,6 @@ object functions:
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
     !(__ptr_0 + 0) = node
     __sn_wrap_treesitter_ts_query_cursor_exec(self, query, (__ptr_0 + 0))
-
-  /**
-   * Start running a given query on a given node.
-  */
-  def ts_query_cursor_exec(self : Ptr[TSQueryCursor], query : Ptr[TSQuery], node : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_query_cursor_exec(self, query, node)
 
   /**
   */
@@ -1879,16 +1879,16 @@ object functions:
   /**
    * Re-initialize a tree cursor to start at a different node.
   */
-  def ts_tree_cursor_reset(self : Ptr[TSTreeCursor], node : TSNode)(using Zone): Unit = 
-    val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
-    !(__ptr_0 + 0) = node
-    __sn_wrap_treesitter_ts_tree_cursor_reset(self, (__ptr_0 + 0))
+  def ts_tree_cursor_reset(self : Ptr[TSTreeCursor], node : Ptr[TSNode]): Unit = 
+    __sn_wrap_treesitter_ts_tree_cursor_reset(self, node)
 
   /**
    * Re-initialize a tree cursor to start at a different node.
   */
-  def ts_tree_cursor_reset(self : Ptr[TSTreeCursor], node : Ptr[TSNode]): Unit = 
-    __sn_wrap_treesitter_ts_tree_cursor_reset(self, node)
+  def ts_tree_cursor_reset(self : Ptr[TSTreeCursor], node : TSNode)(using Zone): Unit = 
+    val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
+    !(__ptr_0 + 0) = node
+    __sn_wrap_treesitter_ts_tree_cursor_reset(self, (__ptr_0 + 0))
 
   /**
    * Get the root node of the syntax tree.
@@ -1907,6 +1907,16 @@ object functions:
   /**
    * Get the root node of the syntax tree, but with its position shifted forward by the given offset.
   */
+  def ts_tree_root_node_with_offset(self : Ptr[TSTree], offset_bytes : uint32_t, offset_extent : TSPoint)(using Zone): TSNode = 
+    val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
+    val __ptr_1: Ptr[TSPoint] = alloc[TSPoint](1)
+    !(__ptr_1 + 0) = offset_extent
+    __sn_wrap_treesitter_ts_tree_root_node_with_offset(self, offset_bytes, (__ptr_1 + 0), (__ptr_0 + 0))
+    !(__ptr_0 + 0)
+
+  /**
+   * Get the root node of the syntax tree, but with its position shifted forward by the given offset.
+  */
   def ts_tree_root_node_with_offset(self : Ptr[TSTree], offset_bytes : uint32_t, offset_extent : Ptr[TSPoint])(using Zone): TSNode = 
     val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
     __sn_wrap_treesitter_ts_tree_root_node_with_offset(self, offset_bytes, offset_extent, (__ptr_0 + 0))
@@ -1917,16 +1927,6 @@ object functions:
   */
   def ts_tree_root_node_with_offset(self : Ptr[TSTree], offset_bytes : uint32_t, offset_extent : Ptr[TSPoint])(__return : Ptr[TSNode]): Unit = 
     __sn_wrap_treesitter_ts_tree_root_node_with_offset(self, offset_bytes, offset_extent, __return)
-
-  /**
-   * Get the root node of the syntax tree, but with its position shifted forward by the given offset.
-  */
-  def ts_tree_root_node_with_offset(self : Ptr[TSTree], offset_bytes : uint32_t, offset_extent : TSPoint)(using Zone): TSNode = 
-    val __ptr_0: Ptr[TSNode] = alloc[TSNode](1)
-    val __ptr_1: Ptr[TSPoint] = alloc[TSPoint](1)
-    !(__ptr_1 + 0) = offset_extent
-    __sn_wrap_treesitter_ts_tree_root_node_with_offset(self, offset_bytes, (__ptr_1 + 0), (__ptr_0 + 0))
-    !(__ptr_0 + 0)
 
 object types:
   export _root_.treesitter.structs.*

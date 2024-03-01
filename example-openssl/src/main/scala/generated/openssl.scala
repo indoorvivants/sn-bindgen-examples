@@ -110,7 +110,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr6[Ptr[BIO], CInt, CString, CInt, CLongInt, CLongInt, CLongInt]): BIO_callback_fn = o
     extension (v: BIO_callback_fn)
       inline def value: CFuncPtr6[Ptr[BIO], CInt, CString, CInt, CLongInt, CLongInt, CLongInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -121,7 +121,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr8[Ptr[BIO], CInt, CString, size_t, CInt, CLongInt, CInt, Ptr[size_t], CLongInt]): BIO_callback_fn_ex = o
     extension (v: BIO_callback_fn_ex)
       inline def value: CFuncPtr8[Ptr[BIO], CInt, CString, size_t, CInt, CLongInt, CInt, Ptr[size_t], CLongInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -132,7 +132,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[BIO], Ptr[Byte], Ptr[Byte], Unit]): BIO_dgram_sctp_notification_handler_fn = o
     extension (v: BIO_dgram_sctp_notification_handler_fn)
       inline def value: CFuncPtr3[Ptr[BIO], Ptr[Byte], Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -215,7 +215,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CString, CInt, Unit]): CRYPTO_free_fn = o
     extension (v: CRYPTO_free_fn)
       inline def value: CFuncPtr3[Ptr[Byte], CString, CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -226,7 +226,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]): CRYPTO_malloc_fn = o
     extension (v: CRYPTO_malloc_fn)
       inline def value: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -237,7 +237,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Ptr[Byte]]): CRYPTO_realloc_fn = o
     extension (v: CRYPTO_realloc_fn)
       inline def value: CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Ptr[Byte]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -309,7 +309,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]): OPENSSL_sk_compfunc = o
     extension (v: OPENSSL_sk_compfunc)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -320,7 +320,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OPENSSL_sk_copyfunc = o
     extension (v: OPENSSL_sk_copyfunc)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -331,7 +331,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OPENSSL_sk_freefunc = o
     extension (v: OPENSSL_sk_freefunc)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2457,7 +2457,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_thread_stop_handler_fn = o
     extension (v: OSSL_thread_stop_handler_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2580,7 +2580,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[ASN1_GENERALSTRING]], Ptr[Ptr[ASN1_GENERALSTRING]], CInt]): sk_ASN1_GENERALSTRING_compfunc = o
     extension (v: sk_ASN1_GENERALSTRING_compfunc)
       inline def value: CFuncPtr2[Ptr[Ptr[ASN1_GENERALSTRING]], Ptr[Ptr[ASN1_GENERALSTRING]], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2591,7 +2591,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_GENERALSTRING], Ptr[ASN1_GENERALSTRING]]): sk_ASN1_GENERALSTRING_copyfunc = o
     extension (v: sk_ASN1_GENERALSTRING_copyfunc)
       inline def value: CFuncPtr1[Ptr[ASN1_GENERALSTRING], Ptr[ASN1_GENERALSTRING]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2602,7 +2602,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_GENERALSTRING], Unit]): sk_ASN1_GENERALSTRING_freefunc = o
     extension (v: sk_ASN1_GENERALSTRING_freefunc)
       inline def value: CFuncPtr1[Ptr[ASN1_GENERALSTRING], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2613,7 +2613,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[ASN1_INTEGER]], Ptr[Ptr[ASN1_INTEGER]], CInt]): sk_ASN1_INTEGER_compfunc = o
     extension (v: sk_ASN1_INTEGER_compfunc)
       inline def value: CFuncPtr2[Ptr[Ptr[ASN1_INTEGER]], Ptr[Ptr[ASN1_INTEGER]], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2624,7 +2624,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_INTEGER], Ptr[ASN1_INTEGER]]): sk_ASN1_INTEGER_copyfunc = o
     extension (v: sk_ASN1_INTEGER_copyfunc)
       inline def value: CFuncPtr1[Ptr[ASN1_INTEGER], Ptr[ASN1_INTEGER]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2635,7 +2635,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_INTEGER], Unit]): sk_ASN1_INTEGER_freefunc = o
     extension (v: sk_ASN1_INTEGER_freefunc)
       inline def value: CFuncPtr1[Ptr[ASN1_INTEGER], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2646,7 +2646,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[ASN1_OBJECT]], Ptr[Ptr[ASN1_OBJECT]], CInt]): sk_ASN1_OBJECT_compfunc = o
     extension (v: sk_ASN1_OBJECT_compfunc)
       inline def value: CFuncPtr2[Ptr[Ptr[ASN1_OBJECT]], Ptr[Ptr[ASN1_OBJECT]], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2657,7 +2657,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_OBJECT], Ptr[ASN1_OBJECT]]): sk_ASN1_OBJECT_copyfunc = o
     extension (v: sk_ASN1_OBJECT_copyfunc)
       inline def value: CFuncPtr1[Ptr[ASN1_OBJECT], Ptr[ASN1_OBJECT]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2668,7 +2668,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_OBJECT], Unit]): sk_ASN1_OBJECT_freefunc = o
     extension (v: sk_ASN1_OBJECT_freefunc)
       inline def value: CFuncPtr1[Ptr[ASN1_OBJECT], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2679,7 +2679,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[ASN1_STRING_TABLE]], Ptr[Ptr[ASN1_STRING_TABLE]], CInt]): sk_ASN1_STRING_TABLE_compfunc = o
     extension (v: sk_ASN1_STRING_TABLE_compfunc)
       inline def value: CFuncPtr2[Ptr[Ptr[ASN1_STRING_TABLE]], Ptr[Ptr[ASN1_STRING_TABLE]], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2690,7 +2690,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_STRING_TABLE], Ptr[ASN1_STRING_TABLE]]): sk_ASN1_STRING_TABLE_copyfunc = o
     extension (v: sk_ASN1_STRING_TABLE_copyfunc)
       inline def value: CFuncPtr1[Ptr[ASN1_STRING_TABLE], Ptr[ASN1_STRING_TABLE]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2701,7 +2701,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_STRING_TABLE], Unit]): sk_ASN1_STRING_TABLE_freefunc = o
     extension (v: sk_ASN1_STRING_TABLE_freefunc)
       inline def value: CFuncPtr1[Ptr[ASN1_STRING_TABLE], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2712,7 +2712,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[ASN1_TYPE]], Ptr[Ptr[ASN1_TYPE]], CInt]): sk_ASN1_TYPE_compfunc = o
     extension (v: sk_ASN1_TYPE_compfunc)
       inline def value: CFuncPtr2[Ptr[Ptr[ASN1_TYPE]], Ptr[Ptr[ASN1_TYPE]], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2723,7 +2723,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_TYPE], Ptr[ASN1_TYPE]]): sk_ASN1_TYPE_copyfunc = o
     extension (v: sk_ASN1_TYPE_copyfunc)
       inline def value: CFuncPtr1[Ptr[ASN1_TYPE], Ptr[ASN1_TYPE]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2734,7 +2734,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_TYPE], Unit]): sk_ASN1_TYPE_freefunc = o
     extension (v: sk_ASN1_TYPE_freefunc)
       inline def value: CFuncPtr1[Ptr[ASN1_TYPE], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2745,7 +2745,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[ASN1_UTF8STRING]], Ptr[Ptr[ASN1_UTF8STRING]], CInt]): sk_ASN1_UTF8STRING_compfunc = o
     extension (v: sk_ASN1_UTF8STRING_compfunc)
       inline def value: CFuncPtr2[Ptr[Ptr[ASN1_UTF8STRING]], Ptr[Ptr[ASN1_UTF8STRING]], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2756,7 +2756,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_UTF8STRING], Ptr[ASN1_UTF8STRING]]): sk_ASN1_UTF8STRING_copyfunc = o
     extension (v: sk_ASN1_UTF8STRING_copyfunc)
       inline def value: CFuncPtr1[Ptr[ASN1_UTF8STRING], Ptr[ASN1_UTF8STRING]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2767,7 +2767,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_UTF8STRING], Unit]): sk_ASN1_UTF8STRING_freefunc = o
     extension (v: sk_ASN1_UTF8STRING_freefunc)
       inline def value: CFuncPtr1[Ptr[ASN1_UTF8STRING], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2778,7 +2778,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[BIO]], Ptr[Ptr[BIO]], CInt]): sk_BIO_compfunc = o
     extension (v: sk_BIO_compfunc)
       inline def value: CFuncPtr2[Ptr[Ptr[BIO]], Ptr[Ptr[BIO]], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2789,7 +2789,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[BIO], Ptr[BIO]]): sk_BIO_copyfunc = o
     extension (v: sk_BIO_copyfunc)
       inline def value: CFuncPtr1[Ptr[BIO], Ptr[BIO]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2800,7 +2800,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[BIO], Unit]): sk_BIO_freefunc = o
     extension (v: sk_BIO_freefunc)
       inline def value: CFuncPtr1[Ptr[BIO], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2811,7 +2811,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[Byte]], Ptr[Ptr[Byte]], CInt]): sk_OPENSSL_BLOCK_compfunc = o
     extension (v: sk_OPENSSL_BLOCK_compfunc)
       inline def value: CFuncPtr2[Ptr[Ptr[Byte]], Ptr[Ptr[Byte]], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2822,7 +2822,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): sk_OPENSSL_BLOCK_copyfunc = o
     extension (v: sk_OPENSSL_BLOCK_copyfunc)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2833,7 +2833,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): sk_OPENSSL_BLOCK_freefunc = o
     extension (v: sk_OPENSSL_BLOCK_freefunc)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2844,7 +2844,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[CString], Ptr[CString], CInt]): sk_OPENSSL_CSTRING_compfunc = o
     extension (v: sk_OPENSSL_CSTRING_compfunc)
       inline def value: CFuncPtr2[Ptr[CString], Ptr[CString], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2855,7 +2855,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[CString, CString]): sk_OPENSSL_CSTRING_copyfunc = o
     extension (v: sk_OPENSSL_CSTRING_copyfunc)
       inline def value: CFuncPtr1[CString, CString] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2866,7 +2866,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[CString, Unit]): sk_OPENSSL_CSTRING_freefunc = o
     extension (v: sk_OPENSSL_CSTRING_freefunc)
       inline def value: CFuncPtr1[CString, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2877,7 +2877,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[CString], Ptr[CString], CInt]): sk_OPENSSL_STRING_compfunc = o
     extension (v: sk_OPENSSL_STRING_compfunc)
       inline def value: CFuncPtr2[Ptr[CString], Ptr[CString], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2888,7 +2888,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[CString, CString]): sk_OPENSSL_STRING_copyfunc = o
     extension (v: sk_OPENSSL_STRING_copyfunc)
       inline def value: CFuncPtr1[CString, CString] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2899,7 +2899,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[CString, Unit]): sk_OPENSSL_STRING_freefunc = o
     extension (v: sk_OPENSSL_STRING_freefunc)
       inline def value: CFuncPtr1[CString, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2910,7 +2910,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[X509_ALGOR]], Ptr[Ptr[X509_ALGOR]], CInt]): sk_X509_ALGOR_compfunc = o
     extension (v: sk_X509_ALGOR_compfunc)
       inline def value: CFuncPtr2[Ptr[Ptr[X509_ALGOR]], Ptr[Ptr[X509_ALGOR]], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2921,7 +2921,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[X509_ALGOR], Ptr[X509_ALGOR]]): sk_X509_ALGOR_copyfunc = o
     extension (v: sk_X509_ALGOR_copyfunc)
       inline def value: CFuncPtr1[Ptr[X509_ALGOR], Ptr[X509_ALGOR]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2932,7 +2932,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[X509_ALGOR], Unit]): sk_X509_ALGOR_freefunc = o
     extension (v: sk_X509_ALGOR_freefunc)
       inline def value: CFuncPtr1[Ptr[X509_ALGOR], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2943,7 +2943,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[Byte]], Ptr[Ptr[Byte]], CInt]): sk_void_compfunc = o
     extension (v: sk_void_compfunc)
       inline def value: CFuncPtr2[Ptr[Ptr[Byte]], Ptr[Ptr[Byte]], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2954,7 +2954,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): sk_void_copyfunc = o
     extension (v: sk_void_copyfunc)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2965,7 +2965,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): sk_void_freefunc = o
     extension (v: sk_void_freefunc)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type time_t = posix.sys.types.time_t
   object time_t: 
@@ -13919,11 +13919,6 @@ object functions:
 
   /**
   */
-  def OSSL_PARAM_construct_int(key : CString, buf : Ptr[CInt])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_int(key, buf, __return)
-
-  /**
-  */
   def OSSL_PARAM_construct_int(key : CString, buf : Ptr[CInt])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_int(key, buf, (__ptr_0 + 0))
@@ -13931,8 +13926,8 @@ object functions:
 
   /**
   */
-  def OSSL_PARAM_construct_int32(key : CString, buf : Ptr[int32_t])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_int32(key, buf, __return)
+  def OSSL_PARAM_construct_int(key : CString, buf : Ptr[CInt])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_int(key, buf, __return)
 
   /**
   */
@@ -13943,8 +13938,8 @@ object functions:
 
   /**
   */
-  def OSSL_PARAM_construct_int64(key : CString, buf : Ptr[int64_t])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_int64(key, buf, __return)
+  def OSSL_PARAM_construct_int32(key : CString, buf : Ptr[int32_t])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_int32(key, buf, __return)
 
   /**
   */
@@ -13952,6 +13947,11 @@ object functions:
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_int64(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  /**
+  */
+  def OSSL_PARAM_construct_int64(key : CString, buf : Ptr[int64_t])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_int64(key, buf, __return)
 
   /**
   */
@@ -13979,6 +13979,11 @@ object functions:
 
   /**
   */
+  def OSSL_PARAM_construct_octet_string(key : CString, buf : Ptr[Byte], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_octet_string(key, buf, bsize, __return)
+
+  /**
+  */
   def OSSL_PARAM_construct_octet_string(key : CString, buf : Ptr[Byte], bsize : size_t)(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_octet_string(key, buf, bsize, (__ptr_0 + 0))
@@ -13986,8 +13991,8 @@ object functions:
 
   /**
   */
-  def OSSL_PARAM_construct_octet_string(key : CString, buf : Ptr[Byte], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_octet_string(key, buf, bsize, __return)
+  def OSSL_PARAM_construct_size_t(key : CString, buf : Ptr[size_t])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_size_t(key, buf, __return)
 
   /**
   */
@@ -13998,8 +14003,8 @@ object functions:
 
   /**
   */
-  def OSSL_PARAM_construct_size_t(key : CString, buf : Ptr[size_t])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_size_t(key, buf, __return)
+  def OSSL_PARAM_construct_time_t(key : CString, buf : Ptr[time_t])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_time_t(key, buf, __return)
 
   /**
   */
@@ -14007,11 +14012,6 @@ object functions:
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_time_t(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
-
-  /**
-  */
-  def OSSL_PARAM_construct_time_t(key : CString, buf : Ptr[time_t])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_time_t(key, buf, __return)
 
   /**
   */
@@ -14027,15 +14027,15 @@ object functions:
 
   /**
   */
+  def OSSL_PARAM_construct_uint32(key : CString, buf : Ptr[uint32_t])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_uint32(key, buf, __return)
+
+  /**
+  */
   def OSSL_PARAM_construct_uint32(key : CString, buf : Ptr[uint32_t])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_uint32(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
-
-  /**
-  */
-  def OSSL_PARAM_construct_uint32(key : CString, buf : Ptr[uint32_t])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_uint32(key, buf, __return)
 
   /**
   */
@@ -14051,11 +14051,6 @@ object functions:
 
   /**
   */
-  def OSSL_PARAM_construct_ulong(key : CString, buf : Ptr[CUnsignedLongInt])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_ulong(key, buf, __return)
-
-  /**
-  */
   def OSSL_PARAM_construct_ulong(key : CString, buf : Ptr[CUnsignedLongInt])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_ulong(key, buf, (__ptr_0 + 0))
@@ -14063,8 +14058,8 @@ object functions:
 
   /**
   */
-  def OSSL_PARAM_construct_utf8_ptr(key : CString, buf : Ptr[CString], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_utf8_ptr(key, buf, bsize, __return)
+  def OSSL_PARAM_construct_ulong(key : CString, buf : Ptr[CUnsignedLongInt])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_ulong(key, buf, __return)
 
   /**
   */
@@ -14075,8 +14070,8 @@ object functions:
 
   /**
   */
-  def OSSL_PARAM_construct_utf8_string(key : CString, buf : CString, bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_utf8_string(key, buf, bsize, __return)
+  def OSSL_PARAM_construct_utf8_ptr(key : CString, buf : Ptr[CString], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_utf8_ptr(key, buf, bsize, __return)
 
   /**
   */
@@ -14084,6 +14079,11 @@ object functions:
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_utf8_string(key, buf, bsize, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  /**
+  */
+  def OSSL_PARAM_construct_utf8_string(key : CString, buf : CString, bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_utf8_string(key, buf, bsize, __return)
 
 object types:
   export _root_.openssl.structs.*

@@ -174,12 +174,6 @@ object structs:
 
   /**
   */
-  opaque type rocksdb_hyper_clock_cache_options_t = CStruct0
-  object rocksdb_hyper_clock_cache_options_t:
-    given _tag: Tag[rocksdb_hyper_clock_cache_options_t] = Tag.materializeCStruct0Tag
-
-  /**
-  */
   opaque type rocksdb_ingestexternalfileoptions_t = CStruct0
   object rocksdb_ingestexternalfileoptions_t:
     given _tag: Tag[rocksdb_ingestexternalfileoptions_t] = Tag.materializeCStruct0Tag
@@ -689,14 +683,6 @@ private[rocksdb] object extern_functions:
 
   /**
   */
-  def rocksdb_cache_create_hyper_clock(capacity : size_t, estimated_entry_charge : size_t): Ptr[rocksdb_cache_t] = extern
-
-  /**
-  */
-  def rocksdb_cache_create_hyper_clock_opts(_0 : Ptr[rocksdb_hyper_clock_cache_options_t]): Ptr[rocksdb_cache_t] = extern
-
-  /**
-  */
   def rocksdb_cache_create_lru(capacity : size_t): Ptr[rocksdb_cache_t] = extern
 
   /**
@@ -721,15 +707,7 @@ private[rocksdb] object extern_functions:
 
   /**
   */
-  def rocksdb_cache_get_occupancy_count(cache : Ptr[rocksdb_cache_t]): size_t = extern
-
-  /**
-  */
   def rocksdb_cache_get_pinned_usage(cache : Ptr[rocksdb_cache_t]): size_t = extern
-
-  /**
-  */
-  def rocksdb_cache_get_table_address_count(cache : Ptr[rocksdb_cache_t]): size_t = extern
 
   /**
   */
@@ -895,14 +873,6 @@ private[rocksdb] object extern_functions:
   /**
   */
   def rocksdb_comparator_with_ts_create(state : Ptr[Byte], destructor : CFuncPtr1[Ptr[Byte], Unit], compare : CFuncPtr5[Ptr[Byte], CString, size_t, CString, size_t, CInt], compare_ts : CFuncPtr5[Ptr[Byte], CString, size_t, CString, size_t, CInt], compare_without_ts : CFuncPtr7[Ptr[Byte], CString, size_t, CUnsignedChar, CString, size_t, CUnsignedChar, CInt], name : CFuncPtr1[Ptr[Byte], CString], timestamp_size : size_t): Ptr[rocksdb_comparator_t] = extern
-
-  /**
-  */
-  def rocksdb_create_column_families(db : Ptr[rocksdb_t], column_family_options : Ptr[rocksdb_options_t], num_column_families : CInt, column_family_names : Ptr[CString], lencfs : Ptr[size_t], errptr : Ptr[CString]): Ptr[Ptr[rocksdb_column_family_handle_t]] = extern
-
-  /**
-  */
-  def rocksdb_create_column_families_destroy(list : Ptr[Ptr[rocksdb_column_family_handle_t]]): Unit = extern
 
   /**
   */
@@ -1106,15 +1076,7 @@ private[rocksdb] object extern_functions:
 
   /**
   */
-  def rocksdb_fifo_compaction_options_get_allow_compaction(fifo_opts : Ptr[rocksdb_fifo_compaction_options_t]): CUnsignedChar = extern
-
-  /**
-  */
   def rocksdb_fifo_compaction_options_get_max_table_files_size(fifo_opts : Ptr[rocksdb_fifo_compaction_options_t]): uint64_t = extern
-
-  /**
-  */
-  def rocksdb_fifo_compaction_options_set_allow_compaction(fifo_opts : Ptr[rocksdb_fifo_compaction_options_t], allow_compaction : CUnsignedChar): Unit = extern
 
   /**
   */
@@ -1147,10 +1109,6 @@ private[rocksdb] object extern_functions:
   /**
   */
   def rocksdb_flush_cf(db : Ptr[rocksdb_t], options : Ptr[rocksdb_flushoptions_t], column_family : Ptr[rocksdb_column_family_handle_t], errptr : Ptr[CString]): Unit = extern
-
-  /**
-  */
-  def rocksdb_flush_cfs(db : Ptr[rocksdb_t], options : Ptr[rocksdb_flushoptions_t], column_family : Ptr[Ptr[rocksdb_column_family_handle_t]], num_column_families : CInt, errptr : Ptr[CString]): Unit = extern
 
   /**
   */
@@ -1227,30 +1185,6 @@ private[rocksdb] object extern_functions:
 
   /**
   */
-  def rocksdb_hyper_clock_cache_options_create(capacity : size_t, estimated_entry_charge : size_t): Ptr[rocksdb_hyper_clock_cache_options_t] = extern
-
-  /**
-  */
-  def rocksdb_hyper_clock_cache_options_destroy(_0 : Ptr[rocksdb_hyper_clock_cache_options_t]): Unit = extern
-
-  /**
-  */
-  def rocksdb_hyper_clock_cache_options_set_capacity(_0 : Ptr[rocksdb_hyper_clock_cache_options_t], _1 : size_t): Unit = extern
-
-  /**
-  */
-  def rocksdb_hyper_clock_cache_options_set_estimated_entry_charge(_0 : Ptr[rocksdb_hyper_clock_cache_options_t], _1 : size_t): Unit = extern
-
-  /**
-  */
-  def rocksdb_hyper_clock_cache_options_set_memory_allocator(_0 : Ptr[rocksdb_hyper_clock_cache_options_t], _1 : Ptr[rocksdb_memory_allocator_t]): Unit = extern
-
-  /**
-  */
-  def rocksdb_hyper_clock_cache_options_set_num_shard_bits(_0 : Ptr[rocksdb_hyper_clock_cache_options_t], _1 : CInt): Unit = extern
-
-  /**
-  */
   def rocksdb_increase_full_history_ts_low(db : Ptr[rocksdb_t], column_family : Ptr[rocksdb_column_family_handle_t], ts_low : CString, ts_lowlen : size_t, errptr : Ptr[CString]): Unit = extern
 
   /**
@@ -1276,10 +1210,6 @@ private[rocksdb] object extern_functions:
   /**
   */
   def rocksdb_ingestexternalfileoptions_set_allow_global_seqno(opt : Ptr[rocksdb_ingestexternalfileoptions_t], allow_global_seqno : CUnsignedChar): Unit = extern
-
-  /**
-  */
-  def rocksdb_ingestexternalfileoptions_set_fail_if_not_bottommost_level(opt : Ptr[rocksdb_ingestexternalfileoptions_t], fail_if_not_bottommost_level : CUnsignedChar): Unit = extern
 
   /**
   */
@@ -1598,10 +1528,6 @@ private[rocksdb] object extern_functions:
   /**
   */
   def rocksdb_options_add_compact_on_deletion_collector_factory(_0 : Ptr[rocksdb_options_t], window_size : size_t, num_dels_trigger : size_t): Unit = extern
-
-  /**
-  */
-  def rocksdb_options_add_compact_on_deletion_collector_factory_del_ratio(_0 : Ptr[rocksdb_options_t], window_size : size_t, num_dels_trigger : size_t, deletion_ratio : Double): Unit = extern
 
   /**
   */
@@ -2429,7 +2355,7 @@ private[rocksdb] object extern_functions:
 
   /**
   */
-  def rocksdb_options_set_plain_table_factory(_0 : Ptr[rocksdb_options_t], _1 : uint32_t, _2 : CInt, _3 : Double, _4 : size_t, _5 : size_t, _6 : CChar, _7 : CUnsignedChar, _8 : CUnsignedChar): Unit = extern
+  def rocksdb_options_set_plain_table_factory(_0 : Ptr[rocksdb_options_t], _1 : uint32_t, _2 : CInt, _3 : Double, _4 : size_t): Unit = extern
 
   /**
   */
@@ -2992,14 +2918,6 @@ private[rocksdb] object extern_functions:
 
   /**
   */
-  def rocksdb_transaction_multi_get_for_update(txn : Ptr[rocksdb_transaction_t], options : Ptr[rocksdb_readoptions_t], num_keys : size_t, keys_list : Ptr[CString], keys_list_sizes : Ptr[size_t], values_list : Ptr[CString], values_list_sizes : Ptr[size_t], errs : Ptr[CString]): Unit = extern
-
-  /**
-  */
-  def rocksdb_transaction_multi_get_for_update_cf(txn : Ptr[rocksdb_transaction_t], options : Ptr[rocksdb_readoptions_t], column_families : Ptr[Ptr[rocksdb_column_family_handle_t]], num_keys : size_t, keys_list : Ptr[CString], keys_list_sizes : Ptr[size_t], values_list : Ptr[CString], values_list_sizes : Ptr[size_t], errs : Ptr[CString]): Unit = extern
-
-  /**
-  */
   def rocksdb_transaction_options_create(): Ptr[rocksdb_transaction_options_t] = extern
 
   /**
@@ -3088,10 +3006,6 @@ private[rocksdb] object extern_functions:
 
   /**
   */
-  def rocksdb_transactiondb_close_base_db(base_db : Ptr[rocksdb_t]): Unit = extern
-
-  /**
-  */
   def rocksdb_transactiondb_create_column_family(txn_db : Ptr[rocksdb_transactiondb_t], column_family_options : Ptr[rocksdb_options_t], column_family_name : CString, errptr : Ptr[CString]): Ptr[rocksdb_column_family_handle_t] = extern
 
   /**
@@ -3124,19 +3038,11 @@ private[rocksdb] object extern_functions:
 
   /**
   */
-  def rocksdb_transactiondb_flush_cfs(txn_db : Ptr[rocksdb_transactiondb_t], options : Ptr[rocksdb_flushoptions_t], column_families : Ptr[Ptr[rocksdb_column_family_handle_t]], num_column_families : CInt, errptr : Ptr[CString]): Unit = extern
-
-  /**
-  */
   def rocksdb_transactiondb_flush_wal(txn_db : Ptr[rocksdb_transactiondb_t], sync : CUnsignedChar, errptr : Ptr[CString]): Unit = extern
 
   /**
   */
   def rocksdb_transactiondb_get(txn_db : Ptr[rocksdb_transactiondb_t], options : Ptr[rocksdb_readoptions_t], key : CString, klen : size_t, vlen : Ptr[size_t], errptr : Ptr[CString]): CString = extern
-
-  /**
-  */
-  def rocksdb_transactiondb_get_base_db(txn_db : Ptr[rocksdb_transactiondb_t]): Ptr[rocksdb_t] = extern
 
   /**
   */
@@ -3642,22 +3548,6 @@ object functions:
   export extern_functions.*
 
 object constants:
-  val rocksdb_level_compaction: CUnsignedInt = 0.toUInt
-  val rocksdb_universal_compaction: CUnsignedInt = 1.toUInt
-  val rocksdb_fifo_compaction: CUnsignedInt = 2.toUInt
-  
-  val rocksdb_similar_size_compaction_stop_style: CUnsignedInt = 0.toUInt
-  val rocksdb_total_size_compaction_stop_style: CUnsignedInt = 1.toUInt
-  
-  val rocksdb_block_based_table_index_type_binary_search: CUnsignedInt = 0.toUInt
-  val rocksdb_block_based_table_index_type_hash_search: CUnsignedInt = 1.toUInt
-  val rocksdb_block_based_table_index_type_two_level_index_search: CUnsignedInt = 2.toUInt
-  
-  val rocksdb_tolerate_corrupted_tail_records_recovery: CUnsignedInt = 0.toUInt
-  val rocksdb_absolute_consistency_recovery: CUnsignedInt = 1.toUInt
-  val rocksdb_point_in_time_recovery: CUnsignedInt = 2.toUInt
-  val rocksdb_skip_any_corrupted_records_recovery: CUnsignedInt = 3.toUInt
-  
   val rocksdb_user_key_comparison_count: CUnsignedInt = 0.toUInt
   val rocksdb_block_cache_hit_count: CUnsignedInt = 1.toUInt
   val rocksdb_block_read_count: CUnsignedInt = 2.toUInt
@@ -3734,8 +3624,29 @@ object constants:
   val rocksdb_blob_checksum_time: CUnsignedInt = 73.toUInt
   val rocksdb_blob_decompress_time: CUnsignedInt = 74.toUInt
   val rocksdb_internal_range_del_reseek_count: CUnsignedInt = 75.toUInt
-  val rocksdb_block_read_cpu_time: CUnsignedInt = 76.toUInt
-  val rocksdb_total_metric_count: CUnsignedInt = 79.toUInt
+  val rocksdb_total_metric_count: CUnsignedInt = 78.toUInt
+  
+  val rocksdb_prepopulate_blob_disable: CUnsignedInt = 0.toUInt
+  val rocksdb_prepopulate_blob_flush_only: CUnsignedInt = 1.toUInt
+  
+  val rocksdb_level_compaction: CUnsignedInt = 0.toUInt
+  val rocksdb_universal_compaction: CUnsignedInt = 1.toUInt
+  val rocksdb_fifo_compaction: CUnsignedInt = 2.toUInt
+  
+  val rocksdb_block_based_table_data_block_index_type_binary_search: CUnsignedInt = 0.toUInt
+  val rocksdb_block_based_table_data_block_index_type_binary_search_and_hash: CUnsignedInt = 1.toUInt
+  
+  val rocksdb_similar_size_compaction_stop_style: CUnsignedInt = 0.toUInt
+  val rocksdb_total_size_compaction_stop_style: CUnsignedInt = 1.toUInt
+  
+  val rocksdb_tolerate_corrupted_tail_records_recovery: CUnsignedInt = 0.toUInt
+  val rocksdb_absolute_consistency_recovery: CUnsignedInt = 1.toUInt
+  val rocksdb_point_in_time_recovery: CUnsignedInt = 2.toUInt
+  val rocksdb_skip_any_corrupted_records_recovery: CUnsignedInt = 3.toUInt
+  
+  val rocksdb_block_based_table_index_type_binary_search: CUnsignedInt = 0.toUInt
+  val rocksdb_block_based_table_index_type_hash_search: CUnsignedInt = 1.toUInt
+  val rocksdb_block_based_table_index_type_two_level_index_search: CUnsignedInt = 2.toUInt
   
   val rocksdb_no_compression: CUnsignedInt = 0.toUInt
   val rocksdb_snappy_compression: CUnsignedInt = 1.toUInt
@@ -3745,12 +3656,6 @@ object constants:
   val rocksdb_lz4hc_compression: CUnsignedInt = 5.toUInt
   val rocksdb_xpress_compression: CUnsignedInt = 6.toUInt
   val rocksdb_zstd_compression: CUnsignedInt = 7.toUInt
-  
-  val rocksdb_block_based_table_data_block_index_type_binary_search: CUnsignedInt = 0.toUInt
-  val rocksdb_block_based_table_data_block_index_type_binary_search_and_hash: CUnsignedInt = 1.toUInt
-  
-  val rocksdb_prepopulate_blob_disable: CUnsignedInt = 0.toUInt
-  val rocksdb_prepopulate_blob_flush_only: CUnsignedInt = 1.toUInt
   
   val rocksdb_uninitialized: CUnsignedInt = 0.toUInt
   val rocksdb_disable: CUnsignedInt = 1.toUInt
@@ -3790,7 +3695,6 @@ object all:
   export _root_.rocksdb.structs.rocksdb_filelock_t
   export _root_.rocksdb.structs.rocksdb_filterpolicy_t
   export _root_.rocksdb.structs.rocksdb_flushoptions_t
-  export _root_.rocksdb.structs.rocksdb_hyper_clock_cache_options_t
   export _root_.rocksdb.structs.rocksdb_ingestexternalfileoptions_t
   export _root_.rocksdb.structs.rocksdb_iterator_t
   export _root_.rocksdb.structs.rocksdb_level_metadata_t
@@ -3899,17 +3803,13 @@ object all:
   export _root_.rocksdb.functions.rocksdb_block_based_options_set_pin_top_level_index_and_filter
   export _root_.rocksdb.functions.rocksdb_block_based_options_set_use_delta_encoding
   export _root_.rocksdb.functions.rocksdb_block_based_options_set_whole_key_filtering
-  export _root_.rocksdb.functions.rocksdb_cache_create_hyper_clock
-  export _root_.rocksdb.functions.rocksdb_cache_create_hyper_clock_opts
   export _root_.rocksdb.functions.rocksdb_cache_create_lru
   export _root_.rocksdb.functions.rocksdb_cache_create_lru_opts
   export _root_.rocksdb.functions.rocksdb_cache_create_lru_with_strict_capacity_limit
   export _root_.rocksdb.functions.rocksdb_cache_destroy
   export _root_.rocksdb.functions.rocksdb_cache_disown_data
   export _root_.rocksdb.functions.rocksdb_cache_get_capacity
-  export _root_.rocksdb.functions.rocksdb_cache_get_occupancy_count
   export _root_.rocksdb.functions.rocksdb_cache_get_pinned_usage
-  export _root_.rocksdb.functions.rocksdb_cache_get_table_address_count
   export _root_.rocksdb.functions.rocksdb_cache_get_usage
   export _root_.rocksdb.functions.rocksdb_cache_set_capacity
   export _root_.rocksdb.functions.rocksdb_cancel_all_background_work
@@ -3951,8 +3851,6 @@ object all:
   export _root_.rocksdb.functions.rocksdb_comparator_create
   export _root_.rocksdb.functions.rocksdb_comparator_destroy
   export _root_.rocksdb.functions.rocksdb_comparator_with_ts_create
-  export _root_.rocksdb.functions.rocksdb_create_column_families
-  export _root_.rocksdb.functions.rocksdb_create_column_families_destroy
   export _root_.rocksdb.functions.rocksdb_create_column_family
   export _root_.rocksdb.functions.rocksdb_create_column_family_with_ttl
   export _root_.rocksdb.functions.rocksdb_create_default_env
@@ -4003,9 +3901,7 @@ object all:
   export _root_.rocksdb.functions.rocksdb_envoptions_destroy
   export _root_.rocksdb.functions.rocksdb_fifo_compaction_options_create
   export _root_.rocksdb.functions.rocksdb_fifo_compaction_options_destroy
-  export _root_.rocksdb.functions.rocksdb_fifo_compaction_options_get_allow_compaction
   export _root_.rocksdb.functions.rocksdb_fifo_compaction_options_get_max_table_files_size
-  export _root_.rocksdb.functions.rocksdb_fifo_compaction_options_set_allow_compaction
   export _root_.rocksdb.functions.rocksdb_fifo_compaction_options_set_max_table_files_size
   export _root_.rocksdb.functions.rocksdb_filterpolicy_create_bloom
   export _root_.rocksdb.functions.rocksdb_filterpolicy_create_bloom_full
@@ -4014,7 +3910,6 @@ object all:
   export _root_.rocksdb.functions.rocksdb_filterpolicy_destroy
   export _root_.rocksdb.functions.rocksdb_flush
   export _root_.rocksdb.functions.rocksdb_flush_cf
-  export _root_.rocksdb.functions.rocksdb_flush_cfs
   export _root_.rocksdb.functions.rocksdb_flush_wal
   export _root_.rocksdb.functions.rocksdb_flushoptions_create
   export _root_.rocksdb.functions.rocksdb_flushoptions_destroy
@@ -4033,12 +3928,6 @@ object all:
   export _root_.rocksdb.functions.rocksdb_get_pinned_cf
   export _root_.rocksdb.functions.rocksdb_get_updates_since
   export _root_.rocksdb.functions.rocksdb_get_with_ts
-  export _root_.rocksdb.functions.rocksdb_hyper_clock_cache_options_create
-  export _root_.rocksdb.functions.rocksdb_hyper_clock_cache_options_destroy
-  export _root_.rocksdb.functions.rocksdb_hyper_clock_cache_options_set_capacity
-  export _root_.rocksdb.functions.rocksdb_hyper_clock_cache_options_set_estimated_entry_charge
-  export _root_.rocksdb.functions.rocksdb_hyper_clock_cache_options_set_memory_allocator
-  export _root_.rocksdb.functions.rocksdb_hyper_clock_cache_options_set_num_shard_bits
   export _root_.rocksdb.functions.rocksdb_increase_full_history_ts_low
   export _root_.rocksdb.functions.rocksdb_ingest_external_file
   export _root_.rocksdb.functions.rocksdb_ingest_external_file_cf
@@ -4046,7 +3935,6 @@ object all:
   export _root_.rocksdb.functions.rocksdb_ingestexternalfileoptions_destroy
   export _root_.rocksdb.functions.rocksdb_ingestexternalfileoptions_set_allow_blocking_flush
   export _root_.rocksdb.functions.rocksdb_ingestexternalfileoptions_set_allow_global_seqno
-  export _root_.rocksdb.functions.rocksdb_ingestexternalfileoptions_set_fail_if_not_bottommost_level
   export _root_.rocksdb.functions.rocksdb_ingestexternalfileoptions_set_ingest_behind
   export _root_.rocksdb.functions.rocksdb_ingestexternalfileoptions_set_move_files
   export _root_.rocksdb.functions.rocksdb_ingestexternalfileoptions_set_snapshot_consistency
@@ -4126,7 +4014,6 @@ object all:
   export _root_.rocksdb.functions.rocksdb_optimistictransactiondb_property_value
   export _root_.rocksdb.functions.rocksdb_optimistictransactiondb_write
   export _root_.rocksdb.functions.rocksdb_options_add_compact_on_deletion_collector_factory
-  export _root_.rocksdb.functions.rocksdb_options_add_compact_on_deletion_collector_factory_del_ratio
   export _root_.rocksdb.functions.rocksdb_options_compaction_readahead_size
   export _root_.rocksdb.functions.rocksdb_options_create
   export _root_.rocksdb.functions.rocksdb_options_create_copy
@@ -4473,8 +4360,6 @@ object all:
   export _root_.rocksdb.functions.rocksdb_transaction_merge_cf
   export _root_.rocksdb.functions.rocksdb_transaction_multi_get
   export _root_.rocksdb.functions.rocksdb_transaction_multi_get_cf
-  export _root_.rocksdb.functions.rocksdb_transaction_multi_get_for_update
-  export _root_.rocksdb.functions.rocksdb_transaction_multi_get_for_update_cf
   export _root_.rocksdb.functions.rocksdb_transaction_options_create
   export _root_.rocksdb.functions.rocksdb_transaction_options_destroy
   export _root_.rocksdb.functions.rocksdb_transaction_options_set_deadlock_detect
@@ -4497,7 +4382,6 @@ object all:
   export _root_.rocksdb.functions.rocksdb_transaction_set_savepoint
   export _root_.rocksdb.functions.rocksdb_transactiondb_checkpoint_object_create
   export _root_.rocksdb.functions.rocksdb_transactiondb_close
-  export _root_.rocksdb.functions.rocksdb_transactiondb_close_base_db
   export _root_.rocksdb.functions.rocksdb_transactiondb_create_column_family
   export _root_.rocksdb.functions.rocksdb_transactiondb_create_iterator
   export _root_.rocksdb.functions.rocksdb_transactiondb_create_iterator_cf
@@ -4506,10 +4390,8 @@ object all:
   export _root_.rocksdb.functions.rocksdb_transactiondb_delete_cf
   export _root_.rocksdb.functions.rocksdb_transactiondb_flush
   export _root_.rocksdb.functions.rocksdb_transactiondb_flush_cf
-  export _root_.rocksdb.functions.rocksdb_transactiondb_flush_cfs
   export _root_.rocksdb.functions.rocksdb_transactiondb_flush_wal
   export _root_.rocksdb.functions.rocksdb_transactiondb_get
-  export _root_.rocksdb.functions.rocksdb_transactiondb_get_base_db
   export _root_.rocksdb.functions.rocksdb_transactiondb_get_cf
   export _root_.rocksdb.functions.rocksdb_transactiondb_get_pinned
   export _root_.rocksdb.functions.rocksdb_transactiondb_get_pinned_cf

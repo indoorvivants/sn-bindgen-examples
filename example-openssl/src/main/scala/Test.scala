@@ -7,7 +7,7 @@ import scala.scalanative.libc.*
 import java.util.Base64
 
 @main def hello =
-  Zone { implicit z =>
+  Zone { 
     println(s"SHA256(helloworld) = ${OpenSSL.sha256("helloworld")}")
     println(
       s"HMAC(helloworld, secret) = ${OpenSSL.hmac("helloworld", "secret")}"
@@ -59,7 +59,9 @@ object OpenSSL:
   end sha256
 
   def hmac(plaintext: String, key: String)(using Zone) =
+    println(plaintext)
     val message = toCString(plaintext)
+    println(message)
     val ckey = toCString(key)
     val mdctx = EVP_MD_CTX_new()
     val pkey = EVP_PKEY_new_mac_key(
@@ -83,7 +85,7 @@ object OpenSSL:
       ) == 1
     )
     assert(EVP_DigestSignFinal(mdctx, null, md_len) == 1)
-    val md_value = stackalloc[CUnsignedChar]((!md_len).asInstanceOf[ULong])
+    val md_value = stackalloc[CUnsignedChar]((!md_len))
 
     assert(EVP_DigestSignFinal(mdctx, md_value, md_len) == 1)
 

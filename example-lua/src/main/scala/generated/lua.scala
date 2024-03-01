@@ -42,7 +42,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], Ptr[Byte], size_t, size_t, Ptr[Byte]]): lua_Alloc = o
     extension (v: lua_Alloc)
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[Byte], size_t, size_t, Ptr[Byte]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -53,7 +53,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[lua_State], CInt]): lua_CFunction = o
     extension (v: lua_CFunction)
       inline def value: CFuncPtr1[Ptr[lua_State], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -64,7 +64,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[lua_State], Ptr[lua_Debug], Unit]): lua_Hook = o
     extension (v: lua_Hook)
       inline def value: CFuncPtr2[Ptr[lua_State], Ptr[lua_Debug], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -93,7 +93,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[lua_State], CInt, lua_KContext, CInt]): lua_KFunction = o
     extension (v: lua_KFunction)
       inline def value: CFuncPtr3[Ptr[lua_State], CInt, lua_KContext, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -113,7 +113,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[lua_State], Ptr[Byte], Ptr[size_t], CString]): lua_Reader = o
     extension (v: lua_Reader)
       inline def value: CFuncPtr3[Ptr[lua_State], Ptr[Byte], Ptr[size_t], CString] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -133,7 +133,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CString, CInt, Unit]): lua_WarnFunction = o
     extension (v: lua_WarnFunction)
       inline def value: CFuncPtr3[Ptr[Byte], CString, CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -144,7 +144,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[lua_State], Ptr[Byte], size_t, Ptr[Byte], CInt]): lua_Writer = o
     extension (v: lua_Writer)
       inline def value: CFuncPtr4[Ptr[lua_State], Ptr[Byte], size_t, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type size_t = libc.stddef.size_t
   object size_t: 
@@ -575,10 +575,6 @@ private[lua] object extern_functions:
   /**
   */
   def lua_closeslot(L : Ptr[lua_State], idx : CInt): Unit = extern
-
-  /**
-  */
-  def lua_closethread(L : Ptr[lua_State], from : Ptr[lua_State]): CInt = extern
 
   /**
   */
@@ -1067,7 +1063,6 @@ object all:
   export _root_.lua.functions.lua_checkstack
   export _root_.lua.functions.lua_close
   export _root_.lua.functions.lua_closeslot
-  export _root_.lua.functions.lua_closethread
   export _root_.lua.functions.lua_compare
   export _root_.lua.functions.lua_concat
   export _root_.lua.functions.lua_copy

@@ -838,7 +838,6 @@ object enumerations:
     val GIT_EMISMATCH = define(-33)
     val GIT_EINDEXDIRTY = define(-34)
     val GIT_EAPPLYFAIL = define(-35)
-    val GIT_EOWNER = define(-36)
     inline def getName(inline value: git_error_code): Option[String] =
       inline value match
         case GIT_OK => Some("GIT_OK")
@@ -871,7 +870,6 @@ object enumerations:
         case GIT_EMISMATCH => Some("GIT_EMISMATCH")
         case GIT_EINDEXDIRTY => Some("GIT_EINDEXDIRTY")
         case GIT_EAPPLYFAIL => Some("GIT_EAPPLYFAIL")
-        case GIT_EOWNER => Some("GIT_EOWNER")
         case _ => None
     extension (a: git_error_code)
       inline def &(b: git_error_code): git_error_code = a & b
@@ -918,7 +916,7 @@ object enumerations:
     val GIT_ERROR_FILESYSTEM = define(30)
     val GIT_ERROR_PATCH = define(31)
     val GIT_ERROR_WORKTREE = define(32)
-    val GIT_ERROR_SHA = define(33)
+    val GIT_ERROR_SHA1 = define(33)
     val GIT_ERROR_HTTP = define(34)
     val GIT_ERROR_INTERNAL = define(35)
     inline def getName(inline value: git_error_t): Option[String] =
@@ -956,7 +954,7 @@ object enumerations:
         case GIT_ERROR_FILESYSTEM => Some("GIT_ERROR_FILESYSTEM")
         case GIT_ERROR_PATCH => Some("GIT_ERROR_PATCH")
         case GIT_ERROR_WORKTREE => Some("GIT_ERROR_WORKTREE")
-        case GIT_ERROR_SHA => Some("GIT_ERROR_SHA")
+        case GIT_ERROR_SHA1 => Some("GIT_ERROR_SHA1")
         case GIT_ERROR_HTTP => Some("GIT_ERROR_HTTP")
         case GIT_ERROR_INTERNAL => Some("GIT_ERROR_INTERNAL")
         case _ => None
@@ -1239,10 +1237,6 @@ object enumerations:
     val GIT_OPT_SET_ODB_LOOSE_PRIORITY = define(32)
     val GIT_OPT_GET_EXTENSIONS = define(33)
     val GIT_OPT_SET_EXTENSIONS = define(34)
-    val GIT_OPT_GET_OWNER_VALIDATION = define(35)
-    val GIT_OPT_SET_OWNER_VALIDATION = define(36)
-    val GIT_OPT_GET_HOMEDIR = define(37)
-    val GIT_OPT_SET_HOMEDIR = define(38)
     inline def getName(inline value: git_libgit2_opt_t): Option[String] =
       inline value match
         case GIT_OPT_GET_MWINDOW_SIZE => Some("GIT_OPT_GET_MWINDOW_SIZE")
@@ -1280,10 +1274,6 @@ object enumerations:
         case GIT_OPT_SET_ODB_LOOSE_PRIORITY => Some("GIT_OPT_SET_ODB_LOOSE_PRIORITY")
         case GIT_OPT_GET_EXTENSIONS => Some("GIT_OPT_GET_EXTENSIONS")
         case GIT_OPT_SET_EXTENSIONS => Some("GIT_OPT_SET_EXTENSIONS")
-        case GIT_OPT_GET_OWNER_VALIDATION => Some("GIT_OPT_GET_OWNER_VALIDATION")
-        case GIT_OPT_SET_OWNER_VALIDATION => Some("GIT_OPT_SET_OWNER_VALIDATION")
-        case GIT_OPT_GET_HOMEDIR => Some("GIT_OPT_GET_HOMEDIR")
-        case GIT_OPT_SET_HOMEDIR => Some("GIT_OPT_SET_HOMEDIR")
         case _ => None
     extension (a: git_libgit2_opt_t)
       inline def &(b: git_libgit2_opt_t): git_libgit2_opt_t = a & b
@@ -1453,22 +1443,6 @@ object enumerations:
       inline def is(b: git_object_t): Boolean = (a & b) == b
 
   /**
-  */
-  opaque type git_odb_backend_loose_flag_t = CUnsignedInt
-  object git_odb_backend_loose_flag_t extends CEnumU[git_odb_backend_loose_flag_t]:
-    given _tag: Tag[git_odb_backend_loose_flag_t] = Tag.UInt
-    inline def define(inline a: Long): git_odb_backend_loose_flag_t = a.toUInt
-    val GIT_ODB_BACKEND_LOOSE_FSYNC = define(1)
-    inline def getName(inline value: git_odb_backend_loose_flag_t): Option[String] =
-      inline value match
-        case GIT_ODB_BACKEND_LOOSE_FSYNC => Some("GIT_ODB_BACKEND_LOOSE_FSYNC")
-        case _ => None
-    extension (a: git_odb_backend_loose_flag_t)
-      inline def &(b: git_odb_backend_loose_flag_t): git_odb_backend_loose_flag_t = a & b
-      inline def |(b: git_odb_backend_loose_flag_t): git_odb_backend_loose_flag_t = a | b
-      inline def is(b: git_odb_backend_loose_flag_t): Boolean = (a & b) == b
-
-  /**
    * Flags controlling the behavior of ODB lookup operations
   */
   opaque type git_odb_lookup_flags_t = CUnsignedInt
@@ -1505,23 +1479,6 @@ object enumerations:
       inline def &(b: git_odb_stream_t): git_odb_stream_t = a & b
       inline def |(b: git_odb_stream_t): git_odb_stream_t = a | b
       inline def is(b: git_odb_stream_t): Boolean = (a & b) == b
-
-  /**
-   * The type of object id.
-  */
-  opaque type git_oid_t = CUnsignedInt
-  object git_oid_t extends CEnumU[git_oid_t]:
-    given _tag: Tag[git_oid_t] = Tag.UInt
-    inline def define(inline a: Long): git_oid_t = a.toUInt
-    val GIT_OID_SHA1 = define(1)
-    inline def getName(inline value: git_oid_t): Option[String] =
-      inline value match
-        case GIT_OID_SHA1 => Some("GIT_OID_SHA1")
-        case _ => None
-    extension (a: git_oid_t)
-      inline def &(b: git_oid_t): git_oid_t = a & b
-      inline def |(b: git_oid_t): git_oid_t = a | b
-      inline def is(b: git_oid_t): Boolean = (a & b) == b
 
   /**
    * Stages that are reported by the packbuilder progress callback.
@@ -2034,14 +1991,12 @@ object enumerations:
     val GIT_STASH_KEEP_INDEX = define(1)
     val GIT_STASH_INCLUDE_UNTRACKED = define(2)
     val GIT_STASH_INCLUDE_IGNORED = define(4)
-    val GIT_STASH_KEEP_ALL = define(8)
     inline def getName(inline value: git_stash_flags): Option[String] =
       inline value match
         case GIT_STASH_DEFAULT => Some("GIT_STASH_DEFAULT")
         case GIT_STASH_KEEP_INDEX => Some("GIT_STASH_KEEP_INDEX")
         case GIT_STASH_INCLUDE_UNTRACKED => Some("GIT_STASH_INCLUDE_UNTRACKED")
         case GIT_STASH_INCLUDE_IGNORED => Some("GIT_STASH_INCLUDE_IGNORED")
-        case GIT_STASH_KEEP_ALL => Some("GIT_STASH_KEEP_ALL")
         case _ => None
     extension (a: git_stash_flags)
       inline def &(b: git_stash_flags): git_stash_flags = a & b
@@ -2376,7 +2331,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[git_diff_delta], Ptr[Byte], CInt]): git_apply_delta_cb = o
     extension (v: git_apply_delta_cb)
       inline def value: CFuncPtr2[Ptr[git_diff_delta], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * When applying a patch, callback that will be made per hunk.
@@ -2388,7 +2343,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[git_diff_hunk], Ptr[Byte], CInt]): git_apply_hunk_cb = o
     extension (v: git_apply_hunk_cb)
       inline def value: CFuncPtr2[Ptr[git_diff_hunk], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * The callback used with git_attr_foreach.
@@ -2400,7 +2355,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[CString, CString, Ptr[Byte], CInt]): git_attr_foreach_cb = o
     extension (v: git_attr_foreach_cb)
       inline def value: CFuncPtr3[CString, CString, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2421,7 +2376,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr6[git_checkout_notify_t, CString, Ptr[git_diff_file], Ptr[git_diff_file], Ptr[git_diff_file], Ptr[Byte], CInt]): git_checkout_notify_cb = o
     extension (v: git_checkout_notify_cb)
       inline def value: CFuncPtr6[git_checkout_notify_t, CString, Ptr[git_diff_file], Ptr[git_diff_file], Ptr[git_diff_file], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Checkout perfdata notification function
@@ -2433,7 +2388,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[git_checkout_perfdata], Ptr[Byte], Unit]): git_checkout_perfdata_cb = o
     extension (v: git_checkout_perfdata_cb)
       inline def value: CFuncPtr2[Ptr[git_checkout_perfdata], Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Checkout progress notification function
@@ -2445,7 +2400,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[CString, size_t, size_t, Ptr[Byte], Unit]): git_checkout_progress_cb = o
     extension (v: git_checkout_progress_cb)
       inline def value: CFuncPtr4[CString, size_t, size_t, Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Commit creation callback: used when a function is going to create commits (for example, in `git_rebase_commit`) to allow callers to override the commit creation behavior. For example, users may wish to sign commits by providing this information to `git_commit_create_buffer`, signing that buffer, then calling `git_commit_create_with_signature`. The resultant commit id should be set in the `out` object id parameter.
@@ -2457,7 +2412,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr9[Ptr[git_oid], Ptr[git_signature], Ptr[git_signature], CString, CString, Ptr[git_tree], size_t, Ptr[Ptr[git_commit]], Ptr[Byte], CInt]): git_commit_create_cb = o
     extension (v: git_commit_create_cb)
       inline def value: CFuncPtr9[Ptr[git_oid], Ptr[git_signature], Ptr[git_signature], CString, CString, Ptr[git_tree], size_t, Ptr[Ptr[git_commit]], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Provide a commit signature during commit creation.
@@ -2469,7 +2424,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt]): git_commit_signing_cb = o
     extension (v: git_commit_signing_cb)
       inline def value: CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * A config enumeration callback
@@ -2481,7 +2436,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[git_config_entry], Ptr[Byte], CInt]): git_config_foreach_cb = o
     extension (v: git_config_foreach_cb)
       inline def value: CFuncPtr2[Ptr[git_config_entry], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * These types are retained for backward compatibility. The newer versions of these values should be preferred in all new code.
@@ -2611,7 +2566,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr5[Ptr[Ptr[git_credential]], CString, CString, CUnsignedInt, Ptr[Byte], CInt]): git_credential_acquire_cb = o
     extension (v: git_credential_acquire_cb)
       inline def value: CFuncPtr5[Ptr[Ptr[git_credential]], CString, CString, CUnsignedInt, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2622,7 +2577,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr6[Ptr[LIBSSH2_SESSION], Ptr[Ptr[CUnsignedChar]], Ptr[size_t], Ptr[CUnsignedChar], size_t, Ptr[Ptr[Byte]], CInt]): git_credential_sign_cb = o
     extension (v: git_credential_sign_cb)
       inline def value: CFuncPtr6[Ptr[LIBSSH2_SESSION], Ptr[Ptr[CUnsignedChar]], Ptr[size_t], Ptr[CUnsignedChar], size_t, Ptr[Ptr[Byte]], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2633,7 +2588,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr8[CString, CInt, CString, CInt, CInt, Ptr[LIBSSH2_USERAUTH_KBDINT_PROMPT], Ptr[LIBSSH2_USERAUTH_KBDINT_RESPONSE], Ptr[Ptr[Byte]], Unit]): git_credential_ssh_interactive_cb = o
     extension (v: git_credential_ssh_interactive_cb)
       inline def value: CFuncPtr8[CString, CInt, CString, CInt, CInt, Ptr[LIBSSH2_USERAUTH_KBDINT_PROMPT], Ptr[LIBSSH2_USERAUTH_KBDINT_RESPONSE], Ptr[Ptr[Byte]], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2654,7 +2609,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_binary], Ptr[Byte], CInt]): git_diff_binary_cb = o
     extension (v: git_diff_binary_cb)
       inline def value: CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_binary], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * When iterating over a diff, callback that will be made per file.
@@ -2666,7 +2621,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[git_diff_delta], Float, Ptr[Byte], CInt]): git_diff_file_cb = o
     extension (v: git_diff_file_cb)
       inline def value: CFuncPtr3[Ptr[git_diff_delta], Float, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * When iterating over a diff, callback that will be made per hunk.
@@ -2678,7 +2633,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[Byte], CInt]): git_diff_hunk_cb = o
     extension (v: git_diff_hunk_cb)
       inline def value: CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * When iterating over a diff, callback that will be made per text diff line. In this context, the provided range will be NULL.
@@ -2690,7 +2645,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[git_diff_line], Ptr[Byte], CInt]): git_diff_line_cb = o
     extension (v: git_diff_line_cb)
       inline def value: CFuncPtr4[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[git_diff_line], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Diff notification callback function.
@@ -2702,7 +2657,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[git_diff], Ptr[git_diff_delta], CString, Ptr[Byte], CInt]): git_diff_notify_cb = o
     extension (v: git_diff_notify_cb)
       inline def value: CFuncPtr4[Ptr[git_diff], Ptr[git_diff_delta], CString, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Diff progress callback.
@@ -2714,7 +2669,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[git_diff], CString, CString, Ptr[Byte], CInt]): git_diff_progress_cb = o
     extension (v: git_diff_progress_cb)
       inline def value: CFuncPtr4[Ptr[git_diff], CString, CString, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback for listing the remote heads
@@ -2726,7 +2681,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[git_remote_head], Ptr[Byte], CInt]): git_headlist_cb = o
     extension (v: git_headlist_cb)
       inline def value: CFuncPtr2[Ptr[git_remote_head], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback for APIs that add/remove/update files matching pathspec
@@ -2738,7 +2693,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[CString, CString, Ptr[Byte], CInt]): git_index_matched_path_cb = o
     extension (v: git_index_matched_path_cb)
       inline def value: CFuncPtr3[CString, CString, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Type for progress callbacks during indexing. Return a value less than zero to cancel the indexing or download.
@@ -2750,7 +2705,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[git_indexer_progress], Ptr[Byte], CInt]): git_indexer_progress_cb = o
     extension (v: git_indexer_progress_cb)
       inline def value: CFuncPtr2[Ptr[git_indexer_progress], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback for git_note_foreach.
@@ -2762,7 +2717,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt]): git_note_foreach_cb = o
     extension (v: git_note_foreach_cb)
       inline def value: CFuncPtr3[Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * The maximum size of an object
@@ -2784,7 +2739,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]): git_odb_foreach_cb = o
     extension (v: git_odb_foreach_cb)
       inline def value: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2805,7 +2760,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], size_t, Ptr[Byte], CInt]): git_packbuilder_foreach_cb = o
     extension (v: git_packbuilder_foreach_cb)
       inline def value: CFuncPtr3[Ptr[Byte], size_t, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Packbuilder progress notification function
@@ -2817,7 +2772,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[CInt, uint32_t, uint32_t, Ptr[Byte], CInt]): git_packbuilder_progress = o
     extension (v: git_packbuilder_progress)
       inline def value: CFuncPtr4[CInt, uint32_t, uint32_t, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback used to inform of upcoming updates.
@@ -2829,7 +2784,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[Ptr[git_push_update]], size_t, Ptr[Byte], CInt]): git_push_negotiation = o
     extension (v: git_push_negotiation)
       inline def value: CFuncPtr3[Ptr[Ptr[git_push_update]], size_t, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Type definition for push transfer progress callbacks.
@@ -2851,7 +2806,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[CUnsignedInt, CUnsignedInt, size_t, Ptr[Byte], CInt]): git_push_transfer_progress_cb = o
     extension (v: git_push_transfer_progress_cb)
       inline def value: CFuncPtr4[CUnsignedInt, CUnsignedInt, size_t, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback used to inform of the update status from the remote.
@@ -2863,7 +2818,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[CString, CString, Ptr[Byte], CInt]): git_push_update_reference_cb = o
     extension (v: git_push_update_reference_cb)
       inline def value: CFuncPtr3[CString, CString, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback used to iterate over references
@@ -2875,7 +2830,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[git_reference], Ptr[Byte], CInt]): git_reference_foreach_cb = o
     extension (v: git_reference_foreach_cb)
       inline def value: CFuncPtr2[Ptr[git_reference], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback used to iterate over reference names
@@ -2887,7 +2842,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[CString, Ptr[Byte], CInt]): git_reference_foreach_name_cb = o
     extension (v: git_reference_foreach_name_cb)
       inline def value: CFuncPtr2[CString, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * The signature of a function matching git_remote_create, with an additional void* as a callback payload.
@@ -2899,7 +2854,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr5[Ptr[Ptr[git_remote]], Ptr[git_repository], CString, CString, Ptr[Byte], CInt]): git_remote_create_cb = o
     extension (v: git_remote_create_cb)
       inline def value: CFuncPtr5[Ptr[Ptr[git_remote]], Ptr[git_repository], CString, CString, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback invoked immediately before we attempt to connect to the given url. Callers may change the URL before the connection by calling `git_remote_set_instance_url` in the callback.
@@ -2911,7 +2866,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[git_remote], CInt, Ptr[Byte], CInt]): git_remote_ready_cb = o
     extension (v: git_remote_ready_cb)
       inline def value: CFuncPtr3[Ptr[git_remote], CInt, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * The signature of a function matching git_repository_init, with an additional void * as callback payload.
@@ -2923,7 +2878,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[Ptr[git_repository]], CString, CInt, Ptr[Byte], CInt]): git_repository_create_cb = o
     extension (v: git_repository_create_cb)
       inline def value: CFuncPtr4[Ptr[Ptr[git_repository]], CString, CInt, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback used to iterate over each FETCH_HEAD entry
@@ -2935,7 +2890,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr5[CString, CString, Ptr[git_oid], CUnsignedInt, Ptr[Byte], CInt]): git_repository_fetchhead_foreach_cb = o
     extension (v: git_repository_fetchhead_foreach_cb)
       inline def value: CFuncPtr5[CString, CString, Ptr[git_oid], CUnsignedInt, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback used to iterate over each MERGE_HEAD entry
@@ -2947,7 +2902,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]): git_repository_mergehead_foreach_cb = o
     extension (v: git_repository_mergehead_foreach_cb)
       inline def value: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * These enumeration values are retained for backward compatibility. The newer versions of these values should be preferred in all new code.
@@ -2969,7 +2924,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]): git_revwalk_hide_cb = o
     extension (v: git_revwalk_hide_cb)
       inline def value: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Stash application progress notification function. Return 0 to continue processing, or a negative value to abort the stash application.
@@ -2981,7 +2936,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[git_stash_apply_progress_t, Ptr[Byte], CInt]): git_stash_apply_progress_cb = o
     extension (v: git_stash_apply_progress_cb)
       inline def value: CFuncPtr2[git_stash_apply_progress_t, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * This is a callback function you can provide to iterate over all the stashed states that will be invoked per entry.
@@ -2993,7 +2948,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[size_t, CString, Ptr[git_oid], Ptr[Byte], CInt]): git_stash_cb = o
     extension (v: git_stash_cb)
       inline def value: CFuncPtr4[size_t, CString, Ptr[git_oid], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Function pointer to receive status on individual files
@@ -3005,7 +2960,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[CString, CUnsignedInt, Ptr[Byte], CInt]): git_status_cb = o
     extension (v: git_status_cb)
       inline def value: CFuncPtr3[CString, CUnsignedInt, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Function pointer to receive each submodule
@@ -3017,7 +2972,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[git_submodule], CString, Ptr[Byte], CInt]): git_submodule_cb = o
     extension (v: git_submodule_cb)
       inline def value: CFuncPtr3[Ptr[git_submodule], CString, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback used to iterate over tag names
@@ -3029,7 +2984,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[CString, Ptr[git_oid], Ptr[Byte], CInt]): git_tag_foreach_cb = o
     extension (v: git_tag_foreach_cb)
       inline def value: CFuncPtr3[CString, Ptr[git_oid], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -3060,7 +3015,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[git_trace_level_t, CString, Unit]): git_trace_cb = o
     extension (v: git_trace_cb)
       inline def value: CFuncPtr2[git_trace_level_t, CString, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * This structure is used to provide callers information about the progress of indexing a packfile.
@@ -3092,7 +3047,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[Ptr[git_transport]], Ptr[git_remote], Ptr[Byte], CInt]): git_transport_cb = o
     extension (v: git_transport_cb)
       inline def value: CFuncPtr3[Ptr[Ptr[git_transport]], Ptr[git_remote], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback for the user's custom certificate checks.
@@ -3104,7 +3059,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[git_cert], CInt, CString, Ptr[Byte], CInt]): git_transport_certificate_check_cb = o
     extension (v: git_transport_certificate_check_cb)
       inline def value: CFuncPtr4[Ptr[git_cert], CInt, CString, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback for messages received by the transport.
@@ -3116,7 +3071,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[CString, CInt, Ptr[Byte], CInt]): git_transport_message_cb = o
     extension (v: git_transport_message_cb)
       inline def value: CFuncPtr3[CString, CInt, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback for git_treebuilder_filter
@@ -3128,7 +3083,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[git_tree_entry], Ptr[Byte], CInt]): git_treebuilder_filter_cb = o
     extension (v: git_treebuilder_filter_cb)
       inline def value: CFuncPtr2[Ptr[git_tree_entry], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback for the tree traversal method
@@ -3140,7 +3095,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[CString, Ptr[git_tree_entry], Ptr[Byte], CInt]): git_treewalk_cb = o
     extension (v: git_treewalk_cb)
       inline def value: CFuncPtr3[CString, Ptr[git_tree_entry], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback to resolve URLs before connecting to remote
@@ -3152,7 +3107,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[git_buf], CString, CInt, Ptr[Byte], CInt]): git_url_resolve_cb = o
     extension (v: git_url_resolve_cb)
       inline def value: CFuncPtr4[Ptr[git_buf], CString, CInt, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type int32_t = scala.scalanative.unsafe.CInt
   object int32_t: 
@@ -4810,54 +4765,6 @@ object structs:
     given _tag: Tag[git_odb_backend] = Tag.materializeCStruct0Tag
 
   /**
-   * Options for configuring a loose object backend.
-  */
-  opaque type git_odb_backend_loose_options = CStruct6[CUnsignedInt, uint32_t, CInt, CUnsignedInt, CUnsignedInt, git_oid_t]
-  object git_odb_backend_loose_options:
-    given _tag: Tag[git_odb_backend_loose_options] = Tag.materializeCStruct6Tag[CUnsignedInt, uint32_t, CInt, CUnsignedInt, CUnsignedInt, git_oid_t]
-    def apply()(using Zone): Ptr[git_odb_backend_loose_options] = scala.scalanative.unsafe.alloc[git_odb_backend_loose_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t, compression_level : CInt, dir_mode : CUnsignedInt, file_mode : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_backend_loose_options] = 
-      val ____ptr = apply()
-      (!____ptr).version = version
-      (!____ptr).flags = flags
-      (!____ptr).compression_level = compression_level
-      (!____ptr).dir_mode = dir_mode
-      (!____ptr).file_mode = file_mode
-      (!____ptr).oid_type = oid_type
-      ____ptr
-    extension (struct: git_odb_backend_loose_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def compression_level : CInt = struct._3
-      def compression_level_=(value: CInt): Unit = !struct.at3 = value
-      def dir_mode : CUnsignedInt = struct._4
-      def dir_mode_=(value: CUnsignedInt): Unit = !struct.at4 = value
-      def file_mode : CUnsignedInt = struct._5
-      def file_mode_=(value: CUnsignedInt): Unit = !struct.at5 = value
-      def oid_type : git_oid_t = struct._6
-      def oid_type_=(value: git_oid_t): Unit = !struct.at6 = value
-
-  /**
-   * Options for configuring a packfile object backend.
-  */
-  opaque type git_odb_backend_pack_options = CStruct2[CUnsignedInt, git_oid_t]
-  object git_odb_backend_pack_options:
-    given _tag: Tag[git_odb_backend_pack_options] = Tag.materializeCStruct2Tag[CUnsignedInt, git_oid_t]
-    def apply()(using Zone): Ptr[git_odb_backend_pack_options] = scala.scalanative.unsafe.alloc[git_odb_backend_pack_options](1)
-    def apply(version : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_backend_pack_options] = 
-      val ____ptr = apply()
-      (!____ptr).version = version
-      (!____ptr).oid_type = oid_type
-      ____ptr
-    extension (struct: git_odb_backend_pack_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def oid_type : git_oid_t = struct._2
-      def oid_type_=(value: git_oid_t): Unit = !struct.at2 = value
-
-  /**
    * The information about object IDs to query in `git_odb_expand_ids`, which will be populated upon return.
   */
   opaque type git_odb_expand_id = CStruct3[git_oid, CUnsignedShort, git_object_t]
@@ -4883,24 +4790,6 @@ object structs:
   opaque type git_odb_object = CStruct0
   object git_odb_object:
     given _tag: Tag[git_odb_object] = Tag.materializeCStruct0Tag
-
-  /**
-   * Options for configuring a loose object backend.
-  */
-  opaque type git_odb_options = CStruct2[CUnsignedInt, git_oid_t]
-  object git_odb_options:
-    given _tag: Tag[git_odb_options] = Tag.materializeCStruct2Tag[CUnsignedInt, git_oid_t]
-    def apply()(using Zone): Ptr[git_odb_options] = scala.scalanative.unsafe.alloc[git_odb_options](1)
-    def apply(version : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_options] = 
-      val ____ptr = apply()
-      (!____ptr).version = version
-      (!____ptr).oid_type = oid_type
-      ____ptr
-    extension (struct: git_odb_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def oid_type : git_oid_t = struct._2
-      def oid_type_=(value: git_oid_t): Unit = !struct.at2 = value
 
   /**
    * A stream to read/write from a backend.
@@ -5510,33 +5399,6 @@ object structs:
       def progress_cb_=(value: git_stash_apply_progress_cb): Unit = !struct.at4 = value
       def progress_payload : Ptr[Byte] = struct._5
       def progress_payload_=(value: Ptr[Byte]): Unit = !struct.at5 = value
-
-  /**
-   * Stash save options structure
-  */
-  opaque type git_stash_save_options = CStruct5[CUnsignedInt, uint32_t, Ptr[git_signature], CString, git_strarray]
-  object git_stash_save_options:
-    given _tag: Tag[git_stash_save_options] = Tag.materializeCStruct5Tag[CUnsignedInt, uint32_t, Ptr[git_signature], CString, git_strarray]
-    def apply()(using Zone): Ptr[git_stash_save_options] = scala.scalanative.unsafe.alloc[git_stash_save_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t, stasher : Ptr[git_signature], message : CString, paths : git_strarray)(using Zone): Ptr[git_stash_save_options] = 
-      val ____ptr = apply()
-      (!____ptr).version = version
-      (!____ptr).flags = flags
-      (!____ptr).stasher = stasher
-      (!____ptr).message = message
-      (!____ptr).paths = paths
-      ____ptr
-    extension (struct: git_stash_save_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def stasher : Ptr[git_signature] = struct._3
-      def stasher_=(value: Ptr[git_signature]): Unit = !struct.at3 = value
-      def message : CString = struct._4
-      def message_=(value: CString): Unit = !struct.at4 = value
-      def paths : git_strarray = struct._5
-      def paths_=(value: git_strarray): Unit = !struct.at5 = value
 
   /**
    * A status entry, providing the differences between the file as it exists in HEAD and the index, and providing the differences between the index and the working directory.
@@ -6945,17 +6807,12 @@ private[libgit] object extern_functions:
   def git_error_last(): Ptr[git_error] = extern
 
   /**
-   * Set the error message string for this thread, using `printf`-style formatting.
-  */
-  def git_error_set(error_class : CInt, fmt : CString, rest: Any*): Unit = extern
-
-  /**
    * Set the error message to a special value for memory allocation failure.
   */
   def git_error_set_oom(): Unit = extern
 
   /**
-   * Set the error message string for this thread. This function is like `git_error_set` but takes a static string instead of a `printf`-style format.
+   * Set the error message string for this thread.
   */
   def git_error_set_str(error_class : CInt, string : CString): CInt = extern
 
@@ -7332,11 +7189,6 @@ private[libgit] object extern_functions:
   def git_libgit2_opts(option : CInt, rest: Any*): CInt = extern
 
   /**
-   * Return the prerelease state of the libgit2 library currently being used. For nightly builds during active development, this will be "alpha". Releases may have a "beta" or release candidate ("rc1", "rc2", etc) prerelease. For a final release, this function returns NULL.
-  */
-  def git_libgit2_prerelease(): CString = extern
-
-  /**
    * Shutdown the global state
   */
   def git_libgit2_shutdown(): CInt = extern
@@ -7621,7 +7473,7 @@ private[libgit] object extern_functions:
   /**
    * Analyzes a buffer of raw object content and determines its validity. Tree, commit, and tag objects will be parsed and ensured that they are valid, parseable content. (Blobs are always valid by definition.) An error message will be set with an informative message if the object is not valid.
   */
-  def git_object_rawcontent_is_valid(valid : Ptr[CInt], buf : CString, len : size_t, object_type : git_object_t): CInt = extern
+  def git_object_rawcontent_is_valid(valid : Ptr[CInt], buf : CString, len : size_t, `type` : git_object_t): CInt = extern
 
   /**
    * Get a short abbreviated OID string for the object
@@ -7664,14 +7516,17 @@ private[libgit] object extern_functions:
   def git_odb_add_disk_alternate(odb : Ptr[git_odb], path : CString): CInt = extern
 
   /**
+   * Create a backend for loose objects
   */
   def git_odb_backend_loose(out : Ptr[Ptr[git_odb_backend]], objects_dir : CString, compression_level : CInt, do_fsync : CInt, dir_mode : CUnsignedInt, file_mode : CUnsignedInt): CInt = extern
 
   /**
+   * Create a backend out of a single packfile
   */
   def git_odb_backend_one_pack(out : Ptr[Ptr[git_odb_backend]], index_file : CString): CInt = extern
 
   /**
+   * Create a backend for the packfiles.
   */
   def git_odb_backend_pack(out : Ptr[Ptr[git_odb_backend]], objects_dir : CString): CInt = extern
 
@@ -7711,14 +7566,17 @@ private[libgit] object extern_functions:
   def git_odb_get_backend(out : Ptr[Ptr[git_odb_backend]], odb : Ptr[git_odb], pos : size_t): CInt = extern
 
   /**
+   * Determine the object-ID (sha1 hash) of a data buffer
   */
   def git_odb_hash(out : Ptr[git_oid], data : Ptr[Byte], len : size_t, `type` : git_object_t): CInt = extern
 
   /**
+   * Read a file from disk and fill a git_oid with the object id that the file would have if it were written to the Object Database as an object of the given type (w/o applying filters). Similar functionality to git.git's `git hash-object` without the `-w` flag, however, with the --no-filters flag. If you need filters, see git_repository_hashfile.
   */
   def git_odb_hashfile(out : Ptr[git_oid], path : CString, `type` : git_object_t): CInt = extern
 
   /**
+   * Create a new object database with no backends.
   */
   def git_odb_new(out : Ptr[Ptr[git_odb]]): CInt = extern
 
@@ -7758,6 +7616,7 @@ private[libgit] object extern_functions:
   def git_odb_object_type(`object` : Ptr[git_odb_object]): git_object_t = extern
 
   /**
+   * Create a new object database and automatically add the two default backends:
   */
   def git_odb_open(out : Ptr[Ptr[git_odb]], objects_dir : CString): CInt = extern
 
@@ -7852,18 +7711,22 @@ private[libgit] object extern_functions:
   def git_oid_fmt(out : CString, id : Ptr[git_oid]): CInt = extern
 
   /**
+   * Copy an already raw oid into a git_oid structure.
   */
   def git_oid_fromraw(out : Ptr[git_oid], raw : Ptr[CUnsignedChar]): CInt = extern
 
   /**
+   * Parse a hex formatted object id into a git_oid.
   */
   def git_oid_fromstr(out : Ptr[git_oid], str : CString): CInt = extern
 
   /**
+   * Parse N characters of a hex formatted object id into a git_oid.
   */
   def git_oid_fromstrn(out : Ptr[git_oid], str : CString, length : size_t): CInt = extern
 
   /**
+   * Parse a hex formatted null-terminated string into a git_oid.
   */
   def git_oid_fromstrp(out : Ptr[git_oid], str : CString): CInt = extern
 
@@ -7873,6 +7736,7 @@ private[libgit] object extern_functions:
   def git_oid_is_zero(id : Ptr[git_oid]): CInt = extern
 
   /**
+   * These types are retained for backward compatibility. The newer versions of these values should be preferred in all new code.
   */
   def git_oid_iszero(id : Ptr[git_oid]): CInt = extern
 
@@ -8992,11 +8856,6 @@ private[libgit] object extern_functions:
   def git_repository_odb(out : Ptr[Ptr[git_odb]], repo : Ptr[git_repository]): CInt = extern
 
   /**
-   * Gets the object type used by this repository.
-  */
-  def git_repository_oid_type(repo : Ptr[git_repository]): git_oid_t = extern
-
-  /**
    * Open a git repository.
   */
   def git_repository_open(out : Ptr[Ptr[git_repository]], path : CString): CInt = extern
@@ -9273,16 +9132,6 @@ private[libgit] object extern_functions:
    * Save the local modifications to a new stash.
   */
   def git_stash_save(out : Ptr[git_oid], repo : Ptr[git_repository], stasher : Ptr[git_signature], message : CString, flags : uint32_t): CInt = extern
-
-  /**
-   * Initialize git_stash_save_options structure
-  */
-  def git_stash_save_options_init(opts : Ptr[git_stash_save_options], version : CUnsignedInt): CInt = extern
-
-  /**
-   * Save the local modifications to a new stash, with options.
-  */
-  def git_stash_save_with_opts(out : Ptr[git_oid], repo : Ptr[git_repository], opts : Ptr[git_stash_save_options]): CInt = extern
 
   /**
    * Get a pointer to one of the entries in the status list.
@@ -10005,10 +9854,8 @@ object all:
   export _root_.libgit.enumerations.git_merge_flag_t
   export _root_.libgit.enumerations.git_merge_preference_t
   export _root_.libgit.enumerations.git_object_t
-  export _root_.libgit.enumerations.git_odb_backend_loose_flag_t
   export _root_.libgit.enumerations.git_odb_lookup_flags_t
   export _root_.libgit.enumerations.git_odb_stream_t
-  export _root_.libgit.enumerations.git_oid_t
   export _root_.libgit.enumerations.git_packbuilder_stage_t
   export _root_.libgit.enumerations.git_pathspec_flag_t
   export _root_.libgit.enumerations.git_proxy_t
@@ -10201,11 +10048,8 @@ object all:
   export _root_.libgit.structs.git_object
   export _root_.libgit.structs.git_odb
   export _root_.libgit.structs.git_odb_backend
-  export _root_.libgit.structs.git_odb_backend_loose_options
-  export _root_.libgit.structs.git_odb_backend_pack_options
   export _root_.libgit.structs.git_odb_expand_id
   export _root_.libgit.structs.git_odb_object
-  export _root_.libgit.structs.git_odb_options
   export _root_.libgit.structs.git_odb_stream
   export _root_.libgit.structs.git_odb_writepack
   export _root_.libgit.structs.git_oid
@@ -10241,7 +10085,6 @@ object all:
   export _root_.libgit.structs.git_revwalk
   export _root_.libgit.structs.git_signature
   export _root_.libgit.structs.git_stash_apply_options
-  export _root_.libgit.structs.git_stash_save_options
   export _root_.libgit.structs.git_status_entry
   export _root_.libgit.structs.git_status_list
   export _root_.libgit.structs.git_status_options
@@ -10494,7 +10337,6 @@ object all:
   export _root_.libgit.functions.git_email_create_from_diff
   export _root_.libgit.functions.git_error_clear
   export _root_.libgit.functions.git_error_last
-  export _root_.libgit.functions.git_error_set
   export _root_.libgit.functions.git_error_set_oom
   export _root_.libgit.functions.git_error_set_str
   export _root_.libgit.functions.git_fetch_init_options
@@ -10572,7 +10414,6 @@ object all:
   export _root_.libgit.functions.git_libgit2_features
   export _root_.libgit.functions.git_libgit2_init
   export _root_.libgit.functions.git_libgit2_opts
-  export _root_.libgit.functions.git_libgit2_prerelease
   export _root_.libgit.functions.git_libgit2_shutdown
   export _root_.libgit.functions.git_libgit2_version
   export _root_.libgit.functions.git_mailmap_add_entry
@@ -10908,7 +10749,6 @@ object all:
   export _root_.libgit.functions.git_repository_message
   export _root_.libgit.functions.git_repository_message_remove
   export _root_.libgit.functions.git_repository_odb
-  export _root_.libgit.functions.git_repository_oid_type
   export _root_.libgit.functions.git_repository_open
   export _root_.libgit.functions.git_repository_open_bare
   export _root_.libgit.functions.git_repository_open_ext
@@ -10965,8 +10805,6 @@ object all:
   export _root_.libgit.functions.git_stash_foreach
   export _root_.libgit.functions.git_stash_pop
   export _root_.libgit.functions.git_stash_save
-  export _root_.libgit.functions.git_stash_save_options_init
-  export _root_.libgit.functions.git_stash_save_with_opts
   export _root_.libgit.functions.git_status_byindex
   export _root_.libgit.functions.git_status_file
   export _root_.libgit.functions.git_status_foreach

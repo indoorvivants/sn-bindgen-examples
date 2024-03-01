@@ -201,7 +201,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): duckdb_delete_callback_t = o
     extension (v: duckdb_delete_callback_t)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -248,7 +248,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[duckdb_replacement_scan_info, CString, Ptr[Byte], Unit]): duckdb_replacement_callback_t = o
     extension (v: duckdb_replacement_callback_t)
       inline def value: CFuncPtr3[duckdb_replacement_scan_info, CString, Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -277,7 +277,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[duckdb_bind_info, Unit]): duckdb_table_function_bind_t = o
     extension (v: duckdb_table_function_bind_t)
       inline def value: CFuncPtr1[duckdb_bind_info, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -288,7 +288,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[duckdb_init_info, Unit]): duckdb_table_function_init_t = o
     extension (v: duckdb_table_function_init_t)
       inline def value: CFuncPtr1[duckdb_init_info, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -299,7 +299,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[duckdb_function_info, duckdb_data_chunk, Unit]): duckdb_table_function_t = o
     extension (v: duckdb_table_function_t)
       inline def value: CFuncPtr2[duckdb_function_info, duckdb_data_chunk, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1568,16 +1568,16 @@ object functions:
   /**
    * Append a duckdb_interval value to the appender.
   */
-  def duckdb_append_interval(appender : duckdb_appender, value : Ptr[duckdb_interval]): duckdb_state = 
-    __sn_wrap_duckdb_duckdb_append_interval(appender, value)
-
-  /**
-   * Append a duckdb_interval value to the appender.
-  */
   def duckdb_append_interval(appender : duckdb_appender, value : duckdb_interval)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_interval] = alloc[duckdb_interval](1)
     !(__ptr_0 + 0) = value
     __sn_wrap_duckdb_duckdb_append_interval(appender, (__ptr_0 + 0))
+
+  /**
+   * Append a duckdb_interval value to the appender.
+  */
+  def duckdb_append_interval(appender : duckdb_appender, value : Ptr[duckdb_interval]): duckdb_state = 
+    __sn_wrap_duckdb_duckdb_append_interval(appender, value)
 
   /**
    * Append a duckdb_time value to the appender.
@@ -1596,16 +1596,16 @@ object functions:
   /**
    * Append a duckdb_timestamp value to the appender.
   */
-  def duckdb_append_timestamp(appender : duckdb_appender, value : Ptr[duckdb_timestamp]): duckdb_state = 
-    __sn_wrap_duckdb_duckdb_append_timestamp(appender, value)
-
-  /**
-   * Append a duckdb_timestamp value to the appender.
-  */
   def duckdb_append_timestamp(appender : duckdb_appender, value : duckdb_timestamp)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
     !(__ptr_0 + 0) = value
     __sn_wrap_duckdb_duckdb_append_timestamp(appender, (__ptr_0 + 0))
+
+  /**
+   * Append a duckdb_timestamp value to the appender.
+  */
+  def duckdb_append_timestamp(appender : duckdb_appender, value : Ptr[duckdb_timestamp]): duckdb_state = 
+    __sn_wrap_duckdb_duckdb_append_timestamp(appender, value)
 
   /**
    * Binds a duckdb_date value to the prepared statement at the specified index.
@@ -1624,22 +1624,16 @@ object functions:
   /**
    * Binds an duckdb_hugeint value to the prepared statement at the specified index.
   */
-  def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_hugeint]): duckdb_state = 
-    __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, `val`)
-
-  /**
-   * Binds an duckdb_hugeint value to the prepared statement at the specified index.
-  */
   def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_hugeint)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
     !(__ptr_0 + 0) = `val`
     __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, (__ptr_0 + 0))
 
   /**
-   * Binds a duckdb_interval value to the prepared statement at the specified index.
+   * Binds an duckdb_hugeint value to the prepared statement at the specified index.
   */
-  def duckdb_bind_interval(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_interval]): duckdb_state = 
-    __sn_wrap_duckdb_duckdb_bind_interval(prepared_statement, param_idx, `val`)
+  def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_hugeint]): duckdb_state = 
+    __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, `val`)
 
   /**
    * Binds a duckdb_interval value to the prepared statement at the specified index.
@@ -1648,6 +1642,12 @@ object functions:
     val __ptr_0: Ptr[duckdb_interval] = alloc[duckdb_interval](1)
     !(__ptr_0 + 0) = `val`
     __sn_wrap_duckdb_duckdb_bind_interval(prepared_statement, param_idx, (__ptr_0 + 0))
+
+  /**
+   * Binds a duckdb_interval value to the prepared statement at the specified index.
+  */
+  def duckdb_bind_interval(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_interval]): duckdb_state = 
+    __sn_wrap_duckdb_duckdb_bind_interval(prepared_statement, param_idx, `val`)
 
   /**
    * Binds a duckdb_time value to the prepared statement at the specified index.
@@ -1694,16 +1694,26 @@ object functions:
   /**
    * Converts a double value to a duckdb_hugeint object.
   */
+  def duckdb_double_to_hugeint(`val` : Double)(__return : Ptr[duckdb_hugeint]): Unit = 
+    __sn_wrap_duckdb_duckdb_double_to_hugeint(`val`, __return)
+
+  /**
+   * Converts a double value to a duckdb_hugeint object.
+  */
   def duckdb_double_to_hugeint(`val` : Double)(using Zone): duckdb_hugeint = 
     val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
     __sn_wrap_duckdb_duckdb_double_to_hugeint(`val`, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
-   * Converts a double value to a duckdb_hugeint object.
+   * Decompose a `duckdb_date` object into year, month and date (stored as `duckdb_date_struct`).
   */
-  def duckdb_double_to_hugeint(`val` : Double)(__return : Ptr[duckdb_hugeint]): Unit = 
-    __sn_wrap_duckdb_duckdb_double_to_hugeint(`val`, __return)
+  def duckdb_from_date(date : duckdb_date)(using Zone): duckdb_date_struct = 
+    val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
+    val __ptr_1: Ptr[duckdb_date_struct] = alloc[duckdb_date_struct](1)
+    !(__ptr_0 + 0) = date
+    __sn_wrap_duckdb_duckdb_from_date((__ptr_0 + 0), (__ptr_1 + 0))
+    !(__ptr_1 + 0)
 
   /**
    * Decompose a `duckdb_date` object into year, month and date (stored as `duckdb_date_struct`).
@@ -1718,22 +1728,6 @@ object functions:
   */
   def duckdb_from_date(date : Ptr[duckdb_date])(__return : Ptr[duckdb_date_struct]): Unit = 
     __sn_wrap_duckdb_duckdb_from_date(date, __return)
-
-  /**
-   * Decompose a `duckdb_date` object into year, month and date (stored as `duckdb_date_struct`).
-  */
-  def duckdb_from_date(date : duckdb_date)(using Zone): duckdb_date_struct = 
-    val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
-    val __ptr_1: Ptr[duckdb_date_struct] = alloc[duckdb_date_struct](1)
-    !(__ptr_0 + 0) = date
-    __sn_wrap_duckdb_duckdb_from_date((__ptr_0 + 0), (__ptr_1 + 0))
-    !(__ptr_1 + 0)
-
-  /**
-   * Decompose a `duckdb_time` object into hour, minute, second and microsecond (stored as `duckdb_time_struct`).
-  */
-  def duckdb_from_time(time : Ptr[duckdb_time])(__return : Ptr[duckdb_time_struct]): Unit = 
-    __sn_wrap_duckdb_duckdb_from_time(time, __return)
 
   /**
    * Decompose a `duckdb_time` object into hour, minute, second and microsecond (stored as `duckdb_time_struct`).
@@ -1754,10 +1748,10 @@ object functions:
     !(__ptr_0 + 0)
 
   /**
-   * Decompose a `duckdb_timestamp` object into a `duckdb_timestamp_struct`.
+   * Decompose a `duckdb_time` object into hour, minute, second and microsecond (stored as `duckdb_time_struct`).
   */
-  def duckdb_from_timestamp(ts : Ptr[duckdb_timestamp])(__return : Ptr[duckdb_timestamp_struct]): Unit = 
-    __sn_wrap_duckdb_duckdb_from_timestamp(ts, __return)
+  def duckdb_from_time(time : Ptr[duckdb_time])(__return : Ptr[duckdb_time_struct]): Unit = 
+    __sn_wrap_duckdb_duckdb_from_time(time, __return)
 
   /**
    * Decompose a `duckdb_timestamp` object into a `duckdb_timestamp_struct`.
@@ -1776,6 +1770,12 @@ object functions:
     val __ptr_0: Ptr[duckdb_timestamp_struct] = alloc[duckdb_timestamp_struct](1)
     __sn_wrap_duckdb_duckdb_from_timestamp(ts, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  /**
+   * Decompose a `duckdb_timestamp` object into a `duckdb_timestamp_struct`.
+  */
+  def duckdb_from_timestamp(ts : Ptr[duckdb_timestamp])(__return : Ptr[duckdb_timestamp_struct]): Unit = 
+    __sn_wrap_duckdb_duckdb_from_timestamp(ts, __return)
 
   /**
    * Converts a duckdb_hugeint object (as obtained from a `DUCKDB_TYPE_HUGEINT` column) into a double.
@@ -1870,16 +1870,16 @@ object functions:
   /**
    * Re-compose a `duckdb_timestamp` from a duckdb_timestamp_struct.
   */
-  def duckdb_to_timestamp(ts : Ptr[duckdb_timestamp_struct])(using Zone): duckdb_timestamp = 
-    val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
-    __sn_wrap_duckdb_duckdb_to_timestamp(ts, (__ptr_0 + 0))
-    !(__ptr_0 + 0)
+  def duckdb_to_timestamp(ts : Ptr[duckdb_timestamp_struct])(__return : Ptr[duckdb_timestamp]): Unit = 
+    __sn_wrap_duckdb_duckdb_to_timestamp(ts, __return)
 
   /**
    * Re-compose a `duckdb_timestamp` from a duckdb_timestamp_struct.
   */
-  def duckdb_to_timestamp(ts : Ptr[duckdb_timestamp_struct])(__return : Ptr[duckdb_timestamp]): Unit = 
-    __sn_wrap_duckdb_duckdb_to_timestamp(ts, __return)
+  def duckdb_to_timestamp(ts : Ptr[duckdb_timestamp_struct])(using Zone): duckdb_timestamp = 
+    val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
+    __sn_wrap_duckdb_duckdb_to_timestamp(ts, (__ptr_0 + 0))
+    !(__ptr_0 + 0)
 
   /**
    * Re-compose a `duckdb_timestamp` from a duckdb_timestamp_struct.
@@ -1908,22 +1908,16 @@ object functions:
   /**
    * returns: The duckdb_date value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_date(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_date = 
-    val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
-    __sn_wrap_duckdb_duckdb_value_date(result, col, row, (__ptr_0 + 0))
-    !(__ptr_0 + 0)
-
-  /**
-   * returns: The duckdb_date value at the specified location, or 0 if the value cannot be converted.
-  */
   def duckdb_value_date(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_date]): Unit = 
     __sn_wrap_duckdb_duckdb_value_date(result, col, row, __return)
 
   /**
-   * returns: The duckdb_decimal value at the specified location, or 0 if the value cannot be converted.
+   * returns: The duckdb_date value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_decimal(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_decimal]): Unit = 
-    __sn_wrap_duckdb_duckdb_value_decimal(result, col, row, __return)
+  def duckdb_value_date(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_date = 
+    val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
+    __sn_wrap_duckdb_duckdb_value_date(result, col, row, (__ptr_0 + 0))
+    !(__ptr_0 + 0)
 
   /**
    * returns: The duckdb_decimal value at the specified location, or 0 if the value cannot be converted.
@@ -1932,6 +1926,12 @@ object functions:
     val __ptr_0: Ptr[duckdb_decimal] = alloc[duckdb_decimal](1)
     __sn_wrap_duckdb_duckdb_value_decimal(result, col, row, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  /**
+   * returns: The duckdb_decimal value at the specified location, or 0 if the value cannot be converted.
+  */
+  def duckdb_value_decimal(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_decimal]): Unit = 
+    __sn_wrap_duckdb_duckdb_value_decimal(result, col, row, __return)
 
   /**
    * returns: The duckdb_hugeint value at the specified location, or 0 if the value cannot be converted.
@@ -1964,16 +1964,16 @@ object functions:
   /**
    * returns: The duckdb_time value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_time(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_time = 
-    val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
-    __sn_wrap_duckdb_duckdb_value_time(result, col, row, (__ptr_0 + 0))
-    !(__ptr_0 + 0)
+  def duckdb_value_time(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_time]): Unit = 
+    __sn_wrap_duckdb_duckdb_value_time(result, col, row, __return)
 
   /**
    * returns: The duckdb_time value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_time(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_time]): Unit = 
-    __sn_wrap_duckdb_duckdb_value_time(result, col, row, __return)
+  def duckdb_value_time(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_time = 
+    val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
+    __sn_wrap_duckdb_duckdb_value_time(result, col, row, (__ptr_0 + 0))
+    !(__ptr_0 + 0)
 
   /**
    * returns: The duckdb_timestamp value at the specified location, or 0 if the value cannot be converted.

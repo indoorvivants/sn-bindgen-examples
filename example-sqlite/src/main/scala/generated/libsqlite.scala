@@ -17,7 +17,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr5[Ptr[Fts5ExtensionApi], Ptr[Fts5Context], Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit]): fts5_extension_function = o
     extension (v: fts5_extension_function)
       inline def value: CFuncPtr5[Ptr[Fts5ExtensionApi], Ptr[Fts5Context], Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -28,7 +28,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], CInt, Ptr[CString], Ptr[CString], CInt]): sqlite3_callback = o
     extension (v: sqlite3_callback)
       inline def value: CFuncPtr4[Ptr[Byte], CInt, Ptr[CString], Ptr[CString], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -39,7 +39,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): sqlite3_destructor_type = o
     extension (v: sqlite3_destructor_type)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -77,7 +77,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr0[Unit]): sqlite3_syscall_ptr = o
     extension (v: sqlite3_syscall_ptr)
       inline def value: CFuncPtr0[Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */

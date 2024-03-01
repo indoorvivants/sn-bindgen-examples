@@ -258,7 +258,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], CString, Unit]): PQnoticeProcessor = o
     extension (v: PQnoticeProcessor)
       inline def value: CFuncPtr2[Ptr[Byte], CString, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -269,7 +269,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[PGresult], Unit]): PQnoticeReceiver = o
     extension (v: PQnoticeReceiver)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[PGresult], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -280,7 +280,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[CString, CInt, Ptr[PGconn], CInt]): PQsslKeyPassHook_OpenSSL_type = o
     extension (v: PQsslKeyPassHook_OpenSSL_type)
       inline def value: CFuncPtr3[CString, CInt, Ptr[PGconn], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -300,7 +300,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[CInt, Unit]): pgthreadlock_t = o
     extension (v: pgthreadlock_t)
       inline def value: CFuncPtr1[CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -725,10 +725,6 @@ private[libpq] object extern_functions:
 
   /**
   */
-  def PQconnectionUsedGSSAPI(conn : Ptr[PGconn]): CInt = extern
-
-  /**
-  */
   def PQconnectionUsedPassword(conn : Ptr[PGconn]): CInt = extern
 
   /**
@@ -921,7 +917,7 @@ private[libpq] object extern_functions:
 
   /**
   */
-  def PQgetline(conn : Ptr[PGconn], buffer : CString, length : CInt): CInt = extern
+  def PQgetline(conn : Ptr[PGconn], string : CString, length : CInt): CInt = extern
 
   /**
   */
@@ -1049,7 +1045,7 @@ private[libpq] object extern_functions:
 
   /**
   */
-  def PQprint(fout : Ptr[FILE], res : Ptr[PGresult], po : Ptr[PQprintOpt]): Unit = extern
+  def PQprint(fout : Ptr[FILE], res : Ptr[PGresult], ps : Ptr[PQprintOpt]): Unit = extern
 
   /**
   */
@@ -1388,7 +1384,6 @@ object all:
   export _root_.libpq.functions.PQconnectdb
   export _root_.libpq.functions.PQconnectdbParams
   export _root_.libpq.functions.PQconnectionNeedsPassword
-  export _root_.libpq.functions.PQconnectionUsedGSSAPI
   export _root_.libpq.functions.PQconnectionUsedPassword
   export _root_.libpq.functions.PQconninfo
   export _root_.libpq.functions.PQconninfoFree

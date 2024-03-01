@@ -23,24 +23,6 @@ object enumerations:
   import predef.*
   /**
   */
-  opaque type uv_clock_id = CUnsignedInt
-  object uv_clock_id extends CEnumU[uv_clock_id]:
-    given _tag: Tag[uv_clock_id] = Tag.UInt
-    inline def define(inline a: Long): uv_clock_id = a.toUInt
-    val UV_CLOCK_MONOTONIC = define(0)
-    val UV_CLOCK_REALTIME = define(1)
-    inline def getName(inline value: uv_clock_id): Option[String] =
-      inline value match
-        case UV_CLOCK_MONOTONIC => Some("UV_CLOCK_MONOTONIC")
-        case UV_CLOCK_REALTIME => Some("UV_CLOCK_REALTIME")
-        case _ => None
-    extension (a: uv_clock_id)
-      inline def &(b: uv_clock_id): uv_clock_id = a & b
-      inline def |(b: uv_clock_id): uv_clock_id = a | b
-      inline def is(b: uv_clock_id): Boolean = (a & b) == b
-
-  /**
-  */
   opaque type uv_dirent_type_t = CUnsignedInt
   object uv_dirent_type_t extends CEnumU[uv_dirent_type_t]:
     given _tag: Tag[uv_dirent_type_t] = Tag.UInt
@@ -157,8 +139,6 @@ object enumerations:
     val UV_EFTYPE = define(-79)
     val UV_EILSEQ = define(-92)
     val UV_ESOCKTNOSUPPORT = define(-44)
-    val UV_ENODATA = define(-96)
-    val UV_EUNATCH = define(-4023)
     val UV_ERRNO_MAX = define(-4096)
     inline def getName(inline value: uv_errno_t): Option[String] =
       inline value match
@@ -244,8 +224,6 @@ object enumerations:
         case UV_EFTYPE => Some("UV_EFTYPE")
         case UV_EILSEQ => Some("UV_EILSEQ")
         case UV_ESOCKTNOSUPPORT => Some("UV_ESOCKTNOSUPPORT")
-        case UV_ENODATA => Some("UV_ENODATA")
-        case UV_EUNATCH => Some("UV_EUNATCH")
         case UV_ERRNO_MAX => Some("UV_ERRNO_MAX")
         case _ => None
     extension (a: uv_errno_t)
@@ -962,7 +940,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[uv_loop_s], Ptr[uv__io_s], CUnsignedInt, Unit]): uv__io_cb = o
     extension (v: uv__io_cb)
       inline def value: CFuncPtr3[Ptr[uv_loop_s], Ptr[uv__io_s], CUnsignedInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -973,7 +951,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[uv_work_t], CInt, Unit]): uv_after_work_cb = o
     extension (v: uv_after_work_cb)
       inline def value: CFuncPtr2[Ptr[uv_work_t], CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -984,7 +962,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[uv_handle_t], size_t, Ptr[uv_buf_t], Unit]): uv_alloc_cb = o
     extension (v: uv_alloc_cb)
       inline def value: CFuncPtr3[Ptr[uv_handle_t], size_t, Ptr[uv_buf_t], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -995,7 +973,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[uv_async_t], Unit]): uv_async_cb = o
     extension (v: uv_async_cb)
       inline def value: CFuncPtr1[Ptr[uv_async_t], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1006,7 +984,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[size_t, size_t, Ptr[Byte]]): uv_calloc_func = o
     extension (v: uv_calloc_func)
       inline def value: CFuncPtr2[size_t, size_t, Ptr[Byte]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1017,7 +995,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[uv_check_t], Unit]): uv_check_cb = o
     extension (v: uv_check_cb)
       inline def value: CFuncPtr1[Ptr[uv_check_t], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1028,7 +1006,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[uv_handle_t], Unit]): uv_close_cb = o
     extension (v: uv_close_cb)
       inline def value: CFuncPtr1[Ptr[uv_handle_t], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1048,7 +1026,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[uv_connect_t], CInt, Unit]): uv_connect_cb = o
     extension (v: uv_connect_cb)
       inline def value: CFuncPtr2[Ptr[uv_connect_t], CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1059,7 +1037,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[uv_stream_t], CInt, Unit]): uv_connection_cb = o
     extension (v: uv_connection_cb)
       inline def value: CFuncPtr2[Ptr[uv_stream_t], CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1070,7 +1048,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[uv_process_t], int64_t, CInt, Unit]): uv_exit_cb = o
     extension (v: uv_exit_cb)
       inline def value: CFuncPtr3[Ptr[uv_process_t], int64_t, CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1090,7 +1068,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): uv_free_func = o
     extension (v: uv_free_func)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1101,7 +1079,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[uv_fs_t], Unit]): uv_fs_cb = o
     extension (v: uv_fs_cb)
       inline def value: CFuncPtr1[Ptr[uv_fs_t], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1112,7 +1090,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[uv_fs_event_t], CString, CInt, CInt, Unit]): uv_fs_event_cb = o
     extension (v: uv_fs_event_cb)
       inline def value: CFuncPtr4[Ptr[uv_fs_event_t], CString, CInt, CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1123,7 +1101,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[uv_fs_poll_t], CInt, Ptr[uv_stat_t], Ptr[uv_stat_t], Unit]): uv_fs_poll_cb = o
     extension (v: uv_fs_poll_cb)
       inline def value: CFuncPtr4[Ptr[uv_fs_poll_t], CInt, Ptr[uv_stat_t], Ptr[uv_stat_t], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1134,7 +1112,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[uv_getaddrinfo_t], CInt, Ptr[addrinfo], Unit]): uv_getaddrinfo_cb = o
     extension (v: uv_getaddrinfo_cb)
       inline def value: CFuncPtr3[Ptr[uv_getaddrinfo_t], CInt, Ptr[addrinfo], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1145,7 +1123,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[uv_getnameinfo_t], CInt, CString, CString, Unit]): uv_getnameinfo_cb = o
     extension (v: uv_getnameinfo_cb)
       inline def value: CFuncPtr4[Ptr[uv_getnameinfo_t], CInt, CString, CString, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1165,7 +1143,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[uv_idle_t], Unit]): uv_idle_cb = o
     extension (v: uv_idle_cb)
       inline def value: CFuncPtr1[Ptr[uv_idle_t], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1185,7 +1163,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[size_t, Ptr[Byte]]): uv_malloc_func = o
     extension (v: uv_malloc_func)
       inline def value: CFuncPtr1[size_t, Ptr[Byte]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1241,7 +1219,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[uv_poll_t], CInt, CInt, Unit]): uv_poll_cb = o
     extension (v: uv_poll_cb)
       inline def value: CFuncPtr3[Ptr[uv_poll_t], CInt, CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1252,7 +1230,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[uv_prepare_t], Unit]): uv_prepare_cb = o
     extension (v: uv_prepare_cb)
       inline def value: CFuncPtr1[Ptr[uv_prepare_t], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1263,7 +1241,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[uv_random_t], CInt, Ptr[Byte], size_t, Unit]): uv_random_cb = o
     extension (v: uv_random_cb)
       inline def value: CFuncPtr4[Ptr[uv_random_t], CInt, Ptr[Byte], size_t, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1274,7 +1252,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[uv_stream_t], ssize_t, Ptr[uv_buf_t], Unit]): uv_read_cb = o
     extension (v: uv_read_cb)
       inline def value: CFuncPtr3[Ptr[uv_stream_t], ssize_t, Ptr[uv_buf_t], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1285,7 +1263,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]]): uv_realloc_func = o
     extension (v: uv_realloc_func)
       inline def value: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1314,7 +1292,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[uv_shutdown_t], CInt, Unit]): uv_shutdown_cb = o
     extension (v: uv_shutdown_cb)
       inline def value: CFuncPtr2[Ptr[uv_shutdown_t], CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1325,7 +1303,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[uv_signal_t], CInt, Unit]): uv_signal_cb = o
     extension (v: uv_signal_cb)
       inline def value: CFuncPtr2[Ptr[uv_signal_t], CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1336,7 +1314,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): uv_thread_cb = o
     extension (v: uv_thread_cb)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1356,7 +1334,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[uv_timer_t], Unit]): uv_timer_cb = o
     extension (v: uv_timer_cb)
       inline def value: CFuncPtr1[Ptr[uv_timer_t], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1367,7 +1345,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr5[Ptr[uv_udp_t], ssize_t, Ptr[uv_buf_t], Ptr[sockaddr], CUnsignedInt, Unit]): uv_udp_recv_cb = o
     extension (v: uv_udp_recv_cb)
       inline def value: CFuncPtr5[Ptr[uv_udp_t], ssize_t, Ptr[uv_buf_t], Ptr[sockaddr], CUnsignedInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1378,7 +1356,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[uv_udp_send_t], CInt, Unit]): uv_udp_send_cb = o
     extension (v: uv_udp_send_cb)
       inline def value: CFuncPtr2[Ptr[uv_udp_send_t], CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1398,7 +1376,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[uv_handle_t], Ptr[Byte], Unit]): uv_walk_cb = o
     extension (v: uv_walk_cb)
       inline def value: CFuncPtr2[Ptr[uv_handle_t], Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1409,7 +1387,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[uv_work_t], Unit]): uv_work_cb = o
     extension (v: uv_work_cb)
       inline def value: CFuncPtr1[Ptr[uv_work_t], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -1420,7 +1398,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[uv_write_t], CInt, Unit]): uv_write_cb = o
     extension (v: uv_write_cb)
       inline def value: CFuncPtr2[Ptr[uv_write_t], CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
 object structs:
   import _root_.libuv.enumerations.*
@@ -1485,11 +1463,11 @@ object structs:
 
   /**
   */
-  opaque type uv__io_s = CStruct8[Ptr[Byte], uv__queue, uv__queue, CUnsignedInt, CUnsignedInt, CInt, CInt, CInt]
+  opaque type uv__io_s = CStruct8[Ptr[Byte], CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], CUnsignedInt, CUnsignedInt, CInt, CInt, CInt]
   object uv__io_s:
-    given _tag: Tag[uv__io_s] = Tag.materializeCStruct8Tag[Ptr[Byte], uv__queue, uv__queue, CUnsignedInt, CUnsignedInt, CInt, CInt, CInt]
+    given _tag: Tag[uv__io_s] = Tag.materializeCStruct8Tag[Ptr[Byte], CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], CUnsignedInt, CUnsignedInt, CInt, CInt, CInt]
     def apply()(using Zone): Ptr[uv__io_s] = scala.scalanative.unsafe.alloc[uv__io_s](1)
-    def apply(cb : uv__io_cb, pending_queue : uv__queue, watcher_queue : uv__queue, pevents : CUnsignedInt, events : CUnsignedInt, fd : CInt, rcount : CInt, wcount : CInt)(using Zone): Ptr[uv__io_s] = 
+    def apply(cb : uv__io_cb, pending_queue : CArray[Ptr[Byte], Nat._2], watcher_queue : CArray[Ptr[Byte], Nat._2], pevents : CUnsignedInt, events : CUnsignedInt, fd : CInt, rcount : CInt, wcount : CInt)(using Zone): Ptr[uv__io_s] = 
       val ____ptr = apply()
       (!____ptr).cb = cb
       (!____ptr).pending_queue = pending_queue
@@ -1503,10 +1481,10 @@ object structs:
     extension (struct: uv__io_s)
       def cb : uv__io_cb = struct._1.asInstanceOf[uv__io_cb]
       def cb_=(value: uv__io_cb): Unit = !struct.at1 = value.asInstanceOf[Ptr[Byte]]
-      def pending_queue : uv__queue = struct._2
-      def pending_queue_=(value: uv__queue): Unit = !struct.at2 = value
-      def watcher_queue : uv__queue = struct._3
-      def watcher_queue_=(value: uv__queue): Unit = !struct.at3 = value
+      def pending_queue : CArray[Ptr[Byte], Nat._2] = struct._2
+      def pending_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at2 = value
+      def watcher_queue : CArray[Ptr[Byte], Nat._2] = struct._3
+      def watcher_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at3 = value
       def pevents : CUnsignedInt = struct._4
       def pevents_=(value: CUnsignedInt): Unit = !struct.at4 = value
       def events : CUnsignedInt = struct._5
@@ -1520,11 +1498,11 @@ object structs:
 
   /**
   */
-  opaque type uv__io_t = CStruct8[Ptr[Byte], uv__queue, uv__queue, CUnsignedInt, CUnsignedInt, CInt, CInt, CInt]
+  opaque type uv__io_t = CStruct8[Ptr[Byte], CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], CUnsignedInt, CUnsignedInt, CInt, CInt, CInt]
   object uv__io_t:
-    given _tag: Tag[uv__io_t] = Tag.materializeCStruct8Tag[Ptr[Byte], uv__queue, uv__queue, CUnsignedInt, CUnsignedInt, CInt, CInt, CInt]
+    given _tag: Tag[uv__io_t] = Tag.materializeCStruct8Tag[Ptr[Byte], CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], CUnsignedInt, CUnsignedInt, CInt, CInt, CInt]
     def apply()(using Zone): Ptr[uv__io_t] = scala.scalanative.unsafe.alloc[uv__io_t](1)
-    def apply(cb : uv__io_cb, pending_queue : uv__queue, watcher_queue : uv__queue, pevents : CUnsignedInt, events : CUnsignedInt, fd : CInt, rcount : CInt, wcount : CInt)(using Zone): Ptr[uv__io_t] = 
+    def apply(cb : uv__io_cb, pending_queue : CArray[Ptr[Byte], Nat._2], watcher_queue : CArray[Ptr[Byte], Nat._2], pevents : CUnsignedInt, events : CUnsignedInt, fd : CInt, rcount : CInt, wcount : CInt)(using Zone): Ptr[uv__io_t] = 
       val ____ptr = apply()
       (!____ptr).cb = cb
       (!____ptr).pending_queue = pending_queue
@@ -1538,10 +1516,10 @@ object structs:
     extension (struct: uv__io_t)
       def cb : uv__io_cb = struct._1.asInstanceOf[uv__io_cb]
       def cb_=(value: uv__io_cb): Unit = !struct.at1 = value.asInstanceOf[Ptr[Byte]]
-      def pending_queue : uv__queue = struct._2
-      def pending_queue_=(value: uv__queue): Unit = !struct.at2 = value
-      def watcher_queue : uv__queue = struct._3
-      def watcher_queue_=(value: uv__queue): Unit = !struct.at3 = value
+      def pending_queue : CArray[Ptr[Byte], Nat._2] = struct._2
+      def pending_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at2 = value
+      def watcher_queue : CArray[Ptr[Byte], Nat._2] = struct._3
+      def watcher_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at3 = value
       def pevents : CUnsignedInt = struct._4
       def pevents_=(value: CUnsignedInt): Unit = !struct.at4 = value
       def events : CUnsignedInt = struct._5
@@ -1555,33 +1533,16 @@ object structs:
 
   /**
   */
-  opaque type uv__queue = CStruct2[Ptr[Byte], Ptr[Byte]]
-  object uv__queue:
-    given _tag: Tag[uv__queue] = Tag.materializeCStruct2Tag[Ptr[Byte], Ptr[Byte]]
-    def apply()(using Zone): Ptr[uv__queue] = scala.scalanative.unsafe.alloc[uv__queue](1)
-    def apply(next : Ptr[uv__queue], prev : Ptr[uv__queue])(using Zone): Ptr[uv__queue] = 
-      val ____ptr = apply()
-      (!____ptr).next = next
-      (!____ptr).prev = prev
-      ____ptr
-    extension (struct: uv__queue)
-      def next : Ptr[uv__queue] = struct._1.asInstanceOf[Ptr[uv__queue]]
-      def next_=(value: Ptr[uv__queue]): Unit = !struct.at1 = value.asInstanceOf[Ptr[Byte]]
-      def prev : Ptr[uv__queue] = struct._2.asInstanceOf[Ptr[uv__queue]]
-      def prev_=(value: Ptr[uv__queue]): Unit = !struct.at2 = value.asInstanceOf[Ptr[Byte]]
-
-  /**
-  */
-  opaque type uv__work = CStruct4[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[Ptr[Byte], CInt, Unit], Ptr[uv_loop_s], uv__queue]
+  opaque type uv__work = CStruct4[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[Ptr[Byte], CInt, Unit], Ptr[uv_loop_s], CArray[uv__work.Struct0, Nat._2]]
   object uv__work:
     /**
     */
     opaque type Struct0 = CStruct0
     object Struct0:
       given _tag: Tag[Struct0] = Tag.materializeCStruct0Tag
-    given _tag: Tag[uv__work] = Tag.materializeCStruct4Tag[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[Ptr[Byte], CInt, Unit], Ptr[uv_loop_s], uv__queue]
+    given _tag: Tag[uv__work] = Tag.materializeCStruct4Tag[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[Ptr[Byte], CInt, Unit], Ptr[uv_loop_s], CArray[uv__work.Struct0, Nat._2]]
     def apply()(using Zone): Ptr[uv__work] = scala.scalanative.unsafe.alloc[uv__work](1)
-    def apply(work : CFuncPtr1[Ptr[uv__work], Unit], done : CFuncPtr2[Ptr[uv__work], CInt, Unit], loop : Ptr[uv_loop_s], wq : uv__queue)(using Zone): Ptr[uv__work] = 
+    def apply(work : CFuncPtr1[Ptr[uv__work], Unit], done : CFuncPtr2[Ptr[uv__work], CInt, Unit], loop : Ptr[uv_loop_s], wq : CArray[uv__work.Struct0, Nat._2])(using Zone): Ptr[uv__work] = 
       val ____ptr = apply()
       (!____ptr).work = work
       (!____ptr).done = done
@@ -1595,12 +1556,12 @@ object structs:
       def done_=(value: CFuncPtr2[Ptr[uv__work], CInt, Unit]): Unit = !struct.at2 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], CInt, Unit]]
       def loop : Ptr[uv_loop_s] = struct._3
       def loop_=(value: Ptr[uv_loop_s]): Unit = !struct.at3 = value
-      def wq : uv__queue = struct._4
-      def wq_=(value: uv__queue): Unit = !struct.at4 = value
+      def wq : CArray[uv__work.Struct0, Nat._2] = struct._4
+      def wq_=(value: CArray[uv__work.Struct0, Nat._2]): Unit = !struct.at4 = value
 
   /**
   */
-  opaque type uv_async_s = CStruct11[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_async_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue, CInt]
+  opaque type uv_async_s = CStruct11[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_async_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2], CInt]
   object uv_async_s:
     /**
     */
@@ -1627,9 +1588,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_async_s] = Tag.materializeCStruct11Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_async_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue, CInt]
+    given _tag: Tag[uv_async_s] = Tag.materializeCStruct11Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_async_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2], CInt]
     def apply()(using Zone): Ptr[uv_async_s] = scala.scalanative.unsafe.alloc[uv_async_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_async_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, async_cb : uv_async_cb, queue : uv__queue, pending : CInt)(using Zone): Ptr[uv_async_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_async_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, async_cb : uv_async_cb, queue : CArray[Ptr[Byte], Nat._2], pending : CInt)(using Zone): Ptr[uv_async_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -1652,8 +1613,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_async_s.Union0 = struct._6
       def u_=(value: uv_async_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -1662,14 +1623,14 @@ object structs:
       def flags_=(value: CUnsignedInt): Unit = !struct.at8 = value
       def async_cb : uv_async_cb = struct._9.asInstanceOf[uv_async_cb]
       def async_cb_=(value: uv_async_cb): Unit = !struct.at9 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._10
-      def queue_=(value: uv__queue): Unit = !struct.at10 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._10
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at10 = value
       def pending : CInt = struct._11
       def pending_=(value: CInt): Unit = !struct.at11 = value
 
   /**
   */
-  opaque type uv_async_t = CStruct11[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_async_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue, CInt]
+  opaque type uv_async_t = CStruct11[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_async_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2], CInt]
   object uv_async_t:
     /**
     */
@@ -1696,9 +1657,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_async_t] = Tag.materializeCStruct11Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_async_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue, CInt]
+    given _tag: Tag[uv_async_t] = Tag.materializeCStruct11Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_async_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2], CInt]
     def apply()(using Zone): Ptr[uv_async_t] = scala.scalanative.unsafe.alloc[uv_async_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_async_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, async_cb : uv_async_cb, queue : uv__queue, pending : CInt)(using Zone): Ptr[uv_async_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_async_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, async_cb : uv_async_cb, queue : CArray[Ptr[Byte], Nat._2], pending : CInt)(using Zone): Ptr[uv_async_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -1721,8 +1682,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_async_t.Union0 = struct._6
       def u_=(value: uv_async_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -1731,8 +1692,8 @@ object structs:
       def flags_=(value: CUnsignedInt): Unit = !struct.at8 = value
       def async_cb : uv_async_cb = struct._9.asInstanceOf[uv_async_cb]
       def async_cb_=(value: uv_async_cb): Unit = !struct.at9 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._10
-      def queue_=(value: uv__queue): Unit = !struct.at10 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._10
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at10 = value
       def pending : CInt = struct._11
       def pending_=(value: CInt): Unit = !struct.at11 = value
 
@@ -1769,7 +1730,7 @@ object structs:
 
   /**
   */
-  opaque type uv_check_s = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_check_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue]
+  opaque type uv_check_s = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_check_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
   object uv_check_s:
     /**
     */
@@ -1796,9 +1757,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_check_s] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_check_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue]
+    given _tag: Tag[uv_check_s] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_check_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
     def apply()(using Zone): Ptr[uv_check_s] = scala.scalanative.unsafe.alloc[uv_check_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_check_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, check_cb : uv_check_cb, queue : uv__queue)(using Zone): Ptr[uv_check_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_check_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, check_cb : uv_check_cb, queue : CArray[Ptr[Byte], Nat._2])(using Zone): Ptr[uv_check_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -1820,8 +1781,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_check_s.Union0 = struct._6
       def u_=(value: uv_check_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -1830,12 +1791,12 @@ object structs:
       def flags_=(value: CUnsignedInt): Unit = !struct.at8 = value
       def check_cb : uv_check_cb = struct._9.asInstanceOf[uv_check_cb]
       def check_cb_=(value: uv_check_cb): Unit = !struct.at9 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._10
-      def queue_=(value: uv__queue): Unit = !struct.at10 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._10
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at10 = value
 
   /**
   */
-  opaque type uv_check_t = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_check_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue]
+  opaque type uv_check_t = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_check_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
   object uv_check_t:
     /**
     */
@@ -1862,9 +1823,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_check_t] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_check_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue]
+    given _tag: Tag[uv_check_t] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_check_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
     def apply()(using Zone): Ptr[uv_check_t] = scala.scalanative.unsafe.alloc[uv_check_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_check_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, check_cb : uv_check_cb, queue : uv__queue)(using Zone): Ptr[uv_check_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_check_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, check_cb : uv_check_cb, queue : CArray[Ptr[Byte], Nat._2])(using Zone): Ptr[uv_check_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -1886,8 +1847,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_check_t.Union0 = struct._6
       def u_=(value: uv_check_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -1896,16 +1857,16 @@ object structs:
       def flags_=(value: CUnsignedInt): Unit = !struct.at8 = value
       def check_cb : uv_check_cb = struct._9.asInstanceOf[uv_check_cb]
       def check_cb_=(value: uv_check_cb): Unit = !struct.at9 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._10
-      def queue_=(value: uv__queue): Unit = !struct.at10 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._10
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at10 = value
 
   /**
   */
-  opaque type uv_connect_s = CStruct6[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], uv__queue]
+  opaque type uv_connect_s = CStruct6[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
   object uv_connect_s:
-    given _tag: Tag[uv_connect_s] = Tag.materializeCStruct6Tag[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], uv__queue]
+    given _tag: Tag[uv_connect_s] = Tag.materializeCStruct6Tag[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
     def apply()(using Zone): Ptr[uv_connect_s] = scala.scalanative.unsafe.alloc[uv_connect_s](1)
-    def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], cb : uv_connect_cb, handle : Ptr[uv_stream_t], queue : uv__queue)(using Zone): Ptr[uv_connect_s] = 
+    def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], cb : uv_connect_cb, handle : Ptr[uv_stream_t], queue : CArray[Ptr[Byte], Nat._2])(using Zone): Ptr[uv_connect_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).`type` = `type`
@@ -1925,16 +1886,16 @@ object structs:
       def cb_=(value: uv_connect_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
       def handle : Ptr[uv_stream_t] = struct._5.asInstanceOf[Ptr[uv_stream_t]]
       def handle_=(value: Ptr[uv_stream_t]): Unit = !struct.at5 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._6
-      def queue_=(value: uv__queue): Unit = !struct.at6 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._6
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at6 = value
 
   /**
   */
-  opaque type uv_connect_t = CStruct6[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], uv__queue]
+  opaque type uv_connect_t = CStruct6[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
   object uv_connect_t:
-    given _tag: Tag[uv_connect_t] = Tag.materializeCStruct6Tag[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], uv__queue]
+    given _tag: Tag[uv_connect_t] = Tag.materializeCStruct6Tag[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
     def apply()(using Zone): Ptr[uv_connect_t] = scala.scalanative.unsafe.alloc[uv_connect_t](1)
-    def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], cb : uv_connect_cb, handle : Ptr[uv_stream_t], queue : uv__queue)(using Zone): Ptr[uv_connect_t] = 
+    def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], cb : uv_connect_cb, handle : Ptr[uv_stream_t], queue : CArray[Ptr[Byte], Nat._2])(using Zone): Ptr[uv_connect_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).`type` = `type`
@@ -1954,8 +1915,8 @@ object structs:
       def cb_=(value: uv_connect_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
       def handle : Ptr[uv_stream_t] = struct._5.asInstanceOf[Ptr[uv_stream_t]]
       def handle_=(value: Ptr[uv_stream_t]): Unit = !struct.at5 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._6
-      def queue_=(value: uv__queue): Unit = !struct.at6 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._6
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at6 = value
 
   /**
   */
@@ -2139,7 +2100,7 @@ object structs:
 
   /**
   */
-  opaque type uv_fs_event_s = CStruct19[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_fs_event_s.Union0, Ptr[Byte], CUnsignedInt, CString, Ptr[Byte], uv__io_t, CString, CInt, CInt, Ptr[Byte], uv__queue, uv__queue, CInt, uv_mutex_t]
+  opaque type uv_fs_event_s = CStruct19[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_fs_event_s.Union0, Ptr[Byte], CUnsignedInt, CString, Ptr[Byte], uv__io_t, CString, CInt, CInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], CInt, uv_mutex_t]
   object uv_fs_event_s:
     /**
     */
@@ -2166,9 +2127,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_fs_event_s] = Tag.materializeCStruct19Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_fs_event_s.Union0, Ptr[Byte], CUnsignedInt, CString, Ptr[Byte], uv__io_t, CString, CInt, CInt, Ptr[Byte], uv__queue, uv__queue, CInt, uv_mutex_t]
+    given _tag: Tag[uv_fs_event_s] = Tag.materializeCStruct19Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_fs_event_s.Union0, Ptr[Byte], CUnsignedInt, CString, Ptr[Byte], uv__io_t, CString, CInt, CInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], CInt, uv_mutex_t]
     def apply()(using Zone): Ptr[uv_fs_event_s] = scala.scalanative.unsafe.alloc[uv_fs_event_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_fs_event_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, path : CString, cb : uv_fs_event_cb, event_watcher : uv__io_t, realpath : CString, realpath_len : CInt, cf_flags : CInt, cf_cb : Ptr[uv_async_t], cf_events : uv__queue, cf_member : uv__queue, cf_error : CInt, cf_mutex : uv_mutex_t)(using Zone): Ptr[uv_fs_event_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_fs_event_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, path : CString, cb : uv_fs_event_cb, event_watcher : uv__io_t, realpath : CString, realpath_len : CInt, cf_flags : CInt, cf_cb : Ptr[uv_async_t], cf_events : CArray[Ptr[Byte], Nat._2], cf_member : CArray[Ptr[Byte], Nat._2], cf_error : CInt, cf_mutex : uv_mutex_t)(using Zone): Ptr[uv_fs_event_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -2199,8 +2160,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_fs_event_s.Union0 = struct._6
       def u_=(value: uv_fs_event_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -2221,10 +2182,10 @@ object structs:
       def cf_flags_=(value: CInt): Unit = !struct.at14 = value
       def cf_cb : Ptr[uv_async_t] = struct._15.asInstanceOf[Ptr[uv_async_t]]
       def cf_cb_=(value: Ptr[uv_async_t]): Unit = !struct.at15 = value.asInstanceOf[Ptr[Byte]]
-      def cf_events : uv__queue = struct._16
-      def cf_events_=(value: uv__queue): Unit = !struct.at16 = value
-      def cf_member : uv__queue = struct._17
-      def cf_member_=(value: uv__queue): Unit = !struct.at17 = value
+      def cf_events : CArray[Ptr[Byte], Nat._2] = struct._16
+      def cf_events_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at16 = value
+      def cf_member : CArray[Ptr[Byte], Nat._2] = struct._17
+      def cf_member_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at17 = value
       def cf_error : CInt = struct._18
       def cf_error_=(value: CInt): Unit = !struct.at18 = value
       def cf_mutex : uv_mutex_t = struct._19
@@ -2232,7 +2193,7 @@ object structs:
 
   /**
   */
-  opaque type uv_fs_event_t = CStruct19[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_fs_event_t.Union0, Ptr[Byte], CUnsignedInt, CString, Ptr[Byte], uv__io_t, CString, CInt, CInt, Ptr[Byte], uv__queue, uv__queue, CInt, uv_mutex_t]
+  opaque type uv_fs_event_t = CStruct19[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_fs_event_t.Union0, Ptr[Byte], CUnsignedInt, CString, Ptr[Byte], uv__io_t, CString, CInt, CInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], CInt, uv_mutex_t]
   object uv_fs_event_t:
     /**
     */
@@ -2259,9 +2220,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_fs_event_t] = Tag.materializeCStruct19Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_fs_event_t.Union0, Ptr[Byte], CUnsignedInt, CString, Ptr[Byte], uv__io_t, CString, CInt, CInt, Ptr[Byte], uv__queue, uv__queue, CInt, uv_mutex_t]
+    given _tag: Tag[uv_fs_event_t] = Tag.materializeCStruct19Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_fs_event_t.Union0, Ptr[Byte], CUnsignedInt, CString, Ptr[Byte], uv__io_t, CString, CInt, CInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], CInt, uv_mutex_t]
     def apply()(using Zone): Ptr[uv_fs_event_t] = scala.scalanative.unsafe.alloc[uv_fs_event_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_fs_event_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, path : CString, cb : uv_fs_event_cb, event_watcher : uv__io_t, realpath : CString, realpath_len : CInt, cf_flags : CInt, cf_cb : Ptr[uv_async_t], cf_events : uv__queue, cf_member : uv__queue, cf_error : CInt, cf_mutex : uv_mutex_t)(using Zone): Ptr[uv_fs_event_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_fs_event_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, path : CString, cb : uv_fs_event_cb, event_watcher : uv__io_t, realpath : CString, realpath_len : CInt, cf_flags : CInt, cf_cb : Ptr[uv_async_t], cf_events : CArray[Ptr[Byte], Nat._2], cf_member : CArray[Ptr[Byte], Nat._2], cf_error : CInt, cf_mutex : uv_mutex_t)(using Zone): Ptr[uv_fs_event_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -2292,8 +2253,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_fs_event_t.Union0 = struct._6
       def u_=(value: uv_fs_event_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -2314,10 +2275,10 @@ object structs:
       def cf_flags_=(value: CInt): Unit = !struct.at14 = value
       def cf_cb : Ptr[uv_async_t] = struct._15.asInstanceOf[Ptr[uv_async_t]]
       def cf_cb_=(value: Ptr[uv_async_t]): Unit = !struct.at15 = value.asInstanceOf[Ptr[Byte]]
-      def cf_events : uv__queue = struct._16
-      def cf_events_=(value: uv__queue): Unit = !struct.at16 = value
-      def cf_member : uv__queue = struct._17
-      def cf_member_=(value: uv__queue): Unit = !struct.at17 = value
+      def cf_events : CArray[Ptr[Byte], Nat._2] = struct._16
+      def cf_events_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at16 = value
+      def cf_member : CArray[Ptr[Byte], Nat._2] = struct._17
+      def cf_member_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at17 = value
       def cf_error : CInt = struct._18
       def cf_error_=(value: CInt): Unit = !struct.at18 = value
       def cf_mutex : uv_mutex_t = struct._19
@@ -2325,7 +2286,7 @@ object structs:
 
   /**
   */
-  opaque type uv_fs_poll_s = CStruct9[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_fs_poll_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte]]
+  opaque type uv_fs_poll_s = CStruct9[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_fs_poll_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte]]
   object uv_fs_poll_s:
     /**
     */
@@ -2352,9 +2313,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_fs_poll_s] = Tag.materializeCStruct9Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_fs_poll_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte]]
+    given _tag: Tag[uv_fs_poll_s] = Tag.materializeCStruct9Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_fs_poll_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte]]
     def apply()(using Zone): Ptr[uv_fs_poll_s] = scala.scalanative.unsafe.alloc[uv_fs_poll_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_fs_poll_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, poll_ctx : Ptr[Byte])(using Zone): Ptr[uv_fs_poll_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_fs_poll_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, poll_ctx : Ptr[Byte])(using Zone): Ptr[uv_fs_poll_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -2375,8 +2336,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_fs_poll_s.Union0 = struct._6
       def u_=(value: uv_fs_poll_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -2388,7 +2349,7 @@ object structs:
 
   /**
   */
-  opaque type uv_fs_poll_t = CStruct9[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_fs_poll_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte]]
+  opaque type uv_fs_poll_t = CStruct9[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_fs_poll_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte]]
   object uv_fs_poll_t:
     /**
     */
@@ -2415,9 +2376,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_fs_poll_t] = Tag.materializeCStruct9Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_fs_poll_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte]]
+    given _tag: Tag[uv_fs_poll_t] = Tag.materializeCStruct9Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_fs_poll_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte]]
     def apply()(using Zone): Ptr[uv_fs_poll_t] = scala.scalanative.unsafe.alloc[uv_fs_poll_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_fs_poll_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, poll_ctx : Ptr[Byte])(using Zone): Ptr[uv_fs_poll_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_fs_poll_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, poll_ctx : Ptr[Byte])(using Zone): Ptr[uv_fs_poll_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -2438,8 +2399,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_fs_poll_t.Union0 = struct._6
       def u_=(value: uv_fs_poll_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -2451,9 +2412,9 @@ object structs:
 
   /**
   */
-  opaque type uv_fs_s = CArray[CChar, Nat.Digit3[Nat._4, Nat._4, Nat._0]]
+  opaque type uv_fs_s = CArray[CChar, Nat.Digit3[Nat._4, Nat._2, Nat._4]]
   object uv_fs_s:
-    given _tag: Tag[uv_fs_s] = Tag.CArray[CChar, Nat.Digit3[Nat._4, Nat._4, Nat._0]](Tag.Byte, Tag.Digit3[Nat._4, Nat._4, Nat._0](Tag.Nat4, Tag.Nat4, Tag.Nat0))
+    given _tag: Tag[uv_fs_s] = Tag.CArray[CChar, Nat.Digit3[Nat._4, Nat._2, Nat._4]](Tag.Byte, Tag.Digit3[Nat._4, Nat._2, Nat._4](Tag.Nat4, Tag.Nat2, Tag.Nat4))
     def apply()(using Zone): Ptr[uv_fs_s] = scala.scalanative.unsafe.alloc[uv_fs_s](1)
     def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], fs_type : uv_fs_type, loop : Ptr[uv_loop_t], cb : uv_fs_cb, result : ssize_t, ptr : Ptr[Byte], path : CString, statbuf : uv_stat_t, new_path : CString, file : uv_file, flags : CInt, mode : mode_t, nbufs : CUnsignedInt, bufs : Ptr[uv_buf_t], off : off_t, uid : uv_uid_t, gid : uv_gid_t, atime : Double, mtime : Double, work_req : uv__work, bufsml : CArray[uv_buf_t, Nat._4])(using Zone): Ptr[uv_fs_s] = 
       val ____ptr = apply()
@@ -2526,14 +2487,14 @@ object structs:
       def mtime_=(value: Double): Unit = !struct.at(328).asInstanceOf[Ptr[Double]] = value
       def work_req: uv__work = !struct.at(336).asInstanceOf[Ptr[uv__work]]
       def work_req_=(value: uv__work): Unit = !struct.at(336).asInstanceOf[Ptr[uv__work]] = value
-      def bufsml: CArray[uv_buf_t, Nat._4] = !struct.at(376).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]]
-      def bufsml_=(value: CArray[uv_buf_t, Nat._4]): Unit = !struct.at(376).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]] = value
+      def bufsml: CArray[uv_buf_t, Nat._4] = !struct.at(360).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]]
+      def bufsml_=(value: CArray[uv_buf_t, Nat._4]): Unit = !struct.at(360).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]] = value
 
   /**
   */
-  opaque type uv_fs_t = CArray[CChar, Nat.Digit3[Nat._4, Nat._4, Nat._0]]
+  opaque type uv_fs_t = CArray[CChar, Nat.Digit3[Nat._4, Nat._2, Nat._4]]
   object uv_fs_t:
-    given _tag: Tag[uv_fs_t] = Tag.CArray[CChar, Nat.Digit3[Nat._4, Nat._4, Nat._0]](Tag.Byte, Tag.Digit3[Nat._4, Nat._4, Nat._0](Tag.Nat4, Tag.Nat4, Tag.Nat0))
+    given _tag: Tag[uv_fs_t] = Tag.CArray[CChar, Nat.Digit3[Nat._4, Nat._2, Nat._4]](Tag.Byte, Tag.Digit3[Nat._4, Nat._2, Nat._4](Tag.Nat4, Tag.Nat2, Tag.Nat4))
     def apply()(using Zone): Ptr[uv_fs_t] = scala.scalanative.unsafe.alloc[uv_fs_t](1)
     def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], fs_type : uv_fs_type, loop : Ptr[uv_loop_t], cb : uv_fs_cb, result : ssize_t, ptr : Ptr[Byte], path : CString, statbuf : uv_stat_t, new_path : CString, file : uv_file, flags : CInt, mode : mode_t, nbufs : CUnsignedInt, bufs : Ptr[uv_buf_t], off : off_t, uid : uv_uid_t, gid : uv_gid_t, atime : Double, mtime : Double, work_req : uv__work, bufsml : CArray[uv_buf_t, Nat._4])(using Zone): Ptr[uv_fs_t] = 
       val ____ptr = apply()
@@ -2606,8 +2567,8 @@ object structs:
       def mtime_=(value: Double): Unit = !struct.at(328).asInstanceOf[Ptr[Double]] = value
       def work_req: uv__work = !struct.at(336).asInstanceOf[Ptr[uv__work]]
       def work_req_=(value: uv__work): Unit = !struct.at(336).asInstanceOf[Ptr[uv__work]] = value
-      def bufsml: CArray[uv_buf_t, Nat._4] = !struct.at(376).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]]
-      def bufsml_=(value: CArray[uv_buf_t, Nat._4]): Unit = !struct.at(376).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]] = value
+      def bufsml: CArray[uv_buf_t, Nat._4] = !struct.at(360).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]]
+      def bufsml_=(value: CArray[uv_buf_t, Nat._4]): Unit = !struct.at(360).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]] = value
 
   /**
   */
@@ -2787,47 +2748,7 @@ object structs:
 
   /**
   */
-  opaque type uv_group_s = CStruct3[CString, CUnsignedLongInt, Ptr[CString]]
-  object uv_group_s:
-    given _tag: Tag[uv_group_s] = Tag.materializeCStruct3Tag[CString, CUnsignedLongInt, Ptr[CString]]
-    def apply()(using Zone): Ptr[uv_group_s] = scala.scalanative.unsafe.alloc[uv_group_s](1)
-    def apply(groupname : CString, gid : CUnsignedLongInt, members : Ptr[CString])(using Zone): Ptr[uv_group_s] = 
-      val ____ptr = apply()
-      (!____ptr).groupname = groupname
-      (!____ptr).gid = gid
-      (!____ptr).members = members
-      ____ptr
-    extension (struct: uv_group_s)
-      def groupname : CString = struct._1
-      def groupname_=(value: CString): Unit = !struct.at1 = value
-      def gid : CUnsignedLongInt = struct._2
-      def gid_=(value: CUnsignedLongInt): Unit = !struct.at2 = value
-      def members : Ptr[CString] = struct._3
-      def members_=(value: Ptr[CString]): Unit = !struct.at3 = value
-
-  /**
-  */
-  opaque type uv_group_t = CStruct3[CString, CUnsignedLongInt, Ptr[CString]]
-  object uv_group_t:
-    given _tag: Tag[uv_group_t] = Tag.materializeCStruct3Tag[CString, CUnsignedLongInt, Ptr[CString]]
-    def apply()(using Zone): Ptr[uv_group_t] = scala.scalanative.unsafe.alloc[uv_group_t](1)
-    def apply(groupname : CString, gid : CUnsignedLongInt, members : Ptr[CString])(using Zone): Ptr[uv_group_t] = 
-      val ____ptr = apply()
-      (!____ptr).groupname = groupname
-      (!____ptr).gid = gid
-      (!____ptr).members = members
-      ____ptr
-    extension (struct: uv_group_t)
-      def groupname : CString = struct._1
-      def groupname_=(value: CString): Unit = !struct.at1 = value
-      def gid : CUnsignedLongInt = struct._2
-      def gid_=(value: CUnsignedLongInt): Unit = !struct.at2 = value
-      def members : Ptr[CString] = struct._3
-      def members_=(value: Ptr[CString]): Unit = !struct.at3 = value
-
-  /**
-  */
-  opaque type uv_handle_s = CStruct8[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_handle_s.Union0, Ptr[Byte], CUnsignedInt]
+  opaque type uv_handle_s = CStruct8[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_handle_s.Union0, Ptr[Byte], CUnsignedInt]
   object uv_handle_s:
     /**
     */
@@ -2854,9 +2775,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_handle_s] = Tag.materializeCStruct8Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_handle_s.Union0, Ptr[Byte], CUnsignedInt]
+    given _tag: Tag[uv_handle_s] = Tag.materializeCStruct8Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_handle_s.Union0, Ptr[Byte], CUnsignedInt]
     def apply()(using Zone): Ptr[uv_handle_s] = scala.scalanative.unsafe.alloc[uv_handle_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_handle_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt)(using Zone): Ptr[uv_handle_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_handle_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt)(using Zone): Ptr[uv_handle_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -2876,8 +2797,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_handle_s.Union0 = struct._6
       def u_=(value: uv_handle_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -2887,7 +2808,7 @@ object structs:
 
   /**
   */
-  opaque type uv_handle_t = CStruct8[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_handle_t.Union0, Ptr[Byte], CUnsignedInt]
+  opaque type uv_handle_t = CStruct8[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_handle_t.Union0, Ptr[Byte], CUnsignedInt]
   object uv_handle_t:
     /**
     */
@@ -2914,9 +2835,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_handle_t] = Tag.materializeCStruct8Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_handle_t.Union0, Ptr[Byte], CUnsignedInt]
+    given _tag: Tag[uv_handle_t] = Tag.materializeCStruct8Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_handle_t.Union0, Ptr[Byte], CUnsignedInt]
     def apply()(using Zone): Ptr[uv_handle_t] = scala.scalanative.unsafe.alloc[uv_handle_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_handle_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt)(using Zone): Ptr[uv_handle_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_handle_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt)(using Zone): Ptr[uv_handle_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -2936,8 +2857,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_handle_t.Union0 = struct._6
       def u_=(value: uv_handle_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -2947,7 +2868,7 @@ object structs:
 
   /**
   */
-  opaque type uv_idle_s = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_idle_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue]
+  opaque type uv_idle_s = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_idle_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
   object uv_idle_s:
     /**
     */
@@ -2974,9 +2895,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_idle_s] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_idle_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue]
+    given _tag: Tag[uv_idle_s] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_idle_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
     def apply()(using Zone): Ptr[uv_idle_s] = scala.scalanative.unsafe.alloc[uv_idle_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_idle_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, idle_cb : uv_idle_cb, queue : uv__queue)(using Zone): Ptr[uv_idle_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_idle_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, idle_cb : uv_idle_cb, queue : CArray[Ptr[Byte], Nat._2])(using Zone): Ptr[uv_idle_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -2998,8 +2919,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_idle_s.Union0 = struct._6
       def u_=(value: uv_idle_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -3008,12 +2929,12 @@ object structs:
       def flags_=(value: CUnsignedInt): Unit = !struct.at8 = value
       def idle_cb : uv_idle_cb = struct._9.asInstanceOf[uv_idle_cb]
       def idle_cb_=(value: uv_idle_cb): Unit = !struct.at9 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._10
-      def queue_=(value: uv__queue): Unit = !struct.at10 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._10
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at10 = value
 
   /**
   */
-  opaque type uv_idle_t = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_idle_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue]
+  opaque type uv_idle_t = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_idle_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
   object uv_idle_t:
     /**
     */
@@ -3040,9 +2961,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_idle_t] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_idle_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue]
+    given _tag: Tag[uv_idle_t] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_idle_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
     def apply()(using Zone): Ptr[uv_idle_t] = scala.scalanative.unsafe.alloc[uv_idle_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_idle_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, idle_cb : uv_idle_cb, queue : uv__queue)(using Zone): Ptr[uv_idle_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_idle_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, idle_cb : uv_idle_cb, queue : CArray[Ptr[Byte], Nat._2])(using Zone): Ptr[uv_idle_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -3064,8 +2985,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_idle_t.Union0 = struct._6
       def u_=(value: uv_idle_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -3074,8 +2995,8 @@ object structs:
       def flags_=(value: CUnsignedInt): Unit = !struct.at8 = value
       def idle_cb : uv_idle_cb = struct._9.asInstanceOf[uv_idle_cb]
       def idle_cb_=(value: uv_idle_cb): Unit = !struct.at9 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._10
-      def queue_=(value: uv__queue): Unit = !struct.at10 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._10
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at10 = value
 
   /**
   */
@@ -3293,7 +3214,7 @@ object structs:
         def nelts_=(value: CUnsignedInt): Unit = !struct.at2 = value
     given _tag: Tag[uv_loop_s] = Tag.CArray[CChar, Nat.Digit3[Nat._7, Nat._6, Nat._8]](Tag.Byte, Tag.Digit3[Nat._7, Nat._6, Nat._8](Tag.Nat7, Tag.Nat6, Tag.Nat8))
     def apply()(using Zone): Ptr[uv_loop_s] = scala.scalanative.unsafe.alloc[uv_loop_s](1)
-    def apply(data : Ptr[Byte], active_handles : CUnsignedInt, handle_queue : uv__queue, active_reqs : uv_loop_s.Union0, internal_fields : Ptr[Byte], stop_flag : CUnsignedInt, flags : CUnsignedLongInt, backend_fd : CInt, pending_queue : uv__queue, watcher_queue : uv__queue, watchers : Ptr[Ptr[uv__io_t]], nwatchers : CUnsignedInt, nfds : CUnsignedInt, wq : uv__queue, wq_mutex : uv_mutex_t, wq_async : uv_async_t, cloexec_lock : uv_rwlock_t, closing_handles : Ptr[uv_handle_t], process_handles : uv__queue, prepare_handles : uv__queue, check_handles : uv__queue, idle_handles : uv__queue, async_handles : uv__queue, async_unused : CFuncPtr0[Unit], async_io_watcher : uv__io_t, async_wfd : CInt, timer_heap : uv_loop_s.Struct1, timer_counter : uint64_t, time : uint64_t, signal_pipefd : CArray[CInt, Nat._2], signal_io_watcher : uv__io_t, child_watcher : uv_signal_t, emfile_fd : CInt, cf_thread : uv_thread_t, _cf_reserved : Ptr[Byte], cf_state : Ptr[Byte], cf_mutex : uv_mutex_t, cf_sem : uv_sem_t, cf_signals : uv__queue)(using Zone): Ptr[uv_loop_s] = 
+    def apply(data : Ptr[Byte], active_handles : CUnsignedInt, handle_queue : CArray[Ptr[Byte], Nat._2], active_reqs : uv_loop_s.Union0, internal_fields : Ptr[Byte], stop_flag : CUnsignedInt, flags : CUnsignedLongInt, backend_fd : CInt, pending_queue : CArray[Ptr[Byte], Nat._2], watcher_queue : CArray[Ptr[Byte], Nat._2], watchers : Ptr[Ptr[uv__io_t]], nwatchers : CUnsignedInt, nfds : CUnsignedInt, wq : CArray[Ptr[Byte], Nat._2], wq_mutex : uv_mutex_t, wq_async : uv_async_t, cloexec_lock : uv_rwlock_t, closing_handles : Ptr[uv_handle_t], process_handles : CArray[Ptr[Byte], Nat._2], prepare_handles : CArray[Ptr[Byte], Nat._2], check_handles : CArray[Ptr[Byte], Nat._2], idle_handles : CArray[Ptr[Byte], Nat._2], async_handles : CArray[Ptr[Byte], Nat._2], async_unused : CFuncPtr0[Unit], async_io_watcher : uv__io_t, async_wfd : CInt, timer_heap : uv_loop_s.Struct1, timer_counter : uint64_t, time : uint64_t, signal_pipefd : CArray[CInt, Nat._2], signal_io_watcher : uv__io_t, child_watcher : uv_signal_t, emfile_fd : CInt, cf_thread : uv_thread_t, _cf_reserved : Ptr[Byte], cf_state : Ptr[Byte], cf_mutex : uv_mutex_t, cf_sem : uv_sem_t, cf_signals : CArray[Ptr[Byte], Nat._2])(using Zone): Ptr[uv_loop_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).active_handles = active_handles
@@ -3340,8 +3261,8 @@ object structs:
       def data_=(value: Ptr[Byte]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]] = value
       def active_handles: CUnsignedInt = !struct.at(8).asInstanceOf[Ptr[CUnsignedInt]]
       def active_handles_=(value: CUnsignedInt): Unit = !struct.at(8).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def handle_queue: uv__queue = !struct.at(16).asInstanceOf[Ptr[uv__queue]]
-      def handle_queue_=(value: uv__queue): Unit = !struct.at(16).asInstanceOf[Ptr[uv__queue]] = value
+      def handle_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(16).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(16).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def active_reqs: uv_loop_s.Union0 = !struct.at(32).asInstanceOf[Ptr[uv_loop_s.Union0]]
       def active_reqs_=(value: uv_loop_s.Union0): Unit = !struct.at(32).asInstanceOf[Ptr[uv_loop_s.Union0]] = value
       def internal_fields: Ptr[Byte] = !struct.at(40).asInstanceOf[Ptr[Ptr[Byte]]]
@@ -3352,18 +3273,18 @@ object structs:
       def flags_=(value: CUnsignedLongInt): Unit = !struct.at(56).asInstanceOf[Ptr[CUnsignedLongInt]] = value
       def backend_fd: CInt = !struct.at(64).asInstanceOf[Ptr[CInt]]
       def backend_fd_=(value: CInt): Unit = !struct.at(64).asInstanceOf[Ptr[CInt]] = value
-      def pending_queue: uv__queue = !struct.at(72).asInstanceOf[Ptr[uv__queue]]
-      def pending_queue_=(value: uv__queue): Unit = !struct.at(72).asInstanceOf[Ptr[uv__queue]] = value
-      def watcher_queue: uv__queue = !struct.at(88).asInstanceOf[Ptr[uv__queue]]
-      def watcher_queue_=(value: uv__queue): Unit = !struct.at(88).asInstanceOf[Ptr[uv__queue]] = value
+      def pending_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(72).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def pending_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(72).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def watcher_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(88).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def watcher_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(88).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def watchers: Ptr[Ptr[uv__io_t]] = !struct.at(104).asInstanceOf[Ptr[Ptr[Ptr[uv__io_t]]]]
       def watchers_=(value: Ptr[Ptr[uv__io_t]]): Unit = !struct.at(104).asInstanceOf[Ptr[Ptr[Ptr[uv__io_t]]]] = value
       def nwatchers: CUnsignedInt = !struct.at(112).asInstanceOf[Ptr[CUnsignedInt]]
       def nwatchers_=(value: CUnsignedInt): Unit = !struct.at(112).asInstanceOf[Ptr[CUnsignedInt]] = value
       def nfds: CUnsignedInt = !struct.at(116).asInstanceOf[Ptr[CUnsignedInt]]
       def nfds_=(value: CUnsignedInt): Unit = !struct.at(116).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def wq: uv__queue = !struct.at(120).asInstanceOf[Ptr[uv__queue]]
-      def wq_=(value: uv__queue): Unit = !struct.at(120).asInstanceOf[Ptr[uv__queue]] = value
+      def wq: CArray[Ptr[Byte], Nat._2] = !struct.at(120).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def wq_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(120).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def wq_mutex: uv_mutex_t = !struct.at(136).asInstanceOf[Ptr[uv_mutex_t]]
       def wq_mutex_=(value: uv_mutex_t): Unit = !struct.at(136).asInstanceOf[Ptr[uv_mutex_t]] = value
       def wq_async: uv_async_t = !struct.at(144).asInstanceOf[Ptr[uv_async_t]]
@@ -3372,16 +3293,16 @@ object structs:
       def cloexec_lock_=(value: uv_rwlock_t): Unit = !struct.at(272).asInstanceOf[Ptr[uv_rwlock_t]] = value
       def closing_handles: Ptr[uv_handle_t] = !struct.at(280).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
       def closing_handles_=(value: Ptr[uv_handle_t]): Unit = !struct.at(280).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
-      def process_handles: uv__queue = !struct.at(288).asInstanceOf[Ptr[uv__queue]]
-      def process_handles_=(value: uv__queue): Unit = !struct.at(288).asInstanceOf[Ptr[uv__queue]] = value
-      def prepare_handles: uv__queue = !struct.at(304).asInstanceOf[Ptr[uv__queue]]
-      def prepare_handles_=(value: uv__queue): Unit = !struct.at(304).asInstanceOf[Ptr[uv__queue]] = value
-      def check_handles: uv__queue = !struct.at(320).asInstanceOf[Ptr[uv__queue]]
-      def check_handles_=(value: uv__queue): Unit = !struct.at(320).asInstanceOf[Ptr[uv__queue]] = value
-      def idle_handles: uv__queue = !struct.at(336).asInstanceOf[Ptr[uv__queue]]
-      def idle_handles_=(value: uv__queue): Unit = !struct.at(336).asInstanceOf[Ptr[uv__queue]] = value
-      def async_handles: uv__queue = !struct.at(352).asInstanceOf[Ptr[uv__queue]]
-      def async_handles_=(value: uv__queue): Unit = !struct.at(352).asInstanceOf[Ptr[uv__queue]] = value
+      def process_handles: CArray[Ptr[Byte], Nat._2] = !struct.at(288).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def process_handles_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(288).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def prepare_handles: CArray[Ptr[Byte], Nat._2] = !struct.at(304).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def prepare_handles_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(304).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def check_handles: CArray[Ptr[Byte], Nat._2] = !struct.at(320).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def check_handles_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(320).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def idle_handles: CArray[Ptr[Byte], Nat._2] = !struct.at(336).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def idle_handles_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(336).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def async_handles: CArray[Ptr[Byte], Nat._2] = !struct.at(352).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def async_handles_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(352).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def async_unused: CFuncPtr0[Unit] = !struct.at(368).asInstanceOf[Ptr[CFuncPtr0[Unit]]]
       def async_unused_=(value: CFuncPtr0[Unit]): Unit = !struct.at(368).asInstanceOf[Ptr[CFuncPtr0[Unit]]] = value
       def async_io_watcher: uv__io_t = !struct.at(376).asInstanceOf[Ptr[uv__io_t]]
@@ -3412,8 +3333,8 @@ object structs:
       def cf_mutex_=(value: uv_mutex_t): Unit = !struct.at(736).asInstanceOf[Ptr[uv_mutex_t]] = value
       def cf_sem: uv_sem_t = !struct.at(744).asInstanceOf[Ptr[uv_sem_t]]
       def cf_sem_=(value: uv_sem_t): Unit = !struct.at(744).asInstanceOf[Ptr[uv_sem_t]] = value
-      def cf_signals: uv__queue = !struct.at(752).asInstanceOf[Ptr[uv__queue]]
-      def cf_signals_=(value: uv__queue): Unit = !struct.at(752).asInstanceOf[Ptr[uv__queue]] = value
+      def cf_signals: CArray[Ptr[Byte], Nat._2] = !struct.at(752).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def cf_signals_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(752).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
 
   /**
   */
@@ -3462,7 +3383,7 @@ object structs:
         def nelts_=(value: CUnsignedInt): Unit = !struct.at2 = value
     given _tag: Tag[uv_loop_t] = Tag.CArray[CChar, Nat.Digit3[Nat._7, Nat._6, Nat._8]](Tag.Byte, Tag.Digit3[Nat._7, Nat._6, Nat._8](Tag.Nat7, Tag.Nat6, Tag.Nat8))
     def apply()(using Zone): Ptr[uv_loop_t] = scala.scalanative.unsafe.alloc[uv_loop_t](1)
-    def apply(data : Ptr[Byte], active_handles : CUnsignedInt, handle_queue : uv__queue, active_reqs : uv_loop_t.Union0, internal_fields : Ptr[Byte], stop_flag : CUnsignedInt, flags : CUnsignedLongInt, backend_fd : CInt, pending_queue : uv__queue, watcher_queue : uv__queue, watchers : Ptr[Ptr[uv__io_t]], nwatchers : CUnsignedInt, nfds : CUnsignedInt, wq : uv__queue, wq_mutex : uv_mutex_t, wq_async : uv_async_t, cloexec_lock : uv_rwlock_t, closing_handles : Ptr[uv_handle_t], process_handles : uv__queue, prepare_handles : uv__queue, check_handles : uv__queue, idle_handles : uv__queue, async_handles : uv__queue, async_unused : CFuncPtr0[Unit], async_io_watcher : uv__io_t, async_wfd : CInt, timer_heap : uv_loop_t.Struct1, timer_counter : uint64_t, time : uint64_t, signal_pipefd : CArray[CInt, Nat._2], signal_io_watcher : uv__io_t, child_watcher : uv_signal_t, emfile_fd : CInt, cf_thread : uv_thread_t, _cf_reserved : Ptr[Byte], cf_state : Ptr[Byte], cf_mutex : uv_mutex_t, cf_sem : uv_sem_t, cf_signals : uv__queue)(using Zone): Ptr[uv_loop_t] = 
+    def apply(data : Ptr[Byte], active_handles : CUnsignedInt, handle_queue : CArray[Ptr[Byte], Nat._2], active_reqs : uv_loop_t.Union0, internal_fields : Ptr[Byte], stop_flag : CUnsignedInt, flags : CUnsignedLongInt, backend_fd : CInt, pending_queue : CArray[Ptr[Byte], Nat._2], watcher_queue : CArray[Ptr[Byte], Nat._2], watchers : Ptr[Ptr[uv__io_t]], nwatchers : CUnsignedInt, nfds : CUnsignedInt, wq : CArray[Ptr[Byte], Nat._2], wq_mutex : uv_mutex_t, wq_async : uv_async_t, cloexec_lock : uv_rwlock_t, closing_handles : Ptr[uv_handle_t], process_handles : CArray[Ptr[Byte], Nat._2], prepare_handles : CArray[Ptr[Byte], Nat._2], check_handles : CArray[Ptr[Byte], Nat._2], idle_handles : CArray[Ptr[Byte], Nat._2], async_handles : CArray[Ptr[Byte], Nat._2], async_unused : CFuncPtr0[Unit], async_io_watcher : uv__io_t, async_wfd : CInt, timer_heap : uv_loop_t.Struct1, timer_counter : uint64_t, time : uint64_t, signal_pipefd : CArray[CInt, Nat._2], signal_io_watcher : uv__io_t, child_watcher : uv_signal_t, emfile_fd : CInt, cf_thread : uv_thread_t, _cf_reserved : Ptr[Byte], cf_state : Ptr[Byte], cf_mutex : uv_mutex_t, cf_sem : uv_sem_t, cf_signals : CArray[Ptr[Byte], Nat._2])(using Zone): Ptr[uv_loop_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).active_handles = active_handles
@@ -3509,8 +3430,8 @@ object structs:
       def data_=(value: Ptr[Byte]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]] = value
       def active_handles: CUnsignedInt = !struct.at(8).asInstanceOf[Ptr[CUnsignedInt]]
       def active_handles_=(value: CUnsignedInt): Unit = !struct.at(8).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def handle_queue: uv__queue = !struct.at(16).asInstanceOf[Ptr[uv__queue]]
-      def handle_queue_=(value: uv__queue): Unit = !struct.at(16).asInstanceOf[Ptr[uv__queue]] = value
+      def handle_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(16).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(16).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def active_reqs: uv_loop_t.Union0 = !struct.at(32).asInstanceOf[Ptr[uv_loop_t.Union0]]
       def active_reqs_=(value: uv_loop_t.Union0): Unit = !struct.at(32).asInstanceOf[Ptr[uv_loop_t.Union0]] = value
       def internal_fields: Ptr[Byte] = !struct.at(40).asInstanceOf[Ptr[Ptr[Byte]]]
@@ -3521,18 +3442,18 @@ object structs:
       def flags_=(value: CUnsignedLongInt): Unit = !struct.at(56).asInstanceOf[Ptr[CUnsignedLongInt]] = value
       def backend_fd: CInt = !struct.at(64).asInstanceOf[Ptr[CInt]]
       def backend_fd_=(value: CInt): Unit = !struct.at(64).asInstanceOf[Ptr[CInt]] = value
-      def pending_queue: uv__queue = !struct.at(72).asInstanceOf[Ptr[uv__queue]]
-      def pending_queue_=(value: uv__queue): Unit = !struct.at(72).asInstanceOf[Ptr[uv__queue]] = value
-      def watcher_queue: uv__queue = !struct.at(88).asInstanceOf[Ptr[uv__queue]]
-      def watcher_queue_=(value: uv__queue): Unit = !struct.at(88).asInstanceOf[Ptr[uv__queue]] = value
+      def pending_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(72).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def pending_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(72).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def watcher_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(88).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def watcher_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(88).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def watchers: Ptr[Ptr[uv__io_t]] = !struct.at(104).asInstanceOf[Ptr[Ptr[Ptr[uv__io_t]]]]
       def watchers_=(value: Ptr[Ptr[uv__io_t]]): Unit = !struct.at(104).asInstanceOf[Ptr[Ptr[Ptr[uv__io_t]]]] = value
       def nwatchers: CUnsignedInt = !struct.at(112).asInstanceOf[Ptr[CUnsignedInt]]
       def nwatchers_=(value: CUnsignedInt): Unit = !struct.at(112).asInstanceOf[Ptr[CUnsignedInt]] = value
       def nfds: CUnsignedInt = !struct.at(116).asInstanceOf[Ptr[CUnsignedInt]]
       def nfds_=(value: CUnsignedInt): Unit = !struct.at(116).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def wq: uv__queue = !struct.at(120).asInstanceOf[Ptr[uv__queue]]
-      def wq_=(value: uv__queue): Unit = !struct.at(120).asInstanceOf[Ptr[uv__queue]] = value
+      def wq: CArray[Ptr[Byte], Nat._2] = !struct.at(120).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def wq_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(120).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def wq_mutex: uv_mutex_t = !struct.at(136).asInstanceOf[Ptr[uv_mutex_t]]
       def wq_mutex_=(value: uv_mutex_t): Unit = !struct.at(136).asInstanceOf[Ptr[uv_mutex_t]] = value
       def wq_async: uv_async_t = !struct.at(144).asInstanceOf[Ptr[uv_async_t]]
@@ -3541,16 +3462,16 @@ object structs:
       def cloexec_lock_=(value: uv_rwlock_t): Unit = !struct.at(272).asInstanceOf[Ptr[uv_rwlock_t]] = value
       def closing_handles: Ptr[uv_handle_t] = !struct.at(280).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
       def closing_handles_=(value: Ptr[uv_handle_t]): Unit = !struct.at(280).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
-      def process_handles: uv__queue = !struct.at(288).asInstanceOf[Ptr[uv__queue]]
-      def process_handles_=(value: uv__queue): Unit = !struct.at(288).asInstanceOf[Ptr[uv__queue]] = value
-      def prepare_handles: uv__queue = !struct.at(304).asInstanceOf[Ptr[uv__queue]]
-      def prepare_handles_=(value: uv__queue): Unit = !struct.at(304).asInstanceOf[Ptr[uv__queue]] = value
-      def check_handles: uv__queue = !struct.at(320).asInstanceOf[Ptr[uv__queue]]
-      def check_handles_=(value: uv__queue): Unit = !struct.at(320).asInstanceOf[Ptr[uv__queue]] = value
-      def idle_handles: uv__queue = !struct.at(336).asInstanceOf[Ptr[uv__queue]]
-      def idle_handles_=(value: uv__queue): Unit = !struct.at(336).asInstanceOf[Ptr[uv__queue]] = value
-      def async_handles: uv__queue = !struct.at(352).asInstanceOf[Ptr[uv__queue]]
-      def async_handles_=(value: uv__queue): Unit = !struct.at(352).asInstanceOf[Ptr[uv__queue]] = value
+      def process_handles: CArray[Ptr[Byte], Nat._2] = !struct.at(288).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def process_handles_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(288).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def prepare_handles: CArray[Ptr[Byte], Nat._2] = !struct.at(304).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def prepare_handles_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(304).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def check_handles: CArray[Ptr[Byte], Nat._2] = !struct.at(320).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def check_handles_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(320).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def idle_handles: CArray[Ptr[Byte], Nat._2] = !struct.at(336).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def idle_handles_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(336).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def async_handles: CArray[Ptr[Byte], Nat._2] = !struct.at(352).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def async_handles_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(352).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def async_unused: CFuncPtr0[Unit] = !struct.at(368).asInstanceOf[Ptr[CFuncPtr0[Unit]]]
       def async_unused_=(value: CFuncPtr0[Unit]): Unit = !struct.at(368).asInstanceOf[Ptr[CFuncPtr0[Unit]]] = value
       def async_io_watcher: uv__io_t = !struct.at(376).asInstanceOf[Ptr[uv__io_t]]
@@ -3581,54 +3502,8 @@ object structs:
       def cf_mutex_=(value: uv_mutex_t): Unit = !struct.at(736).asInstanceOf[Ptr[uv_mutex_t]] = value
       def cf_sem: uv_sem_t = !struct.at(744).asInstanceOf[Ptr[uv_sem_t]]
       def cf_sem_=(value: uv_sem_t): Unit = !struct.at(744).asInstanceOf[Ptr[uv_sem_t]] = value
-      def cf_signals: uv__queue = !struct.at(752).asInstanceOf[Ptr[uv__queue]]
-      def cf_signals_=(value: uv__queue): Unit = !struct.at(752).asInstanceOf[Ptr[uv__queue]] = value
-
-  /**
-  */
-  opaque type uv_metrics_s = CStruct4[uint64_t, uint64_t, uint64_t, CArray[Ptr[uint64_t], Nat.Digit2[Nat._1, Nat._3]]]
-  object uv_metrics_s:
-    given _tag: Tag[uv_metrics_s] = Tag.materializeCStruct4Tag[uint64_t, uint64_t, uint64_t, CArray[Ptr[uint64_t], Nat.Digit2[Nat._1, Nat._3]]]
-    def apply()(using Zone): Ptr[uv_metrics_s] = scala.scalanative.unsafe.alloc[uv_metrics_s](1)
-    def apply(loop_count : uint64_t, events : uint64_t, events_waiting : uint64_t, reserved : CArray[Ptr[uint64_t], Nat.Digit2[Nat._1, Nat._3]])(using Zone): Ptr[uv_metrics_s] = 
-      val ____ptr = apply()
-      (!____ptr).loop_count = loop_count
-      (!____ptr).events = events
-      (!____ptr).events_waiting = events_waiting
-      (!____ptr).reserved = reserved
-      ____ptr
-    extension (struct: uv_metrics_s)
-      def loop_count : uint64_t = struct._1
-      def loop_count_=(value: uint64_t): Unit = !struct.at1 = value
-      def events : uint64_t = struct._2
-      def events_=(value: uint64_t): Unit = !struct.at2 = value
-      def events_waiting : uint64_t = struct._3
-      def events_waiting_=(value: uint64_t): Unit = !struct.at3 = value
-      def reserved : CArray[Ptr[uint64_t], Nat.Digit2[Nat._1, Nat._3]] = struct._4
-      def reserved_=(value: CArray[Ptr[uint64_t], Nat.Digit2[Nat._1, Nat._3]]): Unit = !struct.at4 = value
-
-  /**
-  */
-  opaque type uv_metrics_t = CStruct4[uint64_t, uint64_t, uint64_t, CArray[Ptr[uint64_t], Nat.Digit2[Nat._1, Nat._3]]]
-  object uv_metrics_t:
-    given _tag: Tag[uv_metrics_t] = Tag.materializeCStruct4Tag[uint64_t, uint64_t, uint64_t, CArray[Ptr[uint64_t], Nat.Digit2[Nat._1, Nat._3]]]
-    def apply()(using Zone): Ptr[uv_metrics_t] = scala.scalanative.unsafe.alloc[uv_metrics_t](1)
-    def apply(loop_count : uint64_t, events : uint64_t, events_waiting : uint64_t, reserved : CArray[Ptr[uint64_t], Nat.Digit2[Nat._1, Nat._3]])(using Zone): Ptr[uv_metrics_t] = 
-      val ____ptr = apply()
-      (!____ptr).loop_count = loop_count
-      (!____ptr).events = events
-      (!____ptr).events_waiting = events_waiting
-      (!____ptr).reserved = reserved
-      ____ptr
-    extension (struct: uv_metrics_t)
-      def loop_count : uint64_t = struct._1
-      def loop_count_=(value: uint64_t): Unit = !struct.at1 = value
-      def events : uint64_t = struct._2
-      def events_=(value: uint64_t): Unit = !struct.at2 = value
-      def events_waiting : uint64_t = struct._3
-      def events_waiting_=(value: uint64_t): Unit = !struct.at3 = value
-      def reserved : CArray[Ptr[uint64_t], Nat.Digit2[Nat._1, Nat._3]] = struct._4
-      def reserved_=(value: CArray[Ptr[uint64_t], Nat.Digit2[Nat._1, Nat._3]]): Unit = !struct.at4 = value
+      def cf_signals: CArray[Ptr[Byte], Nat._2] = !struct.at(752).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def cf_signals_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(752).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
 
   /**
   */
@@ -3713,7 +3588,7 @@ object structs:
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
     given _tag: Tag[uv_pipe_s] = Tag.CArray[CChar, Nat.Digit3[Nat._2, Nat._8, Nat._0]](Tag.Byte, Tag.Digit3[Nat._2, Nat._8, Nat._0](Tag.Nat2, Tag.Nat8, Tag.Nat0))
     def apply()(using Zone): Ptr[uv_pipe_s] = scala.scalanative.unsafe.alloc[uv_pipe_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_pipe_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : uv__queue, write_completed_queue : uv__queue, connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte], ipc : CInt, pipe_fname : CString)(using Zone): Ptr[uv_pipe_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_pipe_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : CArray[Ptr[Byte], Nat._2], write_completed_queue : CArray[Ptr[Byte], Nat._2], connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte], ipc : CInt, pipe_fname : CString)(using Zone): Ptr[uv_pipe_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -3748,8 +3623,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at(16).asInstanceOf[Ptr[uv_handle_type]] = value
       def close_cb: uv_close_cb = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]] = value
-      def handle_queue: uv__queue = !struct.at(32).asInstanceOf[Ptr[uv__queue]]
-      def handle_queue_=(value: uv__queue): Unit = !struct.at(32).asInstanceOf[Ptr[uv__queue]] = value
+      def handle_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(32).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(32).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def u: uv_pipe_s.Union0 = !struct.at(48).asInstanceOf[Ptr[uv_pipe_s.Union0]]
       def u_=(value: uv_pipe_s.Union0): Unit = !struct.at(48).asInstanceOf[Ptr[uv_pipe_s.Union0]] = value
       def next_closing: Ptr[uv_handle_t] = !struct.at(80).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
@@ -3768,10 +3643,10 @@ object structs:
       def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at(128).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]] = value
       def io_watcher: uv__io_t = !struct.at(136).asInstanceOf[Ptr[uv__io_t]]
       def io_watcher_=(value: uv__io_t): Unit = !struct.at(136).asInstanceOf[Ptr[uv__io_t]] = value
-      def write_queue: uv__queue = !struct.at(200).asInstanceOf[Ptr[uv__queue]]
-      def write_queue_=(value: uv__queue): Unit = !struct.at(200).asInstanceOf[Ptr[uv__queue]] = value
-      def write_completed_queue: uv__queue = !struct.at(216).asInstanceOf[Ptr[uv__queue]]
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at(216).asInstanceOf[Ptr[uv__queue]] = value
+      def write_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(200).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def write_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(200).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def write_completed_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(216).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def write_completed_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(216).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def connection_cb: uv_connection_cb = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]]
       def connection_cb_=(value: uv_connection_cb): Unit = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]] = value
       def delayed_error: CInt = !struct.at(240).asInstanceOf[Ptr[CInt]]
@@ -3818,7 +3693,7 @@ object structs:
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
     given _tag: Tag[uv_pipe_t] = Tag.CArray[CChar, Nat.Digit3[Nat._2, Nat._8, Nat._0]](Tag.Byte, Tag.Digit3[Nat._2, Nat._8, Nat._0](Tag.Nat2, Tag.Nat8, Tag.Nat0))
     def apply()(using Zone): Ptr[uv_pipe_t] = scala.scalanative.unsafe.alloc[uv_pipe_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_pipe_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : uv__queue, write_completed_queue : uv__queue, connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte], ipc : CInt, pipe_fname : CString)(using Zone): Ptr[uv_pipe_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_pipe_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : CArray[Ptr[Byte], Nat._2], write_completed_queue : CArray[Ptr[Byte], Nat._2], connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte], ipc : CInt, pipe_fname : CString)(using Zone): Ptr[uv_pipe_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -3853,8 +3728,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at(16).asInstanceOf[Ptr[uv_handle_type]] = value
       def close_cb: uv_close_cb = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]] = value
-      def handle_queue: uv__queue = !struct.at(32).asInstanceOf[Ptr[uv__queue]]
-      def handle_queue_=(value: uv__queue): Unit = !struct.at(32).asInstanceOf[Ptr[uv__queue]] = value
+      def handle_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(32).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(32).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def u: uv_pipe_t.Union0 = !struct.at(48).asInstanceOf[Ptr[uv_pipe_t.Union0]]
       def u_=(value: uv_pipe_t.Union0): Unit = !struct.at(48).asInstanceOf[Ptr[uv_pipe_t.Union0]] = value
       def next_closing: Ptr[uv_handle_t] = !struct.at(80).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
@@ -3873,10 +3748,10 @@ object structs:
       def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at(128).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]] = value
       def io_watcher: uv__io_t = !struct.at(136).asInstanceOf[Ptr[uv__io_t]]
       def io_watcher_=(value: uv__io_t): Unit = !struct.at(136).asInstanceOf[Ptr[uv__io_t]] = value
-      def write_queue: uv__queue = !struct.at(200).asInstanceOf[Ptr[uv__queue]]
-      def write_queue_=(value: uv__queue): Unit = !struct.at(200).asInstanceOf[Ptr[uv__queue]] = value
-      def write_completed_queue: uv__queue = !struct.at(216).asInstanceOf[Ptr[uv__queue]]
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at(216).asInstanceOf[Ptr[uv__queue]] = value
+      def write_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(200).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def write_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(200).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def write_completed_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(216).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def write_completed_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(216).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def connection_cb: uv_connection_cb = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]]
       def connection_cb_=(value: uv_connection_cb): Unit = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]] = value
       def delayed_error: CInt = !struct.at(240).asInstanceOf[Ptr[CInt]]
@@ -3894,7 +3769,7 @@ object structs:
 
   /**
   */
-  opaque type uv_poll_s = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_poll_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__io_t]
+  opaque type uv_poll_s = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_poll_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__io_t]
   object uv_poll_s:
     /**
     */
@@ -3921,9 +3796,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_poll_s] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_poll_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__io_t]
+    given _tag: Tag[uv_poll_s] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_poll_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__io_t]
     def apply()(using Zone): Ptr[uv_poll_s] = scala.scalanative.unsafe.alloc[uv_poll_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_poll_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, poll_cb : uv_poll_cb, io_watcher : uv__io_t)(using Zone): Ptr[uv_poll_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_poll_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, poll_cb : uv_poll_cb, io_watcher : uv__io_t)(using Zone): Ptr[uv_poll_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -3945,8 +3820,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_poll_s.Union0 = struct._6
       def u_=(value: uv_poll_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -3960,7 +3835,7 @@ object structs:
 
   /**
   */
-  opaque type uv_poll_t = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_poll_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__io_t]
+  opaque type uv_poll_t = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_poll_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__io_t]
   object uv_poll_t:
     /**
     */
@@ -3987,9 +3862,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_poll_t] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_poll_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__io_t]
+    given _tag: Tag[uv_poll_t] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_poll_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__io_t]
     def apply()(using Zone): Ptr[uv_poll_t] = scala.scalanative.unsafe.alloc[uv_poll_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_poll_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, poll_cb : uv_poll_cb, io_watcher : uv__io_t)(using Zone): Ptr[uv_poll_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_poll_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, poll_cb : uv_poll_cb, io_watcher : uv__io_t)(using Zone): Ptr[uv_poll_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -4011,8 +3886,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_poll_t.Union0 = struct._6
       def u_=(value: uv_poll_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -4026,7 +3901,7 @@ object structs:
 
   /**
   */
-  opaque type uv_prepare_s = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_prepare_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue]
+  opaque type uv_prepare_s = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_prepare_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
   object uv_prepare_s:
     /**
     */
@@ -4053,9 +3928,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_prepare_s] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_prepare_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue]
+    given _tag: Tag[uv_prepare_s] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_prepare_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
     def apply()(using Zone): Ptr[uv_prepare_s] = scala.scalanative.unsafe.alloc[uv_prepare_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_prepare_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, prepare_cb : uv_prepare_cb, queue : uv__queue)(using Zone): Ptr[uv_prepare_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_prepare_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, prepare_cb : uv_prepare_cb, queue : CArray[Ptr[Byte], Nat._2])(using Zone): Ptr[uv_prepare_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -4077,8 +3952,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_prepare_s.Union0 = struct._6
       def u_=(value: uv_prepare_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -4087,12 +3962,12 @@ object structs:
       def flags_=(value: CUnsignedInt): Unit = !struct.at8 = value
       def prepare_cb : uv_prepare_cb = struct._9.asInstanceOf[uv_prepare_cb]
       def prepare_cb_=(value: uv_prepare_cb): Unit = !struct.at9 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._10
-      def queue_=(value: uv__queue): Unit = !struct.at10 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._10
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at10 = value
 
   /**
   */
-  opaque type uv_prepare_t = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_prepare_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue]
+  opaque type uv_prepare_t = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_prepare_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
   object uv_prepare_t:
     /**
     */
@@ -4119,9 +3994,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_prepare_t] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_prepare_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue]
+    given _tag: Tag[uv_prepare_t] = Tag.materializeCStruct10Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_prepare_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._2]]
     def apply()(using Zone): Ptr[uv_prepare_t] = scala.scalanative.unsafe.alloc[uv_prepare_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_prepare_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, prepare_cb : uv_prepare_cb, queue : uv__queue)(using Zone): Ptr[uv_prepare_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_prepare_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, prepare_cb : uv_prepare_cb, queue : CArray[Ptr[Byte], Nat._2])(using Zone): Ptr[uv_prepare_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -4143,8 +4018,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_prepare_t.Union0 = struct._6
       def u_=(value: uv_prepare_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -4153,8 +4028,8 @@ object structs:
       def flags_=(value: CUnsignedInt): Unit = !struct.at8 = value
       def prepare_cb : uv_prepare_cb = struct._9.asInstanceOf[uv_prepare_cb]
       def prepare_cb_=(value: uv_prepare_cb): Unit = !struct.at9 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._10
-      def queue_=(value: uv__queue): Unit = !struct.at10 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._10
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at10 = value
 
   /**
   */
@@ -4240,7 +4115,7 @@ object structs:
 
   /**
   */
-  opaque type uv_process_s = CStruct12[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_process_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, uv__queue, CInt]
+  opaque type uv_process_s = CStruct12[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_process_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, CArray[Ptr[Byte], Nat._2], CInt]
   object uv_process_s:
     /**
     */
@@ -4267,9 +4142,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_process_s] = Tag.materializeCStruct12Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_process_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, uv__queue, CInt]
+    given _tag: Tag[uv_process_s] = Tag.materializeCStruct12Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_process_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, CArray[Ptr[Byte], Nat._2], CInt]
     def apply()(using Zone): Ptr[uv_process_s] = scala.scalanative.unsafe.alloc[uv_process_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_process_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, exit_cb : uv_exit_cb, pid : CInt, queue : uv__queue, status : CInt)(using Zone): Ptr[uv_process_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_process_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, exit_cb : uv_exit_cb, pid : CInt, queue : CArray[Ptr[Byte], Nat._2], status : CInt)(using Zone): Ptr[uv_process_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -4293,8 +4168,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_process_s.Union0 = struct._6
       def u_=(value: uv_process_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -4305,14 +4180,14 @@ object structs:
       def exit_cb_=(value: uv_exit_cb): Unit = !struct.at9 = value.asInstanceOf[Ptr[Byte]]
       def pid : CInt = struct._10
       def pid_=(value: CInt): Unit = !struct.at10 = value
-      def queue : uv__queue = struct._11
-      def queue_=(value: uv__queue): Unit = !struct.at11 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._11
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at11 = value
       def status : CInt = struct._12
       def status_=(value: CInt): Unit = !struct.at12 = value
 
   /**
   */
-  opaque type uv_process_t = CStruct12[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_process_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, uv__queue, CInt]
+  opaque type uv_process_t = CStruct12[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_process_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, CArray[Ptr[Byte], Nat._2], CInt]
   object uv_process_t:
     /**
     */
@@ -4339,9 +4214,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_process_t] = Tag.materializeCStruct12Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_process_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, uv__queue, CInt]
+    given _tag: Tag[uv_process_t] = Tag.materializeCStruct12Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_process_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, CArray[Ptr[Byte], Nat._2], CInt]
     def apply()(using Zone): Ptr[uv_process_t] = scala.scalanative.unsafe.alloc[uv_process_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_process_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, exit_cb : uv_exit_cb, pid : CInt, queue : uv__queue, status : CInt)(using Zone): Ptr[uv_process_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_process_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, exit_cb : uv_exit_cb, pid : CInt, queue : CArray[Ptr[Byte], Nat._2], status : CInt)(using Zone): Ptr[uv_process_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -4365,8 +4240,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_process_t.Union0 = struct._6
       def u_=(value: uv_process_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -4377,8 +4252,8 @@ object structs:
       def exit_cb_=(value: uv_exit_cb): Unit = !struct.at9 = value.asInstanceOf[Ptr[Byte]]
       def pid : CInt = struct._10
       def pid_=(value: CInt): Unit = !struct.at10 = value
-      def queue : uv__queue = struct._11
-      def queue_=(value: uv__queue): Unit = !struct.at11 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._11
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at11 = value
       def status : CInt = struct._12
       def status_=(value: CInt): Unit = !struct.at12 = value
 
@@ -4611,7 +4486,7 @@ object structs:
 
   /**
   */
-  opaque type uv_signal_s = CStruct13[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_signal_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, uv_signal_s.Struct1, CUnsignedInt, CUnsignedInt]
+  opaque type uv_signal_s = CStruct13[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_signal_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, uv_signal_s.Struct1, CUnsignedInt, CUnsignedInt]
   object uv_signal_s:
     /**
     */
@@ -4660,9 +4535,9 @@ object structs:
         def rbe_parent_=(value: Ptr[uv_signal_s]): Unit = !struct.at3 = value.asInstanceOf[Ptr[Byte]]
         def rbe_color : CInt = struct._4
         def rbe_color_=(value: CInt): Unit = !struct.at4 = value
-    given _tag: Tag[uv_signal_s] = Tag.materializeCStruct13Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_signal_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, uv_signal_s.Struct1, CUnsignedInt, CUnsignedInt]
+    given _tag: Tag[uv_signal_s] = Tag.materializeCStruct13Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_signal_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, uv_signal_s.Struct1, CUnsignedInt, CUnsignedInt]
     def apply()(using Zone): Ptr[uv_signal_s] = scala.scalanative.unsafe.alloc[uv_signal_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_signal_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, signal_cb : uv_signal_cb, signum : CInt, tree_entry : uv_signal_s.Struct1, caught_signals : CUnsignedInt, dispatched_signals : CUnsignedInt)(using Zone): Ptr[uv_signal_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_signal_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, signal_cb : uv_signal_cb, signum : CInt, tree_entry : uv_signal_s.Struct1, caught_signals : CUnsignedInt, dispatched_signals : CUnsignedInt)(using Zone): Ptr[uv_signal_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -4687,8 +4562,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_signal_s.Union0 = struct._6
       def u_=(value: uv_signal_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -4708,7 +4583,7 @@ object structs:
 
   /**
   */
-  opaque type uv_signal_t = CStruct13[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_signal_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, uv_signal_t.Struct1, CUnsignedInt, CUnsignedInt]
+  opaque type uv_signal_t = CStruct13[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_signal_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, uv_signal_t.Struct1, CUnsignedInt, CUnsignedInt]
   object uv_signal_t:
     /**
     */
@@ -4757,9 +4632,9 @@ object structs:
         def rbe_parent_=(value: Ptr[uv_signal_s]): Unit = !struct.at3 = value.asInstanceOf[Ptr[Byte]]
         def rbe_color : CInt = struct._4
         def rbe_color_=(value: CInt): Unit = !struct.at4 = value
-    given _tag: Tag[uv_signal_t] = Tag.materializeCStruct13Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_signal_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, uv_signal_t.Struct1, CUnsignedInt, CUnsignedInt]
+    given _tag: Tag[uv_signal_t] = Tag.materializeCStruct13Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_signal_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CInt, uv_signal_t.Struct1, CUnsignedInt, CUnsignedInt]
     def apply()(using Zone): Ptr[uv_signal_t] = scala.scalanative.unsafe.alloc[uv_signal_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_signal_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, signal_cb : uv_signal_cb, signum : CInt, tree_entry : uv_signal_t.Struct1, caught_signals : CUnsignedInt, dispatched_signals : CUnsignedInt)(using Zone): Ptr[uv_signal_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_signal_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, signal_cb : uv_signal_cb, signum : CInt, tree_entry : uv_signal_t.Struct1, caught_signals : CUnsignedInt, dispatched_signals : CUnsignedInt)(using Zone): Ptr[uv_signal_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -4784,8 +4659,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_signal_t.Union0 = struct._6
       def u_=(value: uv_signal_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -5018,7 +4893,7 @@ object structs:
 
   /**
   */
-  opaque type uv_stream_s = CStruct21[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_stream_s.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, uv__queue, uv__queue, Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
+  opaque type uv_stream_s = CStruct21[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_stream_s.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
   object uv_stream_s:
     /**
     */
@@ -5045,9 +4920,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_stream_s] = Tag.materializeCStruct21Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_stream_s.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, uv__queue, uv__queue, Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
+    given _tag: Tag[uv_stream_s] = Tag.materializeCStruct21Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_stream_s.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
     def apply()(using Zone): Ptr[uv_stream_s] = scala.scalanative.unsafe.alloc[uv_stream_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_stream_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : uv__queue, write_completed_queue : uv__queue, connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte])(using Zone): Ptr[uv_stream_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_stream_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : CArray[Ptr[Byte], Nat._2], write_completed_queue : CArray[Ptr[Byte], Nat._2], connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte])(using Zone): Ptr[uv_stream_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -5080,8 +4955,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_stream_s.Union0 = struct._6
       def u_=(value: uv_stream_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -5100,10 +4975,10 @@ object structs:
       def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at13 = value.asInstanceOf[Ptr[Byte]]
       def io_watcher : uv__io_t = struct._14
       def io_watcher_=(value: uv__io_t): Unit = !struct.at14 = value
-      def write_queue : uv__queue = struct._15
-      def write_queue_=(value: uv__queue): Unit = !struct.at15 = value
-      def write_completed_queue : uv__queue = struct._16
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at16 = value
+      def write_queue : CArray[Ptr[Byte], Nat._2] = struct._15
+      def write_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at15 = value
+      def write_completed_queue : CArray[Ptr[Byte], Nat._2] = struct._16
+      def write_completed_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at16 = value
       def connection_cb : uv_connection_cb = struct._17.asInstanceOf[uv_connection_cb]
       def connection_cb_=(value: uv_connection_cb): Unit = !struct.at17 = value.asInstanceOf[Ptr[Byte]]
       def delayed_error : CInt = struct._18
@@ -5117,7 +4992,7 @@ object structs:
 
   /**
   */
-  opaque type uv_stream_t = CStruct21[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_stream_t.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, uv__queue, uv__queue, Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
+  opaque type uv_stream_t = CStruct21[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_stream_t.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
   object uv_stream_t:
     /**
     */
@@ -5144,9 +5019,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_stream_t] = Tag.materializeCStruct21Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_stream_t.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, uv__queue, uv__queue, Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
+    given _tag: Tag[uv_stream_t] = Tag.materializeCStruct21Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_stream_t.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
     def apply()(using Zone): Ptr[uv_stream_t] = scala.scalanative.unsafe.alloc[uv_stream_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_stream_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : uv__queue, write_completed_queue : uv__queue, connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte])(using Zone): Ptr[uv_stream_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_stream_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : CArray[Ptr[Byte], Nat._2], write_completed_queue : CArray[Ptr[Byte], Nat._2], connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte])(using Zone): Ptr[uv_stream_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -5179,8 +5054,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_stream_t.Union0 = struct._6
       def u_=(value: uv_stream_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -5199,10 +5074,10 @@ object structs:
       def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at13 = value.asInstanceOf[Ptr[Byte]]
       def io_watcher : uv__io_t = struct._14
       def io_watcher_=(value: uv__io_t): Unit = !struct.at14 = value
-      def write_queue : uv__queue = struct._15
-      def write_queue_=(value: uv__queue): Unit = !struct.at15 = value
-      def write_completed_queue : uv__queue = struct._16
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at16 = value
+      def write_queue : CArray[Ptr[Byte], Nat._2] = struct._15
+      def write_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at15 = value
+      def write_completed_queue : CArray[Ptr[Byte], Nat._2] = struct._16
+      def write_completed_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at16 = value
       def connection_cb : uv_connection_cb = struct._17.asInstanceOf[uv_connection_cb]
       def connection_cb_=(value: uv_connection_cb): Unit = !struct.at17 = value.asInstanceOf[Ptr[Byte]]
       def delayed_error : CInt = struct._18
@@ -5216,7 +5091,7 @@ object structs:
 
   /**
   */
-  opaque type uv_tcp_s = CStruct21[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_tcp_s.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, uv__queue, uv__queue, Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
+  opaque type uv_tcp_s = CStruct21[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_tcp_s.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
   object uv_tcp_s:
     /**
     */
@@ -5243,9 +5118,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_tcp_s] = Tag.materializeCStruct21Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_tcp_s.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, uv__queue, uv__queue, Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
+    given _tag: Tag[uv_tcp_s] = Tag.materializeCStruct21Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_tcp_s.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
     def apply()(using Zone): Ptr[uv_tcp_s] = scala.scalanative.unsafe.alloc[uv_tcp_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_tcp_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : uv__queue, write_completed_queue : uv__queue, connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte])(using Zone): Ptr[uv_tcp_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_tcp_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : CArray[Ptr[Byte], Nat._2], write_completed_queue : CArray[Ptr[Byte], Nat._2], connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte])(using Zone): Ptr[uv_tcp_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -5278,8 +5153,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_tcp_s.Union0 = struct._6
       def u_=(value: uv_tcp_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -5298,10 +5173,10 @@ object structs:
       def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at13 = value.asInstanceOf[Ptr[Byte]]
       def io_watcher : uv__io_t = struct._14
       def io_watcher_=(value: uv__io_t): Unit = !struct.at14 = value
-      def write_queue : uv__queue = struct._15
-      def write_queue_=(value: uv__queue): Unit = !struct.at15 = value
-      def write_completed_queue : uv__queue = struct._16
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at16 = value
+      def write_queue : CArray[Ptr[Byte], Nat._2] = struct._15
+      def write_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at15 = value
+      def write_completed_queue : CArray[Ptr[Byte], Nat._2] = struct._16
+      def write_completed_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at16 = value
       def connection_cb : uv_connection_cb = struct._17.asInstanceOf[uv_connection_cb]
       def connection_cb_=(value: uv_connection_cb): Unit = !struct.at17 = value.asInstanceOf[Ptr[Byte]]
       def delayed_error : CInt = struct._18
@@ -5315,7 +5190,7 @@ object structs:
 
   /**
   */
-  opaque type uv_tcp_t = CStruct21[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_tcp_t.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, uv__queue, uv__queue, Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
+  opaque type uv_tcp_t = CStruct21[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_tcp_t.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
   object uv_tcp_t:
     /**
     */
@@ -5342,9 +5217,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_tcp_t] = Tag.materializeCStruct21Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_tcp_t.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, uv__queue, uv__queue, Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
+    given _tag: Tag[uv_tcp_t] = Tag.materializeCStruct21Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_tcp_t.Union0, Ptr[Byte], CUnsignedInt, size_t, Ptr[Byte], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__io_t, CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2], Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte]]
     def apply()(using Zone): Ptr[uv_tcp_t] = scala.scalanative.unsafe.alloc[uv_tcp_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_tcp_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : uv__queue, write_completed_queue : uv__queue, connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte])(using Zone): Ptr[uv_tcp_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_tcp_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : CArray[Ptr[Byte], Nat._2], write_completed_queue : CArray[Ptr[Byte], Nat._2], connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte])(using Zone): Ptr[uv_tcp_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -5377,8 +5252,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_tcp_t.Union0 = struct._6
       def u_=(value: uv_tcp_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -5397,10 +5272,10 @@ object structs:
       def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at13 = value.asInstanceOf[Ptr[Byte]]
       def io_watcher : uv__io_t = struct._14
       def io_watcher_=(value: uv__io_t): Unit = !struct.at14 = value
-      def write_queue : uv__queue = struct._15
-      def write_queue_=(value: uv__queue): Unit = !struct.at15 = value
-      def write_completed_queue : uv__queue = struct._16
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at16 = value
+      def write_queue : CArray[Ptr[Byte], Nat._2] = struct._15
+      def write_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at15 = value
+      def write_completed_queue : CArray[Ptr[Byte], Nat._2] = struct._16
+      def write_completed_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at16 = value
       def connection_cb : uv_connection_cb = struct._17.asInstanceOf[uv_connection_cb]
       def connection_cb_=(value: uv_connection_cb): Unit = !struct.at17 = value.asInstanceOf[Ptr[Byte]]
       def delayed_error : CInt = struct._18
@@ -5448,7 +5323,7 @@ object structs:
 
   /**
   */
-  opaque type uv_timer_s = CStruct13[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_timer_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._3], uint64_t, uint64_t, uint64_t]
+  opaque type uv_timer_s = CStruct13[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_timer_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._3], uint64_t, uint64_t, uint64_t]
   object uv_timer_s:
     /**
     */
@@ -5475,9 +5350,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_timer_s] = Tag.materializeCStruct13Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_timer_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._3], uint64_t, uint64_t, uint64_t]
+    given _tag: Tag[uv_timer_s] = Tag.materializeCStruct13Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_timer_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._3], uint64_t, uint64_t, uint64_t]
     def apply()(using Zone): Ptr[uv_timer_s] = scala.scalanative.unsafe.alloc[uv_timer_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_timer_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, timer_cb : uv_timer_cb, heap_node : CArray[Ptr[Byte], Nat._3], timeout : uint64_t, repeat : uint64_t, start_id : uint64_t)(using Zone): Ptr[uv_timer_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_timer_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, timer_cb : uv_timer_cb, heap_node : CArray[Ptr[Byte], Nat._3], timeout : uint64_t, repeat : uint64_t, start_id : uint64_t)(using Zone): Ptr[uv_timer_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -5502,8 +5377,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_timer_s.Union0 = struct._6
       def u_=(value: uv_timer_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -5523,7 +5398,7 @@ object structs:
 
   /**
   */
-  opaque type uv_timer_t = CStruct13[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_timer_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._3], uint64_t, uint64_t, uint64_t]
+  opaque type uv_timer_t = CStruct13[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_timer_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._3], uint64_t, uint64_t, uint64_t]
   object uv_timer_t:
     /**
     */
@@ -5550,9 +5425,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_timer_t] = Tag.materializeCStruct13Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_timer_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._3], uint64_t, uint64_t, uint64_t]
+    given _tag: Tag[uv_timer_t] = Tag.materializeCStruct13Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_timer_t.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], CArray[Ptr[Byte], Nat._3], uint64_t, uint64_t, uint64_t]
     def apply()(using Zone): Ptr[uv_timer_t] = scala.scalanative.unsafe.alloc[uv_timer_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_timer_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, timer_cb : uv_timer_cb, heap_node : CArray[Ptr[Byte], Nat._3], timeout : uint64_t, repeat : uint64_t, start_id : uint64_t)(using Zone): Ptr[uv_timer_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_timer_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, timer_cb : uv_timer_cb, heap_node : CArray[Ptr[Byte], Nat._3], timeout : uint64_t, repeat : uint64_t, start_id : uint64_t)(using Zone): Ptr[uv_timer_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -5577,8 +5452,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_timer_t.Union0 = struct._6
       def u_=(value: uv_timer_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -5595,23 +5470,6 @@ object structs:
       def repeat_=(value: uint64_t): Unit = !struct.at12 = value
       def start_id : uint64_t = struct._13
       def start_id_=(value: uint64_t): Unit = !struct.at13 = value
-
-  /**
-  */
-  opaque type uv_timespec64_t = CStruct2[int64_t, int32_t]
-  object uv_timespec64_t:
-    given _tag: Tag[uv_timespec64_t] = Tag.materializeCStruct2Tag[int64_t, int32_t]
-    def apply()(using Zone): Ptr[uv_timespec64_t] = scala.scalanative.unsafe.alloc[uv_timespec64_t](1)
-    def apply(tv_sec : int64_t, tv_nsec : int32_t)(using Zone): Ptr[uv_timespec64_t] = 
-      val ____ptr = apply()
-      (!____ptr).tv_sec = tv_sec
-      (!____ptr).tv_nsec = tv_nsec
-      ____ptr
-    extension (struct: uv_timespec64_t)
-      def tv_sec : int64_t = struct._1
-      def tv_sec_=(value: int64_t): Unit = !struct.at1 = value
-      def tv_nsec : int32_t = struct._2
-      def tv_nsec_=(value: int32_t): Unit = !struct.at2 = value
 
   /**
   */
@@ -5695,7 +5553,7 @@ object structs:
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
     given _tag: Tag[uv_tty_s] = Tag.CArray[CChar, Nat.Digit3[Nat._3, Nat._4, Nat._4]](Tag.Byte, Tag.Digit3[Nat._3, Nat._4, Nat._4](Tag.Nat3, Tag.Nat4, Tag.Nat4))
     def apply()(using Zone): Ptr[uv_tty_s] = scala.scalanative.unsafe.alloc[uv_tty_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_tty_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : uv__queue, write_completed_queue : uv__queue, connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte], orig_termios : termios, mode : CInt)(using Zone): Ptr[uv_tty_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_tty_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : CArray[Ptr[Byte], Nat._2], write_completed_queue : CArray[Ptr[Byte], Nat._2], connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte], orig_termios : termios, mode : CInt)(using Zone): Ptr[uv_tty_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -5730,8 +5588,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at(16).asInstanceOf[Ptr[uv_handle_type]] = value
       def close_cb: uv_close_cb = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]] = value
-      def handle_queue: uv__queue = !struct.at(32).asInstanceOf[Ptr[uv__queue]]
-      def handle_queue_=(value: uv__queue): Unit = !struct.at(32).asInstanceOf[Ptr[uv__queue]] = value
+      def handle_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(32).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(32).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def u: uv_tty_s.Union0 = !struct.at(48).asInstanceOf[Ptr[uv_tty_s.Union0]]
       def u_=(value: uv_tty_s.Union0): Unit = !struct.at(48).asInstanceOf[Ptr[uv_tty_s.Union0]] = value
       def next_closing: Ptr[uv_handle_t] = !struct.at(80).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
@@ -5750,10 +5608,10 @@ object structs:
       def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at(128).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]] = value
       def io_watcher: uv__io_t = !struct.at(136).asInstanceOf[Ptr[uv__io_t]]
       def io_watcher_=(value: uv__io_t): Unit = !struct.at(136).asInstanceOf[Ptr[uv__io_t]] = value
-      def write_queue: uv__queue = !struct.at(200).asInstanceOf[Ptr[uv__queue]]
-      def write_queue_=(value: uv__queue): Unit = !struct.at(200).asInstanceOf[Ptr[uv__queue]] = value
-      def write_completed_queue: uv__queue = !struct.at(216).asInstanceOf[Ptr[uv__queue]]
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at(216).asInstanceOf[Ptr[uv__queue]] = value
+      def write_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(200).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def write_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(200).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def write_completed_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(216).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def write_completed_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(216).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def connection_cb: uv_connection_cb = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]]
       def connection_cb_=(value: uv_connection_cb): Unit = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]] = value
       def delayed_error: CInt = !struct.at(240).asInstanceOf[Ptr[CInt]]
@@ -5800,7 +5658,7 @@ object structs:
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
     given _tag: Tag[uv_tty_t] = Tag.CArray[CChar, Nat.Digit3[Nat._3, Nat._4, Nat._4]](Tag.Byte, Tag.Digit3[Nat._3, Nat._4, Nat._4](Tag.Nat3, Tag.Nat4, Tag.Nat4))
     def apply()(using Zone): Ptr[uv_tty_t] = scala.scalanative.unsafe.alloc[uv_tty_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_tty_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : uv__queue, write_completed_queue : uv__queue, connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte], orig_termios : termios, mode : CInt)(using Zone): Ptr[uv_tty_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_tty_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, write_queue_size : size_t, alloc_cb : uv_alloc_cb, read_cb : uv_read_cb, connect_req : Ptr[uv_connect_t], shutdown_req : Ptr[uv_shutdown_t], io_watcher : uv__io_t, write_queue : CArray[Ptr[Byte], Nat._2], write_completed_queue : CArray[Ptr[Byte], Nat._2], connection_cb : uv_connection_cb, delayed_error : CInt, accepted_fd : CInt, queued_fds : Ptr[Byte], select : Ptr[Byte], orig_termios : termios, mode : CInt)(using Zone): Ptr[uv_tty_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -5835,8 +5693,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at(16).asInstanceOf[Ptr[uv_handle_type]] = value
       def close_cb: uv_close_cb = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]] = value
-      def handle_queue: uv__queue = !struct.at(32).asInstanceOf[Ptr[uv__queue]]
-      def handle_queue_=(value: uv__queue): Unit = !struct.at(32).asInstanceOf[Ptr[uv__queue]] = value
+      def handle_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(32).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(32).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def u: uv_tty_t.Union0 = !struct.at(48).asInstanceOf[Ptr[uv_tty_t.Union0]]
       def u_=(value: uv_tty_t.Union0): Unit = !struct.at(48).asInstanceOf[Ptr[uv_tty_t.Union0]] = value
       def next_closing: Ptr[uv_handle_t] = !struct.at(80).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
@@ -5855,10 +5713,10 @@ object structs:
       def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at(128).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]] = value
       def io_watcher: uv__io_t = !struct.at(136).asInstanceOf[Ptr[uv__io_t]]
       def io_watcher_=(value: uv__io_t): Unit = !struct.at(136).asInstanceOf[Ptr[uv__io_t]] = value
-      def write_queue: uv__queue = !struct.at(200).asInstanceOf[Ptr[uv__queue]]
-      def write_queue_=(value: uv__queue): Unit = !struct.at(200).asInstanceOf[Ptr[uv__queue]] = value
-      def write_completed_queue: uv__queue = !struct.at(216).asInstanceOf[Ptr[uv__queue]]
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at(216).asInstanceOf[Ptr[uv__queue]] = value
+      def write_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(200).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def write_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(200).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
+      def write_completed_queue: CArray[Ptr[Byte], Nat._2] = !struct.at(216).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]]
+      def write_completed_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at(216).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._2]]] = value
       def connection_cb: uv_connection_cb = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]]
       def connection_cb_=(value: uv_connection_cb): Unit = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]] = value
       def delayed_error: CInt = !struct.at(240).asInstanceOf[Ptr[CInt]]
@@ -5876,7 +5734,7 @@ object structs:
 
   /**
   */
-  opaque type uv_udp_s = CStruct15[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_udp_s.Union0, Ptr[Byte], CUnsignedInt, size_t, size_t, Ptr[Byte], Ptr[Byte], uv__io_t, uv__queue, uv__queue]
+  opaque type uv_udp_s = CStruct15[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_udp_s.Union0, Ptr[Byte], CUnsignedInt, size_t, size_t, Ptr[Byte], Ptr[Byte], uv__io_t, CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2]]
   object uv_udp_s:
     /**
     */
@@ -5903,9 +5761,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_udp_s] = Tag.materializeCStruct15Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_udp_s.Union0, Ptr[Byte], CUnsignedInt, size_t, size_t, Ptr[Byte], Ptr[Byte], uv__io_t, uv__queue, uv__queue]
+    given _tag: Tag[uv_udp_s] = Tag.materializeCStruct15Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_udp_s.Union0, Ptr[Byte], CUnsignedInt, size_t, size_t, Ptr[Byte], Ptr[Byte], uv__io_t, CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2]]
     def apply()(using Zone): Ptr[uv_udp_s] = scala.scalanative.unsafe.alloc[uv_udp_s](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_udp_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, send_queue_size : size_t, send_queue_count : size_t, alloc_cb : uv_alloc_cb, recv_cb : uv_udp_recv_cb, io_watcher : uv__io_t, write_queue : uv__queue, write_completed_queue : uv__queue)(using Zone): Ptr[uv_udp_s] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_udp_s.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, send_queue_size : size_t, send_queue_count : size_t, alloc_cb : uv_alloc_cb, recv_cb : uv_udp_recv_cb, io_watcher : uv__io_t, write_queue : CArray[Ptr[Byte], Nat._2], write_completed_queue : CArray[Ptr[Byte], Nat._2])(using Zone): Ptr[uv_udp_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -5932,8 +5790,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_udp_s.Union0 = struct._6
       def u_=(value: uv_udp_s.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -5950,18 +5808,18 @@ object structs:
       def recv_cb_=(value: uv_udp_recv_cb): Unit = !struct.at12 = value.asInstanceOf[Ptr[Byte]]
       def io_watcher : uv__io_t = struct._13
       def io_watcher_=(value: uv__io_t): Unit = !struct.at13 = value
-      def write_queue : uv__queue = struct._14
-      def write_queue_=(value: uv__queue): Unit = !struct.at14 = value
-      def write_completed_queue : uv__queue = struct._15
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at15 = value
+      def write_queue : CArray[Ptr[Byte], Nat._2] = struct._14
+      def write_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at14 = value
+      def write_completed_queue : CArray[Ptr[Byte], Nat._2] = struct._15
+      def write_completed_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at15 = value
 
   /**
   */
-  opaque type uv_udp_send_s = CStruct12[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], uv__queue, sockaddr_storage, CUnsignedInt, Ptr[uv_buf_t], ssize_t, Ptr[Byte], CArray[uv_buf_t, Nat._4]]
+  opaque type uv_udp_send_s = CStruct12[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], CArray[Ptr[Byte], Nat._2], sockaddr_storage, CUnsignedInt, Ptr[uv_buf_t], ssize_t, Ptr[Byte], CArray[uv_buf_t, Nat._4]]
   object uv_udp_send_s:
-    given _tag: Tag[uv_udp_send_s] = Tag.materializeCStruct12Tag[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], uv__queue, sockaddr_storage, CUnsignedInt, Ptr[uv_buf_t], ssize_t, Ptr[Byte], CArray[uv_buf_t, Nat._4]]
+    given _tag: Tag[uv_udp_send_s] = Tag.materializeCStruct12Tag[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], CArray[Ptr[Byte], Nat._2], sockaddr_storage, CUnsignedInt, Ptr[uv_buf_t], ssize_t, Ptr[Byte], CArray[uv_buf_t, Nat._4]]
     def apply()(using Zone): Ptr[uv_udp_send_s] = scala.scalanative.unsafe.alloc[uv_udp_send_s](1)
-    def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], handle : Ptr[uv_udp_t], cb : uv_udp_send_cb, queue : uv__queue, addr : sockaddr_storage, nbufs : CUnsignedInt, bufs : Ptr[uv_buf_t], status : ssize_t, send_cb : uv_udp_send_cb, bufsml : CArray[uv_buf_t, Nat._4])(using Zone): Ptr[uv_udp_send_s] = 
+    def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], handle : Ptr[uv_udp_t], cb : uv_udp_send_cb, queue : CArray[Ptr[Byte], Nat._2], addr : sockaddr_storage, nbufs : CUnsignedInt, bufs : Ptr[uv_buf_t], status : ssize_t, send_cb : uv_udp_send_cb, bufsml : CArray[uv_buf_t, Nat._4])(using Zone): Ptr[uv_udp_send_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).`type` = `type`
@@ -5987,8 +5845,8 @@ object structs:
       def handle_=(value: Ptr[uv_udp_t]): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
       def cb : uv_udp_send_cb = struct._5.asInstanceOf[uv_udp_send_cb]
       def cb_=(value: uv_udp_send_cb): Unit = !struct.at5 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._6
-      def queue_=(value: uv__queue): Unit = !struct.at6 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._6
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at6 = value
       def addr : sockaddr_storage = struct._7
       def addr_=(value: sockaddr_storage): Unit = !struct.at7 = value
       def nbufs : CUnsignedInt = struct._8
@@ -6004,11 +5862,11 @@ object structs:
 
   /**
   */
-  opaque type uv_udp_send_t = CStruct12[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], uv__queue, sockaddr_storage, CUnsignedInt, Ptr[uv_buf_t], ssize_t, Ptr[Byte], CArray[uv_buf_t, Nat._4]]
+  opaque type uv_udp_send_t = CStruct12[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], CArray[Ptr[Byte], Nat._2], sockaddr_storage, CUnsignedInt, Ptr[uv_buf_t], ssize_t, Ptr[Byte], CArray[uv_buf_t, Nat._4]]
   object uv_udp_send_t:
-    given _tag: Tag[uv_udp_send_t] = Tag.materializeCStruct12Tag[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], uv__queue, sockaddr_storage, CUnsignedInt, Ptr[uv_buf_t], ssize_t, Ptr[Byte], CArray[uv_buf_t, Nat._4]]
+    given _tag: Tag[uv_udp_send_t] = Tag.materializeCStruct12Tag[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], CArray[Ptr[Byte], Nat._2], sockaddr_storage, CUnsignedInt, Ptr[uv_buf_t], ssize_t, Ptr[Byte], CArray[uv_buf_t, Nat._4]]
     def apply()(using Zone): Ptr[uv_udp_send_t] = scala.scalanative.unsafe.alloc[uv_udp_send_t](1)
-    def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], handle : Ptr[uv_udp_t], cb : uv_udp_send_cb, queue : uv__queue, addr : sockaddr_storage, nbufs : CUnsignedInt, bufs : Ptr[uv_buf_t], status : ssize_t, send_cb : uv_udp_send_cb, bufsml : CArray[uv_buf_t, Nat._4])(using Zone): Ptr[uv_udp_send_t] = 
+    def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], handle : Ptr[uv_udp_t], cb : uv_udp_send_cb, queue : CArray[Ptr[Byte], Nat._2], addr : sockaddr_storage, nbufs : CUnsignedInt, bufs : Ptr[uv_buf_t], status : ssize_t, send_cb : uv_udp_send_cb, bufsml : CArray[uv_buf_t, Nat._4])(using Zone): Ptr[uv_udp_send_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).`type` = `type`
@@ -6034,8 +5892,8 @@ object structs:
       def handle_=(value: Ptr[uv_udp_t]): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
       def cb : uv_udp_send_cb = struct._5.asInstanceOf[uv_udp_send_cb]
       def cb_=(value: uv_udp_send_cb): Unit = !struct.at5 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._6
-      def queue_=(value: uv__queue): Unit = !struct.at6 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._6
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at6 = value
       def addr : sockaddr_storage = struct._7
       def addr_=(value: sockaddr_storage): Unit = !struct.at7 = value
       def nbufs : CUnsignedInt = struct._8
@@ -6051,7 +5909,7 @@ object structs:
 
   /**
   */
-  opaque type uv_udp_t = CStruct15[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_udp_t.Union0, Ptr[Byte], CUnsignedInt, size_t, size_t, Ptr[Byte], Ptr[Byte], uv__io_t, uv__queue, uv__queue]
+  opaque type uv_udp_t = CStruct15[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_udp_t.Union0, Ptr[Byte], CUnsignedInt, size_t, size_t, Ptr[Byte], Ptr[Byte], uv__io_t, CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2]]
   object uv_udp_t:
     /**
     */
@@ -6078,9 +5936,9 @@ object structs:
         def fd_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
         def reserved : CArray[Ptr[Byte], Nat._4] = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]]
         def reserved_=(value: CArray[Ptr[Byte], Nat._4]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._4]]] = value
-    given _tag: Tag[uv_udp_t] = Tag.materializeCStruct15Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_udp_t.Union0, Ptr[Byte], CUnsignedInt, size_t, size_t, Ptr[Byte], Ptr[Byte], uv__io_t, uv__queue, uv__queue]
+    given _tag: Tag[uv_udp_t] = Tag.materializeCStruct15Tag[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], CArray[Ptr[Byte], Nat._2], uv_udp_t.Union0, Ptr[Byte], CUnsignedInt, size_t, size_t, Ptr[Byte], Ptr[Byte], uv__io_t, CArray[Ptr[Byte], Nat._2], CArray[Ptr[Byte], Nat._2]]
     def apply()(using Zone): Ptr[uv_udp_t] = scala.scalanative.unsafe.alloc[uv_udp_t](1)
-    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : uv__queue, u : uv_udp_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, send_queue_size : size_t, send_queue_count : size_t, alloc_cb : uv_alloc_cb, recv_cb : uv_udp_recv_cb, io_watcher : uv__io_t, write_queue : uv__queue, write_completed_queue : uv__queue)(using Zone): Ptr[uv_udp_t] = 
+    def apply(data : Ptr[Byte], loop : Ptr[uv_loop_t], `type` : uv_handle_type, close_cb : uv_close_cb, handle_queue : CArray[Ptr[Byte], Nat._2], u : uv_udp_t.Union0, next_closing : Ptr[uv_handle_t], flags : CUnsignedInt, send_queue_size : size_t, send_queue_count : size_t, alloc_cb : uv_alloc_cb, recv_cb : uv_udp_recv_cb, io_watcher : uv__io_t, write_queue : CArray[Ptr[Byte], Nat._2], write_completed_queue : CArray[Ptr[Byte], Nat._2])(using Zone): Ptr[uv_udp_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).loop = loop
@@ -6107,8 +5965,8 @@ object structs:
       def type_=(value: uv_handle_type): Unit = !struct.at3 = value
       def close_cb : uv_close_cb = struct._4.asInstanceOf[uv_close_cb]
       def close_cb_=(value: uv_close_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def handle_queue : uv__queue = struct._5
-      def handle_queue_=(value: uv__queue): Unit = !struct.at5 = value
+      def handle_queue : CArray[Ptr[Byte], Nat._2] = struct._5
+      def handle_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at5 = value
       def u : uv_udp_t.Union0 = struct._6
       def u_=(value: uv_udp_t.Union0): Unit = !struct.at6 = value
       def next_closing : Ptr[uv_handle_t] = struct._7.asInstanceOf[Ptr[uv_handle_t]]
@@ -6125,10 +5983,10 @@ object structs:
       def recv_cb_=(value: uv_udp_recv_cb): Unit = !struct.at12 = value.asInstanceOf[Ptr[Byte]]
       def io_watcher : uv__io_t = struct._13
       def io_watcher_=(value: uv__io_t): Unit = !struct.at13 = value
-      def write_queue : uv__queue = struct._14
-      def write_queue_=(value: uv__queue): Unit = !struct.at14 = value
-      def write_completed_queue : uv__queue = struct._15
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at15 = value
+      def write_queue : CArray[Ptr[Byte], Nat._2] = struct._14
+      def write_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at14 = value
+      def write_completed_queue : CArray[Ptr[Byte], Nat._2] = struct._15
+      def write_completed_queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at15 = value
 
   /**
   */
@@ -6242,11 +6100,11 @@ object structs:
 
   /**
   */
-  opaque type uv_write_s = CStruct12[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__queue, CUnsignedInt, Ptr[uv_buf_t], CUnsignedInt, CInt, CArray[uv_buf_t, Nat._4]]
+  opaque type uv_write_s = CStruct12[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], Ptr[Byte], CArray[Ptr[Byte], Nat._2], CUnsignedInt, Ptr[uv_buf_t], CUnsignedInt, CInt, CArray[uv_buf_t, Nat._4]]
   object uv_write_s:
-    given _tag: Tag[uv_write_s] = Tag.materializeCStruct12Tag[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__queue, CUnsignedInt, Ptr[uv_buf_t], CUnsignedInt, CInt, CArray[uv_buf_t, Nat._4]]
+    given _tag: Tag[uv_write_s] = Tag.materializeCStruct12Tag[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], Ptr[Byte], CArray[Ptr[Byte], Nat._2], CUnsignedInt, Ptr[uv_buf_t], CUnsignedInt, CInt, CArray[uv_buf_t, Nat._4]]
     def apply()(using Zone): Ptr[uv_write_s] = scala.scalanative.unsafe.alloc[uv_write_s](1)
-    def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], cb : uv_write_cb, send_handle : Ptr[uv_stream_t], handle : Ptr[uv_stream_t], queue : uv__queue, write_index : CUnsignedInt, bufs : Ptr[uv_buf_t], nbufs : CUnsignedInt, error : CInt, bufsml : CArray[uv_buf_t, Nat._4])(using Zone): Ptr[uv_write_s] = 
+    def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], cb : uv_write_cb, send_handle : Ptr[uv_stream_t], handle : Ptr[uv_stream_t], queue : CArray[Ptr[Byte], Nat._2], write_index : CUnsignedInt, bufs : Ptr[uv_buf_t], nbufs : CUnsignedInt, error : CInt, bufsml : CArray[uv_buf_t, Nat._4])(using Zone): Ptr[uv_write_s] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).`type` = `type`
@@ -6274,8 +6132,8 @@ object structs:
       def send_handle_=(value: Ptr[uv_stream_t]): Unit = !struct.at5 = value.asInstanceOf[Ptr[Byte]]
       def handle : Ptr[uv_stream_t] = struct._6.asInstanceOf[Ptr[uv_stream_t]]
       def handle_=(value: Ptr[uv_stream_t]): Unit = !struct.at6 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._7
-      def queue_=(value: uv__queue): Unit = !struct.at7 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._7
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at7 = value
       def write_index : CUnsignedInt = struct._8
       def write_index_=(value: CUnsignedInt): Unit = !struct.at8 = value
       def bufs : Ptr[uv_buf_t] = struct._9
@@ -6289,11 +6147,11 @@ object structs:
 
   /**
   */
-  opaque type uv_write_t = CStruct12[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__queue, CUnsignedInt, Ptr[uv_buf_t], CUnsignedInt, CInt, CArray[uv_buf_t, Nat._4]]
+  opaque type uv_write_t = CStruct12[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], Ptr[Byte], CArray[Ptr[Byte], Nat._2], CUnsignedInt, Ptr[uv_buf_t], CUnsignedInt, CInt, CArray[uv_buf_t, Nat._4]]
   object uv_write_t:
-    given _tag: Tag[uv_write_t] = Tag.materializeCStruct12Tag[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], Ptr[Byte], uv__queue, CUnsignedInt, Ptr[uv_buf_t], CUnsignedInt, CInt, CArray[uv_buf_t, Nat._4]]
+    given _tag: Tag[uv_write_t] = Tag.materializeCStruct12Tag[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[Byte], Ptr[Byte], Ptr[Byte], CArray[Ptr[Byte], Nat._2], CUnsignedInt, Ptr[uv_buf_t], CUnsignedInt, CInt, CArray[uv_buf_t, Nat._4]]
     def apply()(using Zone): Ptr[uv_write_t] = scala.scalanative.unsafe.alloc[uv_write_t](1)
-    def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], cb : uv_write_cb, send_handle : Ptr[uv_stream_t], handle : Ptr[uv_stream_t], queue : uv__queue, write_index : CUnsignedInt, bufs : Ptr[uv_buf_t], nbufs : CUnsignedInt, error : CInt, bufsml : CArray[uv_buf_t, Nat._4])(using Zone): Ptr[uv_write_t] = 
+    def apply(data : Ptr[Byte], `type` : uv_req_type, reserved : CArray[Ptr[Byte], Nat._6], cb : uv_write_cb, send_handle : Ptr[uv_stream_t], handle : Ptr[uv_stream_t], queue : CArray[Ptr[Byte], Nat._2], write_index : CUnsignedInt, bufs : Ptr[uv_buf_t], nbufs : CUnsignedInt, error : CInt, bufsml : CArray[uv_buf_t, Nat._4])(using Zone): Ptr[uv_write_t] = 
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).`type` = `type`
@@ -6321,8 +6179,8 @@ object structs:
       def send_handle_=(value: Ptr[uv_stream_t]): Unit = !struct.at5 = value.asInstanceOf[Ptr[Byte]]
       def handle : Ptr[uv_stream_t] = struct._6.asInstanceOf[Ptr[uv_stream_t]]
       def handle_=(value: Ptr[uv_stream_t]): Unit = !struct.at6 = value.asInstanceOf[Ptr[Byte]]
-      def queue : uv__queue = struct._7
-      def queue_=(value: uv__queue): Unit = !struct.at7 = value
+      def queue : CArray[Ptr[Byte], Nat._2] = struct._7
+      def queue_=(value: CArray[Ptr[Byte], Nat._2]): Unit = !struct.at7 = value
       def write_index : CUnsignedInt = struct._8
       def write_index_=(value: CUnsignedInt): Unit = !struct.at8 = value
       def bufs : Ptr[uv_buf_t] = struct._9
@@ -6480,9 +6338,9 @@ object unions:
 
   /**
   */
-  opaque type uv_any_req = CArray[Byte, Nat.Digit4[Nat._1, Nat._1, Nat._9, Nat._2]]
+  opaque type uv_any_req = CArray[Byte, Nat.Digit4[Nat._1, Nat._1, Nat._7, Nat._6]]
   object uv_any_req:
-    given _tag: Tag[uv_any_req] = Tag.CArray[CChar, Nat.Digit4[Nat._1, Nat._1, Nat._9, Nat._2]](Tag.Byte, Tag.Digit4[Nat._1, Nat._1, Nat._9, Nat._2](Tag.Nat1, Tag.Nat1, Tag.Nat9, Tag.Nat2))
+    given _tag: Tag[uv_any_req] = Tag.CArray[CChar, Nat.Digit4[Nat._1, Nat._1, Nat._7, Nat._6]](Tag.Byte, Tag.Digit4[Nat._1, Nat._1, Nat._7, Nat._6](Tag.Nat1, Tag.Nat1, Tag.Nat7, Tag.Nat6))
     def apply()(using Zone): Ptr[uv_any_req] = 
       val ___ptr = alloc[uv_any_req](1)
       ___ptr
@@ -6636,10 +6494,6 @@ private[libuv] object extern_functions:
 
   /**
   */
-  def uv_clock_gettime(clock_id : uv_clock_id, ts : Ptr[uv_timespec64_t]): CInt = extern
-
-  /**
-  */
   def uv_close(handle : Ptr[uv_handle_t], close_cb : uv_close_cb): Unit = extern
 
   /**
@@ -6669,10 +6523,6 @@ private[libuv] object extern_functions:
   /**
   */
   def uv_cpu_info(cpu_infos : Ptr[Ptr[uv_cpu_info_t]], count : Ptr[CInt]): CInt = extern
-
-  /**
-  */
-  def uv_cpumask_size(): CInt = extern
 
   /**
   */
@@ -6940,10 +6790,6 @@ private[libuv] object extern_functions:
 
   /**
   */
-  def uv_get_available_memory(): uint64_t = extern
-
-  /**
-  */
   def uv_get_constrained_memory(): uint64_t = extern
 
   /**
@@ -7160,10 +7006,6 @@ private[libuv] object extern_functions:
 
   /**
   */
-  def uv_metrics_info(loop : Ptr[uv_loop_t], metrics : Ptr[uv_metrics_t]): CInt = extern
-
-  /**
-  */
   def uv_mutex_destroy(handle : Ptr[uv_mutex_t]): Unit = extern
 
   /**
@@ -7208,23 +7050,11 @@ private[libuv] object extern_functions:
 
   /**
   */
-  def uv_os_free_group(grp : Ptr[uv_group_t]): Unit = extern
-
-  /**
-  */
   def uv_os_free_passwd(pwd : Ptr[uv_passwd_t]): Unit = extern
 
   /**
   */
-  def uv_os_get_group(grp : Ptr[uv_group_t], gid : uv_uid_t): CInt = extern
-
-  /**
-  */
   def uv_os_get_passwd(pwd : Ptr[uv_passwd_t]): CInt = extern
-
-  /**
-  */
-  def uv_os_get_passwd2(pwd : Ptr[uv_passwd_t], uid : uv_uid_t): CInt = extern
 
   /**
   */
@@ -7280,19 +7110,11 @@ private[libuv] object extern_functions:
 
   /**
   */
-  def uv_pipe_bind2(handle : Ptr[uv_pipe_t], name : CString, namelen : size_t, flags : CUnsignedInt): CInt = extern
-
-  /**
-  */
   def uv_pipe_chmod(handle : Ptr[uv_pipe_t], flags : CInt): CInt = extern
 
   /**
   */
   def uv_pipe_connect(req : Ptr[uv_connect_t], handle : Ptr[uv_pipe_t], name : CString, cb : uv_connect_cb): Unit = extern
-
-  /**
-  */
-  def uv_pipe_connect2(req : Ptr[uv_connect_t], handle : Ptr[uv_pipe_t], name : CString, namelen : size_t, flags : CUnsignedInt, cb : uv_connect_cb): CInt = extern
 
   /**
   */
@@ -7596,23 +7418,11 @@ private[libuv] object extern_functions:
 
   /**
   */
-  def uv_thread_getaffinity(tid : Ptr[uv_thread_t], cpumask : CString, mask_size : size_t): CInt = extern
-
-  /**
-  */
-  def uv_thread_getcpu(): CInt = extern
-
-  /**
-  */
   def uv_thread_join(tid : Ptr[uv_thread_t]): CInt = extern
 
   /**
   */
   def uv_thread_self(): uv_thread_t = extern
-
-  /**
-  */
-  def uv_thread_setaffinity(tid : Ptr[uv_thread_t], cpumask : CString, oldmask : CString, mask_size : size_t): CInt = extern
 
   /**
   */
@@ -7806,19 +7616,16 @@ object functions:
 
   /**
   */
-  def uv_buf_init(base : CString, len : CUnsignedInt)(__return : Ptr[uv_buf_t]): Unit = 
-    __sn_wrap_libuv_uv_buf_init(base, len, __return)
-
-  /**
-  */
   def uv_buf_init(base : CString, len : CUnsignedInt)(using Zone): uv_buf_t = 
     val __ptr_0: Ptr[uv_buf_t] = alloc[uv_buf_t](1)
     __sn_wrap_libuv_uv_buf_init(base, len, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-object constants:
-  val UV_PIPE_NO_TRUNCATE: CUnsignedInt = 1.toUInt
-  
+  /**
+  */
+  def uv_buf_init(base : CString, len : CUnsignedInt)(__return : Ptr[uv_buf_t]): Unit = 
+    __sn_wrap_libuv_uv_buf_init(base, len, __return)
+
 object types:
   export _root_.libuv.structs.*
   export _root_.libuv.aliases.*
@@ -7826,7 +7633,6 @@ object types:
   export _root_.libuv.enumerations.*
 
 object all:
-  export _root_.libuv.enumerations.uv_clock_id
   export _root_.libuv.enumerations.uv_dirent_type_t
   export _root_.libuv.enumerations.uv_errno_t
   export _root_.libuv.enumerations.uv_fs_event
@@ -7926,7 +7732,6 @@ object all:
   export _root_.libuv.structs.uv__dirent_t
   export _root_.libuv.structs.uv__io_s
   export _root_.libuv.structs.uv__io_t
-  export _root_.libuv.structs.uv__queue
   export _root_.libuv.structs.uv__work
   export _root_.libuv.structs.uv_async_s
   export _root_.libuv.structs.uv_async_t
@@ -7955,8 +7760,6 @@ object all:
   export _root_.libuv.structs.uv_getaddrinfo_t
   export _root_.libuv.structs.uv_getnameinfo_s
   export _root_.libuv.structs.uv_getnameinfo_t
-  export _root_.libuv.structs.uv_group_s
-  export _root_.libuv.structs.uv_group_t
   export _root_.libuv.structs.uv_handle_s
   export _root_.libuv.structs.uv_handle_t
   export _root_.libuv.structs.uv_idle_s
@@ -7966,8 +7769,6 @@ object all:
   export _root_.libuv.structs.uv_lib_t
   export _root_.libuv.structs.uv_loop_s
   export _root_.libuv.structs.uv_loop_t
-  export _root_.libuv.structs.uv_metrics_s
-  export _root_.libuv.structs.uv_metrics_t
   export _root_.libuv.structs.uv_passwd_s
   export _root_.libuv.structs.uv_passwd_t
   export _root_.libuv.structs.uv_pipe_s
@@ -8002,7 +7803,6 @@ object all:
   export _root_.libuv.structs.uv_thread_options_t
   export _root_.libuv.structs.uv_timer_s
   export _root_.libuv.structs.uv_timer_t
-  export _root_.libuv.structs.uv_timespec64_t
   export _root_.libuv.structs.uv_timespec_t
   export _root_.libuv.structs.uv_timeval64_t
   export _root_.libuv.structs.uv_timeval_t
@@ -8034,7 +7834,6 @@ object all:
   export _root_.libuv.functions.uv_check_init
   export _root_.libuv.functions.uv_check_start
   export _root_.libuv.functions.uv_check_stop
-  export _root_.libuv.functions.uv_clock_gettime
   export _root_.libuv.functions.uv_close
   export _root_.libuv.functions.uv_cond_broadcast
   export _root_.libuv.functions.uv_cond_destroy
@@ -8043,7 +7842,6 @@ object all:
   export _root_.libuv.functions.uv_cond_timedwait
   export _root_.libuv.functions.uv_cond_wait
   export _root_.libuv.functions.uv_cpu_info
-  export _root_.libuv.functions.uv_cpumask_size
   export _root_.libuv.functions.uv_cwd
   export _root_.libuv.functions.uv_default_loop
   export _root_.libuv.functions.uv_disable_stdio_inheritance
@@ -8110,7 +7908,6 @@ object all:
   export _root_.libuv.functions.uv_fs_unlink
   export _root_.libuv.functions.uv_fs_utime
   export _root_.libuv.functions.uv_fs_write
-  export _root_.libuv.functions.uv_get_available_memory
   export _root_.libuv.functions.uv_get_constrained_memory
   export _root_.libuv.functions.uv_get_free_memory
   export _root_.libuv.functions.uv_get_osfhandle
@@ -8165,7 +7962,6 @@ object all:
   export _root_.libuv.functions.uv_loop_set_data
   export _root_.libuv.functions.uv_loop_size
   export _root_.libuv.functions.uv_metrics_idle_time
-  export _root_.libuv.functions.uv_metrics_info
   export _root_.libuv.functions.uv_mutex_destroy
   export _root_.libuv.functions.uv_mutex_init
   export _root_.libuv.functions.uv_mutex_init_recursive
@@ -8177,11 +7973,8 @@ object all:
   export _root_.libuv.functions.uv_open_osfhandle
   export _root_.libuv.functions.uv_os_environ
   export _root_.libuv.functions.uv_os_free_environ
-  export _root_.libuv.functions.uv_os_free_group
   export _root_.libuv.functions.uv_os_free_passwd
-  export _root_.libuv.functions.uv_os_get_group
   export _root_.libuv.functions.uv_os_get_passwd
-  export _root_.libuv.functions.uv_os_get_passwd2
   export _root_.libuv.functions.uv_os_getenv
   export _root_.libuv.functions.uv_os_gethostname
   export _root_.libuv.functions.uv_os_getpid
@@ -8195,10 +7988,8 @@ object all:
   export _root_.libuv.functions.uv_os_unsetenv
   export _root_.libuv.functions.uv_pipe
   export _root_.libuv.functions.uv_pipe_bind
-  export _root_.libuv.functions.uv_pipe_bind2
   export _root_.libuv.functions.uv_pipe_chmod
   export _root_.libuv.functions.uv_pipe_connect
-  export _root_.libuv.functions.uv_pipe_connect2
   export _root_.libuv.functions.uv_pipe_getpeername
   export _root_.libuv.functions.uv_pipe_getsockname
   export _root_.libuv.functions.uv_pipe_init
@@ -8274,11 +8065,8 @@ object all:
   export _root_.libuv.functions.uv_thread_create
   export _root_.libuv.functions.uv_thread_create_ex
   export _root_.libuv.functions.uv_thread_equal
-  export _root_.libuv.functions.uv_thread_getaffinity
-  export _root_.libuv.functions.uv_thread_getcpu
   export _root_.libuv.functions.uv_thread_join
   export _root_.libuv.functions.uv_thread_self
-  export _root_.libuv.functions.uv_thread_setaffinity
   export _root_.libuv.functions.uv_timer_again
   export _root_.libuv.functions.uv_timer_get_due_in
   export _root_.libuv.functions.uv_timer_get_repeat

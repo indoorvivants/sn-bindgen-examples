@@ -172,7 +172,7 @@ object structs:
 
   /**
   */
-  opaque type redisContext = CStruct18[Ptr[Byte], CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], redisFD, CInt, CString, Ptr[Byte], redisConnectionType, Ptr[timeval], Ptr[timeval], redisContext.Struct0, redisContext.Struct1, Ptr[sockaddr], size_t, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte], Ptr[redisPushFn]]
+  opaque type redisContext = CStruct18[Ptr[Byte], CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], redisFD, CInt, CString, Ptr[Byte], redisConnectionType, Ptr[timeval], Ptr[timeval], redisContext.Struct0, redisContext.Struct1, Ptr[sockadr], size_t, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte], Ptr[redisPushFn]]
   object redisContext:
     /**
     */
@@ -211,9 +211,9 @@ object structs:
     opaque type Struct2 = CStruct0
     object Struct2:
       given _tag: Tag[Struct2] = Tag.materializeCStruct0Tag
-    given _tag: Tag[redisContext] = Tag.materializeCStruct18Tag[Ptr[Byte], CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], redisFD, CInt, CString, Ptr[Byte], redisConnectionType, Ptr[timeval], Ptr[timeval], redisContext.Struct0, redisContext.Struct1, Ptr[sockaddr], size_t, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte], Ptr[redisPushFn]]
+    given _tag: Tag[redisContext] = Tag.materializeCStruct18Tag[Ptr[Byte], CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], redisFD, CInt, CString, Ptr[Byte], redisConnectionType, Ptr[timeval], Ptr[timeval], redisContext.Struct0, redisContext.Struct1, Ptr[sockadr], size_t, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte], Ptr[redisPushFn]]
     def apply()(using Zone): Ptr[redisContext] = scala.scalanative.unsafe.alloc[redisContext](1)
-    def apply(funcs : Ptr[redisContextFuncs], err : CInt, errstr : CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], fd : redisFD, flags : CInt, obuf : CString, reader : Ptr[redisReader], connection_type : redisConnectionType, connect_timeout : Ptr[timeval], command_timeout : Ptr[timeval], tcp : redisContext.Struct0, unix_sock : redisContext.Struct1, saddr : Ptr[sockaddr], addrlen : size_t, privdata : Ptr[Byte], free_privdata : CFuncPtr1[Ptr[Byte], Unit], privctx : Ptr[Byte], push_cb : Ptr[redisPushFn])(using Zone): Ptr[redisContext] = 
+    def apply(funcs : Ptr[redisContextFuncs], err : CInt, errstr : CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], fd : redisFD, flags : CInt, obuf : CString, reader : Ptr[redisReader], connection_type : redisConnectionType, connect_timeout : Ptr[timeval], command_timeout : Ptr[timeval], tcp : redisContext.Struct0, unix_sock : redisContext.Struct1, saddr : Ptr[sockadr], addrlen : size_t, privdata : Ptr[Byte], free_privdata : CFuncPtr1[Ptr[Byte], Unit], privctx : Ptr[Byte], push_cb : Ptr[redisPushFn])(using Zone): Ptr[redisContext] = 
       val ____ptr = apply()
       (!____ptr).funcs = funcs
       (!____ptr).err = err
@@ -259,8 +259,8 @@ object structs:
       def tcp_=(value: redisContext.Struct0): Unit = !struct.at11 = value
       def unix_sock : redisContext.Struct1 = struct._12
       def unix_sock_=(value: redisContext.Struct1): Unit = !struct.at12 = value
-      def saddr : Ptr[sockaddr] = struct._13
-      def saddr_=(value: Ptr[sockaddr]): Unit = !struct.at13 = value
+      def saddr : Ptr[sockadr] = struct._13
+      def saddr_=(value: Ptr[sockadr]): Unit = !struct.at13 = value
       def addrlen : size_t = struct._14
       def addrlen_=(value: size_t): Unit = !struct.at14 = value
       def privdata : Ptr[Byte] = struct._15
@@ -274,13 +274,12 @@ object structs:
 
   /**
   */
-  opaque type redisContextFuncs = CStruct6[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr3[Ptr[Byte], CString, size_t, ssize_t], CFuncPtr1[Ptr[Byte], ssize_t]]
+  opaque type redisContextFuncs = CStruct5[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr3[Ptr[Byte], CString, size_t, ssize_t], CFuncPtr1[Ptr[Byte], ssize_t]]
   object redisContextFuncs:
-    given _tag: Tag[redisContextFuncs] = Tag.materializeCStruct6Tag[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr3[Ptr[Byte], CString, size_t, ssize_t], CFuncPtr1[Ptr[Byte], ssize_t]]
+    given _tag: Tag[redisContextFuncs] = Tag.materializeCStruct5Tag[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr3[Ptr[Byte], CString, size_t, ssize_t], CFuncPtr1[Ptr[Byte], ssize_t]]
     def apply()(using Zone): Ptr[redisContextFuncs] = scala.scalanative.unsafe.alloc[redisContextFuncs](1)
-    def apply(close : CFuncPtr1[Ptr[redisContext], Unit], free_privctx : CFuncPtr1[Ptr[Byte], Unit], async_read : CFuncPtr1[Ptr[redisAsyncContext], Unit], async_write : CFuncPtr1[Ptr[redisAsyncContext], Unit], read : CFuncPtr3[Ptr[redisContext], CString, size_t, ssize_t], write : CFuncPtr1[Ptr[redisContext], ssize_t])(using Zone): Ptr[redisContextFuncs] = 
+    def apply(free_privctx : CFuncPtr1[Ptr[Byte], Unit], async_read : CFuncPtr1[Ptr[redisAsyncContext], Unit], async_write : CFuncPtr1[Ptr[redisAsyncContext], Unit], read : CFuncPtr3[Ptr[redisContext], CString, size_t, ssize_t], write : CFuncPtr1[Ptr[redisContext], ssize_t])(using Zone): Ptr[redisContextFuncs] = 
       val ____ptr = apply()
-      (!____ptr).close = close
       (!____ptr).free_privctx = free_privctx
       (!____ptr).async_read = async_read
       (!____ptr).async_write = async_write
@@ -288,18 +287,16 @@ object structs:
       (!____ptr).write = write
       ____ptr
     extension (struct: redisContextFuncs)
-      def close : CFuncPtr1[Ptr[redisContext], Unit] = struct._1.asInstanceOf[CFuncPtr1[Ptr[redisContext], Unit]]
-      def close_=(value: CFuncPtr1[Ptr[redisContext], Unit]): Unit = !struct.at1 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
-      def free_privctx : CFuncPtr1[Ptr[Byte], Unit] = struct._2
-      def free_privctx_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at2 = value
-      def async_read : CFuncPtr1[Ptr[redisAsyncContext], Unit] = struct._3
-      def async_read_=(value: CFuncPtr1[Ptr[redisAsyncContext], Unit]): Unit = !struct.at3 = value
-      def async_write : CFuncPtr1[Ptr[redisAsyncContext], Unit] = struct._4
-      def async_write_=(value: CFuncPtr1[Ptr[redisAsyncContext], Unit]): Unit = !struct.at4 = value
-      def read : CFuncPtr3[Ptr[redisContext], CString, size_t, ssize_t] = struct._5.asInstanceOf[CFuncPtr3[Ptr[redisContext], CString, size_t, ssize_t]]
-      def read_=(value: CFuncPtr3[Ptr[redisContext], CString, size_t, ssize_t]): Unit = !struct.at5 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], CString, size_t, ssize_t]]
-      def write : CFuncPtr1[Ptr[redisContext], ssize_t] = struct._6.asInstanceOf[CFuncPtr1[Ptr[redisContext], ssize_t]]
-      def write_=(value: CFuncPtr1[Ptr[redisContext], ssize_t]): Unit = !struct.at6 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], ssize_t]]
+      def free_privctx : CFuncPtr1[Ptr[Byte], Unit] = struct._1
+      def free_privctx_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at1 = value
+      def async_read : CFuncPtr1[Ptr[redisAsyncContext], Unit] = struct._2
+      def async_read_=(value: CFuncPtr1[Ptr[redisAsyncContext], Unit]): Unit = !struct.at2 = value
+      def async_write : CFuncPtr1[Ptr[redisAsyncContext], Unit] = struct._3
+      def async_write_=(value: CFuncPtr1[Ptr[redisAsyncContext], Unit]): Unit = !struct.at3 = value
+      def read : CFuncPtr3[Ptr[redisContext], CString, size_t, ssize_t] = struct._4.asInstanceOf[CFuncPtr3[Ptr[redisContext], CString, size_t, ssize_t]]
+      def read_=(value: CFuncPtr3[Ptr[redisContext], CString, size_t, ssize_t]): Unit = !struct.at4 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], CString, size_t, ssize_t]]
+      def write : CFuncPtr1[Ptr[redisContext], ssize_t] = struct._5.asInstanceOf[CFuncPtr1[Ptr[redisContext], ssize_t]]
+      def write_=(value: CFuncPtr1[Ptr[redisContext], ssize_t]): Unit = !struct.at5 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], ssize_t]]
 
   /**
   */
@@ -640,9 +637,9 @@ object structs:
 
   /**
   */
-  opaque type sockaddr = CStruct0
-  object sockaddr:
-    given _tag: Tag[sockaddr] = Tag.materializeCStruct0Tag
+  opaque type sockadr = CStruct0
+  object sockadr:
+    given _tag: Tag[sockadr] = Tag.materializeCStruct0Tag
 
 
 @extern
@@ -755,19 +752,15 @@ private[libredis] object extern_functions:
 
   /**
   */
-  def redisEnableKeepAliveWithInterval(c : Ptr[redisContext], interval : CInt): CInt = extern
-
-  /**
-  */
   def redisFormatCommand(target : Ptr[CString], format : CString, rest: Any*): CInt = extern
 
   /**
   */
-  def redisFormatCommandArgv(target : Ptr[CString], argc : CInt, argv : Ptr[CString], argvlen : Ptr[size_t]): CLongLong = extern
+  def redisFormatCommandArgv(target : Ptr[CString], argc : CInt, argv : Ptr[CString], argvlen : Ptr[size_t]): CInt = extern
 
   /**
   */
-  def redisFormatSdsCommandArgv(target : Ptr[sds], argc : CInt, argv : Ptr[CString], argvlen : Ptr[size_t]): CLongLong = extern
+  def redisFormatSdsCommandArgv(target : Ptr[sds], argc : CInt, argv : Ptr[CString], argvlen : Ptr[size_t]): CInt = extern
 
   /**
   */
@@ -821,10 +814,6 @@ private[libredis] object extern_functions:
   /**
   */
   def redisSetPushCallback(c : Ptr[redisContext], fn : Ptr[redisPushFn]): Ptr[redisPushFn] = extern
-
-  /**
-  */
-  def redisSetTcpUserTimeout(c : Ptr[redisContext], timeout : CUnsignedInt): CInt = extern
 
   /**
   */
@@ -1069,7 +1058,7 @@ object all:
   export _root_.libredis.structs.sdshdr5
   export _root_.libredis.structs.sdshdr64
   export _root_.libredis.structs.sdshdr8
-  export _root_.libredis.structs.sockaddr
+  export _root_.libredis.structs.sockadr
   export _root_.libredis.functions.freeReplyObject
   export _root_.libredis.functions.hi_calloc
   export _root_.libredis.functions.hi_free
@@ -1095,7 +1084,6 @@ object all:
   export _root_.libredis.functions.redisConnectWithOptions
   export _root_.libredis.functions.redisConnectWithTimeout
   export _root_.libredis.functions.redisEnableKeepAlive
-  export _root_.libredis.functions.redisEnableKeepAliveWithInterval
   export _root_.libredis.functions.redisFormatCommand
   export _root_.libredis.functions.redisFormatCommandArgv
   export _root_.libredis.functions.redisFormatSdsCommandArgv
@@ -1112,7 +1100,6 @@ object all:
   export _root_.libredis.functions.redisReaderGetReply
   export _root_.libredis.functions.redisReconnect
   export _root_.libredis.functions.redisSetPushCallback
-  export _root_.libredis.functions.redisSetTcpUserTimeout
   export _root_.libredis.functions.redisSetTimeout
   export _root_.libredis.functions.redisvAppendCommand
   export _root_.libredis.functions.redisvCommand

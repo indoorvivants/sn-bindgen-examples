@@ -159,9 +159,7 @@ object enumerations:
     val CURLINFO_REFERER = define(1048636)
     val CURLINFO_CAINFO = define(1048637)
     val CURLINFO_CAPATH = define(1048638)
-    val CURLINFO_XFER_ID = define(6291519)
-    val CURLINFO_CONN_ID = define(6291520)
-    val CURLINFO_LASTONE = define(64)
+    val CURLINFO_LASTONE = define(62)
     inline def getName(inline value: CURLINFO): Option[String] =
       inline value match
         case CURLINFO_NONE => Some("CURLINFO_NONE")
@@ -234,8 +232,6 @@ object enumerations:
         case CURLINFO_REFERER => Some("CURLINFO_REFERER")
         case CURLINFO_CAINFO => Some("CURLINFO_CAINFO")
         case CURLINFO_CAPATH => Some("CURLINFO_CAPATH")
-        case CURLINFO_XFER_ID => Some("CURLINFO_XFER_ID")
-        case CURLINFO_CONN_ID => Some("CURLINFO_CONN_ID")
         case CURLINFO_LASTONE => Some("CURLINFO_LASTONE")
         case _ => None
     extension (a: CURLINFO)
@@ -1138,7 +1134,7 @@ object enumerations:
     val CURLOPT_ALTSVC = define(10287)
     val CURLOPT_MAXAGE_CONN = define(288)
     val CURLOPT_SASL_AUTHZID = define(10289)
-    val CURLOPT_MAIL_RCPT_ALLOWFAILS = define(290)
+    val CURLOPT_MAIL_RCPT_ALLLOWFAILS = define(290)
     val CURLOPT_SSLCERT_BLOB = define(40291)
     val CURLOPT_SSLKEY_BLOB = define(40292)
     val CURLOPT_PROXY_SSLCERT_BLOB = define(40293)
@@ -1171,8 +1167,7 @@ object enumerations:
     val CURLOPT_WS_OPTIONS = define(320)
     val CURLOPT_CA_CACHE_TIMEOUT = define(321)
     val CURLOPT_QUICK_EXIT = define(322)
-    val CURLOPT_HAPROXY_CLIENT_IP = define(10323)
-    val CURLOPT_LASTENTRY = define(10324)
+    val CURLOPT_LASTENTRY = define(323)
     inline def getName(inline value: CURLoption): Option[String] =
       inline value match
         case CURLOPT_WRITEDATA => Some("CURLOPT_WRITEDATA")
@@ -1446,7 +1441,7 @@ object enumerations:
         case CURLOPT_ALTSVC => Some("CURLOPT_ALTSVC")
         case CURLOPT_MAXAGE_CONN => Some("CURLOPT_MAXAGE_CONN")
         case CURLOPT_SASL_AUTHZID => Some("CURLOPT_SASL_AUTHZID")
-        case CURLOPT_MAIL_RCPT_ALLOWFAILS => Some("CURLOPT_MAIL_RCPT_ALLOWFAILS")
+        case CURLOPT_MAIL_RCPT_ALLLOWFAILS => Some("CURLOPT_MAIL_RCPT_ALLLOWFAILS")
         case CURLOPT_SSLCERT_BLOB => Some("CURLOPT_SSLCERT_BLOB")
         case CURLOPT_SSLKEY_BLOB => Some("CURLOPT_SSLKEY_BLOB")
         case CURLOPT_PROXY_SSLCERT_BLOB => Some("CURLOPT_PROXY_SSLCERT_BLOB")
@@ -1479,7 +1474,6 @@ object enumerations:
         case CURLOPT_WS_OPTIONS => Some("CURLOPT_WS_OPTIONS")
         case CURLOPT_CA_CACHE_TIMEOUT => Some("CURLOPT_CA_CACHE_TIMEOUT")
         case CURLOPT_QUICK_EXIT => Some("CURLOPT_QUICK_EXIT")
-        case CURLOPT_HAPROXY_CLIENT_IP => Some("CURLOPT_HAPROXY_CLIENT_IP")
         case CURLOPT_LASTENTRY => Some("CURLOPT_LASTENTRY")
         case _ => None
     extension (a: CURLoption)
@@ -1974,7 +1968,6 @@ object enumerations:
     val CURLPROXY_HTTP = define(0)
     val CURLPROXY_HTTP_1_0 = define(1)
     val CURLPROXY_HTTPS = define(2)
-    val CURLPROXY_HTTPS2 = define(3)
     val CURLPROXY_SOCKS4 = define(4)
     val CURLPROXY_SOCKS5 = define(5)
     val CURLPROXY_SOCKS4A = define(6)
@@ -1984,7 +1977,6 @@ object enumerations:
         case CURLPROXY_HTTP => Some("CURLPROXY_HTTP")
         case CURLPROXY_HTTP_1_0 => Some("CURLPROXY_HTTP_1_0")
         case CURLPROXY_HTTPS => Some("CURLPROXY_HTTPS")
-        case CURLPROXY_HTTPS2 => Some("CURLPROXY_HTTPS2")
         case CURLPROXY_SOCKS4 => Some("CURLPROXY_SOCKS4")
         case CURLPROXY_SOCKS5 => Some("CURLPROXY_SOCKS5")
         case CURLPROXY_SOCKS4A => Some("CURLPROXY_SOCKS4A")
@@ -2198,7 +2190,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[size_t, size_t, Ptr[Byte]]): curl_calloc_callback = o
     extension (v: curl_calloc_callback)
       inline def value: CFuncPtr2[size_t, size_t, Ptr[Byte]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2209,7 +2201,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], CInt, CLongInt]): curl_chunk_bgn_callback = o
     extension (v: curl_chunk_bgn_callback)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], CInt, CLongInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2220,7 +2212,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], CLongInt]): curl_chunk_end_callback = o
     extension (v: curl_chunk_end_callback)
       inline def value: CFuncPtr1[Ptr[Byte], CLongInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2231,7 +2223,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], curl_socket_t, CInt]): curl_closesocket_callback = o
     extension (v: curl_closesocket_callback)
       inline def value: CFuncPtr2[Ptr[Byte], curl_socket_t, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2242,7 +2234,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[CString, size_t, CURLcode]): curl_conv_callback = o
     extension (v: curl_conv_callback)
       inline def value: CFuncPtr2[CString, size_t, CURLcode] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2253,7 +2245,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr5[Ptr[CURL], curl_infotype, CString, size_t, Ptr[Byte], CInt]): curl_debug_callback = o
     extension (v: curl_debug_callback)
       inline def value: CFuncPtr5[Ptr[CURL], curl_infotype, CString, size_t, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2264,7 +2256,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CString, CString, CInt]): curl_fnmatch_callback = o
     extension (v: curl_fnmatch_callback)
       inline def value: CFuncPtr3[Ptr[Byte], CString, CString, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2275,7 +2267,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CString, size_t, size_t]): curl_formget_callback = o
     extension (v: curl_formget_callback)
       inline def value: CFuncPtr3[Ptr[Byte], CString, size_t, size_t] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2286,7 +2278,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): curl_free_callback = o
     extension (v: curl_free_callback)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2297,7 +2289,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[CURL], Ptr[curl_hstsentry], Ptr[Byte], CURLSTScode]): curl_hstsread_callback = o
     extension (v: curl_hstsread_callback)
       inline def value: CFuncPtr3[Ptr[CURL], Ptr[curl_hstsentry], Ptr[Byte], CURLSTScode] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2308,7 +2300,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[CURL], Ptr[curl_hstsentry], Ptr[curl_index], Ptr[Byte], CURLSTScode]): curl_hstswrite_callback = o
     extension (v: curl_hstswrite_callback)
       inline def value: CFuncPtr4[Ptr[CURL], Ptr[curl_hstsentry], Ptr[curl_index], Ptr[Byte], CURLSTScode] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2319,7 +2311,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[CURL], CInt, Ptr[Byte], curlioerr]): curl_ioctl_callback = o
     extension (v: curl_ioctl_callback)
       inline def value: CFuncPtr3[Ptr[CURL], CInt, Ptr[Byte], curlioerr] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2330,7 +2322,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[CURL], curl_lock_data, curl_lock_access, Ptr[Byte], Unit]): curl_lock_function = o
     extension (v: curl_lock_function)
       inline def value: CFuncPtr4[Ptr[CURL], curl_lock_data, curl_lock_access, Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2341,7 +2333,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[size_t, Ptr[Byte]]): curl_malloc_callback = o
     extension (v: curl_malloc_callback)
       inline def value: CFuncPtr1[size_t, Ptr[Byte]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2352,7 +2344,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[CURLM], CLongInt, Ptr[Byte], CInt]): curl_multi_timer_callback = o
     extension (v: curl_multi_timer_callback)
       inline def value: CFuncPtr3[Ptr[CURLM], CLongInt, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2372,7 +2364,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], curlsocktype, Ptr[curl_sockaddr], curl_socket_t]): curl_opensocket_callback = o
     extension (v: curl_opensocket_callback)
       inline def value: CFuncPtr3[Ptr[Byte], curlsocktype, Ptr[curl_sockaddr], curl_socket_t] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2383,7 +2375,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], CString, CString, CInt, CInt, CInt]): curl_prereq_callback = o
     extension (v: curl_prereq_callback)
       inline def value: CFuncPtr5[Ptr[Byte], CString, CString, CInt, CInt, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2394,7 +2386,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], Double, Double, Double, Double, CInt]): curl_progress_callback = o
     extension (v: curl_progress_callback)
       inline def value: CFuncPtr5[Ptr[Byte], Double, Double, Double, Double, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2405,7 +2397,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr5[Ptr[CURL], Ptr[CURL], size_t, Ptr[curl_pushheaders], Ptr[Byte], CInt]): curl_push_callback = o
     extension (v: curl_push_callback)
       inline def value: CFuncPtr5[Ptr[CURL], Ptr[CURL], size_t, Ptr[curl_pushheaders], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2416,7 +2408,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t]): curl_read_callback = o
     extension (v: curl_read_callback)
       inline def value: CFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2427,7 +2419,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]]): curl_realloc_callback = o
     extension (v: curl_realloc_callback)
       inline def value: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2438,7 +2430,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt]): curl_resolver_start_callback = o
     extension (v: curl_resolver_start_callback)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2449,7 +2441,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], curl_off_t, CInt, CInt]): curl_seek_callback = o
     extension (v: curl_seek_callback)
       inline def value: CFuncPtr3[Ptr[Byte], curl_off_t, CInt, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2460,7 +2452,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr5[Ptr[CURL], curl_socket_t, CInt, Ptr[Byte], Ptr[Byte], CInt]): curl_socket_callback = o
     extension (v: curl_socket_callback)
       inline def value: CFuncPtr5[Ptr[CURL], curl_socket_t, CInt, Ptr[Byte], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2489,7 +2481,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], curl_socket_t, curlsocktype, CInt]): curl_sockopt_callback = o
     extension (v: curl_sockopt_callback)
       inline def value: CFuncPtr3[Ptr[Byte], curl_socket_t, curlsocktype, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2500,7 +2492,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], CInt, CString, size_t, CInt]): curl_sshhostkeycallback = o
     extension (v: curl_sshhostkeycallback)
       inline def value: CFuncPtr4[Ptr[Byte], CInt, CString, size_t, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2511,7 +2503,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr5[Ptr[CURL], Ptr[curl_khkey], Ptr[curl_khkey], curl_khmatch, Ptr[Byte], CInt]): curl_sshkeycallback = o
     extension (v: curl_sshkeycallback)
       inline def value: CFuncPtr5[Ptr[CURL], Ptr[curl_khkey], Ptr[curl_khkey], curl_khmatch, Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2522,7 +2514,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[CURL], Ptr[Byte], Ptr[Byte], CURLcode]): curl_ssl_ctx_callback = o
     extension (v: curl_ssl_ctx_callback)
       inline def value: CFuncPtr3[Ptr[CURL], Ptr[Byte], Ptr[Byte], CURLcode] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2533,7 +2525,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr1[CString, CString]): curl_strdup_callback = o
     extension (v: curl_strdup_callback)
       inline def value: CFuncPtr1[CString, CString] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2544,7 +2536,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[curl_slist]], Ptr[Byte], CInt]): curl_trailer_callback = o
     extension (v: curl_trailer_callback)
       inline def value: CFuncPtr2[Ptr[Ptr[curl_slist]], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2555,7 +2547,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr3[Ptr[CURL], curl_lock_data, Ptr[Byte], Unit]): curl_unlock_function = o
     extension (v: curl_unlock_function)
       inline def value: CFuncPtr3[Ptr[CURL], curl_lock_data, Ptr[Byte], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2566,7 +2558,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t]): curl_write_callback = o
     extension (v: curl_write_callback)
       inline def value: CFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
   */
@@ -2577,7 +2569,7 @@ object aliases:
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], curl_off_t, curl_off_t, curl_off_t, curl_off_t, CInt]): curl_xferinfo_callback = o
     extension (v: curl_xferinfo_callback)
       inline def value: CFuncPtr5[Ptr[Byte], curl_off_t, curl_off_t, curl_off_t, curl_off_t, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type fd_set = posix.sys.select.fd_set
   object fd_set: 
@@ -3334,10 +3326,6 @@ private[curl] object extern_functions:
 
   /**
   */
-  def curl_global_trace(config : CString): CURLcode = extern
-
-  /**
-  */
   def curl_mime_addpart(mime : Ptr[curl_mime]): Ptr[curl_mimepart] = extern
 
   /**
@@ -3399,10 +3387,6 @@ private[curl] object extern_functions:
   /**
   */
   def curl_multi_fdset(multi_handle : Ptr[CURLM], read_fd_set : Ptr[fd_set], write_fd_set : Ptr[fd_set], exc_fd_set : Ptr[fd_set], max_fd : Ptr[CInt]): CURLMcode = extern
-
-  /**
-  */
-  def curl_multi_get_handles(multi_handle : Ptr[CURLM]): Ptr[Ptr[CURL]] = extern
 
   /**
   */
@@ -3542,7 +3526,7 @@ private[curl] object extern_functions:
 
   /**
   */
-  def curl_ws_send(curl : Ptr[CURL], buffer : Ptr[Byte], buflen : size_t, sent : Ptr[size_t], fragsize : curl_off_t, flags : CUnsignedInt): CURLcode = extern
+  def curl_ws_send(curl : Ptr[CURL], buffer : Ptr[Byte], buflen : size_t, sent : Ptr[size_t], framesize : curl_off_t, sendflags : CUnsignedInt): CURLcode = extern
 
 
 object functions:
@@ -3738,7 +3722,6 @@ object all:
   export _root_.curl.functions.curl_global_init
   export _root_.curl.functions.curl_global_init_mem
   export _root_.curl.functions.curl_global_sslset
-  export _root_.curl.functions.curl_global_trace
   export _root_.curl.functions.curl_mime_addpart
   export _root_.curl.functions.curl_mime_data
   export _root_.curl.functions.curl_mime_data_cb
@@ -3755,7 +3738,6 @@ object all:
   export _root_.curl.functions.curl_multi_assign
   export _root_.curl.functions.curl_multi_cleanup
   export _root_.curl.functions.curl_multi_fdset
-  export _root_.curl.functions.curl_multi_get_handles
   export _root_.curl.functions.curl_multi_info_read
   export _root_.curl.functions.curl_multi_init
   export _root_.curl.functions.curl_multi_perform
