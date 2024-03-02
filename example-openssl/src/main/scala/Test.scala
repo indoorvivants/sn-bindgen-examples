@@ -42,7 +42,7 @@ object OpenSSL:
       SHA256_Update(
         sha256_ctx,
         str,
-        string.strlen(str).asInstanceOf[size_t]
+        string.strlen(str)
       ) == 1,
       "failed to update sha context"
     )
@@ -81,7 +81,7 @@ object OpenSSL:
       EVP_DigestUpdate(
         mdctx,
         message,
-        string.strlen(message).asInstanceOf[size_t]
+        string.strlen(message)
       ) == 1
     )
     assert(EVP_DigestSignFinal(mdctx, null, md_len) == 1)
@@ -91,7 +91,7 @@ object OpenSSL:
 
     val ar = Array.newBuilder[Byte]
 
-    for i <- 0 until (!md_len).asInstanceOf[ULong].toInt do
+    for i <- 0 until (!md_len).toInt do
       ar.addOne(md_value(i).toByte)
 
     EVP_MD_CTX_free(mdctx)
