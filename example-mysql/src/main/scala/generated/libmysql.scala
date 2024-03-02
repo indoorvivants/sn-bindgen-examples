@@ -48,8 +48,6 @@ object enumerations:
       inline def |(b: Item_result): Item_result = a | b
       inline def is(b: Item_result): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type Item_udftype = CUnsignedInt
   object Item_udftype extends CEnumU[Item_udftype]:
     given _tag: Tag[Item_udftype] = Tag.UInt
@@ -109,8 +107,6 @@ object enumerations:
       inline def |(b: SERVER_STATUS_flags_enum): SERVER_STATUS_flags_enum = a | b
       inline def is(b: SERVER_STATUS_flags_enum): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type enum_compression_algorithm = CUnsignedInt
   object enum_compression_algorithm extends CEnumU[enum_compression_algorithm]:
     given _tag: Tag[enum_compression_algorithm] = Tag.UInt
@@ -131,8 +127,6 @@ object enumerations:
       inline def |(b: enum_compression_algorithm): enum_compression_algorithm = a | b
       inline def is(b: enum_compression_algorithm): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type enum_cursor_type = CUnsignedInt
   object enum_cursor_type extends CEnumU[enum_cursor_type]:
     given _tag: Tag[enum_cursor_type] = Tag.UInt
@@ -257,8 +251,6 @@ object enumerations:
       inline def |(b: enum_mysql_set_option): enum_mysql_set_option = a | b
       inline def is(b: enum_mysql_set_option): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type enum_mysql_stmt_state = CUnsignedInt
   object enum_mysql_stmt_state extends CEnumU[enum_mysql_stmt_state]:
     given _tag: Tag[enum_mysql_stmt_state] = Tag.UInt
@@ -437,8 +429,6 @@ object enumerations:
       inline def |(b: enum_session_state_type): enum_session_state_type = a | b
       inline def is(b: enum_session_state_type): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type enum_stmt_attr_type = CUnsignedInt
   object enum_stmt_attr_type extends CEnumU[enum_stmt_attr_type]:
     given _tag: Tag[enum_stmt_attr_type] = Tag.UInt
@@ -488,8 +478,6 @@ object enumerations:
       inline def |(b: mysql_enum_shutdown_level): mysql_enum_shutdown_level = a | b
       inline def is(b: mysql_enum_shutdown_level): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type mysql_option = CUnsignedInt
   object mysql_option extends CEnumU[mysql_option]:
     given _tag: Tag[mysql_option] = Tag.UInt
@@ -594,8 +582,6 @@ object enumerations:
       inline def |(b: mysql_option): mysql_option = a | b
       inline def is(b: mysql_option): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type mysql_protocol_type = CUnsignedInt
   object mysql_protocol_type extends CEnumU[mysql_protocol_type]:
     given _tag: Tag[mysql_protocol_type] = Tag.UInt
@@ -618,8 +604,6 @@ object enumerations:
       inline def |(b: mysql_protocol_type): mysql_protocol_type = a | b
       inline def is(b: mysql_protocol_type): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type mysql_ssl_fips_mode = CUnsignedInt
   object mysql_ssl_fips_mode extends CEnumU[mysql_ssl_fips_mode]:
     given _tag: Tag[mysql_ssl_fips_mode] = Tag.UInt
@@ -638,8 +622,6 @@ object enumerations:
       inline def |(b: mysql_ssl_fips_mode): mysql_ssl_fips_mode = a | b
       inline def is(b: mysql_ssl_fips_mode): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type mysql_ssl_mode = CUnsignedInt
   object mysql_ssl_mode extends CEnumU[mysql_ssl_mode]:
     given _tag: Tag[mysql_ssl_mode] = Tag.UInt
@@ -662,8 +644,6 @@ object enumerations:
       inline def |(b: mysql_ssl_mode): mysql_ssl_mode = a | b
       inline def is(b: mysql_ssl_mode): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type mysql_status = CUnsignedInt
   object mysql_status extends CEnumU[mysql_status]:
     given _tag: Tag[mysql_status] = Tag.UInt
@@ -684,8 +664,6 @@ object enumerations:
       inline def |(b: mysql_status): mysql_status = a | b
       inline def is(b: mysql_status): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type net_async_status = CUnsignedInt
   object net_async_status extends CEnumU[net_async_status]:
     given _tag: Tag[net_async_status] = Tag.UInt
@@ -711,8 +689,6 @@ object aliases:
   import _root_.libmysql.predef.*
   import _root_.libmysql.aliases.*
   import _root_.libmysql.structs.*
-  /**
-  */
   opaque type MYSQL_FIELD_OFFSET = CUnsignedInt
   object MYSQL_FIELD_OFFSET: 
     given _tag: Tag[MYSQL_FIELD_OFFSET] = Tag.UInt
@@ -720,8 +696,6 @@ object aliases:
     extension (v: MYSQL_FIELD_OFFSET)
       inline def value: CUnsignedInt = v
 
-  /**
-  */
   opaque type MYSQL_ROW = Ptr[CString]
   object MYSQL_ROW: 
     given _tag: Tag[MYSQL_ROW] = Tag.Ptr[CString](Tag.Ptr[CChar](Tag.Byte))
@@ -729,8 +703,6 @@ object aliases:
     extension (v: MYSQL_ROW)
       inline def value: Ptr[CString] = v
 
-  /**
-  */
   opaque type MYSQL_ROW_OFFSET = Ptr[MYSQL_ROWS]
   object MYSQL_ROW_OFFSET: 
     given _tag: Tag[MYSQL_ROW_OFFSET] = Tag.Ptr[MYSQL_ROWS](MYSQL_ROWS._tag)
@@ -738,107 +710,87 @@ object aliases:
     extension (v: MYSQL_ROW_OFFSET)
       inline def value: Ptr[MYSQL_ROWS] = v
 
-  /**
-  */
   opaque type Udf_func_add = CFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Unit]
   object Udf_func_add: 
     given _tag: Tag[Udf_func_add] = Tag.materializeCFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): Udf_func_add = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): Udf_func_add = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Unit]): Udf_func_add = o
     extension (v: Udf_func_add)
       inline def value: CFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type Udf_func_any = CFuncPtr0[Unit]
   object Udf_func_any: 
     given _tag: Tag[Udf_func_any] = Tag.materializeCFuncPtr0[Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): Udf_func_any = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): Udf_func_any = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr0[Unit]): Udf_func_any = o
     extension (v: Udf_func_any)
       inline def value: CFuncPtr0[Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type Udf_func_clear = CFuncPtr3[Ptr[UDF_INIT], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Unit]
   object Udf_func_clear: 
     given _tag: Tag[Udf_func_clear] = Tag.materializeCFuncPtr3[Ptr[UDF_INIT], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): Udf_func_clear = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): Udf_func_clear = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[UDF_INIT], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Unit]): Udf_func_clear = o
     extension (v: Udf_func_clear)
       inline def value: CFuncPtr3[Ptr[UDF_INIT], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type Udf_func_deinit = CFuncPtr1[Ptr[UDF_INIT], Unit]
   object Udf_func_deinit: 
     given _tag: Tag[Udf_func_deinit] = Tag.materializeCFuncPtr1[Ptr[UDF_INIT], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): Udf_func_deinit = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): Udf_func_deinit = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[UDF_INIT], Unit]): Udf_func_deinit = o
     extension (v: Udf_func_deinit)
       inline def value: CFuncPtr1[Ptr[UDF_INIT], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type Udf_func_double = CFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Double]
   object Udf_func_double: 
     given _tag: Tag[Udf_func_double] = Tag.materializeCFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Double]
-    inline def fromPtr(ptr: Ptr[Byte]): Udf_func_double = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): Udf_func_double = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Double]): Udf_func_double = o
     extension (v: Udf_func_double)
       inline def value: CFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], Double] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type Udf_func_init = CFuncPtr3[Ptr[UDF_INIT], Ptr[UDF_ARGS], CString, Boolean]
   object Udf_func_init: 
     given _tag: Tag[Udf_func_init] = Tag.materializeCFuncPtr3[Ptr[UDF_INIT], Ptr[UDF_ARGS], CString, Boolean]
-    inline def fromPtr(ptr: Ptr[Byte]): Udf_func_init = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): Udf_func_init = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[UDF_INIT], Ptr[UDF_ARGS], CString, Boolean]): Udf_func_init = o
     extension (v: Udf_func_init)
       inline def value: CFuncPtr3[Ptr[UDF_INIT], Ptr[UDF_ARGS], CString, Boolean] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type Udf_func_longlong = CFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], CLongLong]
   object Udf_func_longlong: 
     given _tag: Tag[Udf_func_longlong] = Tag.materializeCFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], CLongLong]
-    inline def fromPtr(ptr: Ptr[Byte]): Udf_func_longlong = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): Udf_func_longlong = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], CLongLong]): Udf_func_longlong = o
     extension (v: Udf_func_longlong)
       inline def value: CFuncPtr4[Ptr[UDF_INIT], Ptr[UDF_ARGS], Ptr[CUnsignedChar], Ptr[CUnsignedChar], CLongLong] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type Udf_func_string = CFuncPtr6[Ptr[UDF_INIT], Ptr[UDF_ARGS], CString, Ptr[CUnsignedLongInt], Ptr[CUnsignedChar], Ptr[CUnsignedChar], CString]
   object Udf_func_string: 
     given _tag: Tag[Udf_func_string] = Tag.materializeCFuncPtr6[Ptr[UDF_INIT], Ptr[UDF_ARGS], CString, Ptr[CUnsignedLongInt], Ptr[CUnsignedChar], Ptr[CUnsignedChar], CString]
-    inline def fromPtr(ptr: Ptr[Byte]): Udf_func_string = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): Udf_func_string = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr6[Ptr[UDF_INIT], Ptr[UDF_ARGS], CString, Ptr[CUnsignedLongInt], Ptr[CUnsignedChar], Ptr[CUnsignedChar], CString]): Udf_func_string = o
     extension (v: Udf_func_string)
       inline def value: CFuncPtr6[Ptr[UDF_INIT], Ptr[UDF_ARGS], CString, Ptr[CUnsignedLongInt], Ptr[CUnsignedChar], Ptr[CUnsignedChar], CString] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type list_walk_action = CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]
   object list_walk_action: 
     given _tag: Tag[list_walk_action] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): list_walk_action = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): list_walk_action = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]): list_walk_action = o
     extension (v: list_walk_action)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type my_socket = CInt
   object my_socket: 
     given _tag: Tag[my_socket] = Tag.Int
@@ -846,8 +798,6 @@ object aliases:
     extension (v: my_socket)
       inline def value: CInt = v
 
-  /**
-  */
   type my_ulonglong = uint64_t
   object my_ulonglong: 
     given _tag: Tag[my_ulonglong] = uint64_t._tag
@@ -881,20 +831,14 @@ object structs:
   import _root_.libmysql.predef.*
   import _root_.libmysql.aliases.*
   import _root_.libmysql.structs.*
-  /**
-  */
   opaque type CHARSET_INFO = CStruct0
   object CHARSET_INFO:
     given _tag: Tag[CHARSET_INFO] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type Init_commands_array = CStruct0
   object Init_commands_array:
     given _tag: Tag[Init_commands_array] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type LIST = CStruct3[Ptr[Byte], Ptr[Byte], Ptr[Byte]]
   object LIST:
     given _tag: Tag[LIST] = Tag.materializeCStruct3Tag[Ptr[Byte], Ptr[Byte], Ptr[Byte]]
@@ -913,18 +857,12 @@ object structs:
       def data : Ptr[Byte] = struct._3
       def data_=(value: Ptr[Byte]): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type MEM_ROOT = CStruct0
   object MEM_ROOT:
     given _tag: Tag[MEM_ROOT] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type MYSQL = CArray[CChar, Nat.Digit4[Nat._1, Nat._1, Nat._4, Nat._4]]
   object MYSQL:
-    /**
-    */
     opaque type Struct0 = CStruct0
     object Struct0:
       given _tag: Tag[Struct0] = Tag.materializeCStruct0Tag
@@ -1046,8 +984,6 @@ object structs:
       def extension: Ptr[Byte] = !struct.at(1136).asInstanceOf[Ptr[Ptr[Byte]]]
       def extension_=(value: Ptr[Byte]): Unit = !struct.at(1136).asInstanceOf[Ptr[Ptr[Byte]]] = value
 
-  /**
-  */
   opaque type MYSQL_BIND = CStruct19[Ptr[CUnsignedLongInt], Ptr[Boolean], Ptr[Byte], Ptr[Boolean], Ptr[CUnsignedChar], CFuncPtr2[Ptr[NET], Ptr[Byte], Unit], CFuncPtr3[Ptr[Byte], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit], CFuncPtr3[Ptr[Byte], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit], CUnsignedLongInt, CUnsignedLongInt, CUnsignedLongInt, CUnsignedInt, CUnsignedInt, enum_field_types, Boolean, Boolean, Boolean, Boolean, Ptr[Byte]]
   object MYSQL_BIND:
     given _tag: Tag[MYSQL_BIND] = Tag.materializeCStruct19Tag[Ptr[CUnsignedLongInt], Ptr[Boolean], Ptr[Byte], Ptr[Boolean], Ptr[CUnsignedChar], CFuncPtr2[Ptr[NET], Ptr[Byte], Unit], CFuncPtr3[Ptr[Byte], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit], CFuncPtr3[Ptr[Byte], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit], CUnsignedLongInt, CUnsignedLongInt, CUnsignedLongInt, CUnsignedInt, CUnsignedInt, enum_field_types, Boolean, Boolean, Boolean, Boolean, Ptr[Byte]]
@@ -1114,8 +1050,6 @@ object structs:
       def extension : Ptr[Byte] = struct._19
       def extension_=(value: Ptr[Byte]): Unit = !struct.at19 = value
 
-  /**
-  */
   opaque type MYSQL_DATA = CStruct4[Ptr[Byte], Ptr[MEM_ROOT], uint64_t, CUnsignedInt]
   object MYSQL_DATA:
     given _tag: Tag[MYSQL_DATA] = Tag.materializeCStruct4Tag[Ptr[Byte], Ptr[MEM_ROOT], uint64_t, CUnsignedInt]
@@ -1137,8 +1071,6 @@ object structs:
       def fields : CUnsignedInt = struct._4
       def fields_=(value: CUnsignedInt): Unit = !struct.at4 = value
 
-  /**
-  */
   opaque type MYSQL_FIELD = CStruct21[CString, CString, CString, CString, CString, CString, CString, CUnsignedLongInt, CUnsignedLongInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, enum_field_types, Ptr[Byte]]
   object MYSQL_FIELD:
     given _tag: Tag[MYSQL_FIELD] = Tag.materializeCStruct21Tag[CString, CString, CString, CString, CString, CString, CString, CUnsignedLongInt, CUnsignedLongInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, enum_field_types, Ptr[Byte]]
@@ -1211,8 +1143,6 @@ object structs:
       def extension : Ptr[Byte] = struct._21
       def extension_=(value: Ptr[Byte]): Unit = !struct.at21 = value
 
-  /**
-  */
   opaque type MYSQL_METHODS = CStruct0
   object MYSQL_METHODS:
     given _tag: Tag[MYSQL_METHODS] = Tag.materializeCStruct0Tag
@@ -1244,12 +1174,8 @@ object structs:
       def write_packet_nonblocking : CFuncPtr4[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status] = struct._5.asInstanceOf[CFuncPtr4[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status]]
       def write_packet_nonblocking_=(value: CFuncPtr4[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status]): Unit = !struct.at5 = value.asInstanceOf[CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status]]
 
-  /**
-  */
   opaque type MYSQL_PLUGIN_VIO_INFO = CStruct2[MYSQL_PLUGIN_VIO_INFO.Enum0, CInt]
   object MYSQL_PLUGIN_VIO_INFO:
-    /**
-    */
     opaque type Enum0 = CUnsignedInt
     object Enum0 extends CEnumU[Enum0]:
       given _tag: Tag[Enum0] = Tag.UInt
@@ -1284,8 +1210,6 @@ object structs:
       def socket : CInt = struct._2
       def socket_=(value: CInt): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type MYSQL_RES = CStruct16[uint64_t, Ptr[MYSQL_FIELD], Ptr[Byte], Ptr[Byte], Ptr[CUnsignedLongInt], Ptr[MYSQL], Ptr[MYSQL_METHODS], MYSQL_ROW, MYSQL_ROW, Ptr[MEM_ROOT], CUnsignedInt, CUnsignedInt, Boolean, Boolean, enum_resultset_metadata, Ptr[Byte]]
   object MYSQL_RES:
     given _tag: Tag[MYSQL_RES] = Tag.materializeCStruct16Tag[uint64_t, Ptr[MYSQL_FIELD], Ptr[Byte], Ptr[Byte], Ptr[CUnsignedLongInt], Ptr[MYSQL], Ptr[MYSQL_METHODS], MYSQL_ROW, MYSQL_ROW, Ptr[MEM_ROOT], CUnsignedInt, CUnsignedInt, Boolean, Boolean, enum_resultset_metadata, Ptr[Byte]]
@@ -1343,8 +1267,6 @@ object structs:
       def extension : Ptr[Byte] = struct._16
       def extension_=(value: Ptr[Byte]): Unit = !struct.at16 = value
 
-  /**
-  */
   opaque type MYSQL_ROWS = CStruct3[Ptr[Byte], MYSQL_ROW, CUnsignedLongInt]
   object MYSQL_ROWS:
     given _tag: Tag[MYSQL_ROWS] = Tag.materializeCStruct3Tag[Ptr[Byte], MYSQL_ROW, CUnsignedLongInt]
@@ -1405,8 +1327,6 @@ object structs:
       def buffer : Ptr[CUnsignedChar] = struct._10
       def buffer_=(value: Ptr[CUnsignedChar]): Unit = !struct.at10 = value
 
-  /**
-  */
   opaque type MYSQL_STMT = CArray[CChar, Nat.Digit3[Nat._7, Nat._0, Nat._4]]
   object MYSQL_STMT:
     given _tag: Tag[MYSQL_STMT] = Tag.CArray[CChar, Nat.Digit3[Nat._7, Nat._0, Nat._4]](Tag.Byte, Tag.Digit3[Nat._7, Nat._0, Nat._4](Tag.Nat7, Tag.Nat0, Tag.Nat4))
@@ -1497,14 +1417,10 @@ object structs:
       def extension: Ptr[MYSQL_STMT_EXT] = !struct.at(696).asInstanceOf[Ptr[Ptr[MYSQL_STMT_EXT]]]
       def extension_=(value: Ptr[MYSQL_STMT_EXT]): Unit = !struct.at(696).asInstanceOf[Ptr[Ptr[MYSQL_STMT_EXT]]] = value
 
-  /**
-  */
   opaque type MYSQL_STMT_EXT = CStruct0
   object MYSQL_STMT_EXT:
     given _tag: Tag[MYSQL_STMT_EXT] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type MYSQL_TIME = CStruct10[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedLongInt, Boolean, enum_mysql_timestamp_type, CInt]
   object MYSQL_TIME:
     given _tag: Tag[MYSQL_TIME] = Tag.materializeCStruct10Tag[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedLongInt, Boolean, enum_mysql_timestamp_type, CInt]
@@ -1544,8 +1460,6 @@ object structs:
       def time_zone_displacement : CInt = struct._10
       def time_zone_displacement_=(value: CInt): Unit = !struct.at10 = value
 
-  /**
-  */
   opaque type MY_CHARSET_INFO = CStruct8[CUnsignedInt, CUnsignedInt, CString, CString, CString, CString, CUnsignedInt, CUnsignedInt]
   object MY_CHARSET_INFO:
     given _tag: Tag[MY_CHARSET_INFO] = Tag.materializeCStruct8Tag[CUnsignedInt, CUnsignedInt, CString, CString, CString, CString, CUnsignedInt, CUnsignedInt]
@@ -1579,8 +1493,6 @@ object structs:
       def mbmaxlen : CUnsignedInt = struct._8
       def mbmaxlen_=(value: CUnsignedInt): Unit = !struct.at8 = value
 
-  /**
-  */
   opaque type NET = CArray[CChar, Nat.Digit3[Nat._6, Nat._6, Nat._4]]
   object NET:
     given _tag: Tag[NET] = Tag.CArray[CChar, Nat.Digit3[Nat._6, Nat._6, Nat._4]](Tag.Byte, Tag.Digit3[Nat._6, Nat._6, Nat._4](Tag.Nat6, Tag.Nat6, Tag.Nat4))
@@ -1671,8 +1583,6 @@ object structs:
       def extension: Ptr[Byte] = !struct.at(656).asInstanceOf[Ptr[Ptr[Byte]]]
       def extension_=(value: Ptr[Byte]): Unit = !struct.at(656).asInstanceOf[Ptr[Ptr[Byte]]] = value
 
-  /**
-  */
   opaque type UDF_ARGS = CStruct8[CUnsignedInt, Ptr[Item_result], Ptr[CString], Ptr[CUnsignedLongInt], CString, Ptr[CString], Ptr[CUnsignedLongInt], Ptr[Byte]]
   object UDF_ARGS:
     given _tag: Tag[UDF_ARGS] = Tag.materializeCStruct8Tag[CUnsignedInt, Ptr[Item_result], Ptr[CString], Ptr[CUnsignedLongInt], CString, Ptr[CString], Ptr[CUnsignedLongInt], Ptr[Byte]]
@@ -1736,38 +1646,26 @@ object structs:
       def extension : Ptr[Byte] = struct._6
       def extension_=(value: Ptr[Byte]): Unit = !struct.at6 = value
 
-  /**
-  */
   opaque type Vio = CStruct0
   object Vio:
     given _tag: Tag[Vio] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type ZSTD_CCtx = CStruct0
   object ZSTD_CCtx:
     given _tag: Tag[ZSTD_CCtx] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type ZSTD_CCtx_s = CStruct0
   object ZSTD_CCtx_s:
     given _tag: Tag[ZSTD_CCtx_s] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type ZSTD_DCtx = CStruct0
   object ZSTD_DCtx:
     given _tag: Tag[ZSTD_DCtx] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type ZSTD_DCtx_s = CStruct0
   object ZSTD_DCtx_s:
     given _tag: Tag[ZSTD_DCtx_s] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type auth_plugin_t = CStruct14[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[Ptr[Byte], Ptr[MYSQL], CInt], CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
   object auth_plugin_t:
     given _tag: Tag[auth_plugin_t] = Tag.materializeCStruct14Tag[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[Ptr[Byte], Ptr[MYSQL], CInt], CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
@@ -1819,8 +1717,6 @@ object structs:
       def authenticate_user_nonblocking : CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status] = struct._14.asInstanceOf[CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]]
       def authenticate_user_nonblocking_=(value: CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]): Unit = !struct.at14 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
 
-  /**
-  */
   opaque type character_set = CStruct8[CUnsignedInt, CUnsignedInt, CString, CString, CString, CString, CUnsignedInt, CUnsignedInt]
   object character_set:
     given _tag: Tag[character_set] = Tag.materializeCStruct8Tag[CUnsignedInt, CUnsignedInt, CString, CString, CString, CString, CUnsignedInt, CUnsignedInt]
@@ -1859,8 +1755,6 @@ object structs:
   */
   opaque type mysql_compress_context = CStruct2[enum_compression_algorithm, mysql_compress_context.Union0]
   object mysql_compress_context:
-    /**
-    */
     opaque type Union0 = CArray[Byte, Nat.Digit2[Nat._2, Nat._4]]
     object Union0:
       given _tag: Tag[Union0] = Tag.CArray[CChar, Nat.Digit2[Nat._2, Nat._4]](Tag.Byte, Tag.Digit2[Nat._2, Nat._4](Tag.Nat2, Tag.Nat4))
@@ -1933,8 +1827,6 @@ object structs:
       def compression_level : CUnsignedInt = struct._3
       def compression_level_=(value: CUnsignedInt): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type rand_struct = CStruct4[CUnsignedLongInt, CUnsignedLongInt, CUnsignedLongInt, Double]
   object rand_struct:
     given _tag: Tag[rand_struct] = Tag.materializeCStruct4Tag[CUnsignedLongInt, CUnsignedLongInt, CUnsignedLongInt, Double]
@@ -1956,8 +1848,6 @@ object structs:
       def max_value_dbl : Double = struct._4
       def max_value_dbl_=(value: Double): Unit = !struct.at4 = value
 
-  /**
-  */
   opaque type st_mysql_client_plugin = CStruct12[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt]]
   object st_mysql_client_plugin:
     given _tag: Tag[st_mysql_client_plugin] = Tag.materializeCStruct12Tag[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt]]
@@ -2003,8 +1893,6 @@ object structs:
       def get_options : CFuncPtr2[CString, Ptr[Byte], CInt] = struct._12
       def get_options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = !struct.at12 = value
 
-  /**
-  */
   opaque type st_mysql_client_plugin_AUTHENTICATION = CStruct14[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[Ptr[Byte], Ptr[MYSQL], CInt], CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
   object st_mysql_client_plugin_AUTHENTICATION:
     given _tag: Tag[st_mysql_client_plugin_AUTHENTICATION] = Tag.materializeCStruct14Tag[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[Ptr[Byte], Ptr[MYSQL], CInt], CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
@@ -2056,12 +1944,8 @@ object structs:
       def authenticate_user_nonblocking : CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status] = struct._14.asInstanceOf[CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]]
       def authenticate_user_nonblocking_=(value: CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]): Unit = !struct.at14 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
 
-  /**
-  */
   opaque type st_mysql_options = CArray[CChar, Nat.Digit3[Nat._2, Nat._4, Nat._0]]
   object st_mysql_options:
-    /**
-    */
     opaque type Struct0 = CStruct0
     object Struct0:
       given _tag: Tag[Struct0] = Tag.materializeCStruct0Tag
@@ -2171,8 +2055,6 @@ object structs:
       def extension: Ptr[st_mysql_options_extention] = !struct.at(232).asInstanceOf[Ptr[Ptr[st_mysql_options_extention]]]
       def extension_=(value: Ptr[st_mysql_options_extention]): Unit = !struct.at(232).asInstanceOf[Ptr[Ptr[st_mysql_options_extention]]] = value
 
-  /**
-  */
   opaque type st_mysql_options_extention = CStruct0
   object st_mysql_options_extention:
     given _tag: Tag[st_mysql_options_extention] = Tag.materializeCStruct0Tag
@@ -2184,44 +2066,24 @@ private[libmysql] object extern_functions:
   import _root_.libmysql.predef.*
   import _root_.libmysql.aliases.*
   import _root_.libmysql.structs.*
-  /**
-  */
   def ER_CLIENT(client_errno : CInt): CString = extern
 
-  /**
-  */
   def check_scramble(reply : Ptr[CUnsignedChar], message : CString, hash_stage2 : Ptr[CUnsignedChar]): Boolean = extern
 
-  /**
-  */
   def check_scramble_323(reply : Ptr[CUnsignedChar], message : CString, salt : Ptr[CUnsignedLongInt]): Boolean = extern
 
-  /**
-  */
   def create_random_string(to : CString, length : CUnsignedInt, rand_st : Ptr[rand_struct]): Unit = extern
 
-  /**
-  */
   def finish_client_errs(): Unit = extern
 
-  /**
-  */
   def generate_sha256_scramble(dst : Ptr[CUnsignedChar], dst_size : size_t, src : CString, src_size : size_t, rnd : CString, rnd_size : size_t): Boolean = extern
 
-  /**
-  */
   def get_salt_from_password(res : Ptr[CUnsignedChar], password : CString): Unit = extern
 
-  /**
-  */
   def get_salt_from_password_323(res : Ptr[CUnsignedLongInt], password : CString): Unit = extern
 
-  /**
-  */
   def get_tty_password(opt_message : CString): CString = extern
 
-  /**
-  */
   def hash_password(to : Ptr[CUnsignedLongInt], password : CString, password_len : CUnsignedInt): Unit = extern
 
   /**
@@ -2229,124 +2091,64 @@ private[libmysql] object extern_functions:
   */
   def init_client_errs(): Unit = extern
 
-  /**
-  */
   def list_add(root : Ptr[LIST], element : Ptr[LIST]): Ptr[LIST] = extern
 
-  /**
-  */
   def list_cons(data : Ptr[Byte], root : Ptr[LIST]): Ptr[LIST] = extern
 
-  /**
-  */
   def list_delete(root : Ptr[LIST], element : Ptr[LIST]): Ptr[LIST] = extern
 
-  /**
-  */
   def list_free(root : Ptr[LIST], free_data : CUnsignedInt): Unit = extern
 
-  /**
-  */
   def list_length(_0 : Ptr[LIST]): CUnsignedInt = extern
 
-  /**
-  */
   def list_reverse(root : Ptr[LIST]): Ptr[LIST] = extern
 
-  /**
-  */
   def list_walk(_0 : Ptr[LIST], action : list_walk_action, argument : Ptr[CUnsignedChar]): CInt = extern
 
-  /**
-  */
   def make_password_from_salt(to : CString, hash_stage2 : Ptr[CUnsignedChar]): Unit = extern
 
-  /**
-  */
   def make_password_from_salt_323(to : CString, salt : Ptr[CUnsignedLongInt]): Unit = extern
 
-  /**
-  */
   def make_scrambled_password(to : CString, password : CString): Unit = extern
 
-  /**
-  */
   def make_scrambled_password_323(to : CString, password : CString): Unit = extern
 
-  /**
-  */
   def my_net_init(net : Ptr[NET], vio : Ptr[Vio]): Boolean = extern
 
-  /**
-  */
   def my_net_local_init(net : Ptr[NET]): Unit = extern
 
-  /**
-  */
   def my_net_read(net : Ptr[NET]): CUnsignedLongInt = extern
 
-  /**
-  */
   def my_net_set_read_timeout(net : Ptr[NET], timeout : CUnsignedInt): Unit = extern
 
-  /**
-  */
   def my_net_set_retry_count(net : Ptr[NET], retry_count : CUnsignedInt): Unit = extern
 
-  /**
-  */
   def my_net_set_write_timeout(net : Ptr[NET], timeout : CUnsignedInt): Unit = extern
 
-  /**
-  */
   def my_net_write(net : Ptr[NET], packet : Ptr[CUnsignedChar], len : size_t): Boolean = extern
 
-  /**
-  */
   def my_rnd(_0 : Ptr[rand_struct]): Double = extern
 
-  /**
-  */
   def my_thread_end(): Unit = extern
 
-  /**
-  */
   def my_thread_init(): Boolean = extern
 
-  /**
-  */
   def myodbc_remove_escape(mysql : Ptr[MYSQL], name : CString): Unit = extern
 
-  /**
-  */
   def mysql_affected_rows(mysql : Ptr[MYSQL]): uint64_t = extern
 
-  /**
-  */
   def mysql_autocommit(mysql : Ptr[MYSQL], auto_mode : Boolean): Boolean = extern
 
-  /**
-  */
   def mysql_bind_param(mysql : Ptr[MYSQL], n_params : CUnsignedInt, binds : Ptr[MYSQL_BIND], names : Ptr[CString]): Boolean = extern
 
-  /**
-  */
   def mysql_binlog_close(mysql : Ptr[MYSQL], rpl : Ptr[MYSQL_RPL]): Unit = extern
 
-  /**
-  */
   def mysql_binlog_fetch(mysql : Ptr[MYSQL], rpl : Ptr[MYSQL_RPL]): CInt = extern
 
-  /**
-  */
   def mysql_binlog_open(mysql : Ptr[MYSQL], rpl : Ptr[MYSQL_RPL]): CInt = extern
 
-  /**
-  */
   def mysql_change_user(mysql : Ptr[MYSQL], user : CString, passwd : CString, db : CString): Boolean = extern
 
-  /**
-  */
   def mysql_character_set_name(mysql : Ptr[MYSQL]): CString = extern
 
   /**
@@ -2359,12 +2161,8 @@ private[libmysql] object extern_functions:
   */
   def mysql_client_register_plugin(mysql : Ptr[MYSQL], plugin : Ptr[st_mysql_client_plugin]): Ptr[st_mysql_client_plugin] = extern
 
-  /**
-  */
   def mysql_close(sock : Ptr[MYSQL]): Unit = extern
 
-  /**
-  */
   def mysql_commit(mysql : Ptr[MYSQL]): Boolean = extern
 
   /**
@@ -2377,12 +2175,8 @@ private[libmysql] object extern_functions:
   */
   def mysql_compress_context_init(cmp_ctx : Ptr[mysql_compress_context], algorithm : enum_compression_algorithm, compression_level : CUnsignedInt): Unit = extern
 
-  /**
-  */
   def mysql_data_seek(result : Ptr[MYSQL_RES], offset : uint64_t): Unit = extern
 
-  /**
-  */
   def mysql_debug(debug : CString): Unit = extern
 
   /**
@@ -2390,156 +2184,80 @@ private[libmysql] object extern_functions:
   */
   def mysql_default_compression_level(algorithm : enum_compression_algorithm): CUnsignedInt = extern
 
-  /**
-  */
   def mysql_dump_debug_info(mysql : Ptr[MYSQL]): CInt = extern
 
-  /**
-  */
   def mysql_eof(res : Ptr[MYSQL_RES]): Boolean = extern
 
-  /**
-  */
   def mysql_errno(mysql : Ptr[MYSQL]): CUnsignedInt = extern
 
-  /**
-  */
   def mysql_errno_to_sqlstate(mysql_errno : CUnsignedInt): CString = extern
 
-  /**
-  */
   def mysql_error(mysql : Ptr[MYSQL]): CString = extern
 
-  /**
-  */
   def mysql_escape_string(to : CString, from : CString, from_length : CUnsignedLongInt): CUnsignedLongInt = extern
 
-  /**
-  */
   def mysql_fetch_field(result : Ptr[MYSQL_RES]): Ptr[MYSQL_FIELD] = extern
 
-  /**
-  */
   def mysql_fetch_field_direct(res : Ptr[MYSQL_RES], fieldnr : CUnsignedInt): Ptr[MYSQL_FIELD] = extern
 
-  /**
-  */
   def mysql_fetch_fields(res : Ptr[MYSQL_RES]): Ptr[MYSQL_FIELD] = extern
 
-  /**
-  */
   def mysql_fetch_lengths(result : Ptr[MYSQL_RES]): Ptr[CUnsignedLongInt] = extern
 
-  /**
-  */
   def mysql_fetch_row(result : Ptr[MYSQL_RES]): MYSQL_ROW = extern
 
-  /**
-  */
   def mysql_fetch_row_nonblocking(res : Ptr[MYSQL_RES], row : Ptr[MYSQL_ROW]): net_async_status = extern
 
-  /**
-  */
   def mysql_field_count(mysql : Ptr[MYSQL]): CUnsignedInt = extern
 
-  /**
-  */
   def mysql_field_seek(result : Ptr[MYSQL_RES], offset : MYSQL_FIELD_OFFSET): MYSQL_FIELD_OFFSET = extern
 
-  /**
-  */
   def mysql_field_tell(res : Ptr[MYSQL_RES]): MYSQL_FIELD_OFFSET = extern
 
-  /**
-  */
   def mysql_free_result(result : Ptr[MYSQL_RES]): Unit = extern
 
-  /**
-  */
   def mysql_free_result_nonblocking(result : Ptr[MYSQL_RES]): net_async_status = extern
 
-  /**
-  */
   def mysql_free_ssl_session_data(mysql : Ptr[MYSQL], data : Ptr[Byte]): Boolean = extern
 
-  /**
-  */
   def mysql_get_character_set_info(mysql : Ptr[MYSQL], charset : Ptr[MY_CHARSET_INFO]): Unit = extern
 
-  /**
-  */
   def mysql_get_client_info(): CString = extern
 
-  /**
-  */
   def mysql_get_client_version(): CUnsignedLongInt = extern
 
-  /**
-  */
   def mysql_get_host_info(mysql : Ptr[MYSQL]): CString = extern
 
-  /**
-  */
   def mysql_get_option(mysql : Ptr[MYSQL], option : mysql_option, arg : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def mysql_get_proto_info(mysql : Ptr[MYSQL]): CUnsignedInt = extern
 
-  /**
-  */
   def mysql_get_server_info(mysql : Ptr[MYSQL]): CString = extern
 
-  /**
-  */
   def mysql_get_server_version(mysql : Ptr[MYSQL]): CUnsignedLongInt = extern
 
-  /**
-  */
   def mysql_get_ssl_cipher(mysql : Ptr[MYSQL]): CString = extern
 
-  /**
-  */
   def mysql_get_ssl_session_data(mysql : Ptr[MYSQL], n_ticket : CUnsignedInt, out_len : Ptr[CUnsignedInt]): Ptr[Byte] = extern
 
-  /**
-  */
   def mysql_get_ssl_session_reused(mysql : Ptr[MYSQL]): Boolean = extern
 
-  /**
-  */
   def mysql_hex_string(to : CString, from : CString, from_length : CUnsignedLongInt): CUnsignedLongInt = extern
 
-  /**
-  */
   def mysql_info(mysql : Ptr[MYSQL]): CString = extern
 
-  /**
-  */
   def mysql_init(mysql : Ptr[MYSQL]): Ptr[MYSQL] = extern
 
-  /**
-  */
   def mysql_insert_id(mysql : Ptr[MYSQL]): uint64_t = extern
 
-  /**
-  */
   def mysql_kill(mysql : Ptr[MYSQL], pid : CUnsignedLongInt): CInt = extern
 
-  /**
-  */
   def mysql_list_dbs(mysql : Ptr[MYSQL], wild : CString): Ptr[MYSQL_RES] = extern
 
-  /**
-  */
   def mysql_list_fields(mysql : Ptr[MYSQL], table : CString, wild : CString): Ptr[MYSQL_RES] = extern
 
-  /**
-  */
   def mysql_list_processes(mysql : Ptr[MYSQL]): Ptr[MYSQL_RES] = extern
 
-  /**
-  */
   def mysql_list_tables(mysql : Ptr[MYSQL], wild : CString): Ptr[MYSQL_RES] = extern
 
   /**
@@ -2552,36 +2270,20 @@ private[libmysql] object extern_functions:
   */
   def mysql_load_plugin_v(mysql : Ptr[MYSQL], name : CString, `type` : CInt, argc : CInt, args : va_list): Ptr[st_mysql_client_plugin] = extern
 
-  /**
-  */
   def mysql_more_results(mysql : Ptr[MYSQL]): Boolean = extern
 
-  /**
-  */
   def mysql_next_result(mysql : Ptr[MYSQL]): CInt = extern
 
-  /**
-  */
   def mysql_next_result_nonblocking(mysql : Ptr[MYSQL]): net_async_status = extern
 
-  /**
-  */
   def mysql_num_fields(res : Ptr[MYSQL_RES]): CUnsignedInt = extern
 
-  /**
-  */
   def mysql_num_rows(res : Ptr[MYSQL_RES]): uint64_t = extern
 
-  /**
-  */
   def mysql_options(mysql : Ptr[MYSQL], option : mysql_option, arg : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def mysql_options4(mysql : Ptr[MYSQL], option : mysql_option, arg1 : Ptr[Byte], arg2 : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def mysql_ping(mysql : Ptr[MYSQL]): CInt = extern
 
   /**
@@ -2594,332 +2296,168 @@ private[libmysql] object extern_functions:
   */
   def mysql_plugin_options(plugin : Ptr[st_mysql_client_plugin], option : CString, value : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def mysql_query(mysql : Ptr[MYSQL], q : CString): CInt = extern
 
-  /**
-  */
   def mysql_read_query_result(mysql : Ptr[MYSQL]): Boolean = extern
 
-  /**
-  */
   def mysql_real_connect(mysql : Ptr[MYSQL], host : CString, user : CString, passwd : CString, db : CString, port : CUnsignedInt, unix_socket : CString, clientflag : CUnsignedLongInt): Ptr[MYSQL] = extern
 
-  /**
-  */
   def mysql_real_connect_dns_srv(mysql : Ptr[MYSQL], dns_srv_name : CString, user : CString, passwd : CString, db : CString, client_flag : CUnsignedLongInt): Ptr[MYSQL] = extern
 
-  /**
-  */
   def mysql_real_connect_nonblocking(mysql : Ptr[MYSQL], host : CString, user : CString, passwd : CString, db : CString, port : CUnsignedInt, unix_socket : CString, clientflag : CUnsignedLongInt): net_async_status = extern
 
-  /**
-  */
   def mysql_real_escape_string(mysql : Ptr[MYSQL], to : CString, from : CString, length : CUnsignedLongInt): CUnsignedLongInt = extern
 
-  /**
-  */
   def mysql_real_escape_string_quote(mysql : Ptr[MYSQL], to : CString, from : CString, length : CUnsignedLongInt, quote : CChar): CUnsignedLongInt = extern
 
-  /**
-  */
   def mysql_real_query(mysql : Ptr[MYSQL], q : CString, length : CUnsignedLongInt): CInt = extern
 
-  /**
-  */
   def mysql_real_query_nonblocking(mysql : Ptr[MYSQL], query : CString, length : CUnsignedLongInt): net_async_status = extern
 
-  /**
-  */
   def mysql_refresh(mysql : Ptr[MYSQL], refresh_options : CUnsignedInt): CInt = extern
 
-  /**
-  */
   def mysql_reset_connection(mysql : Ptr[MYSQL]): CInt = extern
 
-  /**
-  */
   def mysql_reset_server_public_key(): Unit = extern
 
-  /**
-  */
   def mysql_result_metadata(result : Ptr[MYSQL_RES]): enum_resultset_metadata = extern
 
-  /**
-  */
   def mysql_rollback(mysql : Ptr[MYSQL]): Boolean = extern
 
-  /**
-  */
   def mysql_row_seek(result : Ptr[MYSQL_RES], offset : MYSQL_ROW_OFFSET): MYSQL_ROW_OFFSET = extern
 
-  /**
-  */
   def mysql_row_tell(res : Ptr[MYSQL_RES]): MYSQL_ROW_OFFSET = extern
 
-  /**
-  */
   def mysql_select_db(mysql : Ptr[MYSQL], db : CString): CInt = extern
 
-  /**
-  */
   def mysql_select_db_nonblocking(mysql : Ptr[MYSQL], db : CString, error : Ptr[Boolean]): net_async_status = extern
 
-  /**
-  */
   def mysql_send_query(mysql : Ptr[MYSQL], q : CString, length : CUnsignedLongInt): CInt = extern
 
-  /**
-  */
   def mysql_send_query_nonblocking(mysql : Ptr[MYSQL], query : CString, length : CUnsignedLongInt): net_async_status = extern
 
-  /**
-  */
   def mysql_server_end(): Unit = extern
 
-  /**
-  */
   def mysql_server_init(argc : CInt, argv : Ptr[CString], groups : Ptr[CString]): CInt = extern
 
-  /**
-  */
   def mysql_session_track_get_first(mysql : Ptr[MYSQL], `type` : enum_session_state_type, data : Ptr[CString], length : Ptr[size_t]): CInt = extern
 
-  /**
-  */
   def mysql_session_track_get_next(mysql : Ptr[MYSQL], `type` : enum_session_state_type, data : Ptr[CString], length : Ptr[size_t]): CInt = extern
 
-  /**
-  */
   def mysql_set_character_set(mysql : Ptr[MYSQL], csname : CString): CInt = extern
 
-  /**
-  */
   def mysql_set_local_infile_default(mysql : Ptr[MYSQL]): Unit = extern
 
-  /**
-  */
   def mysql_set_local_infile_handler(mysql : Ptr[MYSQL], local_infile_init : CFuncPtr3[Ptr[Ptr[Byte]], CString, Ptr[Byte], CInt], local_infile_read : CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt], local_infile_end : CFuncPtr1[Ptr[Byte], Unit], local_infile_error : CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt], _5 : Ptr[Byte]): Unit = extern
 
-  /**
-  */
   def mysql_set_server_option(mysql : Ptr[MYSQL], option : enum_mysql_set_option): CInt = extern
 
-  /**
-  */
   def mysql_shutdown(mysql : Ptr[MYSQL], shutdown_level : mysql_enum_shutdown_level): CInt = extern
 
-  /**
-  */
   def mysql_sqlstate(mysql : Ptr[MYSQL]): CString = extern
 
-  /**
-  */
   def mysql_ssl_set(mysql : Ptr[MYSQL], key : CString, cert : CString, ca : CString, capath : CString, cipher : CString): Boolean = extern
 
-  /**
-  */
   def mysql_stat(mysql : Ptr[MYSQL]): CString = extern
 
-  /**
-  */
   def mysql_stmt_affected_rows(stmt : Ptr[MYSQL_STMT]): uint64_t = extern
 
-  /**
-  */
   def mysql_stmt_attr_get(stmt : Ptr[MYSQL_STMT], attr_type : enum_stmt_attr_type, attr : Ptr[Byte]): Boolean = extern
 
-  /**
-  */
   def mysql_stmt_attr_set(stmt : Ptr[MYSQL_STMT], attr_type : enum_stmt_attr_type, attr : Ptr[Byte]): Boolean = extern
 
-  /**
-  */
   def mysql_stmt_bind_param(stmt : Ptr[MYSQL_STMT], bnd : Ptr[MYSQL_BIND]): Boolean = extern
 
-  /**
-  */
   def mysql_stmt_bind_result(stmt : Ptr[MYSQL_STMT], bnd : Ptr[MYSQL_BIND]): Boolean = extern
 
-  /**
-  */
   def mysql_stmt_close(stmt : Ptr[MYSQL_STMT]): Boolean = extern
 
-  /**
-  */
   def mysql_stmt_data_seek(stmt : Ptr[MYSQL_STMT], offset : uint64_t): Unit = extern
 
-  /**
-  */
   def mysql_stmt_errno(stmt : Ptr[MYSQL_STMT]): CUnsignedInt = extern
 
-  /**
-  */
   def mysql_stmt_error(stmt : Ptr[MYSQL_STMT]): CString = extern
 
-  /**
-  */
   def mysql_stmt_execute(stmt : Ptr[MYSQL_STMT]): CInt = extern
 
-  /**
-  */
   def mysql_stmt_fetch(stmt : Ptr[MYSQL_STMT]): CInt = extern
 
-  /**
-  */
   def mysql_stmt_fetch_column(stmt : Ptr[MYSQL_STMT], bind_arg : Ptr[MYSQL_BIND], column : CUnsignedInt, offset : CUnsignedLongInt): CInt = extern
 
-  /**
-  */
   def mysql_stmt_field_count(stmt : Ptr[MYSQL_STMT]): CUnsignedInt = extern
 
-  /**
-  */
   def mysql_stmt_free_result(stmt : Ptr[MYSQL_STMT]): Boolean = extern
 
-  /**
-  */
   def mysql_stmt_init(mysql : Ptr[MYSQL]): Ptr[MYSQL_STMT] = extern
 
-  /**
-  */
   def mysql_stmt_insert_id(stmt : Ptr[MYSQL_STMT]): uint64_t = extern
 
-  /**
-  */
   def mysql_stmt_next_result(stmt : Ptr[MYSQL_STMT]): CInt = extern
 
-  /**
-  */
   def mysql_stmt_num_rows(stmt : Ptr[MYSQL_STMT]): uint64_t = extern
 
-  /**
-  */
   def mysql_stmt_param_count(stmt : Ptr[MYSQL_STMT]): CUnsignedLongInt = extern
 
-  /**
-  */
   def mysql_stmt_param_metadata(stmt : Ptr[MYSQL_STMT]): Ptr[MYSQL_RES] = extern
 
-  /**
-  */
   def mysql_stmt_prepare(stmt : Ptr[MYSQL_STMT], query : CString, length : CUnsignedLongInt): CInt = extern
 
-  /**
-  */
   def mysql_stmt_reset(stmt : Ptr[MYSQL_STMT]): Boolean = extern
 
-  /**
-  */
   def mysql_stmt_result_metadata(stmt : Ptr[MYSQL_STMT]): Ptr[MYSQL_RES] = extern
 
-  /**
-  */
   def mysql_stmt_row_seek(stmt : Ptr[MYSQL_STMT], offset : MYSQL_ROW_OFFSET): MYSQL_ROW_OFFSET = extern
 
-  /**
-  */
   def mysql_stmt_row_tell(stmt : Ptr[MYSQL_STMT]): MYSQL_ROW_OFFSET = extern
 
-  /**
-  */
   def mysql_stmt_send_long_data(stmt : Ptr[MYSQL_STMT], param_number : CUnsignedInt, data : CString, length : CUnsignedLongInt): Boolean = extern
 
-  /**
-  */
   def mysql_stmt_sqlstate(stmt : Ptr[MYSQL_STMT]): CString = extern
 
-  /**
-  */
   def mysql_stmt_store_result(stmt : Ptr[MYSQL_STMT]): CInt = extern
 
-  /**
-  */
   def mysql_store_result(mysql : Ptr[MYSQL]): Ptr[MYSQL_RES] = extern
 
-  /**
-  */
   def mysql_store_result_nonblocking(mysql : Ptr[MYSQL], result : Ptr[Ptr[MYSQL_RES]]): net_async_status = extern
 
-  /**
-  */
   def mysql_thread_end(): Unit = extern
 
-  /**
-  */
   def mysql_thread_id(mysql : Ptr[MYSQL]): CUnsignedLongInt = extern
 
-  /**
-  */
   def mysql_thread_init(): Boolean = extern
 
-  /**
-  */
   def mysql_thread_safe(): CUnsignedInt = extern
 
-  /**
-  */
   def mysql_use_result(mysql : Ptr[MYSQL]): Ptr[MYSQL_RES] = extern
 
-  /**
-  */
   def mysql_warning_count(mysql : Ptr[MYSQL]): CUnsignedInt = extern
 
-  /**
-  */
   def net_claim_memory_ownership(net : Ptr[NET], claim : Boolean): Unit = extern
 
-  /**
-  */
   def net_clear(net : Ptr[NET], check_buffer : Boolean): Unit = extern
 
-  /**
-  */
   def net_end(net : Ptr[NET]): Unit = extern
 
-  /**
-  */
   def net_field_length(packet : Ptr[Ptr[CUnsignedChar]]): CUnsignedLongInt = extern
 
-  /**
-  */
   def net_field_length_checked(packet : Ptr[Ptr[CUnsignedChar]], max_length : CUnsignedLongInt): CUnsignedLongInt = extern
 
-  /**
-  */
   def net_field_length_ll(packet : Ptr[Ptr[CUnsignedChar]]): uint64_t = extern
 
-  /**
-  */
   def net_field_length_size(pos : Ptr[CUnsignedChar]): CUnsignedInt = extern
 
-  /**
-  */
   def net_flush(net : Ptr[NET]): Boolean = extern
 
-  /**
-  */
   def net_length_size(num : CUnsignedLongLong): CUnsignedInt = extern
 
-  /**
-  */
   def net_realloc(net : Ptr[NET], length : size_t): Boolean = extern
 
-  /**
-  */
   def net_store_length(pkg : Ptr[CUnsignedChar], length : CUnsignedLongLong): Ptr[CUnsignedChar] = extern
 
-  /**
-  */
   def net_write_command(net : Ptr[NET], command : CUnsignedChar, header : Ptr[CUnsignedChar], head_len : size_t, packet : Ptr[CUnsignedChar], len : size_t): Boolean = extern
 
-  /**
-  */
   def net_write_packet(net : Ptr[NET], packet : Ptr[CUnsignedChar], length : size_t): Boolean = extern
 
-  /**
-  */
   def octet2hex(to : CString, str : CString, len : CUnsignedInt): CString = extern
 
   /**
@@ -2927,12 +2465,8 @@ private[libmysql] object extern_functions:
   */
   def randominit(_0 : Ptr[rand_struct], seed1 : CUnsignedLongInt, seed2 : CUnsignedLongInt): Unit = extern
 
-  /**
-  */
   def scramble(to : CString, message : CString, password : CString): Unit = extern
 
-  /**
-  */
   def scramble_323(to : CString, message : CString, password : CString): Unit = extern
 
 

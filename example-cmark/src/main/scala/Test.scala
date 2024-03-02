@@ -6,7 +6,7 @@ import scala.scalanative.libc.*
 import scala.scalanative.libc
 
 @main def hello =
-  Zone { implicit z =>
+  Zone:
     val str = toCString(
       """
     |# Hello!
@@ -50,4 +50,3 @@ import scala.scalanative.libc
     end iterateNodes
 
     iterateNodes(node)
-  }

@@ -8,41 +8,33 @@ import _root_.scala.scalanative.*
 object aliases:
   import _root_.libsqlite.aliases.*
   import _root_.libsqlite.structs.*
-  /**
-  */
   opaque type fts5_extension_function = CFuncPtr5[Ptr[Fts5ExtensionApi], Ptr[Fts5Context], Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit]
   object fts5_extension_function: 
     given _tag: Tag[fts5_extension_function] = Tag.materializeCFuncPtr5[Ptr[Fts5ExtensionApi], Ptr[Fts5Context], Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): fts5_extension_function = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): fts5_extension_function = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[Ptr[Fts5ExtensionApi], Ptr[Fts5Context], Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit]): fts5_extension_function = o
     extension (v: fts5_extension_function)
       inline def value: CFuncPtr5[Ptr[Fts5ExtensionApi], Ptr[Fts5Context], Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type sqlite3_callback = CFuncPtr4[Ptr[Byte], CInt, Ptr[CString], Ptr[CString], CInt]
   object sqlite3_callback: 
     given _tag: Tag[sqlite3_callback] = Tag.materializeCFuncPtr4[Ptr[Byte], CInt, Ptr[CString], Ptr[CString], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): sqlite3_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sqlite3_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], CInt, Ptr[CString], Ptr[CString], CInt]): sqlite3_callback = o
     extension (v: sqlite3_callback)
       inline def value: CFuncPtr4[Ptr[Byte], CInt, Ptr[CString], Ptr[CString], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type sqlite3_destructor_type = CFuncPtr1[Ptr[Byte], Unit]
   object sqlite3_destructor_type: 
     given _tag: Tag[sqlite3_destructor_type] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): sqlite3_destructor_type = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sqlite3_destructor_type = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): sqlite3_destructor_type = o
     extension (v: sqlite3_destructor_type)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type sqlite3_filename = CString
   object sqlite3_filename: 
     given _tag: Tag[sqlite3_filename] = Tag.Ptr[CChar](Tag.Byte)
@@ -50,8 +42,6 @@ object aliases:
     extension (v: sqlite3_filename)
       inline def value: CString = v
 
-  /**
-  */
   type sqlite3_int64 = sqlite_int64
   object sqlite3_int64: 
     given _tag: Tag[sqlite3_int64] = sqlite_int64._tag
@@ -59,8 +49,6 @@ object aliases:
     extension (v: sqlite3_int64)
       inline def value: sqlite_int64 = v
 
-  /**
-  */
   opaque type sqlite3_rtree_dbl = Double
   object sqlite3_rtree_dbl: 
     given _tag: Tag[sqlite3_rtree_dbl] = Tag.Double
@@ -68,19 +56,15 @@ object aliases:
     extension (v: sqlite3_rtree_dbl)
       inline def value: Double = v
 
-  /**
-  */
   opaque type sqlite3_syscall_ptr = CFuncPtr0[Unit]
   object sqlite3_syscall_ptr: 
     given _tag: Tag[sqlite3_syscall_ptr] = Tag.materializeCFuncPtr0[Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): sqlite3_syscall_ptr = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sqlite3_syscall_ptr = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr0[Unit]): sqlite3_syscall_ptr = o
     extension (v: sqlite3_syscall_ptr)
       inline def value: CFuncPtr0[Unit] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   type sqlite3_uint64 = sqlite_uint64
   object sqlite3_uint64: 
     given _tag: Tag[sqlite3_uint64] = sqlite_uint64._tag
@@ -88,8 +72,6 @@ object aliases:
     extension (v: sqlite3_uint64)
       inline def value: sqlite_uint64 = v
 
-  /**
-  */
   opaque type sqlite_int64 = CLongLong
   object sqlite_int64: 
     given _tag: Tag[sqlite_int64] = Tag.Long
@@ -97,8 +79,6 @@ object aliases:
     extension (v: sqlite_int64)
       inline def value: CLongLong = v
 
-  /**
-  */
   opaque type sqlite_uint64 = CUnsignedLongLong
   object sqlite_uint64: 
     given _tag: Tag[sqlite_uint64] = Tag.ULong
@@ -116,14 +96,10 @@ object aliases:
 object structs:
   import _root_.libsqlite.aliases.*
   import _root_.libsqlite.structs.*
-  /**
-  */
   opaque type Fts5Context = CStruct0
   object Fts5Context:
     given _tag: Tag[Fts5Context] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type Fts5ExtensionApi = CStruct20[CInt, CFuncPtr1[Ptr[Fts5Context], Ptr[Byte]], CFuncPtr1[Ptr[Fts5Context], CInt], CFuncPtr2[Ptr[Fts5Context], Ptr[sqlite3_int64], CInt], CFuncPtr3[Ptr[Fts5Context], CInt, Ptr[sqlite3_int64], CInt], CFuncPtr5[Ptr[Fts5Context], CString, CInt, Ptr[Byte], CFuncPtr6[Ptr[Byte], CInt, CString, CInt, CInt, CInt, CInt], CInt], CFuncPtr1[Ptr[Fts5Context], CInt], CFuncPtr2[Ptr[Fts5Context], CInt, CInt], CFuncPtr2[Ptr[Fts5Context], Ptr[CInt], CInt], CFuncPtr5[Ptr[Fts5Context], CInt, Ptr[CInt], Ptr[CInt], Ptr[CInt], CInt], CFuncPtr1[Ptr[Fts5Context], sqlite3_int64], CFuncPtr4[Ptr[Fts5Context], CInt, Ptr[CString], Ptr[CInt], CInt], CFuncPtr3[Ptr[Fts5Context], CInt, Ptr[CInt], CInt], CFuncPtr4[Ptr[Fts5Context], CInt, Ptr[Byte], CFuncPtr3[Ptr[Byte], Ptr[Fts5Context], Ptr[Byte], CInt], CInt], CFuncPtr3[Ptr[Fts5Context], Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], CInt], CFuncPtr2[Ptr[Fts5Context], CInt, Ptr[Byte]], CFuncPtr5[Ptr[Fts5Context], CInt, Ptr[Fts5PhraseIter], Ptr[CInt], Ptr[CInt], CInt], CFuncPtr4[Ptr[Fts5Context], Ptr[Fts5PhraseIter], Ptr[CInt], Ptr[CInt], Unit], CFuncPtr4[Ptr[Fts5Context], CInt, Ptr[Fts5PhraseIter], Ptr[CInt], CInt], CFuncPtr3[Ptr[Fts5Context], Ptr[Fts5PhraseIter], Ptr[CInt], Unit]]
   object Fts5ExtensionApi:
     given _tag: Tag[Fts5ExtensionApi] = Tag.materializeCStruct20Tag[CInt, CFuncPtr1[Ptr[Fts5Context], Ptr[Byte]], CFuncPtr1[Ptr[Fts5Context], CInt], CFuncPtr2[Ptr[Fts5Context], Ptr[sqlite3_int64], CInt], CFuncPtr3[Ptr[Fts5Context], CInt, Ptr[sqlite3_int64], CInt], CFuncPtr5[Ptr[Fts5Context], CString, CInt, Ptr[Byte], CFuncPtr6[Ptr[Byte], CInt, CString, CInt, CInt, CInt, CInt], CInt], CFuncPtr1[Ptr[Fts5Context], CInt], CFuncPtr2[Ptr[Fts5Context], CInt, CInt], CFuncPtr2[Ptr[Fts5Context], Ptr[CInt], CInt], CFuncPtr5[Ptr[Fts5Context], CInt, Ptr[CInt], Ptr[CInt], Ptr[CInt], CInt], CFuncPtr1[Ptr[Fts5Context], sqlite3_int64], CFuncPtr4[Ptr[Fts5Context], CInt, Ptr[CString], Ptr[CInt], CInt], CFuncPtr3[Ptr[Fts5Context], CInt, Ptr[CInt], CInt], CFuncPtr4[Ptr[Fts5Context], CInt, Ptr[Byte], CFuncPtr3[Ptr[Byte], Ptr[Fts5Context], Ptr[Byte], CInt], CInt], CFuncPtr3[Ptr[Fts5Context], Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], CInt], CFuncPtr2[Ptr[Fts5Context], CInt, Ptr[Byte]], CFuncPtr5[Ptr[Fts5Context], CInt, Ptr[Fts5PhraseIter], Ptr[CInt], Ptr[CInt], CInt], CFuncPtr4[Ptr[Fts5Context], Ptr[Fts5PhraseIter], Ptr[CInt], Ptr[CInt], Unit], CFuncPtr4[Ptr[Fts5Context], CInt, Ptr[Fts5PhraseIter], Ptr[CInt], CInt], CFuncPtr3[Ptr[Fts5Context], Ptr[Fts5PhraseIter], Ptr[CInt], Unit]]
@@ -193,8 +169,6 @@ object structs:
       def xPhraseNextColumn : CFuncPtr3[Ptr[Fts5Context], Ptr[Fts5PhraseIter], Ptr[CInt], Unit] = struct._20
       def xPhraseNextColumn_=(value: CFuncPtr3[Ptr[Fts5Context], Ptr[Fts5PhraseIter], Ptr[CInt], Unit]): Unit = !struct.at20 = value
 
-  /**
-  */
   opaque type Fts5PhraseIter = CStruct2[Ptr[CUnsignedChar], Ptr[CUnsignedChar]]
   object Fts5PhraseIter:
     given _tag: Tag[Fts5PhraseIter] = Tag.materializeCStruct2Tag[Ptr[CUnsignedChar], Ptr[CUnsignedChar]]
@@ -210,14 +184,10 @@ object structs:
       def b : Ptr[CUnsignedChar] = struct._2
       def b_=(value: Ptr[CUnsignedChar]): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type Fts5Tokenizer = CStruct0
   object Fts5Tokenizer:
     given _tag: Tag[Fts5Tokenizer] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type fts5_api = CStruct4[CInt, CFuncPtr5[Ptr[Byte], CString, Ptr[Byte], Ptr[fts5_tokenizer], CFuncPtr1[Ptr[Byte], Unit], CInt], CFuncPtr4[Ptr[Byte], CString, Ptr[Ptr[Byte]], Ptr[fts5_tokenizer], CInt], CFuncPtr5[Ptr[Byte], CString, Ptr[Byte], fts5_extension_function, CFuncPtr1[Ptr[Byte], Unit], CInt]]
   object fts5_api:
     given _tag: Tag[fts5_api] = Tag.materializeCStruct4Tag[CInt, CFuncPtr5[Ptr[Byte], CString, Ptr[Byte], Ptr[fts5_tokenizer], CFuncPtr1[Ptr[Byte], Unit], CInt], CFuncPtr4[Ptr[Byte], CString, Ptr[Ptr[Byte]], Ptr[fts5_tokenizer], CInt], CFuncPtr5[Ptr[Byte], CString, Ptr[Byte], fts5_extension_function, CFuncPtr1[Ptr[Byte], Unit], CInt]]
@@ -239,8 +209,6 @@ object structs:
       def xCreateFunction : CFuncPtr5[Ptr[fts5_api], CString, Ptr[Byte], fts5_extension_function, CFuncPtr1[Ptr[Byte], Unit], CInt] = struct._4.asInstanceOf[CFuncPtr5[Ptr[fts5_api], CString, Ptr[Byte], fts5_extension_function, CFuncPtr1[Ptr[Byte], Unit], CInt]]
       def xCreateFunction_=(value: CFuncPtr5[Ptr[fts5_api], CString, Ptr[Byte], fts5_extension_function, CFuncPtr1[Ptr[Byte], Unit], CInt]): Unit = !struct.at4 = value.asInstanceOf[CFuncPtr5[Ptr[Byte], CString, Ptr[Byte], fts5_extension_function, CFuncPtr1[Ptr[Byte], Unit], CInt]]
 
-  /**
-  */
   opaque type fts5_tokenizer = CStruct3[CFuncPtr4[Ptr[Byte], Ptr[CString], CInt, Ptr[Ptr[Fts5Tokenizer]], CInt], CFuncPtr1[Ptr[Fts5Tokenizer], Unit], CFuncPtr6[Ptr[Fts5Tokenizer], Ptr[Byte], CInt, CString, CInt, CFuncPtr6[Ptr[Byte], CInt, CString, CInt, CInt, CInt, CInt], CInt]]
   object fts5_tokenizer:
     given _tag: Tag[fts5_tokenizer] = Tag.materializeCStruct3Tag[CFuncPtr4[Ptr[Byte], Ptr[CString], CInt, Ptr[Ptr[Fts5Tokenizer]], CInt], CFuncPtr1[Ptr[Fts5Tokenizer], Unit], CFuncPtr6[Ptr[Fts5Tokenizer], Ptr[Byte], CInt, CString, CInt, CFuncPtr6[Ptr[Byte], CInt, CString, CInt, CInt, CInt, CInt], CInt]]
@@ -259,42 +227,28 @@ object structs:
       def xTokenize : CFuncPtr6[Ptr[Fts5Tokenizer], Ptr[Byte], CInt, CString, CInt, CFuncPtr6[Ptr[Byte], CInt, CString, CInt, CInt, CInt, CInt], CInt] = struct._3
       def xTokenize_=(value: CFuncPtr6[Ptr[Fts5Tokenizer], Ptr[Byte], CInt, CString, CInt, CFuncPtr6[Ptr[Byte], CInt, CString, CInt, CInt, CInt, CInt], CInt]): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type sqlite3 = CStruct0
   object sqlite3:
     given _tag: Tag[sqlite3] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type sqlite3_api_routines = CStruct0
   object sqlite3_api_routines:
     given _tag: Tag[sqlite3_api_routines] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type sqlite3_backup = CStruct0
   object sqlite3_backup:
     given _tag: Tag[sqlite3_backup] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type sqlite3_blob = CStruct0
   object sqlite3_blob:
     given _tag: Tag[sqlite3_blob] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type sqlite3_context = CStruct0
   object sqlite3_context:
     given _tag: Tag[sqlite3_context] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type sqlite3_file = CStruct1[Ptr[Byte]]
   object sqlite3_file:
-    /**
-    */
     opaque type Struct0 = CStruct0
     object Struct0:
       given _tag: Tag[Struct0] = Tag.materializeCStruct0Tag
@@ -308,8 +262,6 @@ object structs:
       def pMethods : Ptr[sqlite3_io_methods] = struct._1.asInstanceOf[Ptr[sqlite3_io_methods]]
       def pMethods_=(value: Ptr[sqlite3_io_methods]): Unit = !struct.at1 = value.asInstanceOf[Ptr[Byte]]
 
-  /**
-  */
   opaque type sqlite3_index_constraint = CStruct4[CInt, CUnsignedChar, CUnsignedChar, CInt]
   object sqlite3_index_constraint:
     given _tag: Tag[sqlite3_index_constraint] = Tag.materializeCStruct4Tag[CInt, CUnsignedChar, CUnsignedChar, CInt]
@@ -331,8 +283,6 @@ object structs:
       def iTermOffset : CInt = struct._4
       def iTermOffset_=(value: CInt): Unit = !struct.at4 = value
 
-  /**
-  */
   opaque type sqlite3_index_constraint_usage = CStruct2[CInt, CUnsignedChar]
   object sqlite3_index_constraint_usage:
     given _tag: Tag[sqlite3_index_constraint_usage] = Tag.materializeCStruct2Tag[CInt, CUnsignedChar]
@@ -348,12 +298,8 @@ object structs:
       def omit : CUnsignedChar = struct._2
       def omit_=(value: CUnsignedChar): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type sqlite3_index_info = CStruct13[CInt, Ptr[sqlite3_index_constraint], CInt, Ptr[sqlite3_index_orderby], Ptr[sqlite3_index_constraint_usage], CInt, CString, CInt, CInt, Double, sqlite3_int64, CInt, sqlite3_uint64]
   object sqlite3_index_info:
-    /**
-    */
     opaque type Struct0 = CStruct4[CInt, CUnsignedChar, CUnsignedChar, CInt]
     object Struct0:
       given _tag: Tag[Struct0] = Tag.materializeCStruct4Tag[CInt, CUnsignedChar, CUnsignedChar, CInt]
@@ -374,8 +320,6 @@ object structs:
         def usable_=(value: CUnsignedChar): Unit = !struct.at3 = value
         def iTermOffset : CInt = struct._4
         def iTermOffset_=(value: CInt): Unit = !struct.at4 = value
-    /**
-    */
     opaque type Struct1 = CStruct2[CInt, CUnsignedChar]
     object Struct1:
       given _tag: Tag[Struct1] = Tag.materializeCStruct2Tag[CInt, CUnsignedChar]
@@ -390,8 +334,6 @@ object structs:
         def iColumn_=(value: CInt): Unit = !struct.at1 = value
         def desc : CUnsignedChar = struct._2
         def desc_=(value: CUnsignedChar): Unit = !struct.at2 = value
-    /**
-    */
     opaque type Struct2 = CStruct2[CInt, CUnsignedChar]
     object Struct2:
       given _tag: Tag[Struct2] = Tag.materializeCStruct2Tag[CInt, CUnsignedChar]
@@ -452,8 +394,6 @@ object structs:
       def colUsed : sqlite3_uint64 = struct._13
       def colUsed_=(value: sqlite3_uint64): Unit = !struct.at13 = value
 
-  /**
-  */
   opaque type sqlite3_index_orderby = CStruct2[CInt, CUnsignedChar]
   object sqlite3_index_orderby:
     given _tag: Tag[sqlite3_index_orderby] = Tag.materializeCStruct2Tag[CInt, CUnsignedChar]
@@ -469,8 +409,6 @@ object structs:
       def desc : CUnsignedChar = struct._2
       def desc_=(value: CUnsignedChar): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type sqlite3_io_methods = CStruct19[CInt, CFuncPtr1[Ptr[Byte], CInt], CFuncPtr4[Ptr[Byte], Ptr[Byte], CInt, sqlite3_int64, CInt], CFuncPtr4[Ptr[Byte], Ptr[Byte], CInt, sqlite3_int64, CInt], CFuncPtr2[Ptr[Byte], sqlite3_int64, CInt], CFuncPtr2[Ptr[Byte], CInt, CInt], CFuncPtr2[Ptr[Byte], Ptr[sqlite3_int64], CInt], CFuncPtr2[Ptr[Byte], CInt, CInt], CFuncPtr2[Ptr[Byte], CInt, CInt], CFuncPtr2[Ptr[Byte], Ptr[CInt], CInt], CFuncPtr3[Ptr[Byte], CInt, Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr5[Ptr[Byte], CInt, CInt, CInt, Ptr[Ptr[Byte]], CInt], CFuncPtr4[Ptr[Byte], CInt, CInt, CInt, CInt], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[Ptr[Byte], CInt, CInt], CFuncPtr4[Ptr[Byte], sqlite3_int64, CInt, Ptr[Ptr[Byte]], CInt], CFuncPtr3[Ptr[Byte], sqlite3_int64, Ptr[Byte], CInt]]
   object sqlite3_io_methods:
     given _tag: Tag[sqlite3_io_methods] = Tag.materializeCStruct19Tag[CInt, CFuncPtr1[Ptr[Byte], CInt], CFuncPtr4[Ptr[Byte], Ptr[Byte], CInt, sqlite3_int64, CInt], CFuncPtr4[Ptr[Byte], Ptr[Byte], CInt, sqlite3_int64, CInt], CFuncPtr2[Ptr[Byte], sqlite3_int64, CInt], CFuncPtr2[Ptr[Byte], CInt, CInt], CFuncPtr2[Ptr[Byte], Ptr[sqlite3_int64], CInt], CFuncPtr2[Ptr[Byte], CInt, CInt], CFuncPtr2[Ptr[Byte], CInt, CInt], CFuncPtr2[Ptr[Byte], Ptr[CInt], CInt], CFuncPtr3[Ptr[Byte], CInt, Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr5[Ptr[Byte], CInt, CInt, CInt, Ptr[Ptr[Byte]], CInt], CFuncPtr4[Ptr[Byte], CInt, CInt, CInt, CInt], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[Ptr[Byte], CInt, CInt], CFuncPtr4[Ptr[Byte], sqlite3_int64, CInt, Ptr[Ptr[Byte]], CInt], CFuncPtr3[Ptr[Byte], sqlite3_int64, Ptr[Byte], CInt]]
@@ -537,8 +475,6 @@ object structs:
       def xUnfetch : CFuncPtr3[Ptr[sqlite3_file], sqlite3_int64, Ptr[Byte], CInt] = struct._19.asInstanceOf[CFuncPtr3[Ptr[sqlite3_file], sqlite3_int64, Ptr[Byte], CInt]]
       def xUnfetch_=(value: CFuncPtr3[Ptr[sqlite3_file], sqlite3_int64, Ptr[Byte], CInt]): Unit = !struct.at19 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], sqlite3_int64, Ptr[Byte], CInt]]
 
-  /**
-  */
   opaque type sqlite3_mem_methods = CStruct8[CFuncPtr1[CInt, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[Ptr[Byte], CInt, Ptr[Byte]], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[CInt, CInt], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte]]
   object sqlite3_mem_methods:
     given _tag: Tag[sqlite3_mem_methods] = Tag.materializeCStruct8Tag[CFuncPtr1[CInt, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[Ptr[Byte], CInt, Ptr[Byte]], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[CInt, CInt], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte]]
@@ -572,8 +508,6 @@ object structs:
       def pAppData : Ptr[Byte] = struct._8
       def pAppData_=(value: Ptr[Byte]): Unit = !struct.at8 = value
 
-  /**
-  */
   opaque type sqlite3_module = CArray[CChar, Nat.Digit3[Nat._1, Nat._9, Nat._2]]
   object sqlite3_module:
     given _tag: Tag[sqlite3_module] = Tag.CArray[CChar, Nat.Digit3[Nat._1, Nat._9, Nat._2]](Tag.Byte, Tag.Digit3[Nat._1, Nat._9, Nat._2](Tag.Nat1, Tag.Nat9, Tag.Nat2))
@@ -655,14 +589,10 @@ object structs:
       def xShadowName: CFuncPtr1[CString, CInt] = !struct.at(184).asInstanceOf[Ptr[CFuncPtr1[CString, CInt]]]
       def xShadowName_=(value: CFuncPtr1[CString, CInt]): Unit = !struct.at(184).asInstanceOf[Ptr[CFuncPtr1[CString, CInt]]] = value
 
-  /**
-  */
   opaque type sqlite3_mutex = CStruct0
   object sqlite3_mutex:
     given _tag: Tag[sqlite3_mutex] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type sqlite3_mutex_methods = CStruct9[CFuncPtr0[CInt], CFuncPtr0[CInt], CFuncPtr1[CInt, Ptr[sqlite3_mutex]], CFuncPtr1[Ptr[sqlite3_mutex], Unit], CFuncPtr1[Ptr[sqlite3_mutex], Unit], CFuncPtr1[Ptr[sqlite3_mutex], CInt], CFuncPtr1[Ptr[sqlite3_mutex], Unit], CFuncPtr1[Ptr[sqlite3_mutex], CInt], CFuncPtr1[Ptr[sqlite3_mutex], CInt]]
   object sqlite3_mutex_methods:
     given _tag: Tag[sqlite3_mutex_methods] = Tag.materializeCStruct9Tag[CFuncPtr0[CInt], CFuncPtr0[CInt], CFuncPtr1[CInt, Ptr[sqlite3_mutex]], CFuncPtr1[Ptr[sqlite3_mutex], Unit], CFuncPtr1[Ptr[sqlite3_mutex], Unit], CFuncPtr1[Ptr[sqlite3_mutex], CInt], CFuncPtr1[Ptr[sqlite3_mutex], Unit], CFuncPtr1[Ptr[sqlite3_mutex], CInt], CFuncPtr1[Ptr[sqlite3_mutex], CInt]]
@@ -699,14 +629,10 @@ object structs:
       def xMutexNotheld : CFuncPtr1[Ptr[sqlite3_mutex], CInt] = struct._9
       def xMutexNotheld_=(value: CFuncPtr1[Ptr[sqlite3_mutex], CInt]): Unit = !struct.at9 = value
 
-  /**
-  */
   opaque type sqlite3_pcache = CStruct0
   object sqlite3_pcache:
     given _tag: Tag[sqlite3_pcache] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type sqlite3_pcache_methods = CStruct11[Ptr[Byte], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[CInt, CInt, Ptr[sqlite3_pcache]], CFuncPtr2[Ptr[sqlite3_pcache], CInt, Unit], CFuncPtr1[Ptr[sqlite3_pcache], CInt], CFuncPtr3[Ptr[sqlite3_pcache], CUnsignedInt, CInt, Ptr[Byte]], CFuncPtr3[Ptr[sqlite3_pcache], Ptr[Byte], CInt, Unit], CFuncPtr4[Ptr[sqlite3_pcache], Ptr[Byte], CUnsignedInt, CUnsignedInt, Unit], CFuncPtr2[Ptr[sqlite3_pcache], CUnsignedInt, Unit], CFuncPtr1[Ptr[sqlite3_pcache], Unit]]
   object sqlite3_pcache_methods:
     given _tag: Tag[sqlite3_pcache_methods] = Tag.materializeCStruct11Tag[Ptr[Byte], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[CInt, CInt, Ptr[sqlite3_pcache]], CFuncPtr2[Ptr[sqlite3_pcache], CInt, Unit], CFuncPtr1[Ptr[sqlite3_pcache], CInt], CFuncPtr3[Ptr[sqlite3_pcache], CUnsignedInt, CInt, Ptr[Byte]], CFuncPtr3[Ptr[sqlite3_pcache], Ptr[Byte], CInt, Unit], CFuncPtr4[Ptr[sqlite3_pcache], Ptr[Byte], CUnsignedInt, CUnsignedInt, Unit], CFuncPtr2[Ptr[sqlite3_pcache], CUnsignedInt, Unit], CFuncPtr1[Ptr[sqlite3_pcache], Unit]]
@@ -749,8 +675,6 @@ object structs:
       def xDestroy : CFuncPtr1[Ptr[sqlite3_pcache], Unit] = struct._11
       def xDestroy_=(value: CFuncPtr1[Ptr[sqlite3_pcache], Unit]): Unit = !struct.at11 = value
 
-  /**
-  */
   opaque type sqlite3_pcache_methods2 = CStruct13[CInt, Ptr[Byte], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr3[CInt, CInt, CInt, Ptr[sqlite3_pcache]], CFuncPtr2[Ptr[sqlite3_pcache], CInt, Unit], CFuncPtr1[Ptr[sqlite3_pcache], CInt], CFuncPtr3[Ptr[sqlite3_pcache], CUnsignedInt, CInt, Ptr[sqlite3_pcache_page]], CFuncPtr3[Ptr[sqlite3_pcache], Ptr[sqlite3_pcache_page], CInt, Unit], CFuncPtr4[Ptr[sqlite3_pcache], Ptr[sqlite3_pcache_page], CUnsignedInt, CUnsignedInt, Unit], CFuncPtr2[Ptr[sqlite3_pcache], CUnsignedInt, Unit], CFuncPtr1[Ptr[sqlite3_pcache], Unit], CFuncPtr1[Ptr[sqlite3_pcache], Unit]]
   object sqlite3_pcache_methods2:
     given _tag: Tag[sqlite3_pcache_methods2] = Tag.materializeCStruct13Tag[CInt, Ptr[Byte], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr3[CInt, CInt, CInt, Ptr[sqlite3_pcache]], CFuncPtr2[Ptr[sqlite3_pcache], CInt, Unit], CFuncPtr1[Ptr[sqlite3_pcache], CInt], CFuncPtr3[Ptr[sqlite3_pcache], CUnsignedInt, CInt, Ptr[sqlite3_pcache_page]], CFuncPtr3[Ptr[sqlite3_pcache], Ptr[sqlite3_pcache_page], CInt, Unit], CFuncPtr4[Ptr[sqlite3_pcache], Ptr[sqlite3_pcache_page], CUnsignedInt, CUnsignedInt, Unit], CFuncPtr2[Ptr[sqlite3_pcache], CUnsignedInt, Unit], CFuncPtr1[Ptr[sqlite3_pcache], Unit], CFuncPtr1[Ptr[sqlite3_pcache], Unit]]
@@ -799,8 +723,6 @@ object structs:
       def xShrink : CFuncPtr1[Ptr[sqlite3_pcache], Unit] = struct._13
       def xShrink_=(value: CFuncPtr1[Ptr[sqlite3_pcache], Unit]): Unit = !struct.at13 = value
 
-  /**
-  */
   opaque type sqlite3_pcache_page = CStruct2[Ptr[Byte], Ptr[Byte]]
   object sqlite3_pcache_page:
     given _tag: Tag[sqlite3_pcache_page] = Tag.materializeCStruct2Tag[Ptr[Byte], Ptr[Byte]]
@@ -816,8 +738,6 @@ object structs:
       def pExtra : Ptr[Byte] = struct._2
       def pExtra_=(value: Ptr[Byte]): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type sqlite3_rtree_geometry = CStruct5[Ptr[Byte], CInt, Ptr[sqlite3_rtree_dbl], Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit]]
   object sqlite3_rtree_geometry:
     given _tag: Tag[sqlite3_rtree_geometry] = Tag.materializeCStruct5Tag[Ptr[Byte], CInt, Ptr[sqlite3_rtree_dbl], Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit]]
@@ -842,8 +762,6 @@ object structs:
       def xDelUser : CFuncPtr1[Ptr[Byte], Unit] = struct._5
       def xDelUser_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at5 = value
 
-  /**
-  */
   opaque type sqlite3_rtree_query_info = CStruct16[Ptr[Byte], CInt, Ptr[sqlite3_rtree_dbl], Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[sqlite3_rtree_dbl], Ptr[CUnsignedInt], CInt, CInt, CInt, sqlite3_int64, sqlite3_rtree_dbl, CInt, CInt, sqlite3_rtree_dbl, Ptr[Ptr[sqlite3_value]]]
   object sqlite3_rtree_query_info:
     given _tag: Tag[sqlite3_rtree_query_info] = Tag.materializeCStruct16Tag[Ptr[Byte], CInt, Ptr[sqlite3_rtree_dbl], Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[sqlite3_rtree_dbl], Ptr[CUnsignedInt], CInt, CInt, CInt, sqlite3_int64, sqlite3_rtree_dbl, CInt, CInt, sqlite3_rtree_dbl, Ptr[Ptr[sqlite3_value]]]
@@ -901,8 +819,6 @@ object structs:
       def apSqlParam : Ptr[Ptr[sqlite3_value]] = struct._16
       def apSqlParam_=(value: Ptr[Ptr[sqlite3_value]]): Unit = !struct.at16 = value
 
-  /**
-  */
   opaque type sqlite3_snapshot = CStruct1[CArray[CUnsignedChar, Nat.Digit2[Nat._4, Nat._8]]]
   object sqlite3_snapshot:
     given _tag: Tag[sqlite3_snapshot] = Tag.materializeCStruct1Tag[CArray[CUnsignedChar, Nat.Digit2[Nat._4, Nat._8]]]
@@ -915,26 +831,18 @@ object structs:
       def hidden : CArray[CUnsignedChar, Nat.Digit2[Nat._4, Nat._8]] = struct._1
       def hidden_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._4, Nat._8]]): Unit = !struct.at1 = value
 
-  /**
-  */
   opaque type sqlite3_stmt = CStruct0
   object sqlite3_stmt:
     given _tag: Tag[sqlite3_stmt] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type sqlite3_str = CStruct0
   object sqlite3_str:
     given _tag: Tag[sqlite3_str] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type sqlite3_value = CStruct0
   object sqlite3_value:
     given _tag: Tag[sqlite3_value] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type sqlite3_vfs = CStruct22[CInt, CInt, CInt, Ptr[Byte], CString, Ptr[Byte], CFuncPtr5[Ptr[Byte], sqlite3_filename, Ptr[Byte], CInt, Ptr[CInt], CInt], CFuncPtr3[Ptr[Byte], CString, CInt, CInt], CFuncPtr4[Ptr[Byte], CString, CInt, Ptr[CInt], CInt], CFuncPtr4[Ptr[Byte], CString, CInt, CString, CInt], CFuncPtr2[Ptr[Byte], CString, Ptr[Byte]], CFuncPtr3[Ptr[Byte], CInt, CString, Unit], CFuncPtr3[Ptr[Byte], Ptr[Byte], CString, CFuncPtr0[Unit]], CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit], CFuncPtr3[Ptr[Byte], CInt, CString, CInt], CFuncPtr2[Ptr[Byte], CInt, CInt], CFuncPtr2[Ptr[Byte], Ptr[Double], CInt], CFuncPtr3[Ptr[Byte], CInt, CString, CInt], CFuncPtr2[Ptr[Byte], Ptr[sqlite3_int64], CInt], CFuncPtr3[Ptr[Byte], CString, sqlite3_syscall_ptr, CInt], CFuncPtr2[Ptr[Byte], CString, sqlite3_syscall_ptr], CFuncPtr2[Ptr[Byte], CString, CString]]
   object sqlite3_vfs:
     given _tag: Tag[sqlite3_vfs] = Tag.materializeCStruct22Tag[CInt, CInt, CInt, Ptr[Byte], CString, Ptr[Byte], CFuncPtr5[Ptr[Byte], sqlite3_filename, Ptr[Byte], CInt, Ptr[CInt], CInt], CFuncPtr3[Ptr[Byte], CString, CInt, CInt], CFuncPtr4[Ptr[Byte], CString, CInt, Ptr[CInt], CInt], CFuncPtr4[Ptr[Byte], CString, CInt, CString, CInt], CFuncPtr2[Ptr[Byte], CString, Ptr[Byte]], CFuncPtr3[Ptr[Byte], CInt, CString, Unit], CFuncPtr3[Ptr[Byte], Ptr[Byte], CString, CFuncPtr0[Unit]], CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit], CFuncPtr3[Ptr[Byte], CInt, CString, CInt], CFuncPtr2[Ptr[Byte], CInt, CInt], CFuncPtr2[Ptr[Byte], Ptr[Double], CInt], CFuncPtr3[Ptr[Byte], CInt, CString, CInt], CFuncPtr2[Ptr[Byte], Ptr[sqlite3_int64], CInt], CFuncPtr3[Ptr[Byte], CString, sqlite3_syscall_ptr, CInt], CFuncPtr2[Ptr[Byte], CString, sqlite3_syscall_ptr], CFuncPtr2[Ptr[Byte], CString, CString]]
@@ -1010,8 +918,6 @@ object structs:
       def xNextSystemCall : CFuncPtr2[Ptr[sqlite3_vfs], CString, CString] = struct._22.asInstanceOf[CFuncPtr2[Ptr[sqlite3_vfs], CString, CString]]
       def xNextSystemCall_=(value: CFuncPtr2[Ptr[sqlite3_vfs], CString, CString]): Unit = !struct.at22 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], CString, CString]]
 
-  /**
-  */
   opaque type sqlite3_vtab = CStruct3[Ptr[sqlite3_module], CInt, CString]
   object sqlite3_vtab:
     given _tag: Tag[sqlite3_vtab] = Tag.materializeCStruct3Tag[Ptr[sqlite3_module], CInt, CString]
@@ -1030,8 +936,6 @@ object structs:
       def zErrMsg : CString = struct._3
       def zErrMsg_=(value: CString): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type sqlite3_vtab_cursor = CStruct1[Ptr[sqlite3_vtab]]
   object sqlite3_vtab_cursor:
     given _tag: Tag[sqlite3_vtab_cursor] = Tag.materializeCStruct1Tag[Ptr[sqlite3_vtab]]
@@ -1049,1148 +953,576 @@ object structs:
 private[libsqlite] object extern_functions:
   import _root_.libsqlite.aliases.*
   import _root_.libsqlite.structs.*
-  /**
-  */
   def sqlite3_aggregate_context(_0 : Ptr[sqlite3_context], nBytes : CInt): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_aggregate_count(_0 : Ptr[sqlite3_context]): CInt = extern
 
-  /**
-  */
   def sqlite3_auto_extension(xEntryPoint : CFuncPtr0[Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_autovacuum_pages(db : Ptr[sqlite3], _1 : CFuncPtr5[Ptr[Byte], CString, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt], _2 : Ptr[Byte], _3 : CFuncPtr1[Ptr[Byte], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_backup_finish(p : Ptr[sqlite3_backup]): CInt = extern
 
-  /**
-  */
   def sqlite3_backup_init(pDest : Ptr[sqlite3], zDestName : CString, pSource : Ptr[sqlite3], zSourceName : CString): Ptr[sqlite3_backup] = extern
 
-  /**
-  */
   def sqlite3_backup_pagecount(p : Ptr[sqlite3_backup]): CInt = extern
 
-  /**
-  */
   def sqlite3_backup_remaining(p : Ptr[sqlite3_backup]): CInt = extern
 
-  /**
-  */
   def sqlite3_backup_step(p : Ptr[sqlite3_backup], nPage : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_blob(_0 : Ptr[sqlite3_stmt], _1 : CInt, _2 : Ptr[Byte], n : CInt, _4 : CFuncPtr1[Ptr[Byte], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_blob64(_0 : Ptr[sqlite3_stmt], _1 : CInt, _2 : Ptr[Byte], _3 : sqlite3_uint64, _4 : CFuncPtr1[Ptr[Byte], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_double(_0 : Ptr[sqlite3_stmt], _1 : CInt, _2 : Double): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_int(_0 : Ptr[sqlite3_stmt], _1 : CInt, _2 : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_int64(_0 : Ptr[sqlite3_stmt], _1 : CInt, _2 : sqlite3_int64): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_null(_0 : Ptr[sqlite3_stmt], _1 : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_parameter_count(_0 : Ptr[sqlite3_stmt]): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_parameter_index(_0 : Ptr[sqlite3_stmt], zName : CString): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_parameter_name(_0 : Ptr[sqlite3_stmt], _1 : CInt): CString = extern
 
-  /**
-  */
   def sqlite3_bind_pointer(_0 : Ptr[sqlite3_stmt], _1 : CInt, _2 : Ptr[Byte], _3 : CString, _4 : CFuncPtr1[Ptr[Byte], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_text(_0 : Ptr[sqlite3_stmt], _1 : CInt, _2 : CString, _3 : CInt, _4 : CFuncPtr1[Ptr[Byte], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_text16(_0 : Ptr[sqlite3_stmt], _1 : CInt, _2 : Ptr[Byte], _3 : CInt, _4 : CFuncPtr1[Ptr[Byte], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_text64(_0 : Ptr[sqlite3_stmt], _1 : CInt, _2 : CString, _3 : sqlite3_uint64, _4 : CFuncPtr1[Ptr[Byte], Unit], encoding : CUnsignedChar): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_value(_0 : Ptr[sqlite3_stmt], _1 : CInt, _2 : Ptr[sqlite3_value]): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_zeroblob(_0 : Ptr[sqlite3_stmt], _1 : CInt, n : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_bind_zeroblob64(_0 : Ptr[sqlite3_stmt], _1 : CInt, _2 : sqlite3_uint64): CInt = extern
 
-  /**
-  */
   def sqlite3_blob_bytes(_0 : Ptr[sqlite3_blob]): CInt = extern
 
-  /**
-  */
   def sqlite3_blob_close(_0 : Ptr[sqlite3_blob]): CInt = extern
 
-  /**
-  */
   def sqlite3_blob_open(_0 : Ptr[sqlite3], zDb : CString, zTable : CString, zColumn : CString, iRow : sqlite3_int64, flags : CInt, ppBlob : Ptr[Ptr[sqlite3_blob]]): CInt = extern
 
-  /**
-  */
   def sqlite3_blob_read(_0 : Ptr[sqlite3_blob], Z : Ptr[Byte], N : CInt, iOffset : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_blob_reopen(_0 : Ptr[sqlite3_blob], _1 : sqlite3_int64): CInt = extern
 
-  /**
-  */
   def sqlite3_blob_write(_0 : Ptr[sqlite3_blob], z : Ptr[Byte], n : CInt, iOffset : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_busy_handler(_0 : Ptr[sqlite3], _1 : CFuncPtr2[Ptr[Byte], CInt, CInt], _2 : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def sqlite3_busy_timeout(_0 : Ptr[sqlite3], ms : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_cancel_auto_extension(xEntryPoint : CFuncPtr0[Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_changes(_0 : Ptr[sqlite3]): CInt = extern
 
-  /**
-  */
   def sqlite3_changes64(_0 : Ptr[sqlite3]): sqlite3_int64 = extern
 
-  /**
-  */
   def sqlite3_clear_bindings(_0 : Ptr[sqlite3_stmt]): CInt = extern
 
-  /**
-  */
   def sqlite3_close(_0 : Ptr[sqlite3]): CInt = extern
 
-  /**
-  */
   def sqlite3_close_v2(_0 : Ptr[sqlite3]): CInt = extern
 
-  /**
-  */
   def sqlite3_collation_needed(_0 : Ptr[sqlite3], _1 : Ptr[Byte], _2 : CFuncPtr4[Ptr[Byte], Ptr[sqlite3], CInt, CString, Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_collation_needed16(_0 : Ptr[sqlite3], _1 : Ptr[Byte], _2 : CFuncPtr4[Ptr[Byte], Ptr[sqlite3], CInt, Ptr[Byte], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_column_blob(_0 : Ptr[sqlite3_stmt], iCol : CInt): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_column_bytes(_0 : Ptr[sqlite3_stmt], iCol : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_column_bytes16(_0 : Ptr[sqlite3_stmt], iCol : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_column_count(pStmt : Ptr[sqlite3_stmt]): CInt = extern
 
-  /**
-  */
   def sqlite3_column_database_name(_0 : Ptr[sqlite3_stmt], _1 : CInt): CString = extern
 
-  /**
-  */
   def sqlite3_column_database_name16(_0 : Ptr[sqlite3_stmt], _1 : CInt): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_column_decltype(_0 : Ptr[sqlite3_stmt], _1 : CInt): CString = extern
 
-  /**
-  */
   def sqlite3_column_decltype16(_0 : Ptr[sqlite3_stmt], _1 : CInt): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_column_double(_0 : Ptr[sqlite3_stmt], iCol : CInt): Double = extern
 
-  /**
-  */
   def sqlite3_column_int(_0 : Ptr[sqlite3_stmt], iCol : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_column_int64(_0 : Ptr[sqlite3_stmt], iCol : CInt): sqlite3_int64 = extern
 
-  /**
-  */
   def sqlite3_column_name(_0 : Ptr[sqlite3_stmt], N : CInt): CString = extern
 
-  /**
-  */
   def sqlite3_column_name16(_0 : Ptr[sqlite3_stmt], N : CInt): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_column_origin_name(_0 : Ptr[sqlite3_stmt], _1 : CInt): CString = extern
 
-  /**
-  */
   def sqlite3_column_origin_name16(_0 : Ptr[sqlite3_stmt], _1 : CInt): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_column_table_name(_0 : Ptr[sqlite3_stmt], _1 : CInt): CString = extern
 
-  /**
-  */
   def sqlite3_column_table_name16(_0 : Ptr[sqlite3_stmt], _1 : CInt): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_column_text(_0 : Ptr[sqlite3_stmt], iCol : CInt): Ptr[CUnsignedChar] = extern
 
-  /**
-  */
   def sqlite3_column_text16(_0 : Ptr[sqlite3_stmt], iCol : CInt): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_column_type(_0 : Ptr[sqlite3_stmt], iCol : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_column_value(_0 : Ptr[sqlite3_stmt], iCol : CInt): Ptr[sqlite3_value] = extern
 
-  /**
-  */
   def sqlite3_commit_hook(_0 : Ptr[sqlite3], _1 : CFuncPtr1[Ptr[Byte], CInt], _2 : Ptr[Byte]): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_compileoption_get(N : CInt): CString = extern
 
-  /**
-  */
   def sqlite3_compileoption_used(zOptName : CString): CInt = extern
 
-  /**
-  */
   def sqlite3_complete(sql : CString): CInt = extern
 
-  /**
-  */
   def sqlite3_complete16(sql : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def sqlite3_config(_0 : CInt, rest: Any*): CInt = extern
 
-  /**
-  */
   def sqlite3_context_db_handle(_0 : Ptr[sqlite3_context]): Ptr[sqlite3] = extern
 
-  /**
-  */
   def sqlite3_create_collation(_0 : Ptr[sqlite3], zName : CString, eTextRep : CInt, pArg : Ptr[Byte], xCompare : CFuncPtr5[Ptr[Byte], CInt, Ptr[Byte], CInt, Ptr[Byte], CInt]): CInt = extern
 
-  /**
-  */
   def sqlite3_create_collation16(_0 : Ptr[sqlite3], zName : Ptr[Byte], eTextRep : CInt, pArg : Ptr[Byte], xCompare : CFuncPtr5[Ptr[Byte], CInt, Ptr[Byte], CInt, Ptr[Byte], CInt]): CInt = extern
 
-  /**
-  */
   def sqlite3_create_collation_v2(_0 : Ptr[sqlite3], zName : CString, eTextRep : CInt, pArg : Ptr[Byte], xCompare : CFuncPtr5[Ptr[Byte], CInt, Ptr[Byte], CInt, Ptr[Byte], CInt], xDestroy : CFuncPtr1[Ptr[Byte], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_create_filename(zDatabase : CString, zJournal : CString, zWal : CString, nParam : CInt, azParam : Ptr[CString]): sqlite3_filename = extern
 
-  /**
-  */
   def sqlite3_create_function(db : Ptr[sqlite3], zFunctionName : CString, nArg : CInt, eTextRep : CInt, pApp : Ptr[Byte], xFunc : CFuncPtr3[Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit], xStep : CFuncPtr3[Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit], xFinal : CFuncPtr1[Ptr[sqlite3_context], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_create_function16(db : Ptr[sqlite3], zFunctionName : Ptr[Byte], nArg : CInt, eTextRep : CInt, pApp : Ptr[Byte], xFunc : CFuncPtr3[Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit], xStep : CFuncPtr3[Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit], xFinal : CFuncPtr1[Ptr[sqlite3_context], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_create_function_v2(db : Ptr[sqlite3], zFunctionName : CString, nArg : CInt, eTextRep : CInt, pApp : Ptr[Byte], xFunc : CFuncPtr3[Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit], xStep : CFuncPtr3[Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit], xFinal : CFuncPtr1[Ptr[sqlite3_context], Unit], xDestroy : CFuncPtr1[Ptr[Byte], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_create_module(db : Ptr[sqlite3], zName : CString, p : Ptr[sqlite3_module], pClientData : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def sqlite3_create_module_v2(db : Ptr[sqlite3], zName : CString, p : Ptr[sqlite3_module], pClientData : Ptr[Byte], xDestroy : CFuncPtr1[Ptr[Byte], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_create_window_function(db : Ptr[sqlite3], zFunctionName : CString, nArg : CInt, eTextRep : CInt, pApp : Ptr[Byte], xStep : CFuncPtr3[Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit], xFinal : CFuncPtr1[Ptr[sqlite3_context], Unit], xValue : CFuncPtr1[Ptr[sqlite3_context], Unit], xInverse : CFuncPtr3[Ptr[sqlite3_context], CInt, Ptr[Ptr[sqlite3_value]], Unit], xDestroy : CFuncPtr1[Ptr[Byte], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_data_count(pStmt : Ptr[sqlite3_stmt]): CInt = extern
 
-  /**
-  */
   def sqlite3_database_file_object(_0 : CString): Ptr[sqlite3_file] = extern
 
-  /**
-  */
   def sqlite3_db_cacheflush(_0 : Ptr[sqlite3]): CInt = extern
 
-  /**
-  */
   def sqlite3_db_config(_0 : Ptr[sqlite3], op : CInt, rest: Any*): CInt = extern
 
-  /**
-  */
   def sqlite3_db_filename(db : Ptr[sqlite3], zDbName : CString): sqlite3_filename = extern
 
-  /**
-  */
   def sqlite3_db_handle(_0 : Ptr[sqlite3_stmt]): Ptr[sqlite3] = extern
 
-  /**
-  */
   def sqlite3_db_mutex(_0 : Ptr[sqlite3]): Ptr[sqlite3_mutex] = extern
 
-  /**
-  */
   def sqlite3_db_name(db : Ptr[sqlite3], N : CInt): CString = extern
 
-  /**
-  */
   def sqlite3_db_readonly(db : Ptr[sqlite3], zDbName : CString): CInt = extern
 
-  /**
-  */
   def sqlite3_db_release_memory(_0 : Ptr[sqlite3]): CInt = extern
 
-  /**
-  */
   def sqlite3_db_status(_0 : Ptr[sqlite3], op : CInt, pCur : Ptr[CInt], pHiwtr : Ptr[CInt], resetFlg : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_declare_vtab(_0 : Ptr[sqlite3], zSQL : CString): CInt = extern
 
-  /**
-  */
   def sqlite3_deserialize(db : Ptr[sqlite3], zSchema : CString, pData : Ptr[CUnsignedChar], szDb : sqlite3_int64, szBuf : sqlite3_int64, mFlags : CUnsignedInt): CInt = extern
 
-  /**
-  */
   def sqlite3_drop_modules(db : Ptr[sqlite3], azKeep : Ptr[CString]): CInt = extern
 
-  /**
-  */
   def sqlite3_enable_load_extension(db : Ptr[sqlite3], onoff : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_enable_shared_cache(_0 : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_errcode(db : Ptr[sqlite3]): CInt = extern
 
-  /**
-  */
   def sqlite3_errmsg(_0 : Ptr[sqlite3]): CString = extern
 
-  /**
-  */
   def sqlite3_errmsg16(_0 : Ptr[sqlite3]): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_error_offset(db : Ptr[sqlite3]): CInt = extern
 
-  /**
-  */
   def sqlite3_errstr(_0 : CInt): CString = extern
 
-  /**
-  */
   def sqlite3_exec(_0 : Ptr[sqlite3], sql : CString, callback : CFuncPtr4[Ptr[Byte], CInt, Ptr[CString], Ptr[CString], CInt], _3 : Ptr[Byte], errmsg : Ptr[CString]): CInt = extern
 
-  /**
-  */
   def sqlite3_expanded_sql(pStmt : Ptr[sqlite3_stmt]): CString = extern
 
-  /**
-  */
   def sqlite3_expired(_0 : Ptr[sqlite3_stmt]): CInt = extern
 
-  /**
-  */
   def sqlite3_extended_errcode(db : Ptr[sqlite3]): CInt = extern
 
-  /**
-  */
   def sqlite3_extended_result_codes(_0 : Ptr[sqlite3], onoff : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_file_control(_0 : Ptr[sqlite3], zDbName : CString, op : CInt, _3 : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def sqlite3_filename_database(_0 : sqlite3_filename): CString = extern
 
-  /**
-  */
   def sqlite3_filename_journal(_0 : sqlite3_filename): CString = extern
 
-  /**
-  */
   def sqlite3_filename_wal(_0 : sqlite3_filename): CString = extern
 
-  /**
-  */
   def sqlite3_finalize(pStmt : Ptr[sqlite3_stmt]): CInt = extern
 
-  /**
-  */
   def sqlite3_free(_0 : Ptr[Byte]): Unit = extern
 
-  /**
-  */
   def sqlite3_free_filename(_0 : sqlite3_filename): Unit = extern
 
-  /**
-  */
   def sqlite3_free_table(result : Ptr[CString]): Unit = extern
 
-  /**
-  */
   def sqlite3_get_autocommit(_0 : Ptr[sqlite3]): CInt = extern
 
-  /**
-  */
   def sqlite3_get_auxdata(_0 : Ptr[sqlite3_context], N : CInt): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_get_table(db : Ptr[sqlite3], zSql : CString, pazResult : Ptr[Ptr[CString]], pnRow : Ptr[CInt], pnColumn : Ptr[CInt], pzErrmsg : Ptr[CString]): CInt = extern
 
-  /**
-  */
   def sqlite3_global_recover(): CInt = extern
 
-  /**
-  */
   def sqlite3_hard_heap_limit64(N : sqlite3_int64): sqlite3_int64 = extern
 
-  /**
-  */
   def sqlite3_initialize(): CInt = extern
 
-  /**
-  */
   def sqlite3_interrupt(_0 : Ptr[sqlite3]): Unit = extern
 
-  /**
-  */
   def sqlite3_keyword_check(_0 : CString, _1 : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_keyword_count(): CInt = extern
 
-  /**
-  */
   def sqlite3_keyword_name(_0 : CInt, _1 : Ptr[CString], _2 : Ptr[CInt]): CInt = extern
 
-  /**
-  */
   def sqlite3_last_insert_rowid(_0 : Ptr[sqlite3]): sqlite3_int64 = extern
 
-  /**
-  */
   def sqlite3_libversion(): CString = extern
 
-  /**
-  */
   def sqlite3_libversion_number(): CInt = extern
 
-  /**
-  */
   def sqlite3_limit(_0 : Ptr[sqlite3], id : CInt, newVal : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_load_extension(db : Ptr[sqlite3], zFile : CString, zProc : CString, pzErrMsg : Ptr[CString]): CInt = extern
 
-  /**
-  */
   def sqlite3_log(iErrCode : CInt, zFormat : CString, rest: Any*): Unit = extern
 
-  /**
-  */
   def sqlite3_malloc(_0 : CInt): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_malloc64(_0 : sqlite3_uint64): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_memory_alarm(_0 : CFuncPtr3[Ptr[Byte], sqlite3_int64, CInt, Unit], _1 : Ptr[Byte], _2 : sqlite3_int64): CInt = extern
 
-  /**
-  */
   def sqlite3_memory_highwater(resetFlag : CInt): sqlite3_int64 = extern
 
-  /**
-  */
   def sqlite3_memory_used(): sqlite3_int64 = extern
 
-  /**
-  */
   def sqlite3_mprintf(_0 : CString, rest: Any*): CString = extern
 
-  /**
-  */
   def sqlite3_msize(_0 : Ptr[Byte]): sqlite3_uint64 = extern
 
-  /**
-  */
   def sqlite3_mutex_alloc(_0 : CInt): Ptr[sqlite3_mutex] = extern
 
-  /**
-  */
   def sqlite3_mutex_enter(_0 : Ptr[sqlite3_mutex]): Unit = extern
 
-  /**
-  */
   def sqlite3_mutex_free(_0 : Ptr[sqlite3_mutex]): Unit = extern
 
-  /**
-  */
   def sqlite3_mutex_held(_0 : Ptr[sqlite3_mutex]): CInt = extern
 
-  /**
-  */
   def sqlite3_mutex_leave(_0 : Ptr[sqlite3_mutex]): Unit = extern
 
-  /**
-  */
   def sqlite3_mutex_notheld(_0 : Ptr[sqlite3_mutex]): CInt = extern
 
-  /**
-  */
   def sqlite3_mutex_try(_0 : Ptr[sqlite3_mutex]): CInt = extern
 
-  /**
-  */
   def sqlite3_next_stmt(pDb : Ptr[sqlite3], pStmt : Ptr[sqlite3_stmt]): Ptr[sqlite3_stmt] = extern
 
-  /**
-  */
   def sqlite3_open(filename : CString, ppDb : Ptr[Ptr[sqlite3]]): CInt = extern
 
-  /**
-  */
   def sqlite3_open16(filename : Ptr[Byte], ppDb : Ptr[Ptr[sqlite3]]): CInt = extern
 
-  /**
-  */
   def sqlite3_open_v2(filename : CString, ppDb : Ptr[Ptr[sqlite3]], flags : CInt, zVfs : CString): CInt = extern
 
-  /**
-  */
   def sqlite3_os_end(): CInt = extern
 
-  /**
-  */
   def sqlite3_os_init(): CInt = extern
 
-  /**
-  */
   def sqlite3_overload_function(_0 : Ptr[sqlite3], zFuncName : CString, nArg : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_prepare(db : Ptr[sqlite3], zSql : CString, nByte : CInt, ppStmt : Ptr[Ptr[sqlite3_stmt]], pzTail : Ptr[CString]): CInt = extern
 
-  /**
-  */
   def sqlite3_prepare16(db : Ptr[sqlite3], zSql : Ptr[Byte], nByte : CInt, ppStmt : Ptr[Ptr[sqlite3_stmt]], pzTail : Ptr[Ptr[Byte]]): CInt = extern
 
-  /**
-  */
   def sqlite3_prepare16_v2(db : Ptr[sqlite3], zSql : Ptr[Byte], nByte : CInt, ppStmt : Ptr[Ptr[sqlite3_stmt]], pzTail : Ptr[Ptr[Byte]]): CInt = extern
 
-  /**
-  */
   def sqlite3_prepare16_v3(db : Ptr[sqlite3], zSql : Ptr[Byte], nByte : CInt, prepFlags : CUnsignedInt, ppStmt : Ptr[Ptr[sqlite3_stmt]], pzTail : Ptr[Ptr[Byte]]): CInt = extern
 
-  /**
-  */
   def sqlite3_prepare_v2(db : Ptr[sqlite3], zSql : CString, nByte : CInt, ppStmt : Ptr[Ptr[sqlite3_stmt]], pzTail : Ptr[CString]): CInt = extern
 
-  /**
-  */
   def sqlite3_prepare_v3(db : Ptr[sqlite3], zSql : CString, nByte : CInt, prepFlags : CUnsignedInt, ppStmt : Ptr[Ptr[sqlite3_stmt]], pzTail : Ptr[CString]): CInt = extern
 
-  /**
-  */
   def sqlite3_profile(_0 : Ptr[sqlite3], xProfile : CFuncPtr3[Ptr[Byte], CString, sqlite3_uint64, Unit], _2 : Ptr[Byte]): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_progress_handler(_0 : Ptr[sqlite3], _1 : CInt, _2 : CFuncPtr1[Ptr[Byte], CInt], _3 : Ptr[Byte]): Unit = extern
 
-  /**
-  */
   def sqlite3_randomness(N : CInt, P : Ptr[Byte]): Unit = extern
 
-  /**
-  */
   def sqlite3_realloc(_0 : Ptr[Byte], _1 : CInt): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_realloc64(_0 : Ptr[Byte], _1 : sqlite3_uint64): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_release_memory(_0 : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_reset(pStmt : Ptr[sqlite3_stmt]): CInt = extern
 
-  /**
-  */
   def sqlite3_reset_auto_extension(): Unit = extern
 
-  /**
-  */
   def sqlite3_result_blob(_0 : Ptr[sqlite3_context], _1 : Ptr[Byte], _2 : CInt, _3 : CFuncPtr1[Ptr[Byte], Unit]): Unit = extern
 
-  /**
-  */
   def sqlite3_result_blob64(_0 : Ptr[sqlite3_context], _1 : Ptr[Byte], _2 : sqlite3_uint64, _3 : CFuncPtr1[Ptr[Byte], Unit]): Unit = extern
 
-  /**
-  */
   def sqlite3_result_double(_0 : Ptr[sqlite3_context], _1 : Double): Unit = extern
 
-  /**
-  */
   def sqlite3_result_error(_0 : Ptr[sqlite3_context], _1 : CString, _2 : CInt): Unit = extern
 
-  /**
-  */
   def sqlite3_result_error16(_0 : Ptr[sqlite3_context], _1 : Ptr[Byte], _2 : CInt): Unit = extern
 
-  /**
-  */
   def sqlite3_result_error_code(_0 : Ptr[sqlite3_context], _1 : CInt): Unit = extern
 
-  /**
-  */
   def sqlite3_result_error_nomem(_0 : Ptr[sqlite3_context]): Unit = extern
 
-  /**
-  */
   def sqlite3_result_error_toobig(_0 : Ptr[sqlite3_context]): Unit = extern
 
-  /**
-  */
   def sqlite3_result_int(_0 : Ptr[sqlite3_context], _1 : CInt): Unit = extern
 
-  /**
-  */
   def sqlite3_result_int64(_0 : Ptr[sqlite3_context], _1 : sqlite3_int64): Unit = extern
 
-  /**
-  */
   def sqlite3_result_null(_0 : Ptr[sqlite3_context]): Unit = extern
 
-  /**
-  */
   def sqlite3_result_pointer(_0 : Ptr[sqlite3_context], _1 : Ptr[Byte], _2 : CString, _3 : CFuncPtr1[Ptr[Byte], Unit]): Unit = extern
 
-  /**
-  */
   def sqlite3_result_subtype(_0 : Ptr[sqlite3_context], _1 : CUnsignedInt): Unit = extern
 
-  /**
-  */
   def sqlite3_result_text(_0 : Ptr[sqlite3_context], _1 : CString, _2 : CInt, _3 : CFuncPtr1[Ptr[Byte], Unit]): Unit = extern
 
-  /**
-  */
   def sqlite3_result_text16(_0 : Ptr[sqlite3_context], _1 : Ptr[Byte], _2 : CInt, _3 : CFuncPtr1[Ptr[Byte], Unit]): Unit = extern
 
-  /**
-  */
   def sqlite3_result_text16be(_0 : Ptr[sqlite3_context], _1 : Ptr[Byte], _2 : CInt, _3 : CFuncPtr1[Ptr[Byte], Unit]): Unit = extern
 
-  /**
-  */
   def sqlite3_result_text16le(_0 : Ptr[sqlite3_context], _1 : Ptr[Byte], _2 : CInt, _3 : CFuncPtr1[Ptr[Byte], Unit]): Unit = extern
 
-  /**
-  */
   def sqlite3_result_text64(_0 : Ptr[sqlite3_context], _1 : CString, _2 : sqlite3_uint64, _3 : CFuncPtr1[Ptr[Byte], Unit], encoding : CUnsignedChar): Unit = extern
 
-  /**
-  */
   def sqlite3_result_value(_0 : Ptr[sqlite3_context], _1 : Ptr[sqlite3_value]): Unit = extern
 
-  /**
-  */
   def sqlite3_result_zeroblob(_0 : Ptr[sqlite3_context], n : CInt): Unit = extern
 
-  /**
-  */
   def sqlite3_result_zeroblob64(_0 : Ptr[sqlite3_context], n : sqlite3_uint64): CInt = extern
 
-  /**
-  */
   def sqlite3_rollback_hook(_0 : Ptr[sqlite3], _1 : CFuncPtr1[Ptr[Byte], Unit], _2 : Ptr[Byte]): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_rtree_geometry_callback(db : Ptr[sqlite3], zGeom : CString, xGeom : CFuncPtr4[Ptr[sqlite3_rtree_geometry], CInt, Ptr[sqlite3_rtree_dbl], Ptr[CInt], CInt], pContext : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def sqlite3_rtree_query_callback(db : Ptr[sqlite3], zQueryFunc : CString, xQueryFunc : CFuncPtr1[Ptr[sqlite3_rtree_query_info], CInt], pContext : Ptr[Byte], xDestructor : CFuncPtr1[Ptr[Byte], Unit]): CInt = extern
 
-  /**
-  */
   def sqlite3_serialize(db : Ptr[sqlite3], zSchema : CString, piSize : Ptr[sqlite3_int64], mFlags : CUnsignedInt): Ptr[CUnsignedChar] = extern
 
-  /**
-  */
   def sqlite3_set_authorizer(_0 : Ptr[sqlite3], xAuth : CFuncPtr6[Ptr[Byte], CInt, CString, CString, CString, CString, CInt], pUserData : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def sqlite3_set_auxdata(_0 : Ptr[sqlite3_context], N : CInt, _2 : Ptr[Byte], _3 : CFuncPtr1[Ptr[Byte], Unit]): Unit = extern
 
-  /**
-  */
   def sqlite3_set_last_insert_rowid(_0 : Ptr[sqlite3], _1 : sqlite3_int64): Unit = extern
 
-  /**
-  */
   def sqlite3_shutdown(): CInt = extern
 
-  /**
-  */
   def sqlite3_sleep(_0 : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_snapshot_cmp(p1 : Ptr[sqlite3_snapshot], p2 : Ptr[sqlite3_snapshot]): CInt = extern
 
-  /**
-  */
   def sqlite3_snapshot_free(_0 : Ptr[sqlite3_snapshot]): Unit = extern
 
-  /**
-  */
   def sqlite3_snapshot_get(db : Ptr[sqlite3], zSchema : CString, ppSnapshot : Ptr[Ptr[sqlite3_snapshot]]): CInt = extern
 
-  /**
-  */
   def sqlite3_snapshot_open(db : Ptr[sqlite3], zSchema : CString, pSnapshot : Ptr[sqlite3_snapshot]): CInt = extern
 
-  /**
-  */
   def sqlite3_snapshot_recover(db : Ptr[sqlite3], zDb : CString): CInt = extern
 
-  /**
-  */
   def sqlite3_snprintf(_0 : CInt, _1 : CString, _2 : CString, rest: Any*): CString = extern
 
-  /**
-  */
   def sqlite3_soft_heap_limit(N : CInt): Unit = extern
 
-  /**
-  */
   def sqlite3_soft_heap_limit64(N : sqlite3_int64): sqlite3_int64 = extern
 
-  /**
-  */
   def sqlite3_sourceid(): CString = extern
 
-  /**
-  */
   def sqlite3_sql(pStmt : Ptr[sqlite3_stmt]): CString = extern
 
-  /**
-  */
   def sqlite3_status(op : CInt, pCurrent : Ptr[CInt], pHighwater : Ptr[CInt], resetFlag : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_status64(op : CInt, pCurrent : Ptr[sqlite3_int64], pHighwater : Ptr[sqlite3_int64], resetFlag : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_step(_0 : Ptr[sqlite3_stmt]): CInt = extern
 
-  /**
-  */
   def sqlite3_stmt_busy(_0 : Ptr[sqlite3_stmt]): CInt = extern
 
-  /**
-  */
   def sqlite3_stmt_isexplain(pStmt : Ptr[sqlite3_stmt]): CInt = extern
 
-  /**
-  */
   def sqlite3_stmt_readonly(pStmt : Ptr[sqlite3_stmt]): CInt = extern
 
-  /**
-  */
   def sqlite3_stmt_scanstatus(pStmt : Ptr[sqlite3_stmt], idx : CInt, iScanStatusOp : CInt, pOut : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def sqlite3_stmt_scanstatus_reset(_0 : Ptr[sqlite3_stmt]): Unit = extern
 
-  /**
-  */
   def sqlite3_stmt_status(_0 : Ptr[sqlite3_stmt], op : CInt, resetFlg : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_str_append(_0 : Ptr[sqlite3_str], zIn : CString, N : CInt): Unit = extern
 
-  /**
-  */
   def sqlite3_str_appendall(_0 : Ptr[sqlite3_str], zIn : CString): Unit = extern
 
-  /**
-  */
   def sqlite3_str_appendchar(_0 : Ptr[sqlite3_str], N : CInt, C : CChar): Unit = extern
 
-  /**
-  */
   def sqlite3_str_appendf(_0 : Ptr[sqlite3_str], zFormat : CString, rest: Any*): Unit = extern
 
-  /**
-  */
   def sqlite3_str_errcode(_0 : Ptr[sqlite3_str]): CInt = extern
 
-  /**
-  */
   def sqlite3_str_finish(_0 : Ptr[sqlite3_str]): CString = extern
 
-  /**
-  */
   def sqlite3_str_length(_0 : Ptr[sqlite3_str]): CInt = extern
 
-  /**
-  */
   def sqlite3_str_new(_0 : Ptr[sqlite3]): Ptr[sqlite3_str] = extern
 
-  /**
-  */
   def sqlite3_str_reset(_0 : Ptr[sqlite3_str]): Unit = extern
 
-  /**
-  */
   def sqlite3_str_value(_0 : Ptr[sqlite3_str]): CString = extern
 
-  /**
-  */
   def sqlite3_str_vappendf(_0 : Ptr[sqlite3_str], zFormat : CString, _2 : va_list): Unit = extern
 
-  /**
-  */
   def sqlite3_strglob(zGlob : CString, zStr : CString): CInt = extern
 
-  /**
-  */
   def sqlite3_stricmp(_0 : CString, _1 : CString): CInt = extern
 
-  /**
-  */
   def sqlite3_strlike(zGlob : CString, zStr : CString, cEsc : CUnsignedInt): CInt = extern
 
-  /**
-  */
   def sqlite3_strnicmp(_0 : CString, _1 : CString, _2 : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_system_errno(_0 : Ptr[sqlite3]): CInt = extern
 
-  /**
-  */
   def sqlite3_table_column_metadata(db : Ptr[sqlite3], zDbName : CString, zTableName : CString, zColumnName : CString, pzDataType : Ptr[CString], pzCollSeq : Ptr[CString], pNotNull : Ptr[CInt], pPrimaryKey : Ptr[CInt], pAutoinc : Ptr[CInt]): CInt = extern
 
-  /**
-  */
   def sqlite3_test_control(op : CInt, rest: Any*): CInt = extern
 
-  /**
-  */
   def sqlite3_thread_cleanup(): Unit = extern
 
-  /**
-  */
   def sqlite3_threadsafe(): CInt = extern
 
-  /**
-  */
   def sqlite3_total_changes(_0 : Ptr[sqlite3]): CInt = extern
 
-  /**
-  */
   def sqlite3_total_changes64(_0 : Ptr[sqlite3]): sqlite3_int64 = extern
 
-  /**
-  */
   def sqlite3_trace(_0 : Ptr[sqlite3], xTrace : CFuncPtr2[Ptr[Byte], CString, Unit], _2 : Ptr[Byte]): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_trace_v2(_0 : Ptr[sqlite3], uMask : CUnsignedInt, xCallback : CFuncPtr4[CUnsignedInt, Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt], pCtx : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def sqlite3_transfer_bindings(_0 : Ptr[sqlite3_stmt], _1 : Ptr[sqlite3_stmt]): CInt = extern
 
-  /**
-  */
   def sqlite3_txn_state(_0 : Ptr[sqlite3], zSchema : CString): CInt = extern
 
-  /**
-  */
   def sqlite3_unlock_notify(pBlocked : Ptr[sqlite3], xNotify : CFuncPtr2[Ptr[Ptr[Byte]], CInt, Unit], pNotifyArg : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def sqlite3_update_hook(_0 : Ptr[sqlite3], _1 : CFuncPtr5[Ptr[Byte], CInt, CString, CString, sqlite3_int64, Unit], _2 : Ptr[Byte]): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_uri_boolean(z : sqlite3_filename, zParam : CString, bDefault : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_uri_int64(_0 : sqlite3_filename, _1 : CString, _2 : sqlite3_int64): sqlite3_int64 = extern
 
-  /**
-  */
   def sqlite3_uri_key(z : sqlite3_filename, N : CInt): CString = extern
 
-  /**
-  */
   def sqlite3_uri_parameter(z : sqlite3_filename, zParam : CString): CString = extern
 
-  /**
-  */
   def sqlite3_user_data(_0 : Ptr[sqlite3_context]): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_value_blob(_0 : Ptr[sqlite3_value]): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_value_bytes(_0 : Ptr[sqlite3_value]): CInt = extern
 
-  /**
-  */
   def sqlite3_value_bytes16(_0 : Ptr[sqlite3_value]): CInt = extern
 
-  /**
-  */
   def sqlite3_value_double(_0 : Ptr[sqlite3_value]): Double = extern
 
-  /**
-  */
   def sqlite3_value_dup(_0 : Ptr[sqlite3_value]): Ptr[sqlite3_value] = extern
 
-  /**
-  */
   def sqlite3_value_encoding(_0 : Ptr[sqlite3_value]): CInt = extern
 
-  /**
-  */
   def sqlite3_value_free(_0 : Ptr[sqlite3_value]): Unit = extern
 
-  /**
-  */
   def sqlite3_value_frombind(_0 : Ptr[sqlite3_value]): CInt = extern
 
-  /**
-  */
   def sqlite3_value_int(_0 : Ptr[sqlite3_value]): CInt = extern
 
-  /**
-  */
   def sqlite3_value_int64(_0 : Ptr[sqlite3_value]): sqlite3_int64 = extern
 
-  /**
-  */
   def sqlite3_value_nochange(_0 : Ptr[sqlite3_value]): CInt = extern
 
-  /**
-  */
   def sqlite3_value_numeric_type(_0 : Ptr[sqlite3_value]): CInt = extern
 
-  /**
-  */
   def sqlite3_value_pointer(_0 : Ptr[sqlite3_value], _1 : CString): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_value_subtype(_0 : Ptr[sqlite3_value]): CUnsignedInt = extern
 
-  /**
-  */
   def sqlite3_value_text(_0 : Ptr[sqlite3_value]): Ptr[CUnsignedChar] = extern
 
-  /**
-  */
   def sqlite3_value_text16(_0 : Ptr[sqlite3_value]): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_value_text16be(_0 : Ptr[sqlite3_value]): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_value_text16le(_0 : Ptr[sqlite3_value]): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_value_type(_0 : Ptr[sqlite3_value]): CInt = extern
 
-  /**
-  */
   def sqlite3_vfs_find(zVfsName : CString): Ptr[sqlite3_vfs] = extern
 
-  /**
-  */
   def sqlite3_vfs_register(_0 : Ptr[sqlite3_vfs], makeDflt : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_vfs_unregister(_0 : Ptr[sqlite3_vfs]): CInt = extern
 
-  /**
-  */
   def sqlite3_vmprintf(_0 : CString, _1 : va_list): CString = extern
 
-  /**
-  */
   def sqlite3_vsnprintf(_0 : CInt, _1 : CString, _2 : CString, _3 : va_list): CString = extern
 
-  /**
-  */
   def sqlite3_vtab_collation(_0 : Ptr[sqlite3_index_info], _1 : CInt): CString = extern
 
-  /**
-  */
   def sqlite3_vtab_config(_0 : Ptr[sqlite3], op : CInt, rest: Any*): CInt = extern
 
-  /**
-  */
   def sqlite3_vtab_distinct(_0 : Ptr[sqlite3_index_info]): CInt = extern
 
-  /**
-  */
   def sqlite3_vtab_in(_0 : Ptr[sqlite3_index_info], iCons : CInt, bHandle : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_vtab_in_first(pVal : Ptr[sqlite3_value], ppOut : Ptr[Ptr[sqlite3_value]]): CInt = extern
 
-  /**
-  */
   def sqlite3_vtab_in_next(pVal : Ptr[sqlite3_value], ppOut : Ptr[Ptr[sqlite3_value]]): CInt = extern
 
-  /**
-  */
   def sqlite3_vtab_nochange(_0 : Ptr[sqlite3_context]): CInt = extern
 
-  /**
-  */
   def sqlite3_vtab_on_conflict(_0 : Ptr[sqlite3]): CInt = extern
 
-  /**
-  */
   def sqlite3_vtab_rhs_value(_0 : Ptr[sqlite3_index_info], _1 : CInt, ppVal : Ptr[Ptr[sqlite3_value]]): CInt = extern
 
-  /**
-  */
   def sqlite3_wal_autocheckpoint(db : Ptr[sqlite3], N : CInt): CInt = extern
 
-  /**
-  */
   def sqlite3_wal_checkpoint(db : Ptr[sqlite3], zDb : CString): CInt = extern
 
-  /**
-  */
   def sqlite3_wal_checkpoint_v2(db : Ptr[sqlite3], zDb : CString, eMode : CInt, pnLog : Ptr[CInt], pnCkpt : Ptr[CInt]): CInt = extern
 
-  /**
-  */
   def sqlite3_wal_hook(_0 : Ptr[sqlite3], _1 : CFuncPtr4[Ptr[Byte], Ptr[sqlite3], CString, CInt, CInt], _2 : Ptr[Byte]): Ptr[Byte] = extern
 
-  /**
-  */
   def sqlite3_win32_set_directory(`type` : CUnsignedLongInt, zValue : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def sqlite3_win32_set_directory16(`type` : CUnsignedLongInt, zValue : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def sqlite3_win32_set_directory8(`type` : CUnsignedLongInt, zValue : CString): CInt = extern
 
 

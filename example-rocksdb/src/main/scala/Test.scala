@@ -32,7 +32,7 @@ import scala.scalanative.libc.string
     key,
     size_t(string.strlen(key)),
     value,
-    size_t(string.strlen(value) + 1.toULong),
+    size_t((string.strlen(value).toInt + 1).toUSize),
     err
   )
   assert(!err == null)

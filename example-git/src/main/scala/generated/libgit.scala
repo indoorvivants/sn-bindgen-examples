@@ -157,8 +157,6 @@ object enumerations:
       inline def |(b: git_branch_t): git_branch_t = a | b
       inline def is(b: git_branch_t): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type git_cert_ssh_raw_type_t = CUnsignedInt
   object git_cert_ssh_raw_type_t extends CEnumU[git_cert_ssh_raw_type_t]:
     given _tag: Tag[git_cert_ssh_raw_type_t] = Tag.UInt
@@ -838,6 +836,7 @@ object enumerations:
     val GIT_EMISMATCH = define(-33)
     val GIT_EINDEXDIRTY = define(-34)
     val GIT_EAPPLYFAIL = define(-35)
+    val GIT_EOWNER = define(-36)
     inline def getName(inline value: git_error_code): Option[String] =
       inline value match
         case GIT_OK => Some("GIT_OK")
@@ -870,6 +869,7 @@ object enumerations:
         case GIT_EMISMATCH => Some("GIT_EMISMATCH")
         case GIT_EINDEXDIRTY => Some("GIT_EINDEXDIRTY")
         case GIT_EAPPLYFAIL => Some("GIT_EAPPLYFAIL")
+        case GIT_EOWNER => Some("GIT_EOWNER")
         case _ => None
     extension (a: git_error_code)
       inline def &(b: git_error_code): git_error_code = a & b
@@ -916,7 +916,7 @@ object enumerations:
     val GIT_ERROR_FILESYSTEM = define(30)
     val GIT_ERROR_PATCH = define(31)
     val GIT_ERROR_WORKTREE = define(32)
-    val GIT_ERROR_SHA1 = define(33)
+    val GIT_ERROR_SHA = define(33)
     val GIT_ERROR_HTTP = define(34)
     val GIT_ERROR_INTERNAL = define(35)
     inline def getName(inline value: git_error_t): Option[String] =
@@ -954,7 +954,7 @@ object enumerations:
         case GIT_ERROR_FILESYSTEM => Some("GIT_ERROR_FILESYSTEM")
         case GIT_ERROR_PATCH => Some("GIT_ERROR_PATCH")
         case GIT_ERROR_WORKTREE => Some("GIT_ERROR_WORKTREE")
-        case GIT_ERROR_SHA1 => Some("GIT_ERROR_SHA1")
+        case GIT_ERROR_SHA => Some("GIT_ERROR_SHA")
         case GIT_ERROR_HTTP => Some("GIT_ERROR_HTTP")
         case GIT_ERROR_INTERNAL => Some("GIT_ERROR_INTERNAL")
         case _ => None
@@ -1237,6 +1237,10 @@ object enumerations:
     val GIT_OPT_SET_ODB_LOOSE_PRIORITY = define(32)
     val GIT_OPT_GET_EXTENSIONS = define(33)
     val GIT_OPT_SET_EXTENSIONS = define(34)
+    val GIT_OPT_GET_OWNER_VALIDATION = define(35)
+    val GIT_OPT_SET_OWNER_VALIDATION = define(36)
+    val GIT_OPT_GET_HOMEDIR = define(37)
+    val GIT_OPT_SET_HOMEDIR = define(38)
     inline def getName(inline value: git_libgit2_opt_t): Option[String] =
       inline value match
         case GIT_OPT_GET_MWINDOW_SIZE => Some("GIT_OPT_GET_MWINDOW_SIZE")
@@ -1274,6 +1278,10 @@ object enumerations:
         case GIT_OPT_SET_ODB_LOOSE_PRIORITY => Some("GIT_OPT_SET_ODB_LOOSE_PRIORITY")
         case GIT_OPT_GET_EXTENSIONS => Some("GIT_OPT_GET_EXTENSIONS")
         case GIT_OPT_SET_EXTENSIONS => Some("GIT_OPT_SET_EXTENSIONS")
+        case GIT_OPT_GET_OWNER_VALIDATION => Some("GIT_OPT_GET_OWNER_VALIDATION")
+        case GIT_OPT_SET_OWNER_VALIDATION => Some("GIT_OPT_SET_OWNER_VALIDATION")
+        case GIT_OPT_GET_HOMEDIR => Some("GIT_OPT_GET_HOMEDIR")
+        case GIT_OPT_SET_HOMEDIR => Some("GIT_OPT_SET_HOMEDIR")
         case _ => None
     extension (a: git_libgit2_opt_t)
       inline def &(b: git_libgit2_opt_t): git_libgit2_opt_t = a & b
@@ -1442,6 +1450,20 @@ object enumerations:
       inline def |(b: git_object_t): git_object_t = a | b
       inline def is(b: git_object_t): Boolean = (a & b) == b
 
+  opaque type git_odb_backend_loose_flag_t = CUnsignedInt
+  object git_odb_backend_loose_flag_t extends CEnumU[git_odb_backend_loose_flag_t]:
+    given _tag: Tag[git_odb_backend_loose_flag_t] = Tag.UInt
+    inline def define(inline a: Long): git_odb_backend_loose_flag_t = a.toUInt
+    val GIT_ODB_BACKEND_LOOSE_FSYNC = define(1)
+    inline def getName(inline value: git_odb_backend_loose_flag_t): Option[String] =
+      inline value match
+        case GIT_ODB_BACKEND_LOOSE_FSYNC => Some("GIT_ODB_BACKEND_LOOSE_FSYNC")
+        case _ => None
+    extension (a: git_odb_backend_loose_flag_t)
+      inline def &(b: git_odb_backend_loose_flag_t): git_odb_backend_loose_flag_t = a & b
+      inline def |(b: git_odb_backend_loose_flag_t): git_odb_backend_loose_flag_t = a | b
+      inline def is(b: git_odb_backend_loose_flag_t): Boolean = (a & b) == b
+
   /**
    * Flags controlling the behavior of ODB lookup operations
   */
@@ -1479,6 +1501,23 @@ object enumerations:
       inline def &(b: git_odb_stream_t): git_odb_stream_t = a & b
       inline def |(b: git_odb_stream_t): git_odb_stream_t = a | b
       inline def is(b: git_odb_stream_t): Boolean = (a & b) == b
+
+  /**
+   * The type of object id.
+  */
+  opaque type git_oid_t = CUnsignedInt
+  object git_oid_t extends CEnumU[git_oid_t]:
+    given _tag: Tag[git_oid_t] = Tag.UInt
+    inline def define(inline a: Long): git_oid_t = a.toUInt
+    val GIT_OID_SHA1 = define(1)
+    inline def getName(inline value: git_oid_t): Option[String] =
+      inline value match
+        case GIT_OID_SHA1 => Some("GIT_OID_SHA1")
+        case _ => None
+    extension (a: git_oid_t)
+      inline def &(b: git_oid_t): git_oid_t = a & b
+      inline def |(b: git_oid_t): git_oid_t = a | b
+      inline def is(b: git_oid_t): Boolean = (a & b) == b
 
   /**
    * Stages that are reported by the packbuilder progress callback.
@@ -1991,12 +2030,14 @@ object enumerations:
     val GIT_STASH_KEEP_INDEX = define(1)
     val GIT_STASH_INCLUDE_UNTRACKED = define(2)
     val GIT_STASH_INCLUDE_IGNORED = define(4)
+    val GIT_STASH_KEEP_ALL = define(8)
     inline def getName(inline value: git_stash_flags): Option[String] =
       inline value match
         case GIT_STASH_DEFAULT => Some("GIT_STASH_DEFAULT")
         case GIT_STASH_KEEP_INDEX => Some("GIT_STASH_KEEP_INDEX")
         case GIT_STASH_INCLUDE_UNTRACKED => Some("GIT_STASH_INCLUDE_UNTRACKED")
         case GIT_STASH_INCLUDE_IGNORED => Some("GIT_STASH_INCLUDE_IGNORED")
+        case GIT_STASH_KEEP_ALL => Some("GIT_STASH_KEEP_ALL")
         case _ => None
     extension (a: git_stash_flags)
       inline def &(b: git_stash_flags): git_stash_flags = a & b
@@ -2327,7 +2368,7 @@ object aliases:
   opaque type git_apply_delta_cb = CFuncPtr2[Ptr[git_diff_delta], Ptr[Byte], CInt]
   object git_apply_delta_cb: 
     given _tag: Tag[git_apply_delta_cb] = Tag.materializeCFuncPtr2[Ptr[git_diff_delta], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_apply_delta_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_apply_delta_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_diff_delta], Ptr[Byte], CInt]): git_apply_delta_cb = o
     extension (v: git_apply_delta_cb)
       inline def value: CFuncPtr2[Ptr[git_diff_delta], Ptr[Byte], CInt] = v
@@ -2339,7 +2380,7 @@ object aliases:
   opaque type git_apply_hunk_cb = CFuncPtr2[Ptr[git_diff_hunk], Ptr[Byte], CInt]
   object git_apply_hunk_cb: 
     given _tag: Tag[git_apply_hunk_cb] = Tag.materializeCFuncPtr2[Ptr[git_diff_hunk], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_apply_hunk_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_apply_hunk_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_diff_hunk], Ptr[Byte], CInt]): git_apply_hunk_cb = o
     extension (v: git_apply_hunk_cb)
       inline def value: CFuncPtr2[Ptr[git_diff_hunk], Ptr[Byte], CInt] = v
@@ -2351,14 +2392,12 @@ object aliases:
   opaque type git_attr_foreach_cb = CFuncPtr3[CString, CString, Ptr[Byte], CInt]
   object git_attr_foreach_cb: 
     given _tag: Tag[git_attr_foreach_cb] = Tag.materializeCFuncPtr3[CString, CString, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_attr_foreach_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_attr_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, CString, Ptr[Byte], CInt]): git_attr_foreach_cb = o
     extension (v: git_attr_foreach_cb)
       inline def value: CFuncPtr3[CString, CString, Ptr[Byte], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   type git_attr_t = git_attr_value_t
   object git_attr_t: 
     given _tag: Tag[git_attr_t] = git_attr_value_t._tag
@@ -2372,7 +2411,7 @@ object aliases:
   opaque type git_checkout_notify_cb = CFuncPtr6[git_checkout_notify_t, CString, Ptr[git_diff_file], Ptr[git_diff_file], Ptr[git_diff_file], Ptr[Byte], CInt]
   object git_checkout_notify_cb: 
     given _tag: Tag[git_checkout_notify_cb] = Tag.materializeCFuncPtr6[git_checkout_notify_t, CString, Ptr[git_diff_file], Ptr[git_diff_file], Ptr[git_diff_file], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_checkout_notify_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_checkout_notify_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr6[git_checkout_notify_t, CString, Ptr[git_diff_file], Ptr[git_diff_file], Ptr[git_diff_file], Ptr[Byte], CInt]): git_checkout_notify_cb = o
     extension (v: git_checkout_notify_cb)
       inline def value: CFuncPtr6[git_checkout_notify_t, CString, Ptr[git_diff_file], Ptr[git_diff_file], Ptr[git_diff_file], Ptr[Byte], CInt] = v
@@ -2384,7 +2423,7 @@ object aliases:
   opaque type git_checkout_perfdata_cb = CFuncPtr2[Ptr[git_checkout_perfdata], Ptr[Byte], Unit]
   object git_checkout_perfdata_cb: 
     given _tag: Tag[git_checkout_perfdata_cb] = Tag.materializeCFuncPtr2[Ptr[git_checkout_perfdata], Ptr[Byte], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): git_checkout_perfdata_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_checkout_perfdata_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_checkout_perfdata], Ptr[Byte], Unit]): git_checkout_perfdata_cb = o
     extension (v: git_checkout_perfdata_cb)
       inline def value: CFuncPtr2[Ptr[git_checkout_perfdata], Ptr[Byte], Unit] = v
@@ -2396,7 +2435,7 @@ object aliases:
   opaque type git_checkout_progress_cb = CFuncPtr4[CString, size_t, size_t, Ptr[Byte], Unit]
   object git_checkout_progress_cb: 
     given _tag: Tag[git_checkout_progress_cb] = Tag.materializeCFuncPtr4[CString, size_t, size_t, Ptr[Byte], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): git_checkout_progress_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_checkout_progress_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[CString, size_t, size_t, Ptr[Byte], Unit]): git_checkout_progress_cb = o
     extension (v: git_checkout_progress_cb)
       inline def value: CFuncPtr4[CString, size_t, size_t, Ptr[Byte], Unit] = v
@@ -2408,7 +2447,7 @@ object aliases:
   opaque type git_commit_create_cb = CFuncPtr9[Ptr[git_oid], Ptr[git_signature], Ptr[git_signature], CString, CString, Ptr[git_tree], size_t, Ptr[Ptr[git_commit]], Ptr[Byte], CInt]
   object git_commit_create_cb: 
     given _tag: Tag[git_commit_create_cb] = Tag.materializeCFuncPtr9[Ptr[git_oid], Ptr[git_signature], Ptr[git_signature], CString, CString, Ptr[git_tree], size_t, Ptr[Ptr[git_commit]], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_commit_create_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_commit_create_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr9[Ptr[git_oid], Ptr[git_signature], Ptr[git_signature], CString, CString, Ptr[git_tree], size_t, Ptr[Ptr[git_commit]], Ptr[Byte], CInt]): git_commit_create_cb = o
     extension (v: git_commit_create_cb)
       inline def value: CFuncPtr9[Ptr[git_oid], Ptr[git_signature], Ptr[git_signature], CString, CString, Ptr[git_tree], size_t, Ptr[Ptr[git_commit]], Ptr[Byte], CInt] = v
@@ -2420,7 +2459,7 @@ object aliases:
   opaque type git_commit_signing_cb = CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt]
   object git_commit_signing_cb: 
     given _tag: Tag[git_commit_signing_cb] = Tag.materializeCFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_commit_signing_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_commit_signing_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt]): git_commit_signing_cb = o
     extension (v: git_commit_signing_cb)
       inline def value: CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt] = v
@@ -2432,7 +2471,7 @@ object aliases:
   opaque type git_config_foreach_cb = CFuncPtr2[Ptr[git_config_entry], Ptr[Byte], CInt]
   object git_config_foreach_cb: 
     given _tag: Tag[git_config_foreach_cb] = Tag.materializeCFuncPtr2[Ptr[git_config_entry], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_config_foreach_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_config_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_config_entry], Ptr[Byte], CInt]): git_config_foreach_cb = o
     extension (v: git_config_foreach_cb)
       inline def value: CFuncPtr2[Ptr[git_config_entry], Ptr[Byte], CInt] = v
@@ -2448,8 +2487,6 @@ object aliases:
     extension (v: git_cred)
       inline def value: git_credential = v
 
-  /**
-  */
   type git_cred_acquire_cb = git_credential_acquire_cb
   object git_cred_acquire_cb: 
     given _tag: Tag[git_cred_acquire_cb] = git_credential_acquire_cb._tag
@@ -2457,8 +2494,6 @@ object aliases:
     extension (v: git_cred_acquire_cb)
       inline def value: git_credential_acquire_cb = v
 
-  /**
-  */
   type git_cred_default = git_credential_default
   object git_cred_default: 
     given _tag: Tag[git_cred_default] = git_credential_default._tag
@@ -2466,8 +2501,6 @@ object aliases:
     extension (v: git_cred_default)
       inline def value: git_credential_default = v
 
-  /**
-  */
   type git_cred_sign_callback = git_credential_sign_cb
   object git_cred_sign_callback: 
     given _tag: Tag[git_cred_sign_callback] = git_credential_sign_cb._tag
@@ -2475,8 +2508,6 @@ object aliases:
     extension (v: git_cred_sign_callback)
       inline def value: git_credential_sign_cb = v
 
-  /**
-  */
   type git_cred_sign_cb = git_credential_sign_cb
   object git_cred_sign_cb: 
     given _tag: Tag[git_cred_sign_cb] = git_credential_sign_cb._tag
@@ -2484,8 +2515,6 @@ object aliases:
     extension (v: git_cred_sign_cb)
       inline def value: git_credential_sign_cb = v
 
-  /**
-  */
   type git_cred_ssh_custom = git_credential_ssh_custom
   object git_cred_ssh_custom: 
     given _tag: Tag[git_cred_ssh_custom] = git_credential_ssh_custom._tag
@@ -2493,8 +2522,6 @@ object aliases:
     extension (v: git_cred_ssh_custom)
       inline def value: git_credential_ssh_custom = v
 
-  /**
-  */
   type git_cred_ssh_interactive = git_credential_ssh_interactive
   object git_cred_ssh_interactive: 
     given _tag: Tag[git_cred_ssh_interactive] = git_credential_ssh_interactive._tag
@@ -2502,8 +2529,6 @@ object aliases:
     extension (v: git_cred_ssh_interactive)
       inline def value: git_credential_ssh_interactive = v
 
-  /**
-  */
   type git_cred_ssh_interactive_callback = git_credential_ssh_interactive_cb
   object git_cred_ssh_interactive_callback: 
     given _tag: Tag[git_cred_ssh_interactive_callback] = git_credential_ssh_interactive_cb._tag
@@ -2511,8 +2536,6 @@ object aliases:
     extension (v: git_cred_ssh_interactive_callback)
       inline def value: git_credential_ssh_interactive_cb = v
 
-  /**
-  */
   type git_cred_ssh_interactive_cb = git_credential_ssh_interactive_cb
   object git_cred_ssh_interactive_cb: 
     given _tag: Tag[git_cred_ssh_interactive_cb] = git_credential_ssh_interactive_cb._tag
@@ -2520,8 +2543,6 @@ object aliases:
     extension (v: git_cred_ssh_interactive_cb)
       inline def value: git_credential_ssh_interactive_cb = v
 
-  /**
-  */
   type git_cred_ssh_key = git_credential_ssh_key
   object git_cred_ssh_key: 
     given _tag: Tag[git_cred_ssh_key] = git_credential_ssh_key._tag
@@ -2529,8 +2550,6 @@ object aliases:
     extension (v: git_cred_ssh_key)
       inline def value: git_credential_ssh_key = v
 
-  /**
-  */
   type git_cred_username = git_credential_username
   object git_cred_username: 
     given _tag: Tag[git_cred_username] = git_credential_username._tag
@@ -2538,8 +2557,6 @@ object aliases:
     extension (v: git_cred_username)
       inline def value: git_credential_username = v
 
-  /**
-  */
   type git_cred_userpass_payload = git_credential_userpass_payload
   object git_cred_userpass_payload: 
     given _tag: Tag[git_cred_userpass_payload] = git_credential_userpass_payload._tag
@@ -2547,8 +2564,6 @@ object aliases:
     extension (v: git_cred_userpass_payload)
       inline def value: git_credential_userpass_payload = v
 
-  /**
-  */
   type git_cred_userpass_plaintext = git_credential_userpass_plaintext
   object git_cred_userpass_plaintext: 
     given _tag: Tag[git_cred_userpass_plaintext] = git_credential_userpass_plaintext._tag
@@ -2562,36 +2577,30 @@ object aliases:
   opaque type git_credential_acquire_cb = CFuncPtr5[Ptr[Ptr[git_credential]], CString, CString, CUnsignedInt, Ptr[Byte], CInt]
   object git_credential_acquire_cb: 
     given _tag: Tag[git_credential_acquire_cb] = Tag.materializeCFuncPtr5[Ptr[Ptr[git_credential]], CString, CString, CUnsignedInt, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_credential_acquire_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_credential_acquire_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[Ptr[Ptr[git_credential]], CString, CString, CUnsignedInt, Ptr[Byte], CInt]): git_credential_acquire_cb = o
     extension (v: git_credential_acquire_cb)
       inline def value: CFuncPtr5[Ptr[Ptr[git_credential]], CString, CString, CUnsignedInt, Ptr[Byte], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type git_credential_sign_cb = CFuncPtr6[Ptr[LIBSSH2_SESSION], Ptr[Ptr[CUnsignedChar]], Ptr[size_t], Ptr[CUnsignedChar], size_t, Ptr[Ptr[Byte]], CInt]
   object git_credential_sign_cb: 
     given _tag: Tag[git_credential_sign_cb] = Tag.materializeCFuncPtr6[Ptr[LIBSSH2_SESSION], Ptr[Ptr[CUnsignedChar]], Ptr[size_t], Ptr[CUnsignedChar], size_t, Ptr[Ptr[Byte]], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_credential_sign_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_credential_sign_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr6[Ptr[LIBSSH2_SESSION], Ptr[Ptr[CUnsignedChar]], Ptr[size_t], Ptr[CUnsignedChar], size_t, Ptr[Ptr[Byte]], CInt]): git_credential_sign_cb = o
     extension (v: git_credential_sign_cb)
       inline def value: CFuncPtr6[Ptr[LIBSSH2_SESSION], Ptr[Ptr[CUnsignedChar]], Ptr[size_t], Ptr[CUnsignedChar], size_t, Ptr[Ptr[Byte]], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type git_credential_ssh_interactive_cb = CFuncPtr8[CString, CInt, CString, CInt, CInt, Ptr[LIBSSH2_USERAUTH_KBDINT_PROMPT], Ptr[LIBSSH2_USERAUTH_KBDINT_RESPONSE], Ptr[Ptr[Byte]], Unit]
   object git_credential_ssh_interactive_cb: 
     given _tag: Tag[git_credential_ssh_interactive_cb] = Tag.materializeCFuncPtr8[CString, CInt, CString, CInt, CInt, Ptr[LIBSSH2_USERAUTH_KBDINT_PROMPT], Ptr[LIBSSH2_USERAUTH_KBDINT_RESPONSE], Ptr[Ptr[Byte]], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): git_credential_ssh_interactive_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_credential_ssh_interactive_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr8[CString, CInt, CString, CInt, CInt, Ptr[LIBSSH2_USERAUTH_KBDINT_PROMPT], Ptr[LIBSSH2_USERAUTH_KBDINT_RESPONSE], Ptr[Ptr[Byte]], Unit]): git_credential_ssh_interactive_cb = o
     extension (v: git_credential_ssh_interactive_cb)
       inline def value: CFuncPtr8[CString, CInt, CString, CInt, CInt, Ptr[LIBSSH2_USERAUTH_KBDINT_PROMPT], Ptr[LIBSSH2_USERAUTH_KBDINT_RESPONSE], Ptr[Ptr[Byte]], Unit] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   type git_cvar_map = git_configmap
   object git_cvar_map: 
     given _tag: Tag[git_cvar_map] = git_configmap._tag
@@ -2605,7 +2614,7 @@ object aliases:
   opaque type git_diff_binary_cb = CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_binary], Ptr[Byte], CInt]
   object git_diff_binary_cb: 
     given _tag: Tag[git_diff_binary_cb] = Tag.materializeCFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_binary], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_diff_binary_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_diff_binary_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_binary], Ptr[Byte], CInt]): git_diff_binary_cb = o
     extension (v: git_diff_binary_cb)
       inline def value: CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_binary], Ptr[Byte], CInt] = v
@@ -2617,7 +2626,7 @@ object aliases:
   opaque type git_diff_file_cb = CFuncPtr3[Ptr[git_diff_delta], Float, Ptr[Byte], CInt]
   object git_diff_file_cb: 
     given _tag: Tag[git_diff_file_cb] = Tag.materializeCFuncPtr3[Ptr[git_diff_delta], Float, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_diff_file_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_diff_file_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[git_diff_delta], Float, Ptr[Byte], CInt]): git_diff_file_cb = o
     extension (v: git_diff_file_cb)
       inline def value: CFuncPtr3[Ptr[git_diff_delta], Float, Ptr[Byte], CInt] = v
@@ -2629,7 +2638,7 @@ object aliases:
   opaque type git_diff_hunk_cb = CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[Byte], CInt]
   object git_diff_hunk_cb: 
     given _tag: Tag[git_diff_hunk_cb] = Tag.materializeCFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_diff_hunk_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_diff_hunk_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[Byte], CInt]): git_diff_hunk_cb = o
     extension (v: git_diff_hunk_cb)
       inline def value: CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[Byte], CInt] = v
@@ -2641,7 +2650,7 @@ object aliases:
   opaque type git_diff_line_cb = CFuncPtr4[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[git_diff_line], Ptr[Byte], CInt]
   object git_diff_line_cb: 
     given _tag: Tag[git_diff_line_cb] = Tag.materializeCFuncPtr4[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[git_diff_line], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_diff_line_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_diff_line_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[git_diff_line], Ptr[Byte], CInt]): git_diff_line_cb = o
     extension (v: git_diff_line_cb)
       inline def value: CFuncPtr4[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[git_diff_line], Ptr[Byte], CInt] = v
@@ -2653,7 +2662,7 @@ object aliases:
   opaque type git_diff_notify_cb = CFuncPtr4[Ptr[git_diff], Ptr[git_diff_delta], CString, Ptr[Byte], CInt]
   object git_diff_notify_cb: 
     given _tag: Tag[git_diff_notify_cb] = Tag.materializeCFuncPtr4[Ptr[git_diff], Ptr[git_diff_delta], CString, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_diff_notify_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_diff_notify_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[git_diff], Ptr[git_diff_delta], CString, Ptr[Byte], CInt]): git_diff_notify_cb = o
     extension (v: git_diff_notify_cb)
       inline def value: CFuncPtr4[Ptr[git_diff], Ptr[git_diff_delta], CString, Ptr[Byte], CInt] = v
@@ -2665,7 +2674,7 @@ object aliases:
   opaque type git_diff_progress_cb = CFuncPtr4[Ptr[git_diff], CString, CString, Ptr[Byte], CInt]
   object git_diff_progress_cb: 
     given _tag: Tag[git_diff_progress_cb] = Tag.materializeCFuncPtr4[Ptr[git_diff], CString, CString, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_diff_progress_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_diff_progress_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[git_diff], CString, CString, Ptr[Byte], CInt]): git_diff_progress_cb = o
     extension (v: git_diff_progress_cb)
       inline def value: CFuncPtr4[Ptr[git_diff], CString, CString, Ptr[Byte], CInt] = v
@@ -2677,7 +2686,7 @@ object aliases:
   opaque type git_headlist_cb = CFuncPtr2[Ptr[git_remote_head], Ptr[Byte], CInt]
   object git_headlist_cb: 
     given _tag: Tag[git_headlist_cb] = Tag.materializeCFuncPtr2[Ptr[git_remote_head], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_headlist_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_headlist_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_remote_head], Ptr[Byte], CInt]): git_headlist_cb = o
     extension (v: git_headlist_cb)
       inline def value: CFuncPtr2[Ptr[git_remote_head], Ptr[Byte], CInt] = v
@@ -2689,7 +2698,7 @@ object aliases:
   opaque type git_index_matched_path_cb = CFuncPtr3[CString, CString, Ptr[Byte], CInt]
   object git_index_matched_path_cb: 
     given _tag: Tag[git_index_matched_path_cb] = Tag.materializeCFuncPtr3[CString, CString, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_index_matched_path_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_index_matched_path_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, CString, Ptr[Byte], CInt]): git_index_matched_path_cb = o
     extension (v: git_index_matched_path_cb)
       inline def value: CFuncPtr3[CString, CString, Ptr[Byte], CInt] = v
@@ -2701,7 +2710,7 @@ object aliases:
   opaque type git_indexer_progress_cb = CFuncPtr2[Ptr[git_indexer_progress], Ptr[Byte], CInt]
   object git_indexer_progress_cb: 
     given _tag: Tag[git_indexer_progress_cb] = Tag.materializeCFuncPtr2[Ptr[git_indexer_progress], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_indexer_progress_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_indexer_progress_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_indexer_progress], Ptr[Byte], CInt]): git_indexer_progress_cb = o
     extension (v: git_indexer_progress_cb)
       inline def value: CFuncPtr2[Ptr[git_indexer_progress], Ptr[Byte], CInt] = v
@@ -2713,7 +2722,7 @@ object aliases:
   opaque type git_note_foreach_cb = CFuncPtr3[Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt]
   object git_note_foreach_cb: 
     given _tag: Tag[git_note_foreach_cb] = Tag.materializeCFuncPtr3[Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_note_foreach_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_note_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt]): git_note_foreach_cb = o
     extension (v: git_note_foreach_cb)
       inline def value: CFuncPtr3[Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt] = v
@@ -2735,14 +2744,12 @@ object aliases:
   opaque type git_odb_foreach_cb = CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
   object git_odb_foreach_cb: 
     given _tag: Tag[git_odb_foreach_cb] = Tag.materializeCFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_odb_foreach_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_odb_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]): git_odb_foreach_cb = o
     extension (v: git_odb_foreach_cb)
       inline def value: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   type git_off_t = int64_t
   object git_off_t: 
     given _tag: Tag[git_off_t] = int64_t._tag
@@ -2756,7 +2763,7 @@ object aliases:
   opaque type git_packbuilder_foreach_cb = CFuncPtr3[Ptr[Byte], size_t, Ptr[Byte], CInt]
   object git_packbuilder_foreach_cb: 
     given _tag: Tag[git_packbuilder_foreach_cb] = Tag.materializeCFuncPtr3[Ptr[Byte], size_t, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_packbuilder_foreach_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_packbuilder_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], size_t, Ptr[Byte], CInt]): git_packbuilder_foreach_cb = o
     extension (v: git_packbuilder_foreach_cb)
       inline def value: CFuncPtr3[Ptr[Byte], size_t, Ptr[Byte], CInt] = v
@@ -2768,7 +2775,7 @@ object aliases:
   opaque type git_packbuilder_progress = CFuncPtr4[CInt, uint32_t, uint32_t, Ptr[Byte], CInt]
   object git_packbuilder_progress: 
     given _tag: Tag[git_packbuilder_progress] = Tag.materializeCFuncPtr4[CInt, uint32_t, uint32_t, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_packbuilder_progress = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_packbuilder_progress = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[CInt, uint32_t, uint32_t, Ptr[Byte], CInt]): git_packbuilder_progress = o
     extension (v: git_packbuilder_progress)
       inline def value: CFuncPtr4[CInt, uint32_t, uint32_t, Ptr[Byte], CInt] = v
@@ -2780,7 +2787,7 @@ object aliases:
   opaque type git_push_negotiation = CFuncPtr3[Ptr[Ptr[git_push_update]], size_t, Ptr[Byte], CInt]
   object git_push_negotiation: 
     given _tag: Tag[git_push_negotiation] = Tag.materializeCFuncPtr3[Ptr[Ptr[git_push_update]], size_t, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_push_negotiation = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_push_negotiation = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Ptr[git_push_update]], size_t, Ptr[Byte], CInt]): git_push_negotiation = o
     extension (v: git_push_negotiation)
       inline def value: CFuncPtr3[Ptr[Ptr[git_push_update]], size_t, Ptr[Byte], CInt] = v
@@ -2802,7 +2809,7 @@ object aliases:
   opaque type git_push_transfer_progress_cb = CFuncPtr4[CUnsignedInt, CUnsignedInt, size_t, Ptr[Byte], CInt]
   object git_push_transfer_progress_cb: 
     given _tag: Tag[git_push_transfer_progress_cb] = Tag.materializeCFuncPtr4[CUnsignedInt, CUnsignedInt, size_t, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_push_transfer_progress_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_push_transfer_progress_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[CUnsignedInt, CUnsignedInt, size_t, Ptr[Byte], CInt]): git_push_transfer_progress_cb = o
     extension (v: git_push_transfer_progress_cb)
       inline def value: CFuncPtr4[CUnsignedInt, CUnsignedInt, size_t, Ptr[Byte], CInt] = v
@@ -2814,7 +2821,7 @@ object aliases:
   opaque type git_push_update_reference_cb = CFuncPtr3[CString, CString, Ptr[Byte], CInt]
   object git_push_update_reference_cb: 
     given _tag: Tag[git_push_update_reference_cb] = Tag.materializeCFuncPtr3[CString, CString, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_push_update_reference_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_push_update_reference_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, CString, Ptr[Byte], CInt]): git_push_update_reference_cb = o
     extension (v: git_push_update_reference_cb)
       inline def value: CFuncPtr3[CString, CString, Ptr[Byte], CInt] = v
@@ -2826,7 +2833,7 @@ object aliases:
   opaque type git_reference_foreach_cb = CFuncPtr2[Ptr[git_reference], Ptr[Byte], CInt]
   object git_reference_foreach_cb: 
     given _tag: Tag[git_reference_foreach_cb] = Tag.materializeCFuncPtr2[Ptr[git_reference], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_reference_foreach_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_reference_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_reference], Ptr[Byte], CInt]): git_reference_foreach_cb = o
     extension (v: git_reference_foreach_cb)
       inline def value: CFuncPtr2[Ptr[git_reference], Ptr[Byte], CInt] = v
@@ -2838,7 +2845,7 @@ object aliases:
   opaque type git_reference_foreach_name_cb = CFuncPtr2[CString, Ptr[Byte], CInt]
   object git_reference_foreach_name_cb: 
     given _tag: Tag[git_reference_foreach_name_cb] = Tag.materializeCFuncPtr2[CString, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_reference_foreach_name_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_reference_foreach_name_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[CString, Ptr[Byte], CInt]): git_reference_foreach_name_cb = o
     extension (v: git_reference_foreach_name_cb)
       inline def value: CFuncPtr2[CString, Ptr[Byte], CInt] = v
@@ -2850,7 +2857,7 @@ object aliases:
   opaque type git_remote_create_cb = CFuncPtr5[Ptr[Ptr[git_remote]], Ptr[git_repository], CString, CString, Ptr[Byte], CInt]
   object git_remote_create_cb: 
     given _tag: Tag[git_remote_create_cb] = Tag.materializeCFuncPtr5[Ptr[Ptr[git_remote]], Ptr[git_repository], CString, CString, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_remote_create_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_remote_create_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[Ptr[Ptr[git_remote]], Ptr[git_repository], CString, CString, Ptr[Byte], CInt]): git_remote_create_cb = o
     extension (v: git_remote_create_cb)
       inline def value: CFuncPtr5[Ptr[Ptr[git_remote]], Ptr[git_repository], CString, CString, Ptr[Byte], CInt] = v
@@ -2862,7 +2869,7 @@ object aliases:
   opaque type git_remote_ready_cb = CFuncPtr3[Ptr[git_remote], CInt, Ptr[Byte], CInt]
   object git_remote_ready_cb: 
     given _tag: Tag[git_remote_ready_cb] = Tag.materializeCFuncPtr3[Ptr[git_remote], CInt, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_remote_ready_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_remote_ready_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[git_remote], CInt, Ptr[Byte], CInt]): git_remote_ready_cb = o
     extension (v: git_remote_ready_cb)
       inline def value: CFuncPtr3[Ptr[git_remote], CInt, Ptr[Byte], CInt] = v
@@ -2874,7 +2881,7 @@ object aliases:
   opaque type git_repository_create_cb = CFuncPtr4[Ptr[Ptr[git_repository]], CString, CInt, Ptr[Byte], CInt]
   object git_repository_create_cb: 
     given _tag: Tag[git_repository_create_cb] = Tag.materializeCFuncPtr4[Ptr[Ptr[git_repository]], CString, CInt, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_repository_create_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_repository_create_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[Ptr[git_repository]], CString, CInt, Ptr[Byte], CInt]): git_repository_create_cb = o
     extension (v: git_repository_create_cb)
       inline def value: CFuncPtr4[Ptr[Ptr[git_repository]], CString, CInt, Ptr[Byte], CInt] = v
@@ -2886,7 +2893,7 @@ object aliases:
   opaque type git_repository_fetchhead_foreach_cb = CFuncPtr5[CString, CString, Ptr[git_oid], CUnsignedInt, Ptr[Byte], CInt]
   object git_repository_fetchhead_foreach_cb: 
     given _tag: Tag[git_repository_fetchhead_foreach_cb] = Tag.materializeCFuncPtr5[CString, CString, Ptr[git_oid], CUnsignedInt, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_repository_fetchhead_foreach_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_repository_fetchhead_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[CString, CString, Ptr[git_oid], CUnsignedInt, Ptr[Byte], CInt]): git_repository_fetchhead_foreach_cb = o
     extension (v: git_repository_fetchhead_foreach_cb)
       inline def value: CFuncPtr5[CString, CString, Ptr[git_oid], CUnsignedInt, Ptr[Byte], CInt] = v
@@ -2898,7 +2905,7 @@ object aliases:
   opaque type git_repository_mergehead_foreach_cb = CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
   object git_repository_mergehead_foreach_cb: 
     given _tag: Tag[git_repository_mergehead_foreach_cb] = Tag.materializeCFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_repository_mergehead_foreach_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_repository_mergehead_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]): git_repository_mergehead_foreach_cb = o
     extension (v: git_repository_mergehead_foreach_cb)
       inline def value: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt] = v
@@ -2920,7 +2927,7 @@ object aliases:
   opaque type git_revwalk_hide_cb = CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
   object git_revwalk_hide_cb: 
     given _tag: Tag[git_revwalk_hide_cb] = Tag.materializeCFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_revwalk_hide_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_revwalk_hide_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]): git_revwalk_hide_cb = o
     extension (v: git_revwalk_hide_cb)
       inline def value: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt] = v
@@ -2932,7 +2939,7 @@ object aliases:
   opaque type git_stash_apply_progress_cb = CFuncPtr2[git_stash_apply_progress_t, Ptr[Byte], CInt]
   object git_stash_apply_progress_cb: 
     given _tag: Tag[git_stash_apply_progress_cb] = Tag.materializeCFuncPtr2[git_stash_apply_progress_t, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_stash_apply_progress_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_stash_apply_progress_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[git_stash_apply_progress_t, Ptr[Byte], CInt]): git_stash_apply_progress_cb = o
     extension (v: git_stash_apply_progress_cb)
       inline def value: CFuncPtr2[git_stash_apply_progress_t, Ptr[Byte], CInt] = v
@@ -2944,7 +2951,7 @@ object aliases:
   opaque type git_stash_cb = CFuncPtr4[size_t, CString, Ptr[git_oid], Ptr[Byte], CInt]
   object git_stash_cb: 
     given _tag: Tag[git_stash_cb] = Tag.materializeCFuncPtr4[size_t, CString, Ptr[git_oid], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_stash_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_stash_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[size_t, CString, Ptr[git_oid], Ptr[Byte], CInt]): git_stash_cb = o
     extension (v: git_stash_cb)
       inline def value: CFuncPtr4[size_t, CString, Ptr[git_oid], Ptr[Byte], CInt] = v
@@ -2956,7 +2963,7 @@ object aliases:
   opaque type git_status_cb = CFuncPtr3[CString, CUnsignedInt, Ptr[Byte], CInt]
   object git_status_cb: 
     given _tag: Tag[git_status_cb] = Tag.materializeCFuncPtr3[CString, CUnsignedInt, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_status_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_status_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, CUnsignedInt, Ptr[Byte], CInt]): git_status_cb = o
     extension (v: git_status_cb)
       inline def value: CFuncPtr3[CString, CUnsignedInt, Ptr[Byte], CInt] = v
@@ -2968,7 +2975,7 @@ object aliases:
   opaque type git_submodule_cb = CFuncPtr3[Ptr[git_submodule], CString, Ptr[Byte], CInt]
   object git_submodule_cb: 
     given _tag: Tag[git_submodule_cb] = Tag.materializeCFuncPtr3[Ptr[git_submodule], CString, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_submodule_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_submodule_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[git_submodule], CString, Ptr[Byte], CInt]): git_submodule_cb = o
     extension (v: git_submodule_cb)
       inline def value: CFuncPtr3[Ptr[git_submodule], CString, Ptr[Byte], CInt] = v
@@ -2980,14 +2987,12 @@ object aliases:
   opaque type git_tag_foreach_cb = CFuncPtr3[CString, Ptr[git_oid], Ptr[Byte], CInt]
   object git_tag_foreach_cb: 
     given _tag: Tag[git_tag_foreach_cb] = Tag.materializeCFuncPtr3[CString, Ptr[git_oid], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_tag_foreach_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_tag_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, Ptr[git_oid], Ptr[Byte], CInt]): git_tag_foreach_cb = o
     extension (v: git_tag_foreach_cb)
       inline def value: CFuncPtr3[CString, Ptr[git_oid], Ptr[Byte], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   type git_time_t = int64_t
   object git_time_t: 
     given _tag: Tag[git_time_t] = int64_t._tag
@@ -3011,7 +3016,7 @@ object aliases:
   opaque type git_trace_cb = CFuncPtr2[git_trace_level_t, CString, Unit]
   object git_trace_cb: 
     given _tag: Tag[git_trace_cb] = Tag.materializeCFuncPtr2[git_trace_level_t, CString, Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): git_trace_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_trace_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[git_trace_level_t, CString, Unit]): git_trace_cb = o
     extension (v: git_trace_cb)
       inline def value: CFuncPtr2[git_trace_level_t, CString, Unit] = v
@@ -3043,7 +3048,7 @@ object aliases:
   opaque type git_transport_cb = CFuncPtr3[Ptr[Ptr[git_transport]], Ptr[git_remote], Ptr[Byte], CInt]
   object git_transport_cb: 
     given _tag: Tag[git_transport_cb] = Tag.materializeCFuncPtr3[Ptr[Ptr[git_transport]], Ptr[git_remote], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_transport_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_transport_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Ptr[git_transport]], Ptr[git_remote], Ptr[Byte], CInt]): git_transport_cb = o
     extension (v: git_transport_cb)
       inline def value: CFuncPtr3[Ptr[Ptr[git_transport]], Ptr[git_remote], Ptr[Byte], CInt] = v
@@ -3055,7 +3060,7 @@ object aliases:
   opaque type git_transport_certificate_check_cb = CFuncPtr4[Ptr[git_cert], CInt, CString, Ptr[Byte], CInt]
   object git_transport_certificate_check_cb: 
     given _tag: Tag[git_transport_certificate_check_cb] = Tag.materializeCFuncPtr4[Ptr[git_cert], CInt, CString, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_transport_certificate_check_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_transport_certificate_check_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[git_cert], CInt, CString, Ptr[Byte], CInt]): git_transport_certificate_check_cb = o
     extension (v: git_transport_certificate_check_cb)
       inline def value: CFuncPtr4[Ptr[git_cert], CInt, CString, Ptr[Byte], CInt] = v
@@ -3067,7 +3072,7 @@ object aliases:
   opaque type git_transport_message_cb = CFuncPtr3[CString, CInt, Ptr[Byte], CInt]
   object git_transport_message_cb: 
     given _tag: Tag[git_transport_message_cb] = Tag.materializeCFuncPtr3[CString, CInt, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_transport_message_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_transport_message_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, CInt, Ptr[Byte], CInt]): git_transport_message_cb = o
     extension (v: git_transport_message_cb)
       inline def value: CFuncPtr3[CString, CInt, Ptr[Byte], CInt] = v
@@ -3079,7 +3084,7 @@ object aliases:
   opaque type git_treebuilder_filter_cb = CFuncPtr2[Ptr[git_tree_entry], Ptr[Byte], CInt]
   object git_treebuilder_filter_cb: 
     given _tag: Tag[git_treebuilder_filter_cb] = Tag.materializeCFuncPtr2[Ptr[git_tree_entry], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_treebuilder_filter_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_treebuilder_filter_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_tree_entry], Ptr[Byte], CInt]): git_treebuilder_filter_cb = o
     extension (v: git_treebuilder_filter_cb)
       inline def value: CFuncPtr2[Ptr[git_tree_entry], Ptr[Byte], CInt] = v
@@ -3091,7 +3096,7 @@ object aliases:
   opaque type git_treewalk_cb = CFuncPtr3[CString, Ptr[git_tree_entry], Ptr[Byte], CInt]
   object git_treewalk_cb: 
     given _tag: Tag[git_treewalk_cb] = Tag.materializeCFuncPtr3[CString, Ptr[git_tree_entry], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_treewalk_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_treewalk_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, Ptr[git_tree_entry], Ptr[Byte], CInt]): git_treewalk_cb = o
     extension (v: git_treewalk_cb)
       inline def value: CFuncPtr3[CString, Ptr[git_tree_entry], Ptr[Byte], CInt] = v
@@ -3103,7 +3108,7 @@ object aliases:
   opaque type git_url_resolve_cb = CFuncPtr4[Ptr[git_buf], CString, CInt, Ptr[Byte], CInt]
   object git_url_resolve_cb: 
     given _tag: Tag[git_url_resolve_cb] = Tag.materializeCFuncPtr4[Ptr[git_buf], CString, CInt, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): git_url_resolve_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_url_resolve_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[git_buf], CString, CInt, Ptr[Byte], CInt]): git_url_resolve_cb = o
     extension (v: git_url_resolve_cb)
       inline def value: CFuncPtr4[Ptr[git_buf], CString, CInt, Ptr[Byte], CInt] = v
@@ -3156,44 +3161,30 @@ object structs:
   import _root_.libgit.predef.*
   import _root_.libgit.aliases.*
   import _root_.libgit.structs.*
-  /**
-  */
   opaque type LIBSSH2_SESSION = CStruct0
   object LIBSSH2_SESSION:
     given _tag: Tag[LIBSSH2_SESSION] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type LIBSSH2_USERAUTH_KBDINT_PROMPT = CStruct0
   object LIBSSH2_USERAUTH_KBDINT_PROMPT:
     given _tag: Tag[LIBSSH2_USERAUTH_KBDINT_PROMPT] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type LIBSSH2_USERAUTH_KBDINT_RESPONSE = CStruct0
   object LIBSSH2_USERAUTH_KBDINT_RESPONSE:
     given _tag: Tag[LIBSSH2_USERAUTH_KBDINT_RESPONSE] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type _LIBSSH2_SESSION = CStruct0
   object _LIBSSH2_SESSION:
     given _tag: Tag[_LIBSSH2_SESSION] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type _LIBSSH2_USERAUTH_KBDINT_PROMPT = CStruct0
   object _LIBSSH2_USERAUTH_KBDINT_PROMPT:
     given _tag: Tag[_LIBSSH2_USERAUTH_KBDINT_PROMPT] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type _LIBSSH2_USERAUTH_KBDINT_RESPONSE = CStruct0
   object _LIBSSH2_USERAUTH_KBDINT_RESPONSE:
     given _tag: Tag[_LIBSSH2_USERAUTH_KBDINT_RESPONSE] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_annotated_commit = CStruct0
   object git_annotated_commit:
     given _tag: Tag[git_annotated_commit] = Tag.materializeCStruct0Tag
@@ -3249,8 +3240,6 @@ object structs:
       def attr_commit_id : git_oid = struct._4
       def attr_commit_id_=(value: git_oid): Unit = !struct.at4 = value
 
-  /**
-  */
   opaque type git_blame = CStruct0
   object git_blame:
     given _tag: Tag[git_blame] = Tag.materializeCStruct0Tag
@@ -3327,8 +3316,6 @@ object structs:
       def max_line : size_t = struct._7
       def max_line_=(value: size_t): Unit = !struct.at7 = value
 
-  /**
-  */
   opaque type git_blob = CStruct0
   object git_blob:
     given _tag: Tag[git_blob] = Tag.materializeCStruct0Tag
@@ -3357,8 +3344,6 @@ object structs:
       def attr_commit_id : git_oid = struct._4
       def attr_commit_id_=(value: git_oid): Unit = !struct.at4 = value
 
-  /**
-  */
   opaque type git_branch_iterator = CStruct0
   object git_branch_iterator:
     given _tag: Tag[git_branch_iterator] = Tag.materializeCStruct0Tag
@@ -3615,32 +3600,22 @@ object structs:
       def remote_cb_payload : Ptr[Byte] = struct._10
       def remote_cb_payload_=(value: Ptr[Byte]): Unit = !struct.at10 = value
 
-  /**
-  */
   opaque type git_commit = CStruct0
   object git_commit:
     given _tag: Tag[git_commit] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_commit_graph = CStruct0
   object git_commit_graph:
     given _tag: Tag[git_commit_graph] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_commit_graph_writer = CStruct0
   object git_commit_graph_writer:
     given _tag: Tag[git_commit_graph_writer] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_config = CStruct0
   object git_config:
     given _tag: Tag[git_config] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_config_backend = CStruct0
   object git_config_backend:
     given _tag: Tag[git_config_backend] = Tag.materializeCStruct0Tag
@@ -3675,8 +3650,6 @@ object structs:
       def payload : Ptr[Byte] = struct._6
       def payload_=(value: Ptr[Byte]): Unit = !struct.at6 = value
 
-  /**
-  */
   opaque type git_config_iterator = CStruct0
   object git_config_iterator:
     given _tag: Tag[git_config_iterator] = Tag.materializeCStruct0Tag
@@ -3930,14 +3903,10 @@ object structs:
       def show_commit_oid_as_fallback : CInt = struct._6
       def show_commit_oid_as_fallback_=(value: CInt): Unit = !struct.at6 = value
 
-  /**
-  */
   opaque type git_describe_result = CStruct0
   object git_describe_result:
     given _tag: Tag[git_describe_result] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_diff = CStruct0
   object git_diff:
     given _tag: Tag[git_diff] = Tag.materializeCStruct0Tag
@@ -4275,8 +4244,6 @@ object structs:
       def payload : Ptr[Byte] = struct._5
       def payload_=(value: Ptr[Byte]): Unit = !struct.at5 = value
 
-  /**
-  */
   opaque type git_diff_stats = CStruct0
   object git_diff_stats:
     given _tag: Tag[git_diff_stats] = Tag.materializeCStruct0Tag
@@ -4368,14 +4335,10 @@ object structs:
       def custom_headers : git_strarray = struct._8
       def custom_headers_=(value: git_strarray): Unit = !struct.at8 = value
 
-  /**
-  */
   opaque type git_filter = CStruct0
   object git_filter:
     given _tag: Tag[git_filter] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_filter_list = CStruct0
   object git_filter_list:
     given _tag: Tag[git_filter_list] = Tag.materializeCStruct0Tag
@@ -4404,14 +4367,10 @@ object structs:
       def attr_commit_id : git_oid = struct._4
       def attr_commit_id_=(value: git_oid): Unit = !struct.at4 = value
 
-  /**
-  */
   opaque type git_index = CStruct0
   object git_index:
     given _tag: Tag[git_index] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_index_conflict_iterator = CStruct0
   object git_index_conflict_iterator:
     given _tag: Tag[git_index_conflict_iterator] = Tag.materializeCStruct0Tag
@@ -4464,8 +4423,6 @@ object structs:
       def path : CString = struct._12
       def path_=(value: CString): Unit = !struct.at12 = value
 
-  /**
-  */
   opaque type git_index_iterator = CStruct0
   object git_index_iterator:
     given _tag: Tag[git_index_iterator] = Tag.materializeCStruct0Tag
@@ -4488,8 +4445,6 @@ object structs:
       def nanoseconds : uint32_t = struct._2
       def nanoseconds_=(value: uint32_t): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type git_indexer = CStruct0
   object git_indexer:
     given _tag: Tag[git_indexer] = Tag.materializeCStruct0Tag
@@ -4551,14 +4506,10 @@ object structs:
       def received_bytes : size_t = struct._7
       def received_bytes_=(value: size_t): Unit = !struct.at7 = value
 
-  /**
-  */
   opaque type git_iterator = CStruct0
   object git_iterator:
     given _tag: Tag[git_iterator] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_mailmap = CStruct0
   object git_mailmap:
     given _tag: Tag[git_mailmap] = Tag.materializeCStruct0Tag
@@ -4728,41 +4679,77 @@ object structs:
       def _trailer_block : CString = struct._3
       def _trailer_block_=(value: CString): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type git_midx_writer = CStruct0
   object git_midx_writer:
     given _tag: Tag[git_midx_writer] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_note = CStruct0
   object git_note:
     given _tag: Tag[git_note] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_note_iterator = CStruct0
   object git_note_iterator:
     given _tag: Tag[git_note_iterator] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_object = CStruct0
   object git_object:
     given _tag: Tag[git_object] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_odb = CStruct0
   object git_odb:
     given _tag: Tag[git_odb] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_odb_backend = CStruct0
   object git_odb_backend:
     given _tag: Tag[git_odb_backend] = Tag.materializeCStruct0Tag
+
+  /**
+   * Options for configuring a loose object backend.
+  */
+  opaque type git_odb_backend_loose_options = CStruct6[CUnsignedInt, uint32_t, CInt, CUnsignedInt, CUnsignedInt, git_oid_t]
+  object git_odb_backend_loose_options:
+    given _tag: Tag[git_odb_backend_loose_options] = Tag.materializeCStruct6Tag[CUnsignedInt, uint32_t, CInt, CUnsignedInt, CUnsignedInt, git_oid_t]
+    def apply()(using Zone): Ptr[git_odb_backend_loose_options] = scala.scalanative.unsafe.alloc[git_odb_backend_loose_options](1)
+    def apply(version : CUnsignedInt, flags : uint32_t, compression_level : CInt, dir_mode : CUnsignedInt, file_mode : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_backend_loose_options] = 
+      val ____ptr = apply()
+      (!____ptr).version = version
+      (!____ptr).flags = flags
+      (!____ptr).compression_level = compression_level
+      (!____ptr).dir_mode = dir_mode
+      (!____ptr).file_mode = file_mode
+      (!____ptr).oid_type = oid_type
+      ____ptr
+    extension (struct: git_odb_backend_loose_options)
+      def version : CUnsignedInt = struct._1
+      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
+      def flags : uint32_t = struct._2
+      def flags_=(value: uint32_t): Unit = !struct.at2 = value
+      def compression_level : CInt = struct._3
+      def compression_level_=(value: CInt): Unit = !struct.at3 = value
+      def dir_mode : CUnsignedInt = struct._4
+      def dir_mode_=(value: CUnsignedInt): Unit = !struct.at4 = value
+      def file_mode : CUnsignedInt = struct._5
+      def file_mode_=(value: CUnsignedInt): Unit = !struct.at5 = value
+      def oid_type : git_oid_t = struct._6
+      def oid_type_=(value: git_oid_t): Unit = !struct.at6 = value
+
+  /**
+   * Options for configuring a packfile object backend.
+  */
+  opaque type git_odb_backend_pack_options = CStruct2[CUnsignedInt, git_oid_t]
+  object git_odb_backend_pack_options:
+    given _tag: Tag[git_odb_backend_pack_options] = Tag.materializeCStruct2Tag[CUnsignedInt, git_oid_t]
+    def apply()(using Zone): Ptr[git_odb_backend_pack_options] = scala.scalanative.unsafe.alloc[git_odb_backend_pack_options](1)
+    def apply(version : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_backend_pack_options] = 
+      val ____ptr = apply()
+      (!____ptr).version = version
+      (!____ptr).oid_type = oid_type
+      ____ptr
+    extension (struct: git_odb_backend_pack_options)
+      def version : CUnsignedInt = struct._1
+      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
+      def oid_type : git_oid_t = struct._2
+      def oid_type_=(value: git_oid_t): Unit = !struct.at2 = value
 
   /**
    * The information about object IDs to query in `git_odb_expand_ids`, which will be populated upon return.
@@ -4785,11 +4772,27 @@ object structs:
       def `type` : git_object_t = struct._3
       def type_=(value: git_object_t): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type git_odb_object = CStruct0
   object git_odb_object:
     given _tag: Tag[git_odb_object] = Tag.materializeCStruct0Tag
+
+  /**
+   * Options for configuring a loose object backend.
+  */
+  opaque type git_odb_options = CStruct2[CUnsignedInt, git_oid_t]
+  object git_odb_options:
+    given _tag: Tag[git_odb_options] = Tag.materializeCStruct2Tag[CUnsignedInt, git_oid_t]
+    def apply()(using Zone): Ptr[git_odb_options] = scala.scalanative.unsafe.alloc[git_odb_options](1)
+    def apply(version : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_options] = 
+      val ____ptr = apply()
+      (!____ptr).version = version
+      (!____ptr).oid_type = oid_type
+      ____ptr
+    extension (struct: git_odb_options)
+      def version : CUnsignedInt = struct._1
+      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
+      def oid_type : git_oid_t = struct._2
+      def oid_type_=(value: git_oid_t): Unit = !struct.at2 = value
 
   /**
    * A stream to read/write from a backend.
@@ -4869,8 +4872,6 @@ object structs:
       def id : CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]] = struct._1
       def id_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]]): Unit = !struct.at1 = value
 
-  /**
-  */
   opaque type git_oid_shorten = CStruct0
   object git_oid_shorten:
     given _tag: Tag[git_oid_shorten] = Tag.materializeCStruct0Tag
@@ -4893,26 +4894,18 @@ object structs:
       def count : size_t = struct._2
       def count_=(value: size_t): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type git_packbuilder = CStruct0
   object git_packbuilder:
     given _tag: Tag[git_packbuilder] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_patch = CStruct0
   object git_patch:
     given _tag: Tag[git_patch] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_pathspec = CStruct0
   object git_pathspec:
     given _tag: Tag[git_pathspec] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_pathspec_match_list = CStruct0
   object git_pathspec_match_list:
     given _tag: Tag[git_pathspec_match_list] = Tag.materializeCStruct0Tag
@@ -4947,8 +4940,6 @@ object structs:
       def payload : Ptr[Byte] = struct._6
       def payload_=(value: Ptr[Byte]): Unit = !struct.at6 = value
 
-  /**
-  */
   opaque type git_push = CStruct0
   object git_push:
     given _tag: Tag[git_push] = Tag.materializeCStruct0Tag
@@ -5007,8 +4998,6 @@ object structs:
       def dst : git_oid = struct._4
       def dst_=(value: git_oid): Unit = !struct.at4 = value
 
-  /**
-  */
   opaque type git_rebase = CStruct0
   object git_rebase:
     given _tag: Tag[git_rebase] = Tag.materializeCStruct0Tag
@@ -5073,50 +5062,34 @@ object structs:
       def payload : Ptr[Byte] = struct._9
       def payload_=(value: Ptr[Byte]): Unit = !struct.at9 = value
 
-  /**
-  */
   opaque type git_refdb = CStruct0
   object git_refdb:
     given _tag: Tag[git_refdb] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_refdb_backend = CStruct0
   object git_refdb_backend:
     given _tag: Tag[git_refdb_backend] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_reference = CStruct0
   object git_reference:
     given _tag: Tag[git_reference] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_reference_iterator = CStruct0
   object git_reference_iterator:
     given _tag: Tag[git_reference_iterator] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_reflog = CStruct0
   object git_reflog:
     given _tag: Tag[git_reflog] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_reflog_entry = CStruct0
   object git_reflog_entry:
     given _tag: Tag[git_reflog_entry] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_refspec = CStruct0
   object git_refspec:
     given _tag: Tag[git_refspec] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_remote = CStruct0
   object git_remote:
     given _tag: Tag[git_remote] = Tag.materializeCStruct0Tag
@@ -5259,8 +5232,6 @@ object structs:
       def symref_target : CString = struct._5
       def symref_target_=(value: CString): Unit = !struct.at5 = value
 
-  /**
-  */
   opaque type git_repository = CStruct0
   object git_repository:
     given _tag: Tag[git_repository] = Tag.materializeCStruct0Tag
@@ -5346,8 +5317,6 @@ object structs:
       def flags : CUnsignedInt = struct._3
       def flags_=(value: CUnsignedInt): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type git_revwalk = CStruct0
   object git_revwalk:
     given _tag: Tag[git_revwalk] = Tag.materializeCStruct0Tag
@@ -5401,6 +5370,33 @@ object structs:
       def progress_payload_=(value: Ptr[Byte]): Unit = !struct.at5 = value
 
   /**
+   * Stash save options structure
+  */
+  opaque type git_stash_save_options = CStruct5[CUnsignedInt, uint32_t, Ptr[git_signature], CString, git_strarray]
+  object git_stash_save_options:
+    given _tag: Tag[git_stash_save_options] = Tag.materializeCStruct5Tag[CUnsignedInt, uint32_t, Ptr[git_signature], CString, git_strarray]
+    def apply()(using Zone): Ptr[git_stash_save_options] = scala.scalanative.unsafe.alloc[git_stash_save_options](1)
+    def apply(version : CUnsignedInt, flags : uint32_t, stasher : Ptr[git_signature], message : CString, paths : git_strarray)(using Zone): Ptr[git_stash_save_options] = 
+      val ____ptr = apply()
+      (!____ptr).version = version
+      (!____ptr).flags = flags
+      (!____ptr).stasher = stasher
+      (!____ptr).message = message
+      (!____ptr).paths = paths
+      ____ptr
+    extension (struct: git_stash_save_options)
+      def version : CUnsignedInt = struct._1
+      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
+      def flags : uint32_t = struct._2
+      def flags_=(value: uint32_t): Unit = !struct.at2 = value
+      def stasher : Ptr[git_signature] = struct._3
+      def stasher_=(value: Ptr[git_signature]): Unit = !struct.at3 = value
+      def message : CString = struct._4
+      def message_=(value: CString): Unit = !struct.at4 = value
+      def paths : git_strarray = struct._5
+      def paths_=(value: git_strarray): Unit = !struct.at5 = value
+
+  /**
    * A status entry, providing the differences between the file as it exists in HEAD and the index, and providing the differences between the index and the working directory.
   */
   opaque type git_status_entry = CStruct3[git_status_t, Ptr[git_diff_delta], Ptr[git_diff_delta]]
@@ -5421,8 +5417,6 @@ object structs:
       def index_to_workdir : Ptr[git_diff_delta] = struct._3
       def index_to_workdir_=(value: Ptr[git_diff_delta]): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type git_status_list = CStruct0
   object git_status_list:
     given _tag: Tag[git_status_list] = Tag.materializeCStruct0Tag
@@ -5475,8 +5469,6 @@ object structs:
       def count : size_t = struct._2
       def count_=(value: size_t): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type git_submodule = CStruct0
   object git_submodule:
     given _tag: Tag[git_submodule] = Tag.materializeCStruct0Tag
@@ -5505,8 +5497,6 @@ object structs:
       def allow_fetch : CInt = struct._4
       def allow_fetch_=(value: CInt): Unit = !struct.at4 = value
 
-  /**
-  */
   opaque type git_tag = CStruct0
   object git_tag:
     given _tag: Tag[git_tag] = Tag.materializeCStruct0Tag
@@ -5532,26 +5522,18 @@ object structs:
       def sign : CChar = struct._3
       def sign_=(value: CChar): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type git_transaction = CStruct0
   object git_transaction:
     given _tag: Tag[git_transaction] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_transport = CStruct0
   object git_transport:
     given _tag: Tag[git_transport] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_tree = CStruct0
   object git_tree:
     given _tag: Tag[git_tree] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_tree_entry = CStruct0
   object git_tree_entry:
     given _tag: Tag[git_tree_entry] = Tag.materializeCStruct0Tag
@@ -5580,14 +5562,10 @@ object structs:
       def path : CString = struct._4
       def path_=(value: CString): Unit = !struct.at4 = value
 
-  /**
-  */
   opaque type git_treebuilder = CStruct0
   object git_treebuilder:
     given _tag: Tag[git_treebuilder] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type git_worktree = CStruct0
   object git_worktree:
     given _tag: Tag[git_worktree] = Tag.materializeCStruct0Tag
@@ -5822,24 +5800,14 @@ private[libgit] object extern_functions:
   */
   def git_blob_create_from_workdir(id : Ptr[git_oid], repo : Ptr[git_repository], relative_path : CString): CInt = extern
 
-  /**
-  */
   def git_blob_create_frombuffer(id : Ptr[git_oid], repo : Ptr[git_repository], buffer : Ptr[Byte], len : size_t): CInt = extern
 
-  /**
-  */
   def git_blob_create_fromdisk(id : Ptr[git_oid], repo : Ptr[git_repository], path : CString): CInt = extern
 
-  /**
-  */
   def git_blob_create_fromstream(out : Ptr[Ptr[git_writestream]], repo : Ptr[git_repository], hintpath : CString): CInt = extern
 
-  /**
-  */
   def git_blob_create_fromstream_commit(out : Ptr[git_oid], stream : Ptr[git_writestream]): CInt = extern
 
-  /**
-  */
   def git_blob_create_fromworkdir(id : Ptr[git_oid], repo : Ptr[git_repository], relative_path : CString): CInt = extern
 
   /**
@@ -6037,8 +6005,6 @@ private[libgit] object extern_functions:
   */
   def git_checkout_index(repo : Ptr[git_repository], index : Ptr[git_index], opts : Ptr[git_checkout_options]): CInt = extern
 
-  /**
-  */
   def git_checkout_init_options(opts : Ptr[git_checkout_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -6061,8 +6027,6 @@ private[libgit] object extern_functions:
   */
   def git_cherrypick_commit(out : Ptr[Ptr[git_index]], repo : Ptr[git_repository], cherrypick_commit : Ptr[git_commit], our_commit : Ptr[git_commit], mainline : CUnsignedInt, merge_options : Ptr[git_merge_options]): CInt = extern
 
-  /**
-  */
   def git_cherrypick_init_options(opts : Ptr[git_cherrypick_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -6075,8 +6039,6 @@ private[libgit] object extern_functions:
   */
   def git_clone(out : Ptr[Ptr[git_repository]], url : CString, local_path : CString, options : Ptr[git_clone_options]): CInt = extern
 
-  /**
-  */
   def git_clone_init_options(opts : Ptr[git_clone_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -6454,52 +6416,28 @@ private[libgit] object extern_functions:
   */
   def git_config_snapshot(out : Ptr[Ptr[git_config]], config : Ptr[git_config]): CInt = extern
 
-  /**
-  */
   def git_cred_default_new(out : Ptr[Ptr[git_credential]]): CInt = extern
 
-  /**
-  */
   def git_cred_free(cred : Ptr[git_credential]): Unit = extern
 
-  /**
-  */
   def git_cred_get_username(cred : Ptr[git_credential]): CString = extern
 
-  /**
-  */
   def git_cred_has_username(cred : Ptr[git_credential]): CInt = extern
 
-  /**
-  */
   def git_cred_ssh_custom_new(out : Ptr[Ptr[git_credential]], username : CString, publickey : CString, publickey_len : size_t, sign_callback : git_credential_sign_cb, payload : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def git_cred_ssh_interactive_new(out : Ptr[Ptr[git_credential]], username : CString, prompt_callback : git_credential_ssh_interactive_cb, payload : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def git_cred_ssh_key_from_agent(out : Ptr[Ptr[git_credential]], username : CString): CInt = extern
 
-  /**
-  */
   def git_cred_ssh_key_memory_new(out : Ptr[Ptr[git_credential]], username : CString, publickey : CString, privatekey : CString, passphrase : CString): CInt = extern
 
-  /**
-  */
   def git_cred_ssh_key_new(out : Ptr[Ptr[git_credential]], username : CString, publickey : CString, privatekey : CString, passphrase : CString): CInt = extern
 
-  /**
-  */
   def git_cred_username_new(out : Ptr[Ptr[git_credential]], username : CString): CInt = extern
 
-  /**
-  */
   def git_cred_userpass(out : Ptr[Ptr[git_credential]], url : CString, user_from_url : CString, allowed_types : CUnsignedInt, payload : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def git_cred_userpass_plaintext_new(out : Ptr[Ptr[git_credential]], username : CString, password : CString): CInt = extern
 
   /**
@@ -6577,12 +6515,8 @@ private[libgit] object extern_functions:
   */
   def git_describe_format_options_init(opts : Ptr[git_describe_format_options], version : CUnsignedInt): CInt = extern
 
-  /**
-  */
   def git_describe_init_format_options(opts : Ptr[git_describe_format_options], version : CUnsignedInt): CInt = extern
 
-  /**
-  */
   def git_describe_init_options(opts : Ptr[git_describe_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -6620,8 +6554,6 @@ private[libgit] object extern_functions:
   */
   def git_diff_commit_as_email(out : Ptr[git_buf], repo : Ptr[git_repository], commit : Ptr[git_commit], patch_no : size_t, total_patches : size_t, flags : uint32_t, diff_opts : Ptr[git_diff_options]): CInt = extern
 
-  /**
-  */
   def git_diff_find_init_options(opts : Ptr[git_diff_find_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -6644,8 +6576,6 @@ private[libgit] object extern_functions:
   */
   def git_diff_format_email(out : Ptr[git_buf], diff : Ptr[git_diff], opts : Ptr[git_diff_format_email_options]): CInt = extern
 
-  /**
-  */
   def git_diff_format_email_init_options(opts : Ptr[git_diff_format_email_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -6683,8 +6613,6 @@ private[libgit] object extern_functions:
   */
   def git_diff_index_to_workdir(diff : Ptr[Ptr[git_diff]], repo : Ptr[git_repository], index : Ptr[git_index], opts : Ptr[git_diff_options]): CInt = extern
 
-  /**
-  */
   def git_diff_init_options(opts : Ptr[git_diff_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -6717,8 +6645,6 @@ private[libgit] object extern_functions:
   */
   def git_diff_patchid(out : Ptr[git_oid], diff : Ptr[git_diff], opts : Ptr[git_diff_patchid_options]): CInt = extern
 
-  /**
-  */
   def git_diff_patchid_init_options(opts : Ptr[git_diff_patchid_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -6807,17 +6733,20 @@ private[libgit] object extern_functions:
   def git_error_last(): Ptr[git_error] = extern
 
   /**
+   * Set the error message string for this thread, using `printf`-style formatting.
+  */
+  def git_error_set(error_class : CInt, fmt : CString, rest: Any*): Unit = extern
+
+  /**
    * Set the error message to a special value for memory allocation failure.
   */
   def git_error_set_oom(): Unit = extern
 
   /**
-   * Set the error message string for this thread.
+   * Set the error message string for this thread. This function is like `git_error_set` but takes a static string instead of a `printf`-style format.
   */
   def git_error_set_str(error_class : CInt, string : CString): CInt = extern
 
-  /**
-  */
   def git_fetch_init_options(opts : Ptr[git_fetch_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -6935,8 +6864,6 @@ private[libgit] object extern_functions:
   */
   def git_index_add_from_buffer(index : Ptr[git_index], entry : Ptr[git_index_entry], buffer : Ptr[Byte], len : size_t): CInt = extern
 
-  /**
-  */
   def git_index_add_frombuffer(index : Ptr[git_index], entry : Ptr[git_index_entry], buffer : Ptr[Byte], len : size_t): CInt = extern
 
   /**
@@ -7154,8 +7081,6 @@ private[libgit] object extern_functions:
   */
   def git_indexer_hash(idx : Ptr[git_indexer]): Ptr[git_oid] = extern
 
-  /**
-  */
   def git_indexer_init_options(opts : Ptr[git_indexer_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -7187,6 +7112,11 @@ private[libgit] object extern_functions:
    * Set or query a library global option
   */
   def git_libgit2_opts(option : CInt, rest: Any*): CInt = extern
+
+  /**
+   * Return the prerelease state of the libgit2 library currently being used. For nightly builds during active development, this will be "alpha". Releases may have a "beta" or release candidate ("rc1", "rc2", etc) prerelease. For a final release, this function returns NULL.
+  */
+  def git_libgit2_prerelease(): CString = extern
 
   /**
    * Shutdown the global state
@@ -7288,12 +7218,8 @@ private[libgit] object extern_functions:
   */
   def git_merge_file_from_index(out : Ptr[git_merge_file_result], repo : Ptr[git_repository], ancestor : Ptr[git_index_entry], ours : Ptr[git_index_entry], theirs : Ptr[git_index_entry], opts : Ptr[git_merge_file_options]): CInt = extern
 
-  /**
-  */
   def git_merge_file_init_input(input : Ptr[git_merge_file_input], version : CUnsignedInt): CInt = extern
 
-  /**
-  */
   def git_merge_file_init_options(opts : Ptr[git_merge_file_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -7311,8 +7237,6 @@ private[libgit] object extern_functions:
   */
   def git_merge_file_result_free(result : Ptr[git_merge_file_result]): Unit = extern
 
-  /**
-  */
   def git_merge_init_options(opts : Ptr[git_merge_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -7473,7 +7397,7 @@ private[libgit] object extern_functions:
   /**
    * Analyzes a buffer of raw object content and determines its validity. Tree, commit, and tag objects will be parsed and ensured that they are valid, parseable content. (Blobs are always valid by definition.) An error message will be set with an informative message if the object is not valid.
   */
-  def git_object_rawcontent_is_valid(valid : Ptr[CInt], buf : CString, len : size_t, `type` : git_object_t): CInt = extern
+  def git_object_rawcontent_is_valid(valid : Ptr[CInt], buf : CString, len : size_t, object_type : git_object_t): CInt = extern
 
   /**
    * Get a short abbreviated OID string for the object
@@ -7515,19 +7439,10 @@ private[libgit] object extern_functions:
   */
   def git_odb_add_disk_alternate(odb : Ptr[git_odb], path : CString): CInt = extern
 
-  /**
-   * Create a backend for loose objects
-  */
   def git_odb_backend_loose(out : Ptr[Ptr[git_odb_backend]], objects_dir : CString, compression_level : CInt, do_fsync : CInt, dir_mode : CUnsignedInt, file_mode : CUnsignedInt): CInt = extern
 
-  /**
-   * Create a backend out of a single packfile
-  */
   def git_odb_backend_one_pack(out : Ptr[Ptr[git_odb_backend]], index_file : CString): CInt = extern
 
-  /**
-   * Create a backend for the packfiles.
-  */
   def git_odb_backend_pack(out : Ptr[Ptr[git_odb_backend]], objects_dir : CString): CInt = extern
 
   /**
@@ -7565,19 +7480,10 @@ private[libgit] object extern_functions:
   */
   def git_odb_get_backend(out : Ptr[Ptr[git_odb_backend]], odb : Ptr[git_odb], pos : size_t): CInt = extern
 
-  /**
-   * Determine the object-ID (sha1 hash) of a data buffer
-  */
   def git_odb_hash(out : Ptr[git_oid], data : Ptr[Byte], len : size_t, `type` : git_object_t): CInt = extern
 
-  /**
-   * Read a file from disk and fill a git_oid with the object id that the file would have if it were written to the Object Database as an object of the given type (w/o applying filters). Similar functionality to git.git's `git hash-object` without the `-w` flag, however, with the --no-filters flag. If you need filters, see git_repository_hashfile.
-  */
   def git_odb_hashfile(out : Ptr[git_oid], path : CString, `type` : git_object_t): CInt = extern
 
-  /**
-   * Create a new object database with no backends.
-  */
   def git_odb_new(out : Ptr[Ptr[git_odb]]): CInt = extern
 
   /**
@@ -7615,9 +7521,6 @@ private[libgit] object extern_functions:
   */
   def git_odb_object_type(`object` : Ptr[git_odb_object]): git_object_t = extern
 
-  /**
-   * Create a new object database and automatically add the two default backends:
-  */
   def git_odb_open(out : Ptr[Ptr[git_odb]], objects_dir : CString): CInt = extern
 
   /**
@@ -7710,24 +7613,12 @@ private[libgit] object extern_functions:
   */
   def git_oid_fmt(out : CString, id : Ptr[git_oid]): CInt = extern
 
-  /**
-   * Copy an already raw oid into a git_oid structure.
-  */
   def git_oid_fromraw(out : Ptr[git_oid], raw : Ptr[CUnsignedChar]): CInt = extern
 
-  /**
-   * Parse a hex formatted object id into a git_oid.
-  */
   def git_oid_fromstr(out : Ptr[git_oid], str : CString): CInt = extern
 
-  /**
-   * Parse N characters of a hex formatted object id into a git_oid.
-  */
   def git_oid_fromstrn(out : Ptr[git_oid], str : CString, length : size_t): CInt = extern
 
-  /**
-   * Parse a hex formatted null-terminated string into a git_oid.
-  */
   def git_oid_fromstrp(out : Ptr[git_oid], str : CString): CInt = extern
 
   /**
@@ -7735,9 +7626,6 @@ private[libgit] object extern_functions:
   */
   def git_oid_is_zero(id : Ptr[git_oid]): CInt = extern
 
-  /**
-   * These types are retained for backward compatibility. The newer versions of these values should be preferred in all new code.
-  */
   def git_oid_iszero(id : Ptr[git_oid]): CInt = extern
 
   /**
@@ -8020,8 +7908,6 @@ private[libgit] object extern_functions:
   */
   def git_pathspec_new(out : Ptr[Ptr[git_pathspec]], pathspec : Ptr[git_strarray]): CInt = extern
 
-  /**
-  */
   def git_proxy_init_options(opts : Ptr[git_proxy_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -8029,8 +7915,6 @@ private[libgit] object extern_functions:
   */
   def git_proxy_options_init(opts : Ptr[git_proxy_options], version : CUnsignedInt): CInt = extern
 
-  /**
-  */
   def git_push_init_options(opts : Ptr[git_push_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -8063,8 +7947,6 @@ private[libgit] object extern_functions:
   */
   def git_rebase_init(out : Ptr[Ptr[git_rebase]], repo : Ptr[git_repository], branch : Ptr[git_annotated_commit], upstream : Ptr[git_annotated_commit], onto : Ptr[git_annotated_commit], opts : Ptr[git_rebase_options]): CInt = extern
 
-  /**
-  */
   def git_rebase_init_options(opts : Ptr[git_rebase_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -8522,8 +8404,6 @@ private[libgit] object extern_functions:
   */
   def git_remote_create_detached(out : Ptr[Ptr[git_remote]], url : CString): CInt = extern
 
-  /**
-  */
   def git_remote_create_init_options(opts : Ptr[git_remote_create_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -8801,8 +8681,6 @@ private[libgit] object extern_functions:
   */
   def git_repository_init_ext(out : Ptr[Ptr[git_repository]], repo_path : CString, opts : Ptr[git_repository_init_options]): CInt = extern
 
-  /**
-  */
   def git_repository_init_init_options(opts : Ptr[git_repository_init_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -8854,6 +8732,11 @@ private[libgit] object extern_functions:
    * Get the Object Database for this repository.
   */
   def git_repository_odb(out : Ptr[Ptr[git_odb]], repo : Ptr[git_repository]): CInt = extern
+
+  /**
+   * Gets the object type used by this repository.
+  */
+  def git_repository_oid_type(repo : Ptr[git_repository]): git_oid_t = extern
 
   /**
    * Open a git repository.
@@ -8960,8 +8843,6 @@ private[libgit] object extern_functions:
   */
   def git_revert_commit(out : Ptr[Ptr[git_index]], repo : Ptr[git_repository], revert_commit : Ptr[git_commit], our_commit : Ptr[git_commit], mainline : CUnsignedInt, merge_options : Ptr[git_merge_options]): CInt = extern
 
-  /**
-  */
   def git_revert_init_options(opts : Ptr[git_revert_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -9104,8 +8985,6 @@ private[libgit] object extern_functions:
   */
   def git_stash_apply(repo : Ptr[git_repository], index : size_t, options : Ptr[git_stash_apply_options]): CInt = extern
 
-  /**
-  */
   def git_stash_apply_init_options(opts : Ptr[git_stash_apply_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -9134,6 +9013,16 @@ private[libgit] object extern_functions:
   def git_stash_save(out : Ptr[git_oid], repo : Ptr[git_repository], stasher : Ptr[git_signature], message : CString, flags : uint32_t): CInt = extern
 
   /**
+   * Initialize git_stash_save_options structure
+  */
+  def git_stash_save_options_init(opts : Ptr[git_stash_save_options], version : CUnsignedInt): CInt = extern
+
+  /**
+   * Save the local modifications to a new stash, with options.
+  */
+  def git_stash_save_with_opts(out : Ptr[git_oid], repo : Ptr[git_repository], opts : Ptr[git_stash_save_options]): CInt = extern
+
+  /**
    * Get a pointer to one of the entries in the status list.
   */
   def git_status_byindex(statuslist : Ptr[git_status_list], idx : size_t): Ptr[git_status_entry] = extern
@@ -9153,8 +9042,6 @@ private[libgit] object extern_functions:
   */
   def git_status_foreach_ext(repo : Ptr[git_repository], opts : Ptr[git_status_options], callback : git_status_cb, payload : Ptr[Byte]): CInt = extern
 
-  /**
-  */
   def git_status_init_options(opts : Ptr[git_status_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -9347,8 +9234,6 @@ private[libgit] object extern_functions:
   */
   def git_submodule_update(submodule : Ptr[git_submodule], init : CInt, options : Ptr[git_submodule_update_options]): CInt = extern
 
-  /**
-  */
   def git_submodule_update_init_options(opts : Ptr[git_submodule_update_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -9386,8 +9271,6 @@ private[libgit] object extern_functions:
   */
   def git_tag_create_from_buffer(oid : Ptr[git_oid], repo : Ptr[git_repository], buffer : CString, force : CInt): CInt = extern
 
-  /**
-  */
   def git_tag_create_frombuffer(oid : Ptr[git_oid], repo : Ptr[git_repository], buffer : CString, force : CInt): CInt = extern
 
   /**
@@ -9695,8 +9578,6 @@ private[libgit] object extern_functions:
   */
   def git_worktree_add(out : Ptr[Ptr[git_worktree]], repo : Ptr[git_repository], name : CString, path : CString, opts : Ptr[git_worktree_add_options]): CInt = extern
 
-  /**
-  */
   def git_worktree_add_init_options(opts : Ptr[git_worktree_add_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -9754,8 +9635,6 @@ private[libgit] object extern_functions:
   */
   def git_worktree_prune(wt : Ptr[git_worktree], opts : Ptr[git_worktree_prune_options]): CInt = extern
 
-  /**
-  */
   def git_worktree_prune_init_options(opts : Ptr[git_worktree_prune_options], version : CUnsignedInt): CInt = extern
 
   /**
@@ -9854,8 +9733,10 @@ object all:
   export _root_.libgit.enumerations.git_merge_flag_t
   export _root_.libgit.enumerations.git_merge_preference_t
   export _root_.libgit.enumerations.git_object_t
+  export _root_.libgit.enumerations.git_odb_backend_loose_flag_t
   export _root_.libgit.enumerations.git_odb_lookup_flags_t
   export _root_.libgit.enumerations.git_odb_stream_t
+  export _root_.libgit.enumerations.git_oid_t
   export _root_.libgit.enumerations.git_packbuilder_stage_t
   export _root_.libgit.enumerations.git_pathspec_flag_t
   export _root_.libgit.enumerations.git_proxy_t
@@ -10048,8 +9929,11 @@ object all:
   export _root_.libgit.structs.git_object
   export _root_.libgit.structs.git_odb
   export _root_.libgit.structs.git_odb_backend
+  export _root_.libgit.structs.git_odb_backend_loose_options
+  export _root_.libgit.structs.git_odb_backend_pack_options
   export _root_.libgit.structs.git_odb_expand_id
   export _root_.libgit.structs.git_odb_object
+  export _root_.libgit.structs.git_odb_options
   export _root_.libgit.structs.git_odb_stream
   export _root_.libgit.structs.git_odb_writepack
   export _root_.libgit.structs.git_oid
@@ -10085,6 +9969,7 @@ object all:
   export _root_.libgit.structs.git_revwalk
   export _root_.libgit.structs.git_signature
   export _root_.libgit.structs.git_stash_apply_options
+  export _root_.libgit.structs.git_stash_save_options
   export _root_.libgit.structs.git_status_entry
   export _root_.libgit.structs.git_status_list
   export _root_.libgit.structs.git_status_options
@@ -10337,6 +10222,7 @@ object all:
   export _root_.libgit.functions.git_email_create_from_diff
   export _root_.libgit.functions.git_error_clear
   export _root_.libgit.functions.git_error_last
+  export _root_.libgit.functions.git_error_set
   export _root_.libgit.functions.git_error_set_oom
   export _root_.libgit.functions.git_error_set_str
   export _root_.libgit.functions.git_fetch_init_options
@@ -10414,6 +10300,7 @@ object all:
   export _root_.libgit.functions.git_libgit2_features
   export _root_.libgit.functions.git_libgit2_init
   export _root_.libgit.functions.git_libgit2_opts
+  export _root_.libgit.functions.git_libgit2_prerelease
   export _root_.libgit.functions.git_libgit2_shutdown
   export _root_.libgit.functions.git_libgit2_version
   export _root_.libgit.functions.git_mailmap_add_entry
@@ -10749,6 +10636,7 @@ object all:
   export _root_.libgit.functions.git_repository_message
   export _root_.libgit.functions.git_repository_message_remove
   export _root_.libgit.functions.git_repository_odb
+  export _root_.libgit.functions.git_repository_oid_type
   export _root_.libgit.functions.git_repository_open
   export _root_.libgit.functions.git_repository_open_bare
   export _root_.libgit.functions.git_repository_open_ext
@@ -10805,6 +10693,8 @@ object all:
   export _root_.libgit.functions.git_stash_foreach
   export _root_.libgit.functions.git_stash_pop
   export _root_.libgit.functions.git_stash_save
+  export _root_.libgit.functions.git_stash_save_options_init
+  export _root_.libgit.functions.git_stash_save_with_opts
   export _root_.libgit.functions.git_status_byindex
   export _root_.libgit.functions.git_status_file
   export _root_.libgit.functions.git_status_foreach

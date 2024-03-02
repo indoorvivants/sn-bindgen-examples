@@ -21,8 +21,6 @@ object predef:
 
 object enumerations:
   import predef.*
-  /**
-  */
   opaque type CURLFORMcode = CUnsignedInt
   object CURLFORMcode extends CEnumU[CURLFORMcode]:
     given _tag: Tag[CURLFORMcode] = Tag.UInt
@@ -53,8 +51,6 @@ object enumerations:
       inline def |(b: CURLFORMcode): CURLFORMcode = a | b
       inline def is(b: CURLFORMcode): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLHcode = CUnsignedInt
   object CURLHcode extends CEnumU[CURLHcode]:
     given _tag: Tag[CURLHcode] = Tag.UInt
@@ -83,8 +79,6 @@ object enumerations:
       inline def |(b: CURLHcode): CURLHcode = a | b
       inline def is(b: CURLHcode): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLINFO = CUnsignedInt
   object CURLINFO extends CEnumU[CURLINFO]:
     given _tag: Tag[CURLINFO] = Tag.UInt
@@ -159,7 +153,9 @@ object enumerations:
     val CURLINFO_REFERER = define(1048636)
     val CURLINFO_CAINFO = define(1048637)
     val CURLINFO_CAPATH = define(1048638)
-    val CURLINFO_LASTONE = define(62)
+    val CURLINFO_XFER_ID = define(6291519)
+    val CURLINFO_CONN_ID = define(6291520)
+    val CURLINFO_LASTONE = define(64)
     inline def getName(inline value: CURLINFO): Option[String] =
       inline value match
         case CURLINFO_NONE => Some("CURLINFO_NONE")
@@ -232,6 +228,8 @@ object enumerations:
         case CURLINFO_REFERER => Some("CURLINFO_REFERER")
         case CURLINFO_CAINFO => Some("CURLINFO_CAINFO")
         case CURLINFO_CAPATH => Some("CURLINFO_CAPATH")
+        case CURLINFO_XFER_ID => Some("CURLINFO_XFER_ID")
+        case CURLINFO_CONN_ID => Some("CURLINFO_CONN_ID")
         case CURLINFO_LASTONE => Some("CURLINFO_LASTONE")
         case _ => None
     extension (a: CURLINFO)
@@ -239,8 +237,6 @@ object enumerations:
       inline def |(b: CURLINFO): CURLINFO = a | b
       inline def is(b: CURLINFO): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLMSG = CUnsignedInt
   object CURLMSG extends CEnumU[CURLMSG]:
     given _tag: Tag[CURLMSG] = Tag.UInt
@@ -259,8 +255,6 @@ object enumerations:
       inline def |(b: CURLMSG): CURLMSG = a | b
       inline def is(b: CURLMSG): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLMcode = CInt
   object CURLMcode extends CEnum[CURLMcode]:
     given _tag: Tag[CURLMcode] = Tag.Int
@@ -303,8 +297,6 @@ object enumerations:
       inline def |(b: CURLMcode): CURLMcode = a | b
       inline def is(b: CURLMcode): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLMoption = CUnsignedInt
   object CURLMoption extends CEnumU[CURLMoption]:
     given _tag: Tag[CURLMoption] = Tag.UInt
@@ -351,8 +343,6 @@ object enumerations:
       inline def |(b: CURLMoption): CURLMoption = a | b
       inline def is(b: CURLMoption): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLSHcode = CUnsignedInt
   object CURLSHcode extends CEnumU[CURLSHcode]:
     given _tag: Tag[CURLSHcode] = Tag.UInt
@@ -379,8 +369,6 @@ object enumerations:
       inline def |(b: CURLSHcode): CURLSHcode = a | b
       inline def is(b: CURLSHcode): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLSHoption = CUnsignedInt
   object CURLSHoption extends CEnumU[CURLSHoption]:
     given _tag: Tag[CURLSHoption] = Tag.UInt
@@ -407,8 +395,6 @@ object enumerations:
       inline def |(b: CURLSHoption): CURLSHoption = a | b
       inline def is(b: CURLSHoption): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLSTScode = CUnsignedInt
   object CURLSTScode extends CEnumU[CURLSTScode]:
     given _tag: Tag[CURLSTScode] = Tag.UInt
@@ -427,8 +413,6 @@ object enumerations:
       inline def |(b: CURLSTScode): CURLSTScode = a | b
       inline def is(b: CURLSTScode): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLUPart = CUnsignedInt
   object CURLUPart extends CEnumU[CURLUPart]:
     given _tag: Tag[CURLUPart] = Tag.UInt
@@ -463,8 +447,6 @@ object enumerations:
       inline def |(b: CURLUPart): CURLUPart = a | b
       inline def is(b: CURLUPart): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLUcode = CUnsignedInt
   object CURLUcode extends CEnumU[CURLUcode]:
     given _tag: Tag[CURLUcode] = Tag.UInt
@@ -541,8 +523,6 @@ object enumerations:
       inline def |(b: CURLUcode): CURLUcode = a | b
       inline def is(b: CURLUcode): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURL_NETRC_OPTION = CUnsignedInt
   object CURL_NETRC_OPTION extends CEnumU[CURL_NETRC_OPTION]:
     given _tag: Tag[CURL_NETRC_OPTION] = Tag.UInt
@@ -563,8 +543,6 @@ object enumerations:
       inline def |(b: CURL_NETRC_OPTION): CURL_NETRC_OPTION = a | b
       inline def is(b: CURL_NETRC_OPTION): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURL_TLSAUTH = CUnsignedInt
   object CURL_TLSAUTH extends CEnumU[CURL_TLSAUTH]:
     given _tag: Tag[CURL_TLSAUTH] = Tag.UInt
@@ -583,8 +561,6 @@ object enumerations:
       inline def |(b: CURL_TLSAUTH): CURL_TLSAUTH = a | b
       inline def is(b: CURL_TLSAUTH): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLcode = CUnsignedInt
   object CURLcode extends CEnumU[CURLcode]:
     given _tag: Tag[CURLcode] = Tag.UInt
@@ -799,8 +775,6 @@ object enumerations:
       inline def |(b: CURLcode): CURLcode = a | b
       inline def is(b: CURLcode): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLformoption = CUnsignedInt
   object CURLformoption extends CEnumU[CURLformoption]:
     given _tag: Tag[CURLformoption] = Tag.UInt
@@ -857,8 +831,6 @@ object enumerations:
       inline def |(b: CURLformoption): CURLformoption = a | b
       inline def is(b: CURLformoption): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLoption = CUnsignedInt
   object CURLoption extends CEnumU[CURLoption]:
     given _tag: Tag[CURLoption] = Tag.UInt
@@ -1134,7 +1106,7 @@ object enumerations:
     val CURLOPT_ALTSVC = define(10287)
     val CURLOPT_MAXAGE_CONN = define(288)
     val CURLOPT_SASL_AUTHZID = define(10289)
-    val CURLOPT_MAIL_RCPT_ALLLOWFAILS = define(290)
+    val CURLOPT_MAIL_RCPT_ALLOWFAILS = define(290)
     val CURLOPT_SSLCERT_BLOB = define(40291)
     val CURLOPT_SSLKEY_BLOB = define(40292)
     val CURLOPT_PROXY_SSLCERT_BLOB = define(40293)
@@ -1167,7 +1139,8 @@ object enumerations:
     val CURLOPT_WS_OPTIONS = define(320)
     val CURLOPT_CA_CACHE_TIMEOUT = define(321)
     val CURLOPT_QUICK_EXIT = define(322)
-    val CURLOPT_LASTENTRY = define(323)
+    val CURLOPT_HAPROXY_CLIENT_IP = define(10323)
+    val CURLOPT_LASTENTRY = define(10324)
     inline def getName(inline value: CURLoption): Option[String] =
       inline value match
         case CURLOPT_WRITEDATA => Some("CURLOPT_WRITEDATA")
@@ -1441,7 +1414,7 @@ object enumerations:
         case CURLOPT_ALTSVC => Some("CURLOPT_ALTSVC")
         case CURLOPT_MAXAGE_CONN => Some("CURLOPT_MAXAGE_CONN")
         case CURLOPT_SASL_AUTHZID => Some("CURLOPT_SASL_AUTHZID")
-        case CURLOPT_MAIL_RCPT_ALLLOWFAILS => Some("CURLOPT_MAIL_RCPT_ALLLOWFAILS")
+        case CURLOPT_MAIL_RCPT_ALLOWFAILS => Some("CURLOPT_MAIL_RCPT_ALLOWFAILS")
         case CURLOPT_SSLCERT_BLOB => Some("CURLOPT_SSLCERT_BLOB")
         case CURLOPT_SSLKEY_BLOB => Some("CURLOPT_SSLKEY_BLOB")
         case CURLOPT_PROXY_SSLCERT_BLOB => Some("CURLOPT_PROXY_SSLCERT_BLOB")
@@ -1474,6 +1447,7 @@ object enumerations:
         case CURLOPT_WS_OPTIONS => Some("CURLOPT_WS_OPTIONS")
         case CURLOPT_CA_CACHE_TIMEOUT => Some("CURLOPT_CA_CACHE_TIMEOUT")
         case CURLOPT_QUICK_EXIT => Some("CURLOPT_QUICK_EXIT")
+        case CURLOPT_HAPROXY_CLIENT_IP => Some("CURLOPT_HAPROXY_CLIENT_IP")
         case CURLOPT_LASTENTRY => Some("CURLOPT_LASTENTRY")
         case _ => None
     extension (a: CURLoption)
@@ -1481,8 +1455,6 @@ object enumerations:
       inline def |(b: CURLoption): CURLoption = a | b
       inline def is(b: CURLoption): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLproxycode = CUnsignedInt
   object CURLproxycode extends CEnumU[CURLproxycode]:
     given _tag: Tag[CURLproxycode] = Tag.UInt
@@ -1565,8 +1537,6 @@ object enumerations:
       inline def |(b: CURLproxycode): CURLproxycode = a | b
       inline def is(b: CURLproxycode): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type CURLsslset = CUnsignedInt
   object CURLsslset extends CEnumU[CURLsslset]:
     given _tag: Tag[CURLsslset] = Tag.UInt
@@ -1626,8 +1596,6 @@ object enumerations:
       inline def |(b: CURLversion): CURLversion = a | b
       inline def is(b: CURLversion): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_TimeCond = CUnsignedInt
   object curl_TimeCond extends CEnumU[curl_TimeCond]:
     given _tag: Tag[curl_TimeCond] = Tag.UInt
@@ -1650,8 +1618,6 @@ object enumerations:
       inline def |(b: curl_TimeCond): curl_TimeCond = a | b
       inline def is(b: curl_TimeCond): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_closepolicy = CUnsignedInt
   object curl_closepolicy extends CEnumU[curl_closepolicy]:
     given _tag: Tag[curl_closepolicy] = Tag.UInt
@@ -1678,8 +1644,6 @@ object enumerations:
       inline def |(b: curl_closepolicy): curl_closepolicy = a | b
       inline def is(b: curl_closepolicy): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_easytype = CUnsignedInt
   object curl_easytype extends CEnumU[curl_easytype]:
     given _tag: Tag[curl_easytype] = Tag.UInt
@@ -1710,8 +1674,6 @@ object enumerations:
       inline def |(b: curl_easytype): curl_easytype = a | b
       inline def is(b: curl_easytype): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_ftpauth = CUnsignedInt
   object curl_ftpauth extends CEnumU[curl_ftpauth]:
     given _tag: Tag[curl_ftpauth] = Tag.UInt
@@ -1732,8 +1694,6 @@ object enumerations:
       inline def |(b: curl_ftpauth): curl_ftpauth = a | b
       inline def is(b: curl_ftpauth): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_ftpccc = CUnsignedInt
   object curl_ftpccc extends CEnumU[curl_ftpccc]:
     given _tag: Tag[curl_ftpccc] = Tag.UInt
@@ -1754,8 +1714,6 @@ object enumerations:
       inline def |(b: curl_ftpccc): curl_ftpccc = a | b
       inline def is(b: curl_ftpccc): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_ftpcreatedir = CUnsignedInt
   object curl_ftpcreatedir extends CEnumU[curl_ftpcreatedir]:
     given _tag: Tag[curl_ftpcreatedir] = Tag.UInt
@@ -1776,8 +1734,6 @@ object enumerations:
       inline def |(b: curl_ftpcreatedir): curl_ftpcreatedir = a | b
       inline def is(b: curl_ftpcreatedir): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_ftpmethod = CUnsignedInt
   object curl_ftpmethod extends CEnumU[curl_ftpmethod]:
     given _tag: Tag[curl_ftpmethod] = Tag.UInt
@@ -1800,8 +1756,6 @@ object enumerations:
       inline def |(b: curl_ftpmethod): curl_ftpmethod = a | b
       inline def is(b: curl_ftpmethod): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_infotype = CUnsignedInt
   object curl_infotype extends CEnumU[curl_infotype]:
     given _tag: Tag[curl_infotype] = Tag.UInt
@@ -1830,8 +1784,6 @@ object enumerations:
       inline def |(b: curl_infotype): curl_infotype = a | b
       inline def is(b: curl_infotype): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_khmatch = CUnsignedInt
   object curl_khmatch extends CEnumU[curl_khmatch]:
     given _tag: Tag[curl_khmatch] = Tag.UInt
@@ -1852,8 +1804,6 @@ object enumerations:
       inline def |(b: curl_khmatch): curl_khmatch = a | b
       inline def is(b: curl_khmatch): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_khstat = CUnsignedInt
   object curl_khstat extends CEnumU[curl_khstat]:
     given _tag: Tag[curl_khstat] = Tag.UInt
@@ -1878,8 +1828,6 @@ object enumerations:
       inline def |(b: curl_khstat): curl_khstat = a | b
       inline def is(b: curl_khstat): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_khtype = CUnsignedInt
   object curl_khtype extends CEnumU[curl_khtype]:
     given _tag: Tag[curl_khtype] = Tag.UInt
@@ -1904,8 +1852,6 @@ object enumerations:
       inline def |(b: curl_khtype): curl_khtype = a | b
       inline def is(b: curl_khtype): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_lock_access = CUnsignedInt
   object curl_lock_access extends CEnumU[curl_lock_access]:
     given _tag: Tag[curl_lock_access] = Tag.UInt
@@ -1959,8 +1905,6 @@ object enumerations:
       inline def |(b: curl_lock_data): curl_lock_data = a | b
       inline def is(b: curl_lock_data): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_proxytype = CUnsignedInt
   object curl_proxytype extends CEnumU[curl_proxytype]:
     given _tag: Tag[curl_proxytype] = Tag.UInt
@@ -1968,6 +1912,7 @@ object enumerations:
     val CURLPROXY_HTTP = define(0)
     val CURLPROXY_HTTP_1_0 = define(1)
     val CURLPROXY_HTTPS = define(2)
+    val CURLPROXY_HTTPS2 = define(3)
     val CURLPROXY_SOCKS4 = define(4)
     val CURLPROXY_SOCKS5 = define(5)
     val CURLPROXY_SOCKS4A = define(6)
@@ -1977,6 +1922,7 @@ object enumerations:
         case CURLPROXY_HTTP => Some("CURLPROXY_HTTP")
         case CURLPROXY_HTTP_1_0 => Some("CURLPROXY_HTTP_1_0")
         case CURLPROXY_HTTPS => Some("CURLPROXY_HTTPS")
+        case CURLPROXY_HTTPS2 => Some("CURLPROXY_HTTPS2")
         case CURLPROXY_SOCKS4 => Some("CURLPROXY_SOCKS4")
         case CURLPROXY_SOCKS5 => Some("CURLPROXY_SOCKS5")
         case CURLPROXY_SOCKS4A => Some("CURLPROXY_SOCKS4A")
@@ -1987,8 +1933,6 @@ object enumerations:
       inline def |(b: curl_proxytype): curl_proxytype = a | b
       inline def is(b: curl_proxytype): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_sslbackend = CUnsignedInt
   object curl_sslbackend extends CEnumU[curl_sslbackend]:
     given _tag: Tag[curl_sslbackend] = Tag.UInt
@@ -2031,8 +1975,6 @@ object enumerations:
       inline def |(b: curl_sslbackend): curl_sslbackend = a | b
       inline def is(b: curl_sslbackend): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curl_usessl = CUnsignedInt
   object curl_usessl extends CEnumU[curl_usessl]:
     given _tag: Tag[curl_usessl] = Tag.UInt
@@ -2055,8 +1997,6 @@ object enumerations:
       inline def |(b: curl_usessl): curl_usessl = a | b
       inline def is(b: curl_usessl): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curlfiletype = CUnsignedInt
   object curlfiletype extends CEnumU[curlfiletype]:
     given _tag: Tag[curlfiletype] = Tag.UInt
@@ -2087,8 +2027,6 @@ object enumerations:
       inline def |(b: curlfiletype): curlfiletype = a | b
       inline def is(b: curlfiletype): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curliocmd = CUnsignedInt
   object curliocmd extends CEnumU[curliocmd]:
     given _tag: Tag[curliocmd] = Tag.UInt
@@ -2107,8 +2045,6 @@ object enumerations:
       inline def |(b: curliocmd): curliocmd = a | b
       inline def is(b: curliocmd): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curlioerr = CUnsignedInt
   object curlioerr extends CEnumU[curlioerr]:
     given _tag: Tag[curlioerr] = Tag.UInt
@@ -2129,8 +2065,6 @@ object enumerations:
       inline def |(b: curlioerr): curlioerr = a | b
       inline def is(b: curlioerr): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type curlsocktype = CUnsignedInt
   object curlsocktype extends CEnumU[curlsocktype]:
     given _tag: Tag[curlsocktype] = Tag.UInt
@@ -2154,8 +2088,6 @@ object aliases:
   import _root_.curl.predef.*
   import _root_.curl.aliases.*
   import _root_.curl.structs.*
-  /**
-  */
   type CURL = Unit
   object CURL: 
     given _tag: Tag[CURL] = Tag.Unit
@@ -2163,8 +2095,6 @@ object aliases:
     extension (v: CURL)
       inline def value: Unit = v
 
-  /**
-  */
   type CURLM = Unit
   object CURLM: 
     given _tag: Tag[CURLM] = Tag.Unit
@@ -2172,8 +2102,6 @@ object aliases:
     extension (v: CURLM)
       inline def value: Unit = v
 
-  /**
-  */
   type CURLSH = Unit
   object CURLSH: 
     given _tag: Tag[CURLSH] = Tag.Unit
@@ -2181,281 +2109,229 @@ object aliases:
     extension (v: CURLSH)
       inline def value: Unit = v
 
-  /**
-  */
   opaque type curl_calloc_callback = CFuncPtr2[size_t, size_t, Ptr[Byte]]
   object curl_calloc_callback: 
     given _tag: Tag[curl_calloc_callback] = Tag.materializeCFuncPtr2[size_t, size_t, Ptr[Byte]]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_calloc_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_calloc_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[size_t, size_t, Ptr[Byte]]): curl_calloc_callback = o
     extension (v: curl_calloc_callback)
       inline def value: CFuncPtr2[size_t, size_t, Ptr[Byte]] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_chunk_bgn_callback = CFuncPtr3[Ptr[Byte], Ptr[Byte], CInt, CLongInt]
   object curl_chunk_bgn_callback: 
     given _tag: Tag[curl_chunk_bgn_callback] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[Byte], CInt, CLongInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_chunk_bgn_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_chunk_bgn_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], CInt, CLongInt]): curl_chunk_bgn_callback = o
     extension (v: curl_chunk_bgn_callback)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], CInt, CLongInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_chunk_end_callback = CFuncPtr1[Ptr[Byte], CLongInt]
   object curl_chunk_end_callback: 
     given _tag: Tag[curl_chunk_end_callback] = Tag.materializeCFuncPtr1[Ptr[Byte], CLongInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_chunk_end_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_chunk_end_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], CLongInt]): curl_chunk_end_callback = o
     extension (v: curl_chunk_end_callback)
       inline def value: CFuncPtr1[Ptr[Byte], CLongInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_closesocket_callback = CFuncPtr2[Ptr[Byte], curl_socket_t, CInt]
   object curl_closesocket_callback: 
     given _tag: Tag[curl_closesocket_callback] = Tag.materializeCFuncPtr2[Ptr[Byte], curl_socket_t, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_closesocket_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_closesocket_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], curl_socket_t, CInt]): curl_closesocket_callback = o
     extension (v: curl_closesocket_callback)
       inline def value: CFuncPtr2[Ptr[Byte], curl_socket_t, CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_conv_callback = CFuncPtr2[CString, size_t, CURLcode]
   object curl_conv_callback: 
     given _tag: Tag[curl_conv_callback] = Tag.materializeCFuncPtr2[CString, size_t, CURLcode]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_conv_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_conv_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[CString, size_t, CURLcode]): curl_conv_callback = o
     extension (v: curl_conv_callback)
       inline def value: CFuncPtr2[CString, size_t, CURLcode] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_debug_callback = CFuncPtr5[Ptr[CURL], curl_infotype, CString, size_t, Ptr[Byte], CInt]
   object curl_debug_callback: 
     given _tag: Tag[curl_debug_callback] = Tag.materializeCFuncPtr5[Ptr[CURL], curl_infotype, CString, size_t, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_debug_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_debug_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[Ptr[CURL], curl_infotype, CString, size_t, Ptr[Byte], CInt]): curl_debug_callback = o
     extension (v: curl_debug_callback)
       inline def value: CFuncPtr5[Ptr[CURL], curl_infotype, CString, size_t, Ptr[Byte], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_fnmatch_callback = CFuncPtr3[Ptr[Byte], CString, CString, CInt]
   object curl_fnmatch_callback: 
     given _tag: Tag[curl_fnmatch_callback] = Tag.materializeCFuncPtr3[Ptr[Byte], CString, CString, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_fnmatch_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_fnmatch_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CString, CString, CInt]): curl_fnmatch_callback = o
     extension (v: curl_fnmatch_callback)
       inline def value: CFuncPtr3[Ptr[Byte], CString, CString, CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_formget_callback = CFuncPtr3[Ptr[Byte], CString, size_t, size_t]
   object curl_formget_callback: 
     given _tag: Tag[curl_formget_callback] = Tag.materializeCFuncPtr3[Ptr[Byte], CString, size_t, size_t]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_formget_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_formget_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CString, size_t, size_t]): curl_formget_callback = o
     extension (v: curl_formget_callback)
       inline def value: CFuncPtr3[Ptr[Byte], CString, size_t, size_t] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_free_callback = CFuncPtr1[Ptr[Byte], Unit]
   object curl_free_callback: 
     given _tag: Tag[curl_free_callback] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_free_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_free_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): curl_free_callback = o
     extension (v: curl_free_callback)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_hstsread_callback = CFuncPtr3[Ptr[CURL], Ptr[curl_hstsentry], Ptr[Byte], CURLSTScode]
   object curl_hstsread_callback: 
     given _tag: Tag[curl_hstsread_callback] = Tag.materializeCFuncPtr3[Ptr[CURL], Ptr[curl_hstsentry], Ptr[Byte], CURLSTScode]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_hstsread_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_hstsread_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[CURL], Ptr[curl_hstsentry], Ptr[Byte], CURLSTScode]): curl_hstsread_callback = o
     extension (v: curl_hstsread_callback)
       inline def value: CFuncPtr3[Ptr[CURL], Ptr[curl_hstsentry], Ptr[Byte], CURLSTScode] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_hstswrite_callback = CFuncPtr4[Ptr[CURL], Ptr[curl_hstsentry], Ptr[curl_index], Ptr[Byte], CURLSTScode]
   object curl_hstswrite_callback: 
     given _tag: Tag[curl_hstswrite_callback] = Tag.materializeCFuncPtr4[Ptr[CURL], Ptr[curl_hstsentry], Ptr[curl_index], Ptr[Byte], CURLSTScode]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_hstswrite_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_hstswrite_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[CURL], Ptr[curl_hstsentry], Ptr[curl_index], Ptr[Byte], CURLSTScode]): curl_hstswrite_callback = o
     extension (v: curl_hstswrite_callback)
       inline def value: CFuncPtr4[Ptr[CURL], Ptr[curl_hstsentry], Ptr[curl_index], Ptr[Byte], CURLSTScode] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_ioctl_callback = CFuncPtr3[Ptr[CURL], CInt, Ptr[Byte], curlioerr]
   object curl_ioctl_callback: 
     given _tag: Tag[curl_ioctl_callback] = Tag.materializeCFuncPtr3[Ptr[CURL], CInt, Ptr[Byte], curlioerr]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_ioctl_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_ioctl_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[CURL], CInt, Ptr[Byte], curlioerr]): curl_ioctl_callback = o
     extension (v: curl_ioctl_callback)
       inline def value: CFuncPtr3[Ptr[CURL], CInt, Ptr[Byte], curlioerr] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_lock_function = CFuncPtr4[Ptr[CURL], curl_lock_data, curl_lock_access, Ptr[Byte], Unit]
   object curl_lock_function: 
     given _tag: Tag[curl_lock_function] = Tag.materializeCFuncPtr4[Ptr[CURL], curl_lock_data, curl_lock_access, Ptr[Byte], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_lock_function = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_lock_function = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[CURL], curl_lock_data, curl_lock_access, Ptr[Byte], Unit]): curl_lock_function = o
     extension (v: curl_lock_function)
       inline def value: CFuncPtr4[Ptr[CURL], curl_lock_data, curl_lock_access, Ptr[Byte], Unit] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_malloc_callback = CFuncPtr1[size_t, Ptr[Byte]]
   object curl_malloc_callback: 
     given _tag: Tag[curl_malloc_callback] = Tag.materializeCFuncPtr1[size_t, Ptr[Byte]]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_malloc_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_malloc_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[size_t, Ptr[Byte]]): curl_malloc_callback = o
     extension (v: curl_malloc_callback)
       inline def value: CFuncPtr1[size_t, Ptr[Byte]] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_multi_timer_callback = CFuncPtr3[Ptr[CURLM], CLongInt, Ptr[Byte], CInt]
   object curl_multi_timer_callback: 
     given _tag: Tag[curl_multi_timer_callback] = Tag.materializeCFuncPtr3[Ptr[CURLM], CLongInt, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_multi_timer_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_multi_timer_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[CURLM], CLongInt, Ptr[Byte], CInt]): curl_multi_timer_callback = o
     extension (v: curl_multi_timer_callback)
       inline def value: CFuncPtr3[Ptr[CURLM], CLongInt, Ptr[Byte], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_off_t = CLongInt
   object curl_off_t: 
-    given _tag: Tag[curl_off_t] = Tag.Long
+    given _tag: Tag[curl_off_t] = Tag.Size
     inline def apply(inline o: CLongInt): curl_off_t = o
     extension (v: curl_off_t)
       inline def value: CLongInt = v
 
-  /**
-  */
   opaque type curl_opensocket_callback = CFuncPtr3[Ptr[Byte], curlsocktype, Ptr[curl_sockaddr], curl_socket_t]
   object curl_opensocket_callback: 
     given _tag: Tag[curl_opensocket_callback] = Tag.materializeCFuncPtr3[Ptr[Byte], curlsocktype, Ptr[curl_sockaddr], curl_socket_t]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_opensocket_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_opensocket_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], curlsocktype, Ptr[curl_sockaddr], curl_socket_t]): curl_opensocket_callback = o
     extension (v: curl_opensocket_callback)
       inline def value: CFuncPtr3[Ptr[Byte], curlsocktype, Ptr[curl_sockaddr], curl_socket_t] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_prereq_callback = CFuncPtr5[Ptr[Byte], CString, CString, CInt, CInt, CInt]
   object curl_prereq_callback: 
     given _tag: Tag[curl_prereq_callback] = Tag.materializeCFuncPtr5[Ptr[Byte], CString, CString, CInt, CInt, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_prereq_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_prereq_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], CString, CString, CInt, CInt, CInt]): curl_prereq_callback = o
     extension (v: curl_prereq_callback)
       inline def value: CFuncPtr5[Ptr[Byte], CString, CString, CInt, CInt, CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_progress_callback = CFuncPtr5[Ptr[Byte], Double, Double, Double, Double, CInt]
   object curl_progress_callback: 
     given _tag: Tag[curl_progress_callback] = Tag.materializeCFuncPtr5[Ptr[Byte], Double, Double, Double, Double, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_progress_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_progress_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], Double, Double, Double, Double, CInt]): curl_progress_callback = o
     extension (v: curl_progress_callback)
       inline def value: CFuncPtr5[Ptr[Byte], Double, Double, Double, Double, CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_push_callback = CFuncPtr5[Ptr[CURL], Ptr[CURL], size_t, Ptr[curl_pushheaders], Ptr[Byte], CInt]
   object curl_push_callback: 
     given _tag: Tag[curl_push_callback] = Tag.materializeCFuncPtr5[Ptr[CURL], Ptr[CURL], size_t, Ptr[curl_pushheaders], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_push_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_push_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[Ptr[CURL], Ptr[CURL], size_t, Ptr[curl_pushheaders], Ptr[Byte], CInt]): curl_push_callback = o
     extension (v: curl_push_callback)
       inline def value: CFuncPtr5[Ptr[CURL], Ptr[CURL], size_t, Ptr[curl_pushheaders], Ptr[Byte], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_read_callback = CFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t]
   object curl_read_callback: 
     given _tag: Tag[curl_read_callback] = Tag.materializeCFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_read_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_read_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t]): curl_read_callback = o
     extension (v: curl_read_callback)
       inline def value: CFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_realloc_callback = CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]]
   object curl_realloc_callback: 
     given _tag: Tag[curl_realloc_callback] = Tag.materializeCFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_realloc_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_realloc_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]]): curl_realloc_callback = o
     extension (v: curl_realloc_callback)
       inline def value: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_resolver_start_callback = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt]
   object curl_resolver_start_callback: 
     given _tag: Tag[curl_resolver_start_callback] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_resolver_start_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_resolver_start_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt]): curl_resolver_start_callback = o
     extension (v: curl_resolver_start_callback)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_seek_callback = CFuncPtr3[Ptr[Byte], curl_off_t, CInt, CInt]
   object curl_seek_callback: 
     given _tag: Tag[curl_seek_callback] = Tag.materializeCFuncPtr3[Ptr[Byte], curl_off_t, CInt, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_seek_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_seek_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], curl_off_t, CInt, CInt]): curl_seek_callback = o
     extension (v: curl_seek_callback)
       inline def value: CFuncPtr3[Ptr[Byte], curl_off_t, CInt, CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_socket_callback = CFuncPtr5[Ptr[CURL], curl_socket_t, CInt, Ptr[Byte], Ptr[Byte], CInt]
   object curl_socket_callback: 
     given _tag: Tag[curl_socket_callback] = Tag.materializeCFuncPtr5[Ptr[CURL], curl_socket_t, CInt, Ptr[Byte], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_socket_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_socket_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[Ptr[CURL], curl_socket_t, CInt, Ptr[Byte], Ptr[Byte], CInt]): curl_socket_callback = o
     extension (v: curl_socket_callback)
       inline def value: CFuncPtr5[Ptr[CURL], curl_socket_t, CInt, Ptr[Byte], Ptr[Byte], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_socket_t = CInt
   object curl_socket_t: 
     given _tag: Tag[curl_socket_t] = Tag.Int
@@ -2463,8 +2339,6 @@ object aliases:
     extension (v: curl_socket_t)
       inline def value: CInt = v
 
-  /**
-  */
   type curl_socklen_t = socklen_t
   object curl_socklen_t: 
     given _tag: Tag[curl_socklen_t] = socklen_t._tag
@@ -2472,100 +2346,82 @@ object aliases:
     extension (v: curl_socklen_t)
       inline def value: socklen_t = v
 
-  /**
-  */
   opaque type curl_sockopt_callback = CFuncPtr3[Ptr[Byte], curl_socket_t, curlsocktype, CInt]
   object curl_sockopt_callback: 
     given _tag: Tag[curl_sockopt_callback] = Tag.materializeCFuncPtr3[Ptr[Byte], curl_socket_t, curlsocktype, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_sockopt_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_sockopt_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], curl_socket_t, curlsocktype, CInt]): curl_sockopt_callback = o
     extension (v: curl_sockopt_callback)
       inline def value: CFuncPtr3[Ptr[Byte], curl_socket_t, curlsocktype, CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_sshhostkeycallback = CFuncPtr4[Ptr[Byte], CInt, CString, size_t, CInt]
   object curl_sshhostkeycallback: 
     given _tag: Tag[curl_sshhostkeycallback] = Tag.materializeCFuncPtr4[Ptr[Byte], CInt, CString, size_t, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_sshhostkeycallback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_sshhostkeycallback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], CInt, CString, size_t, CInt]): curl_sshhostkeycallback = o
     extension (v: curl_sshhostkeycallback)
       inline def value: CFuncPtr4[Ptr[Byte], CInt, CString, size_t, CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_sshkeycallback = CFuncPtr5[Ptr[CURL], Ptr[curl_khkey], Ptr[curl_khkey], curl_khmatch, Ptr[Byte], CInt]
   object curl_sshkeycallback: 
     given _tag: Tag[curl_sshkeycallback] = Tag.materializeCFuncPtr5[Ptr[CURL], Ptr[curl_khkey], Ptr[curl_khkey], curl_khmatch, Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_sshkeycallback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_sshkeycallback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[Ptr[CURL], Ptr[curl_khkey], Ptr[curl_khkey], curl_khmatch, Ptr[Byte], CInt]): curl_sshkeycallback = o
     extension (v: curl_sshkeycallback)
       inline def value: CFuncPtr5[Ptr[CURL], Ptr[curl_khkey], Ptr[curl_khkey], curl_khmatch, Ptr[Byte], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_ssl_ctx_callback = CFuncPtr3[Ptr[CURL], Ptr[Byte], Ptr[Byte], CURLcode]
   object curl_ssl_ctx_callback: 
     given _tag: Tag[curl_ssl_ctx_callback] = Tag.materializeCFuncPtr3[Ptr[CURL], Ptr[Byte], Ptr[Byte], CURLcode]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_ssl_ctx_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_ssl_ctx_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[CURL], Ptr[Byte], Ptr[Byte], CURLcode]): curl_ssl_ctx_callback = o
     extension (v: curl_ssl_ctx_callback)
       inline def value: CFuncPtr3[Ptr[CURL], Ptr[Byte], Ptr[Byte], CURLcode] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_strdup_callback = CFuncPtr1[CString, CString]
   object curl_strdup_callback: 
     given _tag: Tag[curl_strdup_callback] = Tag.materializeCFuncPtr1[CString, CString]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_strdup_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_strdup_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[CString, CString]): curl_strdup_callback = o
     extension (v: curl_strdup_callback)
       inline def value: CFuncPtr1[CString, CString] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_trailer_callback = CFuncPtr2[Ptr[Ptr[curl_slist]], Ptr[Byte], CInt]
   object curl_trailer_callback: 
     given _tag: Tag[curl_trailer_callback] = Tag.materializeCFuncPtr2[Ptr[Ptr[curl_slist]], Ptr[Byte], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_trailer_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_trailer_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[curl_slist]], Ptr[Byte], CInt]): curl_trailer_callback = o
     extension (v: curl_trailer_callback)
       inline def value: CFuncPtr2[Ptr[Ptr[curl_slist]], Ptr[Byte], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_unlock_function = CFuncPtr3[Ptr[CURL], curl_lock_data, Ptr[Byte], Unit]
   object curl_unlock_function: 
     given _tag: Tag[curl_unlock_function] = Tag.materializeCFuncPtr3[Ptr[CURL], curl_lock_data, Ptr[Byte], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_unlock_function = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_unlock_function = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[CURL], curl_lock_data, Ptr[Byte], Unit]): curl_unlock_function = o
     extension (v: curl_unlock_function)
       inline def value: CFuncPtr3[Ptr[CURL], curl_lock_data, Ptr[Byte], Unit] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_write_callback = CFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t]
   object curl_write_callback: 
     given _tag: Tag[curl_write_callback] = Tag.materializeCFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_write_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_write_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t]): curl_write_callback = o
     extension (v: curl_write_callback)
       inline def value: CFuncPtr4[CString, size_t, size_t, Ptr[Byte], size_t] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type curl_xferinfo_callback = CFuncPtr5[Ptr[Byte], curl_off_t, curl_off_t, curl_off_t, curl_off_t, CInt]
   object curl_xferinfo_callback: 
     given _tag: Tag[curl_xferinfo_callback] = Tag.materializeCFuncPtr5[Ptr[Byte], curl_off_t, curl_off_t, curl_off_t, curl_off_t, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): curl_xferinfo_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): curl_xferinfo_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], curl_off_t, curl_off_t, curl_off_t, curl_off_t, CInt]): curl_xferinfo_callback = o
     extension (v: curl_xferinfo_callback)
       inline def value: CFuncPtr5[Ptr[Byte], curl_off_t, curl_off_t, curl_off_t, curl_off_t, CInt] = v
@@ -2611,12 +2467,8 @@ object structs:
   import _root_.curl.predef.*
   import _root_.curl.aliases.*
   import _root_.curl.structs.*
-  /**
-  */
   opaque type CURLMsg = CStruct3[CURLMSG, Ptr[CURL], CURLMsg.Union0]
   object CURLMsg:
-    /**
-    */
     opaque type Union0 = CArray[Byte, Nat._8]
     object Union0:
       given _tag: Tag[Union0] = Tag.CArray[CChar, Nat._8](Tag.Byte, Tag.Nat8)
@@ -2656,20 +2508,14 @@ object structs:
       def data : CURLMsg.Union0 = struct._3
       def data_=(value: CURLMsg.Union0): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type CURLU = CStruct0
   object CURLU:
     given _tag: Tag[CURLU] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type Curl_URL = CStruct0
   object Curl_URL:
     given _tag: Tag[Curl_URL] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type curl_blob = CStruct3[Ptr[Byte], size_t, CUnsignedInt]
   object curl_blob:
     given _tag: Tag[curl_blob] = Tag.materializeCStruct3Tag[Ptr[Byte], size_t, CUnsignedInt]
@@ -2688,8 +2534,6 @@ object structs:
       def flags : CUnsignedInt = struct._3
       def flags_=(value: CUnsignedInt): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type curl_certinfo = CStruct2[CInt, Ptr[Byte]]
   object curl_certinfo:
     given _tag: Tag[curl_certinfo] = Tag.materializeCStruct2Tag[CInt, Ptr[Byte]]
@@ -2705,8 +2549,6 @@ object structs:
       def certinfo : Ptr[Ptr[curl_slist]] = struct._2.asInstanceOf[Ptr[Ptr[curl_slist]]]
       def certinfo_=(value: Ptr[Ptr[curl_slist]]): Unit = !struct.at2 = value.asInstanceOf[Ptr[Byte]]
 
-  /**
-  */
   opaque type curl_easyoption = CStruct4[CString, CURLoption, curl_easytype, CUnsignedInt]
   object curl_easyoption:
     given _tag: Tag[curl_easyoption] = Tag.materializeCStruct4Tag[CString, CURLoption, curl_easytype, CUnsignedInt]
@@ -2728,12 +2570,8 @@ object structs:
       def flags : CUnsignedInt = struct._4
       def flags_=(value: CUnsignedInt): Unit = !struct.at4 = value
 
-  /**
-  */
   opaque type curl_fileinfo = CStruct13[CString, curlfiletype, time_t, CUnsignedInt, CInt, CInt, curl_off_t, CLongInt, curl_fileinfo.Struct0, CUnsignedInt, CString, size_t, size_t]
   object curl_fileinfo:
-    /**
-    */
     opaque type Struct0 = CStruct5[CString, CString, CString, CString, CString]
     object Struct0:
       given _tag: Tag[Struct0] = Tag.materializeCStruct5Tag[CString, CString, CString, CString, CString]
@@ -2803,8 +2641,6 @@ object structs:
       def b_used : size_t = struct._13
       def b_used_=(value: size_t): Unit = !struct.at13 = value
 
-  /**
-  */
   opaque type curl_forms = CStruct2[CURLformoption, CString]
   object curl_forms:
     given _tag: Tag[curl_forms] = Tag.materializeCStruct2Tag[CURLformoption, CString]
@@ -2820,8 +2656,6 @@ object structs:
       def value : CString = struct._2
       def value_=(value: CString): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type curl_header = CStruct6[CString, CString, size_t, size_t, CUnsignedInt, Ptr[Byte]]
   object curl_header:
     given _tag: Tag[curl_header] = Tag.materializeCStruct6Tag[CString, CString, size_t, size_t, CUnsignedInt, Ptr[Byte]]
@@ -2849,8 +2683,6 @@ object structs:
       def anchor : Ptr[Byte] = struct._6
       def anchor_=(value: Ptr[Byte]): Unit = !struct.at6 = value
 
-  /**
-  */
   opaque type curl_hstsentry = CStruct4[CString, size_t, CUnsignedInt, CArray[CChar, Nat.Digit2[Nat._1, Nat._8]]]
   object curl_hstsentry:
     given _tag: Tag[curl_hstsentry] = Tag.materializeCStruct4Tag[CString, size_t, CUnsignedInt, CArray[CChar, Nat.Digit2[Nat._1, Nat._8]]]
@@ -2872,12 +2704,8 @@ object structs:
       def expire : CArray[CChar, Nat.Digit2[Nat._1, Nat._8]] = struct._4
       def expire_=(value: CArray[CChar, Nat.Digit2[Nat._1, Nat._8]]): Unit = !struct.at4 = value
 
-  /**
-  */
   opaque type curl_httppost = CStruct14[Ptr[Byte], CString, CLongInt, CString, CLongInt, CString, CLongInt, CString, Ptr[Byte], Ptr[Byte], CLongInt, CString, Ptr[Byte], curl_off_t]
   object curl_httppost:
-    /**
-    */
     opaque type Struct0 = CStruct0
     object Struct0:
       given _tag: Tag[Struct0] = Tag.materializeCStruct0Tag
@@ -2930,8 +2758,6 @@ object structs:
       def contentlen : curl_off_t = struct._14
       def contentlen_=(value: curl_off_t): Unit = !struct.at14 = value
 
-  /**
-  */
   opaque type curl_index = CStruct2[size_t, size_t]
   object curl_index:
     given _tag: Tag[curl_index] = Tag.materializeCStruct2Tag[size_t, size_t]
@@ -2947,8 +2773,6 @@ object structs:
       def total : size_t = struct._2
       def total_=(value: size_t): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type curl_khkey = CStruct3[CString, size_t, curl_khtype]
   object curl_khkey:
     given _tag: Tag[curl_khkey] = Tag.materializeCStruct3Tag[CString, size_t, curl_khtype]
@@ -2967,26 +2791,18 @@ object structs:
       def keytype : curl_khtype = struct._3
       def keytype_=(value: curl_khtype): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type curl_mime = CStruct0
   object curl_mime:
     given _tag: Tag[curl_mime] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type curl_mimepart = CStruct0
   object curl_mimepart:
     given _tag: Tag[curl_mimepart] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type curl_pushheaders = CStruct0
   object curl_pushheaders:
     given _tag: Tag[curl_pushheaders] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type curl_slist = CStruct2[CString, Ptr[Byte]]
   object curl_slist:
     given _tag: Tag[curl_slist] = Tag.materializeCStruct2Tag[CString, Ptr[Byte]]
@@ -3002,8 +2818,6 @@ object structs:
       def next : Ptr[curl_slist] = struct._2.asInstanceOf[Ptr[curl_slist]]
       def next_=(value: Ptr[curl_slist]): Unit = !struct.at2 = value.asInstanceOf[Ptr[Byte]]
 
-  /**
-  */
   opaque type curl_sockaddr = CStruct5[CInt, CInt, CInt, CUnsignedInt, sockaddr]
   object curl_sockaddr:
     given _tag: Tag[curl_sockaddr] = Tag.materializeCStruct5Tag[CInt, CInt, CInt, CUnsignedInt, sockaddr]
@@ -3028,8 +2842,6 @@ object structs:
       def addr : sockaddr = struct._5
       def addr_=(value: sockaddr): Unit = !struct.at5 = value
 
-  /**
-  */
   opaque type curl_ssl_backend = CStruct2[curl_sslbackend, CString]
   object curl_ssl_backend:
     given _tag: Tag[curl_ssl_backend] = Tag.materializeCStruct2Tag[curl_sslbackend, CString]
@@ -3045,8 +2857,6 @@ object structs:
       def name : CString = struct._2
       def name_=(value: CString): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type curl_tlssessioninfo = CStruct2[curl_sslbackend, Ptr[Byte]]
   object curl_tlssessioninfo:
     given _tag: Tag[curl_tlssessioninfo] = Tag.materializeCStruct2Tag[curl_sslbackend, Ptr[Byte]]
@@ -3062,8 +2872,6 @@ object structs:
       def internals : Ptr[Byte] = struct._2
       def internals_=(value: Ptr[Byte]): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type curl_version_info_data = CArray[CChar, Nat.Digit3[Nat._2, Nat._0, Nat._8]]
   object curl_version_info_data:
     given _tag: Tag[curl_version_info_data] = Tag.CArray[CChar, Nat.Digit3[Nat._2, Nat._0, Nat._8]](Tag.Byte, Tag.Digit3[Nat._2, Nat._0, Nat._8](Tag.Nat2, Tag.Nat0, Tag.Nat8))
@@ -3151,8 +2959,6 @@ object structs:
       def feature_names: Ptr[CString] = !struct.at(200).asInstanceOf[Ptr[Ptr[CString]]]
       def feature_names_=(value: Ptr[CString]): Unit = !struct.at(200).asInstanceOf[Ptr[Ptr[CString]]] = value
 
-  /**
-  */
   opaque type curl_waitfd = CStruct3[curl_socket_t, CShort, CShort]
   object curl_waitfd:
     given _tag: Tag[curl_waitfd] = Tag.materializeCStruct3Tag[curl_socket_t, CShort, CShort]
@@ -3171,8 +2977,6 @@ object structs:
       def revents : CShort = struct._3
       def revents_=(value: CShort): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type curl_ws_frame = CStruct5[CInt, CInt, curl_off_t, curl_off_t, size_t]
   object curl_ws_frame:
     given _tag: Tag[curl_ws_frame] = Tag.materializeCStruct5Tag[CInt, CInt, curl_off_t, curl_off_t, size_t]
@@ -3204,329 +3008,171 @@ private[curl] object extern_functions:
   import _root_.curl.predef.*
   import _root_.curl.aliases.*
   import _root_.curl.structs.*
-  /**
-  */
   def curl_easy_cleanup(curl : Ptr[CURL]): Unit = extern
 
-  /**
-  */
   def curl_easy_duphandle(curl : Ptr[CURL]): Ptr[CURL] = extern
 
-  /**
-  */
   def curl_easy_escape(handle : Ptr[CURL], string : CString, length : CInt): CString = extern
 
-  /**
-  */
   def curl_easy_getinfo(curl : Ptr[CURL], info : CURLINFO, rest: Any*): CURLcode = extern
 
-  /**
-  */
   def curl_easy_header(easy : Ptr[CURL], name : CString, index : size_t, origin : CUnsignedInt, request : CInt, hout : Ptr[Ptr[curl_header]]): CURLHcode = extern
 
-  /**
-  */
   def curl_easy_init(): Ptr[CURL] = extern
 
-  /**
-  */
   def curl_easy_nextheader(easy : Ptr[CURL], origin : CUnsignedInt, request : CInt, prev : Ptr[curl_header]): Ptr[curl_header] = extern
 
-  /**
-  */
   def curl_easy_option_by_id(id : CURLoption): Ptr[curl_easyoption] = extern
 
-  /**
-  */
   def curl_easy_option_by_name(name : CString): Ptr[curl_easyoption] = extern
 
-  /**
-  */
   def curl_easy_option_next(prev : Ptr[curl_easyoption]): Ptr[curl_easyoption] = extern
 
-  /**
-  */
   def curl_easy_pause(handle : Ptr[CURL], bitmask : CInt): CURLcode = extern
 
-  /**
-  */
   def curl_easy_perform(curl : Ptr[CURL]): CURLcode = extern
 
-  /**
-  */
   def curl_easy_recv(curl : Ptr[CURL], buffer : Ptr[Byte], buflen : size_t, n : Ptr[size_t]): CURLcode = extern
 
-  /**
-  */
   def curl_easy_reset(curl : Ptr[CURL]): Unit = extern
 
-  /**
-  */
   def curl_easy_send(curl : Ptr[CURL], buffer : Ptr[Byte], buflen : size_t, n : Ptr[size_t]): CURLcode = extern
 
-  /**
-  */
   def curl_easy_setopt(curl : Ptr[CURL], option : CURLoption, rest: Any*): CURLcode = extern
 
-  /**
-  */
   def curl_easy_strerror(_0 : CURLcode): CString = extern
 
-  /**
-  */
   def curl_easy_unescape(handle : Ptr[CURL], string : CString, length : CInt, outlength : Ptr[CInt]): CString = extern
 
-  /**
-  */
   def curl_easy_upkeep(curl : Ptr[CURL]): CURLcode = extern
 
-  /**
-  */
   def curl_escape(string : CString, length : CInt): CString = extern
 
-  /**
-  */
   def curl_formadd(httppost : Ptr[Ptr[curl_httppost]], last_post : Ptr[Ptr[curl_httppost]], rest: Any*): CURLFORMcode = extern
 
-  /**
-  */
   def curl_formfree(form : Ptr[curl_httppost]): Unit = extern
 
-  /**
-  */
   def curl_formget(form : Ptr[curl_httppost], arg : Ptr[Byte], append : curl_formget_callback): CInt = extern
 
-  /**
-  */
   def curl_free(p : Ptr[Byte]): Unit = extern
 
-  /**
-  */
   def curl_getdate(p : CString, unused : Ptr[time_t]): time_t = extern
 
-  /**
-  */
   def curl_getenv(variable : CString): CString = extern
 
-  /**
-  */
   def curl_global_cleanup(): Unit = extern
 
-  /**
-  */
   def curl_global_init(flags : CLongInt): CURLcode = extern
 
-  /**
-  */
   def curl_global_init_mem(flags : CLongInt, m : curl_malloc_callback, f : curl_free_callback, r : curl_realloc_callback, s : curl_strdup_callback, c : curl_calloc_callback): CURLcode = extern
 
-  /**
-  */
   def curl_global_sslset(id : curl_sslbackend, name : CString, avail : Ptr[Ptr[Ptr[curl_ssl_backend]]]): CURLsslset = extern
 
-  /**
-  */
+  def curl_global_trace(config : CString): CURLcode = extern
+
   def curl_mime_addpart(mime : Ptr[curl_mime]): Ptr[curl_mimepart] = extern
 
-  /**
-  */
   def curl_mime_data(part : Ptr[curl_mimepart], data : CString, datasize : size_t): CURLcode = extern
 
-  /**
-  */
   def curl_mime_data_cb(part : Ptr[curl_mimepart], datasize : curl_off_t, readfunc : curl_read_callback, seekfunc : curl_seek_callback, freefunc : curl_free_callback, arg : Ptr[Byte]): CURLcode = extern
 
-  /**
-  */
   def curl_mime_encoder(part : Ptr[curl_mimepart], encoding : CString): CURLcode = extern
 
-  /**
-  */
   def curl_mime_filedata(part : Ptr[curl_mimepart], filename : CString): CURLcode = extern
 
-  /**
-  */
   def curl_mime_filename(part : Ptr[curl_mimepart], filename : CString): CURLcode = extern
 
-  /**
-  */
   def curl_mime_free(mime : Ptr[curl_mime]): Unit = extern
 
-  /**
-  */
   def curl_mime_headers(part : Ptr[curl_mimepart], headers : Ptr[curl_slist], take_ownership : CInt): CURLcode = extern
 
-  /**
-  */
   def curl_mime_init(easy : Ptr[CURL]): Ptr[curl_mime] = extern
 
-  /**
-  */
   def curl_mime_name(part : Ptr[curl_mimepart], name : CString): CURLcode = extern
 
-  /**
-  */
   def curl_mime_subparts(part : Ptr[curl_mimepart], subparts : Ptr[curl_mime]): CURLcode = extern
 
-  /**
-  */
   def curl_mime_type(part : Ptr[curl_mimepart], mimetype : CString): CURLcode = extern
 
-  /**
-  */
   def curl_multi_add_handle(multi_handle : Ptr[CURLM], curl_handle : Ptr[CURL]): CURLMcode = extern
 
-  /**
-  */
   def curl_multi_assign(multi_handle : Ptr[CURLM], sockfd : curl_socket_t, sockp : Ptr[Byte]): CURLMcode = extern
 
-  /**
-  */
   def curl_multi_cleanup(multi_handle : Ptr[CURLM]): CURLMcode = extern
 
-  /**
-  */
   def curl_multi_fdset(multi_handle : Ptr[CURLM], read_fd_set : Ptr[fd_set], write_fd_set : Ptr[fd_set], exc_fd_set : Ptr[fd_set], max_fd : Ptr[CInt]): CURLMcode = extern
 
-  /**
-  */
+  def curl_multi_get_handles(multi_handle : Ptr[CURLM]): Ptr[Ptr[CURL]] = extern
+
   def curl_multi_info_read(multi_handle : Ptr[CURLM], msgs_in_queue : Ptr[CInt]): Ptr[CURLMsg] = extern
 
-  /**
-  */
   def curl_multi_init(): Ptr[CURLM] = extern
 
-  /**
-  */
   def curl_multi_perform(multi_handle : Ptr[CURLM], running_handles : Ptr[CInt]): CURLMcode = extern
 
-  /**
-  */
   def curl_multi_poll(multi_handle : Ptr[CURLM], extra_fds : Ptr[curl_waitfd], extra_nfds : CUnsignedInt, timeout_ms : CInt, ret : Ptr[CInt]): CURLMcode = extern
 
-  /**
-  */
   def curl_multi_remove_handle(multi_handle : Ptr[CURLM], curl_handle : Ptr[CURL]): CURLMcode = extern
 
-  /**
-  */
   def curl_multi_setopt(multi_handle : Ptr[CURLM], option : CURLMoption, rest: Any*): CURLMcode = extern
 
-  /**
-  */
   def curl_multi_socket(multi_handle : Ptr[CURLM], s : curl_socket_t, running_handles : Ptr[CInt]): CURLMcode = extern
 
-  /**
-  */
   def curl_multi_socket_action(multi_handle : Ptr[CURLM], s : curl_socket_t, ev_bitmask : CInt, running_handles : Ptr[CInt]): CURLMcode = extern
 
-  /**
-  */
   def curl_multi_socket_all(multi_handle : Ptr[CURLM], running_handles : Ptr[CInt]): CURLMcode = extern
 
-  /**
-  */
   def curl_multi_strerror(_0 : CURLMcode): CString = extern
 
-  /**
-  */
   def curl_multi_timeout(multi_handle : Ptr[CURLM], milliseconds : Ptr[CLongInt]): CURLMcode = extern
 
-  /**
-  */
   def curl_multi_wait(multi_handle : Ptr[CURLM], extra_fds : Ptr[curl_waitfd], extra_nfds : CUnsignedInt, timeout_ms : CInt, ret : Ptr[CInt]): CURLMcode = extern
 
-  /**
-  */
   def curl_multi_wakeup(multi_handle : Ptr[CURLM]): CURLMcode = extern
 
-  /**
-  */
   def curl_pushheader_byname(h : Ptr[curl_pushheaders], name : CString): CString = extern
 
-  /**
-  */
   def curl_pushheader_bynum(h : Ptr[curl_pushheaders], num : size_t): CString = extern
 
-  /**
-  */
   def curl_share_cleanup(share : Ptr[CURLSH]): CURLSHcode = extern
 
-  /**
-  */
   def curl_share_init(): Ptr[CURLSH] = extern
 
-  /**
-  */
   def curl_share_setopt(share : Ptr[CURLSH], option : CURLSHoption, rest: Any*): CURLSHcode = extern
 
-  /**
-  */
   def curl_share_strerror(_0 : CURLSHcode): CString = extern
 
-  /**
-  */
   def curl_slist_append(list : Ptr[curl_slist], data : CString): Ptr[curl_slist] = extern
 
-  /**
-  */
   def curl_slist_free_all(list : Ptr[curl_slist]): Unit = extern
 
-  /**
-  */
   def curl_strequal(s1 : CString, s2 : CString): CInt = extern
 
-  /**
-  */
   def curl_strnequal(s1 : CString, s2 : CString, n : size_t): CInt = extern
 
-  /**
-  */
   def curl_unescape(string : CString, length : CInt): CString = extern
 
-  /**
-  */
   def curl_url(): Ptr[CURLU] = extern
 
-  /**
-  */
   def curl_url_cleanup(handle : Ptr[CURLU]): Unit = extern
 
-  /**
-  */
   def curl_url_dup(in : Ptr[CURLU]): Ptr[CURLU] = extern
 
-  /**
-  */
   def curl_url_get(handle : Ptr[CURLU], what : CURLUPart, part : Ptr[CString], flags : CUnsignedInt): CURLUcode = extern
 
-  /**
-  */
   def curl_url_set(handle : Ptr[CURLU], what : CURLUPart, part : CString, flags : CUnsignedInt): CURLUcode = extern
 
-  /**
-  */
   def curl_url_strerror(_0 : CURLUcode): CString = extern
 
-  /**
-  */
   def curl_version(): CString = extern
 
-  /**
-  */
   def curl_version_info(_0 : CURLversion): Ptr[curl_version_info_data] = extern
 
-  /**
-  */
   def curl_ws_meta(curl : Ptr[CURL]): Ptr[curl_ws_frame] = extern
 
-  /**
-  */
   def curl_ws_recv(curl : Ptr[CURL], buffer : Ptr[Byte], buflen : size_t, recv : Ptr[size_t], metap : Ptr[Ptr[curl_ws_frame]]): CURLcode = extern
 
-  /**
-  */
-  def curl_ws_send(curl : Ptr[CURL], buffer : Ptr[Byte], buflen : size_t, sent : Ptr[size_t], framesize : curl_off_t, sendflags : CUnsignedInt): CURLcode = extern
+  def curl_ws_send(curl : Ptr[CURL], buffer : Ptr[Byte], buflen : size_t, sent : Ptr[size_t], fragsize : curl_off_t, flags : CUnsignedInt): CURLcode = extern
 
 
 object functions:
@@ -3722,6 +3368,7 @@ object all:
   export _root_.curl.functions.curl_global_init
   export _root_.curl.functions.curl_global_init_mem
   export _root_.curl.functions.curl_global_sslset
+  export _root_.curl.functions.curl_global_trace
   export _root_.curl.functions.curl_mime_addpart
   export _root_.curl.functions.curl_mime_data
   export _root_.curl.functions.curl_mime_data_cb
@@ -3738,6 +3385,7 @@ object all:
   export _root_.curl.functions.curl_multi_assign
   export _root_.curl.functions.curl_multi_cleanup
   export _root_.curl.functions.curl_multi_fdset
+  export _root_.curl.functions.curl_multi_get_handles
   export _root_.curl.functions.curl_multi_info_read
   export _root_.curl.functions.curl_multi_init
   export _root_.curl.functions.curl_multi_perform

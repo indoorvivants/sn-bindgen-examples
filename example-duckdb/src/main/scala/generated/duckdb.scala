@@ -16,8 +16,6 @@ object predef:
 
 object enumerations:
   import predef.*
-  /**
-  */
   opaque type DUCKDB_TYPE = CUnsignedInt
   object DUCKDB_TYPE extends CEnumU[DUCKDB_TYPE]:
     given _tag: Tag[DUCKDB_TYPE] = Tag.UInt
@@ -88,8 +86,6 @@ object enumerations:
       inline def |(b: DUCKDB_TYPE): DUCKDB_TYPE = a | b
       inline def is(b: DUCKDB_TYPE): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type duckdb_state = CUnsignedInt
   object duckdb_state extends CEnumU[duckdb_state]:
     given _tag: Tag[duckdb_state] = Tag.UInt
@@ -111,8 +107,6 @@ object aliases:
   import _root_.duckdb.predef.*
   import _root_.duckdb.aliases.*
   import _root_.duckdb.structs.*
-  /**
-  */
   opaque type duckdb_appender = Ptr[Byte]
   object duckdb_appender: 
     given _tag: Tag[duckdb_appender] = Tag.Ptr(Tag.Byte)
@@ -120,8 +114,6 @@ object aliases:
     extension (v: duckdb_appender)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_arrow = Ptr[Byte]
   object duckdb_arrow: 
     given _tag: Tag[duckdb_arrow] = Tag.Ptr(Tag.Byte)
@@ -129,8 +121,6 @@ object aliases:
     extension (v: duckdb_arrow)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_arrow_array = Ptr[Byte]
   object duckdb_arrow_array: 
     given _tag: Tag[duckdb_arrow_array] = Tag.Ptr(Tag.Byte)
@@ -138,8 +128,6 @@ object aliases:
     extension (v: duckdb_arrow_array)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_arrow_schema = Ptr[Byte]
   object duckdb_arrow_schema: 
     given _tag: Tag[duckdb_arrow_schema] = Tag.Ptr(Tag.Byte)
@@ -147,8 +135,6 @@ object aliases:
     extension (v: duckdb_arrow_schema)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_bind_info = Ptr[Byte]
   object duckdb_bind_info: 
     given _tag: Tag[duckdb_bind_info] = Tag.Ptr(Tag.Byte)
@@ -156,8 +142,6 @@ object aliases:
     extension (v: duckdb_bind_info)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_config = Ptr[Byte]
   object duckdb_config: 
     given _tag: Tag[duckdb_config] = Tag.Ptr(Tag.Byte)
@@ -165,8 +149,6 @@ object aliases:
     extension (v: duckdb_config)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_connection = Ptr[Byte]
   object duckdb_connection: 
     given _tag: Tag[duckdb_connection] = Tag.Ptr(Tag.Byte)
@@ -174,8 +156,6 @@ object aliases:
     extension (v: duckdb_connection)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_data_chunk = Ptr[Byte]
   object duckdb_data_chunk: 
     given _tag: Tag[duckdb_data_chunk] = Tag.Ptr(Tag.Byte)
@@ -183,8 +163,6 @@ object aliases:
     extension (v: duckdb_data_chunk)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_database = Ptr[Byte]
   object duckdb_database: 
     given _tag: Tag[duckdb_database] = Tag.Ptr(Tag.Byte)
@@ -192,19 +170,15 @@ object aliases:
     extension (v: duckdb_database)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_delete_callback_t = CFuncPtr1[Ptr[Byte], Unit]
   object duckdb_delete_callback_t: 
     given _tag: Tag[duckdb_delete_callback_t] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): duckdb_delete_callback_t = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): duckdb_delete_callback_t = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): duckdb_delete_callback_t = o
     extension (v: duckdb_delete_callback_t)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type duckdb_function_info = Ptr[Byte]
   object duckdb_function_info: 
     given _tag: Tag[duckdb_function_info] = Tag.Ptr(Tag.Byte)
@@ -212,8 +186,6 @@ object aliases:
     extension (v: duckdb_function_info)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_init_info = Ptr[Byte]
   object duckdb_init_info: 
     given _tag: Tag[duckdb_init_info] = Tag.Ptr(Tag.Byte)
@@ -221,8 +193,6 @@ object aliases:
     extension (v: duckdb_init_info)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_logical_type = Ptr[Byte]
   object duckdb_logical_type: 
     given _tag: Tag[duckdb_logical_type] = Tag.Ptr(Tag.Byte)
@@ -230,8 +200,6 @@ object aliases:
     extension (v: duckdb_logical_type)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_prepared_statement = Ptr[Byte]
   object duckdb_prepared_statement: 
     given _tag: Tag[duckdb_prepared_statement] = Tag.Ptr(Tag.Byte)
@@ -239,19 +207,15 @@ object aliases:
     extension (v: duckdb_prepared_statement)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_replacement_callback_t = CFuncPtr3[duckdb_replacement_scan_info, CString, Ptr[Byte], Unit]
   object duckdb_replacement_callback_t: 
     given _tag: Tag[duckdb_replacement_callback_t] = Tag.materializeCFuncPtr3[duckdb_replacement_scan_info, CString, Ptr[Byte], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): duckdb_replacement_callback_t = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): duckdb_replacement_callback_t = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[duckdb_replacement_scan_info, CString, Ptr[Byte], Unit]): duckdb_replacement_callback_t = o
     extension (v: duckdb_replacement_callback_t)
       inline def value: CFuncPtr3[duckdb_replacement_scan_info, CString, Ptr[Byte], Unit] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type duckdb_replacement_scan_info = Ptr[Byte]
   object duckdb_replacement_scan_info: 
     given _tag: Tag[duckdb_replacement_scan_info] = Tag.Ptr(Tag.Byte)
@@ -259,8 +223,6 @@ object aliases:
     extension (v: duckdb_replacement_scan_info)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_table_function = Ptr[Byte]
   object duckdb_table_function: 
     given _tag: Tag[duckdb_table_function] = Tag.Ptr(Tag.Byte)
@@ -268,41 +230,33 @@ object aliases:
     extension (v: duckdb_table_function)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_table_function_bind_t = CFuncPtr1[duckdb_bind_info, Unit]
   object duckdb_table_function_bind_t: 
     given _tag: Tag[duckdb_table_function_bind_t] = Tag.materializeCFuncPtr1[duckdb_bind_info, Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): duckdb_table_function_bind_t = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): duckdb_table_function_bind_t = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[duckdb_bind_info, Unit]): duckdb_table_function_bind_t = o
     extension (v: duckdb_table_function_bind_t)
       inline def value: CFuncPtr1[duckdb_bind_info, Unit] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type duckdb_table_function_init_t = CFuncPtr1[duckdb_init_info, Unit]
   object duckdb_table_function_init_t: 
     given _tag: Tag[duckdb_table_function_init_t] = Tag.materializeCFuncPtr1[duckdb_init_info, Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): duckdb_table_function_init_t = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): duckdb_table_function_init_t = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[duckdb_init_info, Unit]): duckdb_table_function_init_t = o
     extension (v: duckdb_table_function_init_t)
       inline def value: CFuncPtr1[duckdb_init_info, Unit] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type duckdb_table_function_t = CFuncPtr2[duckdb_function_info, duckdb_data_chunk, Unit]
   object duckdb_table_function_t: 
     given _tag: Tag[duckdb_table_function_t] = Tag.materializeCFuncPtr2[duckdb_function_info, duckdb_data_chunk, Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): duckdb_table_function_t = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): duckdb_table_function_t = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[duckdb_function_info, duckdb_data_chunk, Unit]): duckdb_table_function_t = o
     extension (v: duckdb_table_function_t)
       inline def value: CFuncPtr2[duckdb_function_info, duckdb_data_chunk, Unit] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   type duckdb_type = DUCKDB_TYPE
   object duckdb_type: 
     given _tag: Tag[duckdb_type] = DUCKDB_TYPE._tag
@@ -310,8 +264,6 @@ object aliases:
     extension (v: duckdb_type)
       inline def value: DUCKDB_TYPE = v
 
-  /**
-  */
   opaque type duckdb_value = Ptr[Byte]
   object duckdb_value: 
     given _tag: Tag[duckdb_value] = Tag.Ptr(Tag.Byte)
@@ -319,8 +271,6 @@ object aliases:
     extension (v: duckdb_value)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   opaque type duckdb_vector = Ptr[Byte]
   object duckdb_vector: 
     given _tag: Tag[duckdb_vector] = Tag.Ptr(Tag.Byte)
@@ -328,8 +278,6 @@ object aliases:
     extension (v: duckdb_vector)
       inline def value: Ptr[Byte] = v
 
-  /**
-  */
   type idx_t = uint64_t
   object idx_t: 
     given _tag: Tag[idx_t] = uint64_t._tag
@@ -405,8 +353,6 @@ object structs:
   import _root_.duckdb.predef.*
   import _root_.duckdb.aliases.*
   import _root_.duckdb.structs.*
-  /**
-  */
   opaque type duckdb_blob = CStruct2[Ptr[Byte], idx_t]
   object duckdb_blob:
     given _tag: Tag[duckdb_blob] = Tag.materializeCStruct2Tag[Ptr[Byte], idx_t]
@@ -422,8 +368,6 @@ object structs:
       def size : idx_t = struct._2
       def size_=(value: idx_t): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type duckdb_column = CStruct5[Ptr[Byte], Ptr[Boolean], duckdb_type, CString, Ptr[Byte]]
   object duckdb_column:
     given _tag: Tag[duckdb_column] = Tag.materializeCStruct5Tag[Ptr[Byte], Ptr[Boolean], duckdb_type, CString, Ptr[Byte]]
@@ -463,8 +407,6 @@ object structs:
       def days : int32_t = struct._1
       def days_=(value: int32_t): Unit = !struct.at1 = value
 
-  /**
-  */
   opaque type duckdb_date_struct = CStruct3[int32_t, int8_t, int8_t]
   object duckdb_date_struct:
     given _tag: Tag[duckdb_date_struct] = Tag.materializeCStruct3Tag[int32_t, int8_t, int8_t]
@@ -483,8 +425,6 @@ object structs:
       def day : int8_t = struct._3
       def day_=(value: int8_t): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type duckdb_decimal = CStruct3[uint8_t, uint8_t, duckdb_hugeint]
   object duckdb_decimal:
     given _tag: Tag[duckdb_decimal] = Tag.materializeCStruct3Tag[uint8_t, uint8_t, duckdb_hugeint]
@@ -521,8 +461,6 @@ object structs:
       def upper : int64_t = struct._2
       def upper_=(value: int64_t): Unit = !struct.at2 = value
 
-  /**
-  */
   opaque type duckdb_interval = CStruct3[int32_t, int32_t, int64_t]
   object duckdb_interval:
     given _tag: Tag[duckdb_interval] = Tag.materializeCStruct3Tag[int32_t, int32_t, int64_t]
@@ -541,8 +479,6 @@ object structs:
       def micros : int64_t = struct._3
       def micros_=(value: int64_t): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type duckdb_result = CStruct6[idx_t, idx_t, idx_t, Ptr[duckdb_column], CString, Ptr[Byte]]
   object duckdb_result:
     given _tag: Tag[duckdb_result] = Tag.materializeCStruct6Tag[idx_t, idx_t, idx_t, Ptr[duckdb_column], CString, Ptr[Byte]]
@@ -585,8 +521,6 @@ object structs:
       def micros : int64_t = struct._1
       def micros_=(value: int64_t): Unit = !struct.at1 = value
 
-  /**
-  */
   opaque type duckdb_time_struct = CStruct4[int8_t, int8_t, int8_t, int32_t]
   object duckdb_time_struct:
     given _tag: Tag[duckdb_time_struct] = Tag.materializeCStruct4Tag[int8_t, int8_t, int8_t, int32_t]
@@ -623,8 +557,6 @@ object structs:
       def micros : int64_t = struct._1
       def micros_=(value: int64_t): Unit = !struct.at1 = value
 
-  /**
-  */
   opaque type duckdb_timestamp_struct = CStruct2[duckdb_date_struct, duckdb_time_struct]
   object duckdb_timestamp_struct:
     given _tag: Tag[duckdb_timestamp_struct] = Tag.materializeCStruct2Tag[duckdb_date_struct, duckdb_time_struct]
@@ -1582,16 +1514,22 @@ object functions:
   /**
    * Append a duckdb_time value to the appender.
   */
+  def duckdb_append_time(appender : duckdb_appender, value : Ptr[duckdb_time]): duckdb_state = 
+    __sn_wrap_duckdb_duckdb_append_time(appender, value)
+
+  /**
+   * Append a duckdb_time value to the appender.
+  */
   def duckdb_append_time(appender : duckdb_appender, value : duckdb_time)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
     !(__ptr_0 + 0) = value
     __sn_wrap_duckdb_duckdb_append_time(appender, (__ptr_0 + 0))
 
   /**
-   * Append a duckdb_time value to the appender.
+   * Append a duckdb_timestamp value to the appender.
   */
-  def duckdb_append_time(appender : duckdb_appender, value : Ptr[duckdb_time]): duckdb_state = 
-    __sn_wrap_duckdb_duckdb_append_time(appender, value)
+  def duckdb_append_timestamp(appender : duckdb_appender, value : Ptr[duckdb_timestamp]): duckdb_state = 
+    __sn_wrap_duckdb_duckdb_append_timestamp(appender, value)
 
   /**
    * Append a duckdb_timestamp value to the appender.
@@ -1600,12 +1538,6 @@ object functions:
     val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
     !(__ptr_0 + 0) = value
     __sn_wrap_duckdb_duckdb_append_timestamp(appender, (__ptr_0 + 0))
-
-  /**
-   * Append a duckdb_timestamp value to the appender.
-  */
-  def duckdb_append_timestamp(appender : duckdb_appender, value : Ptr[duckdb_timestamp]): duckdb_state = 
-    __sn_wrap_duckdb_duckdb_append_timestamp(appender, value)
 
   /**
    * Binds a duckdb_date value to the prepared statement at the specified index.
@@ -1624,16 +1556,16 @@ object functions:
   /**
    * Binds an duckdb_hugeint value to the prepared statement at the specified index.
   */
-  def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_hugeint)(using Zone): duckdb_state = 
-    val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
-    !(__ptr_0 + 0) = `val`
-    __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, (__ptr_0 + 0))
+  def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_hugeint]): duckdb_state = 
+    __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, `val`)
 
   /**
    * Binds an duckdb_hugeint value to the prepared statement at the specified index.
   */
-  def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_hugeint]): duckdb_state = 
-    __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, `val`)
+  def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_hugeint)(using Zone): duckdb_state = 
+    val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
+    !(__ptr_0 + 0) = `val`
+    __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, (__ptr_0 + 0))
 
   /**
    * Binds a duckdb_interval value to the prepared statement at the specified index.
@@ -1652,16 +1584,16 @@ object functions:
   /**
    * Binds a duckdb_time value to the prepared statement at the specified index.
   */
-  def duckdb_bind_time(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_time]): duckdb_state = 
-    __sn_wrap_duckdb_duckdb_bind_time(prepared_statement, param_idx, `val`)
-
-  /**
-   * Binds a duckdb_time value to the prepared statement at the specified index.
-  */
   def duckdb_bind_time(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_time)(using Zone): duckdb_state = 
     val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
     !(__ptr_0 + 0) = `val`
     __sn_wrap_duckdb_duckdb_bind_time(prepared_statement, param_idx, (__ptr_0 + 0))
+
+  /**
+   * Binds a duckdb_time value to the prepared statement at the specified index.
+  */
+  def duckdb_bind_time(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_time]): duckdb_state = 
+    __sn_wrap_duckdb_duckdb_bind_time(prepared_statement, param_idx, `val`)
 
   /**
    * Binds a duckdb_timestamp value to the prepared statement at the specified index.
@@ -1742,16 +1674,16 @@ object functions:
   /**
    * Decompose a `duckdb_time` object into hour, minute, second and microsecond (stored as `duckdb_time_struct`).
   */
-  def duckdb_from_time(time : Ptr[duckdb_time])(using Zone): duckdb_time_struct = 
-    val __ptr_0: Ptr[duckdb_time_struct] = alloc[duckdb_time_struct](1)
-    __sn_wrap_duckdb_duckdb_from_time(time, (__ptr_0 + 0))
-    !(__ptr_0 + 0)
+  def duckdb_from_time(time : Ptr[duckdb_time])(__return : Ptr[duckdb_time_struct]): Unit = 
+    __sn_wrap_duckdb_duckdb_from_time(time, __return)
 
   /**
    * Decompose a `duckdb_time` object into hour, minute, second and microsecond (stored as `duckdb_time_struct`).
   */
-  def duckdb_from_time(time : Ptr[duckdb_time])(__return : Ptr[duckdb_time_struct]): Unit = 
-    __sn_wrap_duckdb_duckdb_from_time(time, __return)
+  def duckdb_from_time(time : Ptr[duckdb_time])(using Zone): duckdb_time_struct = 
+    val __ptr_0: Ptr[duckdb_time_struct] = alloc[duckdb_time_struct](1)
+    __sn_wrap_duckdb_duckdb_from_time(time, (__ptr_0 + 0))
+    !(__ptr_0 + 0)
 
   /**
    * Decompose a `duckdb_timestamp` object into a `duckdb_timestamp_struct`.
@@ -1780,16 +1712,16 @@ object functions:
   /**
    * Converts a duckdb_hugeint object (as obtained from a `DUCKDB_TYPE_HUGEINT` column) into a double.
   */
-  def duckdb_hugeint_to_double(`val` : duckdb_hugeint)(using Zone): Double = 
-    val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
-    !(__ptr_0 + 0) = `val`
-    __sn_wrap_duckdb_duckdb_hugeint_to_double((__ptr_0 + 0))
+  def duckdb_hugeint_to_double(`val` : Ptr[duckdb_hugeint]): Double = 
+    __sn_wrap_duckdb_duckdb_hugeint_to_double(`val`)
 
   /**
    * Converts a duckdb_hugeint object (as obtained from a `DUCKDB_TYPE_HUGEINT` column) into a double.
   */
-  def duckdb_hugeint_to_double(`val` : Ptr[duckdb_hugeint]): Double = 
-    __sn_wrap_duckdb_duckdb_hugeint_to_double(`val`)
+  def duckdb_hugeint_to_double(`val` : duckdb_hugeint)(using Zone): Double = 
+    val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
+    !(__ptr_0 + 0) = `val`
+    __sn_wrap_duckdb_duckdb_hugeint_to_double((__ptr_0 + 0))
 
   /**
    * Returns the number of data chunks present in the result.
@@ -1822,12 +1754,6 @@ object functions:
   /**
    * Re-compose a `duckdb_date` from year, month and date (`duckdb_date_struct`).
   */
-  def duckdb_to_date(date : Ptr[duckdb_date_struct])(__return : Ptr[duckdb_date]): Unit = 
-    __sn_wrap_duckdb_duckdb_to_date(date, __return)
-
-  /**
-   * Re-compose a `duckdb_date` from year, month and date (`duckdb_date_struct`).
-  */
   def duckdb_to_date(date : duckdb_date_struct)(using Zone): duckdb_date = 
     val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
     val __ptr_1: Ptr[duckdb_date_struct] = alloc[duckdb_date_struct](1)
@@ -1842,6 +1768,12 @@ object functions:
     val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
     __sn_wrap_duckdb_duckdb_to_date(date, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  /**
+   * Re-compose a `duckdb_date` from year, month and date (`duckdb_date_struct`).
+  */
+  def duckdb_to_date(date : Ptr[duckdb_date_struct])(__return : Ptr[duckdb_date]): Unit = 
+    __sn_wrap_duckdb_duckdb_to_date(date, __return)
 
   /**
    * Re-compose a `duckdb_time` from hour, minute, second and microsecond (`duckdb_time_struct`).
@@ -1870,12 +1802,6 @@ object functions:
   /**
    * Re-compose a `duckdb_timestamp` from a duckdb_timestamp_struct.
   */
-  def duckdb_to_timestamp(ts : Ptr[duckdb_timestamp_struct])(__return : Ptr[duckdb_timestamp]): Unit = 
-    __sn_wrap_duckdb_duckdb_to_timestamp(ts, __return)
-
-  /**
-   * Re-compose a `duckdb_timestamp` from a duckdb_timestamp_struct.
-  */
   def duckdb_to_timestamp(ts : Ptr[duckdb_timestamp_struct])(using Zone): duckdb_timestamp = 
     val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
     __sn_wrap_duckdb_duckdb_to_timestamp(ts, (__ptr_0 + 0))
@@ -1890,6 +1816,12 @@ object functions:
     !(__ptr_1 + 0) = ts
     __sn_wrap_duckdb_duckdb_to_timestamp((__ptr_1 + 0), (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  /**
+   * Re-compose a `duckdb_timestamp` from a duckdb_timestamp_struct.
+  */
+  def duckdb_to_timestamp(ts : Ptr[duckdb_timestamp_struct])(__return : Ptr[duckdb_timestamp]): Unit = 
+    __sn_wrap_duckdb_duckdb_to_timestamp(ts, __return)
 
   /**
    * returns: The duckdb_blob value at the specified location. Returns a blob with blob.data set to nullptr if the value cannot be converted. The resulting "blob.data" must be freed with `duckdb_free.`
@@ -1908,16 +1840,16 @@ object functions:
   /**
    * returns: The duckdb_date value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_date(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_date]): Unit = 
-    __sn_wrap_duckdb_duckdb_value_date(result, col, row, __return)
-
-  /**
-   * returns: The duckdb_date value at the specified location, or 0 if the value cannot be converted.
-  */
   def duckdb_value_date(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_date = 
     val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
     __sn_wrap_duckdb_duckdb_value_date(result, col, row, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  /**
+   * returns: The duckdb_date value at the specified location, or 0 if the value cannot be converted.
+  */
+  def duckdb_value_date(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_date]): Unit = 
+    __sn_wrap_duckdb_duckdb_value_date(result, col, row, __return)
 
   /**
    * returns: The duckdb_decimal value at the specified location, or 0 if the value cannot be converted.
@@ -1964,16 +1896,22 @@ object functions:
   /**
    * returns: The duckdb_time value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_time(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_time]): Unit = 
-    __sn_wrap_duckdb_duckdb_value_time(result, col, row, __return)
-
-  /**
-   * returns: The duckdb_time value at the specified location, or 0 if the value cannot be converted.
-  */
   def duckdb_value_time(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_time = 
     val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
     __sn_wrap_duckdb_duckdb_value_time(result, col, row, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  /**
+   * returns: The duckdb_time value at the specified location, or 0 if the value cannot be converted.
+  */
+  def duckdb_value_time(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_time]): Unit = 
+    __sn_wrap_duckdb_duckdb_value_time(result, col, row, __return)
+
+  /**
+   * returns: The duckdb_timestamp value at the specified location, or 0 if the value cannot be converted.
+  */
+  def duckdb_value_timestamp(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_timestamp]): Unit = 
+    __sn_wrap_duckdb_duckdb_value_timestamp(result, col, row, __return)
 
   /**
    * returns: The duckdb_timestamp value at the specified location, or 0 if the value cannot be converted.
@@ -1982,12 +1920,6 @@ object functions:
     val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
     __sn_wrap_duckdb_duckdb_value_timestamp(result, col, row, (__ptr_0 + 0))
     !(__ptr_0 + 0)
-
-  /**
-   * returns: The duckdb_timestamp value at the specified location, or 0 if the value cannot be converted.
-  */
-  def duckdb_value_timestamp(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_timestamp]): Unit = 
-    __sn_wrap_duckdb_duckdb_value_timestamp(result, col, row, __return)
 
 object types:
   export _root_.duckdb.structs.*

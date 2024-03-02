@@ -16,8 +16,6 @@ object predef:
 
 object enumerations:
   import predef.*
-  /**
-  */
   opaque type cmark_delim_type = CUnsignedInt
   object cmark_delim_type extends CEnumU[cmark_delim_type]:
     given _tag: Tag[cmark_delim_type] = Tag.UInt
@@ -59,8 +57,6 @@ object enumerations:
       inline def |(b: cmark_event_type): cmark_event_type = a | b
       inline def is(b: cmark_event_type): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type cmark_list_type = CUnsignedInt
   object cmark_list_type extends CEnumU[cmark_list_type]:
     given _tag: Tag[cmark_list_type] = Tag.UInt
@@ -168,8 +164,6 @@ object structs:
   import _root_.cmark.predef.*
   import _root_.cmark.aliases.*
   import _root_.cmark.structs.*
-  /**
-  */
   opaque type cmark_iter = CStruct0
   object cmark_iter:
     given _tag: Tag[cmark_iter] = Tag.materializeCStruct0Tag
@@ -195,14 +189,10 @@ object structs:
       def free : CFuncPtr1[Ptr[Byte], Unit] = struct._3
       def free_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type cmark_node = CStruct0
   object cmark_node:
     given _tag: Tag[cmark_node] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type cmark_parser = CStruct0
   object cmark_parser:
     given _tag: Tag[cmark_parser] = Tag.materializeCStruct0Tag
