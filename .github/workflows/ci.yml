@@ -49,7 +49,7 @@ jobs:
           if [ $PLATFORM == "Darwin" ]; then
             echo "It's a Mac"
             brew install llvm@17 ninja sbt
-            echo "LLVM_BIN=/usr/local/opt/llvm@17/bin" >> $GITHUB_ENV
+            echo "LLVM_BIN=/opt/homebrew/opt/llvm@17/bin" >> $GITHUB_ENV
           else
             echo "It's a Linux"
             wget https://apt.llvm.org/llvm.sh
