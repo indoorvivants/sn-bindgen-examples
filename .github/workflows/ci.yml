@@ -27,15 +27,15 @@ jobs:
           java-version: '17'
           cache: sbt
 
-      - name: Cache vcpkg
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/Library/Caches/sbt-vcpkg/vcpkg-install
-            ~/Library/Caches/sbt-vcpkg/vcpkg
-            ~/.cache/sbt-vcpkg/vcpkg-install
-            ~/.cache/sbt-vcpkg/vcpkg
-          key: ${{ runner.os }}-sbt-vcpkg-${{ matrix.segment }}
+      # - name: Cache vcpkg
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: |
+      #       ~/Library/Caches/sbt-vcpkg/vcpkg-install
+      #       ~/Library/Caches/sbt-vcpkg/vcpkg
+      #       ~/.cache/sbt-vcpkg/vcpkg-install
+      #       ~/.cache/sbt-vcpkg/vcpkg
+      #     key: ${{ runner.os }}-sbt-vcpkg-${{ matrix.segment }}
 
       - uses: rui314/setup-mold@v1
 
@@ -48,7 +48,7 @@ jobs:
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then
             echo "It's a Mac"
-            brew install llvm@17 ninja sbt
+            brew install llvm@17 ninja sbt autoconf
             echo "LLVM_BIN=/opt/homebrew/opt/llvm@17/bin" >> $GITHUB_ENV
           else
             echo "It's a Linux"
