@@ -2,7 +2,7 @@ val BindgenVersion =
   sys.env.getOrElse("SN_BINDGEN_VERSION", "0.1.2")
 
 val VcpkgVersion =
-  sys.env.getOrElse("SBT_VCPKG_VERSION", "0.0.18")
+  sys.env.getOrElse("SBT_VCPKG_VERSION", "0.0.19")
 
 val ScalaNativeVersion = 
   sys.env.getOrElse("SCALA_NATIVE_VERSION", "0.5.0-RC1")
