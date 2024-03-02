@@ -3,22 +3,23 @@ import scalanative.unsigned.*
 
 import lua.types.*
 import lua.functions.*
+import lua.aliases.lua_KContext
 
 @main def hello =
-  Zone { implicit z =>
+  Zone:
     val stats = alloc[CStruct2[Long, Long]](1)
 
     val luaAllocator = lua_Alloc.apply {
       CFuncPtr4.fromScalaFunction { (ud, ptr, osize, nsize) =>
         val state = ud.asInstanceOf[Ptr[CStruct2[Long, Long]]]
 
-        if nsize == 0.toULong then
-          (!state)._2 = (!state)._2 + osize.asInstanceOf[ULong].toLong
+        if nsize.toInt == 0 then
+          (!state)._2 = (!state)._2 + osize.toLong
           scalanative.libc.stdlib.free(ptr)
           null
         else
-          (!state)._1 = (!state)._1 + nsize.asInstanceOf[ULong].toLong
-          scalanative.libc.stdlib.realloc(ptr, nsize.asInstanceOf[ULong])
+          (!state)._1 = (!state)._1 + nsize.toLong
+          scalanative.libc.stdlib.realloc(ptr, nsize)
       }
     }
 
@@ -37,7 +38,7 @@ import lua.functions.*
             lua_pushstring(L, c"incorrect argument")
             lua_error(L)
 
-          sum = sum + lua_tointegerx(L, i, null).asInstanceOf[Long]
+          sum = sum + lua_tointegerx(L, i, null).value
 
         lua_pushnumber(L, lua_Number(sum))
 
@@ -62,14 +63,14 @@ import lua.functions.*
       0,
       -1,
       0,
-      0L.asInstanceOf[lua_KContext],
+      0L.toSize.asInstanceOf[lua_KContext],
       lua_KFunction(null)
     )
+    sys.exit(0)
 
     lua_close(state)
 
     println(
       s"Lua execution allocated ${(!stats)._1} bytes and deallocated ${(!stats)._2}"
     )
-  }
 end hello

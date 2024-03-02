@@ -1,3 +1,5 @@
+import scala.scalanative.build.SourceLevelDebuggingConfig
+import scala.scalanative.build.OptimizerConfig
 import bindgen.plugin.BindgenMode
 import com.indoorvivants.detective.Platform.OS.*
 import com.indoorvivants.detective.Platform
@@ -10,7 +12,7 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / resolvers ++= Resolver.sonatypeOssRepos("snapshots")
 
 lazy val Versions = new {
-  val Scala = "3.3.1"
+  val Scala = "3.3.3"
 }
 
 lazy val root = project
@@ -136,6 +138,7 @@ lazy val git = project
       Binding(vcpkgConfigurator.value.includes("libgit2") / "git2.h", "libgit")
         .withLinkName("git2")
         .withCImports(List("git2.h"))
+        .withLogLevel(bindgen.interface.LogLevel.Info)
         .withClangFlags(
           vcpkgConfigurator.value.pkgConfig
             .updateCompilationFlags(List("-fsigned-char"), "libgit2")
@@ -429,6 +432,7 @@ lazy val openssl = project
   .settings(
     vcpkgDependencies := VcpkgDependencies("openssl"),
     scalaVersion := Versions.Scala,
+    nativeConfig ~= {(_).withSourceLevelDebuggingConfig(SourceLevelDebuggingConfig.enabled)},
     bindgenBindings := {
       Seq(
         Binding(

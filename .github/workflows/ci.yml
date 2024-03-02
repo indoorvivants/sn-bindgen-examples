@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
-        os: [macos-12, ubuntu-22.04]
+        os: [macos-14, ubuntu-22.04]
         segment: [1, 2, 3]
     runs-on: ${{ matrix.os }}
     steps:
@@ -27,15 +27,15 @@ jobs:
           java-version: '17'
           cache: sbt
 
-      - name: Cache vcpkg
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/Library/Caches/sbt-vcpkg/vcpkg-install
-            ~/Library/Caches/sbt-vcpkg/vcpkg
-            ~/.cache/sbt-vcpkg/vcpkg-install
-            ~/.cache/sbt-vcpkg/vcpkg
-          key: ${{ runner.os }}-sbt-vcpkg-${{ matrix.segment }}
+      # - name: Cache vcpkg
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: |
+      #       ~/Library/Caches/sbt-vcpkg/vcpkg-install
+      #       ~/Library/Caches/sbt-vcpkg/vcpkg
+      #       ~/.cache/sbt-vcpkg/vcpkg-install
+      #       ~/.cache/sbt-vcpkg/vcpkg
+      #     key: ${{ runner.os }}-sbt-vcpkg-${{ matrix.segment }}
 
       - uses: rui314/setup-mold@v1
 
@@ -48,15 +48,15 @@ jobs:
           PLATFORM="$(uname)"
           if [ $PLATFORM == "Darwin" ]; then
             echo "It's a Mac"
-            brew install llvm@14 ninja
-            echo "LLVM_BIN=/usr/local/opt/llvm@14/bin" >> $GITHUB_ENV
+            brew install llvm@17 ninja sbt autoconf
+            echo "LLVM_BIN=/opt/homebrew/opt/llvm@17/bin" >> $GITHUB_ENV
           else
             echo "It's a Linux"
             wget https://apt.llvm.org/llvm.sh
             chmod +x llvm.sh
-            sudo ./llvm.sh 14
+            sudo ./llvm.sh 17
             sudo apt-get install ninja-build
-            echo "LLVM_BIN=/usr/lib/llvm-14/bin" >> $GITHUB_ENV
+            echo "LLVM_BIN=/usr/lib/llvm-17/bin" >> $GITHUB_ENV
           fi
 
       - name: Setup for examples

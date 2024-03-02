@@ -418,8 +418,6 @@ object enumerations:
       inline def |(b: s2n_tls_signature_algorithm): s2n_tls_signature_algorithm = a | b
       inline def is(b: s2n_tls_signature_algorithm): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type s2n_verify_after_sign = CUnsignedInt
   object s2n_verify_after_sign extends CEnumU[s2n_verify_after_sign]:
     given _tag: Tag[s2n_verify_after_sign] = Tag.UInt
@@ -461,11 +459,11 @@ object aliases:
   opaque type s2n_async_pkey_fn = CFuncPtr2[Ptr[s2n_connection], Ptr[s2n_async_pkey_op], CInt]
   object s2n_async_pkey_fn: 
     given _tag: Tag[s2n_async_pkey_fn] = Tag.materializeCFuncPtr2[Ptr[s2n_connection], Ptr[s2n_async_pkey_op], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_async_pkey_fn = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_async_pkey_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[s2n_connection], Ptr[s2n_async_pkey_op], CInt]): s2n_async_pkey_fn = o
     extension (v: s2n_async_pkey_fn)
       inline def value: CFuncPtr2[Ptr[s2n_connection], Ptr[s2n_async_pkey_op], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Cache callback function that allows the caller to set a callback function that will be used to delete SSL session data from a cache.
@@ -473,11 +471,11 @@ object aliases:
   opaque type s2n_cache_delete_callback = CFuncPtr4[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, CInt]
   object s2n_cache_delete_callback: 
     given _tag: Tag[s2n_cache_delete_callback] = Tag.materializeCFuncPtr4[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_cache_delete_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_cache_delete_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, CInt]): s2n_cache_delete_callback = o
     extension (v: s2n_cache_delete_callback)
       inline def value: CFuncPtr4[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Cache callback function that allows the caller to retrieve SSL session data from a cache.
@@ -485,11 +483,11 @@ object aliases:
   opaque type s2n_cache_retrieve_callback = CFuncPtr6[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, Ptr[Byte], Ptr[uint64_t], CInt]
   object s2n_cache_retrieve_callback: 
     given _tag: Tag[s2n_cache_retrieve_callback] = Tag.materializeCFuncPtr6[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, Ptr[Byte], Ptr[uint64_t], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_cache_retrieve_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_cache_retrieve_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr6[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, Ptr[Byte], Ptr[uint64_t], CInt]): s2n_cache_retrieve_callback = o
     extension (v: s2n_cache_retrieve_callback)
       inline def value: CFuncPtr6[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, Ptr[Byte], Ptr[uint64_t], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Cache callback function that allows the caller to store SSL session data in a cache.
@@ -497,11 +495,11 @@ object aliases:
   opaque type s2n_cache_store_callback = CFuncPtr7[Ptr[s2n_connection], Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, CInt]
   object s2n_cache_store_callback: 
     given _tag: Tag[s2n_cache_store_callback] = Tag.materializeCFuncPtr7[Ptr[s2n_connection], Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_cache_store_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_cache_store_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr7[Ptr[s2n_connection], Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, CInt]): s2n_cache_store_callback = o
     extension (v: s2n_cache_store_callback)
       inline def value: CFuncPtr7[Ptr[s2n_connection], Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * A callback function that is invoked if s2n-tls cannot resolve a conflict between two certificates with the same domain name. This function is invoked while certificates are added to an `s2n_config`.
@@ -509,11 +507,11 @@ object aliases:
   opaque type s2n_cert_tiebreak_callback = CFuncPtr4[Ptr[s2n_cert_chain_and_key], Ptr[s2n_cert_chain_and_key], Ptr[uint8_t], uint32_t, Ptr[s2n_cert_chain_and_key]]
   object s2n_cert_tiebreak_callback: 
     given _tag: Tag[s2n_cert_tiebreak_callback] = Tag.materializeCFuncPtr4[Ptr[s2n_cert_chain_and_key], Ptr[s2n_cert_chain_and_key], Ptr[uint8_t], uint32_t, Ptr[s2n_cert_chain_and_key]]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_cert_tiebreak_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_cert_tiebreak_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[s2n_cert_chain_and_key], Ptr[s2n_cert_chain_and_key], Ptr[uint8_t], uint32_t, Ptr[s2n_cert_chain_and_key]]): s2n_cert_tiebreak_callback = o
     extension (v: s2n_cert_tiebreak_callback)
       inline def value: CFuncPtr4[Ptr[s2n_cert_chain_and_key], Ptr[s2n_cert_chain_and_key], Ptr[uint8_t], uint32_t, Ptr[s2n_cert_chain_and_key]] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * The callback function takes a s2n-tls connection as input, which receives the ClientHello and the context previously provided in `s2n_config_set_client_hello_cb`. The callback can access any ClientHello information from the connection and use the `s2n_connection_set_config` call to change the config of the connection.
@@ -531,11 +529,11 @@ object aliases:
   opaque type s2n_clock_time_nanoseconds = CFuncPtr2[Ptr[Byte], Ptr[uint64_t], CInt]
   object s2n_clock_time_nanoseconds: 
     given _tag: Tag[s2n_clock_time_nanoseconds] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[uint64_t], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_clock_time_nanoseconds = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_clock_time_nanoseconds = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[uint64_t], CInt]): s2n_clock_time_nanoseconds = o
     extension (v: s2n_clock_time_nanoseconds)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[uint64_t], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * A callback which can be implemented to accept or reject early data.
@@ -543,11 +541,11 @@ object aliases:
   opaque type s2n_early_data_cb = CFuncPtr2[Ptr[s2n_connection], Ptr[s2n_offered_early_data], CInt]
   object s2n_early_data_cb: 
     given _tag: Tag[s2n_early_data_cb] = Tag.materializeCFuncPtr2[Ptr[s2n_connection], Ptr[s2n_offered_early_data], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_early_data_cb = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_early_data_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[s2n_connection], Ptr[s2n_offered_early_data], CInt]): s2n_early_data_cb = o
     extension (v: s2n_early_data_cb)
       inline def value: CFuncPtr2[Ptr[s2n_connection], Ptr[s2n_offered_early_data], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback function for handling key log events
@@ -555,11 +553,11 @@ object aliases:
   opaque type s2n_key_log_fn = CFuncPtr4[Ptr[Byte], Ptr[s2n_connection], Ptr[uint8_t], size_t, CInt]
   object s2n_key_log_fn: 
     given _tag: Tag[s2n_key_log_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], Ptr[s2n_connection], Ptr[uint8_t], size_t, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_key_log_fn = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_key_log_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], Ptr[s2n_connection], Ptr[uint8_t], size_t, CInt]): s2n_key_log_fn = o
     extension (v: s2n_key_log_fn)
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[s2n_connection], Ptr[uint8_t], size_t, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Will be called when `s2n_cleanup` is executed.
@@ -567,11 +565,11 @@ object aliases:
   opaque type s2n_mem_cleanup_callback = CFuncPtr0[CInt]
   object s2n_mem_cleanup_callback: 
     given _tag: Tag[s2n_mem_cleanup_callback] = Tag.materializeCFuncPtr0[CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_mem_cleanup_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_mem_cleanup_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr0[CInt]): s2n_mem_cleanup_callback = o
     extension (v: s2n_mem_cleanup_callback)
       inline def value: CFuncPtr0[CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Frees memory allocated by s2n_mem_malloc_callback.
@@ -579,11 +577,11 @@ object aliases:
   opaque type s2n_mem_free_callback = CFuncPtr2[Ptr[Byte], uint32_t, CInt]
   object s2n_mem_free_callback: 
     given _tag: Tag[s2n_mem_free_callback] = Tag.materializeCFuncPtr2[Ptr[Byte], uint32_t, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_mem_free_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_mem_free_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], uint32_t, CInt]): s2n_mem_free_callback = o
     extension (v: s2n_mem_free_callback)
       inline def value: CFuncPtr2[Ptr[Byte], uint32_t, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Called when `s2n_init` is executed.
@@ -591,11 +589,11 @@ object aliases:
   opaque type s2n_mem_init_callback = CFuncPtr0[CInt]
   object s2n_mem_init_callback: 
     given _tag: Tag[s2n_mem_init_callback] = Tag.materializeCFuncPtr0[CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_mem_init_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_mem_init_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr0[CInt]): s2n_mem_init_callback = o
     extension (v: s2n_mem_init_callback)
       inline def value: CFuncPtr0[CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * A function that can allocate at least `requested` bytes of memory.
@@ -603,11 +601,11 @@ object aliases:
   opaque type s2n_mem_malloc_callback = CFuncPtr3[Ptr[Ptr[Byte]], uint32_t, Ptr[uint32_t], CInt]
   object s2n_mem_malloc_callback: 
     given _tag: Tag[s2n_mem_malloc_callback] = Tag.materializeCFuncPtr3[Ptr[Ptr[Byte]], uint32_t, Ptr[uint32_t], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_mem_malloc_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_mem_malloc_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Ptr[Byte]], uint32_t, Ptr[uint32_t], CInt]): s2n_mem_malloc_callback = o
     extension (v: s2n_mem_malloc_callback)
       inline def value: CFuncPtr3[Ptr[Ptr[Byte]], uint32_t, Ptr[uint32_t], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Callback function to select a PSK from a list of offered PSKs. Use this callback to implement custom PSK selection logic. The s2n-tls default PSK selection logic chooses the first matching PSK from the list of offered PSKs sent by the client.
@@ -615,11 +613,11 @@ object aliases:
   opaque type s2n_psk_selection_callback = CFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_offered_psk_list], CInt]
   object s2n_psk_selection_callback: 
     given _tag: Tag[s2n_psk_selection_callback] = Tag.materializeCFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_offered_psk_list], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_psk_selection_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_psk_selection_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_offered_psk_list], CInt]): s2n_psk_selection_callback = o
     extension (v: s2n_psk_selection_callback)
       inline def value: CFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_offered_psk_list], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * A callback function that will be called when `s2n_cleanup` is executed.
@@ -627,11 +625,11 @@ object aliases:
   opaque type s2n_rand_cleanup_callback = CFuncPtr0[CInt]
   object s2n_rand_cleanup_callback: 
     given _tag: Tag[s2n_rand_cleanup_callback] = Tag.materializeCFuncPtr0[CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_rand_cleanup_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_rand_cleanup_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr0[CInt]): s2n_rand_cleanup_callback = o
     extension (v: s2n_rand_cleanup_callback)
       inline def value: CFuncPtr0[CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * A callback function that will be called when s2n-tls is initialized.
@@ -639,11 +637,11 @@ object aliases:
   opaque type s2n_rand_init_callback = CFuncPtr0[CInt]
   object s2n_rand_init_callback: 
     given _tag: Tag[s2n_rand_init_callback] = Tag.materializeCFuncPtr0[CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_rand_init_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_rand_init_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr0[CInt]): s2n_rand_init_callback = o
     extension (v: s2n_rand_init_callback)
       inline def value: CFuncPtr0[CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * A callback function that will be used to mix in entropy every time the RNG is invoked.
@@ -651,11 +649,11 @@ object aliases:
   opaque type s2n_rand_mix_callback = CFuncPtr2[Ptr[Byte], uint32_t, CInt]
   object s2n_rand_mix_callback: 
     given _tag: Tag[s2n_rand_mix_callback] = Tag.materializeCFuncPtr2[Ptr[Byte], uint32_t, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_rand_mix_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_rand_mix_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], uint32_t, CInt]): s2n_rand_mix_callback = o
     extension (v: s2n_rand_mix_callback)
       inline def value: CFuncPtr2[Ptr[Byte], uint32_t, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * A callback function that will be used to provide entropy to the s2n-tls random number generators.
@@ -663,11 +661,11 @@ object aliases:
   opaque type s2n_rand_seed_callback = CFuncPtr2[Ptr[Byte], uint32_t, CInt]
   object s2n_rand_seed_callback: 
     given _tag: Tag[s2n_rand_seed_callback] = Tag.materializeCFuncPtr2[Ptr[Byte], uint32_t, CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_rand_seed_callback = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_rand_seed_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], uint32_t, CInt]): s2n_rand_seed_callback = o
     extension (v: s2n_rand_seed_callback)
       inline def value: CFuncPtr2[Ptr[Byte], uint32_t, CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * Function pointer for a user provided send callback.
@@ -695,11 +693,11 @@ object aliases:
   opaque type s2n_session_ticket_fn = CFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_session_ticket], CInt]
   object s2n_session_ticket_fn: 
     given _tag: Tag[s2n_session_ticket_fn] = Tag.materializeCFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_session_ticket], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_session_ticket_fn = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_session_ticket_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_session_ticket], CInt]): s2n_session_ticket_fn = o
     extension (v: s2n_session_ticket_fn)
       inline def value: CFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_session_ticket], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
    * A callback function invoked (usually multiple times) during X.509 validation for each name encountered in the leaf certificate.
@@ -707,11 +705,11 @@ object aliases:
   opaque type s2n_verify_host_fn = CFuncPtr3[CString, size_t, Ptr[Byte], uint8_t]
   object s2n_verify_host_fn: 
     given _tag: Tag[s2n_verify_host_fn] = Tag.materializeCFuncPtr3[CString, size_t, Ptr[Byte], uint8_t]
-    inline def fromPtr(ptr: Ptr[Byte]): s2n_verify_host_fn = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_verify_host_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, size_t, Ptr[Byte], uint8_t]): s2n_verify_host_fn = o
     extension (v: s2n_verify_host_fn)
       inline def value: CFuncPtr3[CString, size_t, Ptr[Byte], uint8_t] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type size_t = libc.stddef.size_t
   object size_t: 
@@ -816,20 +814,14 @@ object structs:
   object s2n_connection:
     given _tag: Tag[s2n_connection] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type s2n_offered_early_data = CStruct0
   object s2n_offered_early_data:
     given _tag: Tag[s2n_offered_early_data] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type s2n_offered_psk = CStruct0
   object s2n_offered_psk:
     given _tag: Tag[s2n_offered_psk] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type s2n_offered_psk_list = CStruct0
   object s2n_offered_psk_list:
     given _tag: Tag[s2n_offered_psk_list] = Tag.materializeCStruct0Tag
@@ -848,8 +840,6 @@ object structs:
   object s2n_psk:
     given _tag: Tag[s2n_psk] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type s2n_session_ticket = CStruct0
   object s2n_session_ticket:
     given _tag: Tag[s2n_session_ticket] = Tag.materializeCStruct0Tag

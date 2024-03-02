@@ -6,7 +6,7 @@ import scalanative.unsigned.*
 import scalanative.libc.*
 
 @main def hello =
-  Zone { implicit z =>
+  Zone:
     val loop = uv_default_loop()
     uv_loop_init(loop)
 
@@ -31,5 +31,4 @@ import scalanative.libc.*
     uv_run(loop, uv_run_mode.UV_RUN_DEFAULT)
 
     uv_loop_close(loop)
-  }
 end hello

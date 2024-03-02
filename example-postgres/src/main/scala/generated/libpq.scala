@@ -16,8 +16,6 @@ object predef:
 
 object enumerations:
   import predef.*
-  /**
-  */
   opaque type ConnStatusType = CUnsignedInt
   object ConnStatusType extends CEnumU[ConnStatusType]:
     given _tag: Tag[ConnStatusType] = Tag.UInt
@@ -58,8 +56,6 @@ object enumerations:
       inline def |(b: ConnStatusType): ConnStatusType = a | b
       inline def is(b: ConnStatusType): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type ExecStatusType = CUnsignedInt
   object ExecStatusType extends CEnumU[ExecStatusType]:
     given _tag: Tag[ExecStatusType] = Tag.UInt
@@ -96,8 +92,6 @@ object enumerations:
       inline def |(b: ExecStatusType): ExecStatusType = a | b
       inline def is(b: ExecStatusType): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type PGContextVisibility = CUnsignedInt
   object PGContextVisibility extends CEnumU[PGContextVisibility]:
     given _tag: Tag[PGContextVisibility] = Tag.UInt
@@ -116,8 +110,6 @@ object enumerations:
       inline def |(b: PGContextVisibility): PGContextVisibility = a | b
       inline def is(b: PGContextVisibility): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type PGPing = CUnsignedInt
   object PGPing extends CEnumU[PGPing]:
     given _tag: Tag[PGPing] = Tag.UInt
@@ -138,8 +130,6 @@ object enumerations:
       inline def |(b: PGPing): PGPing = a | b
       inline def is(b: PGPing): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type PGTransactionStatusType = CUnsignedInt
   object PGTransactionStatusType extends CEnumU[PGTransactionStatusType]:
     given _tag: Tag[PGTransactionStatusType] = Tag.UInt
@@ -162,8 +152,6 @@ object enumerations:
       inline def |(b: PGTransactionStatusType): PGTransactionStatusType = a | b
       inline def is(b: PGTransactionStatusType): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type PGVerbosity = CUnsignedInt
   object PGVerbosity extends CEnumU[PGVerbosity]:
     given _tag: Tag[PGVerbosity] = Tag.UInt
@@ -184,8 +172,6 @@ object enumerations:
       inline def |(b: PGVerbosity): PGVerbosity = a | b
       inline def is(b: PGVerbosity): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type PGpipelineStatus = CUnsignedInt
   object PGpipelineStatus extends CEnumU[PGpipelineStatus]:
     given _tag: Tag[PGpipelineStatus] = Tag.UInt
@@ -204,8 +190,6 @@ object enumerations:
       inline def |(b: PGpipelineStatus): PGpipelineStatus = a | b
       inline def is(b: PGpipelineStatus): Boolean = (a & b) == b
 
-  /**
-  */
   opaque type PostgresPollingStatusType = CUnsignedInt
   object PostgresPollingStatusType extends CEnumU[PostgresPollingStatusType]:
     given _tag: Tag[PostgresPollingStatusType] = Tag.UInt
@@ -240,8 +224,6 @@ object aliases:
     extension (v: FILE)
       inline def value: libc.stdio.FILE = v
 
-  /**
-  */
   opaque type Oid = CUnsignedInt
   object Oid: 
     given _tag: Tag[Oid] = Tag.UInt
@@ -249,61 +231,49 @@ object aliases:
     extension (v: Oid)
       inline def value: CUnsignedInt = v
 
-  /**
-  */
   opaque type PQnoticeProcessor = CFuncPtr2[Ptr[Byte], CString, Unit]
   object PQnoticeProcessor: 
     given _tag: Tag[PQnoticeProcessor] = Tag.materializeCFuncPtr2[Ptr[Byte], CString, Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): PQnoticeProcessor = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): PQnoticeProcessor = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], CString, Unit]): PQnoticeProcessor = o
     extension (v: PQnoticeProcessor)
       inline def value: CFuncPtr2[Ptr[Byte], CString, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type PQnoticeReceiver = CFuncPtr2[Ptr[Byte], Ptr[PGresult], Unit]
   object PQnoticeReceiver: 
     given _tag: Tag[PQnoticeReceiver] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[PGresult], Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): PQnoticeReceiver = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): PQnoticeReceiver = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[PGresult], Unit]): PQnoticeReceiver = o
     extension (v: PQnoticeReceiver)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[PGresult], Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type PQsslKeyPassHook_OpenSSL_type = CFuncPtr3[CString, CInt, Ptr[PGconn], CInt]
   object PQsslKeyPassHook_OpenSSL_type: 
     given _tag: Tag[PQsslKeyPassHook_OpenSSL_type] = Tag.materializeCFuncPtr3[CString, CInt, Ptr[PGconn], CInt]
-    inline def fromPtr(ptr: Ptr[Byte]): PQsslKeyPassHook_OpenSSL_type = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): PQsslKeyPassHook_OpenSSL_type = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, CInt, Ptr[PGconn], CInt]): PQsslKeyPassHook_OpenSSL_type = o
     extension (v: PQsslKeyPassHook_OpenSSL_type)
       inline def value: CFuncPtr3[CString, CInt, Ptr[PGconn], CInt] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type pg_int64 = CLongInt
   object pg_int64: 
-    given _tag: Tag[pg_int64] = Tag.Long
+    given _tag: Tag[pg_int64] = Tag.Size
     inline def apply(inline o: CLongInt): pg_int64 = o
     extension (v: pg_int64)
       inline def value: CLongInt = v
 
-  /**
-  */
   opaque type pgthreadlock_t = CFuncPtr1[CInt, Unit]
   object pgthreadlock_t: 
     given _tag: Tag[pgthreadlock_t] = Tag.materializeCFuncPtr1[CInt, Unit]
-    inline def fromPtr(ptr: Ptr[Byte]): pgthreadlock_t = CFuncPtr.fromPtr(ptr)
+    inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): pgthreadlock_t = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[CInt, Unit]): pgthreadlock_t = o
     extension (v: pgthreadlock_t)
       inline def value: CFuncPtr1[CInt, Unit] = v
-      inline def toPtr: Ptr[Byte] = CFuncPtr.toPtr(v)
+      inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
-  /**
-  */
   opaque type pqbool = CChar
   object pqbool: 
     given _tag: Tag[pqbool] = Tag.Byte
@@ -323,20 +293,14 @@ object structs:
   import _root_.libpq.predef.*
   import _root_.libpq.aliases.*
   import _root_.libpq.structs.*
-  /**
-  */
   opaque type PGcancel = CStruct0
   object PGcancel:
     given _tag: Tag[PGcancel] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type PGconn = CStruct0
   object PGconn:
     given _tag: Tag[PGconn] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type PGnotify = CStruct4[CString, CInt, CString, Ptr[Byte]]
   object PGnotify:
     given _tag: Tag[PGnotify] = Tag.materializeCStruct4Tag[CString, CInt, CString, Ptr[Byte]]
@@ -358,8 +322,6 @@ object structs:
       def next : Ptr[pgNotify] = struct._4.asInstanceOf[Ptr[pgNotify]]
       def next_=(value: Ptr[pgNotify]): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
 
-  /**
-  */
   opaque type PGresAttDesc = CStruct7[CString, Oid, CInt, CInt, Oid, CInt, CInt]
   object PGresAttDesc:
     given _tag: Tag[PGresAttDesc] = Tag.materializeCStruct7Tag[CString, Oid, CInt, CInt, Oid, CInt, CInt]
@@ -390,18 +352,12 @@ object structs:
       def atttypmod : CInt = struct._7
       def atttypmod_=(value: CInt): Unit = !struct.at7 = value
 
-  /**
-  */
   opaque type PGresult = CStruct0
   object PGresult:
     given _tag: Tag[PGresult] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type PQArgBlock = CStruct3[CInt, CInt, PQArgBlock.Union0]
   object PQArgBlock:
-    /**
-    */
     opaque type Union0 = CArray[Byte, Nat._8]
     object Union0:
       given _tag: Tag[Union0] = Tag.CArray[CChar, Nat._8](Tag.Byte, Tag.Nat8)
@@ -441,8 +397,6 @@ object structs:
       def u : PQArgBlock.Union0 = struct._3
       def u_=(value: PQArgBlock.Union0): Unit = !struct.at3 = value
 
-  /**
-  */
   opaque type PQconninfoOption = CStruct7[CString, CString, CString, CString, CString, CString, CInt]
   object PQconninfoOption:
     given _tag: Tag[PQconninfoOption] = Tag.materializeCStruct7Tag[CString, CString, CString, CString, CString, CString, CInt]
@@ -473,8 +427,6 @@ object structs:
       def dispsize : CInt = struct._7
       def dispsize_=(value: CInt): Unit = !struct.at7 = value
 
-  /**
-  */
   opaque type PQprintOpt = CStruct10[pqbool, pqbool, pqbool, pqbool, pqbool, pqbool, CString, CString, CString, Ptr[CString]]
   object PQprintOpt:
     given _tag: Tag[PQprintOpt] = Tag.materializeCStruct10Tag[pqbool, pqbool, pqbool, pqbool, pqbool, pqbool, CString, CString, CString, Ptr[CString]]
@@ -514,8 +466,6 @@ object structs:
       def fieldName : Ptr[CString] = struct._10
       def fieldName_=(value: Ptr[CString]): Unit = !struct.at10 = value
 
-  /**
-  */
   opaque type _PQconninfoOption = CStruct7[CString, CString, CString, CString, CString, CString, CInt]
   object _PQconninfoOption:
     given _tag: Tag[_PQconninfoOption] = Tag.materializeCStruct7Tag[CString, CString, CString, CString, CString, CString, CInt]
@@ -546,8 +496,6 @@ object structs:
       def dispsize : CInt = struct._7
       def dispsize_=(value: CInt): Unit = !struct.at7 = value
 
-  /**
-  */
   opaque type _PQprintOpt = CStruct10[pqbool, pqbool, pqbool, pqbool, pqbool, pqbool, CString, CString, CString, Ptr[CString]]
   object _PQprintOpt:
     given _tag: Tag[_PQprintOpt] = Tag.materializeCStruct10Tag[pqbool, pqbool, pqbool, pqbool, pqbool, pqbool, CString, CString, CString, Ptr[CString]]
@@ -587,8 +535,6 @@ object structs:
       def fieldName : Ptr[CString] = struct._10
       def fieldName_=(value: Ptr[CString]): Unit = !struct.at10 = value
 
-  /**
-  */
   opaque type pgNotify = CStruct4[CString, CInt, CString, Ptr[Byte]]
   object pgNotify:
     given _tag: Tag[pgNotify] = Tag.materializeCStruct4Tag[CString, CInt, CString, Ptr[Byte]]
@@ -610,26 +556,18 @@ object structs:
       def next : Ptr[pgNotify] = struct._4.asInstanceOf[Ptr[pgNotify]]
       def next_=(value: Ptr[pgNotify]): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
 
-  /**
-  */
   opaque type pg_cancel = CStruct0
   object pg_cancel:
     given _tag: Tag[pg_cancel] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type pg_conn = CStruct0
   object pg_conn:
     given _tag: Tag[pg_conn] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type pg_result = CStruct0
   object pg_result:
     given _tag: Tag[pg_result] = Tag.materializeCStruct0Tag
 
-  /**
-  */
   opaque type pgresAttDesc = CStruct7[CString, Oid, CInt, CInt, Oid, CInt, CInt]
   object pgresAttDesc:
     given _tag: Tag[pgresAttDesc] = Tag.materializeCStruct7Tag[CString, Oid, CInt, CInt, Oid, CInt, CInt]
@@ -667,664 +605,334 @@ private[libpq] object extern_functions:
   import _root_.libpq.predef.*
   import _root_.libpq.aliases.*
   import _root_.libpq.structs.*
-  /**
-  */
   def PQbackendPID(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQbinaryTuples(res : Ptr[PGresult]): CInt = extern
 
-  /**
-  */
   def PQcancel(cancel : Ptr[PGcancel], errbuf : CString, errbufsize : CInt): CInt = extern
 
-  /**
-  */
   def PQclear(res : Ptr[PGresult]): Unit = extern
 
-  /**
-  */
   def PQclientEncoding(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQcmdStatus(res : Ptr[PGresult]): CString = extern
 
-  /**
-  */
   def PQcmdTuples(res : Ptr[PGresult]): CString = extern
 
-  /**
-  */
   def PQconndefaults(): Ptr[PQconninfoOption] = extern
 
-  /**
-  */
   def PQconnectPoll(conn : Ptr[PGconn]): PostgresPollingStatusType = extern
 
-  /**
-  */
   def PQconnectStart(conninfo : CString): Ptr[PGconn] = extern
 
-  /**
-  */
   def PQconnectStartParams(keywords : Ptr[CString], values : Ptr[CString], expand_dbname : CInt): Ptr[PGconn] = extern
 
-  /**
-  */
   def PQconnectdb(conninfo : CString): Ptr[PGconn] = extern
 
-  /**
-  */
   def PQconnectdbParams(keywords : Ptr[CString], values : Ptr[CString], expand_dbname : CInt): Ptr[PGconn] = extern
 
-  /**
-  */
   def PQconnectionNeedsPassword(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQconnectionUsedGSSAPI(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQconnectionUsedPassword(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQconninfo(conn : Ptr[PGconn]): Ptr[PQconninfoOption] = extern
 
-  /**
-  */
   def PQconninfoFree(connOptions : Ptr[PQconninfoOption]): Unit = extern
 
-  /**
-  */
   def PQconninfoParse(conninfo : CString, errmsg : Ptr[CString]): Ptr[PQconninfoOption] = extern
 
-  /**
-  */
   def PQconsumeInput(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQcopyResult(src : Ptr[PGresult], flags : CInt): Ptr[PGresult] = extern
 
-  /**
-  */
   def PQdb(conn : Ptr[PGconn]): CString = extern
 
-  /**
-  */
   def PQdefaultSSLKeyPassHook_OpenSSL(buf : CString, size : CInt, conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQdescribePortal(conn : Ptr[PGconn], portal : CString): Ptr[PGresult] = extern
 
-  /**
-  */
   def PQdescribePrepared(conn : Ptr[PGconn], stmt : CString): Ptr[PGresult] = extern
 
-  /**
-  */
   def PQdisplayTuples(res : Ptr[PGresult], fp : Ptr[FILE], fillAlign : CInt, fieldSep : CString, printHeader : CInt, quiet : CInt): Unit = extern
 
-  /**
-  */
   def PQdsplen(s : CString, encoding : CInt): CInt = extern
 
-  /**
-  */
   def PQencryptPassword(passwd : CString, user : CString): CString = extern
 
-  /**
-  */
   def PQencryptPasswordConn(conn : Ptr[PGconn], passwd : CString, user : CString, algorithm : CString): CString = extern
 
-  /**
-  */
   def PQendcopy(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQenterPipelineMode(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQenv2encoding(): CInt = extern
 
-  /**
-  */
   def PQerrorMessage(conn : Ptr[PGconn]): CString = extern
 
-  /**
-  */
   def PQescapeBytea(from : Ptr[CUnsignedChar], from_length : size_t, to_length : Ptr[size_t]): Ptr[CUnsignedChar] = extern
 
-  /**
-  */
   def PQescapeByteaConn(conn : Ptr[PGconn], from : Ptr[CUnsignedChar], from_length : size_t, to_length : Ptr[size_t]): Ptr[CUnsignedChar] = extern
 
-  /**
-  */
   def PQescapeIdentifier(conn : Ptr[PGconn], str : CString, len : size_t): CString = extern
 
-  /**
-  */
   def PQescapeLiteral(conn : Ptr[PGconn], str : CString, len : size_t): CString = extern
 
-  /**
-  */
   def PQescapeString(to : CString, from : CString, length : size_t): size_t = extern
 
-  /**
-  */
   def PQescapeStringConn(conn : Ptr[PGconn], to : CString, from : CString, length : size_t, error : Ptr[CInt]): size_t = extern
 
-  /**
-  */
   def PQexec(conn : Ptr[PGconn], query : CString): Ptr[PGresult] = extern
 
-  /**
-  */
   def PQexecParams(conn : Ptr[PGconn], command : CString, nParams : CInt, paramTypes : Ptr[Oid], paramValues : Ptr[CString], paramLengths : Ptr[CInt], paramFormats : Ptr[CInt], resultFormat : CInt): Ptr[PGresult] = extern
 
-  /**
-  */
   def PQexecPrepared(conn : Ptr[PGconn], stmtName : CString, nParams : CInt, paramValues : Ptr[CString], paramLengths : Ptr[CInt], paramFormats : Ptr[CInt], resultFormat : CInt): Ptr[PGresult] = extern
 
-  /**
-  */
   def PQexitPipelineMode(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQfformat(res : Ptr[PGresult], field_num : CInt): CInt = extern
 
-  /**
-  */
   def PQfinish(conn : Ptr[PGconn]): Unit = extern
 
-  /**
-  */
   def PQflush(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQfmod(res : Ptr[PGresult], field_num : CInt): CInt = extern
 
-  /**
-  */
   def PQfn(conn : Ptr[PGconn], fnid : CInt, result_buf : Ptr[CInt], result_len : Ptr[CInt], result_is_int : CInt, args : Ptr[PQArgBlock], nargs : CInt): Ptr[PGresult] = extern
 
-  /**
-  */
   def PQfname(res : Ptr[PGresult], field_num : CInt): CString = extern
 
-  /**
-  */
   def PQfnumber(res : Ptr[PGresult], field_name : CString): CInt = extern
 
-  /**
-  */
   def PQfreeCancel(cancel : Ptr[PGcancel]): Unit = extern
 
-  /**
-  */
   def PQfreemem(ptr : Ptr[Byte]): Unit = extern
 
-  /**
-  */
   def PQfsize(res : Ptr[PGresult], field_num : CInt): CInt = extern
 
-  /**
-  */
   def PQftable(res : Ptr[PGresult], field_num : CInt): Oid = extern
 
-  /**
-  */
   def PQftablecol(res : Ptr[PGresult], field_num : CInt): CInt = extern
 
-  /**
-  */
   def PQftype(res : Ptr[PGresult], field_num : CInt): Oid = extern
 
-  /**
-  */
   def PQgetCancel(conn : Ptr[PGconn]): Ptr[PGcancel] = extern
 
-  /**
-  */
   def PQgetCopyData(conn : Ptr[PGconn], buffer : Ptr[CString], async : CInt): CInt = extern
 
-  /**
-  */
   def PQgetResult(conn : Ptr[PGconn]): Ptr[PGresult] = extern
 
-  /**
-  */
   def PQgetSSLKeyPassHook_OpenSSL(): PQsslKeyPassHook_OpenSSL_type = extern
 
-  /**
-  */
   def PQgetgssctx(conn : Ptr[PGconn]): Ptr[Byte] = extern
 
-  /**
-  */
   def PQgetisnull(res : Ptr[PGresult], tup_num : CInt, field_num : CInt): CInt = extern
 
-  /**
-  */
   def PQgetlength(res : Ptr[PGresult], tup_num : CInt, field_num : CInt): CInt = extern
 
-  /**
-  */
   def PQgetline(conn : Ptr[PGconn], buffer : CString, length : CInt): CInt = extern
 
-  /**
-  */
   def PQgetlineAsync(conn : Ptr[PGconn], buffer : CString, bufsize : CInt): CInt = extern
 
-  /**
-  */
   def PQgetssl(conn : Ptr[PGconn]): Ptr[Byte] = extern
 
-  /**
-  */
   def PQgetvalue(res : Ptr[PGresult], tup_num : CInt, field_num : CInt): CString = extern
 
-  /**
-  */
   def PQgssEncInUse(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQhost(conn : Ptr[PGconn]): CString = extern
 
-  /**
-  */
   def PQhostaddr(conn : Ptr[PGconn]): CString = extern
 
-  /**
-  */
   def PQinitOpenSSL(do_ssl : CInt, do_crypto : CInt): Unit = extern
 
-  /**
-  */
   def PQinitSSL(do_init : CInt): Unit = extern
 
-  /**
-  */
   def PQisBusy(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQisnonblocking(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQisthreadsafe(): CInt = extern
 
-  /**
-  */
   def PQlibVersion(): CInt = extern
 
-  /**
-  */
   def PQmakeEmptyPGresult(conn : Ptr[PGconn], status : ExecStatusType): Ptr[PGresult] = extern
 
-  /**
-  */
   def PQmblen(s : CString, encoding : CInt): CInt = extern
 
-  /**
-  */
   def PQmblenBounded(s : CString, encoding : CInt): CInt = extern
 
-  /**
-  */
   def PQnfields(res : Ptr[PGresult]): CInt = extern
 
-  /**
-  */
   def PQnotifies(conn : Ptr[PGconn]): Ptr[PGnotify] = extern
 
-  /**
-  */
   def PQnparams(res : Ptr[PGresult]): CInt = extern
 
-  /**
-  */
   def PQntuples(res : Ptr[PGresult]): CInt = extern
 
-  /**
-  */
   def PQoidStatus(res : Ptr[PGresult]): CString = extern
 
-  /**
-  */
   def PQoidValue(res : Ptr[PGresult]): Oid = extern
 
-  /**
-  */
   def PQoptions(conn : Ptr[PGconn]): CString = extern
 
-  /**
-  */
   def PQparameterStatus(conn : Ptr[PGconn], paramName : CString): CString = extern
 
-  /**
-  */
   def PQparamtype(res : Ptr[PGresult], param_num : CInt): Oid = extern
 
-  /**
-  */
   def PQpass(conn : Ptr[PGconn]): CString = extern
 
-  /**
-  */
   def PQping(conninfo : CString): PGPing = extern
 
-  /**
-  */
   def PQpingParams(keywords : Ptr[CString], values : Ptr[CString], expand_dbname : CInt): PGPing = extern
 
-  /**
-  */
   def PQpipelineStatus(conn : Ptr[PGconn]): PGpipelineStatus = extern
 
-  /**
-  */
   def PQpipelineSync(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQport(conn : Ptr[PGconn]): CString = extern
 
-  /**
-  */
   def PQprepare(conn : Ptr[PGconn], stmtName : CString, query : CString, nParams : CInt, paramTypes : Ptr[Oid]): Ptr[PGresult] = extern
 
-  /**
-  */
   def PQprint(fout : Ptr[FILE], res : Ptr[PGresult], po : Ptr[PQprintOpt]): Unit = extern
 
-  /**
-  */
   def PQprintTuples(res : Ptr[PGresult], fout : Ptr[FILE], PrintAttNames : CInt, TerseOutput : CInt, colWidth : CInt): Unit = extern
 
-  /**
-  */
   def PQprotocolVersion(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQputCopyData(conn : Ptr[PGconn], buffer : CString, nbytes : CInt): CInt = extern
 
-  /**
-  */
   def PQputCopyEnd(conn : Ptr[PGconn], errormsg : CString): CInt = extern
 
-  /**
-  */
   def PQputline(conn : Ptr[PGconn], string : CString): CInt = extern
 
-  /**
-  */
   def PQputnbytes(conn : Ptr[PGconn], buffer : CString, nbytes : CInt): CInt = extern
 
-  /**
-  */
   def PQregisterThreadLock(newhandler : pgthreadlock_t): pgthreadlock_t = extern
 
-  /**
-  */
   def PQrequestCancel(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQresStatus(status : ExecStatusType): CString = extern
 
-  /**
-  */
   def PQreset(conn : Ptr[PGconn]): Unit = extern
 
-  /**
-  */
   def PQresetPoll(conn : Ptr[PGconn]): PostgresPollingStatusType = extern
 
-  /**
-  */
   def PQresetStart(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQresultAlloc(res : Ptr[PGresult], nBytes : size_t): Ptr[Byte] = extern
 
-  /**
-  */
   def PQresultErrorField(res : Ptr[PGresult], fieldcode : CInt): CString = extern
 
-  /**
-  */
   def PQresultErrorMessage(res : Ptr[PGresult]): CString = extern
 
-  /**
-  */
   def PQresultMemorySize(res : Ptr[PGresult]): size_t = extern
 
-  /**
-  */
   def PQresultStatus(res : Ptr[PGresult]): ExecStatusType = extern
 
-  /**
-  */
   def PQresultVerboseErrorMessage(res : Ptr[PGresult], verbosity : PGVerbosity, show_context : PGContextVisibility): CString = extern
 
-  /**
-  */
   def PQsendDescribePortal(conn : Ptr[PGconn], portal : CString): CInt = extern
 
-  /**
-  */
   def PQsendDescribePrepared(conn : Ptr[PGconn], stmt : CString): CInt = extern
 
-  /**
-  */
   def PQsendFlushRequest(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQsendPrepare(conn : Ptr[PGconn], stmtName : CString, query : CString, nParams : CInt, paramTypes : Ptr[Oid]): CInt = extern
 
-  /**
-  */
   def PQsendQuery(conn : Ptr[PGconn], query : CString): CInt = extern
 
-  /**
-  */
   def PQsendQueryParams(conn : Ptr[PGconn], command : CString, nParams : CInt, paramTypes : Ptr[Oid], paramValues : Ptr[CString], paramLengths : Ptr[CInt], paramFormats : Ptr[CInt], resultFormat : CInt): CInt = extern
 
-  /**
-  */
   def PQsendQueryPrepared(conn : Ptr[PGconn], stmtName : CString, nParams : CInt, paramValues : Ptr[CString], paramLengths : Ptr[CInt], paramFormats : Ptr[CInt], resultFormat : CInt): CInt = extern
 
-  /**
-  */
   def PQserverVersion(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQsetClientEncoding(conn : Ptr[PGconn], encoding : CString): CInt = extern
 
-  /**
-  */
   def PQsetErrorContextVisibility(conn : Ptr[PGconn], show_context : PGContextVisibility): PGContextVisibility = extern
 
-  /**
-  */
   def PQsetErrorVerbosity(conn : Ptr[PGconn], verbosity : PGVerbosity): PGVerbosity = extern
 
-  /**
-  */
   def PQsetNoticeProcessor(conn : Ptr[PGconn], proc : PQnoticeProcessor, arg : Ptr[Byte]): PQnoticeProcessor = extern
 
-  /**
-  */
   def PQsetNoticeReceiver(conn : Ptr[PGconn], proc : PQnoticeReceiver, arg : Ptr[Byte]): PQnoticeReceiver = extern
 
-  /**
-  */
   def PQsetResultAttrs(res : Ptr[PGresult], numAttributes : CInt, attDescs : Ptr[PGresAttDesc]): CInt = extern
 
-  /**
-  */
   def PQsetSSLKeyPassHook_OpenSSL(hook : PQsslKeyPassHook_OpenSSL_type): Unit = extern
 
-  /**
-  */
   def PQsetSingleRowMode(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQsetTraceFlags(conn : Ptr[PGconn], flags : CInt): Unit = extern
 
-  /**
-  */
   def PQsetdbLogin(pghost : CString, pgport : CString, pgoptions : CString, pgtty : CString, dbName : CString, login : CString, pwd : CString): Ptr[PGconn] = extern
 
-  /**
-  */
   def PQsetnonblocking(conn : Ptr[PGconn], arg : CInt): CInt = extern
 
-  /**
-  */
   def PQsetvalue(res : Ptr[PGresult], tup_num : CInt, field_num : CInt, value : CString, len : CInt): CInt = extern
 
-  /**
-  */
   def PQsocket(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQsslAttribute(conn : Ptr[PGconn], attribute_name : CString): CString = extern
 
-  /**
-  */
   def PQsslAttributeNames(conn : Ptr[PGconn]): Ptr[CString] = extern
 
-  /**
-  */
   def PQsslInUse(conn : Ptr[PGconn]): CInt = extern
 
-  /**
-  */
   def PQsslStruct(conn : Ptr[PGconn], struct_name : CString): Ptr[Byte] = extern
 
-  /**
-  */
   def PQstatus(conn : Ptr[PGconn]): ConnStatusType = extern
 
-  /**
-  */
   def PQtrace(conn : Ptr[PGconn], debug_port : Ptr[FILE]): Unit = extern
 
-  /**
-  */
   def PQtransactionStatus(conn : Ptr[PGconn]): PGTransactionStatusType = extern
 
-  /**
-  */
   def PQtty(conn : Ptr[PGconn]): CString = extern
 
-  /**
-  */
   def PQunescapeBytea(strtext : Ptr[CUnsignedChar], retbuflen : Ptr[size_t]): Ptr[CUnsignedChar] = extern
 
-  /**
-  */
   def PQuntrace(conn : Ptr[PGconn]): Unit = extern
 
-  /**
-  */
   def PQuser(conn : Ptr[PGconn]): CString = extern
 
-  /**
-  */
   def lo_close(conn : Ptr[PGconn], fd : CInt): CInt = extern
 
-  /**
-  */
   def lo_creat(conn : Ptr[PGconn], mode : CInt): Oid = extern
 
-  /**
-  */
   def lo_create(conn : Ptr[PGconn], lobjId : Oid): Oid = extern
 
-  /**
-  */
   def lo_export(conn : Ptr[PGconn], lobjId : Oid, filename : CString): CInt = extern
 
-  /**
-  */
   def lo_import(conn : Ptr[PGconn], filename : CString): Oid = extern
 
-  /**
-  */
   def lo_import_with_oid(conn : Ptr[PGconn], filename : CString, lobjId : Oid): Oid = extern
 
-  /**
-  */
   def lo_lseek(conn : Ptr[PGconn], fd : CInt, offset : CInt, whence : CInt): CInt = extern
 
-  /**
-  */
   def lo_lseek64(conn : Ptr[PGconn], fd : CInt, offset : pg_int64, whence : CInt): pg_int64 = extern
 
-  /**
-  */
   def lo_open(conn : Ptr[PGconn], lobjId : Oid, mode : CInt): CInt = extern
 
-  /**
-  */
   def lo_read(conn : Ptr[PGconn], fd : CInt, buf : CString, len : size_t): CInt = extern
 
-  /**
-  */
   def lo_tell(conn : Ptr[PGconn], fd : CInt): CInt = extern
 
-  /**
-  */
   def lo_tell64(conn : Ptr[PGconn], fd : CInt): pg_int64 = extern
 
-  /**
-  */
   def lo_truncate(conn : Ptr[PGconn], fd : CInt, len : size_t): CInt = extern
 
-  /**
-  */
   def lo_truncate64(conn : Ptr[PGconn], fd : CInt, len : pg_int64): CInt = extern
 
-  /**
-  */
   def lo_unlink(conn : Ptr[PGconn], lobjId : Oid): CInt = extern
 
-  /**
-  */
   def lo_write(conn : Ptr[PGconn], fd : CInt, buf : CString, len : size_t): CInt = extern
 
-  /**
-  */
   def pg_char_to_encoding(name : CString): CInt = extern
 
-  /**
-  */
   def pg_encoding_to_char(encoding : CInt): CString = extern
 
-  /**
-  */
   def pg_valid_server_encoding_id(encoding : CInt): CInt = extern
 
 

@@ -4,7 +4,7 @@ import scala.scalanative.unsafe.*
 import scala.scalanative.libc.*
 
 @main def hello =
-  Zone { implicit z =>
+  Zone:
     git_libgit2_init()
     val ref = alloc[Ptr[git_repository]](1)
     val res = git_repository_open(
@@ -27,4 +27,3 @@ import scala.scalanative.libc.*
       stdio.printf(c"Branch: %s\n", !str)
 
     git_libgit2_shutdown()
-  }
