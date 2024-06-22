@@ -28,7 +28,7 @@ object enumerations:
         case CMARK_NO_DELIM => Some("CMARK_NO_DELIM")
         case CMARK_PERIOD_DELIM => Some("CMARK_PERIOD_DELIM")
         case CMARK_PAREN_DELIM => Some("CMARK_PAREN_DELIM")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: cmark_delim_type)
       inline def &(b: cmark_delim_type): cmark_delim_type = a & b
       inline def |(b: cmark_delim_type): cmark_delim_type = a | b
@@ -51,7 +51,7 @@ object enumerations:
         case CMARK_EVENT_DONE => Some("CMARK_EVENT_DONE")
         case CMARK_EVENT_ENTER => Some("CMARK_EVENT_ENTER")
         case CMARK_EVENT_EXIT => Some("CMARK_EVENT_EXIT")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: cmark_event_type)
       inline def &(b: cmark_event_type): cmark_event_type = a & b
       inline def |(b: cmark_event_type): cmark_event_type = a | b
@@ -69,7 +69,7 @@ object enumerations:
         case CMARK_NO_LIST => Some("CMARK_NO_LIST")
         case CMARK_BULLET_LIST => Some("CMARK_BULLET_LIST")
         case CMARK_ORDERED_LIST => Some("CMARK_ORDERED_LIST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: cmark_list_type)
       inline def &(b: cmark_list_type): cmark_list_type = a & b
       inline def |(b: cmark_list_type): cmark_list_type = a | b
@@ -134,7 +134,7 @@ object enumerations:
         case CMARK_NODE_IMAGE => Some("CMARK_NODE_IMAGE")
         case CMARK_NODE_FIRST_INLINE => Some("CMARK_NODE_FIRST_INLINE")
         case CMARK_NODE_LAST_INLINE => Some("CMARK_NODE_LAST_INLINE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: cmark_node_type)
       inline def &(b: cmark_node_type): cmark_node_type = a & b
       inline def |(b: cmark_node_type): cmark_node_type = a | b

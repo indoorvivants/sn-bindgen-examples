@@ -31,7 +31,7 @@ object enumerations:
       inline value match
         case UV_CLOCK_MONOTONIC => Some("UV_CLOCK_MONOTONIC")
         case UV_CLOCK_REALTIME => Some("UV_CLOCK_REALTIME")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_clock_id)
       inline def &(b: uv_clock_id): uv_clock_id = a & b
       inline def |(b: uv_clock_id): uv_clock_id = a | b
@@ -59,7 +59,7 @@ object enumerations:
         case UV_DIRENT_SOCKET => Some("UV_DIRENT_SOCKET")
         case UV_DIRENT_CHAR => Some("UV_DIRENT_CHAR")
         case UV_DIRENT_BLOCK => Some("UV_DIRENT_BLOCK")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_dirent_type_t)
       inline def &(b: uv_dirent_type_t): uv_dirent_type_t = a & b
       inline def |(b: uv_dirent_type_t): uv_dirent_type_t = a | b
@@ -241,7 +241,7 @@ object enumerations:
         case UV_ENODATA => Some("UV_ENODATA")
         case UV_EUNATCH => Some("UV_EUNATCH")
         case UV_ERRNO_MAX => Some("UV_ERRNO_MAX")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_errno_t)
       inline def &(b: uv_errno_t): uv_errno_t = a & b
       inline def |(b: uv_errno_t): uv_errno_t = a | b
@@ -257,7 +257,7 @@ object enumerations:
       inline value match
         case UV_RENAME => Some("UV_RENAME")
         case UV_CHANGE => Some("UV_CHANGE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_fs_event)
       inline def &(b: uv_fs_event): uv_fs_event = a & b
       inline def |(b: uv_fs_event): uv_fs_event = a | b
@@ -275,7 +275,7 @@ object enumerations:
         case UV_FS_EVENT_WATCH_ENTRY => Some("UV_FS_EVENT_WATCH_ENTRY")
         case UV_FS_EVENT_STAT => Some("UV_FS_EVENT_STAT")
         case UV_FS_EVENT_RECURSIVE => Some("UV_FS_EVENT_RECURSIVE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_fs_event_flags)
       inline def &(b: uv_fs_event_flags): uv_fs_event_flags = a & b
       inline def |(b: uv_fs_event_flags): uv_fs_event_flags = a | b
@@ -363,7 +363,7 @@ object enumerations:
         case UV_FS_STATFS => Some("UV_FS_STATFS")
         case UV_FS_MKSTEMP => Some("UV_FS_MKSTEMP")
         case UV_FS_LUTIME => Some("UV_FS_LUTIME")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_fs_type)
       inline def &(b: uv_fs_type): uv_fs_type = a & b
       inline def |(b: uv_fs_type): uv_fs_type = a | b
@@ -413,7 +413,7 @@ object enumerations:
         case UV_SIGNAL => Some("UV_SIGNAL")
         case UV_FILE => Some("UV_FILE")
         case UV_HANDLE_TYPE_MAX => Some("UV_HANDLE_TYPE_MAX")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_handle_type)
       inline def &(b: uv_handle_type): uv_handle_type = a & b
       inline def |(b: uv_handle_type): uv_handle_type = a | b
@@ -429,7 +429,7 @@ object enumerations:
       inline value match
         case UV_LOOP_BLOCK_SIGNAL => Some("UV_LOOP_BLOCK_SIGNAL")
         case UV_METRICS_IDLE_TIME => Some("UV_METRICS_IDLE_TIME")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_loop_option)
       inline def &(b: uv_loop_option): uv_loop_option = a & b
       inline def |(b: uv_loop_option): uv_loop_option = a | b
@@ -445,7 +445,7 @@ object enumerations:
       inline value match
         case UV_LEAVE_GROUP => Some("UV_LEAVE_GROUP")
         case UV_JOIN_GROUP => Some("UV_JOIN_GROUP")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_membership)
       inline def &(b: uv_membership): uv_membership = a & b
       inline def |(b: uv_membership): uv_membership = a | b
@@ -465,7 +465,7 @@ object enumerations:
         case UV_WRITABLE => Some("UV_WRITABLE")
         case UV_DISCONNECT => Some("UV_DISCONNECT")
         case UV_PRIORITIZED => Some("UV_PRIORITIZED")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_poll_event)
       inline def &(b: uv_poll_event): uv_poll_event = a & b
       inline def |(b: uv_poll_event): uv_poll_event = a | b
@@ -491,7 +491,7 @@ object enumerations:
         case UV_PROCESS_WINDOWS_HIDE => Some("UV_PROCESS_WINDOWS_HIDE")
         case UV_PROCESS_WINDOWS_HIDE_CONSOLE => Some("UV_PROCESS_WINDOWS_HIDE_CONSOLE")
         case UV_PROCESS_WINDOWS_HIDE_GUI => Some("UV_PROCESS_WINDOWS_HIDE_GUI")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_process_flags)
       inline def &(b: uv_process_flags): uv_process_flags = a & b
       inline def |(b: uv_process_flags): uv_process_flags = a | b
@@ -527,7 +527,7 @@ object enumerations:
         case UV_GETNAMEINFO => Some("UV_GETNAMEINFO")
         case UV_RANDOM => Some("UV_RANDOM")
         case UV_REQ_TYPE_MAX => Some("UV_REQ_TYPE_MAX")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_req_type)
       inline def &(b: uv_req_type): uv_req_type = a & b
       inline def |(b: uv_req_type): uv_req_type = a | b
@@ -545,7 +545,7 @@ object enumerations:
         case UV_RUN_DEFAULT => Some("UV_RUN_DEFAULT")
         case UV_RUN_ONCE => Some("UV_RUN_ONCE")
         case UV_RUN_NOWAIT => Some("UV_RUN_NOWAIT")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_run_mode)
       inline def &(b: uv_run_mode): uv_run_mode = a & b
       inline def |(b: uv_run_mode): uv_run_mode = a | b
@@ -573,7 +573,7 @@ object enumerations:
         case UV_WRITABLE_PIPE => Some("UV_WRITABLE_PIPE")
         case UV_NONBLOCK_PIPE => Some("UV_NONBLOCK_PIPE")
         case UV_OVERLAPPED_PIPE => Some("UV_OVERLAPPED_PIPE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_stdio_flags)
       inline def &(b: uv_stdio_flags): uv_stdio_flags = a & b
       inline def |(b: uv_stdio_flags): uv_stdio_flags = a | b
@@ -587,7 +587,7 @@ object enumerations:
     inline def getName(inline value: uv_tcp_flags): Option[String] =
       inline value match
         case UV_TCP_IPV6ONLY => Some("UV_TCP_IPV6ONLY")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_tcp_flags)
       inline def &(b: uv_tcp_flags): uv_tcp_flags = a & b
       inline def |(b: uv_tcp_flags): uv_tcp_flags = a | b
@@ -603,7 +603,7 @@ object enumerations:
       inline value match
         case UV_THREAD_NO_FLAGS => Some("UV_THREAD_NO_FLAGS")
         case UV_THREAD_HAS_STACK_SIZE => Some("UV_THREAD_HAS_STACK_SIZE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_thread_create_flags)
       inline def &(b: uv_thread_create_flags): uv_thread_create_flags = a & b
       inline def |(b: uv_thread_create_flags): uv_thread_create_flags = a | b
@@ -621,7 +621,7 @@ object enumerations:
         case UV_TTY_MODE_NORMAL => Some("UV_TTY_MODE_NORMAL")
         case UV_TTY_MODE_RAW => Some("UV_TTY_MODE_RAW")
         case UV_TTY_MODE_IO => Some("UV_TTY_MODE_IO")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_tty_mode_t)
       inline def &(b: uv_tty_mode_t): uv_tty_mode_t = a & b
       inline def |(b: uv_tty_mode_t): uv_tty_mode_t = a | b
@@ -637,7 +637,7 @@ object enumerations:
       inline value match
         case UV_TTY_SUPPORTED => Some("UV_TTY_SUPPORTED")
         case UV_TTY_UNSUPPORTED => Some("UV_TTY_UNSUPPORTED")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_tty_vtermstate_t)
       inline def &(b: uv_tty_vtermstate_t): uv_tty_vtermstate_t = a & b
       inline def |(b: uv_tty_vtermstate_t): uv_tty_vtermstate_t = a | b
@@ -663,7 +663,7 @@ object enumerations:
         case UV_UDP_MMSG_FREE => Some("UV_UDP_MMSG_FREE")
         case UV_UDP_LINUX_RECVERR => Some("UV_UDP_LINUX_RECVERR")
         case UV_UDP_RECVMMSG => Some("UV_UDP_RECVMMSG")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: uv_udp_flags)
       inline def &(b: uv_udp_flags): uv_udp_flags = a & b
       inline def |(b: uv_udp_flags): uv_udp_flags = a | b
@@ -1416,12 +1416,12 @@ object structs:
       def prev : Ptr[uv__queue] = struct._2.asInstanceOf[Ptr[uv__queue]]
       def prev_=(value: Ptr[uv__queue]): Unit = !struct.at2 = value.asInstanceOf[Ptr[Byte]]
 
-  opaque type uv__work = CStruct4[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[Ptr[Byte], CInt, Unit], Ptr[uv_loop_s], uv__queue]
+  opaque type uv__work = CStruct5[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[Ptr[Byte], CInt, Unit], CStruct0, Ptr[uv_loop_s], uv__queue]
   object uv__work:
     opaque type Struct0 = CStruct0
     object Struct0:
       given _tag: Tag[Struct0] = Tag.materializeCStruct0Tag
-    given _tag: Tag[uv__work] = Tag.materializeCStruct4Tag[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[Ptr[Byte], CInt, Unit], Ptr[uv_loop_s], uv__queue]
+    given _tag: Tag[uv__work] = Tag.materializeCStruct5Tag[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr2[Ptr[Byte], CInt, Unit], CStruct0, Ptr[uv_loop_s], uv__queue]
     def apply()(using Zone): Ptr[uv__work] = scala.scalanative.unsafe.alloc[uv__work](1)
     def apply(work : CFuncPtr1[Ptr[uv__work], Unit], done : CFuncPtr2[Ptr[uv__work], CInt, Unit], loop : Ptr[uv_loop_s], wq : uv__queue)(using Zone): Ptr[uv__work] = 
       val ____ptr = apply()
@@ -1435,10 +1435,10 @@ object structs:
       def work_=(value: CFuncPtr1[Ptr[uv__work], Unit]): Unit = !struct.at1 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
       def done : CFuncPtr2[Ptr[uv__work], CInt, Unit] = struct._2.asInstanceOf[CFuncPtr2[Ptr[uv__work], CInt, Unit]]
       def done_=(value: CFuncPtr2[Ptr[uv__work], CInt, Unit]): Unit = !struct.at2 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], CInt, Unit]]
-      def loop : Ptr[uv_loop_s] = struct._3
-      def loop_=(value: Ptr[uv_loop_s]): Unit = !struct.at3 = value
-      def wq : uv__queue = struct._4
-      def wq_=(value: uv__queue): Unit = !struct.at4 = value
+      def loop : Ptr[uv_loop_s] = struct._4
+      def loop_=(value: Ptr[uv_loop_s]): Unit = !struct.at4 = value
+      def wq : uv__queue = struct._5
+      def wq_=(value: uv__queue): Unit = !struct.at5 = value
 
   opaque type uv_async_s = CStruct11[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_async_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__queue, CInt]
   object uv_async_s:
@@ -2264,52 +2264,87 @@ object structs:
       (!____ptr).bufsml = bufsml
       ____ptr
     extension (struct: uv_fs_s)
-      def data: Ptr[Byte] = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]]
-      def data_=(value: Ptr[Byte]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def `type`: uv_req_type = !struct.at(8).asInstanceOf[Ptr[uv_req_type]]
-      def type_=(value: uv_req_type): Unit = !struct.at(8).asInstanceOf[Ptr[uv_req_type]] = value
-      def reserved: CArray[Ptr[Byte], Nat._6] = !struct.at(16).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._6]]]
-      def reserved_=(value: CArray[Ptr[Byte], Nat._6]): Unit = !struct.at(16).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._6]]] = value
-      def fs_type: uv_fs_type = !struct.at(64).asInstanceOf[Ptr[uv_fs_type]]
-      def fs_type_=(value: uv_fs_type): Unit = !struct.at(64).asInstanceOf[Ptr[uv_fs_type]] = value
-      def loop: Ptr[uv_loop_t] = !struct.at(72).asInstanceOf[Ptr[Ptr[uv_loop_t]]]
-      def loop_=(value: Ptr[uv_loop_t]): Unit = !struct.at(72).asInstanceOf[Ptr[Ptr[uv_loop_t]]] = value
-      def cb: uv_fs_cb = !struct.at(80).asInstanceOf[Ptr[uv_fs_cb]]
-      def cb_=(value: uv_fs_cb): Unit = !struct.at(80).asInstanceOf[Ptr[uv_fs_cb]] = value
-      def result: ssize_t = !struct.at(88).asInstanceOf[Ptr[ssize_t]]
-      def result_=(value: ssize_t): Unit = !struct.at(88).asInstanceOf[Ptr[ssize_t]] = value
-      def ptr: Ptr[Byte] = !struct.at(96).asInstanceOf[Ptr[Ptr[Byte]]]
-      def ptr_=(value: Ptr[Byte]): Unit = !struct.at(96).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def path: CString = !struct.at(104).asInstanceOf[Ptr[CString]]
-      def path_=(value: CString): Unit = !struct.at(104).asInstanceOf[Ptr[CString]] = value
-      def statbuf: uv_stat_t = !struct.at(112).asInstanceOf[Ptr[uv_stat_t]]
-      def statbuf_=(value: uv_stat_t): Unit = !struct.at(112).asInstanceOf[Ptr[uv_stat_t]] = value
-      def new_path: CString = !struct.at(272).asInstanceOf[Ptr[CString]]
-      def new_path_=(value: CString): Unit = !struct.at(272).asInstanceOf[Ptr[CString]] = value
-      def file: uv_file = !struct.at(280).asInstanceOf[Ptr[uv_file]]
-      def file_=(value: uv_file): Unit = !struct.at(280).asInstanceOf[Ptr[uv_file]] = value
-      def flags: CInt = !struct.at(284).asInstanceOf[Ptr[CInt]]
-      def flags_=(value: CInt): Unit = !struct.at(284).asInstanceOf[Ptr[CInt]] = value
-      def mode: mode_t = !struct.at(288).asInstanceOf[Ptr[mode_t]]
-      def mode_=(value: mode_t): Unit = !struct.at(288).asInstanceOf[Ptr[mode_t]] = value
-      def nbufs: CUnsignedInt = !struct.at(292).asInstanceOf[Ptr[CUnsignedInt]]
-      def nbufs_=(value: CUnsignedInt): Unit = !struct.at(292).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def bufs: Ptr[uv_buf_t] = !struct.at(296).asInstanceOf[Ptr[Ptr[uv_buf_t]]]
-      def bufs_=(value: Ptr[uv_buf_t]): Unit = !struct.at(296).asInstanceOf[Ptr[Ptr[uv_buf_t]]] = value
-      def off: off_t = !struct.at(304).asInstanceOf[Ptr[off_t]]
-      def off_=(value: off_t): Unit = !struct.at(304).asInstanceOf[Ptr[off_t]] = value
-      def uid: uv_uid_t = !struct.at(312).asInstanceOf[Ptr[uv_uid_t]]
-      def uid_=(value: uv_uid_t): Unit = !struct.at(312).asInstanceOf[Ptr[uv_uid_t]] = value
-      def gid: uv_gid_t = !struct.at(316).asInstanceOf[Ptr[uv_gid_t]]
-      def gid_=(value: uv_gid_t): Unit = !struct.at(316).asInstanceOf[Ptr[uv_gid_t]] = value
-      def atime: Double = !struct.at(320).asInstanceOf[Ptr[Double]]
-      def atime_=(value: Double): Unit = !struct.at(320).asInstanceOf[Ptr[Double]] = value
-      def mtime: Double = !struct.at(328).asInstanceOf[Ptr[Double]]
-      def mtime_=(value: Double): Unit = !struct.at(328).asInstanceOf[Ptr[Double]] = value
-      def work_req: uv__work = !struct.at(336).asInstanceOf[Ptr[uv__work]]
-      def work_req_=(value: uv__work): Unit = !struct.at(336).asInstanceOf[Ptr[uv__work]] = value
-      def bufsml: CArray[uv_buf_t, Nat._4] = !struct.at(376).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]]
-      def bufsml_=(value: CArray[uv_buf_t, Nat._4]): Unit = !struct.at(376).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]] = value
+      def data: Ptr[Byte] = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def data_=(value: Ptr[Byte]): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def `type`: uv_req_type = !struct.at(offsets(1)).asInstanceOf[Ptr[uv_req_type]]
+      def type_=(value: uv_req_type): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[uv_req_type]] = value
+      def reserved: CArray[Ptr[Byte], Nat._6] = !struct.at(offsets(2)).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._6]]]
+      def reserved_=(value: CArray[Ptr[Byte], Nat._6]): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._6]]] = value
+      def fs_type: uv_fs_type = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_fs_type]]
+      def fs_type_=(value: uv_fs_type): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_fs_type]] = value
+      def loop: Ptr[uv_loop_t] = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[uv_loop_t]]]
+      def loop_=(value: Ptr[uv_loop_t]): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[uv_loop_t]]] = value
+      def cb: uv_fs_cb = !struct.at(offsets(5)).asInstanceOf[Ptr[uv_fs_cb]]
+      def cb_=(value: uv_fs_cb): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[uv_fs_cb]] = value
+      def result: ssize_t = !struct.at(offsets(6)).asInstanceOf[Ptr[ssize_t]]
+      def result_=(value: ssize_t): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[ssize_t]] = value
+      def ptr: Ptr[Byte] = !struct.at(offsets(7)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def ptr_=(value: Ptr[Byte]): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def path: CString = !struct.at(offsets(8)).asInstanceOf[Ptr[CString]]
+      def path_=(value: CString): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[CString]] = value
+      def statbuf: uv_stat_t = !struct.at(offsets(9)).asInstanceOf[Ptr[uv_stat_t]]
+      def statbuf_=(value: uv_stat_t): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[uv_stat_t]] = value
+      def new_path: CString = !struct.at(offsets(10)).asInstanceOf[Ptr[CString]]
+      def new_path_=(value: CString): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[CString]] = value
+      def file: uv_file = !struct.at(offsets(11)).asInstanceOf[Ptr[uv_file]]
+      def file_=(value: uv_file): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[uv_file]] = value
+      def flags: CInt = !struct.at(offsets(12)).asInstanceOf[Ptr[CInt]]
+      def flags_=(value: CInt): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[CInt]] = value
+      def mode: mode_t = !struct.at(offsets(13)).asInstanceOf[Ptr[mode_t]]
+      def mode_=(value: mode_t): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[mode_t]] = value
+      def nbufs: CUnsignedInt = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]]
+      def nbufs_=(value: CUnsignedInt): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def bufs: Ptr[uv_buf_t] = !struct.at(offsets(15)).asInstanceOf[Ptr[Ptr[uv_buf_t]]]
+      def bufs_=(value: Ptr[uv_buf_t]): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[Ptr[uv_buf_t]]] = value
+      def off: off_t = !struct.at(offsets(16)).asInstanceOf[Ptr[off_t]]
+      def off_=(value: off_t): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[off_t]] = value
+      def uid: uv_uid_t = !struct.at(offsets(17)).asInstanceOf[Ptr[uv_uid_t]]
+      def uid_=(value: uv_uid_t): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[uv_uid_t]] = value
+      def gid: uv_gid_t = !struct.at(offsets(18)).asInstanceOf[Ptr[uv_gid_t]]
+      def gid_=(value: uv_gid_t): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[uv_gid_t]] = value
+      def atime: Double = !struct.at(offsets(19)).asInstanceOf[Ptr[Double]]
+      def atime_=(value: Double): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[Double]] = value
+      def mtime: Double = !struct.at(offsets(20)).asInstanceOf[Ptr[Double]]
+      def mtime_=(value: Double): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[Double]] = value
+      def work_req: uv__work = !struct.at(offsets(21)).asInstanceOf[Ptr[uv__work]]
+      def work_req_=(value: uv__work): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[uv__work]] = value
+      def bufsml: CArray[uv_buf_t, Nat._4] = !struct.at(offsets(22)).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]]
+      def bufsml_=(value: CArray[uv_buf_t, Nat._4]): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]] = value
+    val offsets: Array[Int] = 
+      val res = Array.ofDim[Int](23)
+      def align(offset: Int, alignment: Int) = {
+        val alignmentMask = alignment - 1
+        val padding =
+          if ((offset & alignmentMask) == 0) 0
+          else alignment - (offset & alignmentMask)
+        offset + padding
+      }
+      
+      res(0) = align(0, alignmentof[Ptr[Byte]].toInt)
+      res(1) = align(res(0) + sizeof[Ptr[Byte]].toInt, alignmentof[uv_req_type].toInt)
+      res(2) = align(res(1) + sizeof[uv_req_type].toInt, alignmentof[CArray[Ptr[Byte], Nat._6]].toInt)
+      res(3) = align(res(2) + sizeof[CArray[Ptr[Byte], Nat._6]].toInt, alignmentof[uv_fs_type].toInt)
+      res(4) = align(res(3) + sizeof[uv_fs_type].toInt, alignmentof[Ptr[uv_loop_t]].toInt)
+      res(5) = align(res(4) + sizeof[Ptr[uv_loop_t]].toInt, alignmentof[uv_fs_cb].toInt)
+      res(6) = align(res(5) + sizeof[uv_fs_cb].toInt, alignmentof[ssize_t].toInt)
+      res(7) = align(res(6) + sizeof[ssize_t].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(8) = align(res(7) + sizeof[Ptr[Byte]].toInt, alignmentof[CString].toInt)
+      res(9) = align(res(8) + sizeof[CString].toInt, alignmentof[uv_stat_t].toInt)
+      res(10) = align(res(9) + sizeof[uv_stat_t].toInt, alignmentof[CString].toInt)
+      res(11) = align(res(10) + sizeof[CString].toInt, alignmentof[uv_file].toInt)
+      res(12) = align(res(11) + sizeof[uv_file].toInt, alignmentof[CInt].toInt)
+      res(13) = align(res(12) + sizeof[CInt].toInt, alignmentof[mode_t].toInt)
+      res(14) = align(res(13) + sizeof[mode_t].toInt, alignmentof[CUnsignedInt].toInt)
+      res(15) = align(res(14) + sizeof[CUnsignedInt].toInt, alignmentof[Ptr[uv_buf_t]].toInt)
+      res(16) = align(res(15) + sizeof[Ptr[uv_buf_t]].toInt, alignmentof[off_t].toInt)
+      res(17) = align(res(16) + sizeof[off_t].toInt, alignmentof[uv_uid_t].toInt)
+      res(18) = align(res(17) + sizeof[uv_uid_t].toInt, alignmentof[uv_gid_t].toInt)
+      res(19) = align(res(18) + sizeof[uv_gid_t].toInt, alignmentof[Double].toInt)
+      res(20) = align(res(19) + sizeof[Double].toInt, alignmentof[Double].toInt)
+      res(21) = align(res(20) + sizeof[Double].toInt, alignmentof[uv__work].toInt)
+      res(22) = align(res(21) + sizeof[uv__work].toInt, alignmentof[CArray[uv_buf_t, Nat._4]].toInt)
+      res
+    end offsets
 
   opaque type uv_fs_t = CArray[CChar, Nat.Digit3[Nat._4, Nat._4, Nat._0]]
   object uv_fs_t:
@@ -2342,52 +2377,87 @@ object structs:
       (!____ptr).bufsml = bufsml
       ____ptr
     extension (struct: uv_fs_t)
-      def data: Ptr[Byte] = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]]
-      def data_=(value: Ptr[Byte]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def `type`: uv_req_type = !struct.at(8).asInstanceOf[Ptr[uv_req_type]]
-      def type_=(value: uv_req_type): Unit = !struct.at(8).asInstanceOf[Ptr[uv_req_type]] = value
-      def reserved: CArray[Ptr[Byte], Nat._6] = !struct.at(16).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._6]]]
-      def reserved_=(value: CArray[Ptr[Byte], Nat._6]): Unit = !struct.at(16).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._6]]] = value
-      def fs_type: uv_fs_type = !struct.at(64).asInstanceOf[Ptr[uv_fs_type]]
-      def fs_type_=(value: uv_fs_type): Unit = !struct.at(64).asInstanceOf[Ptr[uv_fs_type]] = value
-      def loop: Ptr[uv_loop_t] = !struct.at(72).asInstanceOf[Ptr[Ptr[uv_loop_t]]]
-      def loop_=(value: Ptr[uv_loop_t]): Unit = !struct.at(72).asInstanceOf[Ptr[Ptr[uv_loop_t]]] = value
-      def cb: uv_fs_cb = !struct.at(80).asInstanceOf[Ptr[uv_fs_cb]]
-      def cb_=(value: uv_fs_cb): Unit = !struct.at(80).asInstanceOf[Ptr[uv_fs_cb]] = value
-      def result: ssize_t = !struct.at(88).asInstanceOf[Ptr[ssize_t]]
-      def result_=(value: ssize_t): Unit = !struct.at(88).asInstanceOf[Ptr[ssize_t]] = value
-      def ptr: Ptr[Byte] = !struct.at(96).asInstanceOf[Ptr[Ptr[Byte]]]
-      def ptr_=(value: Ptr[Byte]): Unit = !struct.at(96).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def path: CString = !struct.at(104).asInstanceOf[Ptr[CString]]
-      def path_=(value: CString): Unit = !struct.at(104).asInstanceOf[Ptr[CString]] = value
-      def statbuf: uv_stat_t = !struct.at(112).asInstanceOf[Ptr[uv_stat_t]]
-      def statbuf_=(value: uv_stat_t): Unit = !struct.at(112).asInstanceOf[Ptr[uv_stat_t]] = value
-      def new_path: CString = !struct.at(272).asInstanceOf[Ptr[CString]]
-      def new_path_=(value: CString): Unit = !struct.at(272).asInstanceOf[Ptr[CString]] = value
-      def file: uv_file = !struct.at(280).asInstanceOf[Ptr[uv_file]]
-      def file_=(value: uv_file): Unit = !struct.at(280).asInstanceOf[Ptr[uv_file]] = value
-      def flags: CInt = !struct.at(284).asInstanceOf[Ptr[CInt]]
-      def flags_=(value: CInt): Unit = !struct.at(284).asInstanceOf[Ptr[CInt]] = value
-      def mode: mode_t = !struct.at(288).asInstanceOf[Ptr[mode_t]]
-      def mode_=(value: mode_t): Unit = !struct.at(288).asInstanceOf[Ptr[mode_t]] = value
-      def nbufs: CUnsignedInt = !struct.at(292).asInstanceOf[Ptr[CUnsignedInt]]
-      def nbufs_=(value: CUnsignedInt): Unit = !struct.at(292).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def bufs: Ptr[uv_buf_t] = !struct.at(296).asInstanceOf[Ptr[Ptr[uv_buf_t]]]
-      def bufs_=(value: Ptr[uv_buf_t]): Unit = !struct.at(296).asInstanceOf[Ptr[Ptr[uv_buf_t]]] = value
-      def off: off_t = !struct.at(304).asInstanceOf[Ptr[off_t]]
-      def off_=(value: off_t): Unit = !struct.at(304).asInstanceOf[Ptr[off_t]] = value
-      def uid: uv_uid_t = !struct.at(312).asInstanceOf[Ptr[uv_uid_t]]
-      def uid_=(value: uv_uid_t): Unit = !struct.at(312).asInstanceOf[Ptr[uv_uid_t]] = value
-      def gid: uv_gid_t = !struct.at(316).asInstanceOf[Ptr[uv_gid_t]]
-      def gid_=(value: uv_gid_t): Unit = !struct.at(316).asInstanceOf[Ptr[uv_gid_t]] = value
-      def atime: Double = !struct.at(320).asInstanceOf[Ptr[Double]]
-      def atime_=(value: Double): Unit = !struct.at(320).asInstanceOf[Ptr[Double]] = value
-      def mtime: Double = !struct.at(328).asInstanceOf[Ptr[Double]]
-      def mtime_=(value: Double): Unit = !struct.at(328).asInstanceOf[Ptr[Double]] = value
-      def work_req: uv__work = !struct.at(336).asInstanceOf[Ptr[uv__work]]
-      def work_req_=(value: uv__work): Unit = !struct.at(336).asInstanceOf[Ptr[uv__work]] = value
-      def bufsml: CArray[uv_buf_t, Nat._4] = !struct.at(376).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]]
-      def bufsml_=(value: CArray[uv_buf_t, Nat._4]): Unit = !struct.at(376).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]] = value
+      def data: Ptr[Byte] = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def data_=(value: Ptr[Byte]): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def `type`: uv_req_type = !struct.at(offsets(1)).asInstanceOf[Ptr[uv_req_type]]
+      def type_=(value: uv_req_type): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[uv_req_type]] = value
+      def reserved: CArray[Ptr[Byte], Nat._6] = !struct.at(offsets(2)).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._6]]]
+      def reserved_=(value: CArray[Ptr[Byte], Nat._6]): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[CArray[Ptr[Byte], Nat._6]]] = value
+      def fs_type: uv_fs_type = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_fs_type]]
+      def fs_type_=(value: uv_fs_type): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_fs_type]] = value
+      def loop: Ptr[uv_loop_t] = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[uv_loop_t]]]
+      def loop_=(value: Ptr[uv_loop_t]): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[uv_loop_t]]] = value
+      def cb: uv_fs_cb = !struct.at(offsets(5)).asInstanceOf[Ptr[uv_fs_cb]]
+      def cb_=(value: uv_fs_cb): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[uv_fs_cb]] = value
+      def result: ssize_t = !struct.at(offsets(6)).asInstanceOf[Ptr[ssize_t]]
+      def result_=(value: ssize_t): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[ssize_t]] = value
+      def ptr: Ptr[Byte] = !struct.at(offsets(7)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def ptr_=(value: Ptr[Byte]): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def path: CString = !struct.at(offsets(8)).asInstanceOf[Ptr[CString]]
+      def path_=(value: CString): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[CString]] = value
+      def statbuf: uv_stat_t = !struct.at(offsets(9)).asInstanceOf[Ptr[uv_stat_t]]
+      def statbuf_=(value: uv_stat_t): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[uv_stat_t]] = value
+      def new_path: CString = !struct.at(offsets(10)).asInstanceOf[Ptr[CString]]
+      def new_path_=(value: CString): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[CString]] = value
+      def file: uv_file = !struct.at(offsets(11)).asInstanceOf[Ptr[uv_file]]
+      def file_=(value: uv_file): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[uv_file]] = value
+      def flags: CInt = !struct.at(offsets(12)).asInstanceOf[Ptr[CInt]]
+      def flags_=(value: CInt): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[CInt]] = value
+      def mode: mode_t = !struct.at(offsets(13)).asInstanceOf[Ptr[mode_t]]
+      def mode_=(value: mode_t): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[mode_t]] = value
+      def nbufs: CUnsignedInt = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]]
+      def nbufs_=(value: CUnsignedInt): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def bufs: Ptr[uv_buf_t] = !struct.at(offsets(15)).asInstanceOf[Ptr[Ptr[uv_buf_t]]]
+      def bufs_=(value: Ptr[uv_buf_t]): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[Ptr[uv_buf_t]]] = value
+      def off: off_t = !struct.at(offsets(16)).asInstanceOf[Ptr[off_t]]
+      def off_=(value: off_t): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[off_t]] = value
+      def uid: uv_uid_t = !struct.at(offsets(17)).asInstanceOf[Ptr[uv_uid_t]]
+      def uid_=(value: uv_uid_t): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[uv_uid_t]] = value
+      def gid: uv_gid_t = !struct.at(offsets(18)).asInstanceOf[Ptr[uv_gid_t]]
+      def gid_=(value: uv_gid_t): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[uv_gid_t]] = value
+      def atime: Double = !struct.at(offsets(19)).asInstanceOf[Ptr[Double]]
+      def atime_=(value: Double): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[Double]] = value
+      def mtime: Double = !struct.at(offsets(20)).asInstanceOf[Ptr[Double]]
+      def mtime_=(value: Double): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[Double]] = value
+      def work_req: uv__work = !struct.at(offsets(21)).asInstanceOf[Ptr[uv__work]]
+      def work_req_=(value: uv__work): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[uv__work]] = value
+      def bufsml: CArray[uv_buf_t, Nat._4] = !struct.at(offsets(22)).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]]
+      def bufsml_=(value: CArray[uv_buf_t, Nat._4]): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[CArray[uv_buf_t, Nat._4]]] = value
+    val offsets: Array[Int] = 
+      val res = Array.ofDim[Int](23)
+      def align(offset: Int, alignment: Int) = {
+        val alignmentMask = alignment - 1
+        val padding =
+          if ((offset & alignmentMask) == 0) 0
+          else alignment - (offset & alignmentMask)
+        offset + padding
+      }
+      
+      res(0) = align(0, alignmentof[Ptr[Byte]].toInt)
+      res(1) = align(res(0) + sizeof[Ptr[Byte]].toInt, alignmentof[uv_req_type].toInt)
+      res(2) = align(res(1) + sizeof[uv_req_type].toInt, alignmentof[CArray[Ptr[Byte], Nat._6]].toInt)
+      res(3) = align(res(2) + sizeof[CArray[Ptr[Byte], Nat._6]].toInt, alignmentof[uv_fs_type].toInt)
+      res(4) = align(res(3) + sizeof[uv_fs_type].toInt, alignmentof[Ptr[uv_loop_t]].toInt)
+      res(5) = align(res(4) + sizeof[Ptr[uv_loop_t]].toInt, alignmentof[uv_fs_cb].toInt)
+      res(6) = align(res(5) + sizeof[uv_fs_cb].toInt, alignmentof[ssize_t].toInt)
+      res(7) = align(res(6) + sizeof[ssize_t].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(8) = align(res(7) + sizeof[Ptr[Byte]].toInt, alignmentof[CString].toInt)
+      res(9) = align(res(8) + sizeof[CString].toInt, alignmentof[uv_stat_t].toInt)
+      res(10) = align(res(9) + sizeof[uv_stat_t].toInt, alignmentof[CString].toInt)
+      res(11) = align(res(10) + sizeof[CString].toInt, alignmentof[uv_file].toInt)
+      res(12) = align(res(11) + sizeof[uv_file].toInt, alignmentof[CInt].toInt)
+      res(13) = align(res(12) + sizeof[CInt].toInt, alignmentof[mode_t].toInt)
+      res(14) = align(res(13) + sizeof[mode_t].toInt, alignmentof[CUnsignedInt].toInt)
+      res(15) = align(res(14) + sizeof[CUnsignedInt].toInt, alignmentof[Ptr[uv_buf_t]].toInt)
+      res(16) = align(res(15) + sizeof[Ptr[uv_buf_t]].toInt, alignmentof[off_t].toInt)
+      res(17) = align(res(16) + sizeof[off_t].toInt, alignmentof[uv_uid_t].toInt)
+      res(18) = align(res(17) + sizeof[uv_uid_t].toInt, alignmentof[uv_gid_t].toInt)
+      res(19) = align(res(18) + sizeof[uv_gid_t].toInt, alignmentof[Double].toInt)
+      res(20) = align(res(19) + sizeof[Double].toInt, alignmentof[Double].toInt)
+      res(21) = align(res(20) + sizeof[Double].toInt, alignmentof[uv__work].toInt)
+      res(22) = align(res(21) + sizeof[uv__work].toInt, alignmentof[CArray[uv_buf_t, Nat._4]].toInt)
+      res
+    end offsets
 
   opaque type uv_getaddrinfo_s = CStruct11[Ptr[Byte], uv_req_type, CArray[Ptr[Byte], Nat._6], Ptr[uv_loop_t], uv__work, Ptr[Byte], Ptr[addrinfo], CString, CString, Ptr[addrinfo], CInt]
   object uv_getaddrinfo_s:
@@ -2984,7 +3054,7 @@ object structs:
       def errmsg : CString = struct._2
       def errmsg_=(value: CString): Unit = !struct.at2 = value
 
-  opaque type uv_loop_s = CArray[CChar, Nat.Digit3[Nat._7, Nat._6, Nat._8]]
+  opaque type uv_loop_s = CArray[CChar, Nat.Digit4[Nat._1, Nat._0, Nat._7, Nat._2]]
   object uv_loop_s:
     opaque type Union0 = CArray[Byte, Nat._8]
     object Union0:
@@ -3023,7 +3093,7 @@ object structs:
         def min_=(value: Ptr[Byte]): Unit = !struct.at1 = value
         def nelts : CUnsignedInt = struct._2
         def nelts_=(value: CUnsignedInt): Unit = !struct.at2 = value
-    given _tag: Tag[uv_loop_s] = Tag.CArray[CChar, Nat.Digit3[Nat._7, Nat._6, Nat._8]](Tag.Byte, Tag.Digit3[Nat._7, Nat._6, Nat._8](Tag.Nat7, Tag.Nat6, Tag.Nat8))
+    given _tag: Tag[uv_loop_s] = Tag.CArray[CChar, Nat.Digit4[Nat._1, Nat._0, Nat._7, Nat._2]](Tag.Byte, Tag.Digit4[Nat._1, Nat._0, Nat._7, Nat._2](Tag.Nat1, Tag.Nat0, Tag.Nat7, Tag.Nat2))
     def apply()(using Zone): Ptr[uv_loop_s] = scala.scalanative.unsafe.alloc[uv_loop_s](1)
     def apply(data : Ptr[Byte], active_handles : CUnsignedInt, handle_queue : uv__queue, active_reqs : uv_loop_s.Union0, internal_fields : Ptr[Byte], stop_flag : CUnsignedInt, flags : CUnsignedLongInt, backend_fd : CInt, pending_queue : uv__queue, watcher_queue : uv__queue, watchers : Ptr[Ptr[uv__io_t]], nwatchers : CUnsignedInt, nfds : CUnsignedInt, wq : uv__queue, wq_mutex : uv_mutex_t, wq_async : uv_async_t, cloexec_lock : uv_rwlock_t, closing_handles : Ptr[uv_handle_t], process_handles : uv__queue, prepare_handles : uv__queue, check_handles : uv__queue, idle_handles : uv__queue, async_handles : uv__queue, async_unused : CFuncPtr0[Unit], async_io_watcher : uv__io_t, async_wfd : CInt, timer_heap : uv_loop_s.Struct1, timer_counter : uint64_t, time : uint64_t, signal_pipefd : CArray[CInt, Nat._2], signal_io_watcher : uv__io_t, child_watcher : uv_signal_t, emfile_fd : CInt, cf_thread : uv_thread_t, _cf_reserved : Ptr[Byte], cf_state : Ptr[Byte], cf_mutex : uv_mutex_t, cf_sem : uv_sem_t, cf_signals : uv__queue)(using Zone): Ptr[uv_loop_s] = 
       val ____ptr = apply()
@@ -3068,86 +3138,137 @@ object structs:
       (!____ptr).cf_signals = cf_signals
       ____ptr
     extension (struct: uv_loop_s)
-      def data: Ptr[Byte] = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]]
-      def data_=(value: Ptr[Byte]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def active_handles: CUnsignedInt = !struct.at(8).asInstanceOf[Ptr[CUnsignedInt]]
-      def active_handles_=(value: CUnsignedInt): Unit = !struct.at(8).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def handle_queue: uv__queue = !struct.at(16).asInstanceOf[Ptr[uv__queue]]
-      def handle_queue_=(value: uv__queue): Unit = !struct.at(16).asInstanceOf[Ptr[uv__queue]] = value
-      def active_reqs: uv_loop_s.Union0 = !struct.at(32).asInstanceOf[Ptr[uv_loop_s.Union0]]
-      def active_reqs_=(value: uv_loop_s.Union0): Unit = !struct.at(32).asInstanceOf[Ptr[uv_loop_s.Union0]] = value
-      def internal_fields: Ptr[Byte] = !struct.at(40).asInstanceOf[Ptr[Ptr[Byte]]]
-      def internal_fields_=(value: Ptr[Byte]): Unit = !struct.at(40).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def stop_flag: CUnsignedInt = !struct.at(48).asInstanceOf[Ptr[CUnsignedInt]]
-      def stop_flag_=(value: CUnsignedInt): Unit = !struct.at(48).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def flags: CUnsignedLongInt = !struct.at(56).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def flags_=(value: CUnsignedLongInt): Unit = !struct.at(56).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def backend_fd: CInt = !struct.at(64).asInstanceOf[Ptr[CInt]]
-      def backend_fd_=(value: CInt): Unit = !struct.at(64).asInstanceOf[Ptr[CInt]] = value
-      def pending_queue: uv__queue = !struct.at(72).asInstanceOf[Ptr[uv__queue]]
-      def pending_queue_=(value: uv__queue): Unit = !struct.at(72).asInstanceOf[Ptr[uv__queue]] = value
-      def watcher_queue: uv__queue = !struct.at(88).asInstanceOf[Ptr[uv__queue]]
-      def watcher_queue_=(value: uv__queue): Unit = !struct.at(88).asInstanceOf[Ptr[uv__queue]] = value
-      def watchers: Ptr[Ptr[uv__io_t]] = !struct.at(104).asInstanceOf[Ptr[Ptr[Ptr[uv__io_t]]]]
-      def watchers_=(value: Ptr[Ptr[uv__io_t]]): Unit = !struct.at(104).asInstanceOf[Ptr[Ptr[Ptr[uv__io_t]]]] = value
-      def nwatchers: CUnsignedInt = !struct.at(112).asInstanceOf[Ptr[CUnsignedInt]]
-      def nwatchers_=(value: CUnsignedInt): Unit = !struct.at(112).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def nfds: CUnsignedInt = !struct.at(116).asInstanceOf[Ptr[CUnsignedInt]]
-      def nfds_=(value: CUnsignedInt): Unit = !struct.at(116).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def wq: uv__queue = !struct.at(120).asInstanceOf[Ptr[uv__queue]]
-      def wq_=(value: uv__queue): Unit = !struct.at(120).asInstanceOf[Ptr[uv__queue]] = value
-      def wq_mutex: uv_mutex_t = !struct.at(136).asInstanceOf[Ptr[uv_mutex_t]]
-      def wq_mutex_=(value: uv_mutex_t): Unit = !struct.at(136).asInstanceOf[Ptr[uv_mutex_t]] = value
-      def wq_async: uv_async_t = !struct.at(144).asInstanceOf[Ptr[uv_async_t]]
-      def wq_async_=(value: uv_async_t): Unit = !struct.at(144).asInstanceOf[Ptr[uv_async_t]] = value
-      def cloexec_lock: uv_rwlock_t = !struct.at(272).asInstanceOf[Ptr[uv_rwlock_t]]
-      def cloexec_lock_=(value: uv_rwlock_t): Unit = !struct.at(272).asInstanceOf[Ptr[uv_rwlock_t]] = value
-      def closing_handles: Ptr[uv_handle_t] = !struct.at(280).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
-      def closing_handles_=(value: Ptr[uv_handle_t]): Unit = !struct.at(280).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
-      def process_handles: uv__queue = !struct.at(288).asInstanceOf[Ptr[uv__queue]]
-      def process_handles_=(value: uv__queue): Unit = !struct.at(288).asInstanceOf[Ptr[uv__queue]] = value
-      def prepare_handles: uv__queue = !struct.at(304).asInstanceOf[Ptr[uv__queue]]
-      def prepare_handles_=(value: uv__queue): Unit = !struct.at(304).asInstanceOf[Ptr[uv__queue]] = value
-      def check_handles: uv__queue = !struct.at(320).asInstanceOf[Ptr[uv__queue]]
-      def check_handles_=(value: uv__queue): Unit = !struct.at(320).asInstanceOf[Ptr[uv__queue]] = value
-      def idle_handles: uv__queue = !struct.at(336).asInstanceOf[Ptr[uv__queue]]
-      def idle_handles_=(value: uv__queue): Unit = !struct.at(336).asInstanceOf[Ptr[uv__queue]] = value
-      def async_handles: uv__queue = !struct.at(352).asInstanceOf[Ptr[uv__queue]]
-      def async_handles_=(value: uv__queue): Unit = !struct.at(352).asInstanceOf[Ptr[uv__queue]] = value
-      def async_unused: CFuncPtr0[Unit] = !struct.at(368).asInstanceOf[Ptr[CFuncPtr0[Unit]]]
-      def async_unused_=(value: CFuncPtr0[Unit]): Unit = !struct.at(368).asInstanceOf[Ptr[CFuncPtr0[Unit]]] = value
-      def async_io_watcher: uv__io_t = !struct.at(376).asInstanceOf[Ptr[uv__io_t]]
-      def async_io_watcher_=(value: uv__io_t): Unit = !struct.at(376).asInstanceOf[Ptr[uv__io_t]] = value
-      def async_wfd: CInt = !struct.at(440).asInstanceOf[Ptr[CInt]]
-      def async_wfd_=(value: CInt): Unit = !struct.at(440).asInstanceOf[Ptr[CInt]] = value
-      def timer_heap: uv_loop_s.Struct1 = !struct.at(448).asInstanceOf[Ptr[uv_loop_s.Struct1]]
-      def timer_heap_=(value: uv_loop_s.Struct1): Unit = !struct.at(448).asInstanceOf[Ptr[uv_loop_s.Struct1]] = value
-      def timer_counter: uint64_t = !struct.at(464).asInstanceOf[Ptr[uint64_t]]
-      def timer_counter_=(value: uint64_t): Unit = !struct.at(464).asInstanceOf[Ptr[uint64_t]] = value
-      def time: uint64_t = !struct.at(472).asInstanceOf[Ptr[uint64_t]]
-      def time_=(value: uint64_t): Unit = !struct.at(472).asInstanceOf[Ptr[uint64_t]] = value
-      def signal_pipefd: CArray[CInt, Nat._2] = !struct.at(480).asInstanceOf[Ptr[CArray[CInt, Nat._2]]]
-      def signal_pipefd_=(value: CArray[CInt, Nat._2]): Unit = !struct.at(480).asInstanceOf[Ptr[CArray[CInt, Nat._2]]] = value
-      def signal_io_watcher: uv__io_t = !struct.at(488).asInstanceOf[Ptr[uv__io_t]]
-      def signal_io_watcher_=(value: uv__io_t): Unit = !struct.at(488).asInstanceOf[Ptr[uv__io_t]] = value
-      def child_watcher: uv_signal_t = !struct.at(552).asInstanceOf[Ptr[uv_signal_t]]
-      def child_watcher_=(value: uv_signal_t): Unit = !struct.at(552).asInstanceOf[Ptr[uv_signal_t]] = value
-      def emfile_fd: CInt = !struct.at(704).asInstanceOf[Ptr[CInt]]
-      def emfile_fd_=(value: CInt): Unit = !struct.at(704).asInstanceOf[Ptr[CInt]] = value
-      def cf_thread: uv_thread_t = !struct.at(712).asInstanceOf[Ptr[uv_thread_t]]
-      def cf_thread_=(value: uv_thread_t): Unit = !struct.at(712).asInstanceOf[Ptr[uv_thread_t]] = value
-      def _cf_reserved: Ptr[Byte] = !struct.at(720).asInstanceOf[Ptr[Ptr[Byte]]]
-      def _cf_reserved_=(value: Ptr[Byte]): Unit = !struct.at(720).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def cf_state: Ptr[Byte] = !struct.at(728).asInstanceOf[Ptr[Ptr[Byte]]]
-      def cf_state_=(value: Ptr[Byte]): Unit = !struct.at(728).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def cf_mutex: uv_mutex_t = !struct.at(736).asInstanceOf[Ptr[uv_mutex_t]]
-      def cf_mutex_=(value: uv_mutex_t): Unit = !struct.at(736).asInstanceOf[Ptr[uv_mutex_t]] = value
-      def cf_sem: uv_sem_t = !struct.at(744).asInstanceOf[Ptr[uv_sem_t]]
-      def cf_sem_=(value: uv_sem_t): Unit = !struct.at(744).asInstanceOf[Ptr[uv_sem_t]] = value
-      def cf_signals: uv__queue = !struct.at(752).asInstanceOf[Ptr[uv__queue]]
-      def cf_signals_=(value: uv__queue): Unit = !struct.at(752).asInstanceOf[Ptr[uv__queue]] = value
+      def data: Ptr[Byte] = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def data_=(value: Ptr[Byte]): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def active_handles: CUnsignedInt = !struct.at(offsets(1)).asInstanceOf[Ptr[CUnsignedInt]]
+      def active_handles_=(value: CUnsignedInt): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def handle_queue: uv__queue = !struct.at(offsets(2)).asInstanceOf[Ptr[uv__queue]]
+      def handle_queue_=(value: uv__queue): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[uv__queue]] = value
+      def active_reqs: uv_loop_s.Union0 = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_loop_s.Union0]]
+      def active_reqs_=(value: uv_loop_s.Union0): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_loop_s.Union0]] = value
+      def internal_fields: Ptr[Byte] = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def internal_fields_=(value: Ptr[Byte]): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def stop_flag: CUnsignedInt = !struct.at(offsets(5)).asInstanceOf[Ptr[CUnsignedInt]]
+      def stop_flag_=(value: CUnsignedInt): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def flags: CUnsignedLongInt = !struct.at(offsets(6)).asInstanceOf[Ptr[CUnsignedLongInt]]
+      def flags_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+      def backend_fd: CInt = !struct.at(offsets(7)).asInstanceOf[Ptr[CInt]]
+      def backend_fd_=(value: CInt): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[CInt]] = value
+      def pending_queue: uv__queue = !struct.at(offsets(8)).asInstanceOf[Ptr[uv__queue]]
+      def pending_queue_=(value: uv__queue): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[uv__queue]] = value
+      def watcher_queue: uv__queue = !struct.at(offsets(9)).asInstanceOf[Ptr[uv__queue]]
+      def watcher_queue_=(value: uv__queue): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[uv__queue]] = value
+      def watchers: Ptr[Ptr[uv__io_t]] = !struct.at(offsets(10)).asInstanceOf[Ptr[Ptr[Ptr[uv__io_t]]]]
+      def watchers_=(value: Ptr[Ptr[uv__io_t]]): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[Ptr[Ptr[uv__io_t]]]] = value
+      def nwatchers: CUnsignedInt = !struct.at(offsets(11)).asInstanceOf[Ptr[CUnsignedInt]]
+      def nwatchers_=(value: CUnsignedInt): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def nfds: CUnsignedInt = !struct.at(offsets(12)).asInstanceOf[Ptr[CUnsignedInt]]
+      def nfds_=(value: CUnsignedInt): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def wq: uv__queue = !struct.at(offsets(13)).asInstanceOf[Ptr[uv__queue]]
+      def wq_=(value: uv__queue): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[uv__queue]] = value
+      def wq_mutex: uv_mutex_t = !struct.at(offsets(14)).asInstanceOf[Ptr[uv_mutex_t]]
+      def wq_mutex_=(value: uv_mutex_t): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[uv_mutex_t]] = value
+      def wq_async: uv_async_t = !struct.at(offsets(15)).asInstanceOf[Ptr[uv_async_t]]
+      def wq_async_=(value: uv_async_t): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[uv_async_t]] = value
+      def cloexec_lock: uv_rwlock_t = !struct.at(offsets(16)).asInstanceOf[Ptr[uv_rwlock_t]]
+      def cloexec_lock_=(value: uv_rwlock_t): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[uv_rwlock_t]] = value
+      def closing_handles: Ptr[uv_handle_t] = !struct.at(offsets(17)).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
+      def closing_handles_=(value: Ptr[uv_handle_t]): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
+      def process_handles: uv__queue = !struct.at(offsets(18)).asInstanceOf[Ptr[uv__queue]]
+      def process_handles_=(value: uv__queue): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[uv__queue]] = value
+      def prepare_handles: uv__queue = !struct.at(offsets(19)).asInstanceOf[Ptr[uv__queue]]
+      def prepare_handles_=(value: uv__queue): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[uv__queue]] = value
+      def check_handles: uv__queue = !struct.at(offsets(20)).asInstanceOf[Ptr[uv__queue]]
+      def check_handles_=(value: uv__queue): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[uv__queue]] = value
+      def idle_handles: uv__queue = !struct.at(offsets(21)).asInstanceOf[Ptr[uv__queue]]
+      def idle_handles_=(value: uv__queue): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[uv__queue]] = value
+      def async_handles: uv__queue = !struct.at(offsets(22)).asInstanceOf[Ptr[uv__queue]]
+      def async_handles_=(value: uv__queue): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[uv__queue]] = value
+      def async_unused: CFuncPtr0[Unit] = !struct.at(offsets(23)).asInstanceOf[Ptr[CFuncPtr0[Unit]]]
+      def async_unused_=(value: CFuncPtr0[Unit]): Unit = !struct.at(offsets(23)).asInstanceOf[Ptr[CFuncPtr0[Unit]]] = value
+      def async_io_watcher: uv__io_t = !struct.at(offsets(24)).asInstanceOf[Ptr[uv__io_t]]
+      def async_io_watcher_=(value: uv__io_t): Unit = !struct.at(offsets(24)).asInstanceOf[Ptr[uv__io_t]] = value
+      def async_wfd: CInt = !struct.at(offsets(25)).asInstanceOf[Ptr[CInt]]
+      def async_wfd_=(value: CInt): Unit = !struct.at(offsets(25)).asInstanceOf[Ptr[CInt]] = value
+      def timer_heap: uv_loop_s.Struct1 = !struct.at(offsets(26)).asInstanceOf[Ptr[uv_loop_s.Struct1]]
+      def timer_heap_=(value: uv_loop_s.Struct1): Unit = !struct.at(offsets(26)).asInstanceOf[Ptr[uv_loop_s.Struct1]] = value
+      def timer_counter: uint64_t = !struct.at(offsets(27)).asInstanceOf[Ptr[uint64_t]]
+      def timer_counter_=(value: uint64_t): Unit = !struct.at(offsets(27)).asInstanceOf[Ptr[uint64_t]] = value
+      def time: uint64_t = !struct.at(offsets(28)).asInstanceOf[Ptr[uint64_t]]
+      def time_=(value: uint64_t): Unit = !struct.at(offsets(28)).asInstanceOf[Ptr[uint64_t]] = value
+      def signal_pipefd: CArray[CInt, Nat._2] = !struct.at(offsets(29)).asInstanceOf[Ptr[CArray[CInt, Nat._2]]]
+      def signal_pipefd_=(value: CArray[CInt, Nat._2]): Unit = !struct.at(offsets(29)).asInstanceOf[Ptr[CArray[CInt, Nat._2]]] = value
+      def signal_io_watcher: uv__io_t = !struct.at(offsets(30)).asInstanceOf[Ptr[uv__io_t]]
+      def signal_io_watcher_=(value: uv__io_t): Unit = !struct.at(offsets(30)).asInstanceOf[Ptr[uv__io_t]] = value
+      def child_watcher: uv_signal_t = !struct.at(offsets(31)).asInstanceOf[Ptr[uv_signal_t]]
+      def child_watcher_=(value: uv_signal_t): Unit = !struct.at(offsets(31)).asInstanceOf[Ptr[uv_signal_t]] = value
+      def emfile_fd: CInt = !struct.at(offsets(32)).asInstanceOf[Ptr[CInt]]
+      def emfile_fd_=(value: CInt): Unit = !struct.at(offsets(32)).asInstanceOf[Ptr[CInt]] = value
+      def cf_thread: uv_thread_t = !struct.at(offsets(33)).asInstanceOf[Ptr[uv_thread_t]]
+      def cf_thread_=(value: uv_thread_t): Unit = !struct.at(offsets(33)).asInstanceOf[Ptr[uv_thread_t]] = value
+      def _cf_reserved: Ptr[Byte] = !struct.at(offsets(34)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def _cf_reserved_=(value: Ptr[Byte]): Unit = !struct.at(offsets(34)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def cf_state: Ptr[Byte] = !struct.at(offsets(35)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def cf_state_=(value: Ptr[Byte]): Unit = !struct.at(offsets(35)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def cf_mutex: uv_mutex_t = !struct.at(offsets(36)).asInstanceOf[Ptr[uv_mutex_t]]
+      def cf_mutex_=(value: uv_mutex_t): Unit = !struct.at(offsets(36)).asInstanceOf[Ptr[uv_mutex_t]] = value
+      def cf_sem: uv_sem_t = !struct.at(offsets(37)).asInstanceOf[Ptr[uv_sem_t]]
+      def cf_sem_=(value: uv_sem_t): Unit = !struct.at(offsets(37)).asInstanceOf[Ptr[uv_sem_t]] = value
+      def cf_signals: uv__queue = !struct.at(offsets(38)).asInstanceOf[Ptr[uv__queue]]
+      def cf_signals_=(value: uv__queue): Unit = !struct.at(offsets(38)).asInstanceOf[Ptr[uv__queue]] = value
+    val offsets: Array[Int] = 
+      val res = Array.ofDim[Int](39)
+      def align(offset: Int, alignment: Int) = {
+        val alignmentMask = alignment - 1
+        val padding =
+          if ((offset & alignmentMask) == 0) 0
+          else alignment - (offset & alignmentMask)
+        offset + padding
+      }
+      
+      res(0) = align(0, alignmentof[Ptr[Byte]].toInt)
+      res(1) = align(res(0) + sizeof[Ptr[Byte]].toInt, alignmentof[CUnsignedInt].toInt)
+      res(2) = align(res(1) + sizeof[CUnsignedInt].toInt, alignmentof[uv__queue].toInt)
+      res(3) = align(res(2) + sizeof[uv__queue].toInt, alignmentof[uv_loop_s.Union0].toInt)
+      res(4) = align(res(3) + sizeof[uv_loop_s.Union0].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(5) = align(res(4) + sizeof[Ptr[Byte]].toInt, alignmentof[CUnsignedInt].toInt)
+      res(6) = align(res(5) + sizeof[CUnsignedInt].toInt, alignmentof[CUnsignedLongInt].toInt)
+      res(7) = align(res(6) + sizeof[CUnsignedLongInt].toInt, alignmentof[CInt].toInt)
+      res(8) = align(res(7) + sizeof[CInt].toInt, alignmentof[uv__queue].toInt)
+      res(9) = align(res(8) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(10) = align(res(9) + sizeof[uv__queue].toInt, alignmentof[Ptr[Ptr[uv__io_t]]].toInt)
+      res(11) = align(res(10) + sizeof[Ptr[Ptr[uv__io_t]]].toInt, alignmentof[CUnsignedInt].toInt)
+      res(12) = align(res(11) + sizeof[CUnsignedInt].toInt, alignmentof[CUnsignedInt].toInt)
+      res(13) = align(res(12) + sizeof[CUnsignedInt].toInt, alignmentof[uv__queue].toInt)
+      res(14) = align(res(13) + sizeof[uv__queue].toInt, alignmentof[uv_mutex_t].toInt)
+      res(15) = align(res(14) + sizeof[uv_mutex_t].toInt, alignmentof[uv_async_t].toInt)
+      res(16) = align(res(15) + sizeof[uv_async_t].toInt, alignmentof[uv_rwlock_t].toInt)
+      res(17) = align(res(16) + sizeof[uv_rwlock_t].toInt, alignmentof[Ptr[uv_handle_t]].toInt)
+      res(18) = align(res(17) + sizeof[Ptr[uv_handle_t]].toInt, alignmentof[uv__queue].toInt)
+      res(19) = align(res(18) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(20) = align(res(19) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(21) = align(res(20) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(22) = align(res(21) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(23) = align(res(22) + sizeof[uv__queue].toInt, alignmentof[CFuncPtr0[Unit]].toInt)
+      res(24) = align(res(23) + sizeof[CFuncPtr0[Unit]].toInt, alignmentof[uv__io_t].toInt)
+      res(25) = align(res(24) + sizeof[uv__io_t].toInt, alignmentof[CInt].toInt)
+      res(26) = align(res(25) + sizeof[CInt].toInt, alignmentof[uv_loop_s.Struct1].toInt)
+      res(27) = align(res(26) + sizeof[uv_loop_s.Struct1].toInt, alignmentof[uint64_t].toInt)
+      res(28) = align(res(27) + sizeof[uint64_t].toInt, alignmentof[uint64_t].toInt)
+      res(29) = align(res(28) + sizeof[uint64_t].toInt, alignmentof[CArray[CInt, Nat._2]].toInt)
+      res(30) = align(res(29) + sizeof[CArray[CInt, Nat._2]].toInt, alignmentof[uv__io_t].toInt)
+      res(31) = align(res(30) + sizeof[uv__io_t].toInt, alignmentof[uv_signal_t].toInt)
+      res(32) = align(res(31) + sizeof[uv_signal_t].toInt, alignmentof[CInt].toInt)
+      res(33) = align(res(32) + sizeof[CInt].toInt, alignmentof[uv_thread_t].toInt)
+      res(34) = align(res(33) + sizeof[uv_thread_t].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(35) = align(res(34) + sizeof[Ptr[Byte]].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(36) = align(res(35) + sizeof[Ptr[Byte]].toInt, alignmentof[uv_mutex_t].toInt)
+      res(37) = align(res(36) + sizeof[uv_mutex_t].toInt, alignmentof[uv_sem_t].toInt)
+      res(38) = align(res(37) + sizeof[uv_sem_t].toInt, alignmentof[uv__queue].toInt)
+      res
+    end offsets
 
-  opaque type uv_loop_t = CArray[CChar, Nat.Digit3[Nat._7, Nat._6, Nat._8]]
+  opaque type uv_loop_t = CArray[CChar, Nat.Digit4[Nat._1, Nat._0, Nat._7, Nat._2]]
   object uv_loop_t:
     opaque type Union0 = CArray[Byte, Nat._8]
     object Union0:
@@ -3186,7 +3307,7 @@ object structs:
         def min_=(value: Ptr[Byte]): Unit = !struct.at1 = value
         def nelts : CUnsignedInt = struct._2
         def nelts_=(value: CUnsignedInt): Unit = !struct.at2 = value
-    given _tag: Tag[uv_loop_t] = Tag.CArray[CChar, Nat.Digit3[Nat._7, Nat._6, Nat._8]](Tag.Byte, Tag.Digit3[Nat._7, Nat._6, Nat._8](Tag.Nat7, Tag.Nat6, Tag.Nat8))
+    given _tag: Tag[uv_loop_t] = Tag.CArray[CChar, Nat.Digit4[Nat._1, Nat._0, Nat._7, Nat._2]](Tag.Byte, Tag.Digit4[Nat._1, Nat._0, Nat._7, Nat._2](Tag.Nat1, Tag.Nat0, Tag.Nat7, Tag.Nat2))
     def apply()(using Zone): Ptr[uv_loop_t] = scala.scalanative.unsafe.alloc[uv_loop_t](1)
     def apply(data : Ptr[Byte], active_handles : CUnsignedInt, handle_queue : uv__queue, active_reqs : uv_loop_t.Union0, internal_fields : Ptr[Byte], stop_flag : CUnsignedInt, flags : CUnsignedLongInt, backend_fd : CInt, pending_queue : uv__queue, watcher_queue : uv__queue, watchers : Ptr[Ptr[uv__io_t]], nwatchers : CUnsignedInt, nfds : CUnsignedInt, wq : uv__queue, wq_mutex : uv_mutex_t, wq_async : uv_async_t, cloexec_lock : uv_rwlock_t, closing_handles : Ptr[uv_handle_t], process_handles : uv__queue, prepare_handles : uv__queue, check_handles : uv__queue, idle_handles : uv__queue, async_handles : uv__queue, async_unused : CFuncPtr0[Unit], async_io_watcher : uv__io_t, async_wfd : CInt, timer_heap : uv_loop_t.Struct1, timer_counter : uint64_t, time : uint64_t, signal_pipefd : CArray[CInt, Nat._2], signal_io_watcher : uv__io_t, child_watcher : uv_signal_t, emfile_fd : CInt, cf_thread : uv_thread_t, _cf_reserved : Ptr[Byte], cf_state : Ptr[Byte], cf_mutex : uv_mutex_t, cf_sem : uv_sem_t, cf_signals : uv__queue)(using Zone): Ptr[uv_loop_t] = 
       val ____ptr = apply()
@@ -3231,84 +3352,135 @@ object structs:
       (!____ptr).cf_signals = cf_signals
       ____ptr
     extension (struct: uv_loop_t)
-      def data: Ptr[Byte] = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]]
-      def data_=(value: Ptr[Byte]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def active_handles: CUnsignedInt = !struct.at(8).asInstanceOf[Ptr[CUnsignedInt]]
-      def active_handles_=(value: CUnsignedInt): Unit = !struct.at(8).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def handle_queue: uv__queue = !struct.at(16).asInstanceOf[Ptr[uv__queue]]
-      def handle_queue_=(value: uv__queue): Unit = !struct.at(16).asInstanceOf[Ptr[uv__queue]] = value
-      def active_reqs: uv_loop_t.Union0 = !struct.at(32).asInstanceOf[Ptr[uv_loop_t.Union0]]
-      def active_reqs_=(value: uv_loop_t.Union0): Unit = !struct.at(32).asInstanceOf[Ptr[uv_loop_t.Union0]] = value
-      def internal_fields: Ptr[Byte] = !struct.at(40).asInstanceOf[Ptr[Ptr[Byte]]]
-      def internal_fields_=(value: Ptr[Byte]): Unit = !struct.at(40).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def stop_flag: CUnsignedInt = !struct.at(48).asInstanceOf[Ptr[CUnsignedInt]]
-      def stop_flag_=(value: CUnsignedInt): Unit = !struct.at(48).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def flags: CUnsignedLongInt = !struct.at(56).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def flags_=(value: CUnsignedLongInt): Unit = !struct.at(56).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def backend_fd: CInt = !struct.at(64).asInstanceOf[Ptr[CInt]]
-      def backend_fd_=(value: CInt): Unit = !struct.at(64).asInstanceOf[Ptr[CInt]] = value
-      def pending_queue: uv__queue = !struct.at(72).asInstanceOf[Ptr[uv__queue]]
-      def pending_queue_=(value: uv__queue): Unit = !struct.at(72).asInstanceOf[Ptr[uv__queue]] = value
-      def watcher_queue: uv__queue = !struct.at(88).asInstanceOf[Ptr[uv__queue]]
-      def watcher_queue_=(value: uv__queue): Unit = !struct.at(88).asInstanceOf[Ptr[uv__queue]] = value
-      def watchers: Ptr[Ptr[uv__io_t]] = !struct.at(104).asInstanceOf[Ptr[Ptr[Ptr[uv__io_t]]]]
-      def watchers_=(value: Ptr[Ptr[uv__io_t]]): Unit = !struct.at(104).asInstanceOf[Ptr[Ptr[Ptr[uv__io_t]]]] = value
-      def nwatchers: CUnsignedInt = !struct.at(112).asInstanceOf[Ptr[CUnsignedInt]]
-      def nwatchers_=(value: CUnsignedInt): Unit = !struct.at(112).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def nfds: CUnsignedInt = !struct.at(116).asInstanceOf[Ptr[CUnsignedInt]]
-      def nfds_=(value: CUnsignedInt): Unit = !struct.at(116).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def wq: uv__queue = !struct.at(120).asInstanceOf[Ptr[uv__queue]]
-      def wq_=(value: uv__queue): Unit = !struct.at(120).asInstanceOf[Ptr[uv__queue]] = value
-      def wq_mutex: uv_mutex_t = !struct.at(136).asInstanceOf[Ptr[uv_mutex_t]]
-      def wq_mutex_=(value: uv_mutex_t): Unit = !struct.at(136).asInstanceOf[Ptr[uv_mutex_t]] = value
-      def wq_async: uv_async_t = !struct.at(144).asInstanceOf[Ptr[uv_async_t]]
-      def wq_async_=(value: uv_async_t): Unit = !struct.at(144).asInstanceOf[Ptr[uv_async_t]] = value
-      def cloexec_lock: uv_rwlock_t = !struct.at(272).asInstanceOf[Ptr[uv_rwlock_t]]
-      def cloexec_lock_=(value: uv_rwlock_t): Unit = !struct.at(272).asInstanceOf[Ptr[uv_rwlock_t]] = value
-      def closing_handles: Ptr[uv_handle_t] = !struct.at(280).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
-      def closing_handles_=(value: Ptr[uv_handle_t]): Unit = !struct.at(280).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
-      def process_handles: uv__queue = !struct.at(288).asInstanceOf[Ptr[uv__queue]]
-      def process_handles_=(value: uv__queue): Unit = !struct.at(288).asInstanceOf[Ptr[uv__queue]] = value
-      def prepare_handles: uv__queue = !struct.at(304).asInstanceOf[Ptr[uv__queue]]
-      def prepare_handles_=(value: uv__queue): Unit = !struct.at(304).asInstanceOf[Ptr[uv__queue]] = value
-      def check_handles: uv__queue = !struct.at(320).asInstanceOf[Ptr[uv__queue]]
-      def check_handles_=(value: uv__queue): Unit = !struct.at(320).asInstanceOf[Ptr[uv__queue]] = value
-      def idle_handles: uv__queue = !struct.at(336).asInstanceOf[Ptr[uv__queue]]
-      def idle_handles_=(value: uv__queue): Unit = !struct.at(336).asInstanceOf[Ptr[uv__queue]] = value
-      def async_handles: uv__queue = !struct.at(352).asInstanceOf[Ptr[uv__queue]]
-      def async_handles_=(value: uv__queue): Unit = !struct.at(352).asInstanceOf[Ptr[uv__queue]] = value
-      def async_unused: CFuncPtr0[Unit] = !struct.at(368).asInstanceOf[Ptr[CFuncPtr0[Unit]]]
-      def async_unused_=(value: CFuncPtr0[Unit]): Unit = !struct.at(368).asInstanceOf[Ptr[CFuncPtr0[Unit]]] = value
-      def async_io_watcher: uv__io_t = !struct.at(376).asInstanceOf[Ptr[uv__io_t]]
-      def async_io_watcher_=(value: uv__io_t): Unit = !struct.at(376).asInstanceOf[Ptr[uv__io_t]] = value
-      def async_wfd: CInt = !struct.at(440).asInstanceOf[Ptr[CInt]]
-      def async_wfd_=(value: CInt): Unit = !struct.at(440).asInstanceOf[Ptr[CInt]] = value
-      def timer_heap: uv_loop_t.Struct1 = !struct.at(448).asInstanceOf[Ptr[uv_loop_t.Struct1]]
-      def timer_heap_=(value: uv_loop_t.Struct1): Unit = !struct.at(448).asInstanceOf[Ptr[uv_loop_t.Struct1]] = value
-      def timer_counter: uint64_t = !struct.at(464).asInstanceOf[Ptr[uint64_t]]
-      def timer_counter_=(value: uint64_t): Unit = !struct.at(464).asInstanceOf[Ptr[uint64_t]] = value
-      def time: uint64_t = !struct.at(472).asInstanceOf[Ptr[uint64_t]]
-      def time_=(value: uint64_t): Unit = !struct.at(472).asInstanceOf[Ptr[uint64_t]] = value
-      def signal_pipefd: CArray[CInt, Nat._2] = !struct.at(480).asInstanceOf[Ptr[CArray[CInt, Nat._2]]]
-      def signal_pipefd_=(value: CArray[CInt, Nat._2]): Unit = !struct.at(480).asInstanceOf[Ptr[CArray[CInt, Nat._2]]] = value
-      def signal_io_watcher: uv__io_t = !struct.at(488).asInstanceOf[Ptr[uv__io_t]]
-      def signal_io_watcher_=(value: uv__io_t): Unit = !struct.at(488).asInstanceOf[Ptr[uv__io_t]] = value
-      def child_watcher: uv_signal_t = !struct.at(552).asInstanceOf[Ptr[uv_signal_t]]
-      def child_watcher_=(value: uv_signal_t): Unit = !struct.at(552).asInstanceOf[Ptr[uv_signal_t]] = value
-      def emfile_fd: CInt = !struct.at(704).asInstanceOf[Ptr[CInt]]
-      def emfile_fd_=(value: CInt): Unit = !struct.at(704).asInstanceOf[Ptr[CInt]] = value
-      def cf_thread: uv_thread_t = !struct.at(712).asInstanceOf[Ptr[uv_thread_t]]
-      def cf_thread_=(value: uv_thread_t): Unit = !struct.at(712).asInstanceOf[Ptr[uv_thread_t]] = value
-      def _cf_reserved: Ptr[Byte] = !struct.at(720).asInstanceOf[Ptr[Ptr[Byte]]]
-      def _cf_reserved_=(value: Ptr[Byte]): Unit = !struct.at(720).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def cf_state: Ptr[Byte] = !struct.at(728).asInstanceOf[Ptr[Ptr[Byte]]]
-      def cf_state_=(value: Ptr[Byte]): Unit = !struct.at(728).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def cf_mutex: uv_mutex_t = !struct.at(736).asInstanceOf[Ptr[uv_mutex_t]]
-      def cf_mutex_=(value: uv_mutex_t): Unit = !struct.at(736).asInstanceOf[Ptr[uv_mutex_t]] = value
-      def cf_sem: uv_sem_t = !struct.at(744).asInstanceOf[Ptr[uv_sem_t]]
-      def cf_sem_=(value: uv_sem_t): Unit = !struct.at(744).asInstanceOf[Ptr[uv_sem_t]] = value
-      def cf_signals: uv__queue = !struct.at(752).asInstanceOf[Ptr[uv__queue]]
-      def cf_signals_=(value: uv__queue): Unit = !struct.at(752).asInstanceOf[Ptr[uv__queue]] = value
+      def data: Ptr[Byte] = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def data_=(value: Ptr[Byte]): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def active_handles: CUnsignedInt = !struct.at(offsets(1)).asInstanceOf[Ptr[CUnsignedInt]]
+      def active_handles_=(value: CUnsignedInt): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def handle_queue: uv__queue = !struct.at(offsets(2)).asInstanceOf[Ptr[uv__queue]]
+      def handle_queue_=(value: uv__queue): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[uv__queue]] = value
+      def active_reqs: uv_loop_t.Union0 = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_loop_t.Union0]]
+      def active_reqs_=(value: uv_loop_t.Union0): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_loop_t.Union0]] = value
+      def internal_fields: Ptr[Byte] = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def internal_fields_=(value: Ptr[Byte]): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def stop_flag: CUnsignedInt = !struct.at(offsets(5)).asInstanceOf[Ptr[CUnsignedInt]]
+      def stop_flag_=(value: CUnsignedInt): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def flags: CUnsignedLongInt = !struct.at(offsets(6)).asInstanceOf[Ptr[CUnsignedLongInt]]
+      def flags_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+      def backend_fd: CInt = !struct.at(offsets(7)).asInstanceOf[Ptr[CInt]]
+      def backend_fd_=(value: CInt): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[CInt]] = value
+      def pending_queue: uv__queue = !struct.at(offsets(8)).asInstanceOf[Ptr[uv__queue]]
+      def pending_queue_=(value: uv__queue): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[uv__queue]] = value
+      def watcher_queue: uv__queue = !struct.at(offsets(9)).asInstanceOf[Ptr[uv__queue]]
+      def watcher_queue_=(value: uv__queue): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[uv__queue]] = value
+      def watchers: Ptr[Ptr[uv__io_t]] = !struct.at(offsets(10)).asInstanceOf[Ptr[Ptr[Ptr[uv__io_t]]]]
+      def watchers_=(value: Ptr[Ptr[uv__io_t]]): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[Ptr[Ptr[uv__io_t]]]] = value
+      def nwatchers: CUnsignedInt = !struct.at(offsets(11)).asInstanceOf[Ptr[CUnsignedInt]]
+      def nwatchers_=(value: CUnsignedInt): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def nfds: CUnsignedInt = !struct.at(offsets(12)).asInstanceOf[Ptr[CUnsignedInt]]
+      def nfds_=(value: CUnsignedInt): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def wq: uv__queue = !struct.at(offsets(13)).asInstanceOf[Ptr[uv__queue]]
+      def wq_=(value: uv__queue): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[uv__queue]] = value
+      def wq_mutex: uv_mutex_t = !struct.at(offsets(14)).asInstanceOf[Ptr[uv_mutex_t]]
+      def wq_mutex_=(value: uv_mutex_t): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[uv_mutex_t]] = value
+      def wq_async: uv_async_t = !struct.at(offsets(15)).asInstanceOf[Ptr[uv_async_t]]
+      def wq_async_=(value: uv_async_t): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[uv_async_t]] = value
+      def cloexec_lock: uv_rwlock_t = !struct.at(offsets(16)).asInstanceOf[Ptr[uv_rwlock_t]]
+      def cloexec_lock_=(value: uv_rwlock_t): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[uv_rwlock_t]] = value
+      def closing_handles: Ptr[uv_handle_t] = !struct.at(offsets(17)).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
+      def closing_handles_=(value: Ptr[uv_handle_t]): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
+      def process_handles: uv__queue = !struct.at(offsets(18)).asInstanceOf[Ptr[uv__queue]]
+      def process_handles_=(value: uv__queue): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[uv__queue]] = value
+      def prepare_handles: uv__queue = !struct.at(offsets(19)).asInstanceOf[Ptr[uv__queue]]
+      def prepare_handles_=(value: uv__queue): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[uv__queue]] = value
+      def check_handles: uv__queue = !struct.at(offsets(20)).asInstanceOf[Ptr[uv__queue]]
+      def check_handles_=(value: uv__queue): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[uv__queue]] = value
+      def idle_handles: uv__queue = !struct.at(offsets(21)).asInstanceOf[Ptr[uv__queue]]
+      def idle_handles_=(value: uv__queue): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[uv__queue]] = value
+      def async_handles: uv__queue = !struct.at(offsets(22)).asInstanceOf[Ptr[uv__queue]]
+      def async_handles_=(value: uv__queue): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[uv__queue]] = value
+      def async_unused: CFuncPtr0[Unit] = !struct.at(offsets(23)).asInstanceOf[Ptr[CFuncPtr0[Unit]]]
+      def async_unused_=(value: CFuncPtr0[Unit]): Unit = !struct.at(offsets(23)).asInstanceOf[Ptr[CFuncPtr0[Unit]]] = value
+      def async_io_watcher: uv__io_t = !struct.at(offsets(24)).asInstanceOf[Ptr[uv__io_t]]
+      def async_io_watcher_=(value: uv__io_t): Unit = !struct.at(offsets(24)).asInstanceOf[Ptr[uv__io_t]] = value
+      def async_wfd: CInt = !struct.at(offsets(25)).asInstanceOf[Ptr[CInt]]
+      def async_wfd_=(value: CInt): Unit = !struct.at(offsets(25)).asInstanceOf[Ptr[CInt]] = value
+      def timer_heap: uv_loop_t.Struct1 = !struct.at(offsets(26)).asInstanceOf[Ptr[uv_loop_t.Struct1]]
+      def timer_heap_=(value: uv_loop_t.Struct1): Unit = !struct.at(offsets(26)).asInstanceOf[Ptr[uv_loop_t.Struct1]] = value
+      def timer_counter: uint64_t = !struct.at(offsets(27)).asInstanceOf[Ptr[uint64_t]]
+      def timer_counter_=(value: uint64_t): Unit = !struct.at(offsets(27)).asInstanceOf[Ptr[uint64_t]] = value
+      def time: uint64_t = !struct.at(offsets(28)).asInstanceOf[Ptr[uint64_t]]
+      def time_=(value: uint64_t): Unit = !struct.at(offsets(28)).asInstanceOf[Ptr[uint64_t]] = value
+      def signal_pipefd: CArray[CInt, Nat._2] = !struct.at(offsets(29)).asInstanceOf[Ptr[CArray[CInt, Nat._2]]]
+      def signal_pipefd_=(value: CArray[CInt, Nat._2]): Unit = !struct.at(offsets(29)).asInstanceOf[Ptr[CArray[CInt, Nat._2]]] = value
+      def signal_io_watcher: uv__io_t = !struct.at(offsets(30)).asInstanceOf[Ptr[uv__io_t]]
+      def signal_io_watcher_=(value: uv__io_t): Unit = !struct.at(offsets(30)).asInstanceOf[Ptr[uv__io_t]] = value
+      def child_watcher: uv_signal_t = !struct.at(offsets(31)).asInstanceOf[Ptr[uv_signal_t]]
+      def child_watcher_=(value: uv_signal_t): Unit = !struct.at(offsets(31)).asInstanceOf[Ptr[uv_signal_t]] = value
+      def emfile_fd: CInt = !struct.at(offsets(32)).asInstanceOf[Ptr[CInt]]
+      def emfile_fd_=(value: CInt): Unit = !struct.at(offsets(32)).asInstanceOf[Ptr[CInt]] = value
+      def cf_thread: uv_thread_t = !struct.at(offsets(33)).asInstanceOf[Ptr[uv_thread_t]]
+      def cf_thread_=(value: uv_thread_t): Unit = !struct.at(offsets(33)).asInstanceOf[Ptr[uv_thread_t]] = value
+      def _cf_reserved: Ptr[Byte] = !struct.at(offsets(34)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def _cf_reserved_=(value: Ptr[Byte]): Unit = !struct.at(offsets(34)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def cf_state: Ptr[Byte] = !struct.at(offsets(35)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def cf_state_=(value: Ptr[Byte]): Unit = !struct.at(offsets(35)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def cf_mutex: uv_mutex_t = !struct.at(offsets(36)).asInstanceOf[Ptr[uv_mutex_t]]
+      def cf_mutex_=(value: uv_mutex_t): Unit = !struct.at(offsets(36)).asInstanceOf[Ptr[uv_mutex_t]] = value
+      def cf_sem: uv_sem_t = !struct.at(offsets(37)).asInstanceOf[Ptr[uv_sem_t]]
+      def cf_sem_=(value: uv_sem_t): Unit = !struct.at(offsets(37)).asInstanceOf[Ptr[uv_sem_t]] = value
+      def cf_signals: uv__queue = !struct.at(offsets(38)).asInstanceOf[Ptr[uv__queue]]
+      def cf_signals_=(value: uv__queue): Unit = !struct.at(offsets(38)).asInstanceOf[Ptr[uv__queue]] = value
+    val offsets: Array[Int] = 
+      val res = Array.ofDim[Int](39)
+      def align(offset: Int, alignment: Int) = {
+        val alignmentMask = alignment - 1
+        val padding =
+          if ((offset & alignmentMask) == 0) 0
+          else alignment - (offset & alignmentMask)
+        offset + padding
+      }
+      
+      res(0) = align(0, alignmentof[Ptr[Byte]].toInt)
+      res(1) = align(res(0) + sizeof[Ptr[Byte]].toInt, alignmentof[CUnsignedInt].toInt)
+      res(2) = align(res(1) + sizeof[CUnsignedInt].toInt, alignmentof[uv__queue].toInt)
+      res(3) = align(res(2) + sizeof[uv__queue].toInt, alignmentof[uv_loop_t.Union0].toInt)
+      res(4) = align(res(3) + sizeof[uv_loop_t.Union0].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(5) = align(res(4) + sizeof[Ptr[Byte]].toInt, alignmentof[CUnsignedInt].toInt)
+      res(6) = align(res(5) + sizeof[CUnsignedInt].toInt, alignmentof[CUnsignedLongInt].toInt)
+      res(7) = align(res(6) + sizeof[CUnsignedLongInt].toInt, alignmentof[CInt].toInt)
+      res(8) = align(res(7) + sizeof[CInt].toInt, alignmentof[uv__queue].toInt)
+      res(9) = align(res(8) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(10) = align(res(9) + sizeof[uv__queue].toInt, alignmentof[Ptr[Ptr[uv__io_t]]].toInt)
+      res(11) = align(res(10) + sizeof[Ptr[Ptr[uv__io_t]]].toInt, alignmentof[CUnsignedInt].toInt)
+      res(12) = align(res(11) + sizeof[CUnsignedInt].toInt, alignmentof[CUnsignedInt].toInt)
+      res(13) = align(res(12) + sizeof[CUnsignedInt].toInt, alignmentof[uv__queue].toInt)
+      res(14) = align(res(13) + sizeof[uv__queue].toInt, alignmentof[uv_mutex_t].toInt)
+      res(15) = align(res(14) + sizeof[uv_mutex_t].toInt, alignmentof[uv_async_t].toInt)
+      res(16) = align(res(15) + sizeof[uv_async_t].toInt, alignmentof[uv_rwlock_t].toInt)
+      res(17) = align(res(16) + sizeof[uv_rwlock_t].toInt, alignmentof[Ptr[uv_handle_t]].toInt)
+      res(18) = align(res(17) + sizeof[Ptr[uv_handle_t]].toInt, alignmentof[uv__queue].toInt)
+      res(19) = align(res(18) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(20) = align(res(19) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(21) = align(res(20) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(22) = align(res(21) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(23) = align(res(22) + sizeof[uv__queue].toInt, alignmentof[CFuncPtr0[Unit]].toInt)
+      res(24) = align(res(23) + sizeof[CFuncPtr0[Unit]].toInt, alignmentof[uv__io_t].toInt)
+      res(25) = align(res(24) + sizeof[uv__io_t].toInt, alignmentof[CInt].toInt)
+      res(26) = align(res(25) + sizeof[CInt].toInt, alignmentof[uv_loop_t.Struct1].toInt)
+      res(27) = align(res(26) + sizeof[uv_loop_t.Struct1].toInt, alignmentof[uint64_t].toInt)
+      res(28) = align(res(27) + sizeof[uint64_t].toInt, alignmentof[uint64_t].toInt)
+      res(29) = align(res(28) + sizeof[uint64_t].toInt, alignmentof[CArray[CInt, Nat._2]].toInt)
+      res(30) = align(res(29) + sizeof[CArray[CInt, Nat._2]].toInt, alignmentof[uv__io_t].toInt)
+      res(31) = align(res(30) + sizeof[uv__io_t].toInt, alignmentof[uv_signal_t].toInt)
+      res(32) = align(res(31) + sizeof[uv_signal_t].toInt, alignmentof[CInt].toInt)
+      res(33) = align(res(32) + sizeof[CInt].toInt, alignmentof[uv_thread_t].toInt)
+      res(34) = align(res(33) + sizeof[uv_thread_t].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(35) = align(res(34) + sizeof[Ptr[Byte]].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(36) = align(res(35) + sizeof[Ptr[Byte]].toInt, alignmentof[uv_mutex_t].toInt)
+      res(37) = align(res(36) + sizeof[uv_mutex_t].toInt, alignmentof[uv_sem_t].toInt)
+      res(38) = align(res(37) + sizeof[uv_sem_t].toInt, alignmentof[uv__queue].toInt)
+      res
+    end offsets
 
   opaque type uv_metrics_s = CStruct4[uint64_t, uint64_t, uint64_t, CArray[Ptr[uint64_t], Nat.Digit2[Nat._1, Nat._3]]]
   object uv_metrics_s:
@@ -3454,52 +3626,87 @@ object structs:
       (!____ptr).pipe_fname = pipe_fname
       ____ptr
     extension (struct: uv_pipe_s)
-      def data: Ptr[Byte] = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]]
-      def data_=(value: Ptr[Byte]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def loop: Ptr[uv_loop_t] = !struct.at(8).asInstanceOf[Ptr[Ptr[uv_loop_t]]]
-      def loop_=(value: Ptr[uv_loop_t]): Unit = !struct.at(8).asInstanceOf[Ptr[Ptr[uv_loop_t]]] = value
-      def `type`: uv_handle_type = !struct.at(16).asInstanceOf[Ptr[uv_handle_type]]
-      def type_=(value: uv_handle_type): Unit = !struct.at(16).asInstanceOf[Ptr[uv_handle_type]] = value
-      def close_cb: uv_close_cb = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]]
-      def close_cb_=(value: uv_close_cb): Unit = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]] = value
-      def handle_queue: uv__queue = !struct.at(32).asInstanceOf[Ptr[uv__queue]]
-      def handle_queue_=(value: uv__queue): Unit = !struct.at(32).asInstanceOf[Ptr[uv__queue]] = value
-      def u: uv_pipe_s.Union0 = !struct.at(48).asInstanceOf[Ptr[uv_pipe_s.Union0]]
-      def u_=(value: uv_pipe_s.Union0): Unit = !struct.at(48).asInstanceOf[Ptr[uv_pipe_s.Union0]] = value
-      def next_closing: Ptr[uv_handle_t] = !struct.at(80).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
-      def next_closing_=(value: Ptr[uv_handle_t]): Unit = !struct.at(80).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
-      def flags: CUnsignedInt = !struct.at(88).asInstanceOf[Ptr[CUnsignedInt]]
-      def flags_=(value: CUnsignedInt): Unit = !struct.at(88).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def write_queue_size: size_t = !struct.at(96).asInstanceOf[Ptr[size_t]]
-      def write_queue_size_=(value: size_t): Unit = !struct.at(96).asInstanceOf[Ptr[size_t]] = value
-      def alloc_cb: uv_alloc_cb = !struct.at(104).asInstanceOf[Ptr[uv_alloc_cb]]
-      def alloc_cb_=(value: uv_alloc_cb): Unit = !struct.at(104).asInstanceOf[Ptr[uv_alloc_cb]] = value
-      def read_cb: uv_read_cb = !struct.at(112).asInstanceOf[Ptr[uv_read_cb]]
-      def read_cb_=(value: uv_read_cb): Unit = !struct.at(112).asInstanceOf[Ptr[uv_read_cb]] = value
-      def connect_req: Ptr[uv_connect_t] = !struct.at(120).asInstanceOf[Ptr[Ptr[uv_connect_t]]]
-      def connect_req_=(value: Ptr[uv_connect_t]): Unit = !struct.at(120).asInstanceOf[Ptr[Ptr[uv_connect_t]]] = value
-      def shutdown_req: Ptr[uv_shutdown_t] = !struct.at(128).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]]
-      def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at(128).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]] = value
-      def io_watcher: uv__io_t = !struct.at(136).asInstanceOf[Ptr[uv__io_t]]
-      def io_watcher_=(value: uv__io_t): Unit = !struct.at(136).asInstanceOf[Ptr[uv__io_t]] = value
-      def write_queue: uv__queue = !struct.at(200).asInstanceOf[Ptr[uv__queue]]
-      def write_queue_=(value: uv__queue): Unit = !struct.at(200).asInstanceOf[Ptr[uv__queue]] = value
-      def write_completed_queue: uv__queue = !struct.at(216).asInstanceOf[Ptr[uv__queue]]
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at(216).asInstanceOf[Ptr[uv__queue]] = value
-      def connection_cb: uv_connection_cb = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]]
-      def connection_cb_=(value: uv_connection_cb): Unit = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]] = value
-      def delayed_error: CInt = !struct.at(240).asInstanceOf[Ptr[CInt]]
-      def delayed_error_=(value: CInt): Unit = !struct.at(240).asInstanceOf[Ptr[CInt]] = value
-      def accepted_fd: CInt = !struct.at(244).asInstanceOf[Ptr[CInt]]
-      def accepted_fd_=(value: CInt): Unit = !struct.at(244).asInstanceOf[Ptr[CInt]] = value
-      def queued_fds: Ptr[Byte] = !struct.at(248).asInstanceOf[Ptr[Ptr[Byte]]]
-      def queued_fds_=(value: Ptr[Byte]): Unit = !struct.at(248).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def select: Ptr[Byte] = !struct.at(256).asInstanceOf[Ptr[Ptr[Byte]]]
-      def select_=(value: Ptr[Byte]): Unit = !struct.at(256).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def ipc: CInt = !struct.at(264).asInstanceOf[Ptr[CInt]]
-      def ipc_=(value: CInt): Unit = !struct.at(264).asInstanceOf[Ptr[CInt]] = value
-      def pipe_fname: CString = !struct.at(272).asInstanceOf[Ptr[CString]]
-      def pipe_fname_=(value: CString): Unit = !struct.at(272).asInstanceOf[Ptr[CString]] = value
+      def data: Ptr[Byte] = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def data_=(value: Ptr[Byte]): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def loop: Ptr[uv_loop_t] = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[uv_loop_t]]]
+      def loop_=(value: Ptr[uv_loop_t]): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[uv_loop_t]]] = value
+      def `type`: uv_handle_type = !struct.at(offsets(2)).asInstanceOf[Ptr[uv_handle_type]]
+      def type_=(value: uv_handle_type): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[uv_handle_type]] = value
+      def close_cb: uv_close_cb = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_close_cb]]
+      def close_cb_=(value: uv_close_cb): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_close_cb]] = value
+      def handle_queue: uv__queue = !struct.at(offsets(4)).asInstanceOf[Ptr[uv__queue]]
+      def handle_queue_=(value: uv__queue): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[uv__queue]] = value
+      def u: uv_pipe_s.Union0 = !struct.at(offsets(5)).asInstanceOf[Ptr[uv_pipe_s.Union0]]
+      def u_=(value: uv_pipe_s.Union0): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[uv_pipe_s.Union0]] = value
+      def next_closing: Ptr[uv_handle_t] = !struct.at(offsets(6)).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
+      def next_closing_=(value: Ptr[uv_handle_t]): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
+      def flags: CUnsignedInt = !struct.at(offsets(7)).asInstanceOf[Ptr[CUnsignedInt]]
+      def flags_=(value: CUnsignedInt): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def write_queue_size: size_t = !struct.at(offsets(8)).asInstanceOf[Ptr[size_t]]
+      def write_queue_size_=(value: size_t): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[size_t]] = value
+      def alloc_cb: uv_alloc_cb = !struct.at(offsets(9)).asInstanceOf[Ptr[uv_alloc_cb]]
+      def alloc_cb_=(value: uv_alloc_cb): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[uv_alloc_cb]] = value
+      def read_cb: uv_read_cb = !struct.at(offsets(10)).asInstanceOf[Ptr[uv_read_cb]]
+      def read_cb_=(value: uv_read_cb): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[uv_read_cb]] = value
+      def connect_req: Ptr[uv_connect_t] = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[uv_connect_t]]]
+      def connect_req_=(value: Ptr[uv_connect_t]): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[uv_connect_t]]] = value
+      def shutdown_req: Ptr[uv_shutdown_t] = !struct.at(offsets(12)).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]]
+      def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]] = value
+      def io_watcher: uv__io_t = !struct.at(offsets(13)).asInstanceOf[Ptr[uv__io_t]]
+      def io_watcher_=(value: uv__io_t): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[uv__io_t]] = value
+      def write_queue: uv__queue = !struct.at(offsets(14)).asInstanceOf[Ptr[uv__queue]]
+      def write_queue_=(value: uv__queue): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[uv__queue]] = value
+      def write_completed_queue: uv__queue = !struct.at(offsets(15)).asInstanceOf[Ptr[uv__queue]]
+      def write_completed_queue_=(value: uv__queue): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[uv__queue]] = value
+      def connection_cb: uv_connection_cb = !struct.at(offsets(16)).asInstanceOf[Ptr[uv_connection_cb]]
+      def connection_cb_=(value: uv_connection_cb): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[uv_connection_cb]] = value
+      def delayed_error: CInt = !struct.at(offsets(17)).asInstanceOf[Ptr[CInt]]
+      def delayed_error_=(value: CInt): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[CInt]] = value
+      def accepted_fd: CInt = !struct.at(offsets(18)).asInstanceOf[Ptr[CInt]]
+      def accepted_fd_=(value: CInt): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[CInt]] = value
+      def queued_fds: Ptr[Byte] = !struct.at(offsets(19)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def queued_fds_=(value: Ptr[Byte]): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def select: Ptr[Byte] = !struct.at(offsets(20)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def select_=(value: Ptr[Byte]): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def ipc: CInt = !struct.at(offsets(21)).asInstanceOf[Ptr[CInt]]
+      def ipc_=(value: CInt): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[CInt]] = value
+      def pipe_fname: CString = !struct.at(offsets(22)).asInstanceOf[Ptr[CString]]
+      def pipe_fname_=(value: CString): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[CString]] = value
+    val offsets: Array[Int] = 
+      val res = Array.ofDim[Int](23)
+      def align(offset: Int, alignment: Int) = {
+        val alignmentMask = alignment - 1
+        val padding =
+          if ((offset & alignmentMask) == 0) 0
+          else alignment - (offset & alignmentMask)
+        offset + padding
+      }
+      
+      res(0) = align(0, alignmentof[Ptr[Byte]].toInt)
+      res(1) = align(res(0) + sizeof[Ptr[Byte]].toInt, alignmentof[Ptr[uv_loop_t]].toInt)
+      res(2) = align(res(1) + sizeof[Ptr[uv_loop_t]].toInt, alignmentof[uv_handle_type].toInt)
+      res(3) = align(res(2) + sizeof[uv_handle_type].toInt, alignmentof[uv_close_cb].toInt)
+      res(4) = align(res(3) + sizeof[uv_close_cb].toInt, alignmentof[uv__queue].toInt)
+      res(5) = align(res(4) + sizeof[uv__queue].toInt, alignmentof[uv_pipe_s.Union0].toInt)
+      res(6) = align(res(5) + sizeof[uv_pipe_s.Union0].toInt, alignmentof[Ptr[uv_handle_t]].toInt)
+      res(7) = align(res(6) + sizeof[Ptr[uv_handle_t]].toInt, alignmentof[CUnsignedInt].toInt)
+      res(8) = align(res(7) + sizeof[CUnsignedInt].toInt, alignmentof[size_t].toInt)
+      res(9) = align(res(8) + sizeof[size_t].toInt, alignmentof[uv_alloc_cb].toInt)
+      res(10) = align(res(9) + sizeof[uv_alloc_cb].toInt, alignmentof[uv_read_cb].toInt)
+      res(11) = align(res(10) + sizeof[uv_read_cb].toInt, alignmentof[Ptr[uv_connect_t]].toInt)
+      res(12) = align(res(11) + sizeof[Ptr[uv_connect_t]].toInt, alignmentof[Ptr[uv_shutdown_t]].toInt)
+      res(13) = align(res(12) + sizeof[Ptr[uv_shutdown_t]].toInt, alignmentof[uv__io_t].toInt)
+      res(14) = align(res(13) + sizeof[uv__io_t].toInt, alignmentof[uv__queue].toInt)
+      res(15) = align(res(14) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(16) = align(res(15) + sizeof[uv__queue].toInt, alignmentof[uv_connection_cb].toInt)
+      res(17) = align(res(16) + sizeof[uv_connection_cb].toInt, alignmentof[CInt].toInt)
+      res(18) = align(res(17) + sizeof[CInt].toInt, alignmentof[CInt].toInt)
+      res(19) = align(res(18) + sizeof[CInt].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(20) = align(res(19) + sizeof[Ptr[Byte]].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(21) = align(res(20) + sizeof[Ptr[Byte]].toInt, alignmentof[CInt].toInt)
+      res(22) = align(res(21) + sizeof[CInt].toInt, alignmentof[CString].toInt)
+      res
+    end offsets
 
   opaque type uv_pipe_t = CArray[CChar, Nat.Digit3[Nat._2, Nat._8, Nat._0]]
   object uv_pipe_t:
@@ -3555,52 +3762,87 @@ object structs:
       (!____ptr).pipe_fname = pipe_fname
       ____ptr
     extension (struct: uv_pipe_t)
-      def data: Ptr[Byte] = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]]
-      def data_=(value: Ptr[Byte]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def loop: Ptr[uv_loop_t] = !struct.at(8).asInstanceOf[Ptr[Ptr[uv_loop_t]]]
-      def loop_=(value: Ptr[uv_loop_t]): Unit = !struct.at(8).asInstanceOf[Ptr[Ptr[uv_loop_t]]] = value
-      def `type`: uv_handle_type = !struct.at(16).asInstanceOf[Ptr[uv_handle_type]]
-      def type_=(value: uv_handle_type): Unit = !struct.at(16).asInstanceOf[Ptr[uv_handle_type]] = value
-      def close_cb: uv_close_cb = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]]
-      def close_cb_=(value: uv_close_cb): Unit = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]] = value
-      def handle_queue: uv__queue = !struct.at(32).asInstanceOf[Ptr[uv__queue]]
-      def handle_queue_=(value: uv__queue): Unit = !struct.at(32).asInstanceOf[Ptr[uv__queue]] = value
-      def u: uv_pipe_t.Union0 = !struct.at(48).asInstanceOf[Ptr[uv_pipe_t.Union0]]
-      def u_=(value: uv_pipe_t.Union0): Unit = !struct.at(48).asInstanceOf[Ptr[uv_pipe_t.Union0]] = value
-      def next_closing: Ptr[uv_handle_t] = !struct.at(80).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
-      def next_closing_=(value: Ptr[uv_handle_t]): Unit = !struct.at(80).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
-      def flags: CUnsignedInt = !struct.at(88).asInstanceOf[Ptr[CUnsignedInt]]
-      def flags_=(value: CUnsignedInt): Unit = !struct.at(88).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def write_queue_size: size_t = !struct.at(96).asInstanceOf[Ptr[size_t]]
-      def write_queue_size_=(value: size_t): Unit = !struct.at(96).asInstanceOf[Ptr[size_t]] = value
-      def alloc_cb: uv_alloc_cb = !struct.at(104).asInstanceOf[Ptr[uv_alloc_cb]]
-      def alloc_cb_=(value: uv_alloc_cb): Unit = !struct.at(104).asInstanceOf[Ptr[uv_alloc_cb]] = value
-      def read_cb: uv_read_cb = !struct.at(112).asInstanceOf[Ptr[uv_read_cb]]
-      def read_cb_=(value: uv_read_cb): Unit = !struct.at(112).asInstanceOf[Ptr[uv_read_cb]] = value
-      def connect_req: Ptr[uv_connect_t] = !struct.at(120).asInstanceOf[Ptr[Ptr[uv_connect_t]]]
-      def connect_req_=(value: Ptr[uv_connect_t]): Unit = !struct.at(120).asInstanceOf[Ptr[Ptr[uv_connect_t]]] = value
-      def shutdown_req: Ptr[uv_shutdown_t] = !struct.at(128).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]]
-      def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at(128).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]] = value
-      def io_watcher: uv__io_t = !struct.at(136).asInstanceOf[Ptr[uv__io_t]]
-      def io_watcher_=(value: uv__io_t): Unit = !struct.at(136).asInstanceOf[Ptr[uv__io_t]] = value
-      def write_queue: uv__queue = !struct.at(200).asInstanceOf[Ptr[uv__queue]]
-      def write_queue_=(value: uv__queue): Unit = !struct.at(200).asInstanceOf[Ptr[uv__queue]] = value
-      def write_completed_queue: uv__queue = !struct.at(216).asInstanceOf[Ptr[uv__queue]]
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at(216).asInstanceOf[Ptr[uv__queue]] = value
-      def connection_cb: uv_connection_cb = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]]
-      def connection_cb_=(value: uv_connection_cb): Unit = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]] = value
-      def delayed_error: CInt = !struct.at(240).asInstanceOf[Ptr[CInt]]
-      def delayed_error_=(value: CInt): Unit = !struct.at(240).asInstanceOf[Ptr[CInt]] = value
-      def accepted_fd: CInt = !struct.at(244).asInstanceOf[Ptr[CInt]]
-      def accepted_fd_=(value: CInt): Unit = !struct.at(244).asInstanceOf[Ptr[CInt]] = value
-      def queued_fds: Ptr[Byte] = !struct.at(248).asInstanceOf[Ptr[Ptr[Byte]]]
-      def queued_fds_=(value: Ptr[Byte]): Unit = !struct.at(248).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def select: Ptr[Byte] = !struct.at(256).asInstanceOf[Ptr[Ptr[Byte]]]
-      def select_=(value: Ptr[Byte]): Unit = !struct.at(256).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def ipc: CInt = !struct.at(264).asInstanceOf[Ptr[CInt]]
-      def ipc_=(value: CInt): Unit = !struct.at(264).asInstanceOf[Ptr[CInt]] = value
-      def pipe_fname: CString = !struct.at(272).asInstanceOf[Ptr[CString]]
-      def pipe_fname_=(value: CString): Unit = !struct.at(272).asInstanceOf[Ptr[CString]] = value
+      def data: Ptr[Byte] = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def data_=(value: Ptr[Byte]): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def loop: Ptr[uv_loop_t] = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[uv_loop_t]]]
+      def loop_=(value: Ptr[uv_loop_t]): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[uv_loop_t]]] = value
+      def `type`: uv_handle_type = !struct.at(offsets(2)).asInstanceOf[Ptr[uv_handle_type]]
+      def type_=(value: uv_handle_type): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[uv_handle_type]] = value
+      def close_cb: uv_close_cb = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_close_cb]]
+      def close_cb_=(value: uv_close_cb): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_close_cb]] = value
+      def handle_queue: uv__queue = !struct.at(offsets(4)).asInstanceOf[Ptr[uv__queue]]
+      def handle_queue_=(value: uv__queue): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[uv__queue]] = value
+      def u: uv_pipe_t.Union0 = !struct.at(offsets(5)).asInstanceOf[Ptr[uv_pipe_t.Union0]]
+      def u_=(value: uv_pipe_t.Union0): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[uv_pipe_t.Union0]] = value
+      def next_closing: Ptr[uv_handle_t] = !struct.at(offsets(6)).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
+      def next_closing_=(value: Ptr[uv_handle_t]): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
+      def flags: CUnsignedInt = !struct.at(offsets(7)).asInstanceOf[Ptr[CUnsignedInt]]
+      def flags_=(value: CUnsignedInt): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def write_queue_size: size_t = !struct.at(offsets(8)).asInstanceOf[Ptr[size_t]]
+      def write_queue_size_=(value: size_t): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[size_t]] = value
+      def alloc_cb: uv_alloc_cb = !struct.at(offsets(9)).asInstanceOf[Ptr[uv_alloc_cb]]
+      def alloc_cb_=(value: uv_alloc_cb): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[uv_alloc_cb]] = value
+      def read_cb: uv_read_cb = !struct.at(offsets(10)).asInstanceOf[Ptr[uv_read_cb]]
+      def read_cb_=(value: uv_read_cb): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[uv_read_cb]] = value
+      def connect_req: Ptr[uv_connect_t] = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[uv_connect_t]]]
+      def connect_req_=(value: Ptr[uv_connect_t]): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[uv_connect_t]]] = value
+      def shutdown_req: Ptr[uv_shutdown_t] = !struct.at(offsets(12)).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]]
+      def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]] = value
+      def io_watcher: uv__io_t = !struct.at(offsets(13)).asInstanceOf[Ptr[uv__io_t]]
+      def io_watcher_=(value: uv__io_t): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[uv__io_t]] = value
+      def write_queue: uv__queue = !struct.at(offsets(14)).asInstanceOf[Ptr[uv__queue]]
+      def write_queue_=(value: uv__queue): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[uv__queue]] = value
+      def write_completed_queue: uv__queue = !struct.at(offsets(15)).asInstanceOf[Ptr[uv__queue]]
+      def write_completed_queue_=(value: uv__queue): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[uv__queue]] = value
+      def connection_cb: uv_connection_cb = !struct.at(offsets(16)).asInstanceOf[Ptr[uv_connection_cb]]
+      def connection_cb_=(value: uv_connection_cb): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[uv_connection_cb]] = value
+      def delayed_error: CInt = !struct.at(offsets(17)).asInstanceOf[Ptr[CInt]]
+      def delayed_error_=(value: CInt): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[CInt]] = value
+      def accepted_fd: CInt = !struct.at(offsets(18)).asInstanceOf[Ptr[CInt]]
+      def accepted_fd_=(value: CInt): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[CInt]] = value
+      def queued_fds: Ptr[Byte] = !struct.at(offsets(19)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def queued_fds_=(value: Ptr[Byte]): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def select: Ptr[Byte] = !struct.at(offsets(20)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def select_=(value: Ptr[Byte]): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def ipc: CInt = !struct.at(offsets(21)).asInstanceOf[Ptr[CInt]]
+      def ipc_=(value: CInt): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[CInt]] = value
+      def pipe_fname: CString = !struct.at(offsets(22)).asInstanceOf[Ptr[CString]]
+      def pipe_fname_=(value: CString): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[CString]] = value
+    val offsets: Array[Int] = 
+      val res = Array.ofDim[Int](23)
+      def align(offset: Int, alignment: Int) = {
+        val alignmentMask = alignment - 1
+        val padding =
+          if ((offset & alignmentMask) == 0) 0
+          else alignment - (offset & alignmentMask)
+        offset + padding
+      }
+      
+      res(0) = align(0, alignmentof[Ptr[Byte]].toInt)
+      res(1) = align(res(0) + sizeof[Ptr[Byte]].toInt, alignmentof[Ptr[uv_loop_t]].toInt)
+      res(2) = align(res(1) + sizeof[Ptr[uv_loop_t]].toInt, alignmentof[uv_handle_type].toInt)
+      res(3) = align(res(2) + sizeof[uv_handle_type].toInt, alignmentof[uv_close_cb].toInt)
+      res(4) = align(res(3) + sizeof[uv_close_cb].toInt, alignmentof[uv__queue].toInt)
+      res(5) = align(res(4) + sizeof[uv__queue].toInt, alignmentof[uv_pipe_t.Union0].toInt)
+      res(6) = align(res(5) + sizeof[uv_pipe_t.Union0].toInt, alignmentof[Ptr[uv_handle_t]].toInt)
+      res(7) = align(res(6) + sizeof[Ptr[uv_handle_t]].toInt, alignmentof[CUnsignedInt].toInt)
+      res(8) = align(res(7) + sizeof[CUnsignedInt].toInt, alignmentof[size_t].toInt)
+      res(9) = align(res(8) + sizeof[size_t].toInt, alignmentof[uv_alloc_cb].toInt)
+      res(10) = align(res(9) + sizeof[uv_alloc_cb].toInt, alignmentof[uv_read_cb].toInt)
+      res(11) = align(res(10) + sizeof[uv_read_cb].toInt, alignmentof[Ptr[uv_connect_t]].toInt)
+      res(12) = align(res(11) + sizeof[Ptr[uv_connect_t]].toInt, alignmentof[Ptr[uv_shutdown_t]].toInt)
+      res(13) = align(res(12) + sizeof[Ptr[uv_shutdown_t]].toInt, alignmentof[uv__io_t].toInt)
+      res(14) = align(res(13) + sizeof[uv__io_t].toInt, alignmentof[uv__queue].toInt)
+      res(15) = align(res(14) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(16) = align(res(15) + sizeof[uv__queue].toInt, alignmentof[uv_connection_cb].toInt)
+      res(17) = align(res(16) + sizeof[uv_connection_cb].toInt, alignmentof[CInt].toInt)
+      res(18) = align(res(17) + sizeof[CInt].toInt, alignmentof[CInt].toInt)
+      res(19) = align(res(18) + sizeof[CInt].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(20) = align(res(19) + sizeof[Ptr[Byte]].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(21) = align(res(20) + sizeof[Ptr[Byte]].toInt, alignmentof[CInt].toInt)
+      res(22) = align(res(21) + sizeof[CInt].toInt, alignmentof[CString].toInt)
+      res
+    end offsets
 
   opaque type uv_poll_s = CStruct10[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_poll_s.Union0, Ptr[Byte], CUnsignedInt, Ptr[Byte], uv__io_t]
   object uv_poll_s:
@@ -5324,52 +5566,87 @@ object structs:
       (!____ptr).mode = mode
       ____ptr
     extension (struct: uv_tty_s)
-      def data: Ptr[Byte] = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]]
-      def data_=(value: Ptr[Byte]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def loop: Ptr[uv_loop_t] = !struct.at(8).asInstanceOf[Ptr[Ptr[uv_loop_t]]]
-      def loop_=(value: Ptr[uv_loop_t]): Unit = !struct.at(8).asInstanceOf[Ptr[Ptr[uv_loop_t]]] = value
-      def `type`: uv_handle_type = !struct.at(16).asInstanceOf[Ptr[uv_handle_type]]
-      def type_=(value: uv_handle_type): Unit = !struct.at(16).asInstanceOf[Ptr[uv_handle_type]] = value
-      def close_cb: uv_close_cb = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]]
-      def close_cb_=(value: uv_close_cb): Unit = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]] = value
-      def handle_queue: uv__queue = !struct.at(32).asInstanceOf[Ptr[uv__queue]]
-      def handle_queue_=(value: uv__queue): Unit = !struct.at(32).asInstanceOf[Ptr[uv__queue]] = value
-      def u: uv_tty_s.Union0 = !struct.at(48).asInstanceOf[Ptr[uv_tty_s.Union0]]
-      def u_=(value: uv_tty_s.Union0): Unit = !struct.at(48).asInstanceOf[Ptr[uv_tty_s.Union0]] = value
-      def next_closing: Ptr[uv_handle_t] = !struct.at(80).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
-      def next_closing_=(value: Ptr[uv_handle_t]): Unit = !struct.at(80).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
-      def flags: CUnsignedInt = !struct.at(88).asInstanceOf[Ptr[CUnsignedInt]]
-      def flags_=(value: CUnsignedInt): Unit = !struct.at(88).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def write_queue_size: size_t = !struct.at(96).asInstanceOf[Ptr[size_t]]
-      def write_queue_size_=(value: size_t): Unit = !struct.at(96).asInstanceOf[Ptr[size_t]] = value
-      def alloc_cb: uv_alloc_cb = !struct.at(104).asInstanceOf[Ptr[uv_alloc_cb]]
-      def alloc_cb_=(value: uv_alloc_cb): Unit = !struct.at(104).asInstanceOf[Ptr[uv_alloc_cb]] = value
-      def read_cb: uv_read_cb = !struct.at(112).asInstanceOf[Ptr[uv_read_cb]]
-      def read_cb_=(value: uv_read_cb): Unit = !struct.at(112).asInstanceOf[Ptr[uv_read_cb]] = value
-      def connect_req: Ptr[uv_connect_t] = !struct.at(120).asInstanceOf[Ptr[Ptr[uv_connect_t]]]
-      def connect_req_=(value: Ptr[uv_connect_t]): Unit = !struct.at(120).asInstanceOf[Ptr[Ptr[uv_connect_t]]] = value
-      def shutdown_req: Ptr[uv_shutdown_t] = !struct.at(128).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]]
-      def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at(128).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]] = value
-      def io_watcher: uv__io_t = !struct.at(136).asInstanceOf[Ptr[uv__io_t]]
-      def io_watcher_=(value: uv__io_t): Unit = !struct.at(136).asInstanceOf[Ptr[uv__io_t]] = value
-      def write_queue: uv__queue = !struct.at(200).asInstanceOf[Ptr[uv__queue]]
-      def write_queue_=(value: uv__queue): Unit = !struct.at(200).asInstanceOf[Ptr[uv__queue]] = value
-      def write_completed_queue: uv__queue = !struct.at(216).asInstanceOf[Ptr[uv__queue]]
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at(216).asInstanceOf[Ptr[uv__queue]] = value
-      def connection_cb: uv_connection_cb = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]]
-      def connection_cb_=(value: uv_connection_cb): Unit = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]] = value
-      def delayed_error: CInt = !struct.at(240).asInstanceOf[Ptr[CInt]]
-      def delayed_error_=(value: CInt): Unit = !struct.at(240).asInstanceOf[Ptr[CInt]] = value
-      def accepted_fd: CInt = !struct.at(244).asInstanceOf[Ptr[CInt]]
-      def accepted_fd_=(value: CInt): Unit = !struct.at(244).asInstanceOf[Ptr[CInt]] = value
-      def queued_fds: Ptr[Byte] = !struct.at(248).asInstanceOf[Ptr[Ptr[Byte]]]
-      def queued_fds_=(value: Ptr[Byte]): Unit = !struct.at(248).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def select: Ptr[Byte] = !struct.at(256).asInstanceOf[Ptr[Ptr[Byte]]]
-      def select_=(value: Ptr[Byte]): Unit = !struct.at(256).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def orig_termios: termios = !struct.at(264).asInstanceOf[Ptr[termios]]
-      def orig_termios_=(value: termios): Unit = !struct.at(264).asInstanceOf[Ptr[termios]] = value
-      def mode: CInt = !struct.at(336).asInstanceOf[Ptr[CInt]]
-      def mode_=(value: CInt): Unit = !struct.at(336).asInstanceOf[Ptr[CInt]] = value
+      def data: Ptr[Byte] = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def data_=(value: Ptr[Byte]): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def loop: Ptr[uv_loop_t] = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[uv_loop_t]]]
+      def loop_=(value: Ptr[uv_loop_t]): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[uv_loop_t]]] = value
+      def `type`: uv_handle_type = !struct.at(offsets(2)).asInstanceOf[Ptr[uv_handle_type]]
+      def type_=(value: uv_handle_type): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[uv_handle_type]] = value
+      def close_cb: uv_close_cb = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_close_cb]]
+      def close_cb_=(value: uv_close_cb): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_close_cb]] = value
+      def handle_queue: uv__queue = !struct.at(offsets(4)).asInstanceOf[Ptr[uv__queue]]
+      def handle_queue_=(value: uv__queue): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[uv__queue]] = value
+      def u: uv_tty_s.Union0 = !struct.at(offsets(5)).asInstanceOf[Ptr[uv_tty_s.Union0]]
+      def u_=(value: uv_tty_s.Union0): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[uv_tty_s.Union0]] = value
+      def next_closing: Ptr[uv_handle_t] = !struct.at(offsets(6)).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
+      def next_closing_=(value: Ptr[uv_handle_t]): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
+      def flags: CUnsignedInt = !struct.at(offsets(7)).asInstanceOf[Ptr[CUnsignedInt]]
+      def flags_=(value: CUnsignedInt): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def write_queue_size: size_t = !struct.at(offsets(8)).asInstanceOf[Ptr[size_t]]
+      def write_queue_size_=(value: size_t): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[size_t]] = value
+      def alloc_cb: uv_alloc_cb = !struct.at(offsets(9)).asInstanceOf[Ptr[uv_alloc_cb]]
+      def alloc_cb_=(value: uv_alloc_cb): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[uv_alloc_cb]] = value
+      def read_cb: uv_read_cb = !struct.at(offsets(10)).asInstanceOf[Ptr[uv_read_cb]]
+      def read_cb_=(value: uv_read_cb): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[uv_read_cb]] = value
+      def connect_req: Ptr[uv_connect_t] = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[uv_connect_t]]]
+      def connect_req_=(value: Ptr[uv_connect_t]): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[uv_connect_t]]] = value
+      def shutdown_req: Ptr[uv_shutdown_t] = !struct.at(offsets(12)).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]]
+      def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]] = value
+      def io_watcher: uv__io_t = !struct.at(offsets(13)).asInstanceOf[Ptr[uv__io_t]]
+      def io_watcher_=(value: uv__io_t): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[uv__io_t]] = value
+      def write_queue: uv__queue = !struct.at(offsets(14)).asInstanceOf[Ptr[uv__queue]]
+      def write_queue_=(value: uv__queue): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[uv__queue]] = value
+      def write_completed_queue: uv__queue = !struct.at(offsets(15)).asInstanceOf[Ptr[uv__queue]]
+      def write_completed_queue_=(value: uv__queue): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[uv__queue]] = value
+      def connection_cb: uv_connection_cb = !struct.at(offsets(16)).asInstanceOf[Ptr[uv_connection_cb]]
+      def connection_cb_=(value: uv_connection_cb): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[uv_connection_cb]] = value
+      def delayed_error: CInt = !struct.at(offsets(17)).asInstanceOf[Ptr[CInt]]
+      def delayed_error_=(value: CInt): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[CInt]] = value
+      def accepted_fd: CInt = !struct.at(offsets(18)).asInstanceOf[Ptr[CInt]]
+      def accepted_fd_=(value: CInt): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[CInt]] = value
+      def queued_fds: Ptr[Byte] = !struct.at(offsets(19)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def queued_fds_=(value: Ptr[Byte]): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def select: Ptr[Byte] = !struct.at(offsets(20)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def select_=(value: Ptr[Byte]): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def orig_termios: termios = !struct.at(offsets(21)).asInstanceOf[Ptr[termios]]
+      def orig_termios_=(value: termios): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[termios]] = value
+      def mode: CInt = !struct.at(offsets(22)).asInstanceOf[Ptr[CInt]]
+      def mode_=(value: CInt): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[CInt]] = value
+    val offsets: Array[Int] = 
+      val res = Array.ofDim[Int](23)
+      def align(offset: Int, alignment: Int) = {
+        val alignmentMask = alignment - 1
+        val padding =
+          if ((offset & alignmentMask) == 0) 0
+          else alignment - (offset & alignmentMask)
+        offset + padding
+      }
+      
+      res(0) = align(0, alignmentof[Ptr[Byte]].toInt)
+      res(1) = align(res(0) + sizeof[Ptr[Byte]].toInt, alignmentof[Ptr[uv_loop_t]].toInt)
+      res(2) = align(res(1) + sizeof[Ptr[uv_loop_t]].toInt, alignmentof[uv_handle_type].toInt)
+      res(3) = align(res(2) + sizeof[uv_handle_type].toInt, alignmentof[uv_close_cb].toInt)
+      res(4) = align(res(3) + sizeof[uv_close_cb].toInt, alignmentof[uv__queue].toInt)
+      res(5) = align(res(4) + sizeof[uv__queue].toInt, alignmentof[uv_tty_s.Union0].toInt)
+      res(6) = align(res(5) + sizeof[uv_tty_s.Union0].toInt, alignmentof[Ptr[uv_handle_t]].toInt)
+      res(7) = align(res(6) + sizeof[Ptr[uv_handle_t]].toInt, alignmentof[CUnsignedInt].toInt)
+      res(8) = align(res(7) + sizeof[CUnsignedInt].toInt, alignmentof[size_t].toInt)
+      res(9) = align(res(8) + sizeof[size_t].toInt, alignmentof[uv_alloc_cb].toInt)
+      res(10) = align(res(9) + sizeof[uv_alloc_cb].toInt, alignmentof[uv_read_cb].toInt)
+      res(11) = align(res(10) + sizeof[uv_read_cb].toInt, alignmentof[Ptr[uv_connect_t]].toInt)
+      res(12) = align(res(11) + sizeof[Ptr[uv_connect_t]].toInt, alignmentof[Ptr[uv_shutdown_t]].toInt)
+      res(13) = align(res(12) + sizeof[Ptr[uv_shutdown_t]].toInt, alignmentof[uv__io_t].toInt)
+      res(14) = align(res(13) + sizeof[uv__io_t].toInt, alignmentof[uv__queue].toInt)
+      res(15) = align(res(14) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(16) = align(res(15) + sizeof[uv__queue].toInt, alignmentof[uv_connection_cb].toInt)
+      res(17) = align(res(16) + sizeof[uv_connection_cb].toInt, alignmentof[CInt].toInt)
+      res(18) = align(res(17) + sizeof[CInt].toInt, alignmentof[CInt].toInt)
+      res(19) = align(res(18) + sizeof[CInt].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(20) = align(res(19) + sizeof[Ptr[Byte]].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(21) = align(res(20) + sizeof[Ptr[Byte]].toInt, alignmentof[termios].toInt)
+      res(22) = align(res(21) + sizeof[termios].toInt, alignmentof[CInt].toInt)
+      res
+    end offsets
 
   opaque type uv_tty_t = CArray[CChar, Nat.Digit3[Nat._3, Nat._4, Nat._4]]
   object uv_tty_t:
@@ -5425,52 +5702,87 @@ object structs:
       (!____ptr).mode = mode
       ____ptr
     extension (struct: uv_tty_t)
-      def data: Ptr[Byte] = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]]
-      def data_=(value: Ptr[Byte]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def loop: Ptr[uv_loop_t] = !struct.at(8).asInstanceOf[Ptr[Ptr[uv_loop_t]]]
-      def loop_=(value: Ptr[uv_loop_t]): Unit = !struct.at(8).asInstanceOf[Ptr[Ptr[uv_loop_t]]] = value
-      def `type`: uv_handle_type = !struct.at(16).asInstanceOf[Ptr[uv_handle_type]]
-      def type_=(value: uv_handle_type): Unit = !struct.at(16).asInstanceOf[Ptr[uv_handle_type]] = value
-      def close_cb: uv_close_cb = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]]
-      def close_cb_=(value: uv_close_cb): Unit = !struct.at(24).asInstanceOf[Ptr[uv_close_cb]] = value
-      def handle_queue: uv__queue = !struct.at(32).asInstanceOf[Ptr[uv__queue]]
-      def handle_queue_=(value: uv__queue): Unit = !struct.at(32).asInstanceOf[Ptr[uv__queue]] = value
-      def u: uv_tty_t.Union0 = !struct.at(48).asInstanceOf[Ptr[uv_tty_t.Union0]]
-      def u_=(value: uv_tty_t.Union0): Unit = !struct.at(48).asInstanceOf[Ptr[uv_tty_t.Union0]] = value
-      def next_closing: Ptr[uv_handle_t] = !struct.at(80).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
-      def next_closing_=(value: Ptr[uv_handle_t]): Unit = !struct.at(80).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
-      def flags: CUnsignedInt = !struct.at(88).asInstanceOf[Ptr[CUnsignedInt]]
-      def flags_=(value: CUnsignedInt): Unit = !struct.at(88).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def write_queue_size: size_t = !struct.at(96).asInstanceOf[Ptr[size_t]]
-      def write_queue_size_=(value: size_t): Unit = !struct.at(96).asInstanceOf[Ptr[size_t]] = value
-      def alloc_cb: uv_alloc_cb = !struct.at(104).asInstanceOf[Ptr[uv_alloc_cb]]
-      def alloc_cb_=(value: uv_alloc_cb): Unit = !struct.at(104).asInstanceOf[Ptr[uv_alloc_cb]] = value
-      def read_cb: uv_read_cb = !struct.at(112).asInstanceOf[Ptr[uv_read_cb]]
-      def read_cb_=(value: uv_read_cb): Unit = !struct.at(112).asInstanceOf[Ptr[uv_read_cb]] = value
-      def connect_req: Ptr[uv_connect_t] = !struct.at(120).asInstanceOf[Ptr[Ptr[uv_connect_t]]]
-      def connect_req_=(value: Ptr[uv_connect_t]): Unit = !struct.at(120).asInstanceOf[Ptr[Ptr[uv_connect_t]]] = value
-      def shutdown_req: Ptr[uv_shutdown_t] = !struct.at(128).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]]
-      def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at(128).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]] = value
-      def io_watcher: uv__io_t = !struct.at(136).asInstanceOf[Ptr[uv__io_t]]
-      def io_watcher_=(value: uv__io_t): Unit = !struct.at(136).asInstanceOf[Ptr[uv__io_t]] = value
-      def write_queue: uv__queue = !struct.at(200).asInstanceOf[Ptr[uv__queue]]
-      def write_queue_=(value: uv__queue): Unit = !struct.at(200).asInstanceOf[Ptr[uv__queue]] = value
-      def write_completed_queue: uv__queue = !struct.at(216).asInstanceOf[Ptr[uv__queue]]
-      def write_completed_queue_=(value: uv__queue): Unit = !struct.at(216).asInstanceOf[Ptr[uv__queue]] = value
-      def connection_cb: uv_connection_cb = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]]
-      def connection_cb_=(value: uv_connection_cb): Unit = !struct.at(232).asInstanceOf[Ptr[uv_connection_cb]] = value
-      def delayed_error: CInt = !struct.at(240).asInstanceOf[Ptr[CInt]]
-      def delayed_error_=(value: CInt): Unit = !struct.at(240).asInstanceOf[Ptr[CInt]] = value
-      def accepted_fd: CInt = !struct.at(244).asInstanceOf[Ptr[CInt]]
-      def accepted_fd_=(value: CInt): Unit = !struct.at(244).asInstanceOf[Ptr[CInt]] = value
-      def queued_fds: Ptr[Byte] = !struct.at(248).asInstanceOf[Ptr[Ptr[Byte]]]
-      def queued_fds_=(value: Ptr[Byte]): Unit = !struct.at(248).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def select: Ptr[Byte] = !struct.at(256).asInstanceOf[Ptr[Ptr[Byte]]]
-      def select_=(value: Ptr[Byte]): Unit = !struct.at(256).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def orig_termios: termios = !struct.at(264).asInstanceOf[Ptr[termios]]
-      def orig_termios_=(value: termios): Unit = !struct.at(264).asInstanceOf[Ptr[termios]] = value
-      def mode: CInt = !struct.at(336).asInstanceOf[Ptr[CInt]]
-      def mode_=(value: CInt): Unit = !struct.at(336).asInstanceOf[Ptr[CInt]] = value
+      def data: Ptr[Byte] = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def data_=(value: Ptr[Byte]): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def loop: Ptr[uv_loop_t] = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[uv_loop_t]]]
+      def loop_=(value: Ptr[uv_loop_t]): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[uv_loop_t]]] = value
+      def `type`: uv_handle_type = !struct.at(offsets(2)).asInstanceOf[Ptr[uv_handle_type]]
+      def type_=(value: uv_handle_type): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[uv_handle_type]] = value
+      def close_cb: uv_close_cb = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_close_cb]]
+      def close_cb_=(value: uv_close_cb): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[uv_close_cb]] = value
+      def handle_queue: uv__queue = !struct.at(offsets(4)).asInstanceOf[Ptr[uv__queue]]
+      def handle_queue_=(value: uv__queue): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[uv__queue]] = value
+      def u: uv_tty_t.Union0 = !struct.at(offsets(5)).asInstanceOf[Ptr[uv_tty_t.Union0]]
+      def u_=(value: uv_tty_t.Union0): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[uv_tty_t.Union0]] = value
+      def next_closing: Ptr[uv_handle_t] = !struct.at(offsets(6)).asInstanceOf[Ptr[Ptr[uv_handle_t]]]
+      def next_closing_=(value: Ptr[uv_handle_t]): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[Ptr[uv_handle_t]]] = value
+      def flags: CUnsignedInt = !struct.at(offsets(7)).asInstanceOf[Ptr[CUnsignedInt]]
+      def flags_=(value: CUnsignedInt): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def write_queue_size: size_t = !struct.at(offsets(8)).asInstanceOf[Ptr[size_t]]
+      def write_queue_size_=(value: size_t): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[size_t]] = value
+      def alloc_cb: uv_alloc_cb = !struct.at(offsets(9)).asInstanceOf[Ptr[uv_alloc_cb]]
+      def alloc_cb_=(value: uv_alloc_cb): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[uv_alloc_cb]] = value
+      def read_cb: uv_read_cb = !struct.at(offsets(10)).asInstanceOf[Ptr[uv_read_cb]]
+      def read_cb_=(value: uv_read_cb): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[uv_read_cb]] = value
+      def connect_req: Ptr[uv_connect_t] = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[uv_connect_t]]]
+      def connect_req_=(value: Ptr[uv_connect_t]): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[uv_connect_t]]] = value
+      def shutdown_req: Ptr[uv_shutdown_t] = !struct.at(offsets(12)).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]]
+      def shutdown_req_=(value: Ptr[uv_shutdown_t]): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[Ptr[uv_shutdown_t]]] = value
+      def io_watcher: uv__io_t = !struct.at(offsets(13)).asInstanceOf[Ptr[uv__io_t]]
+      def io_watcher_=(value: uv__io_t): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[uv__io_t]] = value
+      def write_queue: uv__queue = !struct.at(offsets(14)).asInstanceOf[Ptr[uv__queue]]
+      def write_queue_=(value: uv__queue): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[uv__queue]] = value
+      def write_completed_queue: uv__queue = !struct.at(offsets(15)).asInstanceOf[Ptr[uv__queue]]
+      def write_completed_queue_=(value: uv__queue): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[uv__queue]] = value
+      def connection_cb: uv_connection_cb = !struct.at(offsets(16)).asInstanceOf[Ptr[uv_connection_cb]]
+      def connection_cb_=(value: uv_connection_cb): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[uv_connection_cb]] = value
+      def delayed_error: CInt = !struct.at(offsets(17)).asInstanceOf[Ptr[CInt]]
+      def delayed_error_=(value: CInt): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[CInt]] = value
+      def accepted_fd: CInt = !struct.at(offsets(18)).asInstanceOf[Ptr[CInt]]
+      def accepted_fd_=(value: CInt): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[CInt]] = value
+      def queued_fds: Ptr[Byte] = !struct.at(offsets(19)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def queued_fds_=(value: Ptr[Byte]): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def select: Ptr[Byte] = !struct.at(offsets(20)).asInstanceOf[Ptr[Ptr[Byte]]]
+      def select_=(value: Ptr[Byte]): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      def orig_termios: termios = !struct.at(offsets(21)).asInstanceOf[Ptr[termios]]
+      def orig_termios_=(value: termios): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[termios]] = value
+      def mode: CInt = !struct.at(offsets(22)).asInstanceOf[Ptr[CInt]]
+      def mode_=(value: CInt): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[CInt]] = value
+    val offsets: Array[Int] = 
+      val res = Array.ofDim[Int](23)
+      def align(offset: Int, alignment: Int) = {
+        val alignmentMask = alignment - 1
+        val padding =
+          if ((offset & alignmentMask) == 0) 0
+          else alignment - (offset & alignmentMask)
+        offset + padding
+      }
+      
+      res(0) = align(0, alignmentof[Ptr[Byte]].toInt)
+      res(1) = align(res(0) + sizeof[Ptr[Byte]].toInt, alignmentof[Ptr[uv_loop_t]].toInt)
+      res(2) = align(res(1) + sizeof[Ptr[uv_loop_t]].toInt, alignmentof[uv_handle_type].toInt)
+      res(3) = align(res(2) + sizeof[uv_handle_type].toInt, alignmentof[uv_close_cb].toInt)
+      res(4) = align(res(3) + sizeof[uv_close_cb].toInt, alignmentof[uv__queue].toInt)
+      res(5) = align(res(4) + sizeof[uv__queue].toInt, alignmentof[uv_tty_t.Union0].toInt)
+      res(6) = align(res(5) + sizeof[uv_tty_t.Union0].toInt, alignmentof[Ptr[uv_handle_t]].toInt)
+      res(7) = align(res(6) + sizeof[Ptr[uv_handle_t]].toInt, alignmentof[CUnsignedInt].toInt)
+      res(8) = align(res(7) + sizeof[CUnsignedInt].toInt, alignmentof[size_t].toInt)
+      res(9) = align(res(8) + sizeof[size_t].toInt, alignmentof[uv_alloc_cb].toInt)
+      res(10) = align(res(9) + sizeof[uv_alloc_cb].toInt, alignmentof[uv_read_cb].toInt)
+      res(11) = align(res(10) + sizeof[uv_read_cb].toInt, alignmentof[Ptr[uv_connect_t]].toInt)
+      res(12) = align(res(11) + sizeof[Ptr[uv_connect_t]].toInt, alignmentof[Ptr[uv_shutdown_t]].toInt)
+      res(13) = align(res(12) + sizeof[Ptr[uv_shutdown_t]].toInt, alignmentof[uv__io_t].toInt)
+      res(14) = align(res(13) + sizeof[uv__io_t].toInt, alignmentof[uv__queue].toInt)
+      res(15) = align(res(14) + sizeof[uv__queue].toInt, alignmentof[uv__queue].toInt)
+      res(16) = align(res(15) + sizeof[uv__queue].toInt, alignmentof[uv_connection_cb].toInt)
+      res(17) = align(res(16) + sizeof[uv_connection_cb].toInt, alignmentof[CInt].toInt)
+      res(18) = align(res(17) + sizeof[CInt].toInt, alignmentof[CInt].toInt)
+      res(19) = align(res(18) + sizeof[CInt].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(20) = align(res(19) + sizeof[Ptr[Byte]].toInt, alignmentof[Ptr[Byte]].toInt)
+      res(21) = align(res(20) + sizeof[Ptr[Byte]].toInt, alignmentof[termios].toInt)
+      res(22) = align(res(21) + sizeof[termios].toInt, alignmentof[CInt].toInt)
+      res
+    end offsets
 
   opaque type uv_udp_s = CStruct15[Ptr[Byte], Ptr[uv_loop_t], uv_handle_type, Ptr[Byte], uv__queue, uv_udp_s.Union0, Ptr[Byte], CUnsignedInt, size_t, size_t, Ptr[Byte], Ptr[Byte], uv__io_t, uv__queue, uv__queue]
   object uv_udp_s:
@@ -6050,9 +6362,9 @@ object unions:
       def signal : uv_signal_t = !struct.at(0).asInstanceOf[Ptr[uv_signal_t]]
       def signal_=(value: uv_signal_t): Unit = !struct.at(0).asInstanceOf[Ptr[uv_signal_t]] = value
 
-  opaque type uv_any_req = CArray[Byte, Nat.Digit4[Nat._1, Nat._1, Nat._9, Nat._2]]
+  opaque type uv_any_req = CArray[Byte, Nat.Digit4[Nat._1, Nat._3, Nat._2, Nat._0]]
   object uv_any_req:
-    given _tag: Tag[uv_any_req] = Tag.CArray[CChar, Nat.Digit4[Nat._1, Nat._1, Nat._9, Nat._2]](Tag.Byte, Tag.Digit4[Nat._1, Nat._1, Nat._9, Nat._2](Tag.Nat1, Tag.Nat1, Tag.Nat9, Tag.Nat2))
+    given _tag: Tag[uv_any_req] = Tag.CArray[CChar, Nat.Digit4[Nat._1, Nat._3, Nat._2, Nat._0]](Tag.Byte, Tag.Digit4[Nat._1, Nat._3, Nat._2, Nat._0](Tag.Nat1, Tag.Nat3, Tag.Nat2, Tag.Nat0))
     def apply()(using Zone): Ptr[uv_any_req] = 
       val ___ptr = alloc[uv_any_req](1)
       ___ptr
