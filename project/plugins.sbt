@@ -1,11 +1,12 @@
 val BindgenVersion =
-  sys.env.getOrElse("SN_BINDGEN_VERSION", "0.1.4")
+  sys.env.getOrElse("SN_BINDGEN_VERSION", "0.1.3")
 
 val VcpkgVersion =
-  sys.env.getOrElse("SBT_VCPKG_VERSION", "0.0.21")
+  sys.env.getOrElse("SBT_VCPKG_VERSION", "0.0.18")
 
-val ScalaNativeVersion =
-  sys.env.getOrElse("SCALA_NATIVE_VERSION", "0.5.5")
+val ScalaNativeVersion = 
+  sys.env.getOrElse("SCALA_NATIVE_VERSION", "0.5.3")
+
 
 resolvers ++= Resolver.sonatypeOssRepos("snapshots")
 resolvers ++= Resolver.sonatypeOssRepos("releases")
