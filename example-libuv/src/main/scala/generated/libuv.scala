@@ -2322,7 +2322,7 @@ object structs:
       
       res(0) = align(0, alignmentof[Ptr[Byte]].toInt)
       res(1) = align(res(0) + sizeof[Ptr[Byte]].toInt, alignmentof[uv_req_type].toInt)
-      res(2) = align(res(1) + sizeof[uv_req_type].toInt, alignmentof[CArray[Ptr[Byte], Nat._6]].toInt)
+      res(2) = align(res(1) + sizeof[uv_req_type].toInt, alignmentof[Ptr[Byte]].toInt)
       res(3) = align(res(2) + sizeof[CArray[Ptr[Byte], Nat._6]].toInt, alignmentof[uv_fs_type].toInt)
       res(4) = align(res(3) + sizeof[uv_fs_type].toInt, alignmentof[Ptr[uv_loop_t]].toInt)
       res(5) = align(res(4) + sizeof[Ptr[uv_loop_t]].toInt, alignmentof[uv_fs_cb].toInt)
@@ -2342,7 +2342,7 @@ object structs:
       res(19) = align(res(18) + sizeof[uv_gid_t].toInt, alignmentof[Double].toInt)
       res(20) = align(res(19) + sizeof[Double].toInt, alignmentof[Double].toInt)
       res(21) = align(res(20) + sizeof[Double].toInt, alignmentof[uv__work].toInt)
-      res(22) = align(res(21) + sizeof[uv__work].toInt, alignmentof[CArray[uv_buf_t, Nat._4]].toInt)
+      res(22) = align(res(21) + sizeof[uv__work].toInt, alignmentof[uv_buf_t].toInt)
       res
     end offsets
 
@@ -2435,7 +2435,7 @@ object structs:
       
       res(0) = align(0, alignmentof[Ptr[Byte]].toInt)
       res(1) = align(res(0) + sizeof[Ptr[Byte]].toInt, alignmentof[uv_req_type].toInt)
-      res(2) = align(res(1) + sizeof[uv_req_type].toInt, alignmentof[CArray[Ptr[Byte], Nat._6]].toInt)
+      res(2) = align(res(1) + sizeof[uv_req_type].toInt, alignmentof[Ptr[Byte]].toInt)
       res(3) = align(res(2) + sizeof[CArray[Ptr[Byte], Nat._6]].toInt, alignmentof[uv_fs_type].toInt)
       res(4) = align(res(3) + sizeof[uv_fs_type].toInt, alignmentof[Ptr[uv_loop_t]].toInt)
       res(5) = align(res(4) + sizeof[Ptr[uv_loop_t]].toInt, alignmentof[uv_fs_cb].toInt)
@@ -2455,7 +2455,7 @@ object structs:
       res(19) = align(res(18) + sizeof[uv_gid_t].toInt, alignmentof[Double].toInt)
       res(20) = align(res(19) + sizeof[Double].toInt, alignmentof[Double].toInt)
       res(21) = align(res(20) + sizeof[Double].toInt, alignmentof[uv__work].toInt)
-      res(22) = align(res(21) + sizeof[uv__work].toInt, alignmentof[CArray[uv_buf_t, Nat._4]].toInt)
+      res(22) = align(res(21) + sizeof[uv__work].toInt, alignmentof[uv_buf_t].toInt)
       res
     end offsets
 
@@ -3229,7 +3229,7 @@ object structs:
       res(0) = align(0, alignmentof[Ptr[Byte]].toInt)
       res(1) = align(res(0) + sizeof[Ptr[Byte]].toInt, alignmentof[CUnsignedInt].toInt)
       res(2) = align(res(1) + sizeof[CUnsignedInt].toInt, alignmentof[uv__queue].toInt)
-      res(3) = align(res(2) + sizeof[uv__queue].toInt, alignmentof[uv_loop_s.Union0].toInt)
+      res(3) = align(res(2) + sizeof[uv__queue].toInt, Array(alignmentof[Ptr[Byte]].toInt, alignmentof[CUnsignedInt].toInt).max)
       res(4) = align(res(3) + sizeof[uv_loop_s.Union0].toInt, alignmentof[Ptr[Byte]].toInt)
       res(5) = align(res(4) + sizeof[Ptr[Byte]].toInt, alignmentof[CUnsignedInt].toInt)
       res(6) = align(res(5) + sizeof[CUnsignedInt].toInt, alignmentof[CUnsignedLongInt].toInt)
@@ -3255,7 +3255,7 @@ object structs:
       res(26) = align(res(25) + sizeof[CInt].toInt, alignmentof[uv_loop_s.Struct1].toInt)
       res(27) = align(res(26) + sizeof[uv_loop_s.Struct1].toInt, alignmentof[uint64_t].toInt)
       res(28) = align(res(27) + sizeof[uint64_t].toInt, alignmentof[uint64_t].toInt)
-      res(29) = align(res(28) + sizeof[uint64_t].toInt, alignmentof[CArray[CInt, Nat._2]].toInt)
+      res(29) = align(res(28) + sizeof[uint64_t].toInt, alignmentof[CInt].toInt)
       res(30) = align(res(29) + sizeof[CArray[CInt, Nat._2]].toInt, alignmentof[uv__io_t].toInt)
       res(31) = align(res(30) + sizeof[uv__io_t].toInt, alignmentof[uv_signal_t].toInt)
       res(32) = align(res(31) + sizeof[uv_signal_t].toInt, alignmentof[CInt].toInt)
@@ -3443,7 +3443,7 @@ object structs:
       res(0) = align(0, alignmentof[Ptr[Byte]].toInt)
       res(1) = align(res(0) + sizeof[Ptr[Byte]].toInt, alignmentof[CUnsignedInt].toInt)
       res(2) = align(res(1) + sizeof[CUnsignedInt].toInt, alignmentof[uv__queue].toInt)
-      res(3) = align(res(2) + sizeof[uv__queue].toInt, alignmentof[uv_loop_t.Union0].toInt)
+      res(3) = align(res(2) + sizeof[uv__queue].toInt, Array(alignmentof[Ptr[Byte]].toInt, alignmentof[CUnsignedInt].toInt).max)
       res(4) = align(res(3) + sizeof[uv_loop_t.Union0].toInt, alignmentof[Ptr[Byte]].toInt)
       res(5) = align(res(4) + sizeof[Ptr[Byte]].toInt, alignmentof[CUnsignedInt].toInt)
       res(6) = align(res(5) + sizeof[CUnsignedInt].toInt, alignmentof[CUnsignedLongInt].toInt)
@@ -3469,7 +3469,7 @@ object structs:
       res(26) = align(res(25) + sizeof[CInt].toInt, alignmentof[uv_loop_t.Struct1].toInt)
       res(27) = align(res(26) + sizeof[uv_loop_t.Struct1].toInt, alignmentof[uint64_t].toInt)
       res(28) = align(res(27) + sizeof[uint64_t].toInt, alignmentof[uint64_t].toInt)
-      res(29) = align(res(28) + sizeof[uint64_t].toInt, alignmentof[CArray[CInt, Nat._2]].toInt)
+      res(29) = align(res(28) + sizeof[uint64_t].toInt, alignmentof[CInt].toInt)
       res(30) = align(res(29) + sizeof[CArray[CInt, Nat._2]].toInt, alignmentof[uv__io_t].toInt)
       res(31) = align(res(30) + sizeof[uv__io_t].toInt, alignmentof[uv_signal_t].toInt)
       res(32) = align(res(31) + sizeof[uv_signal_t].toInt, alignmentof[CInt].toInt)
@@ -3687,7 +3687,7 @@ object structs:
       res(2) = align(res(1) + sizeof[Ptr[uv_loop_t]].toInt, alignmentof[uv_handle_type].toInt)
       res(3) = align(res(2) + sizeof[uv_handle_type].toInt, alignmentof[uv_close_cb].toInt)
       res(4) = align(res(3) + sizeof[uv_close_cb].toInt, alignmentof[uv__queue].toInt)
-      res(5) = align(res(4) + sizeof[uv__queue].toInt, alignmentof[uv_pipe_s.Union0].toInt)
+      res(5) = align(res(4) + sizeof[uv__queue].toInt, Array(alignmentof[CInt].toInt, alignmentof[CArray[Ptr[Byte], Nat._4]].toInt).max)
       res(6) = align(res(5) + sizeof[uv_pipe_s.Union0].toInt, alignmentof[Ptr[uv_handle_t]].toInt)
       res(7) = align(res(6) + sizeof[Ptr[uv_handle_t]].toInt, alignmentof[CUnsignedInt].toInt)
       res(8) = align(res(7) + sizeof[CUnsignedInt].toInt, alignmentof[size_t].toInt)
@@ -3823,7 +3823,7 @@ object structs:
       res(2) = align(res(1) + sizeof[Ptr[uv_loop_t]].toInt, alignmentof[uv_handle_type].toInt)
       res(3) = align(res(2) + sizeof[uv_handle_type].toInt, alignmentof[uv_close_cb].toInt)
       res(4) = align(res(3) + sizeof[uv_close_cb].toInt, alignmentof[uv__queue].toInt)
-      res(5) = align(res(4) + sizeof[uv__queue].toInt, alignmentof[uv_pipe_t.Union0].toInt)
+      res(5) = align(res(4) + sizeof[uv__queue].toInt, Array(alignmentof[CInt].toInt, alignmentof[CArray[Ptr[Byte], Nat._4]].toInt).max)
       res(6) = align(res(5) + sizeof[uv_pipe_t.Union0].toInt, alignmentof[Ptr[uv_handle_t]].toInt)
       res(7) = align(res(6) + sizeof[Ptr[uv_handle_t]].toInt, alignmentof[CUnsignedInt].toInt)
       res(8) = align(res(7) + sizeof[CUnsignedInt].toInt, alignmentof[size_t].toInt)
@@ -5627,7 +5627,7 @@ object structs:
       res(2) = align(res(1) + sizeof[Ptr[uv_loop_t]].toInt, alignmentof[uv_handle_type].toInt)
       res(3) = align(res(2) + sizeof[uv_handle_type].toInt, alignmentof[uv_close_cb].toInt)
       res(4) = align(res(3) + sizeof[uv_close_cb].toInt, alignmentof[uv__queue].toInt)
-      res(5) = align(res(4) + sizeof[uv__queue].toInt, alignmentof[uv_tty_s.Union0].toInt)
+      res(5) = align(res(4) + sizeof[uv__queue].toInt, Array(alignmentof[CInt].toInt, alignmentof[CArray[Ptr[Byte], Nat._4]].toInt).max)
       res(6) = align(res(5) + sizeof[uv_tty_s.Union0].toInt, alignmentof[Ptr[uv_handle_t]].toInt)
       res(7) = align(res(6) + sizeof[Ptr[uv_handle_t]].toInt, alignmentof[CUnsignedInt].toInt)
       res(8) = align(res(7) + sizeof[CUnsignedInt].toInt, alignmentof[size_t].toInt)
@@ -5763,7 +5763,7 @@ object structs:
       res(2) = align(res(1) + sizeof[Ptr[uv_loop_t]].toInt, alignmentof[uv_handle_type].toInt)
       res(3) = align(res(2) + sizeof[uv_handle_type].toInt, alignmentof[uv_close_cb].toInt)
       res(4) = align(res(3) + sizeof[uv_close_cb].toInt, alignmentof[uv__queue].toInt)
-      res(5) = align(res(4) + sizeof[uv__queue].toInt, alignmentof[uv_tty_t.Union0].toInt)
+      res(5) = align(res(4) + sizeof[uv__queue].toInt, Array(alignmentof[CInt].toInt, alignmentof[CArray[Ptr[Byte], Nat._4]].toInt).max)
       res(6) = align(res(5) + sizeof[uv_tty_t.Union0].toInt, alignmentof[Ptr[uv_handle_t]].toInt)
       res(7) = align(res(6) + sizeof[Ptr[uv_handle_t]].toInt, alignmentof[CUnsignedInt].toInt)
       res(8) = align(res(7) + sizeof[CUnsignedInt].toInt, alignmentof[size_t].toInt)
@@ -7078,13 +7078,13 @@ object functions:
   import extern_functions.*
   export extern_functions.*
 
+  def uv_buf_init(base : CString, len : CUnsignedInt)(__return : Ptr[uv_buf_t]): Unit = 
+    __sn_wrap_libuv_uv_buf_init(base, len, __return)
+
   def uv_buf_init(base : CString, len : CUnsignedInt)(using Zone): uv_buf_t = 
     val __ptr_0: Ptr[uv_buf_t] = alloc[uv_buf_t](1)
     __sn_wrap_libuv_uv_buf_init(base, len, (__ptr_0 + 0))
     !(__ptr_0 + 0)
-
-  def uv_buf_init(base : CString, len : CUnsignedInt)(__return : Ptr[uv_buf_t]): Unit = 
-    __sn_wrap_libuv_uv_buf_init(base, len, __return)
 
 object constants:
   val UV_PIPE_NO_TRUNCATE: CUnsignedInt = 1.toUInt

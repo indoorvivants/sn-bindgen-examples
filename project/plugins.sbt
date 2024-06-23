@@ -1,5 +1,5 @@
 val BindgenVersion =
-  sys.env.getOrElse("SN_BINDGEN_VERSION", "0.1.3")
+  sys.env.getOrElse("SN_BINDGEN_VERSION", "0.1.3+1-40ac972f-SNAPSHOT")
 
 val VcpkgVersion =
   sys.env.getOrElse("SBT_VCPKG_VERSION", "0.0.18")
