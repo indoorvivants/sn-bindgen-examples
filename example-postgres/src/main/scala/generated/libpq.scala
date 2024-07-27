@@ -50,7 +50,7 @@ object enumerations:
         case CONNECTION_GSS_STARTUP => Some("CONNECTION_GSS_STARTUP")
         case CONNECTION_CHECK_TARGET => Some("CONNECTION_CHECK_TARGET")
         case CONNECTION_CHECK_STANDBY => Some("CONNECTION_CHECK_STANDBY")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: ConnStatusType)
       inline def &(b: ConnStatusType): ConnStatusType = a & b
       inline def |(b: ConnStatusType): ConnStatusType = a | b
@@ -86,7 +86,7 @@ object enumerations:
         case PGRES_SINGLE_TUPLE => Some("PGRES_SINGLE_TUPLE")
         case PGRES_PIPELINE_SYNC => Some("PGRES_PIPELINE_SYNC")
         case PGRES_PIPELINE_ABORTED => Some("PGRES_PIPELINE_ABORTED")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: ExecStatusType)
       inline def &(b: ExecStatusType): ExecStatusType = a & b
       inline def |(b: ExecStatusType): ExecStatusType = a | b
@@ -104,7 +104,7 @@ object enumerations:
         case PQSHOW_CONTEXT_NEVER => Some("PQSHOW_CONTEXT_NEVER")
         case PQSHOW_CONTEXT_ERRORS => Some("PQSHOW_CONTEXT_ERRORS")
         case PQSHOW_CONTEXT_ALWAYS => Some("PQSHOW_CONTEXT_ALWAYS")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: PGContextVisibility)
       inline def &(b: PGContextVisibility): PGContextVisibility = a & b
       inline def |(b: PGContextVisibility): PGContextVisibility = a | b
@@ -124,7 +124,7 @@ object enumerations:
         case PQPING_REJECT => Some("PQPING_REJECT")
         case PQPING_NO_RESPONSE => Some("PQPING_NO_RESPONSE")
         case PQPING_NO_ATTEMPT => Some("PQPING_NO_ATTEMPT")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: PGPing)
       inline def &(b: PGPing): PGPing = a & b
       inline def |(b: PGPing): PGPing = a | b
@@ -146,7 +146,7 @@ object enumerations:
         case PQTRANS_INTRANS => Some("PQTRANS_INTRANS")
         case PQTRANS_INERROR => Some("PQTRANS_INERROR")
         case PQTRANS_UNKNOWN => Some("PQTRANS_UNKNOWN")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: PGTransactionStatusType)
       inline def &(b: PGTransactionStatusType): PGTransactionStatusType = a & b
       inline def |(b: PGTransactionStatusType): PGTransactionStatusType = a | b
@@ -166,7 +166,7 @@ object enumerations:
         case PQERRORS_DEFAULT => Some("PQERRORS_DEFAULT")
         case PQERRORS_VERBOSE => Some("PQERRORS_VERBOSE")
         case PQERRORS_SQLSTATE => Some("PQERRORS_SQLSTATE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: PGVerbosity)
       inline def &(b: PGVerbosity): PGVerbosity = a & b
       inline def |(b: PGVerbosity): PGVerbosity = a | b
@@ -184,7 +184,7 @@ object enumerations:
         case PQ_PIPELINE_OFF => Some("PQ_PIPELINE_OFF")
         case PQ_PIPELINE_ON => Some("PQ_PIPELINE_ON")
         case PQ_PIPELINE_ABORTED => Some("PQ_PIPELINE_ABORTED")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: PGpipelineStatus)
       inline def &(b: PGpipelineStatus): PGpipelineStatus = a & b
       inline def |(b: PGpipelineStatus): PGpipelineStatus = a | b
@@ -206,7 +206,7 @@ object enumerations:
         case PGRES_POLLING_WRITING => Some("PGRES_POLLING_WRITING")
         case PGRES_POLLING_OK => Some("PGRES_POLLING_OK")
         case PGRES_POLLING_ACTIVE => Some("PGRES_POLLING_ACTIVE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: PostgresPollingStatusType)
       inline def &(b: PostgresPollingStatusType): PostgresPollingStatusType = a & b
       inline def |(b: PostgresPollingStatusType): PostgresPollingStatusType = a | b

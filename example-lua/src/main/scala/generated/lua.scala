@@ -250,12 +250,12 @@ object structs:
       def closef : lua_CFunction = struct._2
       def closef_=(value: lua_CFunction): Unit = !struct.at2 = value
 
-  opaque type lua_Debug = CStruct17[CInt, CString, CString, CString, CString, size_t, CInt, CInt, CInt, CUnsignedChar, CUnsignedChar, CChar, CChar, CUnsignedShort, CUnsignedShort, CArray[CChar, Nat.Digit2[Nat._6, Nat._0]], Ptr[CallInfo]]
+  opaque type lua_Debug = CStruct18[CInt, CString, CString, CString, CString, size_t, CInt, CInt, CInt, CUnsignedChar, CUnsignedChar, CChar, CChar, CUnsignedShort, CUnsignedShort, CArray[CChar, Nat.Digit2[Nat._6, Nat._0]], CStruct0, Ptr[CallInfo]]
   object lua_Debug:
     opaque type Struct0 = CStruct0
     object Struct0:
       given _tag: Tag[Struct0] = Tag.materializeCStruct0Tag
-    given _tag: Tag[lua_Debug] = Tag.materializeCStruct17Tag[CInt, CString, CString, CString, CString, size_t, CInt, CInt, CInt, CUnsignedChar, CUnsignedChar, CChar, CChar, CUnsignedShort, CUnsignedShort, CArray[CChar, Nat.Digit2[Nat._6, Nat._0]], Ptr[CallInfo]]
+    given _tag: Tag[lua_Debug] = Tag.materializeCStruct18Tag[CInt, CString, CString, CString, CString, size_t, CInt, CInt, CInt, CUnsignedChar, CUnsignedChar, CChar, CChar, CUnsignedShort, CUnsignedShort, CArray[CChar, Nat.Digit2[Nat._6, Nat._0]], CStruct0, Ptr[CallInfo]]
     def apply()(using Zone): Ptr[lua_Debug] = scala.scalanative.unsafe.alloc[lua_Debug](1)
     def apply(event : CInt, name : CString, namewhat : CString, what : CString, source : CString, srclen : size_t, currentline : CInt, linedefined : CInt, lastlinedefined : CInt, nups : CUnsignedChar, nparams : CUnsignedChar, isvararg : CChar, istailcall : CChar, ftransfer : CUnsignedShort, ntransfer : CUnsignedShort, short_src : CArray[CChar, Nat.Digit2[Nat._6, Nat._0]], i_ci : Ptr[CallInfo])(using Zone): Ptr[lua_Debug] = 
       val ____ptr = apply()
@@ -310,8 +310,8 @@ object structs:
       def ntransfer_=(value: CUnsignedShort): Unit = !struct.at15 = value
       def short_src : CArray[CChar, Nat.Digit2[Nat._6, Nat._0]] = struct._16
       def short_src_=(value: CArray[CChar, Nat.Digit2[Nat._6, Nat._0]]): Unit = !struct.at16 = value
-      def i_ci : Ptr[CallInfo] = struct._17
-      def i_ci_=(value: Ptr[CallInfo]): Unit = !struct.at17 = value
+      def i_ci : Ptr[CallInfo] = struct._18
+      def i_ci_=(value: Ptr[CallInfo]): Unit = !struct.at18 = value
 
   opaque type lua_State = CStruct0
   object lua_State:

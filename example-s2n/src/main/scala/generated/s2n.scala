@@ -29,7 +29,7 @@ object enumerations:
       inline value match
         case S2N_ALERT_FAIL_ON_WARNINGS => Some("S2N_ALERT_FAIL_ON_WARNINGS")
         case S2N_ALERT_IGNORE_WARNINGS => Some("S2N_ALERT_IGNORE_WARNINGS")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_alert_behavior)
       inline def &(b: s2n_alert_behavior): s2n_alert_behavior = a & b
       inline def |(b: s2n_alert_behavior): s2n_alert_behavior = a | b
@@ -48,7 +48,7 @@ object enumerations:
       inline value match
         case S2N_ASYNC_DECRYPT => Some("S2N_ASYNC_DECRYPT")
         case S2N_ASYNC_SIGN => Some("S2N_ASYNC_SIGN")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_async_pkey_op_type)
       inline def &(b: s2n_async_pkey_op_type): s2n_async_pkey_op_type = a & b
       inline def |(b: s2n_async_pkey_op_type): s2n_async_pkey_op_type = a | b
@@ -67,7 +67,7 @@ object enumerations:
       inline value match
         case S2N_ASYNC_PKEY_VALIDATION_FAST => Some("S2N_ASYNC_PKEY_VALIDATION_FAST")
         case S2N_ASYNC_PKEY_VALIDATION_STRICT => Some("S2N_ASYNC_PKEY_VALIDATION_STRICT")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_async_pkey_validation_mode)
       inline def &(b: s2n_async_pkey_validation_mode): s2n_async_pkey_validation_mode = a & b
       inline def |(b: s2n_async_pkey_validation_mode): s2n_async_pkey_validation_mode = a | b
@@ -86,7 +86,7 @@ object enumerations:
       inline value match
         case S2N_BUILT_IN_BLINDING => Some("S2N_BUILT_IN_BLINDING")
         case S2N_SELF_SERVICE_BLINDING => Some("S2N_SELF_SERVICE_BLINDING")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_blinding)
       inline def &(b: s2n_blinding): s2n_blinding = a & b
       inline def |(b: s2n_blinding): s2n_blinding = a | b
@@ -111,7 +111,7 @@ object enumerations:
         case S2N_BLOCKED_ON_WRITE => Some("S2N_BLOCKED_ON_WRITE")
         case S2N_BLOCKED_ON_APPLICATION_INPUT => Some("S2N_BLOCKED_ON_APPLICATION_INPUT")
         case S2N_BLOCKED_ON_EARLY_DATA => Some("S2N_BLOCKED_ON_EARLY_DATA")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_blocked_status)
       inline def &(b: s2n_blocked_status): s2n_blocked_status = a & b
       inline def |(b: s2n_blocked_status): s2n_blocked_status = a | b
@@ -132,7 +132,7 @@ object enumerations:
         case S2N_CERT_AUTH_NONE => Some("S2N_CERT_AUTH_NONE")
         case S2N_CERT_AUTH_REQUIRED => Some("S2N_CERT_AUTH_REQUIRED")
         case S2N_CERT_AUTH_OPTIONAL => Some("S2N_CERT_AUTH_OPTIONAL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_cert_auth_type)
       inline def &(b: s2n_cert_auth_type): s2n_cert_auth_type = a & b
       inline def |(b: s2n_cert_auth_type): s2n_cert_auth_type = a | b
@@ -151,7 +151,7 @@ object enumerations:
       inline value match
         case S2N_CLIENT_HELLO_CB_BLOCKING => Some("S2N_CLIENT_HELLO_CB_BLOCKING")
         case S2N_CLIENT_HELLO_CB_NONBLOCKING => Some("S2N_CLIENT_HELLO_CB_NONBLOCKING")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_client_hello_cb_mode)
       inline def &(b: s2n_client_hello_cb_mode): s2n_client_hello_cb_mode = a & b
       inline def |(b: s2n_client_hello_cb_mode): s2n_client_hello_cb_mode = a | b
@@ -170,7 +170,7 @@ object enumerations:
       inline value match
         case S2N_CT_SUPPORT_NONE => Some("S2N_CT_SUPPORT_NONE")
         case S2N_CT_SUPPORT_REQUEST => Some("S2N_CT_SUPPORT_REQUEST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_ct_support_level)
       inline def &(b: s2n_ct_support_level): s2n_ct_support_level = a & b
       inline def |(b: s2n_ct_support_level): s2n_ct_support_level = a | b
@@ -193,7 +193,7 @@ object enumerations:
         case S2N_EARLY_DATA_STATUS_NOT_REQUESTED => Some("S2N_EARLY_DATA_STATUS_NOT_REQUESTED")
         case S2N_EARLY_DATA_STATUS_REJECTED => Some("S2N_EARLY_DATA_STATUS_REJECTED")
         case S2N_EARLY_DATA_STATUS_END => Some("S2N_EARLY_DATA_STATUS_END")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_early_data_status_t)
       inline def &(b: s2n_early_data_status_t): s2n_early_data_status_t = a & b
       inline def |(b: s2n_early_data_status_t): s2n_early_data_status_t = a | b
@@ -224,7 +224,7 @@ object enumerations:
         case S2N_ERR_T_PROTO => Some("S2N_ERR_T_PROTO")
         case S2N_ERR_T_INTERNAL => Some("S2N_ERR_T_INTERNAL")
         case S2N_ERR_T_USAGE => Some("S2N_ERR_T_USAGE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_error_type)
       inline def &(b: s2n_error_type): s2n_error_type = a & b
       inline def |(b: s2n_error_type): s2n_error_type = a | b
@@ -247,7 +247,7 @@ object enumerations:
         case S2N_TLS_MAX_FRAG_LEN_1024 => Some("S2N_TLS_MAX_FRAG_LEN_1024")
         case S2N_TLS_MAX_FRAG_LEN_2048 => Some("S2N_TLS_MAX_FRAG_LEN_2048")
         case S2N_TLS_MAX_FRAG_LEN_4096 => Some("S2N_TLS_MAX_FRAG_LEN_4096")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_max_frag_len)
       inline def &(b: s2n_max_frag_len): s2n_max_frag_len = a & b
       inline def |(b: s2n_max_frag_len): s2n_max_frag_len = a | b
@@ -266,7 +266,7 @@ object enumerations:
       inline value match
         case S2N_SERVER => Some("S2N_SERVER")
         case S2N_CLIENT => Some("S2N_CLIENT")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_mode)
       inline def &(b: s2n_mode): s2n_mode = a & b
       inline def |(b: s2n_mode): s2n_mode = a | b
@@ -285,7 +285,7 @@ object enumerations:
       inline value match
         case S2N_PSK_HMAC_SHA256 => Some("S2N_PSK_HMAC_SHA256")
         case S2N_PSK_HMAC_SHA384 => Some("S2N_PSK_HMAC_SHA384")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_psk_hmac)
       inline def &(b: s2n_psk_hmac): s2n_psk_hmac = a & b
       inline def |(b: s2n_psk_hmac): s2n_psk_hmac = a | b
@@ -304,7 +304,7 @@ object enumerations:
       inline value match
         case S2N_PSK_MODE_RESUMPTION => Some("S2N_PSK_MODE_RESUMPTION")
         case S2N_PSK_MODE_EXTERNAL => Some("S2N_PSK_MODE_EXTERNAL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_psk_mode)
       inline def &(b: s2n_psk_mode): s2n_psk_mode = a & b
       inline def |(b: s2n_psk_mode): s2n_psk_mode = a | b
@@ -323,7 +323,7 @@ object enumerations:
       inline value match
         case S2N_STATUS_REQUEST_NONE => Some("S2N_STATUS_REQUEST_NONE")
         case S2N_STATUS_REQUEST_OCSP => Some("S2N_STATUS_REQUEST_OCSP")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_status_request_type)
       inline def &(b: s2n_status_request_type): s2n_status_request_type = a & b
       inline def |(b: s2n_status_request_type): s2n_status_request_type = a | b
@@ -356,7 +356,7 @@ object enumerations:
         case S2N_EXTENSION_ALPN => Some("S2N_EXTENSION_ALPN")
         case S2N_EXTENSION_CERTIFICATE_TRANSPARENCY => Some("S2N_EXTENSION_CERTIFICATE_TRANSPARENCY")
         case S2N_EXTENSION_RENEGOTIATION_INFO => Some("S2N_EXTENSION_RENEGOTIATION_INFO")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_tls_extension_type)
       inline def &(b: s2n_tls_extension_type): s2n_tls_extension_type = a & b
       inline def |(b: s2n_tls_extension_type): s2n_tls_extension_type = a | b
@@ -387,7 +387,7 @@ object enumerations:
         case S2N_TLS_HASH_SHA384 => Some("S2N_TLS_HASH_SHA384")
         case S2N_TLS_HASH_SHA512 => Some("S2N_TLS_HASH_SHA512")
         case S2N_TLS_HASH_MD5_SHA1 => Some("S2N_TLS_HASH_MD5_SHA1")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_tls_hash_algorithm)
       inline def &(b: s2n_tls_hash_algorithm): s2n_tls_hash_algorithm = a & b
       inline def |(b: s2n_tls_hash_algorithm): s2n_tls_hash_algorithm = a | b
@@ -412,7 +412,7 @@ object enumerations:
         case S2N_TLS_SIGNATURE_ECDSA => Some("S2N_TLS_SIGNATURE_ECDSA")
         case S2N_TLS_SIGNATURE_RSA_PSS_RSAE => Some("S2N_TLS_SIGNATURE_RSA_PSS_RSAE")
         case S2N_TLS_SIGNATURE_RSA_PSS_PSS => Some("S2N_TLS_SIGNATURE_RSA_PSS_PSS")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_tls_signature_algorithm)
       inline def &(b: s2n_tls_signature_algorithm): s2n_tls_signature_algorithm = a & b
       inline def |(b: s2n_tls_signature_algorithm): s2n_tls_signature_algorithm = a | b
@@ -428,7 +428,7 @@ object enumerations:
       inline value match
         case S2N_VERIFY_AFTER_SIGN_DISABLED => Some("S2N_VERIFY_AFTER_SIGN_DISABLED")
         case S2N_VERIFY_AFTER_SIGN_ENABLED => Some("S2N_VERIFY_AFTER_SIGN_ENABLED")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: s2n_verify_after_sign)
       inline def &(b: s2n_verify_after_sign): s2n_verify_after_sign = a & b
       inline def |(b: s2n_verify_after_sign): s2n_verify_after_sign = a | b
