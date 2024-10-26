@@ -12,7 +12,7 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / resolvers ++= Resolver.sonatypeOssRepos("snapshots")
 
 lazy val Versions = new {
-  val Scala = "3.3.3"
+  val Scala = "3.3.4"
 }
 
 lazy val root = project
@@ -432,7 +432,9 @@ lazy val openssl = project
   .settings(
     vcpkgDependencies := VcpkgDependencies("openssl"),
     scalaVersion := Versions.Scala,
-    nativeConfig ~= {(_).withSourceLevelDebuggingConfig(SourceLevelDebuggingConfig.enabled)},
+    nativeConfig ~= {
+      (_).withSourceLevelDebuggingConfig(SourceLevelDebuggingConfig.enabled)
+    },
     bindgenBindings := {
       Seq(
         Binding(
