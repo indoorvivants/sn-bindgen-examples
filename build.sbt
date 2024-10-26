@@ -432,7 +432,9 @@ lazy val openssl = project
   .settings(
     vcpkgDependencies := VcpkgDependencies("openssl"),
     scalaVersion := Versions.Scala,
-    nativeConfig ~= {(_).withSourceLevelDebuggingConfig(SourceLevelDebuggingConfig.enabled)},
+    nativeConfig ~= {
+      (_).withSourceLevelDebuggingConfig(SourceLevelDebuggingConfig.enabled)
+    },
     bindgenBindings := {
       Seq(
         Binding(
