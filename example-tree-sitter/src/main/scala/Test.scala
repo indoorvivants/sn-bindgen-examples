@@ -9,7 +9,7 @@ import treesitter.types.*
 def tree_sitter_scala(): Ptr[TSLanguage] = extern
 
 @main def hello_tree_sitter =
-  Zone { 
+  Zone {
     val parser = ts_parser_new();
     ts_parser_set_language(parser, tree_sitter_scala())
 
