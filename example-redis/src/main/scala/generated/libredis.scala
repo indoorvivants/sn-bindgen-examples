@@ -28,7 +28,7 @@ object enumerations:
         case REDIS_CONN_TCP => Some("REDIS_CONN_TCP")
         case REDIS_CONN_UNIX => Some("REDIS_CONN_UNIX")
         case REDIS_CONN_USERFD => Some("REDIS_CONN_USERFD")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: redisConnectionType)
       inline def &(b: redisConnectionType): redisConnectionType = a & b
       inline def |(b: redisConnectionType): redisConnectionType = a | b
@@ -156,7 +156,7 @@ object structs:
   object redisAsyncContext:
     given _tag: Tag[redisAsyncContext] = Tag.materializeCStruct0Tag
 
-  opaque type redisContext = CStruct18[Ptr[Byte], CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], redisFD, CInt, CString, Ptr[Byte], redisConnectionType, Ptr[timeval], Ptr[timeval], redisContext.Struct0, redisContext.Struct1, Ptr[sockaddr], size_t, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte], Ptr[redisPushFn]]
+  opaque type redisContext = CStruct19[Ptr[Byte], CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], redisFD, CInt, CString, Ptr[Byte], redisConnectionType, Ptr[timeval], Ptr[timeval], redisContext.Struct0, redisContext.Struct1, CStruct0, Ptr[sockaddr], size_t, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte], Ptr[redisPushFn]]
   object redisContext:
     opaque type Struct0 = CStruct3[CString, CString, CInt]
     object Struct0:
@@ -189,7 +189,7 @@ object structs:
     opaque type Struct2 = CStruct0
     object Struct2:
       given _tag: Tag[Struct2] = Tag.materializeCStruct0Tag
-    given _tag: Tag[redisContext] = Tag.materializeCStruct18Tag[Ptr[Byte], CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], redisFD, CInt, CString, Ptr[Byte], redisConnectionType, Ptr[timeval], Ptr[timeval], redisContext.Struct0, redisContext.Struct1, Ptr[sockaddr], size_t, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte], Ptr[redisPushFn]]
+    given _tag: Tag[redisContext] = Tag.materializeCStruct19Tag[Ptr[Byte], CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], redisFD, CInt, CString, Ptr[Byte], redisConnectionType, Ptr[timeval], Ptr[timeval], redisContext.Struct0, redisContext.Struct1, CStruct0, Ptr[sockaddr], size_t, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte], Ptr[redisPushFn]]
     def apply()(using Zone): Ptr[redisContext] = scala.scalanative.unsafe.alloc[redisContext](1)
     def apply(funcs : Ptr[redisContextFuncs], err : CInt, errstr : CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], fd : redisFD, flags : CInt, obuf : CString, reader : Ptr[redisReader], connection_type : redisConnectionType, connect_timeout : Ptr[timeval], command_timeout : Ptr[timeval], tcp : redisContext.Struct0, unix_sock : redisContext.Struct1, saddr : Ptr[sockaddr], addrlen : size_t, privdata : Ptr[Byte], free_privdata : CFuncPtr1[Ptr[Byte], Unit], privctx : Ptr[Byte], push_cb : Ptr[redisPushFn])(using Zone): Ptr[redisContext] = 
       val ____ptr = apply()
@@ -237,18 +237,18 @@ object structs:
       def tcp_=(value: redisContext.Struct0): Unit = !struct.at11 = value
       def unix_sock : redisContext.Struct1 = struct._12
       def unix_sock_=(value: redisContext.Struct1): Unit = !struct.at12 = value
-      def saddr : Ptr[sockaddr] = struct._13
-      def saddr_=(value: Ptr[sockaddr]): Unit = !struct.at13 = value
-      def addrlen : size_t = struct._14
-      def addrlen_=(value: size_t): Unit = !struct.at14 = value
-      def privdata : Ptr[Byte] = struct._15
-      def privdata_=(value: Ptr[Byte]): Unit = !struct.at15 = value
-      def free_privdata : CFuncPtr1[Ptr[Byte], Unit] = struct._16
-      def free_privdata_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at16 = value
-      def privctx : Ptr[Byte] = struct._17
-      def privctx_=(value: Ptr[Byte]): Unit = !struct.at17 = value
-      def push_cb : Ptr[redisPushFn] = struct._18
-      def push_cb_=(value: Ptr[redisPushFn]): Unit = !struct.at18 = value
+      def saddr : Ptr[sockaddr] = struct._14
+      def saddr_=(value: Ptr[sockaddr]): Unit = !struct.at14 = value
+      def addrlen : size_t = struct._15
+      def addrlen_=(value: size_t): Unit = !struct.at15 = value
+      def privdata : Ptr[Byte] = struct._16
+      def privdata_=(value: Ptr[Byte]): Unit = !struct.at16 = value
+      def free_privdata : CFuncPtr1[Ptr[Byte], Unit] = struct._17
+      def free_privdata_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at17 = value
+      def privctx : Ptr[Byte] = struct._18
+      def privctx_=(value: Ptr[Byte]): Unit = !struct.at18 = value
+      def push_cb : Ptr[redisPushFn] = struct._19
+      def push_cb_=(value: Ptr[redisPushFn]): Unit = !struct.at19 = value
 
   opaque type redisContextFuncs = CStruct6[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr3[Ptr[Byte], CString, size_t, ssize_t], CFuncPtr1[Ptr[Byte], ssize_t]]
   object redisContextFuncs:

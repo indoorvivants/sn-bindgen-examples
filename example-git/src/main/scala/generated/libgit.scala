@@ -32,7 +32,7 @@ object enumerations:
     inline def getName(inline value: git_apply_flags_t): Option[String] =
       inline value match
         case GIT_APPLY_CHECK => Some("GIT_APPLY_CHECK")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_apply_flags_t)
       inline def &(b: git_apply_flags_t): git_apply_flags_t = a & b
       inline def |(b: git_apply_flags_t): git_apply_flags_t = a | b
@@ -53,7 +53,7 @@ object enumerations:
         case GIT_APPLY_LOCATION_WORKDIR => Some("GIT_APPLY_LOCATION_WORKDIR")
         case GIT_APPLY_LOCATION_INDEX => Some("GIT_APPLY_LOCATION_INDEX")
         case GIT_APPLY_LOCATION_BOTH => Some("GIT_APPLY_LOCATION_BOTH")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_apply_location_t)
       inline def &(b: git_apply_location_t): git_apply_location_t = a & b
       inline def |(b: git_apply_location_t): git_apply_location_t = a | b
@@ -76,7 +76,7 @@ object enumerations:
         case GIT_ATTR_VALUE_TRUE => Some("GIT_ATTR_VALUE_TRUE")
         case GIT_ATTR_VALUE_FALSE => Some("GIT_ATTR_VALUE_FALSE")
         case GIT_ATTR_VALUE_STRING => Some("GIT_ATTR_VALUE_STRING")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_attr_value_t)
       inline def &(b: git_attr_value_t): git_attr_value_t = a & b
       inline def |(b: git_attr_value_t): git_attr_value_t = a | b
@@ -107,7 +107,7 @@ object enumerations:
         case GIT_BLAME_FIRST_PARENT => Some("GIT_BLAME_FIRST_PARENT")
         case GIT_BLAME_USE_MAILMAP => Some("GIT_BLAME_USE_MAILMAP")
         case GIT_BLAME_IGNORE_WHITESPACE => Some("GIT_BLAME_IGNORE_WHITESPACE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_blame_flag_t)
       inline def &(b: git_blame_flag_t): git_blame_flag_t = a & b
       inline def |(b: git_blame_flag_t): git_blame_flag_t = a | b
@@ -130,7 +130,7 @@ object enumerations:
         case GIT_BLOB_FILTER_NO_SYSTEM_ATTRIBUTES => Some("GIT_BLOB_FILTER_NO_SYSTEM_ATTRIBUTES")
         case GIT_BLOB_FILTER_ATTRIBUTES_FROM_HEAD => Some("GIT_BLOB_FILTER_ATTRIBUTES_FROM_HEAD")
         case GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT => Some("GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_blob_filter_flag_t)
       inline def &(b: git_blob_filter_flag_t): git_blob_filter_flag_t = a & b
       inline def |(b: git_blob_filter_flag_t): git_blob_filter_flag_t = a | b
@@ -151,7 +151,7 @@ object enumerations:
         case GIT_BRANCH_LOCAL => Some("GIT_BRANCH_LOCAL")
         case GIT_BRANCH_REMOTE => Some("GIT_BRANCH_REMOTE")
         case GIT_BRANCH_ALL => Some("GIT_BRANCH_ALL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_branch_t)
       inline def &(b: git_branch_t): git_branch_t = a & b
       inline def |(b: git_branch_t): git_branch_t = a | b
@@ -177,7 +177,7 @@ object enumerations:
         case GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_384 => Some("GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_384")
         case GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_521 => Some("GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_521")
         case GIT_CERT_SSH_RAW_TYPE_KEY_ED25519 => Some("GIT_CERT_SSH_RAW_TYPE_KEY_ED25519")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_cert_ssh_raw_type_t)
       inline def &(b: git_cert_ssh_raw_type_t): git_cert_ssh_raw_type_t = a & b
       inline def |(b: git_cert_ssh_raw_type_t): git_cert_ssh_raw_type_t = a | b
@@ -200,7 +200,7 @@ object enumerations:
         case GIT_CERT_SSH_SHA1 => Some("GIT_CERT_SSH_SHA1")
         case GIT_CERT_SSH_SHA256 => Some("GIT_CERT_SSH_SHA256")
         case GIT_CERT_SSH_RAW => Some("GIT_CERT_SSH_RAW")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_cert_ssh_t)
       inline def &(b: git_cert_ssh_t): git_cert_ssh_t = a & b
       inline def |(b: git_cert_ssh_t): git_cert_ssh_t = a | b
@@ -223,7 +223,7 @@ object enumerations:
         case GIT_CERT_X509 => Some("GIT_CERT_X509")
         case GIT_CERT_HOSTKEY_LIBSSH2 => Some("GIT_CERT_HOSTKEY_LIBSSH2")
         case GIT_CERT_STRARRAY => Some("GIT_CERT_STRARRAY")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_cert_t)
       inline def &(b: git_cert_t): git_cert_t = a & b
       inline def |(b: git_cert_t): git_cert_t = a | b
@@ -252,7 +252,7 @@ object enumerations:
         case GIT_CHECKOUT_NOTIFY_UNTRACKED => Some("GIT_CHECKOUT_NOTIFY_UNTRACKED")
         case GIT_CHECKOUT_NOTIFY_IGNORED => Some("GIT_CHECKOUT_NOTIFY_IGNORED")
         case GIT_CHECKOUT_NOTIFY_ALL => Some("GIT_CHECKOUT_NOTIFY_ALL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_checkout_notify_t)
       inline def &(b: git_checkout_notify_t): git_checkout_notify_t = a & b
       inline def |(b: git_checkout_notify_t): git_checkout_notify_t = a | b
@@ -315,7 +315,7 @@ object enumerations:
         case GIT_CHECKOUT_CONFLICT_STYLE_ZDIFF3 => Some("GIT_CHECKOUT_CONFLICT_STYLE_ZDIFF3")
         case GIT_CHECKOUT_UPDATE_SUBMODULES => Some("GIT_CHECKOUT_UPDATE_SUBMODULES")
         case GIT_CHECKOUT_UPDATE_SUBMODULES_IF_CHANGED => Some("GIT_CHECKOUT_UPDATE_SUBMODULES_IF_CHANGED")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_checkout_strategy_t)
       inline def &(b: git_checkout_strategy_t): git_checkout_strategy_t = a & b
       inline def |(b: git_checkout_strategy_t): git_checkout_strategy_t = a | b
@@ -338,7 +338,7 @@ object enumerations:
         case GIT_CLONE_LOCAL => Some("GIT_CLONE_LOCAL")
         case GIT_CLONE_NO_LOCAL => Some("GIT_CLONE_NO_LOCAL")
         case GIT_CLONE_LOCAL_NO_LINKS => Some("GIT_CLONE_LOCAL_NO_LINKS")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_clone_local_t)
       inline def &(b: git_clone_local_t): git_clone_local_t = a & b
       inline def |(b: git_clone_local_t): git_clone_local_t = a | b
@@ -367,7 +367,7 @@ object enumerations:
         case GIT_CONFIG_LEVEL_LOCAL => Some("GIT_CONFIG_LEVEL_LOCAL")
         case GIT_CONFIG_LEVEL_APP => Some("GIT_CONFIG_LEVEL_APP")
         case GIT_CONFIG_HIGHEST_LEVEL => Some("GIT_CONFIG_HIGHEST_LEVEL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_config_level_t)
       inline def &(b: git_config_level_t): git_config_level_t = a & b
       inline def |(b: git_config_level_t): git_config_level_t = a | b
@@ -390,7 +390,7 @@ object enumerations:
         case GIT_CONFIGMAP_TRUE => Some("GIT_CONFIGMAP_TRUE")
         case GIT_CONFIGMAP_INT32 => Some("GIT_CONFIGMAP_INT32")
         case GIT_CONFIGMAP_STRING => Some("GIT_CONFIGMAP_STRING")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_configmap_t)
       inline def &(b: git_configmap_t): git_configmap_t = a & b
       inline def |(b: git_configmap_t): git_configmap_t = a | b
@@ -419,7 +419,7 @@ object enumerations:
         case GIT_CREDENTIAL_SSH_INTERACTIVE => Some("GIT_CREDENTIAL_SSH_INTERACTIVE")
         case GIT_CREDENTIAL_USERNAME => Some("GIT_CREDENTIAL_USERNAME")
         case GIT_CREDENTIAL_SSH_MEMORY => Some("GIT_CREDENTIAL_SSH_MEMORY")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_credential_t)
       inline def &(b: git_credential_t): git_credential_t = a & b
       inline def |(b: git_credential_t): git_credential_t = a | b
@@ -456,7 +456,7 @@ object enumerations:
         case GIT_DELTA_TYPECHANGE => Some("GIT_DELTA_TYPECHANGE")
         case GIT_DELTA_UNREADABLE => Some("GIT_DELTA_UNREADABLE")
         case GIT_DELTA_CONFLICTED => Some("GIT_DELTA_CONFLICTED")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_delta_t)
       inline def &(b: git_delta_t): git_delta_t = a & b
       inline def |(b: git_delta_t): git_delta_t = a | b
@@ -477,7 +477,7 @@ object enumerations:
         case GIT_DESCRIBE_DEFAULT => Some("GIT_DESCRIBE_DEFAULT")
         case GIT_DESCRIBE_TAGS => Some("GIT_DESCRIBE_TAGS")
         case GIT_DESCRIBE_ALL => Some("GIT_DESCRIBE_ALL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_describe_strategy_t)
       inline def &(b: git_describe_strategy_t): git_describe_strategy_t = a & b
       inline def |(b: git_describe_strategy_t): git_describe_strategy_t = a | b
@@ -498,7 +498,7 @@ object enumerations:
         case GIT_DIFF_BINARY_NONE => Some("GIT_DIFF_BINARY_NONE")
         case GIT_DIFF_BINARY_LITERAL => Some("GIT_DIFF_BINARY_LITERAL")
         case GIT_DIFF_BINARY_DELTA => Some("GIT_DIFF_BINARY_DELTA")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_diff_binary_t)
       inline def &(b: git_diff_binary_t): git_diff_binary_t = a & b
       inline def |(b: git_diff_binary_t): git_diff_binary_t = a | b
@@ -545,7 +545,7 @@ object enumerations:
         case GIT_DIFF_FIND_EXACT_MATCH_ONLY => Some("GIT_DIFF_FIND_EXACT_MATCH_ONLY")
         case GIT_DIFF_BREAK_REWRITES_FOR_RENAMES_ONLY => Some("GIT_DIFF_BREAK_REWRITES_FOR_RENAMES_ONLY")
         case GIT_DIFF_FIND_REMOVE_UNMODIFIED => Some("GIT_DIFF_FIND_REMOVE_UNMODIFIED")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_diff_find_t)
       inline def &(b: git_diff_find_t): git_diff_find_t = a & b
       inline def |(b: git_diff_find_t): git_diff_find_t = a | b
@@ -570,7 +570,7 @@ object enumerations:
         case GIT_DIFF_FLAG_VALID_ID => Some("GIT_DIFF_FLAG_VALID_ID")
         case GIT_DIFF_FLAG_EXISTS => Some("GIT_DIFF_FLAG_EXISTS")
         case GIT_DIFF_FLAG_VALID_SIZE => Some("GIT_DIFF_FLAG_VALID_SIZE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_diff_flag_t)
       inline def &(b: git_diff_flag_t): git_diff_flag_t = a & b
       inline def |(b: git_diff_flag_t): git_diff_flag_t = a | b
@@ -589,7 +589,7 @@ object enumerations:
       inline value match
         case GIT_DIFF_FORMAT_EMAIL_NONE => Some("GIT_DIFF_FORMAT_EMAIL_NONE")
         case GIT_DIFF_FORMAT_EMAIL_EXCLUDE_SUBJECT_PATCH_MARKER => Some("GIT_DIFF_FORMAT_EMAIL_EXCLUDE_SUBJECT_PATCH_MARKER")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_diff_format_email_flags_t)
       inline def &(b: git_diff_format_email_flags_t): git_diff_format_email_flags_t = a & b
       inline def |(b: git_diff_format_email_flags_t): git_diff_format_email_flags_t = a | b
@@ -616,7 +616,7 @@ object enumerations:
         case GIT_DIFF_FORMAT_NAME_ONLY => Some("GIT_DIFF_FORMAT_NAME_ONLY")
         case GIT_DIFF_FORMAT_NAME_STATUS => Some("GIT_DIFF_FORMAT_NAME_STATUS")
         case GIT_DIFF_FORMAT_PATCH_ID => Some("GIT_DIFF_FORMAT_PATCH_ID")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_diff_format_t)
       inline def &(b: git_diff_format_t): git_diff_format_t = a & b
       inline def |(b: git_diff_format_t): git_diff_format_t = a | b
@@ -649,7 +649,7 @@ object enumerations:
         case GIT_DIFF_LINE_FILE_HDR => Some("GIT_DIFF_LINE_FILE_HDR")
         case GIT_DIFF_LINE_HUNK_HDR => Some("GIT_DIFF_LINE_HUNK_HDR")
         case GIT_DIFF_LINE_BINARY => Some("GIT_DIFF_LINE_BINARY")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_diff_line_t)
       inline def &(b: git_diff_line_t): git_diff_line_t = a & b
       inline def |(b: git_diff_line_t): git_diff_line_t = a | b
@@ -726,7 +726,7 @@ object enumerations:
         case GIT_DIFF_PATIENCE => Some("GIT_DIFF_PATIENCE")
         case GIT_DIFF_MINIMAL => Some("GIT_DIFF_MINIMAL")
         case GIT_DIFF_SHOW_BINARY => Some("GIT_DIFF_SHOW_BINARY")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_diff_option_t)
       inline def &(b: git_diff_option_t): git_diff_option_t = a & b
       inline def |(b: git_diff_option_t): git_diff_option_t = a | b
@@ -751,7 +751,7 @@ object enumerations:
         case GIT_DIFF_STATS_SHORT => Some("GIT_DIFF_STATS_SHORT")
         case GIT_DIFF_STATS_NUMBER => Some("GIT_DIFF_STATS_NUMBER")
         case GIT_DIFF_STATS_INCLUDE_SUMMARY => Some("GIT_DIFF_STATS_INCLUDE_SUMMARY")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_diff_stats_format_t)
       inline def &(b: git_diff_stats_format_t): git_diff_stats_format_t = a & b
       inline def |(b: git_diff_stats_format_t): git_diff_stats_format_t = a | b
@@ -770,7 +770,7 @@ object enumerations:
       inline value match
         case GIT_DIRECTION_FETCH => Some("GIT_DIRECTION_FETCH")
         case GIT_DIRECTION_PUSH => Some("GIT_DIRECTION_PUSH")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_direction)
       inline def &(b: git_direction): git_direction = a & b
       inline def |(b: git_direction): git_direction = a | b
@@ -793,7 +793,7 @@ object enumerations:
         case GIT_EMAIL_CREATE_OMIT_NUMBERS => Some("GIT_EMAIL_CREATE_OMIT_NUMBERS")
         case GIT_EMAIL_CREATE_ALWAYS_NUMBER => Some("GIT_EMAIL_CREATE_ALWAYS_NUMBER")
         case GIT_EMAIL_CREATE_NO_RENAMES => Some("GIT_EMAIL_CREATE_NO_RENAMES")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_email_create_flags_t)
       inline def &(b: git_email_create_flags_t): git_email_create_flags_t = a & b
       inline def |(b: git_email_create_flags_t): git_email_create_flags_t = a | b
@@ -870,7 +870,7 @@ object enumerations:
         case GIT_EINDEXDIRTY => Some("GIT_EINDEXDIRTY")
         case GIT_EAPPLYFAIL => Some("GIT_EAPPLYFAIL")
         case GIT_EOWNER => Some("GIT_EOWNER")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_error_code)
       inline def &(b: git_error_code): git_error_code = a & b
       inline def |(b: git_error_code): git_error_code = a | b
@@ -957,7 +957,7 @@ object enumerations:
         case GIT_ERROR_SHA => Some("GIT_ERROR_SHA")
         case GIT_ERROR_HTTP => Some("GIT_ERROR_HTTP")
         case GIT_ERROR_INTERNAL => Some("GIT_ERROR_INTERNAL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_error_t)
       inline def &(b: git_error_t): git_error_t = a & b
       inline def |(b: git_error_t): git_error_t = a | b
@@ -980,7 +980,7 @@ object enumerations:
         case GIT_FEATURE_HTTPS => Some("GIT_FEATURE_HTTPS")
         case GIT_FEATURE_SSH => Some("GIT_FEATURE_SSH")
         case GIT_FEATURE_NSEC => Some("GIT_FEATURE_NSEC")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_feature_t)
       inline def &(b: git_feature_t): git_feature_t = a & b
       inline def |(b: git_feature_t): git_feature_t = a | b
@@ -1001,7 +1001,7 @@ object enumerations:
         case GIT_FETCH_PRUNE_UNSPECIFIED => Some("GIT_FETCH_PRUNE_UNSPECIFIED")
         case GIT_FETCH_PRUNE => Some("GIT_FETCH_PRUNE")
         case GIT_FETCH_NO_PRUNE => Some("GIT_FETCH_NO_PRUNE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_fetch_prune_t)
       inline def &(b: git_fetch_prune_t): git_fetch_prune_t = a & b
       inline def |(b: git_fetch_prune_t): git_fetch_prune_t = a | b
@@ -1028,7 +1028,7 @@ object enumerations:
         case GIT_FILEMODE_BLOB_EXECUTABLE => Some("GIT_FILEMODE_BLOB_EXECUTABLE")
         case GIT_FILEMODE_LINK => Some("GIT_FILEMODE_LINK")
         case GIT_FILEMODE_COMMIT => Some("GIT_FILEMODE_COMMIT")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_filemode_t)
       inline def &(b: git_filemode_t): git_filemode_t = a & b
       inline def |(b: git_filemode_t): git_filemode_t = a | b
@@ -1053,7 +1053,7 @@ object enumerations:
         case GIT_FILTER_NO_SYSTEM_ATTRIBUTES => Some("GIT_FILTER_NO_SYSTEM_ATTRIBUTES")
         case GIT_FILTER_ATTRIBUTES_FROM_HEAD => Some("GIT_FILTER_ATTRIBUTES_FROM_HEAD")
         case GIT_FILTER_ATTRIBUTES_FROM_COMMIT => Some("GIT_FILTER_ATTRIBUTES_FROM_COMMIT")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_filter_flag_t)
       inline def &(b: git_filter_flag_t): git_filter_flag_t = a & b
       inline def |(b: git_filter_flag_t): git_filter_flag_t = a | b
@@ -1076,7 +1076,7 @@ object enumerations:
         case GIT_FILTER_SMUDGE => Some("GIT_FILTER_SMUDGE")
         case GIT_FILTER_TO_ODB => Some("GIT_FILTER_TO_ODB")
         case GIT_FILTER_CLEAN => Some("GIT_FILTER_CLEAN")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_filter_mode_t)
       inline def &(b: git_filter_mode_t): git_filter_mode_t = a & b
       inline def |(b: git_filter_mode_t): git_filter_mode_t = a | b
@@ -1099,7 +1099,7 @@ object enumerations:
         case GIT_INDEX_ADD_FORCE => Some("GIT_INDEX_ADD_FORCE")
         case GIT_INDEX_ADD_DISABLE_PATHSPEC_MATCH => Some("GIT_INDEX_ADD_DISABLE_PATHSPEC_MATCH")
         case GIT_INDEX_ADD_CHECK_PATHSPEC => Some("GIT_INDEX_ADD_CHECK_PATHSPEC")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_index_add_option_t)
       inline def &(b: git_index_add_option_t): git_index_add_option_t = a & b
       inline def |(b: git_index_add_option_t): git_index_add_option_t = a | b
@@ -1122,7 +1122,7 @@ object enumerations:
         case GIT_INDEX_CAPABILITY_NO_FILEMODE => Some("GIT_INDEX_CAPABILITY_NO_FILEMODE")
         case GIT_INDEX_CAPABILITY_NO_SYMLINKS => Some("GIT_INDEX_CAPABILITY_NO_SYMLINKS")
         case GIT_INDEX_CAPABILITY_FROM_OWNER => Some("GIT_INDEX_CAPABILITY_FROM_OWNER")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_index_capability_t)
       inline def &(b: git_index_capability_t): git_index_capability_t = a & b
       inline def |(b: git_index_capability_t): git_index_capability_t = a | b
@@ -1145,7 +1145,7 @@ object enumerations:
         case GIT_INDEX_ENTRY_SKIP_WORKTREE => Some("GIT_INDEX_ENTRY_SKIP_WORKTREE")
         case GIT_INDEX_ENTRY_EXTENDED_FLAGS => Some("GIT_INDEX_ENTRY_EXTENDED_FLAGS")
         case GIT_INDEX_ENTRY_UPTODATE => Some("GIT_INDEX_ENTRY_UPTODATE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_index_entry_extended_flag_t)
       inline def &(b: git_index_entry_extended_flag_t): git_index_entry_extended_flag_t = a & b
       inline def |(b: git_index_entry_extended_flag_t): git_index_entry_extended_flag_t = a | b
@@ -1164,7 +1164,7 @@ object enumerations:
       inline value match
         case GIT_INDEX_ENTRY_EXTENDED => Some("GIT_INDEX_ENTRY_EXTENDED")
         case GIT_INDEX_ENTRY_VALID => Some("GIT_INDEX_ENTRY_VALID")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_index_entry_flag_t)
       inline def &(b: git_index_entry_flag_t): git_index_entry_flag_t = a & b
       inline def |(b: git_index_entry_flag_t): git_index_entry_flag_t = a | b
@@ -1189,7 +1189,7 @@ object enumerations:
         case GIT_INDEX_STAGE_ANCESTOR => Some("GIT_INDEX_STAGE_ANCESTOR")
         case GIT_INDEX_STAGE_OURS => Some("GIT_INDEX_STAGE_OURS")
         case GIT_INDEX_STAGE_THEIRS => Some("GIT_INDEX_STAGE_THEIRS")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_index_stage_t)
       inline def &(b: git_index_stage_t): git_index_stage_t = a & b
       inline def |(b: git_index_stage_t): git_index_stage_t = a | b
@@ -1282,7 +1282,7 @@ object enumerations:
         case GIT_OPT_SET_OWNER_VALIDATION => Some("GIT_OPT_SET_OWNER_VALIDATION")
         case GIT_OPT_GET_HOMEDIR => Some("GIT_OPT_GET_HOMEDIR")
         case GIT_OPT_SET_HOMEDIR => Some("GIT_OPT_SET_HOMEDIR")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_libgit2_opt_t)
       inline def &(b: git_libgit2_opt_t): git_libgit2_opt_t = a & b
       inline def |(b: git_libgit2_opt_t): git_libgit2_opt_t = a | b
@@ -1307,7 +1307,7 @@ object enumerations:
         case GIT_MERGE_ANALYSIS_UP_TO_DATE => Some("GIT_MERGE_ANALYSIS_UP_TO_DATE")
         case GIT_MERGE_ANALYSIS_FASTFORWARD => Some("GIT_MERGE_ANALYSIS_FASTFORWARD")
         case GIT_MERGE_ANALYSIS_UNBORN => Some("GIT_MERGE_ANALYSIS_UNBORN")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_merge_analysis_t)
       inline def &(b: git_merge_analysis_t): git_merge_analysis_t = a & b
       inline def |(b: git_merge_analysis_t): git_merge_analysis_t = a | b
@@ -1330,7 +1330,7 @@ object enumerations:
         case GIT_MERGE_FILE_FAVOR_OURS => Some("GIT_MERGE_FILE_FAVOR_OURS")
         case GIT_MERGE_FILE_FAVOR_THEIRS => Some("GIT_MERGE_FILE_FAVOR_THEIRS")
         case GIT_MERGE_FILE_FAVOR_UNION => Some("GIT_MERGE_FILE_FAVOR_UNION")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_merge_file_favor_t)
       inline def &(b: git_merge_file_favor_t): git_merge_file_favor_t = a & b
       inline def |(b: git_merge_file_favor_t): git_merge_file_favor_t = a | b
@@ -1367,7 +1367,7 @@ object enumerations:
         case GIT_MERGE_FILE_DIFF_MINIMAL => Some("GIT_MERGE_FILE_DIFF_MINIMAL")
         case GIT_MERGE_FILE_STYLE_ZDIFF3 => Some("GIT_MERGE_FILE_STYLE_ZDIFF3")
         case GIT_MERGE_FILE_ACCEPT_CONFLICTS => Some("GIT_MERGE_FILE_ACCEPT_CONFLICTS")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_merge_file_flag_t)
       inline def &(b: git_merge_file_flag_t): git_merge_file_flag_t = a & b
       inline def |(b: git_merge_file_flag_t): git_merge_file_flag_t = a | b
@@ -1392,7 +1392,7 @@ object enumerations:
         case GIT_MERGE_SKIP_REUC => Some("GIT_MERGE_SKIP_REUC")
         case GIT_MERGE_NO_RECURSIVE => Some("GIT_MERGE_NO_RECURSIVE")
         case GIT_MERGE_VIRTUAL_BASE => Some("GIT_MERGE_VIRTUAL_BASE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_merge_flag_t)
       inline def &(b: git_merge_flag_t): git_merge_flag_t = a & b
       inline def |(b: git_merge_flag_t): git_merge_flag_t = a | b
@@ -1413,7 +1413,7 @@ object enumerations:
         case GIT_MERGE_PREFERENCE_NONE => Some("GIT_MERGE_PREFERENCE_NONE")
         case GIT_MERGE_PREFERENCE_NO_FASTFORWARD => Some("GIT_MERGE_PREFERENCE_NO_FASTFORWARD")
         case GIT_MERGE_PREFERENCE_FASTFORWARD_ONLY => Some("GIT_MERGE_PREFERENCE_FASTFORWARD_ONLY")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_merge_preference_t)
       inline def &(b: git_merge_preference_t): git_merge_preference_t = a & b
       inline def |(b: git_merge_preference_t): git_merge_preference_t = a | b
@@ -1444,7 +1444,7 @@ object enumerations:
         case GIT_OBJECT_TAG => Some("GIT_OBJECT_TAG")
         case GIT_OBJECT_OFS_DELTA => Some("GIT_OBJECT_OFS_DELTA")
         case GIT_OBJECT_REF_DELTA => Some("GIT_OBJECT_REF_DELTA")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_object_t)
       inline def &(b: git_object_t): git_object_t = a & b
       inline def |(b: git_object_t): git_object_t = a | b
@@ -1458,7 +1458,7 @@ object enumerations:
     inline def getName(inline value: git_odb_backend_loose_flag_t): Option[String] =
       inline value match
         case GIT_ODB_BACKEND_LOOSE_FSYNC => Some("GIT_ODB_BACKEND_LOOSE_FSYNC")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_odb_backend_loose_flag_t)
       inline def &(b: git_odb_backend_loose_flag_t): git_odb_backend_loose_flag_t = a & b
       inline def |(b: git_odb_backend_loose_flag_t): git_odb_backend_loose_flag_t = a | b
@@ -1475,7 +1475,7 @@ object enumerations:
     inline def getName(inline value: git_odb_lookup_flags_t): Option[String] =
       inline value match
         case GIT_ODB_LOOKUP_NO_REFRESH => Some("GIT_ODB_LOOKUP_NO_REFRESH")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_odb_lookup_flags_t)
       inline def &(b: git_odb_lookup_flags_t): git_odb_lookup_flags_t = a & b
       inline def |(b: git_odb_lookup_flags_t): git_odb_lookup_flags_t = a | b
@@ -1496,7 +1496,7 @@ object enumerations:
         case GIT_STREAM_RDONLY => Some("GIT_STREAM_RDONLY")
         case GIT_STREAM_WRONLY => Some("GIT_STREAM_WRONLY")
         case GIT_STREAM_RW => Some("GIT_STREAM_RW")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_odb_stream_t)
       inline def &(b: git_odb_stream_t): git_odb_stream_t = a & b
       inline def |(b: git_odb_stream_t): git_odb_stream_t = a | b
@@ -1513,7 +1513,7 @@ object enumerations:
     inline def getName(inline value: git_oid_t): Option[String] =
       inline value match
         case GIT_OID_SHA1 => Some("GIT_OID_SHA1")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_oid_t)
       inline def &(b: git_oid_t): git_oid_t = a & b
       inline def |(b: git_oid_t): git_oid_t = a | b
@@ -1532,7 +1532,7 @@ object enumerations:
       inline value match
         case GIT_PACKBUILDER_ADDING_OBJECTS => Some("GIT_PACKBUILDER_ADDING_OBJECTS")
         case GIT_PACKBUILDER_DELTAFICATION => Some("GIT_PACKBUILDER_DELTAFICATION")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_packbuilder_stage_t)
       inline def &(b: git_packbuilder_stage_t): git_packbuilder_stage_t = a & b
       inline def |(b: git_packbuilder_stage_t): git_packbuilder_stage_t = a | b
@@ -1561,7 +1561,7 @@ object enumerations:
         case GIT_PATHSPEC_NO_MATCH_ERROR => Some("GIT_PATHSPEC_NO_MATCH_ERROR")
         case GIT_PATHSPEC_FIND_FAILURES => Some("GIT_PATHSPEC_FIND_FAILURES")
         case GIT_PATHSPEC_FAILURES_ONLY => Some("GIT_PATHSPEC_FAILURES_ONLY")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_pathspec_flag_t)
       inline def &(b: git_pathspec_flag_t): git_pathspec_flag_t = a & b
       inline def |(b: git_pathspec_flag_t): git_pathspec_flag_t = a | b
@@ -1582,7 +1582,7 @@ object enumerations:
         case GIT_PROXY_NONE => Some("GIT_PROXY_NONE")
         case GIT_PROXY_AUTO => Some("GIT_PROXY_AUTO")
         case GIT_PROXY_SPECIFIED => Some("GIT_PROXY_SPECIFIED")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_proxy_t)
       inline def &(b: git_proxy_t): git_proxy_t = a & b
       inline def |(b: git_proxy_t): git_proxy_t = a | b
@@ -1609,7 +1609,7 @@ object enumerations:
         case GIT_REBASE_OPERATION_SQUASH => Some("GIT_REBASE_OPERATION_SQUASH")
         case GIT_REBASE_OPERATION_FIXUP => Some("GIT_REBASE_OPERATION_FIXUP")
         case GIT_REBASE_OPERATION_EXEC => Some("GIT_REBASE_OPERATION_EXEC")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_rebase_operation_t)
       inline def &(b: git_rebase_operation_t): git_rebase_operation_t = a & b
       inline def |(b: git_rebase_operation_t): git_rebase_operation_t = a | b
@@ -1632,7 +1632,7 @@ object enumerations:
         case GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL => Some("GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL")
         case GIT_REFERENCE_FORMAT_REFSPEC_PATTERN => Some("GIT_REFERENCE_FORMAT_REFSPEC_PATTERN")
         case GIT_REFERENCE_FORMAT_REFSPEC_SHORTHAND => Some("GIT_REFERENCE_FORMAT_REFSPEC_SHORTHAND")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_reference_format_t)
       inline def &(b: git_reference_format_t): git_reference_format_t = a & b
       inline def |(b: git_reference_format_t): git_reference_format_t = a | b
@@ -1655,7 +1655,7 @@ object enumerations:
         case GIT_REFERENCE_DIRECT => Some("GIT_REFERENCE_DIRECT")
         case GIT_REFERENCE_SYMBOLIC => Some("GIT_REFERENCE_SYMBOLIC")
         case GIT_REFERENCE_ALL => Some("GIT_REFERENCE_ALL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_reference_t)
       inline def &(b: git_reference_t): git_reference_t = a & b
       inline def |(b: git_reference_t): git_reference_t = a | b
@@ -1678,7 +1678,7 @@ object enumerations:
         case GIT_REMOTE_DOWNLOAD_TAGS_AUTO => Some("GIT_REMOTE_DOWNLOAD_TAGS_AUTO")
         case GIT_REMOTE_DOWNLOAD_TAGS_NONE => Some("GIT_REMOTE_DOWNLOAD_TAGS_NONE")
         case GIT_REMOTE_DOWNLOAD_TAGS_ALL => Some("GIT_REMOTE_DOWNLOAD_TAGS_ALL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_remote_autotag_option_t)
       inline def &(b: git_remote_autotag_option_t): git_remote_autotag_option_t = a & b
       inline def |(b: git_remote_autotag_option_t): git_remote_autotag_option_t = a | b
@@ -1699,7 +1699,7 @@ object enumerations:
         case GIT_REMOTE_COMPLETION_DOWNLOAD => Some("GIT_REMOTE_COMPLETION_DOWNLOAD")
         case GIT_REMOTE_COMPLETION_INDEXING => Some("GIT_REMOTE_COMPLETION_INDEXING")
         case GIT_REMOTE_COMPLETION_ERROR => Some("GIT_REMOTE_COMPLETION_ERROR")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_remote_completion_t)
       inline def &(b: git_remote_completion_t): git_remote_completion_t = a & b
       inline def |(b: git_remote_completion_t): git_remote_completion_t = a | b
@@ -1718,7 +1718,7 @@ object enumerations:
       inline value match
         case GIT_REMOTE_CREATE_SKIP_INSTEADOF => Some("GIT_REMOTE_CREATE_SKIP_INSTEADOF")
         case GIT_REMOTE_CREATE_SKIP_DEFAULT_FETCHSPEC => Some("GIT_REMOTE_CREATE_SKIP_DEFAULT_FETCHSPEC")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_remote_create_flags)
       inline def &(b: git_remote_create_flags): git_remote_create_flags = a & b
       inline def |(b: git_remote_create_flags): git_remote_create_flags = a | b
@@ -1739,7 +1739,7 @@ object enumerations:
         case GIT_REMOTE_REDIRECT_NONE => Some("GIT_REMOTE_REDIRECT_NONE")
         case GIT_REMOTE_REDIRECT_INITIAL => Some("GIT_REMOTE_REDIRECT_INITIAL")
         case GIT_REMOTE_REDIRECT_ALL => Some("GIT_REMOTE_REDIRECT_ALL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_remote_redirect_t)
       inline def &(b: git_remote_redirect_t): git_remote_redirect_t = a & b
       inline def |(b: git_remote_redirect_t): git_remote_redirect_t = a | b
@@ -1768,7 +1768,7 @@ object enumerations:
         case GIT_REPOSITORY_INIT_MKPATH => Some("GIT_REPOSITORY_INIT_MKPATH")
         case GIT_REPOSITORY_INIT_EXTERNAL_TEMPLATE => Some("GIT_REPOSITORY_INIT_EXTERNAL_TEMPLATE")
         case GIT_REPOSITORY_INIT_RELATIVE_GITLINK => Some("GIT_REPOSITORY_INIT_RELATIVE_GITLINK")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_repository_init_flag_t)
       inline def &(b: git_repository_init_flag_t): git_repository_init_flag_t = a & b
       inline def |(b: git_repository_init_flag_t): git_repository_init_flag_t = a | b
@@ -1789,7 +1789,7 @@ object enumerations:
         case GIT_REPOSITORY_INIT_SHARED_UMASK => Some("GIT_REPOSITORY_INIT_SHARED_UMASK")
         case GIT_REPOSITORY_INIT_SHARED_GROUP => Some("GIT_REPOSITORY_INIT_SHARED_GROUP")
         case GIT_REPOSITORY_INIT_SHARED_ALL => Some("GIT_REPOSITORY_INIT_SHARED_ALL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_repository_init_mode_t)
       inline def &(b: git_repository_init_mode_t): git_repository_init_mode_t = a & b
       inline def |(b: git_repository_init_mode_t): git_repository_init_mode_t = a | b
@@ -1834,7 +1834,7 @@ object enumerations:
         case GIT_REPOSITORY_ITEM_MODULES => Some("GIT_REPOSITORY_ITEM_MODULES")
         case GIT_REPOSITORY_ITEM_WORKTREES => Some("GIT_REPOSITORY_ITEM_WORKTREES")
         case GIT_REPOSITORY_ITEM__LAST => Some("GIT_REPOSITORY_ITEM__LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_repository_item_t)
       inline def &(b: git_repository_item_t): git_repository_item_t = a & b
       inline def |(b: git_repository_item_t): git_repository_item_t = a | b
@@ -1859,7 +1859,7 @@ object enumerations:
         case GIT_REPOSITORY_OPEN_BARE => Some("GIT_REPOSITORY_OPEN_BARE")
         case GIT_REPOSITORY_OPEN_NO_DOTGIT => Some("GIT_REPOSITORY_OPEN_NO_DOTGIT")
         case GIT_REPOSITORY_OPEN_FROM_ENV => Some("GIT_REPOSITORY_OPEN_FROM_ENV")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_repository_open_flag_t)
       inline def &(b: git_repository_open_flag_t): git_repository_open_flag_t = a & b
       inline def |(b: git_repository_open_flag_t): git_repository_open_flag_t = a | b
@@ -1898,7 +1898,7 @@ object enumerations:
         case GIT_REPOSITORY_STATE_REBASE_MERGE => Some("GIT_REPOSITORY_STATE_REBASE_MERGE")
         case GIT_REPOSITORY_STATE_APPLY_MAILBOX => Some("GIT_REPOSITORY_STATE_APPLY_MAILBOX")
         case GIT_REPOSITORY_STATE_APPLY_MAILBOX_OR_REBASE => Some("GIT_REPOSITORY_STATE_APPLY_MAILBOX_OR_REBASE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_repository_state_t)
       inline def &(b: git_repository_state_t): git_repository_state_t = a & b
       inline def |(b: git_repository_state_t): git_repository_state_t = a | b
@@ -1919,7 +1919,7 @@ object enumerations:
         case GIT_RESET_SOFT => Some("GIT_RESET_SOFT")
         case GIT_RESET_MIXED => Some("GIT_RESET_MIXED")
         case GIT_RESET_HARD => Some("GIT_RESET_HARD")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_reset_t)
       inline def &(b: git_reset_t): git_reset_t = a & b
       inline def |(b: git_reset_t): git_reset_t = a | b
@@ -1940,7 +1940,7 @@ object enumerations:
         case GIT_REVSPEC_SINGLE => Some("GIT_REVSPEC_SINGLE")
         case GIT_REVSPEC_RANGE => Some("GIT_REVSPEC_RANGE")
         case GIT_REVSPEC_MERGE_BASE => Some("GIT_REVSPEC_MERGE_BASE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_revspec_t)
       inline def &(b: git_revspec_t): git_revspec_t = a & b
       inline def |(b: git_revspec_t): git_revspec_t = a | b
@@ -1963,7 +1963,7 @@ object enumerations:
         case GIT_SORT_TOPOLOGICAL => Some("GIT_SORT_TOPOLOGICAL")
         case GIT_SORT_TIME => Some("GIT_SORT_TIME")
         case GIT_SORT_REVERSE => Some("GIT_SORT_REVERSE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_sort_t)
       inline def &(b: git_sort_t): git_sort_t = a & b
       inline def |(b: git_sort_t): git_sort_t = a | b
@@ -1982,7 +1982,7 @@ object enumerations:
       inline value match
         case GIT_STASH_APPLY_DEFAULT => Some("GIT_STASH_APPLY_DEFAULT")
         case GIT_STASH_APPLY_REINSTATE_INDEX => Some("GIT_STASH_APPLY_REINSTATE_INDEX")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_stash_apply_flags)
       inline def &(b: git_stash_apply_flags): git_stash_apply_flags = a & b
       inline def |(b: git_stash_apply_flags): git_stash_apply_flags = a | b
@@ -2013,7 +2013,7 @@ object enumerations:
         case GIT_STASH_APPLY_PROGRESS_CHECKOUT_UNTRACKED => Some("GIT_STASH_APPLY_PROGRESS_CHECKOUT_UNTRACKED")
         case GIT_STASH_APPLY_PROGRESS_CHECKOUT_MODIFIED => Some("GIT_STASH_APPLY_PROGRESS_CHECKOUT_MODIFIED")
         case GIT_STASH_APPLY_PROGRESS_DONE => Some("GIT_STASH_APPLY_PROGRESS_DONE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_stash_apply_progress_t)
       inline def &(b: git_stash_apply_progress_t): git_stash_apply_progress_t = a & b
       inline def |(b: git_stash_apply_progress_t): git_stash_apply_progress_t = a | b
@@ -2038,7 +2038,7 @@ object enumerations:
         case GIT_STASH_INCLUDE_UNTRACKED => Some("GIT_STASH_INCLUDE_UNTRACKED")
         case GIT_STASH_INCLUDE_IGNORED => Some("GIT_STASH_INCLUDE_IGNORED")
         case GIT_STASH_KEEP_ALL => Some("GIT_STASH_KEEP_ALL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_stash_flags)
       inline def &(b: git_stash_flags): git_stash_flags = a & b
       inline def |(b: git_stash_flags): git_stash_flags = a | b
@@ -2085,7 +2085,7 @@ object enumerations:
         case GIT_STATUS_OPT_UPDATE_INDEX => Some("GIT_STATUS_OPT_UPDATE_INDEX")
         case GIT_STATUS_OPT_INCLUDE_UNREADABLE => Some("GIT_STATUS_OPT_INCLUDE_UNREADABLE")
         case GIT_STATUS_OPT_INCLUDE_UNREADABLE_AS_UNTRACKED => Some("GIT_STATUS_OPT_INCLUDE_UNREADABLE_AS_UNTRACKED")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_status_opt_t)
       inline def &(b: git_status_opt_t): git_status_opt_t = a & b
       inline def |(b: git_status_opt_t): git_status_opt_t = a | b
@@ -2106,7 +2106,7 @@ object enumerations:
         case GIT_STATUS_SHOW_INDEX_AND_WORKDIR => Some("GIT_STATUS_SHOW_INDEX_AND_WORKDIR")
         case GIT_STATUS_SHOW_INDEX_ONLY => Some("GIT_STATUS_SHOW_INDEX_ONLY")
         case GIT_STATUS_SHOW_WORKDIR_ONLY => Some("GIT_STATUS_SHOW_WORKDIR_ONLY")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_status_show_t)
       inline def &(b: git_status_show_t): git_status_show_t = a & b
       inline def |(b: git_status_show_t): git_status_show_t = a | b
@@ -2149,7 +2149,7 @@ object enumerations:
         case GIT_STATUS_WT_UNREADABLE => Some("GIT_STATUS_WT_UNREADABLE")
         case GIT_STATUS_IGNORED => Some("GIT_STATUS_IGNORED")
         case GIT_STATUS_CONFLICTED => Some("GIT_STATUS_CONFLICTED")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_status_t)
       inline def &(b: git_status_t): git_status_t = a & b
       inline def |(b: git_status_t): git_status_t = a | b
@@ -2174,7 +2174,7 @@ object enumerations:
         case GIT_SUBMODULE_IGNORE_UNTRACKED => Some("GIT_SUBMODULE_IGNORE_UNTRACKED")
         case GIT_SUBMODULE_IGNORE_DIRTY => Some("GIT_SUBMODULE_IGNORE_DIRTY")
         case GIT_SUBMODULE_IGNORE_ALL => Some("GIT_SUBMODULE_IGNORE_ALL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_submodule_ignore_t)
       inline def &(b: git_submodule_ignore_t): git_submodule_ignore_t = a & b
       inline def |(b: git_submodule_ignore_t): git_submodule_ignore_t = a | b
@@ -2195,7 +2195,7 @@ object enumerations:
         case GIT_SUBMODULE_RECURSE_NO => Some("GIT_SUBMODULE_RECURSE_NO")
         case GIT_SUBMODULE_RECURSE_YES => Some("GIT_SUBMODULE_RECURSE_YES")
         case GIT_SUBMODULE_RECURSE_ONDEMAND => Some("GIT_SUBMODULE_RECURSE_ONDEMAND")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_submodule_recurse_t)
       inline def &(b: git_submodule_recurse_t): git_submodule_recurse_t = a & b
       inline def |(b: git_submodule_recurse_t): git_submodule_recurse_t = a | b
@@ -2238,7 +2238,7 @@ object enumerations:
         case GIT_SUBMODULE_STATUS_WD_INDEX_MODIFIED => Some("GIT_SUBMODULE_STATUS_WD_INDEX_MODIFIED")
         case GIT_SUBMODULE_STATUS_WD_WD_MODIFIED => Some("GIT_SUBMODULE_STATUS_WD_WD_MODIFIED")
         case GIT_SUBMODULE_STATUS_WD_UNTRACKED => Some("GIT_SUBMODULE_STATUS_WD_UNTRACKED")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_submodule_status_t)
       inline def &(b: git_submodule_status_t): git_submodule_status_t = a & b
       inline def |(b: git_submodule_status_t): git_submodule_status_t = a | b
@@ -2263,7 +2263,7 @@ object enumerations:
         case GIT_SUBMODULE_UPDATE_MERGE => Some("GIT_SUBMODULE_UPDATE_MERGE")
         case GIT_SUBMODULE_UPDATE_NONE => Some("GIT_SUBMODULE_UPDATE_NONE")
         case GIT_SUBMODULE_UPDATE_DEFAULT => Some("GIT_SUBMODULE_UPDATE_DEFAULT")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_submodule_update_t)
       inline def &(b: git_submodule_update_t): git_submodule_update_t = a & b
       inline def |(b: git_submodule_update_t): git_submodule_update_t = a | b
@@ -2292,7 +2292,7 @@ object enumerations:
         case GIT_TRACE_INFO => Some("GIT_TRACE_INFO")
         case GIT_TRACE_DEBUG => Some("GIT_TRACE_DEBUG")
         case GIT_TRACE_TRACE => Some("GIT_TRACE_TRACE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_trace_level_t)
       inline def &(b: git_trace_level_t): git_trace_level_t = a & b
       inline def |(b: git_trace_level_t): git_trace_level_t = a | b
@@ -2311,7 +2311,7 @@ object enumerations:
       inline value match
         case GIT_TREE_UPDATE_UPSERT => Some("GIT_TREE_UPDATE_UPSERT")
         case GIT_TREE_UPDATE_REMOVE => Some("GIT_TREE_UPDATE_REMOVE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_tree_update_t)
       inline def &(b: git_tree_update_t): git_tree_update_t = a & b
       inline def |(b: git_tree_update_t): git_tree_update_t = a | b
@@ -2330,7 +2330,7 @@ object enumerations:
       inline value match
         case GIT_TREEWALK_PRE => Some("GIT_TREEWALK_PRE")
         case GIT_TREEWALK_POST => Some("GIT_TREEWALK_POST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_treewalk_mode)
       inline def &(b: git_treewalk_mode): git_treewalk_mode = a & b
       inline def |(b: git_treewalk_mode): git_treewalk_mode = a | b
@@ -2351,7 +2351,7 @@ object enumerations:
         case GIT_WORKTREE_PRUNE_VALID => Some("GIT_WORKTREE_PRUNE_VALID")
         case GIT_WORKTREE_PRUNE_LOCKED => Some("GIT_WORKTREE_PRUNE_LOCKED")
         case GIT_WORKTREE_PRUNE_WORKING_TREE => Some("GIT_WORKTREE_PRUNE_WORKING_TREE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: git_worktree_prune_t)
       inline def &(b: git_worktree_prune_t): git_worktree_prune_t = a & b
       inline def |(b: git_worktree_prune_t): git_worktree_prune_t = a | b

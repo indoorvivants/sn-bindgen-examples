@@ -45,7 +45,7 @@ object enumerations:
         case CURL_FORMADD_ILLEGAL_ARRAY => Some("CURL_FORMADD_ILLEGAL_ARRAY")
         case CURL_FORMADD_DISABLED => Some("CURL_FORMADD_DISABLED")
         case CURL_FORMADD_LAST => Some("CURL_FORMADD_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLFORMcode)
       inline def &(b: CURLFORMcode): CURLFORMcode = a & b
       inline def |(b: CURLFORMcode): CURLFORMcode = a | b
@@ -73,7 +73,7 @@ object enumerations:
         case CURLHE_OUT_OF_MEMORY => Some("CURLHE_OUT_OF_MEMORY")
         case CURLHE_BAD_ARGUMENT => Some("CURLHE_BAD_ARGUMENT")
         case CURLHE_NOT_BUILT_IN => Some("CURLHE_NOT_BUILT_IN")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLHcode)
       inline def &(b: CURLHcode): CURLHcode = a & b
       inline def |(b: CURLHcode): CURLHcode = a | b
@@ -231,7 +231,7 @@ object enumerations:
         case CURLINFO_XFER_ID => Some("CURLINFO_XFER_ID")
         case CURLINFO_CONN_ID => Some("CURLINFO_CONN_ID")
         case CURLINFO_LASTONE => Some("CURLINFO_LASTONE")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLINFO)
       inline def &(b: CURLINFO): CURLINFO = a & b
       inline def |(b: CURLINFO): CURLINFO = a | b
@@ -249,7 +249,7 @@ object enumerations:
         case CURLMSG_NONE => Some("CURLMSG_NONE")
         case CURLMSG_DONE => Some("CURLMSG_DONE")
         case CURLMSG_LAST => Some("CURLMSG_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLMSG)
       inline def &(b: CURLMSG): CURLMSG = a & b
       inline def |(b: CURLMSG): CURLMSG = a | b
@@ -291,7 +291,7 @@ object enumerations:
         case CURLM_ABORTED_BY_CALLBACK => Some("CURLM_ABORTED_BY_CALLBACK")
         case CURLM_UNRECOVERABLE_POLL => Some("CURLM_UNRECOVERABLE_POLL")
         case CURLM_LAST => Some("CURLM_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLMcode)
       inline def &(b: CURLMcode): CURLMcode = a & b
       inline def |(b: CURLMcode): CURLMcode = a | b
@@ -337,7 +337,7 @@ object enumerations:
         case CURLMOPT_PUSHDATA => Some("CURLMOPT_PUSHDATA")
         case CURLMOPT_MAX_CONCURRENT_STREAMS => Some("CURLMOPT_MAX_CONCURRENT_STREAMS")
         case CURLMOPT_LASTENTRY => Some("CURLMOPT_LASTENTRY")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLMoption)
       inline def &(b: CURLMoption): CURLMoption = a & b
       inline def |(b: CURLMoption): CURLMoption = a | b
@@ -363,7 +363,7 @@ object enumerations:
         case CURLSHE_NOMEM => Some("CURLSHE_NOMEM")
         case CURLSHE_NOT_BUILT_IN => Some("CURLSHE_NOT_BUILT_IN")
         case CURLSHE_LAST => Some("CURLSHE_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLSHcode)
       inline def &(b: CURLSHcode): CURLSHcode = a & b
       inline def |(b: CURLSHcode): CURLSHcode = a | b
@@ -389,7 +389,7 @@ object enumerations:
         case CURLSHOPT_UNLOCKFUNC => Some("CURLSHOPT_UNLOCKFUNC")
         case CURLSHOPT_USERDATA => Some("CURLSHOPT_USERDATA")
         case CURLSHOPT_LAST => Some("CURLSHOPT_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLSHoption)
       inline def &(b: CURLSHoption): CURLSHoption = a & b
       inline def |(b: CURLSHoption): CURLSHoption = a | b
@@ -407,7 +407,7 @@ object enumerations:
         case CURLSTS_OK => Some("CURLSTS_OK")
         case CURLSTS_DONE => Some("CURLSTS_DONE")
         case CURLSTS_FAIL => Some("CURLSTS_FAIL")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLSTScode)
       inline def &(b: CURLSTScode): CURLSTScode = a & b
       inline def |(b: CURLSTScode): CURLSTScode = a | b
@@ -441,7 +441,7 @@ object enumerations:
         case CURLUPART_QUERY => Some("CURLUPART_QUERY")
         case CURLUPART_FRAGMENT => Some("CURLUPART_FRAGMENT")
         case CURLUPART_ZONEID => Some("CURLUPART_ZONEID")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLUPart)
       inline def &(b: CURLUPart): CURLUPart = a & b
       inline def |(b: CURLUPart): CURLUPart = a | b
@@ -517,7 +517,7 @@ object enumerations:
         case CURLUE_BAD_USER => Some("CURLUE_BAD_USER")
         case CURLUE_LACKS_IDN => Some("CURLUE_LACKS_IDN")
         case CURLUE_LAST => Some("CURLUE_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLUcode)
       inline def &(b: CURLUcode): CURLUcode = a & b
       inline def |(b: CURLUcode): CURLUcode = a | b
@@ -537,7 +537,7 @@ object enumerations:
         case CURL_NETRC_OPTIONAL => Some("CURL_NETRC_OPTIONAL")
         case CURL_NETRC_REQUIRED => Some("CURL_NETRC_REQUIRED")
         case CURL_NETRC_LAST => Some("CURL_NETRC_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURL_NETRC_OPTION)
       inline def &(b: CURL_NETRC_OPTION): CURL_NETRC_OPTION = a & b
       inline def |(b: CURL_NETRC_OPTION): CURL_NETRC_OPTION = a | b
@@ -555,7 +555,7 @@ object enumerations:
         case CURL_TLSAUTH_NONE => Some("CURL_TLSAUTH_NONE")
         case CURL_TLSAUTH_SRP => Some("CURL_TLSAUTH_SRP")
         case CURL_TLSAUTH_LAST => Some("CURL_TLSAUTH_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURL_TLSAUTH)
       inline def &(b: CURL_TLSAUTH): CURL_TLSAUTH = a & b
       inline def |(b: CURL_TLSAUTH): CURL_TLSAUTH = a | b
@@ -769,7 +769,7 @@ object enumerations:
         case CURLE_SSL_CLIENTCERT => Some("CURLE_SSL_CLIENTCERT")
         case CURLE_UNRECOVERABLE_POLL => Some("CURLE_UNRECOVERABLE_POLL")
         case CURL_LAST => Some("CURL_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLcode)
       inline def &(b: CURLcode): CURLcode = a & b
       inline def |(b: CURLcode): CURLcode = a | b
@@ -825,7 +825,7 @@ object enumerations:
         case CURLFORM_STREAM => Some("CURLFORM_STREAM")
         case CURLFORM_CONTENTLEN => Some("CURLFORM_CONTENTLEN")
         case CURLFORM_LASTENTRY => Some("CURLFORM_LASTENTRY")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLformoption)
       inline def &(b: CURLformoption): CURLformoption = a & b
       inline def |(b: CURLformoption): CURLformoption = a | b
@@ -1449,7 +1449,7 @@ object enumerations:
         case CURLOPT_QUICK_EXIT => Some("CURLOPT_QUICK_EXIT")
         case CURLOPT_HAPROXY_CLIENT_IP => Some("CURLOPT_HAPROXY_CLIENT_IP")
         case CURLOPT_LASTENTRY => Some("CURLOPT_LASTENTRY")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLoption)
       inline def &(b: CURLoption): CURLoption = a & b
       inline def |(b: CURLoption): CURLoption = a | b
@@ -1531,7 +1531,7 @@ object enumerations:
         case CURLPX_UNKNOWN_MODE => Some("CURLPX_UNKNOWN_MODE")
         case CURLPX_USER_REJECTED => Some("CURLPX_USER_REJECTED")
         case CURLPX_LAST => Some("CURLPX_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLproxycode)
       inline def &(b: CURLproxycode): CURLproxycode = a & b
       inline def |(b: CURLproxycode): CURLproxycode = a | b
@@ -1551,7 +1551,7 @@ object enumerations:
         case CURLSSLSET_UNKNOWN_BACKEND => Some("CURLSSLSET_UNKNOWN_BACKEND")
         case CURLSSLSET_TOO_LATE => Some("CURLSSLSET_TOO_LATE")
         case CURLSSLSET_NO_BACKENDS => Some("CURLSSLSET_NO_BACKENDS")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLsslset)
       inline def &(b: CURLsslset): CURLsslset = a & b
       inline def |(b: CURLsslset): CURLsslset = a | b
@@ -1590,7 +1590,7 @@ object enumerations:
         case CURLVERSION_TENTH => Some("CURLVERSION_TENTH")
         case CURLVERSION_ELEVENTH => Some("CURLVERSION_ELEVENTH")
         case CURLVERSION_LAST => Some("CURLVERSION_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: CURLversion)
       inline def &(b: CURLversion): CURLversion = a & b
       inline def |(b: CURLversion): CURLversion = a | b
@@ -1612,7 +1612,7 @@ object enumerations:
         case CURL_TIMECOND_IFUNMODSINCE => Some("CURL_TIMECOND_IFUNMODSINCE")
         case CURL_TIMECOND_LASTMOD => Some("CURL_TIMECOND_LASTMOD")
         case CURL_TIMECOND_LAST => Some("CURL_TIMECOND_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_TimeCond)
       inline def &(b: curl_TimeCond): curl_TimeCond = a & b
       inline def |(b: curl_TimeCond): curl_TimeCond = a | b
@@ -1638,7 +1638,7 @@ object enumerations:
         case CURLCLOSEPOLICY_SLOWEST => Some("CURLCLOSEPOLICY_SLOWEST")
         case CURLCLOSEPOLICY_CALLBACK => Some("CURLCLOSEPOLICY_CALLBACK")
         case CURLCLOSEPOLICY_LAST => Some("CURLCLOSEPOLICY_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_closepolicy)
       inline def &(b: curl_closepolicy): curl_closepolicy = a & b
       inline def |(b: curl_closepolicy): curl_closepolicy = a | b
@@ -1668,7 +1668,7 @@ object enumerations:
         case CURLOT_CBPTR => Some("CURLOT_CBPTR")
         case CURLOT_BLOB => Some("CURLOT_BLOB")
         case CURLOT_FUNCTION => Some("CURLOT_FUNCTION")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_easytype)
       inline def &(b: curl_easytype): curl_easytype = a & b
       inline def |(b: curl_easytype): curl_easytype = a | b
@@ -1688,7 +1688,7 @@ object enumerations:
         case CURLFTPAUTH_SSL => Some("CURLFTPAUTH_SSL")
         case CURLFTPAUTH_TLS => Some("CURLFTPAUTH_TLS")
         case CURLFTPAUTH_LAST => Some("CURLFTPAUTH_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_ftpauth)
       inline def &(b: curl_ftpauth): curl_ftpauth = a & b
       inline def |(b: curl_ftpauth): curl_ftpauth = a | b
@@ -1708,7 +1708,7 @@ object enumerations:
         case CURLFTPSSL_CCC_PASSIVE => Some("CURLFTPSSL_CCC_PASSIVE")
         case CURLFTPSSL_CCC_ACTIVE => Some("CURLFTPSSL_CCC_ACTIVE")
         case CURLFTPSSL_CCC_LAST => Some("CURLFTPSSL_CCC_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_ftpccc)
       inline def &(b: curl_ftpccc): curl_ftpccc = a & b
       inline def |(b: curl_ftpccc): curl_ftpccc = a | b
@@ -1728,7 +1728,7 @@ object enumerations:
         case CURLFTP_CREATE_DIR => Some("CURLFTP_CREATE_DIR")
         case CURLFTP_CREATE_DIR_RETRY => Some("CURLFTP_CREATE_DIR_RETRY")
         case CURLFTP_CREATE_DIR_LAST => Some("CURLFTP_CREATE_DIR_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_ftpcreatedir)
       inline def &(b: curl_ftpcreatedir): curl_ftpcreatedir = a & b
       inline def |(b: curl_ftpcreatedir): curl_ftpcreatedir = a | b
@@ -1750,7 +1750,7 @@ object enumerations:
         case CURLFTPMETHOD_NOCWD => Some("CURLFTPMETHOD_NOCWD")
         case CURLFTPMETHOD_SINGLECWD => Some("CURLFTPMETHOD_SINGLECWD")
         case CURLFTPMETHOD_LAST => Some("CURLFTPMETHOD_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_ftpmethod)
       inline def &(b: curl_ftpmethod): curl_ftpmethod = a & b
       inline def |(b: curl_ftpmethod): curl_ftpmethod = a | b
@@ -1778,7 +1778,7 @@ object enumerations:
         case CURLINFO_SSL_DATA_IN => Some("CURLINFO_SSL_DATA_IN")
         case CURLINFO_SSL_DATA_OUT => Some("CURLINFO_SSL_DATA_OUT")
         case CURLINFO_END => Some("CURLINFO_END")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_infotype)
       inline def &(b: curl_infotype): curl_infotype = a & b
       inline def |(b: curl_infotype): curl_infotype = a | b
@@ -1798,7 +1798,7 @@ object enumerations:
         case CURLKHMATCH_MISMATCH => Some("CURLKHMATCH_MISMATCH")
         case CURLKHMATCH_MISSING => Some("CURLKHMATCH_MISSING")
         case CURLKHMATCH_LAST => Some("CURLKHMATCH_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_khmatch)
       inline def &(b: curl_khmatch): curl_khmatch = a & b
       inline def |(b: curl_khmatch): curl_khmatch = a | b
@@ -1822,7 +1822,7 @@ object enumerations:
         case CURLKHSTAT_DEFER => Some("CURLKHSTAT_DEFER")
         case CURLKHSTAT_FINE_REPLACE => Some("CURLKHSTAT_FINE_REPLACE")
         case CURLKHSTAT_LAST => Some("CURLKHSTAT_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_khstat)
       inline def &(b: curl_khstat): curl_khstat = a & b
       inline def |(b: curl_khstat): curl_khstat = a | b
@@ -1846,7 +1846,7 @@ object enumerations:
         case CURLKHTYPE_DSS => Some("CURLKHTYPE_DSS")
         case CURLKHTYPE_ECDSA => Some("CURLKHTYPE_ECDSA")
         case CURLKHTYPE_ED25519 => Some("CURLKHTYPE_ED25519")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_khtype)
       inline def &(b: curl_khtype): curl_khtype = a & b
       inline def |(b: curl_khtype): curl_khtype = a | b
@@ -1866,7 +1866,7 @@ object enumerations:
         case CURL_LOCK_ACCESS_SHARED => Some("CURL_LOCK_ACCESS_SHARED")
         case CURL_LOCK_ACCESS_SINGLE => Some("CURL_LOCK_ACCESS_SINGLE")
         case CURL_LOCK_ACCESS_LAST => Some("CURL_LOCK_ACCESS_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_lock_access)
       inline def &(b: curl_lock_access): curl_lock_access = a & b
       inline def |(b: curl_lock_access): curl_lock_access = a | b
@@ -1899,7 +1899,7 @@ object enumerations:
         case CURL_LOCK_DATA_PSL => Some("CURL_LOCK_DATA_PSL")
         case CURL_LOCK_DATA_HSTS => Some("CURL_LOCK_DATA_HSTS")
         case CURL_LOCK_DATA_LAST => Some("CURL_LOCK_DATA_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_lock_data)
       inline def &(b: curl_lock_data): curl_lock_data = a & b
       inline def |(b: curl_lock_data): curl_lock_data = a | b
@@ -1927,7 +1927,7 @@ object enumerations:
         case CURLPROXY_SOCKS5 => Some("CURLPROXY_SOCKS5")
         case CURLPROXY_SOCKS4A => Some("CURLPROXY_SOCKS4A")
         case CURLPROXY_SOCKS5_HOSTNAME => Some("CURLPROXY_SOCKS5_HOSTNAME")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_proxytype)
       inline def &(b: curl_proxytype): curl_proxytype = a & b
       inline def |(b: curl_proxytype): curl_proxytype = a | b
@@ -1969,7 +1969,7 @@ object enumerations:
         case CURLSSLBACKEND_MESALINK => Some("CURLSSLBACKEND_MESALINK")
         case CURLSSLBACKEND_BEARSSL => Some("CURLSSLBACKEND_BEARSSL")
         case CURLSSLBACKEND_RUSTLS => Some("CURLSSLBACKEND_RUSTLS")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_sslbackend)
       inline def &(b: curl_sslbackend): curl_sslbackend = a & b
       inline def |(b: curl_sslbackend): curl_sslbackend = a | b
@@ -1991,7 +1991,7 @@ object enumerations:
         case CURLUSESSL_CONTROL => Some("CURLUSESSL_CONTROL")
         case CURLUSESSL_ALL => Some("CURLUSESSL_ALL")
         case CURLUSESSL_LAST => Some("CURLUSESSL_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curl_usessl)
       inline def &(b: curl_usessl): curl_usessl = a & b
       inline def |(b: curl_usessl): curl_usessl = a | b
@@ -2021,7 +2021,7 @@ object enumerations:
         case CURLFILETYPE_SOCKET => Some("CURLFILETYPE_SOCKET")
         case CURLFILETYPE_DOOR => Some("CURLFILETYPE_DOOR")
         case CURLFILETYPE_UNKNOWN => Some("CURLFILETYPE_UNKNOWN")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curlfiletype)
       inline def &(b: curlfiletype): curlfiletype = a & b
       inline def |(b: curlfiletype): curlfiletype = a | b
@@ -2039,7 +2039,7 @@ object enumerations:
         case CURLIOCMD_NOP => Some("CURLIOCMD_NOP")
         case CURLIOCMD_RESTARTREAD => Some("CURLIOCMD_RESTARTREAD")
         case CURLIOCMD_LAST => Some("CURLIOCMD_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curliocmd)
       inline def &(b: curliocmd): curliocmd = a & b
       inline def |(b: curliocmd): curliocmd = a | b
@@ -2059,7 +2059,7 @@ object enumerations:
         case CURLIOE_UNKNOWNCMD => Some("CURLIOE_UNKNOWNCMD")
         case CURLIOE_FAILRESTART => Some("CURLIOE_FAILRESTART")
         case CURLIOE_LAST => Some("CURLIOE_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curlioerr)
       inline def &(b: curlioerr): curlioerr = a & b
       inline def |(b: curlioerr): curlioerr = a | b
@@ -2077,7 +2077,7 @@ object enumerations:
         case CURLSOCKTYPE_IPCXN => Some("CURLSOCKTYPE_IPCXN")
         case CURLSOCKTYPE_ACCEPT => Some("CURLSOCKTYPE_ACCEPT")
         case CURLSOCKTYPE_LAST => Some("CURLSOCKTYPE_LAST")
-        case _ => None
+        case _ => _root_.scala.None
     extension (a: curlsocktype)
       inline def &(b: curlsocktype): curlsocktype = a & b
       inline def |(b: curlsocktype): curlsocktype = a | b
@@ -2108,6 +2108,13 @@ object aliases:
     inline def apply(inline o: Unit): CURLSH = o
     extension (v: CURLSH)
       inline def value: Unit = v
+
+  type FILE = libc.stdio.FILE
+  object FILE: 
+    val _tag: Tag[FILE] = summon[Tag[libc.stdio.FILE]]
+    inline def apply(inline o: libc.stdio.FILE): FILE = o
+    extension (v: FILE)
+      inline def value: libc.stdio.FILE = v
 
   opaque type curl_calloc_callback = CFuncPtr2[size_t, size_t, Ptr[Byte]]
   object curl_calloc_callback: 
@@ -2462,6 +2469,13 @@ object aliases:
     extension (v: time_t)
       inline def value: posix.sys.types.time_t = v
 
+  type va_list = unsafe.CVarArgList
+  object va_list: 
+    val _tag: Tag[va_list] = summon[Tag[unsafe.CVarArgList]]
+    inline def apply(inline o: unsafe.CVarArgList): va_list = o
+    extension (v: va_list)
+      inline def value: unsafe.CVarArgList = v
+
 object structs:
   import _root_.curl.enumerations.*
   import _root_.curl.predef.*
@@ -2704,12 +2718,12 @@ object structs:
       def expire : CArray[CChar, Nat.Digit2[Nat._1, Nat._8]] = struct._4
       def expire_=(value: CArray[CChar, Nat.Digit2[Nat._1, Nat._8]]): Unit = !struct.at4 = value
 
-  opaque type curl_httppost = CStruct14[Ptr[Byte], CString, CLongInt, CString, CLongInt, CString, CLongInt, CString, Ptr[Byte], Ptr[Byte], CLongInt, CString, Ptr[Byte], curl_off_t]
+  opaque type curl_httppost = CStruct15[Ptr[Byte], CString, CLongInt, CString, CLongInt, CString, CLongInt, CString, CStruct0, Ptr[Byte], Ptr[Byte], CLongInt, CString, Ptr[Byte], curl_off_t]
   object curl_httppost:
     opaque type Struct0 = CStruct0
     object Struct0:
       given _tag: Tag[Struct0] = Tag.materializeCStruct0Tag
-    given _tag: Tag[curl_httppost] = Tag.materializeCStruct14Tag[Ptr[Byte], CString, CLongInt, CString, CLongInt, CString, CLongInt, CString, Ptr[Byte], Ptr[Byte], CLongInt, CString, Ptr[Byte], curl_off_t]
+    given _tag: Tag[curl_httppost] = Tag.materializeCStruct15Tag[Ptr[Byte], CString, CLongInt, CString, CLongInt, CString, CLongInt, CString, CStruct0, Ptr[Byte], Ptr[Byte], CLongInt, CString, Ptr[Byte], curl_off_t]
     def apply()(using Zone): Ptr[curl_httppost] = scala.scalanative.unsafe.alloc[curl_httppost](1)
     def apply(next : Ptr[curl_httppost], name : CString, namelength : CLongInt, contents : CString, contentslength : CLongInt, buffer : CString, bufferlength : CLongInt, contenttype : CString, contentheader : Ptr[curl_slist], more : Ptr[curl_httppost], flags : CLongInt, showfilename : CString, userp : Ptr[Byte], contentlen : curl_off_t)(using Zone): Ptr[curl_httppost] = 
       val ____ptr = apply()
@@ -2745,18 +2759,18 @@ object structs:
       def bufferlength_=(value: CLongInt): Unit = !struct.at7 = value
       def contenttype : CString = struct._8
       def contenttype_=(value: CString): Unit = !struct.at8 = value
-      def contentheader : Ptr[curl_slist] = struct._9.asInstanceOf[Ptr[curl_slist]]
-      def contentheader_=(value: Ptr[curl_slist]): Unit = !struct.at9 = value.asInstanceOf[Ptr[Byte]]
-      def more : Ptr[curl_httppost] = struct._10.asInstanceOf[Ptr[curl_httppost]]
-      def more_=(value: Ptr[curl_httppost]): Unit = !struct.at10 = value.asInstanceOf[Ptr[Byte]]
-      def flags : CLongInt = struct._11
-      def flags_=(value: CLongInt): Unit = !struct.at11 = value
-      def showfilename : CString = struct._12
-      def showfilename_=(value: CString): Unit = !struct.at12 = value
-      def userp : Ptr[Byte] = struct._13
-      def userp_=(value: Ptr[Byte]): Unit = !struct.at13 = value
-      def contentlen : curl_off_t = struct._14
-      def contentlen_=(value: curl_off_t): Unit = !struct.at14 = value
+      def contentheader : Ptr[curl_slist] = struct._10.asInstanceOf[Ptr[curl_slist]]
+      def contentheader_=(value: Ptr[curl_slist]): Unit = !struct.at10 = value.asInstanceOf[Ptr[Byte]]
+      def more : Ptr[curl_httppost] = struct._11.asInstanceOf[Ptr[curl_httppost]]
+      def more_=(value: Ptr[curl_httppost]): Unit = !struct.at11 = value.asInstanceOf[Ptr[Byte]]
+      def flags : CLongInt = struct._12
+      def flags_=(value: CLongInt): Unit = !struct.at12 = value
+      def showfilename : CString = struct._13
+      def showfilename_=(value: CString): Unit = !struct.at13 = value
+      def userp : Ptr[Byte] = struct._14
+      def userp_=(value: Ptr[Byte]): Unit = !struct.at14 = value
+      def contentlen : curl_off_t = struct._15
+      def contentlen_=(value: curl_off_t): Unit = !struct.at15 = value
 
   opaque type curl_index = CStruct2[size_t, size_t]
   object curl_index:
@@ -2906,58 +2920,96 @@ object structs:
       (!____ptr).feature_names = feature_names
       ____ptr
     extension (struct: curl_version_info_data)
-      def age: CURLversion = !struct.at(0).asInstanceOf[Ptr[CURLversion]]
-      def age_=(value: CURLversion): Unit = !struct.at(0).asInstanceOf[Ptr[CURLversion]] = value
-      def version: CString = !struct.at(8).asInstanceOf[Ptr[CString]]
-      def version_=(value: CString): Unit = !struct.at(8).asInstanceOf[Ptr[CString]] = value
-      def version_num: CUnsignedInt = !struct.at(16).asInstanceOf[Ptr[CUnsignedInt]]
-      def version_num_=(value: CUnsignedInt): Unit = !struct.at(16).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def host: CString = !struct.at(24).asInstanceOf[Ptr[CString]]
-      def host_=(value: CString): Unit = !struct.at(24).asInstanceOf[Ptr[CString]] = value
-      def features: CInt = !struct.at(32).asInstanceOf[Ptr[CInt]]
-      def features_=(value: CInt): Unit = !struct.at(32).asInstanceOf[Ptr[CInt]] = value
-      def ssl_version: CString = !struct.at(40).asInstanceOf[Ptr[CString]]
-      def ssl_version_=(value: CString): Unit = !struct.at(40).asInstanceOf[Ptr[CString]] = value
-      def ssl_version_num: CLongInt = !struct.at(48).asInstanceOf[Ptr[CLongInt]]
-      def ssl_version_num_=(value: CLongInt): Unit = !struct.at(48).asInstanceOf[Ptr[CLongInt]] = value
-      def libz_version: CString = !struct.at(56).asInstanceOf[Ptr[CString]]
-      def libz_version_=(value: CString): Unit = !struct.at(56).asInstanceOf[Ptr[CString]] = value
-      def protocols: Ptr[CString] = !struct.at(64).asInstanceOf[Ptr[Ptr[CString]]]
-      def protocols_=(value: Ptr[CString]): Unit = !struct.at(64).asInstanceOf[Ptr[Ptr[CString]]] = value
-      def ares: CString = !struct.at(72).asInstanceOf[Ptr[CString]]
-      def ares_=(value: CString): Unit = !struct.at(72).asInstanceOf[Ptr[CString]] = value
-      def ares_num: CInt = !struct.at(80).asInstanceOf[Ptr[CInt]]
-      def ares_num_=(value: CInt): Unit = !struct.at(80).asInstanceOf[Ptr[CInt]] = value
-      def libidn: CString = !struct.at(88).asInstanceOf[Ptr[CString]]
-      def libidn_=(value: CString): Unit = !struct.at(88).asInstanceOf[Ptr[CString]] = value
-      def iconv_ver_num: CInt = !struct.at(96).asInstanceOf[Ptr[CInt]]
-      def iconv_ver_num_=(value: CInt): Unit = !struct.at(96).asInstanceOf[Ptr[CInt]] = value
-      def libssh_version: CString = !struct.at(104).asInstanceOf[Ptr[CString]]
-      def libssh_version_=(value: CString): Unit = !struct.at(104).asInstanceOf[Ptr[CString]] = value
-      def brotli_ver_num: CUnsignedInt = !struct.at(112).asInstanceOf[Ptr[CUnsignedInt]]
-      def brotli_ver_num_=(value: CUnsignedInt): Unit = !struct.at(112).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def brotli_version: CString = !struct.at(120).asInstanceOf[Ptr[CString]]
-      def brotli_version_=(value: CString): Unit = !struct.at(120).asInstanceOf[Ptr[CString]] = value
-      def nghttp2_ver_num: CUnsignedInt = !struct.at(128).asInstanceOf[Ptr[CUnsignedInt]]
-      def nghttp2_ver_num_=(value: CUnsignedInt): Unit = !struct.at(128).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def nghttp2_version: CString = !struct.at(136).asInstanceOf[Ptr[CString]]
-      def nghttp2_version_=(value: CString): Unit = !struct.at(136).asInstanceOf[Ptr[CString]] = value
-      def quic_version: CString = !struct.at(144).asInstanceOf[Ptr[CString]]
-      def quic_version_=(value: CString): Unit = !struct.at(144).asInstanceOf[Ptr[CString]] = value
-      def cainfo: CString = !struct.at(152).asInstanceOf[Ptr[CString]]
-      def cainfo_=(value: CString): Unit = !struct.at(152).asInstanceOf[Ptr[CString]] = value
-      def capath: CString = !struct.at(160).asInstanceOf[Ptr[CString]]
-      def capath_=(value: CString): Unit = !struct.at(160).asInstanceOf[Ptr[CString]] = value
-      def zstd_ver_num: CUnsignedInt = !struct.at(168).asInstanceOf[Ptr[CUnsignedInt]]
-      def zstd_ver_num_=(value: CUnsignedInt): Unit = !struct.at(168).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def zstd_version: CString = !struct.at(176).asInstanceOf[Ptr[CString]]
-      def zstd_version_=(value: CString): Unit = !struct.at(176).asInstanceOf[Ptr[CString]] = value
-      def hyper_version: CString = !struct.at(184).asInstanceOf[Ptr[CString]]
-      def hyper_version_=(value: CString): Unit = !struct.at(184).asInstanceOf[Ptr[CString]] = value
-      def gsasl_version: CString = !struct.at(192).asInstanceOf[Ptr[CString]]
-      def gsasl_version_=(value: CString): Unit = !struct.at(192).asInstanceOf[Ptr[CString]] = value
-      def feature_names: Ptr[CString] = !struct.at(200).asInstanceOf[Ptr[Ptr[CString]]]
-      def feature_names_=(value: Ptr[CString]): Unit = !struct.at(200).asInstanceOf[Ptr[Ptr[CString]]] = value
+      def age: CURLversion = !struct.at(offsets(0)).asInstanceOf[Ptr[CURLversion]]
+      def age_=(value: CURLversion): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[CURLversion]] = value
+      def version: CString = !struct.at(offsets(1)).asInstanceOf[Ptr[CString]]
+      def version_=(value: CString): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[CString]] = value
+      def version_num: CUnsignedInt = !struct.at(offsets(2)).asInstanceOf[Ptr[CUnsignedInt]]
+      def version_num_=(value: CUnsignedInt): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def host: CString = !struct.at(offsets(3)).asInstanceOf[Ptr[CString]]
+      def host_=(value: CString): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[CString]] = value
+      def features: CInt = !struct.at(offsets(4)).asInstanceOf[Ptr[CInt]]
+      def features_=(value: CInt): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[CInt]] = value
+      def ssl_version: CString = !struct.at(offsets(5)).asInstanceOf[Ptr[CString]]
+      def ssl_version_=(value: CString): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[CString]] = value
+      def ssl_version_num: CLongInt = !struct.at(offsets(6)).asInstanceOf[Ptr[CLongInt]]
+      def ssl_version_num_=(value: CLongInt): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[CLongInt]] = value
+      def libz_version: CString = !struct.at(offsets(7)).asInstanceOf[Ptr[CString]]
+      def libz_version_=(value: CString): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[CString]] = value
+      def protocols: Ptr[CString] = !struct.at(offsets(8)).asInstanceOf[Ptr[Ptr[CString]]]
+      def protocols_=(value: Ptr[CString]): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[Ptr[CString]]] = value
+      def ares: CString = !struct.at(offsets(9)).asInstanceOf[Ptr[CString]]
+      def ares_=(value: CString): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[CString]] = value
+      def ares_num: CInt = !struct.at(offsets(10)).asInstanceOf[Ptr[CInt]]
+      def ares_num_=(value: CInt): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[CInt]] = value
+      def libidn: CString = !struct.at(offsets(11)).asInstanceOf[Ptr[CString]]
+      def libidn_=(value: CString): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[CString]] = value
+      def iconv_ver_num: CInt = !struct.at(offsets(12)).asInstanceOf[Ptr[CInt]]
+      def iconv_ver_num_=(value: CInt): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[CInt]] = value
+      def libssh_version: CString = !struct.at(offsets(13)).asInstanceOf[Ptr[CString]]
+      def libssh_version_=(value: CString): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[CString]] = value
+      def brotli_ver_num: CUnsignedInt = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]]
+      def brotli_ver_num_=(value: CUnsignedInt): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def brotli_version: CString = !struct.at(offsets(15)).asInstanceOf[Ptr[CString]]
+      def brotli_version_=(value: CString): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[CString]] = value
+      def nghttp2_ver_num: CUnsignedInt = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedInt]]
+      def nghttp2_ver_num_=(value: CUnsignedInt): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def nghttp2_version: CString = !struct.at(offsets(17)).asInstanceOf[Ptr[CString]]
+      def nghttp2_version_=(value: CString): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[CString]] = value
+      def quic_version: CString = !struct.at(offsets(18)).asInstanceOf[Ptr[CString]]
+      def quic_version_=(value: CString): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[CString]] = value
+      def cainfo: CString = !struct.at(offsets(19)).asInstanceOf[Ptr[CString]]
+      def cainfo_=(value: CString): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[CString]] = value
+      def capath: CString = !struct.at(offsets(20)).asInstanceOf[Ptr[CString]]
+      def capath_=(value: CString): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[CString]] = value
+      def zstd_ver_num: CUnsignedInt = !struct.at(offsets(21)).asInstanceOf[Ptr[CUnsignedInt]]
+      def zstd_ver_num_=(value: CUnsignedInt): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[CUnsignedInt]] = value
+      def zstd_version: CString = !struct.at(offsets(22)).asInstanceOf[Ptr[CString]]
+      def zstd_version_=(value: CString): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[CString]] = value
+      def hyper_version: CString = !struct.at(offsets(23)).asInstanceOf[Ptr[CString]]
+      def hyper_version_=(value: CString): Unit = !struct.at(offsets(23)).asInstanceOf[Ptr[CString]] = value
+      def gsasl_version: CString = !struct.at(offsets(24)).asInstanceOf[Ptr[CString]]
+      def gsasl_version_=(value: CString): Unit = !struct.at(offsets(24)).asInstanceOf[Ptr[CString]] = value
+      def feature_names: Ptr[CString] = !struct.at(offsets(25)).asInstanceOf[Ptr[Ptr[CString]]]
+      def feature_names_=(value: Ptr[CString]): Unit = !struct.at(offsets(25)).asInstanceOf[Ptr[Ptr[CString]]] = value
+    val offsets: Array[Int] = 
+      val res = Array.ofDim[Int](26)
+      def align(offset: Int, alignment: Int) = {
+        val alignmentMask = alignment - 1
+        val padding =
+          if ((offset & alignmentMask) == 0) 0
+          else alignment - (offset & alignmentMask)
+        offset + padding
+      }
+      
+      res(0) = align(0, alignmentof[CURLversion].toInt)
+      res(1) = align(res(0) + sizeof[CURLversion].toInt, alignmentof[CString].toInt)
+      res(2) = align(res(1) + sizeof[CString].toInt, alignmentof[CUnsignedInt].toInt)
+      res(3) = align(res(2) + sizeof[CUnsignedInt].toInt, alignmentof[CString].toInt)
+      res(4) = align(res(3) + sizeof[CString].toInt, alignmentof[CInt].toInt)
+      res(5) = align(res(4) + sizeof[CInt].toInt, alignmentof[CString].toInt)
+      res(6) = align(res(5) + sizeof[CString].toInt, alignmentof[CLongInt].toInt)
+      res(7) = align(res(6) + sizeof[CLongInt].toInt, alignmentof[CString].toInt)
+      res(8) = align(res(7) + sizeof[CString].toInt, alignmentof[Ptr[CString]].toInt)
+      res(9) = align(res(8) + sizeof[Ptr[CString]].toInt, alignmentof[CString].toInt)
+      res(10) = align(res(9) + sizeof[CString].toInt, alignmentof[CInt].toInt)
+      res(11) = align(res(10) + sizeof[CInt].toInt, alignmentof[CString].toInt)
+      res(12) = align(res(11) + sizeof[CString].toInt, alignmentof[CInt].toInt)
+      res(13) = align(res(12) + sizeof[CInt].toInt, alignmentof[CString].toInt)
+      res(14) = align(res(13) + sizeof[CString].toInt, alignmentof[CUnsignedInt].toInt)
+      res(15) = align(res(14) + sizeof[CUnsignedInt].toInt, alignmentof[CString].toInt)
+      res(16) = align(res(15) + sizeof[CString].toInt, alignmentof[CUnsignedInt].toInt)
+      res(17) = align(res(16) + sizeof[CUnsignedInt].toInt, alignmentof[CString].toInt)
+      res(18) = align(res(17) + sizeof[CString].toInt, alignmentof[CString].toInt)
+      res(19) = align(res(18) + sizeof[CString].toInt, alignmentof[CString].toInt)
+      res(20) = align(res(19) + sizeof[CString].toInt, alignmentof[CString].toInt)
+      res(21) = align(res(20) + sizeof[CString].toInt, alignmentof[CUnsignedInt].toInt)
+      res(22) = align(res(21) + sizeof[CUnsignedInt].toInt, alignmentof[CString].toInt)
+      res(23) = align(res(22) + sizeof[CString].toInt, alignmentof[CString].toInt)
+      res(24) = align(res(23) + sizeof[CString].toInt, alignmentof[CString].toInt)
+      res(25) = align(res(24) + sizeof[CString].toInt, alignmentof[Ptr[CString]].toInt)
+      res
+    end offsets
 
   opaque type curl_waitfd = CStruct3[curl_socket_t, CShort, CShort]
   object curl_waitfd:
@@ -3070,6 +3122,10 @@ private[curl] object extern_functions:
 
   def curl_global_trace(config : CString): CURLcode = extern
 
+  def curl_maprintf(format : CString, rest: Any*): CString = extern
+
+  def curl_mfprintf(fd : Ptr[FILE], format : CString, rest: Any*): CInt = extern
+
   def curl_mime_addpart(mime : Ptr[curl_mime]): Ptr[curl_mimepart] = extern
 
   def curl_mime_data(part : Ptr[curl_mimepart], data : CString, datasize : size_t): CURLcode = extern
@@ -3093,6 +3149,12 @@ private[curl] object extern_functions:
   def curl_mime_subparts(part : Ptr[curl_mimepart], subparts : Ptr[curl_mime]): CURLcode = extern
 
   def curl_mime_type(part : Ptr[curl_mimepart], mimetype : CString): CURLcode = extern
+
+  def curl_mprintf(format : CString, rest: Any*): CInt = extern
+
+  def curl_msnprintf(buffer : CString, maxlength : size_t, format : CString, rest: Any*): CInt = extern
+
+  def curl_msprintf(buffer : CString, format : CString, rest: Any*): CInt = extern
 
   def curl_multi_add_handle(multi_handle : Ptr[CURLM], curl_handle : Ptr[CURL]): CURLMcode = extern
 
@@ -3129,6 +3191,16 @@ private[curl] object extern_functions:
   def curl_multi_wait(multi_handle : Ptr[CURLM], extra_fds : Ptr[curl_waitfd], extra_nfds : CUnsignedInt, timeout_ms : CInt, ret : Ptr[CInt]): CURLMcode = extern
 
   def curl_multi_wakeup(multi_handle : Ptr[CURLM]): CURLMcode = extern
+
+  def curl_mvaprintf(format : CString, args : va_list): CString = extern
+
+  def curl_mvfprintf(fd : Ptr[FILE], format : CString, args : va_list): CInt = extern
+
+  def curl_mvprintf(format : CString, args : va_list): CInt = extern
+
+  def curl_mvsnprintf(buffer : CString, maxlength : size_t, format : CString, args : va_list): CInt = extern
+
+  def curl_mvsprintf(buffer : CString, format : CString, args : va_list): CInt = extern
 
   def curl_pushheader_byname(h : Ptr[curl_pushheaders], name : CString): CString = extern
 
@@ -3274,6 +3346,7 @@ object all:
   export _root_.curl.aliases.CURL
   export _root_.curl.aliases.CURLM
   export _root_.curl.aliases.CURLSH
+  export _root_.curl.aliases.FILE
   export _root_.curl.aliases.curl_calloc_callback
   export _root_.curl.aliases.curl_chunk_bgn_callback
   export _root_.curl.aliases.curl_chunk_end_callback
@@ -3315,6 +3388,7 @@ object all:
   export _root_.curl.aliases.sockaddr
   export _root_.curl.aliases.socklen_t
   export _root_.curl.aliases.time_t
+  export _root_.curl.aliases.va_list
   export _root_.curl.structs.CURLMsg
   export _root_.curl.structs.CURLU
   export _root_.curl.structs.Curl_URL
@@ -3369,6 +3443,8 @@ object all:
   export _root_.curl.functions.curl_global_init_mem
   export _root_.curl.functions.curl_global_sslset
   export _root_.curl.functions.curl_global_trace
+  export _root_.curl.functions.curl_maprintf
+  export _root_.curl.functions.curl_mfprintf
   export _root_.curl.functions.curl_mime_addpart
   export _root_.curl.functions.curl_mime_data
   export _root_.curl.functions.curl_mime_data_cb
@@ -3381,6 +3457,9 @@ object all:
   export _root_.curl.functions.curl_mime_name
   export _root_.curl.functions.curl_mime_subparts
   export _root_.curl.functions.curl_mime_type
+  export _root_.curl.functions.curl_mprintf
+  export _root_.curl.functions.curl_msnprintf
+  export _root_.curl.functions.curl_msprintf
   export _root_.curl.functions.curl_multi_add_handle
   export _root_.curl.functions.curl_multi_assign
   export _root_.curl.functions.curl_multi_cleanup
@@ -3399,6 +3478,11 @@ object all:
   export _root_.curl.functions.curl_multi_timeout
   export _root_.curl.functions.curl_multi_wait
   export _root_.curl.functions.curl_multi_wakeup
+  export _root_.curl.functions.curl_mvaprintf
+  export _root_.curl.functions.curl_mvfprintf
+  export _root_.curl.functions.curl_mvprintf
+  export _root_.curl.functions.curl_mvsnprintf
+  export _root_.curl.functions.curl_mvsprintf
   export _root_.curl.functions.curl_pushheader_byname
   export _root_.curl.functions.curl_pushheader_bynum
   export _root_.curl.functions.curl_share_cleanup
