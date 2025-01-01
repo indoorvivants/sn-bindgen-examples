@@ -9,9 +9,10 @@ import treesitter.types.*
 def tree_sitter_scala(): Ptr[TSLanguage] = extern
 
 @main def hello_tree_sitter =
-  Zone { 
+  Zone {
     val parser = ts_parser_new();
-    ts_parser_set_language(parser, tree_sitter_scala())
+    val lang = tree_sitter_scala()
+    ts_parser_set_language(parser, lang)
 
     val source = c"""
       object Hello:
@@ -31,6 +32,28 @@ def tree_sitter_scala(): Ptr[TSLanguage] = extern
       )
 
     val root_node = ts_tree_root_node(tree)
+
+    val newValue = c"(type_identifier) @type"
+    val erroffset = stackalloc[UInt]()
+    val err = stackalloc[TSQueryError]()
+    val query =
+      ts_query_new(
+        lang,
+        newValue,
+        strlen(newValue).toUInt,
+        erroffset,
+        err
+      )
+
+    val cursor = ts_query_cursor_new()
+    ts_query_cursor_exec(cursor, query, root_node);
+
+    val mtch = stackalloc[TSQueryMatch]()
+    var hasNext = true
+    while { hasNext = ts_query_cursor_next_match(cursor, mtch); hasNext } do
+      val captures = !((!mtch).captures)
+      val node = captures.node
+      println(fromCString(ts_node_type(node)))
 
     def printChildren(start: TSNode): Unit =
       def go(node: TSNode, level: Int): Unit =
