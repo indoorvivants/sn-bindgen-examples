@@ -6,12 +6,12 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[s2n] trait CEnumU[T](using eq: T =:= UInt):
+  private[s2n] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
     given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
     extension (inline t: T)
+     inline def value: CUnsignedInt = eq.apply(t)
      inline def int: CInt = eq.apply(t).toInt
      inline def uint: CUnsignedInt = eq.apply(t)
-     inline def value: CUnsignedInt = eq.apply(t)
 
 
 object enumerations:
@@ -20,7 +20,7 @@ object enumerations:
    * Sets whether or not a connection should terminate on receiving a WARNING alert from its peer.
   */
   opaque type s2n_alert_behavior = CUnsignedInt
-  object s2n_alert_behavior extends CEnumU[s2n_alert_behavior]:
+  object s2n_alert_behavior extends _BindgenEnumCUnsignedInt[s2n_alert_behavior]:
     given _tag: Tag[s2n_alert_behavior] = Tag.UInt
     inline def define(inline a: Long): s2n_alert_behavior = a.toUInt
     val S2N_ALERT_FAIL_ON_WARNINGS = define(0)
@@ -39,7 +39,7 @@ object enumerations:
    * The type of private key operation
   */
   opaque type s2n_async_pkey_op_type = CUnsignedInt
-  object s2n_async_pkey_op_type extends CEnumU[s2n_async_pkey_op_type]:
+  object s2n_async_pkey_op_type extends _BindgenEnumCUnsignedInt[s2n_async_pkey_op_type]:
     given _tag: Tag[s2n_async_pkey_op_type] = Tag.UInt
     inline def define(inline a: Long): s2n_async_pkey_op_type = a.toUInt
     val S2N_ASYNC_DECRYPT = define(0)
@@ -58,7 +58,7 @@ object enumerations:
    * Sets whether or not a connection should enforce strict signature validation during the `s2n_async_pkey_op_apply` call.
   */
   opaque type s2n_async_pkey_validation_mode = CUnsignedInt
-  object s2n_async_pkey_validation_mode extends CEnumU[s2n_async_pkey_validation_mode]:
+  object s2n_async_pkey_validation_mode extends _BindgenEnumCUnsignedInt[s2n_async_pkey_validation_mode]:
     given _tag: Tag[s2n_async_pkey_validation_mode] = Tag.UInt
     inline def define(inline a: Long): s2n_async_pkey_validation_mode = a.toUInt
     val S2N_ASYNC_PKEY_VALIDATION_FAST = define(0)
@@ -77,7 +77,7 @@ object enumerations:
    * Used to opt-out of s2n-tls's built-in blinding. Blinding is a mitigation against timing side-channels which in some cases can leak information about encrypted data. By default s2n-tls will cause a thread to sleep between 10 and 30 seconds whenever tampering is detected.
   */
   opaque type s2n_blinding = CUnsignedInt
-  object s2n_blinding extends CEnumU[s2n_blinding]:
+  object s2n_blinding extends _BindgenEnumCUnsignedInt[s2n_blinding]:
     given _tag: Tag[s2n_blinding] = Tag.UInt
     inline def define(inline a: Long): s2n_blinding = a.toUInt
     val S2N_BUILT_IN_BLINDING = define(0)
@@ -96,7 +96,7 @@ object enumerations:
    * Used in non-blocking mode to indicate in which direction s2n-tls became blocked on I/O before it returned control to the caller. This allows an application to avoid retrying s2n-tls operations until I/O is possible in that direction.
   */
   opaque type s2n_blocked_status = CUnsignedInt
-  object s2n_blocked_status extends CEnumU[s2n_blocked_status]:
+  object s2n_blocked_status extends _BindgenEnumCUnsignedInt[s2n_blocked_status]:
     given _tag: Tag[s2n_blocked_status] = Tag.UInt
     inline def define(inline a: Long): s2n_blocked_status = a.toUInt
     val S2N_NOT_BLOCKED = define(0)
@@ -121,7 +121,7 @@ object enumerations:
    * Used to declare what type of client certificate authentication to use.
   */
   opaque type s2n_cert_auth_type = CUnsignedInt
-  object s2n_cert_auth_type extends CEnumU[s2n_cert_auth_type]:
+  object s2n_cert_auth_type extends _BindgenEnumCUnsignedInt[s2n_cert_auth_type]:
     given _tag: Tag[s2n_cert_auth_type] = Tag.UInt
     inline def define(inline a: Long): s2n_cert_auth_type = a.toUInt
     val S2N_CERT_AUTH_NONE = define(0)
@@ -142,7 +142,7 @@ object enumerations:
    * Client Hello callback modes - `S2N_CLIENT_HELLO_CB_BLOCKING` (default): - In this mode s2n-tls expects the callback to complete its work and return the appropriate response code before the handshake continues. If any of the connection properties were changed based on the server_name extension the callback must either return a value greater than 0 or invoke `s2n_connection_server_name_extension_used`, otherwise the callback returns 0 to continue the handshake. - `S2N_CLIENT_HELLO_CB_NONBLOCKING`: - In non-blocking mode, s2n-tls expects the callback to not complete its work. If the callback returns a response code of 0 s2n-tls will return `S2N_FAILURE` with `S2N_ERR_T_BLOCKED` error type and `s2n_blocked_status` set to `S2N_BLOCKED_ON_APPLICATION_INPUT`. The handshake is paused and further calls to `s2n_negotiate` will continue to return the same error until `s2n_client_hello_cb_done` is invoked for the `s2n_connection` to resume the handshake. This allows s2n-tls clients to process client_hello without blocking and then resume the handshake at a later time. If any of the connection properties were changed on the basis of the server_name extension then `s2n_connection_server_name_extension_used` must be invoked before marking the callback done.
   */
   opaque type s2n_client_hello_cb_mode = CUnsignedInt
-  object s2n_client_hello_cb_mode extends CEnumU[s2n_client_hello_cb_mode]:
+  object s2n_client_hello_cb_mode extends _BindgenEnumCUnsignedInt[s2n_client_hello_cb_mode]:
     given _tag: Tag[s2n_client_hello_cb_mode] = Tag.UInt
     inline def define(inline a: Long): s2n_client_hello_cb_mode = a.toUInt
     val S2N_CLIENT_HELLO_CB_BLOCKING = define(0)
@@ -161,7 +161,7 @@ object enumerations:
    * Enum to set Certificate Transparency Support level.
   */
   opaque type s2n_ct_support_level = CUnsignedInt
-  object s2n_ct_support_level extends CEnumU[s2n_ct_support_level]:
+  object s2n_ct_support_level extends _BindgenEnumCUnsignedInt[s2n_ct_support_level]:
     given _tag: Tag[s2n_ct_support_level] = Tag.UInt
     inline def define(inline a: Long): s2n_ct_support_level = a.toUInt
     val S2N_CT_SUPPORT_NONE = define(0)
@@ -180,7 +180,7 @@ object enumerations:
    * The status of early data on a connection.
   */
   opaque type s2n_early_data_status_t = CUnsignedInt
-  object s2n_early_data_status_t extends CEnumU[s2n_early_data_status_t]:
+  object s2n_early_data_status_t extends _BindgenEnumCUnsignedInt[s2n_early_data_status_t]:
     given _tag: Tag[s2n_early_data_status_t] = Tag.UInt
     inline def define(inline a: Long): s2n_early_data_status_t = a.toUInt
     val S2N_EARLY_DATA_STATUS_OK = define(0)
@@ -203,7 +203,7 @@ object enumerations:
    * Used to help applications determine why an s2n-tls function failed.
   */
   opaque type s2n_error_type = CUnsignedInt
-  object s2n_error_type extends CEnumU[s2n_error_type]:
+  object s2n_error_type extends _BindgenEnumCUnsignedInt[s2n_error_type]:
     given _tag: Tag[s2n_error_type] = Tag.UInt
     inline def define(inline a: Long): s2n_error_type = a.toUInt
     val S2N_ERR_T_OK = define(0)
@@ -234,7 +234,7 @@ object enumerations:
    * MFL configurations from https://datatracker.ietf.org/doc/html/rfc6066#section-4.
   */
   opaque type s2n_max_frag_len = CUnsignedInt
-  object s2n_max_frag_len extends CEnumU[s2n_max_frag_len]:
+  object s2n_max_frag_len extends _BindgenEnumCUnsignedInt[s2n_max_frag_len]:
     given _tag: Tag[s2n_max_frag_len] = Tag.UInt
     inline def define(inline a: Long): s2n_max_frag_len = a.toUInt
     val S2N_TLS_MAX_FRAG_LEN_512 = define(1)
@@ -257,7 +257,7 @@ object enumerations:
    * Used to declare connections as server or client type, respectively.
   */
   opaque type s2n_mode = CUnsignedInt
-  object s2n_mode extends CEnumU[s2n_mode]:
+  object s2n_mode extends _BindgenEnumCUnsignedInt[s2n_mode]:
     given _tag: Tag[s2n_mode] = Tag.UInt
     inline def define(inline a: Long): s2n_mode = a.toUInt
     val S2N_SERVER = define(0)
@@ -276,7 +276,7 @@ object enumerations:
    * Pre-shared key (PSK) Hash Algorithm - RFC 8446 Section-2.2
   */
   opaque type s2n_psk_hmac = CUnsignedInt
-  object s2n_psk_hmac extends CEnumU[s2n_psk_hmac]:
+  object s2n_psk_hmac extends _BindgenEnumCUnsignedInt[s2n_psk_hmac]:
     given _tag: Tag[s2n_psk_hmac] = Tag.UInt
     inline def define(inline a: Long): s2n_psk_hmac = a.toUInt
     val S2N_PSK_HMAC_SHA256 = define(0)
@@ -295,7 +295,7 @@ object enumerations:
    * The list of PSK modes supported by s2n-tls for TLS versions >= TLS1.3. Currently s2n-tls supports two modes - `S2N_PSK_MODE_RESUMPTION`, which represents the PSKs established using the previous connection via session resumption, and `S2N_PSK_MODE_EXTERNAL`, which represents PSKs established out-of-band/externally using a secure mutually agreed upon mechanism.
   */
   opaque type s2n_psk_mode = CUnsignedInt
-  object s2n_psk_mode extends CEnumU[s2n_psk_mode]:
+  object s2n_psk_mode extends _BindgenEnumCUnsignedInt[s2n_psk_mode]:
     given _tag: Tag[s2n_psk_mode] = Tag.UInt
     inline def define(inline a: Long): s2n_psk_mode = a.toUInt
     val S2N_PSK_MODE_RESUMPTION = define(0)
@@ -314,7 +314,7 @@ object enumerations:
    * Enum used to define the type, if any, of certificate status request an S2N_CLIENT should make during the handshake. The only supported status request type is OCSP, `S2N_STATUS_REQUEST_OCSP`.
   */
   opaque type s2n_status_request_type = CUnsignedInt
-  object s2n_status_request_type extends CEnumU[s2n_status_request_type]:
+  object s2n_status_request_type extends _BindgenEnumCUnsignedInt[s2n_status_request_type]:
     given _tag: Tag[s2n_status_request_type] = Tag.UInt
     inline def define(inline a: Long): s2n_status_request_type = a.toUInt
     val S2N_STATUS_REQUEST_NONE = define(0)
@@ -333,7 +333,7 @@ object enumerations:
    * TLS extensions supported by s2n-tls
   */
   opaque type s2n_tls_extension_type = CUnsignedInt
-  object s2n_tls_extension_type extends CEnumU[s2n_tls_extension_type]:
+  object s2n_tls_extension_type extends _BindgenEnumCUnsignedInt[s2n_tls_extension_type]:
     given _tag: Tag[s2n_tls_extension_type] = Tag.UInt
     inline def define(inline a: Long): s2n_tls_extension_type = a.toUInt
     val S2N_EXTENSION_SERVER_NAME = define(0)
@@ -366,7 +366,7 @@ object enumerations:
    * TLS Hash Algorithms - https://tools.ietf.org/html/rfc5246#section-7.4.1.4.1 https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-18
   */
   opaque type s2n_tls_hash_algorithm = CUnsignedInt
-  object s2n_tls_hash_algorithm extends CEnumU[s2n_tls_hash_algorithm]:
+  object s2n_tls_hash_algorithm extends _BindgenEnumCUnsignedInt[s2n_tls_hash_algorithm]:
     given _tag: Tag[s2n_tls_hash_algorithm] = Tag.UInt
     inline def define(inline a: Long): s2n_tls_hash_algorithm = a.toUInt
     val S2N_TLS_HASH_NONE = define(0)
@@ -397,7 +397,7 @@ object enumerations:
    * TLS Signature Algorithms - RFC 5246 7.4.1.4.1 https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-16
   */
   opaque type s2n_tls_signature_algorithm = CUnsignedInt
-  object s2n_tls_signature_algorithm extends CEnumU[s2n_tls_signature_algorithm]:
+  object s2n_tls_signature_algorithm extends _BindgenEnumCUnsignedInt[s2n_tls_signature_algorithm]:
     given _tag: Tag[s2n_tls_signature_algorithm] = Tag.UInt
     inline def define(inline a: Long): s2n_tls_signature_algorithm = a.toUInt
     val S2N_TLS_SIGNATURE_ANONYMOUS = define(0)
@@ -419,7 +419,7 @@ object enumerations:
       inline def is(b: s2n_tls_signature_algorithm): Boolean = (a & b) == b
 
   opaque type s2n_verify_after_sign = CUnsignedInt
-  object s2n_verify_after_sign extends CEnumU[s2n_verify_after_sign]:
+  object s2n_verify_after_sign extends _BindgenEnumCUnsignedInt[s2n_verify_after_sign]:
     given _tag: Tag[s2n_verify_after_sign] = Tag.UInt
     inline def define(inline a: Long): s2n_verify_after_sign = a.toUInt
     val S2N_VERIFY_AFTER_SIGN_DISABLED = define(0)

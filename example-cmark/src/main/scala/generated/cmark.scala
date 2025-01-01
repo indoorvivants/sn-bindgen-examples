@@ -6,18 +6,18 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[cmark] trait CEnumU[T](using eq: T =:= UInt):
+  private[cmark] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
     given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
     extension (inline t: T)
+     inline def value: CUnsignedInt = eq.apply(t)
      inline def int: CInt = eq.apply(t).toInt
      inline def uint: CUnsignedInt = eq.apply(t)
-     inline def value: CUnsignedInt = eq.apply(t)
 
 
 object enumerations:
   import predef.*
   opaque type cmark_delim_type = CUnsignedInt
-  object cmark_delim_type extends CEnumU[cmark_delim_type]:
+  object cmark_delim_type extends _BindgenEnumCUnsignedInt[cmark_delim_type]:
     given _tag: Tag[cmark_delim_type] = Tag.UInt
     inline def define(inline a: Long): cmark_delim_type = a.toUInt
     val CMARK_NO_DELIM = define(0)
@@ -38,7 +38,7 @@ object enumerations:
    * ## Iterator
   */
   opaque type cmark_event_type = CUnsignedInt
-  object cmark_event_type extends CEnumU[cmark_event_type]:
+  object cmark_event_type extends _BindgenEnumCUnsignedInt[cmark_event_type]:
     given _tag: Tag[cmark_event_type] = Tag.UInt
     inline def define(inline a: Long): cmark_event_type = a.toUInt
     val CMARK_EVENT_NONE = define(0)
@@ -58,7 +58,7 @@ object enumerations:
       inline def is(b: cmark_event_type): Boolean = (a & b) == b
 
   opaque type cmark_list_type = CUnsignedInt
-  object cmark_list_type extends CEnumU[cmark_list_type]:
+  object cmark_list_type extends _BindgenEnumCUnsignedInt[cmark_list_type]:
     given _tag: Tag[cmark_list_type] = Tag.UInt
     inline def define(inline a: Long): cmark_list_type = a.toUInt
     val CMARK_NO_LIST = define(0)
@@ -79,7 +79,7 @@ object enumerations:
    * ## Node Structure
   */
   opaque type cmark_node_type = CUnsignedInt
-  object cmark_node_type extends CEnumU[cmark_node_type]:
+  object cmark_node_type extends _BindgenEnumCUnsignedInt[cmark_node_type]:
     given _tag: Tag[cmark_node_type] = Tag.UInt
     inline def define(inline a: Long): cmark_node_type = a.toUInt
     val CMARK_NODE_NONE = define(0)

@@ -6,23 +6,23 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[libuv] trait CEnum[T](using eq: T =:= Int):
+  private[libuv] trait _BindgenEnumCInt[T](using eq: T =:= CInt):
     given Tag[T] = Tag.Int.asInstanceOf[Tag[T]]
-    extension (inline t: T) 
-      inline def int: CInt = eq.apply(t)
-      inline def value: CInt = eq.apply(t)
-  private[libuv] trait CEnumU[T](using eq: T =:= UInt):
+    extension (inline t: T)
+     inline def value: CInt = eq.apply(t)
+     inline def int: CInt = eq.apply(t).toInt
+  private[libuv] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
     given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
     extension (inline t: T)
+     inline def value: CUnsignedInt = eq.apply(t)
      inline def int: CInt = eq.apply(t).toInt
      inline def uint: CUnsignedInt = eq.apply(t)
-     inline def value: CUnsignedInt = eq.apply(t)
 
 
 object enumerations:
   import predef.*
   opaque type uv_clock_id = CUnsignedInt
-  object uv_clock_id extends CEnumU[uv_clock_id]:
+  object uv_clock_id extends _BindgenEnumCUnsignedInt[uv_clock_id]:
     given _tag: Tag[uv_clock_id] = Tag.UInt
     inline def define(inline a: Long): uv_clock_id = a.toUInt
     val UV_CLOCK_MONOTONIC = define(0)
@@ -38,7 +38,7 @@ object enumerations:
       inline def is(b: uv_clock_id): Boolean = (a & b) == b
 
   opaque type uv_dirent_type_t = CUnsignedInt
-  object uv_dirent_type_t extends CEnumU[uv_dirent_type_t]:
+  object uv_dirent_type_t extends _BindgenEnumCUnsignedInt[uv_dirent_type_t]:
     given _tag: Tag[uv_dirent_type_t] = Tag.UInt
     inline def define(inline a: Long): uv_dirent_type_t = a.toUInt
     val UV_DIRENT_UNKNOWN = define(0)
@@ -66,7 +66,7 @@ object enumerations:
       inline def is(b: uv_dirent_type_t): Boolean = (a & b) == b
 
   opaque type uv_errno_t = CInt
-  object uv_errno_t extends CEnum[uv_errno_t]:
+  object uv_errno_t extends _BindgenEnumCInt[uv_errno_t]:
     given _tag: Tag[uv_errno_t] = Tag.Int
     inline def define(inline a: CInt): uv_errno_t = a
     val UV_E2BIG = define(-7)
@@ -248,7 +248,7 @@ object enumerations:
       inline def is(b: uv_errno_t): Boolean = (a & b) == b
 
   opaque type uv_fs_event = CUnsignedInt
-  object uv_fs_event extends CEnumU[uv_fs_event]:
+  object uv_fs_event extends _BindgenEnumCUnsignedInt[uv_fs_event]:
     given _tag: Tag[uv_fs_event] = Tag.UInt
     inline def define(inline a: Long): uv_fs_event = a.toUInt
     val UV_RENAME = define(1)
@@ -264,7 +264,7 @@ object enumerations:
       inline def is(b: uv_fs_event): Boolean = (a & b) == b
 
   opaque type uv_fs_event_flags = CUnsignedInt
-  object uv_fs_event_flags extends CEnumU[uv_fs_event_flags]:
+  object uv_fs_event_flags extends _BindgenEnumCUnsignedInt[uv_fs_event_flags]:
     given _tag: Tag[uv_fs_event_flags] = Tag.UInt
     inline def define(inline a: Long): uv_fs_event_flags = a.toUInt
     val UV_FS_EVENT_WATCH_ENTRY = define(1)
@@ -282,7 +282,7 @@ object enumerations:
       inline def is(b: uv_fs_event_flags): Boolean = (a & b) == b
 
   opaque type uv_fs_type = CInt
-  object uv_fs_type extends CEnum[uv_fs_type]:
+  object uv_fs_type extends _BindgenEnumCInt[uv_fs_type]:
     given _tag: Tag[uv_fs_type] = Tag.Int
     inline def define(inline a: CInt): uv_fs_type = a
     val UV_FS_UNKNOWN = define(-1)
@@ -370,7 +370,7 @@ object enumerations:
       inline def is(b: uv_fs_type): Boolean = (a & b) == b
 
   opaque type uv_handle_type = CUnsignedInt
-  object uv_handle_type extends CEnumU[uv_handle_type]:
+  object uv_handle_type extends _BindgenEnumCUnsignedInt[uv_handle_type]:
     given _tag: Tag[uv_handle_type] = Tag.UInt
     inline def define(inline a: Long): uv_handle_type = a.toUInt
     val UV_UNKNOWN_HANDLE = define(0)
@@ -420,7 +420,7 @@ object enumerations:
       inline def is(b: uv_handle_type): Boolean = (a & b) == b
 
   opaque type uv_loop_option = CUnsignedInt
-  object uv_loop_option extends CEnumU[uv_loop_option]:
+  object uv_loop_option extends _BindgenEnumCUnsignedInt[uv_loop_option]:
     given _tag: Tag[uv_loop_option] = Tag.UInt
     inline def define(inline a: Long): uv_loop_option = a.toUInt
     val UV_LOOP_BLOCK_SIGNAL = define(0)
@@ -436,7 +436,7 @@ object enumerations:
       inline def is(b: uv_loop_option): Boolean = (a & b) == b
 
   opaque type uv_membership = CUnsignedInt
-  object uv_membership extends CEnumU[uv_membership]:
+  object uv_membership extends _BindgenEnumCUnsignedInt[uv_membership]:
     given _tag: Tag[uv_membership] = Tag.UInt
     inline def define(inline a: Long): uv_membership = a.toUInt
     val UV_LEAVE_GROUP = define(0)
@@ -452,7 +452,7 @@ object enumerations:
       inline def is(b: uv_membership): Boolean = (a & b) == b
 
   opaque type uv_poll_event = CUnsignedInt
-  object uv_poll_event extends CEnumU[uv_poll_event]:
+  object uv_poll_event extends _BindgenEnumCUnsignedInt[uv_poll_event]:
     given _tag: Tag[uv_poll_event] = Tag.UInt
     inline def define(inline a: Long): uv_poll_event = a.toUInt
     val UV_READABLE = define(1)
@@ -472,7 +472,7 @@ object enumerations:
       inline def is(b: uv_poll_event): Boolean = (a & b) == b
 
   opaque type uv_process_flags = CUnsignedInt
-  object uv_process_flags extends CEnumU[uv_process_flags]:
+  object uv_process_flags extends _BindgenEnumCUnsignedInt[uv_process_flags]:
     given _tag: Tag[uv_process_flags] = Tag.UInt
     inline def define(inline a: Long): uv_process_flags = a.toUInt
     val UV_PROCESS_SETUID = define(1)
@@ -498,7 +498,7 @@ object enumerations:
       inline def is(b: uv_process_flags): Boolean = (a & b) == b
 
   opaque type uv_req_type = CUnsignedInt
-  object uv_req_type extends CEnumU[uv_req_type]:
+  object uv_req_type extends _BindgenEnumCUnsignedInt[uv_req_type]:
     given _tag: Tag[uv_req_type] = Tag.UInt
     inline def define(inline a: Long): uv_req_type = a.toUInt
     val UV_UNKNOWN_REQ = define(0)
@@ -534,7 +534,7 @@ object enumerations:
       inline def is(b: uv_req_type): Boolean = (a & b) == b
 
   opaque type uv_run_mode = CUnsignedInt
-  object uv_run_mode extends CEnumU[uv_run_mode]:
+  object uv_run_mode extends _BindgenEnumCUnsignedInt[uv_run_mode]:
     given _tag: Tag[uv_run_mode] = Tag.UInt
     inline def define(inline a: Long): uv_run_mode = a.toUInt
     val UV_RUN_DEFAULT = define(0)
@@ -552,7 +552,7 @@ object enumerations:
       inline def is(b: uv_run_mode): Boolean = (a & b) == b
 
   opaque type uv_stdio_flags = CUnsignedInt
-  object uv_stdio_flags extends CEnumU[uv_stdio_flags]:
+  object uv_stdio_flags extends _BindgenEnumCUnsignedInt[uv_stdio_flags]:
     given _tag: Tag[uv_stdio_flags] = Tag.UInt
     inline def define(inline a: Long): uv_stdio_flags = a.toUInt
     val UV_IGNORE = define(0)
@@ -580,7 +580,7 @@ object enumerations:
       inline def is(b: uv_stdio_flags): Boolean = (a & b) == b
 
   opaque type uv_tcp_flags = CUnsignedInt
-  object uv_tcp_flags extends CEnumU[uv_tcp_flags]:
+  object uv_tcp_flags extends _BindgenEnumCUnsignedInt[uv_tcp_flags]:
     given _tag: Tag[uv_tcp_flags] = Tag.UInt
     inline def define(inline a: Long): uv_tcp_flags = a.toUInt
     val UV_TCP_IPV6ONLY = define(1)
@@ -594,7 +594,7 @@ object enumerations:
       inline def is(b: uv_tcp_flags): Boolean = (a & b) == b
 
   opaque type uv_thread_create_flags = CUnsignedInt
-  object uv_thread_create_flags extends CEnumU[uv_thread_create_flags]:
+  object uv_thread_create_flags extends _BindgenEnumCUnsignedInt[uv_thread_create_flags]:
     given _tag: Tag[uv_thread_create_flags] = Tag.UInt
     inline def define(inline a: Long): uv_thread_create_flags = a.toUInt
     val UV_THREAD_NO_FLAGS = define(0)
@@ -610,7 +610,7 @@ object enumerations:
       inline def is(b: uv_thread_create_flags): Boolean = (a & b) == b
 
   opaque type uv_tty_mode_t = CUnsignedInt
-  object uv_tty_mode_t extends CEnumU[uv_tty_mode_t]:
+  object uv_tty_mode_t extends _BindgenEnumCUnsignedInt[uv_tty_mode_t]:
     given _tag: Tag[uv_tty_mode_t] = Tag.UInt
     inline def define(inline a: Long): uv_tty_mode_t = a.toUInt
     val UV_TTY_MODE_NORMAL = define(0)
@@ -628,7 +628,7 @@ object enumerations:
       inline def is(b: uv_tty_mode_t): Boolean = (a & b) == b
 
   opaque type uv_tty_vtermstate_t = CUnsignedInt
-  object uv_tty_vtermstate_t extends CEnumU[uv_tty_vtermstate_t]:
+  object uv_tty_vtermstate_t extends _BindgenEnumCUnsignedInt[uv_tty_vtermstate_t]:
     given _tag: Tag[uv_tty_vtermstate_t] = Tag.UInt
     inline def define(inline a: Long): uv_tty_vtermstate_t = a.toUInt
     val UV_TTY_SUPPORTED = define(0)
@@ -644,7 +644,7 @@ object enumerations:
       inline def is(b: uv_tty_vtermstate_t): Boolean = (a & b) == b
 
   opaque type uv_udp_flags = CUnsignedInt
-  object uv_udp_flags extends CEnumU[uv_udp_flags]:
+  object uv_udp_flags extends _BindgenEnumCUnsignedInt[uv_udp_flags]:
     given _tag: Tag[uv_udp_flags] = Tag.UInt
     inline def define(inline a: Long): uv_udp_flags = a.toUInt
     val UV_UDP_IPV6ONLY = define(1)

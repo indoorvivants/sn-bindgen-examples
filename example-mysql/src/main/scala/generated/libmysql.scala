@@ -6,17 +6,17 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[libmysql] trait CEnum[T](using eq: T =:= Int):
+  private[libmysql] trait _BindgenEnumCInt[T](using eq: T =:= CInt):
     given Tag[T] = Tag.Int.asInstanceOf[Tag[T]]
-    extension (inline t: T) 
-      inline def int: CInt = eq.apply(t)
-      inline def value: CInt = eq.apply(t)
-  private[libmysql] trait CEnumU[T](using eq: T =:= UInt):
+    extension (inline t: T)
+     inline def value: CInt = eq.apply(t)
+     inline def int: CInt = eq.apply(t).toInt
+  private[libmysql] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
     given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
     extension (inline t: T)
+     inline def value: CUnsignedInt = eq.apply(t)
      inline def int: CInt = eq.apply(t).toInt
      inline def uint: CUnsignedInt = eq.apply(t)
-     inline def value: CUnsignedInt = eq.apply(t)
 
 
 object enumerations:
@@ -25,7 +25,7 @@ object enumerations:
    * Type of the user defined function return slot and arguments
   */
   opaque type Item_result = CInt
-  object Item_result extends CEnum[Item_result]:
+  object Item_result extends _BindgenEnumCInt[Item_result]:
     given _tag: Tag[Item_result] = Tag.Int
     inline def define(inline a: CInt): Item_result = a
     val INVALID_RESULT = define(-1)
@@ -49,7 +49,7 @@ object enumerations:
       inline def is(b: Item_result): Boolean = (a & b) == b
 
   opaque type Item_udftype = CUnsignedInt
-  object Item_udftype extends CEnumU[Item_udftype]:
+  object Item_udftype extends _BindgenEnumCUnsignedInt[Item_udftype]:
     given _tag: Tag[Item_udftype] = Tag.UInt
     inline def define(inline a: Long): Item_udftype = a.toUInt
     val UDFTYPE_FUNCTION = define(1)
@@ -68,7 +68,7 @@ object enumerations:
    * The status flags are a bit-field
   */
   opaque type SERVER_STATUS_flags_enum = CUnsignedInt
-  object SERVER_STATUS_flags_enum extends CEnumU[SERVER_STATUS_flags_enum]:
+  object SERVER_STATUS_flags_enum extends _BindgenEnumCUnsignedInt[SERVER_STATUS_flags_enum]:
     given _tag: Tag[SERVER_STATUS_flags_enum] = Tag.UInt
     inline def define(inline a: Long): SERVER_STATUS_flags_enum = a.toUInt
     val SERVER_STATUS_IN_TRANS = define(1)
@@ -108,7 +108,7 @@ object enumerations:
       inline def is(b: SERVER_STATUS_flags_enum): Boolean = (a & b) == b
 
   opaque type enum_compression_algorithm = CUnsignedInt
-  object enum_compression_algorithm extends CEnumU[enum_compression_algorithm]:
+  object enum_compression_algorithm extends _BindgenEnumCUnsignedInt[enum_compression_algorithm]:
     given _tag: Tag[enum_compression_algorithm] = Tag.UInt
     inline def define(inline a: Long): enum_compression_algorithm = a.toUInt
     val MYSQL_UNCOMPRESSED = define(1)
@@ -128,7 +128,7 @@ object enumerations:
       inline def is(b: enum_compression_algorithm): Boolean = (a & b) == b
 
   opaque type enum_cursor_type = CUnsignedInt
-  object enum_cursor_type extends CEnumU[enum_cursor_type]:
+  object enum_cursor_type extends _BindgenEnumCUnsignedInt[enum_cursor_type]:
     given _tag: Tag[enum_cursor_type] = Tag.UInt
     inline def define(inline a: Long): enum_cursor_type = a.toUInt
     val CURSOR_TYPE_NO_CURSOR = define(0)
@@ -153,7 +153,7 @@ object enumerations:
    * Column types for MySQL
   */
   opaque type enum_field_types = CUnsignedInt
-  object enum_field_types extends CEnumU[enum_field_types]:
+  object enum_field_types extends _BindgenEnumCUnsignedInt[enum_field_types]:
     given _tag: Tag[enum_field_types] = Tag.UInt
     inline def define(inline a: Long): enum_field_types = a.toUInt
     val MYSQL_TYPE_DECIMAL = define(0)
@@ -236,7 +236,7 @@ object enumerations:
    * options for ::mysql_options()
   */
   opaque type enum_mysql_set_option = CUnsignedInt
-  object enum_mysql_set_option extends CEnumU[enum_mysql_set_option]:
+  object enum_mysql_set_option extends _BindgenEnumCUnsignedInt[enum_mysql_set_option]:
     given _tag: Tag[enum_mysql_set_option] = Tag.UInt
     inline def define(inline a: Long): enum_mysql_set_option = a.toUInt
     val MYSQL_OPTION_MULTI_STATEMENTS_ON = define(0)
@@ -252,7 +252,7 @@ object enumerations:
       inline def is(b: enum_mysql_set_option): Boolean = (a & b) == b
 
   opaque type enum_mysql_stmt_state = CUnsignedInt
-  object enum_mysql_stmt_state extends CEnumU[enum_mysql_stmt_state]:
+  object enum_mysql_stmt_state extends _BindgenEnumCUnsignedInt[enum_mysql_stmt_state]:
     given _tag: Tag[enum_mysql_stmt_state] = Tag.UInt
     inline def define(inline a: Long): enum_mysql_stmt_state = a.toUInt
     val MYSQL_STMT_INIT_DONE = define(1)
@@ -275,7 +275,7 @@ object enumerations:
    * Time declarations shared between the server and client API: you should not add anything to this header unless it's used (and hence should be visible) in mysql.h. If you're looking for a place to add new time-related declaration, it's most likely my_time.h. See also "C API Handling of Date and Time Values" chapter in documentation.
   */
   opaque type enum_mysql_timestamp_type = CInt
-  object enum_mysql_timestamp_type extends CEnum[enum_mysql_timestamp_type]:
+  object enum_mysql_timestamp_type extends _BindgenEnumCInt[enum_mysql_timestamp_type]:
     given _tag: Tag[enum_mysql_timestamp_type] = Tag.Int
     inline def define(inline a: CInt): enum_mysql_timestamp_type = a
     val MYSQL_TIMESTAMP_NONE = define(-2)
@@ -302,7 +302,7 @@ object enumerations:
    * @}
   */
   opaque type enum_resultset_metadata = CUnsignedInt
-  object enum_resultset_metadata extends CEnumU[enum_resultset_metadata]:
+  object enum_resultset_metadata extends _BindgenEnumCUnsignedInt[enum_resultset_metadata]:
     given _tag: Tag[enum_resultset_metadata] = Tag.UInt
     inline def define(inline a: Long): enum_resultset_metadata = a.toUInt
     val RESULTSET_METADATA_NONE = define(0)
@@ -321,7 +321,7 @@ object enumerations:
    * A list of all MySQL protocol commands.
   */
   opaque type enum_server_command = CUnsignedInt
-  object enum_server_command extends CEnumU[enum_server_command]:
+  object enum_server_command extends _BindgenEnumCUnsignedInt[enum_server_command]:
     given _tag: Tag[enum_server_command] = Tag.UInt
     inline def define(inline a: Long): enum_server_command = a.toUInt
     val COM_SLEEP = define(0)
@@ -406,7 +406,7 @@ object enumerations:
    * Type of state change information that the server can include in the Ok packet.
   */
   opaque type enum_session_state_type = CUnsignedInt
-  object enum_session_state_type extends CEnumU[enum_session_state_type]:
+  object enum_session_state_type extends _BindgenEnumCUnsignedInt[enum_session_state_type]:
     given _tag: Tag[enum_session_state_type] = Tag.UInt
     inline def define(inline a: Long): enum_session_state_type = a.toUInt
     val SESSION_TRACK_SYSTEM_VARIABLES = define(0)
@@ -430,7 +430,7 @@ object enumerations:
       inline def is(b: enum_session_state_type): Boolean = (a & b) == b
 
   opaque type enum_stmt_attr_type = CUnsignedInt
-  object enum_stmt_attr_type extends CEnumU[enum_stmt_attr_type]:
+  object enum_stmt_attr_type extends _BindgenEnumCUnsignedInt[enum_stmt_attr_type]:
     given _tag: Tag[enum_stmt_attr_type] = Tag.UInt
     inline def define(inline a: Long): enum_stmt_attr_type = a.toUInt
     val STMT_ATTR_UPDATE_MAX_LENGTH = define(0)
@@ -451,7 +451,7 @@ object enumerations:
    * We want levels to be in growing order of hardness (because we use number comparisons).
   */
   opaque type mysql_enum_shutdown_level = CUnsignedInt
-  object mysql_enum_shutdown_level extends CEnumU[mysql_enum_shutdown_level]:
+  object mysql_enum_shutdown_level extends _BindgenEnumCUnsignedInt[mysql_enum_shutdown_level]:
     given _tag: Tag[mysql_enum_shutdown_level] = Tag.UInt
     inline def define(inline a: Long): mysql_enum_shutdown_level = a.toUInt
     val SHUTDOWN_DEFAULT = define(0)
@@ -479,7 +479,7 @@ object enumerations:
       inline def is(b: mysql_enum_shutdown_level): Boolean = (a & b) == b
 
   opaque type mysql_option = CUnsignedInt
-  object mysql_option extends CEnumU[mysql_option]:
+  object mysql_option extends _BindgenEnumCUnsignedInt[mysql_option]:
     given _tag: Tag[mysql_option] = Tag.UInt
     inline def define(inline a: Long): mysql_option = a.toUInt
     val MYSQL_OPT_CONNECT_TIMEOUT = define(0)
@@ -583,7 +583,7 @@ object enumerations:
       inline def is(b: mysql_option): Boolean = (a & b) == b
 
   opaque type mysql_protocol_type = CUnsignedInt
-  object mysql_protocol_type extends CEnumU[mysql_protocol_type]:
+  object mysql_protocol_type extends _BindgenEnumCUnsignedInt[mysql_protocol_type]:
     given _tag: Tag[mysql_protocol_type] = Tag.UInt
     inline def define(inline a: Long): mysql_protocol_type = a.toUInt
     val MYSQL_PROTOCOL_DEFAULT = define(0)
@@ -605,7 +605,7 @@ object enumerations:
       inline def is(b: mysql_protocol_type): Boolean = (a & b) == b
 
   opaque type mysql_ssl_fips_mode = CUnsignedInt
-  object mysql_ssl_fips_mode extends CEnumU[mysql_ssl_fips_mode]:
+  object mysql_ssl_fips_mode extends _BindgenEnumCUnsignedInt[mysql_ssl_fips_mode]:
     given _tag: Tag[mysql_ssl_fips_mode] = Tag.UInt
     inline def define(inline a: Long): mysql_ssl_fips_mode = a.toUInt
     val SSL_FIPS_MODE_OFF = define(0)
@@ -623,7 +623,7 @@ object enumerations:
       inline def is(b: mysql_ssl_fips_mode): Boolean = (a & b) == b
 
   opaque type mysql_ssl_mode = CUnsignedInt
-  object mysql_ssl_mode extends CEnumU[mysql_ssl_mode]:
+  object mysql_ssl_mode extends _BindgenEnumCUnsignedInt[mysql_ssl_mode]:
     given _tag: Tag[mysql_ssl_mode] = Tag.UInt
     inline def define(inline a: Long): mysql_ssl_mode = a.toUInt
     val SSL_MODE_DISABLED = define(1)
@@ -645,7 +645,7 @@ object enumerations:
       inline def is(b: mysql_ssl_mode): Boolean = (a & b) == b
 
   opaque type mysql_status = CUnsignedInt
-  object mysql_status extends CEnumU[mysql_status]:
+  object mysql_status extends _BindgenEnumCUnsignedInt[mysql_status]:
     given _tag: Tag[mysql_status] = Tag.UInt
     inline def define(inline a: Long): mysql_status = a.toUInt
     val MYSQL_STATUS_READY = define(0)
@@ -665,7 +665,7 @@ object enumerations:
       inline def is(b: mysql_status): Boolean = (a & b) == b
 
   opaque type net_async_status = CUnsignedInt
-  object net_async_status extends CEnumU[net_async_status]:
+  object net_async_status extends _BindgenEnumCUnsignedInt[net_async_status]:
     given _tag: Tag[net_async_status] = Tag.UInt
     inline def define(inline a: Long): net_async_status = a.toUInt
     val NET_ASYNC_COMPLETE = define(0)
@@ -1227,7 +1227,7 @@ object structs:
   opaque type MYSQL_PLUGIN_VIO_INFO = CStruct2[MYSQL_PLUGIN_VIO_INFO.Enum0, CInt]
   object MYSQL_PLUGIN_VIO_INFO:
     opaque type Enum0 = CUnsignedInt
-    object Enum0 extends CEnumU[Enum0]:
+    object Enum0 extends _BindgenEnumCUnsignedInt[Enum0]:
       given _tag: Tag[Enum0] = Tag.UInt
       inline def define(inline a: Long): Enum0 = a.toUInt
       val MYSQL_VIO_INVALID = define(0)

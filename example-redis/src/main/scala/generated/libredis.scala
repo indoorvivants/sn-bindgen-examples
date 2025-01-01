@@ -6,18 +6,18 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[libredis] trait CEnumU[T](using eq: T =:= UInt):
+  private[libredis] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
     given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
     extension (inline t: T)
+     inline def value: CUnsignedInt = eq.apply(t)
      inline def int: CInt = eq.apply(t).toInt
      inline def uint: CUnsignedInt = eq.apply(t)
-     inline def value: CUnsignedInt = eq.apply(t)
 
 
 object enumerations:
   import predef.*
   opaque type redisConnectionType = CUnsignedInt
-  object redisConnectionType extends CEnumU[redisConnectionType]:
+  object redisConnectionType extends _BindgenEnumCUnsignedInt[redisConnectionType]:
     given _tag: Tag[redisConnectionType] = Tag.UInt
     inline def define(inline a: Long): redisConnectionType = a.toUInt
     val REDIS_CONN_TCP = define(0)

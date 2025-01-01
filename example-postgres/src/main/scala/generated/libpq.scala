@@ -6,18 +6,18 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[libpq] trait CEnumU[T](using eq: T =:= UInt):
+  private[libpq] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
     given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
     extension (inline t: T)
+     inline def value: CUnsignedInt = eq.apply(t)
      inline def int: CInt = eq.apply(t).toInt
      inline def uint: CUnsignedInt = eq.apply(t)
-     inline def value: CUnsignedInt = eq.apply(t)
 
 
 object enumerations:
   import predef.*
   opaque type ConnStatusType = CUnsignedInt
-  object ConnStatusType extends CEnumU[ConnStatusType]:
+  object ConnStatusType extends _BindgenEnumCUnsignedInt[ConnStatusType]:
     given _tag: Tag[ConnStatusType] = Tag.UInt
     inline def define(inline a: Long): ConnStatusType = a.toUInt
     val CONNECTION_OK = define(0)
@@ -57,7 +57,7 @@ object enumerations:
       inline def is(b: ConnStatusType): Boolean = (a & b) == b
 
   opaque type ExecStatusType = CUnsignedInt
-  object ExecStatusType extends CEnumU[ExecStatusType]:
+  object ExecStatusType extends _BindgenEnumCUnsignedInt[ExecStatusType]:
     given _tag: Tag[ExecStatusType] = Tag.UInt
     inline def define(inline a: Long): ExecStatusType = a.toUInt
     val PGRES_EMPTY_QUERY = define(0)
@@ -93,7 +93,7 @@ object enumerations:
       inline def is(b: ExecStatusType): Boolean = (a & b) == b
 
   opaque type PGContextVisibility = CUnsignedInt
-  object PGContextVisibility extends CEnumU[PGContextVisibility]:
+  object PGContextVisibility extends _BindgenEnumCUnsignedInt[PGContextVisibility]:
     given _tag: Tag[PGContextVisibility] = Tag.UInt
     inline def define(inline a: Long): PGContextVisibility = a.toUInt
     val PQSHOW_CONTEXT_NEVER = define(0)
@@ -111,7 +111,7 @@ object enumerations:
       inline def is(b: PGContextVisibility): Boolean = (a & b) == b
 
   opaque type PGPing = CUnsignedInt
-  object PGPing extends CEnumU[PGPing]:
+  object PGPing extends _BindgenEnumCUnsignedInt[PGPing]:
     given _tag: Tag[PGPing] = Tag.UInt
     inline def define(inline a: Long): PGPing = a.toUInt
     val PQPING_OK = define(0)
@@ -131,7 +131,7 @@ object enumerations:
       inline def is(b: PGPing): Boolean = (a & b) == b
 
   opaque type PGTransactionStatusType = CUnsignedInt
-  object PGTransactionStatusType extends CEnumU[PGTransactionStatusType]:
+  object PGTransactionStatusType extends _BindgenEnumCUnsignedInt[PGTransactionStatusType]:
     given _tag: Tag[PGTransactionStatusType] = Tag.UInt
     inline def define(inline a: Long): PGTransactionStatusType = a.toUInt
     val PQTRANS_IDLE = define(0)
@@ -153,7 +153,7 @@ object enumerations:
       inline def is(b: PGTransactionStatusType): Boolean = (a & b) == b
 
   opaque type PGVerbosity = CUnsignedInt
-  object PGVerbosity extends CEnumU[PGVerbosity]:
+  object PGVerbosity extends _BindgenEnumCUnsignedInt[PGVerbosity]:
     given _tag: Tag[PGVerbosity] = Tag.UInt
     inline def define(inline a: Long): PGVerbosity = a.toUInt
     val PQERRORS_TERSE = define(0)
@@ -173,7 +173,7 @@ object enumerations:
       inline def is(b: PGVerbosity): Boolean = (a & b) == b
 
   opaque type PGpipelineStatus = CUnsignedInt
-  object PGpipelineStatus extends CEnumU[PGpipelineStatus]:
+  object PGpipelineStatus extends _BindgenEnumCUnsignedInt[PGpipelineStatus]:
     given _tag: Tag[PGpipelineStatus] = Tag.UInt
     inline def define(inline a: Long): PGpipelineStatus = a.toUInt
     val PQ_PIPELINE_OFF = define(0)
@@ -191,7 +191,7 @@ object enumerations:
       inline def is(b: PGpipelineStatus): Boolean = (a & b) == b
 
   opaque type PostgresPollingStatusType = CUnsignedInt
-  object PostgresPollingStatusType extends CEnumU[PostgresPollingStatusType]:
+  object PostgresPollingStatusType extends _BindgenEnumCUnsignedInt[PostgresPollingStatusType]:
     given _tag: Tag[PostgresPollingStatusType] = Tag.UInt
     inline def define(inline a: Long): PostgresPollingStatusType = a.toUInt
     val PGRES_POLLING_FAILED = define(0)
