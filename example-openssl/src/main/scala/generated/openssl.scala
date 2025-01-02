@@ -6,18 +6,18 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[openssl] trait CEnumU[T](using eq: T =:= UInt):
+  private[openssl] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
     given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
     extension (inline t: T)
+     inline def value: CUnsignedInt = eq.apply(t)
      inline def int: CInt = eq.apply(t).toInt
      inline def uint: CUnsignedInt = eq.apply(t)
-     inline def value: CUnsignedInt = eq.apply(t)
 
 
 object enumerations:
   import predef.*
   opaque type BIO_hostserv_priorities = CUnsignedInt
-  object BIO_hostserv_priorities extends CEnumU[BIO_hostserv_priorities]:
+  object BIO_hostserv_priorities extends _BindgenEnumCUnsignedInt[BIO_hostserv_priorities]:
     given _tag: Tag[BIO_hostserv_priorities] = Tag.UInt
     inline def define(inline a: Long): BIO_hostserv_priorities = a.toUInt
     val BIO_PARSE_PRIO_HOST = define(0)
@@ -33,7 +33,7 @@ object enumerations:
       inline def is(b: BIO_hostserv_priorities): Boolean = (a & b) == b
 
   opaque type BIO_lookup_type = CUnsignedInt
-  object BIO_lookup_type extends CEnumU[BIO_lookup_type]:
+  object BIO_lookup_type extends _BindgenEnumCUnsignedInt[BIO_lookup_type]:
     given _tag: Tag[BIO_lookup_type] = Tag.UInt
     inline def define(inline a: Long): BIO_lookup_type = a.toUInt
     val BIO_LOOKUP_CLIENT = define(0)
@@ -49,7 +49,7 @@ object enumerations:
       inline def is(b: BIO_lookup_type): Boolean = (a & b) == b
 
   opaque type BIO_sock_info_type = CUnsignedInt
-  object BIO_sock_info_type extends CEnumU[BIO_sock_info_type]:
+  object BIO_sock_info_type extends _BindgenEnumCUnsignedInt[BIO_sock_info_type]:
     given _tag: Tag[BIO_sock_info_type] = Tag.UInt
     inline def define(inline a: Long): BIO_sock_info_type = a.toUInt
     val BIO_SOCK_INFO_ADDRESS = define(0)
@@ -8747,13 +8747,13 @@ object functions:
   import extern_functions.*
   export extern_functions.*
 
-  def OSSL_PARAM_construct_BN(key : CString, buf : Ptr[CUnsignedChar], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_BN(key, buf, bsize, __return)
-
   def OSSL_PARAM_construct_BN(key : CString, buf : Ptr[CUnsignedChar], bsize : size_t)(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_BN(key, buf, bsize, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  def OSSL_PARAM_construct_BN(key : CString, buf : Ptr[CUnsignedChar], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_BN(key, buf, bsize, __return)
 
   def OSSL_PARAM_construct_double(key : CString, buf : Ptr[Double])(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_double(key, buf, __return)
@@ -8763,13 +8763,13 @@ object functions:
     __sn_wrap_openssl_OSSL_PARAM_construct_double(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
+  def OSSL_PARAM_construct_end()(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_end(__return)
+
   def OSSL_PARAM_construct_end()(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_end((__ptr_0 + 0))
     !(__ptr_0 + 0)
-
-  def OSSL_PARAM_construct_end()(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_end(__return)
 
   def OSSL_PARAM_construct_int(key : CString, buf : Ptr[CInt])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -8779,13 +8779,13 @@ object functions:
   def OSSL_PARAM_construct_int(key : CString, buf : Ptr[CInt])(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_int(key, buf, __return)
 
+  def OSSL_PARAM_construct_int32(key : CString, buf : Ptr[int32_t])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_int32(key, buf, __return)
+
   def OSSL_PARAM_construct_int32(key : CString, buf : Ptr[int32_t])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_int32(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
-
-  def OSSL_PARAM_construct_int32(key : CString, buf : Ptr[int32_t])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_int32(key, buf, __return)
 
   def OSSL_PARAM_construct_int64(key : CString, buf : Ptr[int64_t])(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_int64(key, buf, __return)
@@ -8795,37 +8795,37 @@ object functions:
     __sn_wrap_openssl_OSSL_PARAM_construct_int64(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_long(key : CString, buf : Ptr[CLongInt])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_long(key, buf, __return)
-
   def OSSL_PARAM_construct_long(key : CString, buf : Ptr[CLongInt])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_long(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  def OSSL_PARAM_construct_long(key : CString, buf : Ptr[CLongInt])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_long(key, buf, __return)
+
+  def OSSL_PARAM_construct_octet_ptr(key : CString, buf : Ptr[Ptr[Byte]], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_octet_ptr(key, buf, bsize, __return)
 
   def OSSL_PARAM_construct_octet_ptr(key : CString, buf : Ptr[Ptr[Byte]], bsize : size_t)(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_octet_ptr(key, buf, bsize, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_octet_ptr(key : CString, buf : Ptr[Ptr[Byte]], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_octet_ptr(key, buf, bsize, __return)
+  def OSSL_PARAM_construct_octet_string(key : CString, buf : Ptr[Byte], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_octet_string(key, buf, bsize, __return)
 
   def OSSL_PARAM_construct_octet_string(key : CString, buf : Ptr[Byte], bsize : size_t)(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_octet_string(key, buf, bsize, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_octet_string(key : CString, buf : Ptr[Byte], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_octet_string(key, buf, bsize, __return)
-
-  def OSSL_PARAM_construct_size_t(key : CString, buf : Ptr[size_t])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_size_t(key, buf, __return)
-
   def OSSL_PARAM_construct_size_t(key : CString, buf : Ptr[size_t])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_size_t(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  def OSSL_PARAM_construct_size_t(key : CString, buf : Ptr[size_t])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_size_t(key, buf, __return)
 
   def OSSL_PARAM_construct_time_t(key : CString, buf : Ptr[time_t])(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_time_t(key, buf, __return)
@@ -8851,13 +8851,13 @@ object functions:
     __sn_wrap_openssl_OSSL_PARAM_construct_uint32(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
+  def OSSL_PARAM_construct_uint64(key : CString, buf : Ptr[uint64_t])(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_uint64(key, buf, __return)
+
   def OSSL_PARAM_construct_uint64(key : CString, buf : Ptr[uint64_t])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_uint64(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
-
-  def OSSL_PARAM_construct_uint64(key : CString, buf : Ptr[uint64_t])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_uint64(key, buf, __return)
 
   def OSSL_PARAM_construct_ulong(key : CString, buf : Ptr[CUnsignedLongInt])(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
@@ -8867,21 +8867,21 @@ object functions:
   def OSSL_PARAM_construct_ulong(key : CString, buf : Ptr[CUnsignedLongInt])(__return : Ptr[OSSL_PARAM]): Unit = 
     __sn_wrap_openssl_OSSL_PARAM_construct_ulong(key, buf, __return)
 
-  def OSSL_PARAM_construct_utf8_ptr(key : CString, buf : Ptr[CString], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_utf8_ptr(key, buf, bsize, __return)
-
   def OSSL_PARAM_construct_utf8_ptr(key : CString, buf : Ptr[CString], bsize : size_t)(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_utf8_ptr(key, buf, bsize, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
+  def OSSL_PARAM_construct_utf8_ptr(key : CString, buf : Ptr[CString], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_utf8_ptr(key, buf, bsize, __return)
+
+  def OSSL_PARAM_construct_utf8_string(key : CString, buf : CString, bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
+    __sn_wrap_openssl_OSSL_PARAM_construct_utf8_string(key, buf, bsize, __return)
+
   def OSSL_PARAM_construct_utf8_string(key : CString, buf : CString, bsize : size_t)(using Zone): OSSL_PARAM = 
     val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_utf8_string(key, buf, bsize, (__ptr_0 + 0))
     !(__ptr_0 + 0)
-
-  def OSSL_PARAM_construct_utf8_string(key : CString, buf : CString, bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_utf8_string(key, buf, bsize, __return)
 
 object types:
   export _root_.openssl.structs.*

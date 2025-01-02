@@ -6,23 +6,23 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[curl] trait CEnum[T](using eq: T =:= Int):
+  private[curl] trait _BindgenEnumCInt[T](using eq: T =:= CInt):
     given Tag[T] = Tag.Int.asInstanceOf[Tag[T]]
-    extension (inline t: T) 
-      inline def int: CInt = eq.apply(t)
-      inline def value: CInt = eq.apply(t)
-  private[curl] trait CEnumU[T](using eq: T =:= UInt):
+    extension (inline t: T)
+     inline def value: CInt = eq.apply(t)
+     inline def int: CInt = eq.apply(t).toInt
+  private[curl] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
     given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
     extension (inline t: T)
+     inline def value: CUnsignedInt = eq.apply(t)
      inline def int: CInt = eq.apply(t).toInt
      inline def uint: CUnsignedInt = eq.apply(t)
-     inline def value: CUnsignedInt = eq.apply(t)
 
 
 object enumerations:
   import predef.*
   opaque type CURLFORMcode = CUnsignedInt
-  object CURLFORMcode extends CEnumU[CURLFORMcode]:
+  object CURLFORMcode extends _BindgenEnumCUnsignedInt[CURLFORMcode]:
     given _tag: Tag[CURLFORMcode] = Tag.UInt
     inline def define(inline a: Long): CURLFORMcode = a.toUInt
     val CURL_FORMADD_OK = define(0)
@@ -52,7 +52,7 @@ object enumerations:
       inline def is(b: CURLFORMcode): Boolean = (a & b) == b
 
   opaque type CURLHcode = CUnsignedInt
-  object CURLHcode extends CEnumU[CURLHcode]:
+  object CURLHcode extends _BindgenEnumCUnsignedInt[CURLHcode]:
     given _tag: Tag[CURLHcode] = Tag.UInt
     inline def define(inline a: Long): CURLHcode = a.toUInt
     val CURLHE_OK = define(0)
@@ -80,7 +80,7 @@ object enumerations:
       inline def is(b: CURLHcode): Boolean = (a & b) == b
 
   opaque type CURLINFO = CUnsignedInt
-  object CURLINFO extends CEnumU[CURLINFO]:
+  object CURLINFO extends _BindgenEnumCUnsignedInt[CURLINFO]:
     given _tag: Tag[CURLINFO] = Tag.UInt
     inline def define(inline a: Long): CURLINFO = a.toUInt
     val CURLINFO_NONE = define(0)
@@ -238,7 +238,7 @@ object enumerations:
       inline def is(b: CURLINFO): Boolean = (a & b) == b
 
   opaque type CURLMSG = CUnsignedInt
-  object CURLMSG extends CEnumU[CURLMSG]:
+  object CURLMSG extends _BindgenEnumCUnsignedInt[CURLMSG]:
     given _tag: Tag[CURLMSG] = Tag.UInt
     inline def define(inline a: Long): CURLMSG = a.toUInt
     val CURLMSG_NONE = define(0)
@@ -256,7 +256,7 @@ object enumerations:
       inline def is(b: CURLMSG): Boolean = (a & b) == b
 
   opaque type CURLMcode = CInt
-  object CURLMcode extends CEnum[CURLMcode]:
+  object CURLMcode extends _BindgenEnumCInt[CURLMcode]:
     given _tag: Tag[CURLMcode] = Tag.Int
     inline def define(inline a: CInt): CURLMcode = a
     val CURLM_CALL_MULTI_PERFORM = define(-1)
@@ -298,7 +298,7 @@ object enumerations:
       inline def is(b: CURLMcode): Boolean = (a & b) == b
 
   opaque type CURLMoption = CUnsignedInt
-  object CURLMoption extends CEnumU[CURLMoption]:
+  object CURLMoption extends _BindgenEnumCUnsignedInt[CURLMoption]:
     given _tag: Tag[CURLMoption] = Tag.UInt
     inline def define(inline a: Long): CURLMoption = a.toUInt
     val CURLMOPT_SOCKETFUNCTION = define(20001)
@@ -344,7 +344,7 @@ object enumerations:
       inline def is(b: CURLMoption): Boolean = (a & b) == b
 
   opaque type CURLSHcode = CUnsignedInt
-  object CURLSHcode extends CEnumU[CURLSHcode]:
+  object CURLSHcode extends _BindgenEnumCUnsignedInt[CURLSHcode]:
     given _tag: Tag[CURLSHcode] = Tag.UInt
     inline def define(inline a: Long): CURLSHcode = a.toUInt
     val CURLSHE_OK = define(0)
@@ -370,7 +370,7 @@ object enumerations:
       inline def is(b: CURLSHcode): Boolean = (a & b) == b
 
   opaque type CURLSHoption = CUnsignedInt
-  object CURLSHoption extends CEnumU[CURLSHoption]:
+  object CURLSHoption extends _BindgenEnumCUnsignedInt[CURLSHoption]:
     given _tag: Tag[CURLSHoption] = Tag.UInt
     inline def define(inline a: Long): CURLSHoption = a.toUInt
     val CURLSHOPT_NONE = define(0)
@@ -396,7 +396,7 @@ object enumerations:
       inline def is(b: CURLSHoption): Boolean = (a & b) == b
 
   opaque type CURLSTScode = CUnsignedInt
-  object CURLSTScode extends CEnumU[CURLSTScode]:
+  object CURLSTScode extends _BindgenEnumCUnsignedInt[CURLSTScode]:
     given _tag: Tag[CURLSTScode] = Tag.UInt
     inline def define(inline a: Long): CURLSTScode = a.toUInt
     val CURLSTS_OK = define(0)
@@ -414,7 +414,7 @@ object enumerations:
       inline def is(b: CURLSTScode): Boolean = (a & b) == b
 
   opaque type CURLUPart = CUnsignedInt
-  object CURLUPart extends CEnumU[CURLUPart]:
+  object CURLUPart extends _BindgenEnumCUnsignedInt[CURLUPart]:
     given _tag: Tag[CURLUPart] = Tag.UInt
     inline def define(inline a: Long): CURLUPart = a.toUInt
     val CURLUPART_URL = define(0)
@@ -448,7 +448,7 @@ object enumerations:
       inline def is(b: CURLUPart): Boolean = (a & b) == b
 
   opaque type CURLUcode = CUnsignedInt
-  object CURLUcode extends CEnumU[CURLUcode]:
+  object CURLUcode extends _BindgenEnumCUnsignedInt[CURLUcode]:
     given _tag: Tag[CURLUcode] = Tag.UInt
     inline def define(inline a: Long): CURLUcode = a.toUInt
     val CURLUE_OK = define(0)
@@ -524,7 +524,7 @@ object enumerations:
       inline def is(b: CURLUcode): Boolean = (a & b) == b
 
   opaque type CURL_NETRC_OPTION = CUnsignedInt
-  object CURL_NETRC_OPTION extends CEnumU[CURL_NETRC_OPTION]:
+  object CURL_NETRC_OPTION extends _BindgenEnumCUnsignedInt[CURL_NETRC_OPTION]:
     given _tag: Tag[CURL_NETRC_OPTION] = Tag.UInt
     inline def define(inline a: Long): CURL_NETRC_OPTION = a.toUInt
     val CURL_NETRC_IGNORED = define(0)
@@ -544,7 +544,7 @@ object enumerations:
       inline def is(b: CURL_NETRC_OPTION): Boolean = (a & b) == b
 
   opaque type CURL_TLSAUTH = CUnsignedInt
-  object CURL_TLSAUTH extends CEnumU[CURL_TLSAUTH]:
+  object CURL_TLSAUTH extends _BindgenEnumCUnsignedInt[CURL_TLSAUTH]:
     given _tag: Tag[CURL_TLSAUTH] = Tag.UInt
     inline def define(inline a: Long): CURL_TLSAUTH = a.toUInt
     val CURL_TLSAUTH_NONE = define(0)
@@ -562,7 +562,7 @@ object enumerations:
       inline def is(b: CURL_TLSAUTH): Boolean = (a & b) == b
 
   opaque type CURLcode = CUnsignedInt
-  object CURLcode extends CEnumU[CURLcode]:
+  object CURLcode extends _BindgenEnumCUnsignedInt[CURLcode]:
     given _tag: Tag[CURLcode] = Tag.UInt
     inline def define(inline a: Long): CURLcode = a.toUInt
     val CURLE_OK = define(0)
@@ -776,7 +776,7 @@ object enumerations:
       inline def is(b: CURLcode): Boolean = (a & b) == b
 
   opaque type CURLformoption = CUnsignedInt
-  object CURLformoption extends CEnumU[CURLformoption]:
+  object CURLformoption extends _BindgenEnumCUnsignedInt[CURLformoption]:
     given _tag: Tag[CURLformoption] = Tag.UInt
     inline def define(inline a: Long): CURLformoption = a.toUInt
     val CURLFORM_NOTHING = define(0)
@@ -832,7 +832,7 @@ object enumerations:
       inline def is(b: CURLformoption): Boolean = (a & b) == b
 
   opaque type CURLoption = CUnsignedInt
-  object CURLoption extends CEnumU[CURLoption]:
+  object CURLoption extends _BindgenEnumCUnsignedInt[CURLoption]:
     given _tag: Tag[CURLoption] = Tag.UInt
     inline def define(inline a: Long): CURLoption = a.toUInt
     val CURLOPT_WRITEDATA = define(10001)
@@ -1456,7 +1456,7 @@ object enumerations:
       inline def is(b: CURLoption): Boolean = (a & b) == b
 
   opaque type CURLproxycode = CUnsignedInt
-  object CURLproxycode extends CEnumU[CURLproxycode]:
+  object CURLproxycode extends _BindgenEnumCUnsignedInt[CURLproxycode]:
     given _tag: Tag[CURLproxycode] = Tag.UInt
     inline def define(inline a: Long): CURLproxycode = a.toUInt
     val CURLPX_OK = define(0)
@@ -1538,7 +1538,7 @@ object enumerations:
       inline def is(b: CURLproxycode): Boolean = (a & b) == b
 
   opaque type CURLsslset = CUnsignedInt
-  object CURLsslset extends CEnumU[CURLsslset]:
+  object CURLsslset extends _BindgenEnumCUnsignedInt[CURLsslset]:
     given _tag: Tag[CURLsslset] = Tag.UInt
     inline def define(inline a: Long): CURLsslset = a.toUInt
     val CURLSSLSET_OK = define(0)
@@ -1561,7 +1561,7 @@ object enumerations:
    * ************************************************************************** Structures for querying information about the curl library at runtime.
   */
   opaque type CURLversion = CUnsignedInt
-  object CURLversion extends CEnumU[CURLversion]:
+  object CURLversion extends _BindgenEnumCUnsignedInt[CURLversion]:
     given _tag: Tag[CURLversion] = Tag.UInt
     inline def define(inline a: Long): CURLversion = a.toUInt
     val CURLVERSION_FIRST = define(0)
@@ -1597,7 +1597,7 @@ object enumerations:
       inline def is(b: CURLversion): Boolean = (a & b) == b
 
   opaque type curl_TimeCond = CUnsignedInt
-  object curl_TimeCond extends CEnumU[curl_TimeCond]:
+  object curl_TimeCond extends _BindgenEnumCUnsignedInt[curl_TimeCond]:
     given _tag: Tag[curl_TimeCond] = Tag.UInt
     inline def define(inline a: Long): curl_TimeCond = a.toUInt
     val CURL_TIMECOND_NONE = define(0)
@@ -1619,7 +1619,7 @@ object enumerations:
       inline def is(b: curl_TimeCond): Boolean = (a & b) == b
 
   opaque type curl_closepolicy = CUnsignedInt
-  object curl_closepolicy extends CEnumU[curl_closepolicy]:
+  object curl_closepolicy extends _BindgenEnumCUnsignedInt[curl_closepolicy]:
     given _tag: Tag[curl_closepolicy] = Tag.UInt
     inline def define(inline a: Long): curl_closepolicy = a.toUInt
     val CURLCLOSEPOLICY_NONE = define(0)
@@ -1645,7 +1645,7 @@ object enumerations:
       inline def is(b: curl_closepolicy): Boolean = (a & b) == b
 
   opaque type curl_easytype = CUnsignedInt
-  object curl_easytype extends CEnumU[curl_easytype]:
+  object curl_easytype extends _BindgenEnumCUnsignedInt[curl_easytype]:
     given _tag: Tag[curl_easytype] = Tag.UInt
     inline def define(inline a: Long): curl_easytype = a.toUInt
     val CURLOT_LONG = define(0)
@@ -1675,7 +1675,7 @@ object enumerations:
       inline def is(b: curl_easytype): Boolean = (a & b) == b
 
   opaque type curl_ftpauth = CUnsignedInt
-  object curl_ftpauth extends CEnumU[curl_ftpauth]:
+  object curl_ftpauth extends _BindgenEnumCUnsignedInt[curl_ftpauth]:
     given _tag: Tag[curl_ftpauth] = Tag.UInt
     inline def define(inline a: Long): curl_ftpauth = a.toUInt
     val CURLFTPAUTH_DEFAULT = define(0)
@@ -1695,7 +1695,7 @@ object enumerations:
       inline def is(b: curl_ftpauth): Boolean = (a & b) == b
 
   opaque type curl_ftpccc = CUnsignedInt
-  object curl_ftpccc extends CEnumU[curl_ftpccc]:
+  object curl_ftpccc extends _BindgenEnumCUnsignedInt[curl_ftpccc]:
     given _tag: Tag[curl_ftpccc] = Tag.UInt
     inline def define(inline a: Long): curl_ftpccc = a.toUInt
     val CURLFTPSSL_CCC_NONE = define(0)
@@ -1715,7 +1715,7 @@ object enumerations:
       inline def is(b: curl_ftpccc): Boolean = (a & b) == b
 
   opaque type curl_ftpcreatedir = CUnsignedInt
-  object curl_ftpcreatedir extends CEnumU[curl_ftpcreatedir]:
+  object curl_ftpcreatedir extends _BindgenEnumCUnsignedInt[curl_ftpcreatedir]:
     given _tag: Tag[curl_ftpcreatedir] = Tag.UInt
     inline def define(inline a: Long): curl_ftpcreatedir = a.toUInt
     val CURLFTP_CREATE_DIR_NONE = define(0)
@@ -1735,7 +1735,7 @@ object enumerations:
       inline def is(b: curl_ftpcreatedir): Boolean = (a & b) == b
 
   opaque type curl_ftpmethod = CUnsignedInt
-  object curl_ftpmethod extends CEnumU[curl_ftpmethod]:
+  object curl_ftpmethod extends _BindgenEnumCUnsignedInt[curl_ftpmethod]:
     given _tag: Tag[curl_ftpmethod] = Tag.UInt
     inline def define(inline a: Long): curl_ftpmethod = a.toUInt
     val CURLFTPMETHOD_DEFAULT = define(0)
@@ -1757,7 +1757,7 @@ object enumerations:
       inline def is(b: curl_ftpmethod): Boolean = (a & b) == b
 
   opaque type curl_infotype = CUnsignedInt
-  object curl_infotype extends CEnumU[curl_infotype]:
+  object curl_infotype extends _BindgenEnumCUnsignedInt[curl_infotype]:
     given _tag: Tag[curl_infotype] = Tag.UInt
     inline def define(inline a: Long): curl_infotype = a.toUInt
     val CURLINFO_TEXT = define(0)
@@ -1785,7 +1785,7 @@ object enumerations:
       inline def is(b: curl_infotype): Boolean = (a & b) == b
 
   opaque type curl_khmatch = CUnsignedInt
-  object curl_khmatch extends CEnumU[curl_khmatch]:
+  object curl_khmatch extends _BindgenEnumCUnsignedInt[curl_khmatch]:
     given _tag: Tag[curl_khmatch] = Tag.UInt
     inline def define(inline a: Long): curl_khmatch = a.toUInt
     val CURLKHMATCH_OK = define(0)
@@ -1805,7 +1805,7 @@ object enumerations:
       inline def is(b: curl_khmatch): Boolean = (a & b) == b
 
   opaque type curl_khstat = CUnsignedInt
-  object curl_khstat extends CEnumU[curl_khstat]:
+  object curl_khstat extends _BindgenEnumCUnsignedInt[curl_khstat]:
     given _tag: Tag[curl_khstat] = Tag.UInt
     inline def define(inline a: Long): curl_khstat = a.toUInt
     val CURLKHSTAT_FINE_ADD_TO_FILE = define(0)
@@ -1829,7 +1829,7 @@ object enumerations:
       inline def is(b: curl_khstat): Boolean = (a & b) == b
 
   opaque type curl_khtype = CUnsignedInt
-  object curl_khtype extends CEnumU[curl_khtype]:
+  object curl_khtype extends _BindgenEnumCUnsignedInt[curl_khtype]:
     given _tag: Tag[curl_khtype] = Tag.UInt
     inline def define(inline a: Long): curl_khtype = a.toUInt
     val CURLKHTYPE_UNKNOWN = define(0)
@@ -1853,7 +1853,7 @@ object enumerations:
       inline def is(b: curl_khtype): Boolean = (a & b) == b
 
   opaque type curl_lock_access = CUnsignedInt
-  object curl_lock_access extends CEnumU[curl_lock_access]:
+  object curl_lock_access extends _BindgenEnumCUnsignedInt[curl_lock_access]:
     given _tag: Tag[curl_lock_access] = Tag.UInt
     inline def define(inline a: Long): curl_lock_access = a.toUInt
     val CURL_LOCK_ACCESS_NONE = define(0)
@@ -1876,7 +1876,7 @@ object enumerations:
    * *************************************************************************** Setup defines, protos etc for the sharing stuff.
   */
   opaque type curl_lock_data = CUnsignedInt
-  object curl_lock_data extends CEnumU[curl_lock_data]:
+  object curl_lock_data extends _BindgenEnumCUnsignedInt[curl_lock_data]:
     given _tag: Tag[curl_lock_data] = Tag.UInt
     inline def define(inline a: Long): curl_lock_data = a.toUInt
     val CURL_LOCK_DATA_NONE = define(0)
@@ -1906,7 +1906,7 @@ object enumerations:
       inline def is(b: curl_lock_data): Boolean = (a & b) == b
 
   opaque type curl_proxytype = CUnsignedInt
-  object curl_proxytype extends CEnumU[curl_proxytype]:
+  object curl_proxytype extends _BindgenEnumCUnsignedInt[curl_proxytype]:
     given _tag: Tag[curl_proxytype] = Tag.UInt
     inline def define(inline a: Long): curl_proxytype = a.toUInt
     val CURLPROXY_HTTP = define(0)
@@ -1934,7 +1934,7 @@ object enumerations:
       inline def is(b: curl_proxytype): Boolean = (a & b) == b
 
   opaque type curl_sslbackend = CUnsignedInt
-  object curl_sslbackend extends CEnumU[curl_sslbackend]:
+  object curl_sslbackend extends _BindgenEnumCUnsignedInt[curl_sslbackend]:
     given _tag: Tag[curl_sslbackend] = Tag.UInt
     inline def define(inline a: Long): curl_sslbackend = a.toUInt
     val CURLSSLBACKEND_NONE = define(0)
@@ -1976,7 +1976,7 @@ object enumerations:
       inline def is(b: curl_sslbackend): Boolean = (a & b) == b
 
   opaque type curl_usessl = CUnsignedInt
-  object curl_usessl extends CEnumU[curl_usessl]:
+  object curl_usessl extends _BindgenEnumCUnsignedInt[curl_usessl]:
     given _tag: Tag[curl_usessl] = Tag.UInt
     inline def define(inline a: Long): curl_usessl = a.toUInt
     val CURLUSESSL_NONE = define(0)
@@ -1998,7 +1998,7 @@ object enumerations:
       inline def is(b: curl_usessl): Boolean = (a & b) == b
 
   opaque type curlfiletype = CUnsignedInt
-  object curlfiletype extends CEnumU[curlfiletype]:
+  object curlfiletype extends _BindgenEnumCUnsignedInt[curlfiletype]:
     given _tag: Tag[curlfiletype] = Tag.UInt
     inline def define(inline a: Long): curlfiletype = a.toUInt
     val CURLFILETYPE_FILE = define(0)
@@ -2028,7 +2028,7 @@ object enumerations:
       inline def is(b: curlfiletype): Boolean = (a & b) == b
 
   opaque type curliocmd = CUnsignedInt
-  object curliocmd extends CEnumU[curliocmd]:
+  object curliocmd extends _BindgenEnumCUnsignedInt[curliocmd]:
     given _tag: Tag[curliocmd] = Tag.UInt
     inline def define(inline a: Long): curliocmd = a.toUInt
     val CURLIOCMD_NOP = define(0)
@@ -2046,7 +2046,7 @@ object enumerations:
       inline def is(b: curliocmd): Boolean = (a & b) == b
 
   opaque type curlioerr = CUnsignedInt
-  object curlioerr extends CEnumU[curlioerr]:
+  object curlioerr extends _BindgenEnumCUnsignedInt[curlioerr]:
     given _tag: Tag[curlioerr] = Tag.UInt
     inline def define(inline a: Long): curlioerr = a.toUInt
     val CURLIOE_OK = define(0)
@@ -2066,7 +2066,7 @@ object enumerations:
       inline def is(b: curlioerr): Boolean = (a & b) == b
 
   opaque type curlsocktype = CUnsignedInt
-  object curlsocktype extends CEnumU[curlsocktype]:
+  object curlsocktype extends _BindgenEnumCUnsignedInt[curlsocktype]:
     given _tag: Tag[curlsocktype] = Tag.UInt
     inline def define(inline a: Long): curlsocktype = a.toUInt
     val CURLSOCKTYPE_IPCXN = define(0)

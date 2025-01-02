@@ -6,17 +6,17 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[libgit] trait CEnum[T](using eq: T =:= Int):
+  private[libgit] trait _BindgenEnumCInt[T](using eq: T =:= CInt):
     given Tag[T] = Tag.Int.asInstanceOf[Tag[T]]
-    extension (inline t: T) 
-      inline def int: CInt = eq.apply(t)
-      inline def value: CInt = eq.apply(t)
-  private[libgit] trait CEnumU[T](using eq: T =:= UInt):
+    extension (inline t: T)
+     inline def value: CInt = eq.apply(t)
+     inline def int: CInt = eq.apply(t).toInt
+  private[libgit] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
     given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
     extension (inline t: T)
+     inline def value: CUnsignedInt = eq.apply(t)
      inline def int: CInt = eq.apply(t).toInt
      inline def uint: CUnsignedInt = eq.apply(t)
-     inline def value: CUnsignedInt = eq.apply(t)
 
 
 object enumerations:
@@ -25,7 +25,7 @@ object enumerations:
    * Flags controlling the behavior of git_apply
   */
   opaque type git_apply_flags_t = CUnsignedInt
-  object git_apply_flags_t extends CEnumU[git_apply_flags_t]:
+  object git_apply_flags_t extends _BindgenEnumCUnsignedInt[git_apply_flags_t]:
     given _tag: Tag[git_apply_flags_t] = Tag.UInt
     inline def define(inline a: Long): git_apply_flags_t = a.toUInt
     val GIT_APPLY_CHECK = define(1)
@@ -42,7 +42,7 @@ object enumerations:
    * Possible application locations for git_apply
   */
   opaque type git_apply_location_t = CUnsignedInt
-  object git_apply_location_t extends CEnumU[git_apply_location_t]:
+  object git_apply_location_t extends _BindgenEnumCUnsignedInt[git_apply_location_t]:
     given _tag: Tag[git_apply_location_t] = Tag.UInt
     inline def define(inline a: Long): git_apply_location_t = a.toUInt
     val GIT_APPLY_LOCATION_WORKDIR = define(0)
@@ -63,7 +63,7 @@ object enumerations:
    * Possible states for an attribute
   */
   opaque type git_attr_value_t = CUnsignedInt
-  object git_attr_value_t extends CEnumU[git_attr_value_t]:
+  object git_attr_value_t extends _BindgenEnumCUnsignedInt[git_attr_value_t]:
     given _tag: Tag[git_attr_value_t] = Tag.UInt
     inline def define(inline a: Long): git_attr_value_t = a.toUInt
     val GIT_ATTR_VALUE_UNSPECIFIED = define(0)
@@ -86,7 +86,7 @@ object enumerations:
    * Flags for indicating option behavior for git_blame APIs.
   */
   opaque type git_blame_flag_t = CUnsignedInt
-  object git_blame_flag_t extends CEnumU[git_blame_flag_t]:
+  object git_blame_flag_t extends _BindgenEnumCUnsignedInt[git_blame_flag_t]:
     given _tag: Tag[git_blame_flag_t] = Tag.UInt
     inline def define(inline a: Long): git_blame_flag_t = a.toUInt
     val GIT_BLAME_NORMAL = define(0)
@@ -117,7 +117,7 @@ object enumerations:
    * Flags to control the functionality of `git_blob_filter`.
   */
   opaque type git_blob_filter_flag_t = CUnsignedInt
-  object git_blob_filter_flag_t extends CEnumU[git_blob_filter_flag_t]:
+  object git_blob_filter_flag_t extends _BindgenEnumCUnsignedInt[git_blob_filter_flag_t]:
     given _tag: Tag[git_blob_filter_flag_t] = Tag.UInt
     inline def define(inline a: Long): git_blob_filter_flag_t = a.toUInt
     val GIT_BLOB_FILTER_CHECK_FOR_BINARY = define(1)
@@ -140,7 +140,7 @@ object enumerations:
    * Basic type of any Git branch.
   */
   opaque type git_branch_t = CUnsignedInt
-  object git_branch_t extends CEnumU[git_branch_t]:
+  object git_branch_t extends _BindgenEnumCUnsignedInt[git_branch_t]:
     given _tag: Tag[git_branch_t] = Tag.UInt
     inline def define(inline a: Long): git_branch_t = a.toUInt
     val GIT_BRANCH_LOCAL = define(1)
@@ -158,7 +158,7 @@ object enumerations:
       inline def is(b: git_branch_t): Boolean = (a & b) == b
 
   opaque type git_cert_ssh_raw_type_t = CUnsignedInt
-  object git_cert_ssh_raw_type_t extends CEnumU[git_cert_ssh_raw_type_t]:
+  object git_cert_ssh_raw_type_t extends _BindgenEnumCUnsignedInt[git_cert_ssh_raw_type_t]:
     given _tag: Tag[git_cert_ssh_raw_type_t] = Tag.UInt
     inline def define(inline a: Long): git_cert_ssh_raw_type_t = a.toUInt
     val GIT_CERT_SSH_RAW_TYPE_UNKNOWN = define(0)
@@ -187,7 +187,7 @@ object enumerations:
    * Type of SSH host fingerprint
   */
   opaque type git_cert_ssh_t = CUnsignedInt
-  object git_cert_ssh_t extends CEnumU[git_cert_ssh_t]:
+  object git_cert_ssh_t extends _BindgenEnumCUnsignedInt[git_cert_ssh_t]:
     given _tag: Tag[git_cert_ssh_t] = Tag.UInt
     inline def define(inline a: Long): git_cert_ssh_t = a.toUInt
     val GIT_CERT_SSH_MD5 = define(1)
@@ -210,7 +210,7 @@ object enumerations:
    * Type of host certificate structure that is passed to the check callback
   */
   opaque type git_cert_t = CUnsignedInt
-  object git_cert_t extends CEnumU[git_cert_t]:
+  object git_cert_t extends _BindgenEnumCUnsignedInt[git_cert_t]:
     given _tag: Tag[git_cert_t] = Tag.UInt
     inline def define(inline a: Long): git_cert_t = a.toUInt
     val GIT_CERT_NONE = define(0)
@@ -233,7 +233,7 @@ object enumerations:
    * Checkout notification flags
   */
   opaque type git_checkout_notify_t = CUnsignedInt
-  object git_checkout_notify_t extends CEnumU[git_checkout_notify_t]:
+  object git_checkout_notify_t extends _BindgenEnumCUnsignedInt[git_checkout_notify_t]:
     given _tag: Tag[git_checkout_notify_t] = Tag.UInt
     inline def define(inline a: Long): git_checkout_notify_t = a.toUInt
     val GIT_CHECKOUT_NOTIFY_NONE = define(0)
@@ -262,7 +262,7 @@ object enumerations:
    * Checkout behavior flags
   */
   opaque type git_checkout_strategy_t = CUnsignedInt
-  object git_checkout_strategy_t extends CEnumU[git_checkout_strategy_t]:
+  object git_checkout_strategy_t extends _BindgenEnumCUnsignedInt[git_checkout_strategy_t]:
     given _tag: Tag[git_checkout_strategy_t] = Tag.UInt
     inline def define(inline a: Long): git_checkout_strategy_t = a.toUInt
     val GIT_CHECKOUT_NONE = define(0)
@@ -325,7 +325,7 @@ object enumerations:
    * Options for bypassing the git-aware transport on clone. Bypassing it means that instead of a fetch, libgit2 will copy the object database directory instead of figuring out what it needs, which is faster. If possible, it will hardlink the files to save space.
   */
   opaque type git_clone_local_t = CUnsignedInt
-  object git_clone_local_t extends CEnumU[git_clone_local_t]:
+  object git_clone_local_t extends _BindgenEnumCUnsignedInt[git_clone_local_t]:
     given _tag: Tag[git_clone_local_t] = Tag.UInt
     inline def define(inline a: Long): git_clone_local_t = a.toUInt
     val GIT_CLONE_LOCAL_AUTO = define(0)
@@ -348,7 +348,7 @@ object enumerations:
    * Priority level of a config file. These priority levels correspond to the natural escalation logic (from higher to lower) when searching for config entries in git.git.
   */
   opaque type git_config_level_t = CInt
-  object git_config_level_t extends CEnum[git_config_level_t]:
+  object git_config_level_t extends _BindgenEnumCInt[git_config_level_t]:
     given _tag: Tag[git_config_level_t] = Tag.Int
     inline def define(inline a: CInt): git_config_level_t = a
     val GIT_CONFIG_LEVEL_PROGRAMDATA = define(1)
@@ -377,7 +377,7 @@ object enumerations:
    * Config var type
   */
   opaque type git_configmap_t = CUnsignedInt
-  object git_configmap_t extends CEnumU[git_configmap_t]:
+  object git_configmap_t extends _BindgenEnumCUnsignedInt[git_configmap_t]:
     given _tag: Tag[git_configmap_t] = Tag.UInt
     inline def define(inline a: Long): git_configmap_t = a.toUInt
     val GIT_CONFIGMAP_FALSE = define(0)
@@ -400,7 +400,7 @@ object enumerations:
    * Supported credential types
   */
   opaque type git_credential_t = CUnsignedInt
-  object git_credential_t extends CEnumU[git_credential_t]:
+  object git_credential_t extends _BindgenEnumCUnsignedInt[git_credential_t]:
     given _tag: Tag[git_credential_t] = Tag.UInt
     inline def define(inline a: Long): git_credential_t = a.toUInt
     val GIT_CREDENTIAL_USERPASS_PLAINTEXT = define(1)
@@ -429,7 +429,7 @@ object enumerations:
    * What type of change is described by a git_diff_delta?
   */
   opaque type git_delta_t = CUnsignedInt
-  object git_delta_t extends CEnumU[git_delta_t]:
+  object git_delta_t extends _BindgenEnumCUnsignedInt[git_delta_t]:
     given _tag: Tag[git_delta_t] = Tag.UInt
     inline def define(inline a: Long): git_delta_t = a.toUInt
     val GIT_DELTA_UNMODIFIED = define(0)
@@ -466,7 +466,7 @@ object enumerations:
    * Reference lookup strategy
   */
   opaque type git_describe_strategy_t = CUnsignedInt
-  object git_describe_strategy_t extends CEnumU[git_describe_strategy_t]:
+  object git_describe_strategy_t extends _BindgenEnumCUnsignedInt[git_describe_strategy_t]:
     given _tag: Tag[git_describe_strategy_t] = Tag.UInt
     inline def define(inline a: Long): git_describe_strategy_t = a.toUInt
     val GIT_DESCRIBE_DEFAULT = define(0)
@@ -487,7 +487,7 @@ object enumerations:
    * When producing a binary diff, the binary data returned will be either the deflated full ("literal") contents of the file, or the deflated binary delta between the two sides (whichever is smaller).
   */
   opaque type git_diff_binary_t = CUnsignedInt
-  object git_diff_binary_t extends CEnumU[git_diff_binary_t]:
+  object git_diff_binary_t extends _BindgenEnumCUnsignedInt[git_diff_binary_t]:
     given _tag: Tag[git_diff_binary_t] = Tag.UInt
     inline def define(inline a: Long): git_diff_binary_t = a.toUInt
     val GIT_DIFF_BINARY_NONE = define(0)
@@ -508,7 +508,7 @@ object enumerations:
    * Flags to control the behavior of diff rename/copy detection.
   */
   opaque type git_diff_find_t = CUnsignedInt
-  object git_diff_find_t extends CEnumU[git_diff_find_t]:
+  object git_diff_find_t extends _BindgenEnumCUnsignedInt[git_diff_find_t]:
     given _tag: Tag[git_diff_find_t] = Tag.UInt
     inline def define(inline a: Long): git_diff_find_t = a.toUInt
     val GIT_DIFF_FIND_BY_CONFIG = define(0)
@@ -555,7 +555,7 @@ object enumerations:
    * Flags for the delta object and the file objects on each side.
   */
   opaque type git_diff_flag_t = CUnsignedInt
-  object git_diff_flag_t extends CEnumU[git_diff_flag_t]:
+  object git_diff_flag_t extends _BindgenEnumCUnsignedInt[git_diff_flag_t]:
     given _tag: Tag[git_diff_flag_t] = Tag.UInt
     inline def define(inline a: Long): git_diff_flag_t = a.toUInt
     val GIT_DIFF_FLAG_BINARY = define(1)
@@ -580,7 +580,7 @@ object enumerations:
    * Formatting options for diff e-mail generation
   */
   opaque type git_diff_format_email_flags_t = CUnsignedInt
-  object git_diff_format_email_flags_t extends CEnumU[git_diff_format_email_flags_t]:
+  object git_diff_format_email_flags_t extends _BindgenEnumCUnsignedInt[git_diff_format_email_flags_t]:
     given _tag: Tag[git_diff_format_email_flags_t] = Tag.UInt
     inline def define(inline a: Long): git_diff_format_email_flags_t = a.toUInt
     val GIT_DIFF_FORMAT_EMAIL_NONE = define(0)
@@ -599,7 +599,7 @@ object enumerations:
    * Possible output formats for diff data
   */
   opaque type git_diff_format_t = CUnsignedInt
-  object git_diff_format_t extends CEnumU[git_diff_format_t]:
+  object git_diff_format_t extends _BindgenEnumCUnsignedInt[git_diff_format_t]:
     given _tag: Tag[git_diff_format_t] = Tag.UInt
     inline def define(inline a: Long): git_diff_format_t = a.toUInt
     val GIT_DIFF_FORMAT_PATCH = define(1)
@@ -626,7 +626,7 @@ object enumerations:
    * Line origin constants.
   */
   opaque type git_diff_line_t = CUnsignedInt
-  object git_diff_line_t extends CEnumU[git_diff_line_t]:
+  object git_diff_line_t extends _BindgenEnumCUnsignedInt[git_diff_line_t]:
     given _tag: Tag[git_diff_line_t] = Tag.UInt
     inline def define(inline a: Long): git_diff_line_t = a.toUInt
     val GIT_DIFF_LINE_CONTEXT = define(32)
@@ -659,7 +659,7 @@ object enumerations:
    * Flags for diff options. A combination of these flags can be passed in via the `flags` value in the `git_diff_options`.
   */
   opaque type git_diff_option_t = CUnsignedInt
-  object git_diff_option_t extends CEnumU[git_diff_option_t]:
+  object git_diff_option_t extends _BindgenEnumCUnsignedInt[git_diff_option_t]:
     given _tag: Tag[git_diff_option_t] = Tag.UInt
     inline def define(inline a: Long): git_diff_option_t = a.toUInt
     val GIT_DIFF_NORMAL = define(0)
@@ -736,7 +736,7 @@ object enumerations:
    * Formatting options for diff stats
   */
   opaque type git_diff_stats_format_t = CUnsignedInt
-  object git_diff_stats_format_t extends CEnumU[git_diff_stats_format_t]:
+  object git_diff_stats_format_t extends _BindgenEnumCUnsignedInt[git_diff_stats_format_t]:
     given _tag: Tag[git_diff_stats_format_t] = Tag.UInt
     inline def define(inline a: Long): git_diff_stats_format_t = a.toUInt
     val GIT_DIFF_STATS_NONE = define(0)
@@ -761,7 +761,7 @@ object enumerations:
    * Direction of the connection.
   */
   opaque type git_direction = CUnsignedInt
-  object git_direction extends CEnumU[git_direction]:
+  object git_direction extends _BindgenEnumCUnsignedInt[git_direction]:
     given _tag: Tag[git_direction] = Tag.UInt
     inline def define(inline a: Long): git_direction = a.toUInt
     val GIT_DIRECTION_FETCH = define(0)
@@ -780,7 +780,7 @@ object enumerations:
    * Formatting options for diff e-mail generation
   */
   opaque type git_email_create_flags_t = CUnsignedInt
-  object git_email_create_flags_t extends CEnumU[git_email_create_flags_t]:
+  object git_email_create_flags_t extends _BindgenEnumCUnsignedInt[git_email_create_flags_t]:
     given _tag: Tag[git_email_create_flags_t] = Tag.UInt
     inline def define(inline a: Long): git_email_create_flags_t = a.toUInt
     val GIT_EMAIL_CREATE_DEFAULT = define(0)
@@ -803,7 +803,7 @@ object enumerations:
    * Generic return codes
   */
   opaque type git_error_code = CInt
-  object git_error_code extends CEnum[git_error_code]:
+  object git_error_code extends _BindgenEnumCInt[git_error_code]:
     given _tag: Tag[git_error_code] = Tag.Int
     inline def define(inline a: CInt): git_error_code = a
     val GIT_OK = define(0)
@@ -880,7 +880,7 @@ object enumerations:
    * Error classes
   */
   opaque type git_error_t = CUnsignedInt
-  object git_error_t extends CEnumU[git_error_t]:
+  object git_error_t extends _BindgenEnumCUnsignedInt[git_error_t]:
     given _tag: Tag[git_error_t] = Tag.UInt
     inline def define(inline a: Long): git_error_t = a.toUInt
     val GIT_ERROR_NONE = define(0)
@@ -967,7 +967,7 @@ object enumerations:
    * Combinations of these values describe the features with which libgit2 was compiled
   */
   opaque type git_feature_t = CUnsignedInt
-  object git_feature_t extends CEnumU[git_feature_t]:
+  object git_feature_t extends _BindgenEnumCUnsignedInt[git_feature_t]:
     given _tag: Tag[git_feature_t] = Tag.UInt
     inline def define(inline a: Long): git_feature_t = a.toUInt
     val GIT_FEATURE_THREADS = define(1)
@@ -990,7 +990,7 @@ object enumerations:
    * Acceptable prune settings when fetching
   */
   opaque type git_fetch_prune_t = CUnsignedInt
-  object git_fetch_prune_t extends CEnumU[git_fetch_prune_t]:
+  object git_fetch_prune_t extends _BindgenEnumCUnsignedInt[git_fetch_prune_t]:
     given _tag: Tag[git_fetch_prune_t] = Tag.UInt
     inline def define(inline a: Long): git_fetch_prune_t = a.toUInt
     val GIT_FETCH_PRUNE_UNSPECIFIED = define(0)
@@ -1011,7 +1011,7 @@ object enumerations:
    * Valid modes for index and tree entries.
   */
   opaque type git_filemode_t = CUnsignedInt
-  object git_filemode_t extends CEnumU[git_filemode_t]:
+  object git_filemode_t extends _BindgenEnumCUnsignedInt[git_filemode_t]:
     given _tag: Tag[git_filemode_t] = Tag.UInt
     inline def define(inline a: Long): git_filemode_t = a.toUInt
     val GIT_FILEMODE_UNREADABLE = define(0)
@@ -1038,7 +1038,7 @@ object enumerations:
    * Filter option flags.
   */
   opaque type git_filter_flag_t = CUnsignedInt
-  object git_filter_flag_t extends CEnumU[git_filter_flag_t]:
+  object git_filter_flag_t extends _BindgenEnumCUnsignedInt[git_filter_flag_t]:
     given _tag: Tag[git_filter_flag_t] = Tag.UInt
     inline def define(inline a: Long): git_filter_flag_t = a.toUInt
     val GIT_FILTER_DEFAULT = define(0)
@@ -1063,7 +1063,7 @@ object enumerations:
    * Filters are applied in one of two directions: smudging - which is exporting a file from the Git object database to the working directory, and cleaning - which is importing a file from the working directory to the Git object database. These values control which direction of change is being applied.
   */
   opaque type git_filter_mode_t = CUnsignedInt
-  object git_filter_mode_t extends CEnumU[git_filter_mode_t]:
+  object git_filter_mode_t extends _BindgenEnumCUnsignedInt[git_filter_mode_t]:
     given _tag: Tag[git_filter_mode_t] = Tag.UInt
     inline def define(inline a: Long): git_filter_mode_t = a.toUInt
     val GIT_FILTER_TO_WORKTREE = define(0)
@@ -1086,7 +1086,7 @@ object enumerations:
    * Flags for APIs that add files matching pathspec
   */
   opaque type git_index_add_option_t = CUnsignedInt
-  object git_index_add_option_t extends CEnumU[git_index_add_option_t]:
+  object git_index_add_option_t extends _BindgenEnumCUnsignedInt[git_index_add_option_t]:
     given _tag: Tag[git_index_add_option_t] = Tag.UInt
     inline def define(inline a: Long): git_index_add_option_t = a.toUInt
     val GIT_INDEX_ADD_DEFAULT = define(0)
@@ -1109,7 +1109,7 @@ object enumerations:
    * Capabilities of system that affect index actions.
   */
   opaque type git_index_capability_t = CInt
-  object git_index_capability_t extends CEnum[git_index_capability_t]:
+  object git_index_capability_t extends _BindgenEnumCInt[git_index_capability_t]:
     given _tag: Tag[git_index_capability_t] = Tag.Int
     inline def define(inline a: CInt): git_index_capability_t = a
     val GIT_INDEX_CAPABILITY_IGNORE_CASE = define(1)
@@ -1132,7 +1132,7 @@ object enumerations:
    * Bitmasks for on-disk fields of `git_index_entry`'s `flags_extended`
   */
   opaque type git_index_entry_extended_flag_t = CUnsignedInt
-  object git_index_entry_extended_flag_t extends CEnumU[git_index_entry_extended_flag_t]:
+  object git_index_entry_extended_flag_t extends _BindgenEnumCUnsignedInt[git_index_entry_extended_flag_t]:
     given _tag: Tag[git_index_entry_extended_flag_t] = Tag.UInt
     inline def define(inline a: Long): git_index_entry_extended_flag_t = a.toUInt
     val GIT_INDEX_ENTRY_INTENT_TO_ADD = define(8192)
@@ -1155,7 +1155,7 @@ object enumerations:
    * Flags for index entries
   */
   opaque type git_index_entry_flag_t = CUnsignedInt
-  object git_index_entry_flag_t extends CEnumU[git_index_entry_flag_t]:
+  object git_index_entry_flag_t extends _BindgenEnumCUnsignedInt[git_index_entry_flag_t]:
     given _tag: Tag[git_index_entry_flag_t] = Tag.UInt
     inline def define(inline a: Long): git_index_entry_flag_t = a.toUInt
     val GIT_INDEX_ENTRY_EXTENDED = define(16384)
@@ -1174,7 +1174,7 @@ object enumerations:
    * Git index stage states
   */
   opaque type git_index_stage_t = CInt
-  object git_index_stage_t extends CEnum[git_index_stage_t]:
+  object git_index_stage_t extends _BindgenEnumCInt[git_index_stage_t]:
     given _tag: Tag[git_index_stage_t] = Tag.Int
     inline def define(inline a: CInt): git_index_stage_t = a
     val GIT_INDEX_STAGE_ANY = define(-1)
@@ -1199,7 +1199,7 @@ object enumerations:
    * Global library options
   */
   opaque type git_libgit2_opt_t = CUnsignedInt
-  object git_libgit2_opt_t extends CEnumU[git_libgit2_opt_t]:
+  object git_libgit2_opt_t extends _BindgenEnumCUnsignedInt[git_libgit2_opt_t]:
     given _tag: Tag[git_libgit2_opt_t] = Tag.UInt
     inline def define(inline a: Long): git_libgit2_opt_t = a.toUInt
     val GIT_OPT_GET_MWINDOW_SIZE = define(0)
@@ -1292,7 +1292,7 @@ object enumerations:
    * The results of `git_merge_analysis` indicate the merge opportunities.
   */
   opaque type git_merge_analysis_t = CUnsignedInt
-  object git_merge_analysis_t extends CEnumU[git_merge_analysis_t]:
+  object git_merge_analysis_t extends _BindgenEnumCUnsignedInt[git_merge_analysis_t]:
     given _tag: Tag[git_merge_analysis_t] = Tag.UInt
     inline def define(inline a: Long): git_merge_analysis_t = a.toUInt
     val GIT_MERGE_ANALYSIS_NONE = define(0)
@@ -1317,7 +1317,7 @@ object enumerations:
    * Merge file favor options for `git_merge_options` instruct the file-level merging functionality how to deal with conflicting regions of the files.
   */
   opaque type git_merge_file_favor_t = CUnsignedInt
-  object git_merge_file_favor_t extends CEnumU[git_merge_file_favor_t]:
+  object git_merge_file_favor_t extends _BindgenEnumCUnsignedInt[git_merge_file_favor_t]:
     given _tag: Tag[git_merge_file_favor_t] = Tag.UInt
     inline def define(inline a: Long): git_merge_file_favor_t = a.toUInt
     val GIT_MERGE_FILE_FAVOR_NORMAL = define(0)
@@ -1340,7 +1340,7 @@ object enumerations:
    * File merging flags
   */
   opaque type git_merge_file_flag_t = CUnsignedInt
-  object git_merge_file_flag_t extends CEnumU[git_merge_file_flag_t]:
+  object git_merge_file_flag_t extends _BindgenEnumCUnsignedInt[git_merge_file_flag_t]:
     given _tag: Tag[git_merge_file_flag_t] = Tag.UInt
     inline def define(inline a: Long): git_merge_file_flag_t = a.toUInt
     val GIT_MERGE_FILE_DEFAULT = define(0)
@@ -1377,7 +1377,7 @@ object enumerations:
    * Flags for `git_merge` options. A combination of these flags can be passed in via the `flags` value in the `git_merge_options`.
   */
   opaque type git_merge_flag_t = CUnsignedInt
-  object git_merge_flag_t extends CEnumU[git_merge_flag_t]:
+  object git_merge_flag_t extends _BindgenEnumCUnsignedInt[git_merge_flag_t]:
     given _tag: Tag[git_merge_flag_t] = Tag.UInt
     inline def define(inline a: Long): git_merge_flag_t = a.toUInt
     val GIT_MERGE_FIND_RENAMES = define(1)
@@ -1402,7 +1402,7 @@ object enumerations:
    * The user's stated preference for merges.
   */
   opaque type git_merge_preference_t = CUnsignedInt
-  object git_merge_preference_t extends CEnumU[git_merge_preference_t]:
+  object git_merge_preference_t extends _BindgenEnumCUnsignedInt[git_merge_preference_t]:
     given _tag: Tag[git_merge_preference_t] = Tag.UInt
     inline def define(inline a: Long): git_merge_preference_t = a.toUInt
     val GIT_MERGE_PREFERENCE_NONE = define(0)
@@ -1423,7 +1423,7 @@ object enumerations:
    * Basic type (loose or packed) of any Git object.
   */
   opaque type git_object_t = CInt
-  object git_object_t extends CEnum[git_object_t]:
+  object git_object_t extends _BindgenEnumCInt[git_object_t]:
     given _tag: Tag[git_object_t] = Tag.Int
     inline def define(inline a: CInt): git_object_t = a
     val GIT_OBJECT_ANY = define(-2)
@@ -1451,7 +1451,7 @@ object enumerations:
       inline def is(b: git_object_t): Boolean = (a & b) == b
 
   opaque type git_odb_backend_loose_flag_t = CUnsignedInt
-  object git_odb_backend_loose_flag_t extends CEnumU[git_odb_backend_loose_flag_t]:
+  object git_odb_backend_loose_flag_t extends _BindgenEnumCUnsignedInt[git_odb_backend_loose_flag_t]:
     given _tag: Tag[git_odb_backend_loose_flag_t] = Tag.UInt
     inline def define(inline a: Long): git_odb_backend_loose_flag_t = a.toUInt
     val GIT_ODB_BACKEND_LOOSE_FSYNC = define(1)
@@ -1468,7 +1468,7 @@ object enumerations:
    * Flags controlling the behavior of ODB lookup operations
   */
   opaque type git_odb_lookup_flags_t = CUnsignedInt
-  object git_odb_lookup_flags_t extends CEnumU[git_odb_lookup_flags_t]:
+  object git_odb_lookup_flags_t extends _BindgenEnumCUnsignedInt[git_odb_lookup_flags_t]:
     given _tag: Tag[git_odb_lookup_flags_t] = Tag.UInt
     inline def define(inline a: Long): git_odb_lookup_flags_t = a.toUInt
     val GIT_ODB_LOOKUP_NO_REFRESH = define(1)
@@ -1485,7 +1485,7 @@ object enumerations:
    * Streaming mode
   */
   opaque type git_odb_stream_t = CUnsignedInt
-  object git_odb_stream_t extends CEnumU[git_odb_stream_t]:
+  object git_odb_stream_t extends _BindgenEnumCUnsignedInt[git_odb_stream_t]:
     given _tag: Tag[git_odb_stream_t] = Tag.UInt
     inline def define(inline a: Long): git_odb_stream_t = a.toUInt
     val GIT_STREAM_RDONLY = define(2)
@@ -1506,7 +1506,7 @@ object enumerations:
    * The type of object id.
   */
   opaque type git_oid_t = CUnsignedInt
-  object git_oid_t extends CEnumU[git_oid_t]:
+  object git_oid_t extends _BindgenEnumCUnsignedInt[git_oid_t]:
     given _tag: Tag[git_oid_t] = Tag.UInt
     inline def define(inline a: Long): git_oid_t = a.toUInt
     val GIT_OID_SHA1 = define(1)
@@ -1523,7 +1523,7 @@ object enumerations:
    * Stages that are reported by the packbuilder progress callback.
   */
   opaque type git_packbuilder_stage_t = CUnsignedInt
-  object git_packbuilder_stage_t extends CEnumU[git_packbuilder_stage_t]:
+  object git_packbuilder_stage_t extends _BindgenEnumCUnsignedInt[git_packbuilder_stage_t]:
     given _tag: Tag[git_packbuilder_stage_t] = Tag.UInt
     inline def define(inline a: Long): git_packbuilder_stage_t = a.toUInt
     val GIT_PACKBUILDER_ADDING_OBJECTS = define(0)
@@ -1542,7 +1542,7 @@ object enumerations:
    * Options controlling how pathspec match should be executed
   */
   opaque type git_pathspec_flag_t = CUnsignedInt
-  object git_pathspec_flag_t extends CEnumU[git_pathspec_flag_t]:
+  object git_pathspec_flag_t extends _BindgenEnumCUnsignedInt[git_pathspec_flag_t]:
     given _tag: Tag[git_pathspec_flag_t] = Tag.UInt
     inline def define(inline a: Long): git_pathspec_flag_t = a.toUInt
     val GIT_PATHSPEC_DEFAULT = define(0)
@@ -1571,7 +1571,7 @@ object enumerations:
    * The type of proxy to use.
   */
   opaque type git_proxy_t = CUnsignedInt
-  object git_proxy_t extends CEnumU[git_proxy_t]:
+  object git_proxy_t extends _BindgenEnumCUnsignedInt[git_proxy_t]:
     given _tag: Tag[git_proxy_t] = Tag.UInt
     inline def define(inline a: Long): git_proxy_t = a.toUInt
     val GIT_PROXY_NONE = define(0)
@@ -1592,7 +1592,7 @@ object enumerations:
    * Type of rebase operation in-progress after calling `git_rebase_next`.
   */
   opaque type git_rebase_operation_t = CUnsignedInt
-  object git_rebase_operation_t extends CEnumU[git_rebase_operation_t]:
+  object git_rebase_operation_t extends _BindgenEnumCUnsignedInt[git_rebase_operation_t]:
     given _tag: Tag[git_rebase_operation_t] = Tag.UInt
     inline def define(inline a: Long): git_rebase_operation_t = a.toUInt
     val GIT_REBASE_OPERATION_PICK = define(0)
@@ -1619,7 +1619,7 @@ object enumerations:
    * Normalization options for reference lookup
   */
   opaque type git_reference_format_t = CUnsignedInt
-  object git_reference_format_t extends CEnumU[git_reference_format_t]:
+  object git_reference_format_t extends _BindgenEnumCUnsignedInt[git_reference_format_t]:
     given _tag: Tag[git_reference_format_t] = Tag.UInt
     inline def define(inline a: Long): git_reference_format_t = a.toUInt
     val GIT_REFERENCE_FORMAT_NORMAL = define(0)
@@ -1642,7 +1642,7 @@ object enumerations:
    * Basic type of any Git reference.
   */
   opaque type git_reference_t = CUnsignedInt
-  object git_reference_t extends CEnumU[git_reference_t]:
+  object git_reference_t extends _BindgenEnumCUnsignedInt[git_reference_t]:
     given _tag: Tag[git_reference_t] = Tag.UInt
     inline def define(inline a: Long): git_reference_t = a.toUInt
     val GIT_REFERENCE_INVALID = define(0)
@@ -1665,7 +1665,7 @@ object enumerations:
    * Automatic tag following option
   */
   opaque type git_remote_autotag_option_t = CUnsignedInt
-  object git_remote_autotag_option_t extends CEnumU[git_remote_autotag_option_t]:
+  object git_remote_autotag_option_t extends _BindgenEnumCUnsignedInt[git_remote_autotag_option_t]:
     given _tag: Tag[git_remote_autotag_option_t] = Tag.UInt
     inline def define(inline a: Long): git_remote_autotag_option_t = a.toUInt
     val GIT_REMOTE_DOWNLOAD_TAGS_UNSPECIFIED = define(0)
@@ -1688,7 +1688,7 @@ object enumerations:
    * Argument to the completion callback which tells it which operation finished.
   */
   opaque type git_remote_completion_t = CUnsignedInt
-  object git_remote_completion_t extends CEnumU[git_remote_completion_t]:
+  object git_remote_completion_t extends _BindgenEnumCUnsignedInt[git_remote_completion_t]:
     given _tag: Tag[git_remote_completion_t] = Tag.UInt
     inline def define(inline a: Long): git_remote_completion_t = a.toUInt
     val GIT_REMOTE_COMPLETION_DOWNLOAD = define(0)
@@ -1709,7 +1709,7 @@ object enumerations:
    * Remote creation options flags
   */
   opaque type git_remote_create_flags = CUnsignedInt
-  object git_remote_create_flags extends CEnumU[git_remote_create_flags]:
+  object git_remote_create_flags extends _BindgenEnumCUnsignedInt[git_remote_create_flags]:
     given _tag: Tag[git_remote_create_flags] = Tag.UInt
     inline def define(inline a: Long): git_remote_create_flags = a.toUInt
     val GIT_REMOTE_CREATE_SKIP_INSTEADOF = define(1)
@@ -1728,7 +1728,7 @@ object enumerations:
    * Remote redirection settings; whether redirects to another host are permitted. By default, git will follow a redirect on the initial request (`/info/refs`), but not subsequent requests.
   */
   opaque type git_remote_redirect_t = CUnsignedInt
-  object git_remote_redirect_t extends CEnumU[git_remote_redirect_t]:
+  object git_remote_redirect_t extends _BindgenEnumCUnsignedInt[git_remote_redirect_t]:
     given _tag: Tag[git_remote_redirect_t] = Tag.UInt
     inline def define(inline a: Long): git_remote_redirect_t = a.toUInt
     val GIT_REMOTE_REDIRECT_NONE = define(1)
@@ -1749,7 +1749,7 @@ object enumerations:
    * Option flags for `git_repository_init_ext`.
   */
   opaque type git_repository_init_flag_t = CUnsignedInt
-  object git_repository_init_flag_t extends CEnumU[git_repository_init_flag_t]:
+  object git_repository_init_flag_t extends _BindgenEnumCUnsignedInt[git_repository_init_flag_t]:
     given _tag: Tag[git_repository_init_flag_t] = Tag.UInt
     inline def define(inline a: Long): git_repository_init_flag_t = a.toUInt
     val GIT_REPOSITORY_INIT_BARE = define(1)
@@ -1778,7 +1778,7 @@ object enumerations:
    * Mode options for `git_repository_init_ext`.
   */
   opaque type git_repository_init_mode_t = CUnsignedInt
-  object git_repository_init_mode_t extends CEnumU[git_repository_init_mode_t]:
+  object git_repository_init_mode_t extends _BindgenEnumCUnsignedInt[git_repository_init_mode_t]:
     given _tag: Tag[git_repository_init_mode_t] = Tag.UInt
     inline def define(inline a: Long): git_repository_init_mode_t = a.toUInt
     val GIT_REPOSITORY_INIT_SHARED_UMASK = define(0)
@@ -1799,7 +1799,7 @@ object enumerations:
    * List of items which belong to the git repository layout
   */
   opaque type git_repository_item_t = CUnsignedInt
-  object git_repository_item_t extends CEnumU[git_repository_item_t]:
+  object git_repository_item_t extends _BindgenEnumCUnsignedInt[git_repository_item_t]:
     given _tag: Tag[git_repository_item_t] = Tag.UInt
     inline def define(inline a: Long): git_repository_item_t = a.toUInt
     val GIT_REPOSITORY_ITEM_GITDIR = define(0)
@@ -1844,7 +1844,7 @@ object enumerations:
    * Option flags for `git_repository_open_ext`.
   */
   opaque type git_repository_open_flag_t = CUnsignedInt
-  object git_repository_open_flag_t extends CEnumU[git_repository_open_flag_t]:
+  object git_repository_open_flag_t extends _BindgenEnumCUnsignedInt[git_repository_open_flag_t]:
     given _tag: Tag[git_repository_open_flag_t] = Tag.UInt
     inline def define(inline a: Long): git_repository_open_flag_t = a.toUInt
     val GIT_REPOSITORY_OPEN_NO_SEARCH = define(1)
@@ -1869,7 +1869,7 @@ object enumerations:
    * Repository state
   */
   opaque type git_repository_state_t = CUnsignedInt
-  object git_repository_state_t extends CEnumU[git_repository_state_t]:
+  object git_repository_state_t extends _BindgenEnumCUnsignedInt[git_repository_state_t]:
     given _tag: Tag[git_repository_state_t] = Tag.UInt
     inline def define(inline a: Long): git_repository_state_t = a.toUInt
     val GIT_REPOSITORY_STATE_NONE = define(0)
@@ -1908,7 +1908,7 @@ object enumerations:
    * Kinds of reset operation
   */
   opaque type git_reset_t = CUnsignedInt
-  object git_reset_t extends CEnumU[git_reset_t]:
+  object git_reset_t extends _BindgenEnumCUnsignedInt[git_reset_t]:
     given _tag: Tag[git_reset_t] = Tag.UInt
     inline def define(inline a: Long): git_reset_t = a.toUInt
     val GIT_RESET_SOFT = define(1)
@@ -1929,7 +1929,7 @@ object enumerations:
    * Revparse flags. These indicate the intended behavior of the spec passed to git_revparse.
   */
   opaque type git_revspec_t = CUnsignedInt
-  object git_revspec_t extends CEnumU[git_revspec_t]:
+  object git_revspec_t extends _BindgenEnumCUnsignedInt[git_revspec_t]:
     given _tag: Tag[git_revspec_t] = Tag.UInt
     inline def define(inline a: Long): git_revspec_t = a.toUInt
     val GIT_REVSPEC_SINGLE = define(1)
@@ -1950,7 +1950,7 @@ object enumerations:
    * Flags to specify the sorting which a revwalk should perform.
   */
   opaque type git_sort_t = CUnsignedInt
-  object git_sort_t extends CEnumU[git_sort_t]:
+  object git_sort_t extends _BindgenEnumCUnsignedInt[git_sort_t]:
     given _tag: Tag[git_sort_t] = Tag.UInt
     inline def define(inline a: Long): git_sort_t = a.toUInt
     val GIT_SORT_NONE = define(0)
@@ -1973,7 +1973,7 @@ object enumerations:
    * Stash application flags.
   */
   opaque type git_stash_apply_flags = CUnsignedInt
-  object git_stash_apply_flags extends CEnumU[git_stash_apply_flags]:
+  object git_stash_apply_flags extends _BindgenEnumCUnsignedInt[git_stash_apply_flags]:
     given _tag: Tag[git_stash_apply_flags] = Tag.UInt
     inline def define(inline a: Long): git_stash_apply_flags = a.toUInt
     val GIT_STASH_APPLY_DEFAULT = define(0)
@@ -1992,7 +1992,7 @@ object enumerations:
    * Stash apply progression states
   */
   opaque type git_stash_apply_progress_t = CUnsignedInt
-  object git_stash_apply_progress_t extends CEnumU[git_stash_apply_progress_t]:
+  object git_stash_apply_progress_t extends _BindgenEnumCUnsignedInt[git_stash_apply_progress_t]:
     given _tag: Tag[git_stash_apply_progress_t] = Tag.UInt
     inline def define(inline a: Long): git_stash_apply_progress_t = a.toUInt
     val GIT_STASH_APPLY_PROGRESS_NONE = define(0)
@@ -2023,7 +2023,7 @@ object enumerations:
    * Stash flags
   */
   opaque type git_stash_flags = CUnsignedInt
-  object git_stash_flags extends CEnumU[git_stash_flags]:
+  object git_stash_flags extends _BindgenEnumCUnsignedInt[git_stash_flags]:
     given _tag: Tag[git_stash_flags] = Tag.UInt
     inline def define(inline a: Long): git_stash_flags = a.toUInt
     val GIT_STASH_DEFAULT = define(0)
@@ -2048,7 +2048,7 @@ object enumerations:
    * Flags to control status callbacks
   */
   opaque type git_status_opt_t = CUnsignedInt
-  object git_status_opt_t extends CEnumU[git_status_opt_t]:
+  object git_status_opt_t extends _BindgenEnumCUnsignedInt[git_status_opt_t]:
     given _tag: Tag[git_status_opt_t] = Tag.UInt
     inline def define(inline a: Long): git_status_opt_t = a.toUInt
     val GIT_STATUS_OPT_INCLUDE_UNTRACKED = define(1)
@@ -2095,7 +2095,7 @@ object enumerations:
    * Select the files on which to report status.
   */
   opaque type git_status_show_t = CUnsignedInt
-  object git_status_show_t extends CEnumU[git_status_show_t]:
+  object git_status_show_t extends _BindgenEnumCUnsignedInt[git_status_show_t]:
     given _tag: Tag[git_status_show_t] = Tag.UInt
     inline def define(inline a: Long): git_status_show_t = a.toUInt
     val GIT_STATUS_SHOW_INDEX_AND_WORKDIR = define(0)
@@ -2116,7 +2116,7 @@ object enumerations:
    * Status flags for a single file.
   */
   opaque type git_status_t = CUnsignedInt
-  object git_status_t extends CEnumU[git_status_t]:
+  object git_status_t extends _BindgenEnumCUnsignedInt[git_status_t]:
     given _tag: Tag[git_status_t] = Tag.UInt
     inline def define(inline a: Long): git_status_t = a.toUInt
     val GIT_STATUS_CURRENT = define(0)
@@ -2159,7 +2159,7 @@ object enumerations:
    * Submodule ignore values
   */
   opaque type git_submodule_ignore_t = CInt
-  object git_submodule_ignore_t extends CEnum[git_submodule_ignore_t]:
+  object git_submodule_ignore_t extends _BindgenEnumCInt[git_submodule_ignore_t]:
     given _tag: Tag[git_submodule_ignore_t] = Tag.Int
     inline def define(inline a: CInt): git_submodule_ignore_t = a
     val GIT_SUBMODULE_IGNORE_UNSPECIFIED = define(-1)
@@ -2184,7 +2184,7 @@ object enumerations:
    * Options for submodule recurse.
   */
   opaque type git_submodule_recurse_t = CUnsignedInt
-  object git_submodule_recurse_t extends CEnumU[git_submodule_recurse_t]:
+  object git_submodule_recurse_t extends _BindgenEnumCUnsignedInt[git_submodule_recurse_t]:
     given _tag: Tag[git_submodule_recurse_t] = Tag.UInt
     inline def define(inline a: Long): git_submodule_recurse_t = a.toUInt
     val GIT_SUBMODULE_RECURSE_NO = define(0)
@@ -2205,7 +2205,7 @@ object enumerations:
    * Return codes for submodule status.
   */
   opaque type git_submodule_status_t = CUnsignedInt
-  object git_submodule_status_t extends CEnumU[git_submodule_status_t]:
+  object git_submodule_status_t extends _BindgenEnumCUnsignedInt[git_submodule_status_t]:
     given _tag: Tag[git_submodule_status_t] = Tag.UInt
     inline def define(inline a: Long): git_submodule_status_t = a.toUInt
     val GIT_SUBMODULE_STATUS_IN_HEAD = define(1)
@@ -2248,7 +2248,7 @@ object enumerations:
    * Submodule update values
   */
   opaque type git_submodule_update_t = CUnsignedInt
-  object git_submodule_update_t extends CEnumU[git_submodule_update_t]:
+  object git_submodule_update_t extends _BindgenEnumCUnsignedInt[git_submodule_update_t]:
     given _tag: Tag[git_submodule_update_t] = Tag.UInt
     inline def define(inline a: Long): git_submodule_update_t = a.toUInt
     val GIT_SUBMODULE_UPDATE_CHECKOUT = define(1)
@@ -2273,7 +2273,7 @@ object enumerations:
    * Available tracing levels. When tracing is set to a particular level, callers will be provided tracing at the given level and all lower levels.
   */
   opaque type git_trace_level_t = CUnsignedInt
-  object git_trace_level_t extends CEnumU[git_trace_level_t]:
+  object git_trace_level_t extends _BindgenEnumCUnsignedInt[git_trace_level_t]:
     given _tag: Tag[git_trace_level_t] = Tag.UInt
     inline def define(inline a: Long): git_trace_level_t = a.toUInt
     val GIT_TRACE_NONE = define(0)
@@ -2302,7 +2302,7 @@ object enumerations:
    * The kind of update to perform
   */
   opaque type git_tree_update_t = CUnsignedInt
-  object git_tree_update_t extends CEnumU[git_tree_update_t]:
+  object git_tree_update_t extends _BindgenEnumCUnsignedInt[git_tree_update_t]:
     given _tag: Tag[git_tree_update_t] = Tag.UInt
     inline def define(inline a: Long): git_tree_update_t = a.toUInt
     val GIT_TREE_UPDATE_UPSERT = define(0)
@@ -2321,7 +2321,7 @@ object enumerations:
    * Tree traversal modes
   */
   opaque type git_treewalk_mode = CUnsignedInt
-  object git_treewalk_mode extends CEnumU[git_treewalk_mode]:
+  object git_treewalk_mode extends _BindgenEnumCUnsignedInt[git_treewalk_mode]:
     given _tag: Tag[git_treewalk_mode] = Tag.UInt
     inline def define(inline a: Long): git_treewalk_mode = a.toUInt
     val GIT_TREEWALK_PRE = define(0)
@@ -2340,7 +2340,7 @@ object enumerations:
    * Flags which can be passed to git_worktree_prune to alter its behavior.
   */
   opaque type git_worktree_prune_t = CUnsignedInt
-  object git_worktree_prune_t extends CEnumU[git_worktree_prune_t]:
+  object git_worktree_prune_t extends _BindgenEnumCUnsignedInt[git_worktree_prune_t]:
     given _tag: Tag[git_worktree_prune_t] = Tag.UInt
     inline def define(inline a: Long): git_worktree_prune_t = a.toUInt
     val GIT_WORKTREE_PRUNE_VALID = define(1)
