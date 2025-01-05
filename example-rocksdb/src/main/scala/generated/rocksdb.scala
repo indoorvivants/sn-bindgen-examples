@@ -2026,48 +2026,6 @@ object functions:
   export extern_functions.*
 
 object constants:
-  val rocksdb_statistics_level_disable_all: CUnsignedInt = 0.toUInt
-  val rocksdb_statistics_level_except_tickers: CUnsignedInt = 0.toUInt
-  val rocksdb_statistics_level_except_histogram_or_timers: CUnsignedInt = 1.toUInt
-  val rocksdb_statistics_level_except_timers: CUnsignedInt = 2.toUInt
-  val rocksdb_statistics_level_except_detailed_timers: CUnsignedInt = 3.toUInt
-  val rocksdb_statistics_level_except_time_for_mutex: CUnsignedInt = 4.toUInt
-  val rocksdb_statistics_level_all: CUnsignedInt = 5.toUInt
-  
-  val rocksdb_block_based_table_data_block_index_type_binary_search: CUnsignedInt = 0.toUInt
-  val rocksdb_block_based_table_data_block_index_type_binary_search_and_hash: CUnsignedInt = 1.toUInt
-  
-  val rocksdb_tolerate_corrupted_tail_records_recovery: CUnsignedInt = 0.toUInt
-  val rocksdb_absolute_consistency_recovery: CUnsignedInt = 1.toUInt
-  val rocksdb_point_in_time_recovery: CUnsignedInt = 2.toUInt
-  val rocksdb_skip_any_corrupted_records_recovery: CUnsignedInt = 3.toUInt
-  
-  val rocksdb_prepopulate_blob_disable: CUnsignedInt = 0.toUInt
-  val rocksdb_prepopulate_blob_flush_only: CUnsignedInt = 1.toUInt
-  
-  val rocksdb_similar_size_compaction_stop_style: CUnsignedInt = 0.toUInt
-  val rocksdb_total_size_compaction_stop_style: CUnsignedInt = 1.toUInt
-  
-  val rocksdb_block_based_table_index_type_binary_search: CUnsignedInt = 0.toUInt
-  val rocksdb_block_based_table_index_type_hash_search: CUnsignedInt = 1.toUInt
-  val rocksdb_block_based_table_index_type_two_level_index_search: CUnsignedInt = 2.toUInt
-  
-  val rocksdb_no_compression: CUnsignedInt = 0.toUInt
-  val rocksdb_snappy_compression: CUnsignedInt = 1.toUInt
-  val rocksdb_zlib_compression: CUnsignedInt = 2.toUInt
-  val rocksdb_bz2_compression: CUnsignedInt = 3.toUInt
-  val rocksdb_lz4_compression: CUnsignedInt = 4.toUInt
-  val rocksdb_lz4hc_compression: CUnsignedInt = 5.toUInt
-  val rocksdb_xpress_compression: CUnsignedInt = 6.toUInt
-  val rocksdb_zstd_compression: CUnsignedInt = 7.toUInt
-  
-  val rocksdb_uninitialized: CUnsignedInt = 0.toUInt
-  val rocksdb_disable: CUnsignedInt = 1.toUInt
-  val rocksdb_enable_count: CUnsignedInt = 2.toUInt
-  val rocksdb_enable_time_except_for_mutex: CUnsignedInt = 3.toUInt
-  val rocksdb_enable_time: CUnsignedInt = 4.toUInt
-  val rocksdb_out_of_bounds: CUnsignedInt = 5.toUInt
-  
   val rocksdb_user_key_comparison_count: CUnsignedInt = 0.toUInt
   val rocksdb_block_cache_hit_count: CUnsignedInt = 1.toUInt
   val rocksdb_block_read_count: CUnsignedInt = 2.toUInt
@@ -2147,9 +2105,51 @@ object constants:
   val rocksdb_block_read_cpu_time: CUnsignedInt = 76.toUInt
   val rocksdb_total_metric_count: CUnsignedInt = 79.toUInt
   
+  val rocksdb_no_compression: CUnsignedInt = 0.toUInt
+  val rocksdb_snappy_compression: CUnsignedInt = 1.toUInt
+  val rocksdb_zlib_compression: CUnsignedInt = 2.toUInt
+  val rocksdb_bz2_compression: CUnsignedInt = 3.toUInt
+  val rocksdb_lz4_compression: CUnsignedInt = 4.toUInt
+  val rocksdb_lz4hc_compression: CUnsignedInt = 5.toUInt
+  val rocksdb_xpress_compression: CUnsignedInt = 6.toUInt
+  val rocksdb_zstd_compression: CUnsignedInt = 7.toUInt
+  
+  val rocksdb_statistics_level_disable_all: CUnsignedInt = 0.toUInt
+  val rocksdb_statistics_level_except_tickers: CUnsignedInt = 0.toUInt
+  val rocksdb_statistics_level_except_histogram_or_timers: CUnsignedInt = 1.toUInt
+  val rocksdb_statistics_level_except_timers: CUnsignedInt = 2.toUInt
+  val rocksdb_statistics_level_except_detailed_timers: CUnsignedInt = 3.toUInt
+  val rocksdb_statistics_level_except_time_for_mutex: CUnsignedInt = 4.toUInt
+  val rocksdb_statistics_level_all: CUnsignedInt = 5.toUInt
+  
+  val rocksdb_similar_size_compaction_stop_style: CUnsignedInt = 0.toUInt
+  val rocksdb_total_size_compaction_stop_style: CUnsignedInt = 1.toUInt
+  
   val rocksdb_level_compaction: CUnsignedInt = 0.toUInt
   val rocksdb_universal_compaction: CUnsignedInt = 1.toUInt
   val rocksdb_fifo_compaction: CUnsignedInt = 2.toUInt
+  
+  val rocksdb_block_based_table_data_block_index_type_binary_search: CUnsignedInt = 0.toUInt
+  val rocksdb_block_based_table_data_block_index_type_binary_search_and_hash: CUnsignedInt = 1.toUInt
+  
+  val rocksdb_uninitialized: CUnsignedInt = 0.toUInt
+  val rocksdb_disable: CUnsignedInt = 1.toUInt
+  val rocksdb_enable_count: CUnsignedInt = 2.toUInt
+  val rocksdb_enable_time_except_for_mutex: CUnsignedInt = 3.toUInt
+  val rocksdb_enable_time: CUnsignedInt = 4.toUInt
+  val rocksdb_out_of_bounds: CUnsignedInt = 5.toUInt
+  
+  val rocksdb_block_based_table_index_type_binary_search: CUnsignedInt = 0.toUInt
+  val rocksdb_block_based_table_index_type_hash_search: CUnsignedInt = 1.toUInt
+  val rocksdb_block_based_table_index_type_two_level_index_search: CUnsignedInt = 2.toUInt
+  
+  val rocksdb_tolerate_corrupted_tail_records_recovery: CUnsignedInt = 0.toUInt
+  val rocksdb_absolute_consistency_recovery: CUnsignedInt = 1.toUInt
+  val rocksdb_point_in_time_recovery: CUnsignedInt = 2.toUInt
+  val rocksdb_skip_any_corrupted_records_recovery: CUnsignedInt = 3.toUInt
+  
+  val rocksdb_prepopulate_blob_disable: CUnsignedInt = 0.toUInt
+  val rocksdb_prepopulate_blob_flush_only: CUnsignedInt = 1.toUInt
   
 object types:
   export _root_.rocksdb.structs.*

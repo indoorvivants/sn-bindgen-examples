@@ -7078,13 +7078,13 @@ object functions:
   import extern_functions.*
   export extern_functions.*
 
-  def uv_buf_init(base : CString, len : CUnsignedInt)(__return : Ptr[uv_buf_t]): Unit = 
-    __sn_wrap_libuv_uv_buf_init(base, len, __return)
-
   def uv_buf_init(base : CString, len : CUnsignedInt)(using Zone): uv_buf_t = 
     val __ptr_0: Ptr[uv_buf_t] = alloc[uv_buf_t](1)
     __sn_wrap_libuv_uv_buf_init(base, len, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  def uv_buf_init(base : CString, len : CUnsignedInt)(__return : Ptr[uv_buf_t]): Unit = 
+    __sn_wrap_libuv_uv_buf_init(base, len, __return)
 
 object constants:
   val UV_PIPE_NO_TRUNCATE: CUnsignedInt = 1.toUInt
