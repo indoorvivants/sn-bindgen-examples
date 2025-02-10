@@ -571,7 +571,7 @@ def projectCommands(st: State) = {
   getProjects(st).sorted.reverse
     .filterNot(exceptions.contains)
     .flatMap { projectName =>
-      List(s"$projectName/run", s"show $projectName/nativeConfig")
+      List(s"$projectName/run")
     }
 }
 
@@ -583,6 +583,8 @@ ThisBuild / commands += Command.arb { s =>
   val ((_, jobId), totalJobs) = t
   val commands = projectCommands(st)
   val partition = balancedPartitioner(commands.toVector, totalJobs)(jobId)
+
+  println(s"COMMANDS ${partition}")
 
   partition.foldLeft(st) { case (s, n) =>
     n :: s
