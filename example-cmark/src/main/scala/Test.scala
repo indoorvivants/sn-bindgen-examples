@@ -32,7 +32,7 @@ import scala.scalanative.libc
           } != cmark_event_type.CMARK_EVENT_DONE
         do
           val cur = cmark_iter_get_node(iter)
-          
+
           // stdio.printf(
           //   c"Node: %s, ev_type: %d, address: %p \n",
           //   // cmark_node_get_type_string(cur),
@@ -40,7 +40,9 @@ import scala.scalanative.libc
           //   // cur
           // )
 
-          println(s"Node: ${fromCString(cmark_node_get_type_string(cur))}, ev_type: ${ev_type}, address: ${cur}")
+          println(
+            s"Node: ${fromCString(cmark_node_get_type_string(cur))}, ev_type: ${ev_type}, address: ${cur}"
+          )
 
         end while
 
