@@ -6,13 +6,14 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[cmark] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
+  private[cmark] trait _BindgenEnumCUnsignedInt[T](using
+      eq: T =:= CUnsignedInt
+  ):
     given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
     extension (inline t: T)
-     inline def value: CUnsignedInt = eq.apply(t)
-     inline def int: CInt = eq.apply(t).toInt
-     inline def uint: CUnsignedInt = eq.apply(t)
-
+      inline def value: CUnsignedInt = eq.apply(t)
+      inline def int: CInt = eq.apply(t).toInt
+      inline def uint: CUnsignedInt = eq.apply(t)
 
 object enumerations:
   import predef.*
@@ -25,18 +26,18 @@ object enumerations:
     val CMARK_PAREN_DELIM = define(2)
     inline def getName(inline value: cmark_delim_type): Option[String] =
       inline value match
-        case CMARK_NO_DELIM => Some("CMARK_NO_DELIM")
+        case CMARK_NO_DELIM     => Some("CMARK_NO_DELIM")
         case CMARK_PERIOD_DELIM => Some("CMARK_PERIOD_DELIM")
-        case CMARK_PAREN_DELIM => Some("CMARK_PAREN_DELIM")
-        case _ => _root_.scala.None
+        case CMARK_PAREN_DELIM  => Some("CMARK_PAREN_DELIM")
+        case _                  => _root_.scala.None
     extension (a: cmark_delim_type)
       inline def &(b: cmark_delim_type): cmark_delim_type = a & b
       inline def |(b: cmark_delim_type): cmark_delim_type = a | b
       inline def is(b: cmark_delim_type): Boolean = (a & b) == b
+  end cmark_delim_type
 
-  /**
-   * ## Iterator
-  */
+  /** ## Iterator
+    */
   opaque type cmark_event_type = CUnsignedInt
   object cmark_event_type extends _BindgenEnumCUnsignedInt[cmark_event_type]:
     given _tag: Tag[cmark_event_type] = Tag.UInt
@@ -47,15 +48,16 @@ object enumerations:
     val CMARK_EVENT_EXIT = define(3)
     inline def getName(inline value: cmark_event_type): Option[String] =
       inline value match
-        case CMARK_EVENT_NONE => Some("CMARK_EVENT_NONE")
-        case CMARK_EVENT_DONE => Some("CMARK_EVENT_DONE")
+        case CMARK_EVENT_NONE  => Some("CMARK_EVENT_NONE")
+        case CMARK_EVENT_DONE  => Some("CMARK_EVENT_DONE")
         case CMARK_EVENT_ENTER => Some("CMARK_EVENT_ENTER")
-        case CMARK_EVENT_EXIT => Some("CMARK_EVENT_EXIT")
-        case _ => _root_.scala.None
+        case CMARK_EVENT_EXIT  => Some("CMARK_EVENT_EXIT")
+        case _                 => _root_.scala.None
     extension (a: cmark_event_type)
       inline def &(b: cmark_event_type): cmark_event_type = a & b
       inline def |(b: cmark_event_type): cmark_event_type = a | b
       inline def is(b: cmark_event_type): Boolean = (a & b) == b
+  end cmark_event_type
 
   opaque type cmark_list_type = CUnsignedInt
   object cmark_list_type extends _BindgenEnumCUnsignedInt[cmark_list_type]:
@@ -66,18 +68,18 @@ object enumerations:
     val CMARK_ORDERED_LIST = define(2)
     inline def getName(inline value: cmark_list_type): Option[String] =
       inline value match
-        case CMARK_NO_LIST => Some("CMARK_NO_LIST")
-        case CMARK_BULLET_LIST => Some("CMARK_BULLET_LIST")
+        case CMARK_NO_LIST      => Some("CMARK_NO_LIST")
+        case CMARK_BULLET_LIST  => Some("CMARK_BULLET_LIST")
         case CMARK_ORDERED_LIST => Some("CMARK_ORDERED_LIST")
-        case _ => _root_.scala.None
+        case _                  => _root_.scala.None
     extension (a: cmark_list_type)
       inline def &(b: cmark_list_type): cmark_list_type = a & b
       inline def |(b: cmark_list_type): cmark_list_type = a | b
       inline def is(b: cmark_list_type): Boolean = (a & b) == b
+  end cmark_list_type
 
-  /**
-   * ## Node Structure
-  */
+  /** ## Node Structure
+    */
   opaque type cmark_node_type = CUnsignedInt
   object cmark_node_type extends _BindgenEnumCUnsignedInt[cmark_node_type]:
     given _tag: Tag[cmark_node_type] = Tag.UInt
@@ -109,36 +111,38 @@ object enumerations:
     val CMARK_NODE_LAST_INLINE = define(20)
     inline def getName(inline value: cmark_node_type): Option[String] =
       inline value match
-        case CMARK_NODE_NONE => Some("CMARK_NODE_NONE")
-        case CMARK_NODE_DOCUMENT => Some("CMARK_NODE_DOCUMENT")
-        case CMARK_NODE_BLOCK_QUOTE => Some("CMARK_NODE_BLOCK_QUOTE")
-        case CMARK_NODE_LIST => Some("CMARK_NODE_LIST")
-        case CMARK_NODE_ITEM => Some("CMARK_NODE_ITEM")
-        case CMARK_NODE_CODE_BLOCK => Some("CMARK_NODE_CODE_BLOCK")
-        case CMARK_NODE_HTML_BLOCK => Some("CMARK_NODE_HTML_BLOCK")
-        case CMARK_NODE_CUSTOM_BLOCK => Some("CMARK_NODE_CUSTOM_BLOCK")
-        case CMARK_NODE_PARAGRAPH => Some("CMARK_NODE_PARAGRAPH")
-        case CMARK_NODE_HEADING => Some("CMARK_NODE_HEADING")
+        case CMARK_NODE_NONE           => Some("CMARK_NODE_NONE")
+        case CMARK_NODE_DOCUMENT       => Some("CMARK_NODE_DOCUMENT")
+        case CMARK_NODE_BLOCK_QUOTE    => Some("CMARK_NODE_BLOCK_QUOTE")
+        case CMARK_NODE_LIST           => Some("CMARK_NODE_LIST")
+        case CMARK_NODE_ITEM           => Some("CMARK_NODE_ITEM")
+        case CMARK_NODE_CODE_BLOCK     => Some("CMARK_NODE_CODE_BLOCK")
+        case CMARK_NODE_HTML_BLOCK     => Some("CMARK_NODE_HTML_BLOCK")
+        case CMARK_NODE_CUSTOM_BLOCK   => Some("CMARK_NODE_CUSTOM_BLOCK")
+        case CMARK_NODE_PARAGRAPH      => Some("CMARK_NODE_PARAGRAPH")
+        case CMARK_NODE_HEADING        => Some("CMARK_NODE_HEADING")
         case CMARK_NODE_THEMATIC_BREAK => Some("CMARK_NODE_THEMATIC_BREAK")
-        case CMARK_NODE_FIRST_BLOCK => Some("CMARK_NODE_FIRST_BLOCK")
-        case CMARK_NODE_LAST_BLOCK => Some("CMARK_NODE_LAST_BLOCK")
-        case CMARK_NODE_TEXT => Some("CMARK_NODE_TEXT")
-        case CMARK_NODE_SOFTBREAK => Some("CMARK_NODE_SOFTBREAK")
-        case CMARK_NODE_LINEBREAK => Some("CMARK_NODE_LINEBREAK")
-        case CMARK_NODE_CODE => Some("CMARK_NODE_CODE")
-        case CMARK_NODE_HTML_INLINE => Some("CMARK_NODE_HTML_INLINE")
-        case CMARK_NODE_CUSTOM_INLINE => Some("CMARK_NODE_CUSTOM_INLINE")
-        case CMARK_NODE_EMPH => Some("CMARK_NODE_EMPH")
-        case CMARK_NODE_STRONG => Some("CMARK_NODE_STRONG")
-        case CMARK_NODE_LINK => Some("CMARK_NODE_LINK")
-        case CMARK_NODE_IMAGE => Some("CMARK_NODE_IMAGE")
-        case CMARK_NODE_FIRST_INLINE => Some("CMARK_NODE_FIRST_INLINE")
-        case CMARK_NODE_LAST_INLINE => Some("CMARK_NODE_LAST_INLINE")
-        case _ => _root_.scala.None
+        case CMARK_NODE_FIRST_BLOCK    => Some("CMARK_NODE_FIRST_BLOCK")
+        case CMARK_NODE_LAST_BLOCK     => Some("CMARK_NODE_LAST_BLOCK")
+        case CMARK_NODE_TEXT           => Some("CMARK_NODE_TEXT")
+        case CMARK_NODE_SOFTBREAK      => Some("CMARK_NODE_SOFTBREAK")
+        case CMARK_NODE_LINEBREAK      => Some("CMARK_NODE_LINEBREAK")
+        case CMARK_NODE_CODE           => Some("CMARK_NODE_CODE")
+        case CMARK_NODE_HTML_INLINE    => Some("CMARK_NODE_HTML_INLINE")
+        case CMARK_NODE_CUSTOM_INLINE  => Some("CMARK_NODE_CUSTOM_INLINE")
+        case CMARK_NODE_EMPH           => Some("CMARK_NODE_EMPH")
+        case CMARK_NODE_STRONG         => Some("CMARK_NODE_STRONG")
+        case CMARK_NODE_LINK           => Some("CMARK_NODE_LINK")
+        case CMARK_NODE_IMAGE          => Some("CMARK_NODE_IMAGE")
+        case CMARK_NODE_FIRST_INLINE   => Some("CMARK_NODE_FIRST_INLINE")
+        case CMARK_NODE_LAST_INLINE    => Some("CMARK_NODE_LAST_INLINE")
+        case _                         => _root_.scala.None
     extension (a: cmark_node_type)
       inline def &(b: cmark_node_type): cmark_node_type = a & b
       inline def |(b: cmark_node_type): cmark_node_type = a | b
       inline def is(b: cmark_node_type): Boolean = (a & b) == b
+  end cmark_node_type
+end enumerations
 
 object aliases:
   import _root_.cmark.enumerations.*
@@ -146,18 +150,17 @@ object aliases:
   import _root_.cmark.aliases.*
   import _root_.cmark.structs.*
   type FILE = libc.stdio.FILE
-  object FILE: 
+  object FILE:
     val _tag: Tag[FILE] = summon[Tag[libc.stdio.FILE]]
     inline def apply(inline o: libc.stdio.FILE): FILE = o
-    extension (v: FILE)
-      inline def value: libc.stdio.FILE = v
+    extension (v: FILE) inline def value: libc.stdio.FILE = v
 
   type size_t = libc.stddef.size_t
-  object size_t: 
+  object size_t:
     val _tag: Tag[size_t] = summon[Tag[libc.stddef.size_t]]
     inline def apply(inline o: libc.stddef.size_t): size_t = o
-    extension (v: size_t)
-      inline def value: libc.stddef.size_t = v
+    extension (v: size_t) inline def value: libc.stddef.size_t = v
+end aliases
 
 object structs:
   import _root_.cmark.enumerations.*
@@ -168,26 +171,42 @@ object structs:
   object cmark_iter:
     given _tag: Tag[cmark_iter] = Tag.materializeCStruct0Tag
 
-  /**
-   * Defines the memory allocation functions to be used by CMark when parsing and allocating a document tree
-  */
-  opaque type cmark_mem = CStruct3[CFuncPtr2[size_t, size_t, Ptr[Byte]], CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit]]
+  /** Defines the memory allocation functions to be used by CMark when parsing
+    * and allocating a document tree
+    */
+  opaque type cmark_mem =
+    CStruct3[CFuncPtr2[size_t, size_t, Ptr[Byte]], CFuncPtr2[Ptr[
+      Byte
+    ], size_t, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit]]
   object cmark_mem:
-    given _tag: Tag[cmark_mem] = Tag.materializeCStruct3Tag[CFuncPtr2[size_t, size_t, Ptr[Byte]], CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit]]
-    def apply()(using Zone): Ptr[cmark_mem] = scala.scalanative.unsafe.alloc[cmark_mem](1)
-    def apply(calloc : CFuncPtr2[size_t, size_t, Ptr[Byte]], realloc : CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], free : CFuncPtr1[Ptr[Byte], Unit])(using Zone): Ptr[cmark_mem] = 
+    given _tag: Tag[cmark_mem] = Tag.materializeCStruct3Tag[CFuncPtr2[
+      size_t,
+      size_t,
+      Ptr[Byte]
+    ], CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit]]
+    def apply()(using Zone): Ptr[cmark_mem] =
+      scala.scalanative.unsafe.alloc[cmark_mem](1)
+    def apply(
+        calloc: CFuncPtr2[size_t, size_t, Ptr[Byte]],
+        realloc: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]],
+        free: CFuncPtr1[Ptr[Byte], Unit]
+    )(using Zone): Ptr[cmark_mem] =
       val ____ptr = apply()
       (!____ptr).calloc = calloc
       (!____ptr).realloc = realloc
       (!____ptr).free = free
       ____ptr
+    end apply
     extension (struct: cmark_mem)
-      def calloc : CFuncPtr2[size_t, size_t, Ptr[Byte]] = struct._1
-      def calloc_=(value: CFuncPtr2[size_t, size_t, Ptr[Byte]]): Unit = !struct.at1 = value
-      def realloc : CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]] = struct._2
-      def realloc_=(value: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]]): Unit = !struct.at2 = value
-      def free : CFuncPtr1[Ptr[Byte], Unit] = struct._3
+      def calloc: CFuncPtr2[size_t, size_t, Ptr[Byte]] = struct._1
+      def calloc_=(value: CFuncPtr2[size_t, size_t, Ptr[Byte]]): Unit =
+        !struct.at1 = value
+      def realloc: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]] = struct._2
+      def realloc_=(value: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]]): Unit =
+        !struct.at2 = value
+      def free: CFuncPtr1[Ptr[Byte], Unit] = struct._3
       def free_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at3 = value
+  end cmark_mem
 
   opaque type cmark_node = CStruct0
   object cmark_node:
@@ -196,7 +215,7 @@ object structs:
   opaque type cmark_parser = CStruct0
   object cmark_parser:
     given _tag: Tag[cmark_parser] = Tag.materializeCStruct0Tag
-
+end structs
 
 @extern
 private[cmark] object extern_functions:
@@ -204,346 +223,394 @@ private[cmark] object extern_functions:
   import _root_.cmark.predef.*
   import _root_.cmark.aliases.*
   import _root_.cmark.structs.*
-  /**
-   * Consolidates adjacent text nodes.
-  */
-  def cmark_consolidate_text_nodes(root : Ptr[cmark_node]): Unit = extern
 
-  /**
-   * Returns a pointer to the default memory allocator.
-  */
+  /** Consolidates adjacent text nodes.
+    */
+  def cmark_consolidate_text_nodes(root: Ptr[cmark_node]): Unit = extern
+
+  /** Returns a pointer to the default memory allocator.
+    */
   def cmark_get_default_mem_allocator(): Ptr[cmark_mem] = extern
 
-  /**
-   * Frees the memory allocated for an iterator.
-  */
-  def cmark_iter_free(iter : Ptr[cmark_iter]): Unit = extern
-
-  /**
-   * Returns the current event type.
-  */
-  def cmark_iter_get_event_type(iter : Ptr[cmark_iter]): cmark_event_type = extern
-
-  /**
-   * Returns the current node.
-  */
-  def cmark_iter_get_node(iter : Ptr[cmark_iter]): Ptr[cmark_node] = extern
-
-  /**
-   * Returns the root node.
-  */
-  def cmark_iter_get_root(iter : Ptr[cmark_iter]): Ptr[cmark_node] = extern
-
-  /**
-   * Creates a new iterator starting at 'root'. The current node and event type are undefined until 'cmark_iter_next' is called for the first time. The memory allocated for the iterator should be released using 'cmark_iter_free' when it is no longer needed.
-  */
-  def cmark_iter_new(root : Ptr[cmark_node]): Ptr[cmark_iter] = extern
-
-  /**
-   * Advances to the next node and returns the event type (`CMARK_EVENT_ENTER`, `CMARK_EVENT_EXIT` or `CMARK_EVENT_DONE`).
-  */
-  def cmark_iter_next(iter : Ptr[cmark_iter]): cmark_event_type = extern
-
-  /**
-   * Resets the iterator so that the current node is 'current' and the event type is 'event_type'. The new current node must be a descendant of the root node or the root node itself.
-  */
-  def cmark_iter_reset(iter : Ptr[cmark_iter], current : Ptr[cmark_node], event_type : cmark_event_type): Unit = extern
-
-  /**
-   * Convert 'text' (assumed to be a UTF-8 encoded string with length 'len') from CommonMark Markdown to HTML, returning a null-terminated, UTF-8-encoded string. It is the caller's responsibility to free the returned buffer.
-  */
-  def cmark_markdown_to_html(text : CString, len : size_t, options : CInt): CString = extern
-
-  /**
-   * Adds 'child' to the end of the children of 'node'. Returns 1 on success, 0 on failure.
-  */
-  def cmark_node_append_child(node : Ptr[cmark_node], child : Ptr[cmark_node]): CInt = extern
-
-  /**
-   * Returns the first child of 'node', or NULL if 'node' has no children.
-  */
-  def cmark_node_first_child(node : Ptr[cmark_node]): Ptr[cmark_node] = extern
-
-  /**
-   * Frees the memory allocated for a node and any children.
-  */
-  def cmark_node_free(node : Ptr[cmark_node]): Unit = extern
-
-  /**
-   * Returns the column at which 'node' ends.
-  */
-  def cmark_node_get_end_column(node : Ptr[cmark_node]): CInt = extern
-
-  /**
-   * Returns the line on which 'node' ends.
-  */
-  def cmark_node_get_end_line(node : Ptr[cmark_node]): CInt = extern
-
-  /**
-   * Returns the info string from a fenced code block.
-  */
-  def cmark_node_get_fence_info(node : Ptr[cmark_node]): CString = extern
-
-  /**
-   * Returns the heading level of 'node', or 0 if 'node' is not a heading.
-  */
-  def cmark_node_get_heading_level(node : Ptr[cmark_node]): CInt = extern
-
-  /**
-   * Returns the list delimiter type of 'node', or `CMARK_NO_DELIM` if 'node' is not a list.
-  */
-  def cmark_node_get_list_delim(node : Ptr[cmark_node]): cmark_delim_type = extern
-
-  /**
-   * Returns starting number of 'node', if it is an ordered list, otherwise 0.
-  */
-  def cmark_node_get_list_start(node : Ptr[cmark_node]): CInt = extern
-
-  /**
-   * Returns 1 if 'node' is a tight list, 0 otherwise.
-  */
-  def cmark_node_get_list_tight(node : Ptr[cmark_node]): CInt = extern
-
-  /**
-   * Returns the list type of 'node', or `CMARK_NO_LIST` if 'node' is not a list.
-  */
-  def cmark_node_get_list_type(node : Ptr[cmark_node]): cmark_list_type = extern
-
-  /**
-   * Returns the string contents of 'node', or an empty string if none is set. Returns NULL if called on a node that does not have string content.
-  */
-  def cmark_node_get_literal(node : Ptr[cmark_node]): CString = extern
-
-  /**
-   * Returns the literal "on enter" text for a custom 'node', or an empty string if no on_enter is set. Returns NULL if called on a non-custom node.
-  */
-  def cmark_node_get_on_enter(node : Ptr[cmark_node]): CString = extern
-
-  /**
-   * Returns the literal "on exit" text for a custom 'node', or an empty string if no on_exit is set. Returns NULL if called on a non-custom node.
-  */
-  def cmark_node_get_on_exit(node : Ptr[cmark_node]): CString = extern
-
-  /**
-   * Returns the column at which 'node' begins.
-  */
-  def cmark_node_get_start_column(node : Ptr[cmark_node]): CInt = extern
-
-  /**
-   * Returns the line on which 'node' begins.
-  */
-  def cmark_node_get_start_line(node : Ptr[cmark_node]): CInt = extern
-
-  /**
-   * Returns the title of a link or image 'node', or an empty string if no title is set. Returns NULL if called on a node that is not a link or image.
-  */
-  def cmark_node_get_title(node : Ptr[cmark_node]): CString = extern
-
-  /**
-   * Returns the type of 'node', or `CMARK_NODE_NONE` on error.
-  */
-  def cmark_node_get_type(node : Ptr[cmark_node]): cmark_node_type = extern
-
-  /**
-   * Like 'cmark_node_get_type', but returns a string representation of the type, or `"<unknown>"`.
-  */
-  def cmark_node_get_type_string(node : Ptr[cmark_node]): CString = extern
-
-  /**
-   * Returns the URL of a link or image 'node', or an empty string if no URL is set. Returns NULL if called on a node that is not a link or image.
-  */
-  def cmark_node_get_url(node : Ptr[cmark_node]): CString = extern
-
-  /**
-   * Returns the user data of 'node'.
-  */
-  def cmark_node_get_user_data(node : Ptr[cmark_node]): Ptr[Byte] = extern
-
-  /**
-   * Inserts 'sibling' after 'node'. Returns 1 on success, 0 on failure.
-  */
-  def cmark_node_insert_after(node : Ptr[cmark_node], sibling : Ptr[cmark_node]): CInt = extern
-
-  /**
-   * Inserts 'sibling' before 'node'. Returns 1 on success, 0 on failure.
-  */
-  def cmark_node_insert_before(node : Ptr[cmark_node], sibling : Ptr[cmark_node]): CInt = extern
-
-  /**
-   * Returns the last child of 'node', or NULL if 'node' has no children.
-  */
-  def cmark_node_last_child(node : Ptr[cmark_node]): Ptr[cmark_node] = extern
-
-  /**
-   * Creates a new node of type 'type'. Note that the node may have other required properties, which it is the caller's responsibility to assign.
-  */
-  def cmark_node_new(`type` : cmark_node_type): Ptr[cmark_node] = extern
-
-  /**
-   * Same as `cmark_node_new`, but explicitly listing the memory allocator used to allocate the node. Note: be sure to use the same allocator for every node in a tree, or bad things can happen.
-  */
-  def cmark_node_new_with_mem(`type` : cmark_node_type, mem : Ptr[cmark_mem]): Ptr[cmark_node] = extern
-
-  /**
-   * Returns the next node in the sequence after 'node', or NULL if there is none.
-  */
-  def cmark_node_next(node : Ptr[cmark_node]): Ptr[cmark_node] = extern
-
-  /**
-   * Returns the parent of 'node', or NULL if there is none.
-  */
-  def cmark_node_parent(node : Ptr[cmark_node]): Ptr[cmark_node] = extern
-
-  /**
-   * Adds 'child' to the beginning of the children of 'node'. Returns 1 on success, 0 on failure.
-  */
-  def cmark_node_prepend_child(node : Ptr[cmark_node], child : Ptr[cmark_node]): CInt = extern
-
-  /**
-   * Returns the previous node in the sequence after 'node', or NULL if there is none.
-  */
-  def cmark_node_previous(node : Ptr[cmark_node]): Ptr[cmark_node] = extern
-
-  /**
-   * Replaces 'oldnode' with 'newnode' and unlinks 'oldnode' (but does not free its memory). Returns 1 on success, 0 on failure.
-  */
-  def cmark_node_replace(oldnode : Ptr[cmark_node], newnode : Ptr[cmark_node]): CInt = extern
-
-  /**
-   * Sets the info string in a fenced code block, returning 1 on success and 0 on failure.
-  */
-  def cmark_node_set_fence_info(node : Ptr[cmark_node], info : CString): CInt = extern
-
-  /**
-   * Sets the heading level of 'node', returning 1 on success and 0 on error.
-  */
-  def cmark_node_set_heading_level(node : Ptr[cmark_node], level : CInt): CInt = extern
-
-  /**
-   * Sets the list delimiter type of 'node', returning 1 on success and 0 on error.
-  */
-  def cmark_node_set_list_delim(node : Ptr[cmark_node], delim : cmark_delim_type): CInt = extern
-
-  /**
-   * Sets starting number of 'node', if it is an ordered list. Returns 1 on success, 0 on failure.
-  */
-  def cmark_node_set_list_start(node : Ptr[cmark_node], start : CInt): CInt = extern
-
-  /**
-   * Sets the "tightness" of a list. Returns 1 on success, 0 on failure.
-  */
-  def cmark_node_set_list_tight(node : Ptr[cmark_node], tight : CInt): CInt = extern
-
-  /**
-   * Sets the list type of 'node', returning 1 on success and 0 on error.
-  */
-  def cmark_node_set_list_type(node : Ptr[cmark_node], `type` : cmark_list_type): CInt = extern
-
-  /**
-   * Sets the string contents of 'node'. Returns 1 on success, 0 on failure.
-  */
-  def cmark_node_set_literal(node : Ptr[cmark_node], content : CString): CInt = extern
-
-  /**
-   * Sets the literal text to render "on enter" for a custom 'node'. Any children of the node will be rendered after this text. Returns 1 on success 0 on failure.
-  */
-  def cmark_node_set_on_enter(node : Ptr[cmark_node], on_enter : CString): CInt = extern
-
-  /**
-   * Sets the literal text to render "on exit" for a custom 'node'. Any children of the node will be rendered before this text. Returns 1 on success 0 on failure.
-  */
-  def cmark_node_set_on_exit(node : Ptr[cmark_node], on_exit : CString): CInt = extern
-
-  /**
-   * Sets the title of a link or image 'node'. Returns 1 on success, 0 on failure.
-  */
-  def cmark_node_set_title(node : Ptr[cmark_node], title : CString): CInt = extern
-
-  /**
-   * Sets the URL of a link or image 'node'. Returns 1 on success, 0 on failure.
-  */
-  def cmark_node_set_url(node : Ptr[cmark_node], url : CString): CInt = extern
-
-  /**
-   * Sets arbitrary user data for 'node'. Returns 1 on success, 0 on failure.
-  */
-  def cmark_node_set_user_data(node : Ptr[cmark_node], user_data : Ptr[Byte]): CInt = extern
-
-  /**
-   * Unlinks a 'node', removing it from the tree, but not freeing its memory. (Use 'cmark_node_free' for that.)
-  */
-  def cmark_node_unlink(node : Ptr[cmark_node]): Unit = extern
-
-  /**
-   * Parse a CommonMark document in 'buffer' of length 'len'. Returns a pointer to a tree of nodes. The memory allocated for the node tree should be released using 'cmark_node_free' when it is no longer needed.
-  */
-  def cmark_parse_document(buffer : CString, len : size_t, options : CInt): Ptr[cmark_node] = extern
-
-  /**
-   * Parse a CommonMark document in file 'f', returning a pointer to a tree of nodes. The memory allocated for the node tree should be released using 'cmark_node_free' when it is no longer needed.
-  */
-  def cmark_parse_file(f : Ptr[FILE], options : CInt): Ptr[cmark_node] = extern
-
-  /**
-   * Feeds a string of length 'len' to 'parser'.
-  */
-  def cmark_parser_feed(parser : Ptr[cmark_parser], buffer : CString, len : size_t): Unit = extern
-
-  /**
-   * Finish parsing and return a pointer to a tree of nodes.
-  */
-  def cmark_parser_finish(parser : Ptr[cmark_parser]): Ptr[cmark_node] = extern
-
-  /**
-   * Frees memory allocated for a parser object.
-  */
-  def cmark_parser_free(parser : Ptr[cmark_parser]): Unit = extern
-
-  /**
-   * Creates a new parser object.
-  */
-  def cmark_parser_new(options : CInt): Ptr[cmark_parser] = extern
-
-  /**
-   * Creates a new parser object with the given memory allocator
-  */
-  def cmark_parser_new_with_mem(options : CInt, mem : Ptr[cmark_mem]): Ptr[cmark_parser] = extern
-
-  /**
-   * Render a 'node' tree as a commonmark document. It is the caller's responsibility to free the returned buffer.
-  */
-  def cmark_render_commonmark(root : Ptr[cmark_node], options : CInt, width : CInt): CString = extern
-
-  /**
-   * Render a 'node' tree as an HTML fragment. It is up to the user to add an appropriate header and footer. It is the caller's responsibility to free the returned buffer.
-  */
-  def cmark_render_html(root : Ptr[cmark_node], options : CInt): CString = extern
-
-  /**
-   * Render a 'node' tree as a LaTeX document. It is the caller's responsibility to free the returned buffer.
-  */
-  def cmark_render_latex(root : Ptr[cmark_node], options : CInt, width : CInt): CString = extern
-
-  /**
-   * Render a 'node' tree as a groff man page, without the header. It is the caller's responsibility to free the returned buffer.
-  */
-  def cmark_render_man(root : Ptr[cmark_node], options : CInt, width : CInt): CString = extern
-
-  /**
-   * Render a 'node' tree as XML. It is the caller's responsibility to free the returned buffer.
-  */
-  def cmark_render_xml(root : Ptr[cmark_node], options : CInt): CString = extern
-
-  /**
-   * The library version as integer for runtime checks. Also available as macro CMARK_VERSION for compile time checks.
-  */
+  /** Frees the memory allocated for an iterator.
+    */
+  def cmark_iter_free(iter: Ptr[cmark_iter]): Unit = extern
+
+  /** Returns the current event type.
+    */
+  def cmark_iter_get_event_type(iter: Ptr[cmark_iter]): cmark_event_type =
+    extern
+
+  /** Returns the current node.
+    */
+  def cmark_iter_get_node(iter: Ptr[cmark_iter]): Ptr[cmark_node] = extern
+
+  /** Returns the root node.
+    */
+  def cmark_iter_get_root(iter: Ptr[cmark_iter]): Ptr[cmark_node] = extern
+
+  /** Creates a new iterator starting at 'root'. The current node and event type
+    * are undefined until 'cmark_iter_next' is called for the first time. The
+    * memory allocated for the iterator should be released using
+    * 'cmark_iter_free' when it is no longer needed.
+    */
+  def cmark_iter_new(root: Ptr[cmark_node]): Ptr[cmark_iter] = extern
+
+  /** Advances to the next node and returns the event type (`CMARK_EVENT_ENTER`,
+    * `CMARK_EVENT_EXIT` or `CMARK_EVENT_DONE`).
+    */
+  def cmark_iter_next(iter: Ptr[cmark_iter]): cmark_event_type = extern
+
+  /** Resets the iterator so that the current node is 'current' and the event
+    * type is 'event_type'. The new current node must be a descendant of the
+    * root node or the root node itself.
+    */
+  def cmark_iter_reset(
+      iter: Ptr[cmark_iter],
+      current: Ptr[cmark_node],
+      event_type: cmark_event_type
+  ): Unit = extern
+
+  /** Convert 'text' (assumed to be a UTF-8 encoded string with length 'len')
+    * from CommonMark Markdown to HTML, returning a null-terminated,
+    * UTF-8-encoded string. It is the caller's responsibility to free the
+    * returned buffer.
+    */
+  def cmark_markdown_to_html(
+      text: CString,
+      len: size_t,
+      options: CInt
+  ): CString = extern
+
+  /** Adds 'child' to the end of the children of 'node'. Returns 1 on success, 0
+    * on failure.
+    */
+  def cmark_node_append_child(
+      node: Ptr[cmark_node],
+      child: Ptr[cmark_node]
+  ): CInt = extern
+
+  /** Returns the first child of 'node', or NULL if 'node' has no children.
+    */
+  def cmark_node_first_child(node: Ptr[cmark_node]): Ptr[cmark_node] = extern
+
+  /** Frees the memory allocated for a node and any children.
+    */
+  def cmark_node_free(node: Ptr[cmark_node]): Unit = extern
+
+  /** Returns the column at which 'node' ends.
+    */
+  def cmark_node_get_end_column(node: Ptr[cmark_node]): CInt = extern
+
+  /** Returns the line on which 'node' ends.
+    */
+  def cmark_node_get_end_line(node: Ptr[cmark_node]): CInt = extern
+
+  /** Returns the info string from a fenced code block.
+    */
+  def cmark_node_get_fence_info(node: Ptr[cmark_node]): CString = extern
+
+  /** Returns the heading level of 'node', or 0 if 'node' is not a heading.
+    */
+  def cmark_node_get_heading_level(node: Ptr[cmark_node]): CInt = extern
+
+  /** Returns the list delimiter type of 'node', or `CMARK_NO_DELIM` if 'node'
+    * is not a list.
+    */
+  def cmark_node_get_list_delim(node: Ptr[cmark_node]): cmark_delim_type =
+    extern
+
+  /** Returns starting number of 'node', if it is an ordered list, otherwise 0.
+    */
+  def cmark_node_get_list_start(node: Ptr[cmark_node]): CInt = extern
+
+  /** Returns 1 if 'node' is a tight list, 0 otherwise.
+    */
+  def cmark_node_get_list_tight(node: Ptr[cmark_node]): CInt = extern
+
+  /** Returns the list type of 'node', or `CMARK_NO_LIST` if 'node' is not a
+    * list.
+    */
+  def cmark_node_get_list_type(node: Ptr[cmark_node]): cmark_list_type = extern
+
+  /** Returns the string contents of 'node', or an empty string if none is set.
+    * Returns NULL if called on a node that does not have string content.
+    */
+  def cmark_node_get_literal(node: Ptr[cmark_node]): CString = extern
+
+  /** Returns the literal "on enter" text for a custom 'node', or an empty
+    * string if no on_enter is set. Returns NULL if called on a non-custom node.
+    */
+  def cmark_node_get_on_enter(node: Ptr[cmark_node]): CString = extern
+
+  /** Returns the literal "on exit" text for a custom 'node', or an empty string
+    * if no on_exit is set. Returns NULL if called on a non-custom node.
+    */
+  def cmark_node_get_on_exit(node: Ptr[cmark_node]): CString = extern
+
+  /** Returns the column at which 'node' begins.
+    */
+  def cmark_node_get_start_column(node: Ptr[cmark_node]): CInt = extern
+
+  /** Returns the line on which 'node' begins.
+    */
+  def cmark_node_get_start_line(node: Ptr[cmark_node]): CInt = extern
+
+  /** Returns the title of a link or image 'node', or an empty string if no
+    * title is set. Returns NULL if called on a node that is not a link or
+    * image.
+    */
+  def cmark_node_get_title(node: Ptr[cmark_node]): CString = extern
+
+  /** Returns the type of 'node', or `CMARK_NODE_NONE` on error.
+    */
+  def cmark_node_get_type(node: Ptr[cmark_node]): cmark_node_type = extern
+
+  /** Like 'cmark_node_get_type', but returns a string representation of the
+    * type, or `"<unknown>"`.
+    */
+  def cmark_node_get_type_string(node: Ptr[cmark_node]): CString = extern
+
+  /** Returns the URL of a link or image 'node', or an empty string if no URL is
+    * set. Returns NULL if called on a node that is not a link or image.
+    */
+  def cmark_node_get_url(node: Ptr[cmark_node]): CString = extern
+
+  /** Returns the user data of 'node'.
+    */
+  def cmark_node_get_user_data(node: Ptr[cmark_node]): Ptr[Byte] = extern
+
+  /** Inserts 'sibling' after 'node'. Returns 1 on success, 0 on failure.
+    */
+  def cmark_node_insert_after(
+      node: Ptr[cmark_node],
+      sibling: Ptr[cmark_node]
+  ): CInt = extern
+
+  /** Inserts 'sibling' before 'node'. Returns 1 on success, 0 on failure.
+    */
+  def cmark_node_insert_before(
+      node: Ptr[cmark_node],
+      sibling: Ptr[cmark_node]
+  ): CInt = extern
+
+  /** Returns the last child of 'node', or NULL if 'node' has no children.
+    */
+  def cmark_node_last_child(node: Ptr[cmark_node]): Ptr[cmark_node] = extern
+
+  /** Creates a new node of type 'type'. Note that the node may have other
+    * required properties, which it is the caller's responsibility to assign.
+    */
+  def cmark_node_new(`type`: cmark_node_type): Ptr[cmark_node] = extern
+
+  /** Same as `cmark_node_new`, but explicitly listing the memory allocator used
+    * to allocate the node. Note: be sure to use the same allocator for every
+    * node in a tree, or bad things can happen.
+    */
+  def cmark_node_new_with_mem(
+      `type`: cmark_node_type,
+      mem: Ptr[cmark_mem]
+  ): Ptr[cmark_node] = extern
+
+  /** Returns the next node in the sequence after 'node', or NULL if there is
+    * none.
+    */
+  def cmark_node_next(node: Ptr[cmark_node]): Ptr[cmark_node] = extern
+
+  /** Returns the parent of 'node', or NULL if there is none.
+    */
+  def cmark_node_parent(node: Ptr[cmark_node]): Ptr[cmark_node] = extern
+
+  /** Adds 'child' to the beginning of the children of 'node'. Returns 1 on
+    * success, 0 on failure.
+    */
+  def cmark_node_prepend_child(
+      node: Ptr[cmark_node],
+      child: Ptr[cmark_node]
+  ): CInt = extern
+
+  /** Returns the previous node in the sequence after 'node', or NULL if there
+    * is none.
+    */
+  def cmark_node_previous(node: Ptr[cmark_node]): Ptr[cmark_node] = extern
+
+  /** Replaces 'oldnode' with 'newnode' and unlinks 'oldnode' (but does not free
+    * its memory). Returns 1 on success, 0 on failure.
+    */
+  def cmark_node_replace(
+      oldnode: Ptr[cmark_node],
+      newnode: Ptr[cmark_node]
+  ): CInt = extern
+
+  /** Sets the info string in a fenced code block, returning 1 on success and 0
+    * on failure.
+    */
+  def cmark_node_set_fence_info(node: Ptr[cmark_node], info: CString): CInt =
+    extern
+
+  /** Sets the heading level of 'node', returning 1 on success and 0 on error.
+    */
+  def cmark_node_set_heading_level(node: Ptr[cmark_node], level: CInt): CInt =
+    extern
+
+  /** Sets the list delimiter type of 'node', returning 1 on success and 0 on
+    * error.
+    */
+  def cmark_node_set_list_delim(
+      node: Ptr[cmark_node],
+      delim: cmark_delim_type
+  ): CInt = extern
+
+  /** Sets starting number of 'node', if it is an ordered list. Returns 1 on
+    * success, 0 on failure.
+    */
+  def cmark_node_set_list_start(node: Ptr[cmark_node], start: CInt): CInt =
+    extern
+
+  /** Sets the "tightness" of a list. Returns 1 on success, 0 on failure.
+    */
+  def cmark_node_set_list_tight(node: Ptr[cmark_node], tight: CInt): CInt =
+    extern
+
+  /** Sets the list type of 'node', returning 1 on success and 0 on error.
+    */
+  def cmark_node_set_list_type(
+      node: Ptr[cmark_node],
+      `type`: cmark_list_type
+  ): CInt = extern
+
+  /** Sets the string contents of 'node'. Returns 1 on success, 0 on failure.
+    */
+  def cmark_node_set_literal(node: Ptr[cmark_node], content: CString): CInt =
+    extern
+
+  /** Sets the literal text to render "on enter" for a custom 'node'. Any
+    * children of the node will be rendered after this text. Returns 1 on
+    * success 0 on failure.
+    */
+  def cmark_node_set_on_enter(node: Ptr[cmark_node], on_enter: CString): CInt =
+    extern
+
+  /** Sets the literal text to render "on exit" for a custom 'node'. Any
+    * children of the node will be rendered before this text. Returns 1 on
+    * success 0 on failure.
+    */
+  def cmark_node_set_on_exit(node: Ptr[cmark_node], on_exit: CString): CInt =
+    extern
+
+  /** Sets the title of a link or image 'node'. Returns 1 on success, 0 on
+    * failure.
+    */
+  def cmark_node_set_title(node: Ptr[cmark_node], title: CString): CInt = extern
+
+  /** Sets the URL of a link or image 'node'. Returns 1 on success, 0 on
+    * failure.
+    */
+  def cmark_node_set_url(node: Ptr[cmark_node], url: CString): CInt = extern
+
+  /** Sets arbitrary user data for 'node'. Returns 1 on success, 0 on failure.
+    */
+  def cmark_node_set_user_data(
+      node: Ptr[cmark_node],
+      user_data: Ptr[Byte]
+  ): CInt = extern
+
+  /** Unlinks a 'node', removing it from the tree, but not freeing its memory.
+    * (Use 'cmark_node_free' for that.)
+    */
+  def cmark_node_unlink(node: Ptr[cmark_node]): Unit = extern
+
+  /** Parse a CommonMark document in 'buffer' of length 'len'. Returns a pointer
+    * to a tree of nodes. The memory allocated for the node tree should be
+    * released using 'cmark_node_free' when it is no longer needed.
+    */
+  def cmark_parse_document(
+      buffer: CString,
+      len: size_t,
+      options: CInt
+  ): Ptr[cmark_node] = extern
+
+  /** Parse a CommonMark document in file 'f', returning a pointer to a tree of
+    * nodes. The memory allocated for the node tree should be released using
+    * 'cmark_node_free' when it is no longer needed.
+    */
+  def cmark_parse_file(f: Ptr[FILE], options: CInt): Ptr[cmark_node] = extern
+
+  /** Feeds a string of length 'len' to 'parser'.
+    */
+  def cmark_parser_feed(
+      parser: Ptr[cmark_parser],
+      buffer: CString,
+      len: size_t
+  ): Unit = extern
+
+  /** Finish parsing and return a pointer to a tree of nodes.
+    */
+  def cmark_parser_finish(parser: Ptr[cmark_parser]): Ptr[cmark_node] = extern
+
+  /** Frees memory allocated for a parser object.
+    */
+  def cmark_parser_free(parser: Ptr[cmark_parser]): Unit = extern
+
+  /** Creates a new parser object.
+    */
+  def cmark_parser_new(options: CInt): Ptr[cmark_parser] = extern
+
+  /** Creates a new parser object with the given memory allocator
+    */
+  def cmark_parser_new_with_mem(
+      options: CInt,
+      mem: Ptr[cmark_mem]
+  ): Ptr[cmark_parser] = extern
+
+  /** Render a 'node' tree as a commonmark document. It is the caller's
+    * responsibility to free the returned buffer.
+    */
+  def cmark_render_commonmark(
+      root: Ptr[cmark_node],
+      options: CInt,
+      width: CInt
+  ): CString = extern
+
+  /** Render a 'node' tree as an HTML fragment. It is up to the user to add an
+    * appropriate header and footer. It is the caller's responsibility to free
+    * the returned buffer.
+    */
+  def cmark_render_html(root: Ptr[cmark_node], options: CInt): CString = extern
+
+  /** Render a 'node' tree as a LaTeX document. It is the caller's
+    * responsibility to free the returned buffer.
+    */
+  def cmark_render_latex(
+      root: Ptr[cmark_node],
+      options: CInt,
+      width: CInt
+  ): CString = extern
+
+  /** Render a 'node' tree as a groff man page, without the header. It is the
+    * caller's responsibility to free the returned buffer.
+    */
+  def cmark_render_man(
+      root: Ptr[cmark_node],
+      options: CInt,
+      width: CInt
+  ): CString = extern
+
+  /** Render a 'node' tree as XML. It is the caller's responsibility to free the
+    * returned buffer.
+    */
+  def cmark_render_xml(root: Ptr[cmark_node], options: CInt): CString = extern
+
+  /** The library version as integer for runtime checks. Also available as macro
+    * CMARK_VERSION for compile time checks.
+    */
   def cmark_version(): CInt = extern
 
-  /**
-   * The library version string for runtime checks. Also available as macro CMARK_VERSION_STRING for compile time checks.
-  */
+  /** The library version string for runtime checks. Also available as macro
+    * CMARK_VERSION_STRING for compile time checks.
+    */
   def cmark_version_string(): CString = extern
-
+end extern_functions
 
 object functions:
   import _root_.cmark.enumerations.*
@@ -637,3 +704,4 @@ object all:
   export _root_.cmark.functions.cmark_render_xml
   export _root_.cmark.functions.cmark_version
   export _root_.cmark.functions.cmark_version_string
+end all

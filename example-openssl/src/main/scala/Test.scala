@@ -7,7 +7,7 @@ import scala.scalanative.libc.*
 import java.util.Base64
 
 @main def hello =
-  Zone { 
+  Zone {
     println(s"SHA256(helloworld) = ${OpenSSL.sha256("helloworld")}")
     println(
       s"HMAC(helloworld, secret) = ${OpenSSL.hmac("helloworld", "secret")}"
@@ -91,8 +91,7 @@ object OpenSSL:
 
     val ar = Array.newBuilder[Byte]
 
-    for i <- 0 until (!md_len).toInt do
-      ar.addOne(md_value(i).toByte)
+    for i <- 0 until (!md_len).toInt do ar.addOne(md_value(i).toByte)
 
     EVP_MD_CTX_free(mdctx)
 
