@@ -12,5 +12,5 @@ resolvers ++= Resolver.sonatypeOssRepos("releases")
 
 addSbtPlugin("com.indoorvivants" % "bindgen-sbt-plugin" % BindgenVersion)
 addSbtPlugin("org.scala-native" % "sbt-scala-native" % ScalaNativeVersion)
-addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.5.5")
+addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.5.6")
 addSbtPlugin("com.indoorvivants.vcpkg" % "sbt-vcpkg-native" % VcpkgVersion)
