@@ -221,6 +221,26 @@ lazy val git = project
   .settings(bindgenSettings)
   .settings(configurePlatform())
 
+lazy val kafka = project
+  .in(file("example-kafka"))
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+  .settings(
+    scalaVersion := Versions.Scala,
+    vcpkgDependencies := VcpkgDependencies("librdkafka", "lz4", "openssl"),
+    vcpkgNativeConfig ~= {
+      _.addRenamedLibrary("librdkafka", "rdkafka-static")
+    },
+    bindgenBindings += {
+      Binding(
+        vcpkgConfigurator.value.includes("librdkafka") / "librdkafka" / "rdkafka.h",
+        "librdkafka",
+        linkName = Some("rdkafka"),
+        cImports = List("rdkafka.h")
+      )
+    }
+  )
+  .settings(configurePlatform(), checkInBindings)
+
 lazy val postgres =
   project
     .in(file("example-postgres"))
@@ -591,6 +611,14 @@ ThisBuild / commands += Command.arb { s =>
   }
 
 }
+
+val checkInBindings = Seq(
+  bindgenMode := BindgenMode.Manual(
+    scalaDir =
+      (Compile / sourceDirectory).value / "scala" / "generated",
+    cDir = (Compile / resourceDirectory).value / "scala-native"
+  )
+)
 
 ThisBuild / commands += Command.command("runExamples") { st =>
   projectCommands(st).foldLeft(st) { case (s, n) =>
