@@ -473,7 +473,8 @@ lazy val libuv = project
             )
           )
       )
-    }
+    },
+    nativeConfig ~= { _.withCOptions(Seq("-std=c11")) }
   )
   .settings(bindgenSettings)
   .settings(configurePlatform())
@@ -524,7 +525,7 @@ lazy val ffmpeg =
           .withClangFlags(
             List("-I" + vcpkgConfigurator.value.includes("ffmpeg"))
           )
-          // .withLogLevel(bindgen.interface.LogLevel.Trace)
+        // .withLogLevel(bindgen.interface.LogLevel.Trace)
       }
     )
     .settings(bindgenSettings)
