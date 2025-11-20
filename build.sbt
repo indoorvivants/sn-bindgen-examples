@@ -474,7 +474,7 @@ lazy val libuv = project
           )
       )
     },
-    nativeConfig ~= { _.withCOptions(Seq("-std=c11")) }
+    nativeConfig ~= { _.withCOptions(Seq("-std=gnu11")) }
   )
   .settings(bindgenSettings)
   .settings(configurePlatform())
