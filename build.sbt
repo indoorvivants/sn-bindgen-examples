@@ -511,7 +511,7 @@ lazy val ffmpeg =
       vcpkgNativeConfig ~= { _.withApproximate(false) },
       bindgenBindings += {
         Binding(
-          headerFile = (Compile / baseDirectory).value / "ffmpeg-amalgam.h",
+          header = (Compile / baseDirectory).value / "ffmpeg-amalgam.h",
           packageName = "ffmpeg"
         )
           .withCImports(
