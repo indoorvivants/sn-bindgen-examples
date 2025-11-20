@@ -6,13 +6,12 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[libredis] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
-    given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
-    extension (inline t: T)
-     inline def value: CUnsignedInt = eq.apply(t)
-     inline def int: CInt = eq.apply(t).toInt
-     inline def uint: CUnsignedInt = eq.apply(t)
-
+    private[libredis] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
+      given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
+      extension (inline t: T)
+        inline def value: CUnsignedInt = eq.apply(t)
+        inline def int: CInt = eq.apply(t).toInt
+        inline def uint: CUnsignedInt = eq.apply(t)
 
 object enumerations:
   import predef.*
@@ -23,11 +22,11 @@ object enumerations:
     val REDIS_CONN_TCP = define(0)
     val REDIS_CONN_UNIX = define(1)
     val REDIS_CONN_USERFD = define(2)
-    inline def getName(inline value: redisConnectionType): Option[String] =
-      inline value match
-        case REDIS_CONN_TCP => Some("REDIS_CONN_TCP")
-        case REDIS_CONN_UNIX => Some("REDIS_CONN_UNIX")
-        case REDIS_CONN_USERFD => Some("REDIS_CONN_USERFD")
+    def getName(value: redisConnectionType): Option[String] =
+      value match
+        case `REDIS_CONN_TCP` => Some("REDIS_CONN_TCP")
+        case `REDIS_CONN_UNIX` => Some("REDIS_CONN_UNIX")
+        case `REDIS_CONN_USERFD` => Some("REDIS_CONN_USERFD")
         case _ => _root_.scala.None
     extension (a: redisConnectionType)
       inline def &(b: redisConnectionType): redisConnectionType = a & b
@@ -40,84 +39,84 @@ object aliases:
   import _root_.libredis.aliases.*
   import _root_.libredis.structs.*
   type redisAsyncPushFn = CFuncPtr2[Ptr[redisAsyncContext], Ptr[Byte], Unit]
-  object redisAsyncPushFn: 
+  object redisAsyncPushFn:
     given _tag: Tag[redisAsyncPushFn] = Tag.materializeCFuncPtr2[Ptr[redisAsyncContext], Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr2[Ptr[redisAsyncContext], Ptr[Byte], Unit]): redisAsyncPushFn = o
     extension (v: redisAsyncPushFn)
       inline def value: CFuncPtr2[Ptr[redisAsyncContext], Ptr[Byte], Unit] = v
 
   opaque type redisFD = CInt
-  object redisFD: 
+  object redisFD:
     given _tag: Tag[redisFD] = Tag.Int
     inline def apply(inline o: CInt): redisFD = o
     extension (v: redisFD)
       inline def value: CInt = v
 
   type redisPushFn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit]
-  object redisPushFn: 
+  object redisPushFn:
     given _tag: Tag[redisPushFn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit]): redisPushFn = o
     extension (v: redisPushFn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit] = v
 
   opaque type sds = CString
-  object sds: 
+  object sds:
     given _tag: Tag[sds] = Tag.Ptr[CChar](Tag.Byte)
     inline def apply(inline o: CString): sds = o
     extension (v: sds)
       inline def value: CString = v
 
   type size_t = libc.stddef.size_t
-  object size_t: 
+  object size_t:
     val _tag: Tag[size_t] = summon[Tag[libc.stddef.size_t]]
     inline def apply(inline o: libc.stddef.size_t): size_t = o
     extension (v: size_t)
       inline def value: libc.stddef.size_t = v
 
   type ssize_t = posix.sys.types.ssize_t
-  object ssize_t: 
+  object ssize_t:
     val _tag: Tag[ssize_t] = summon[Tag[posix.sys.types.ssize_t]]
     inline def apply(inline o: posix.sys.types.ssize_t): ssize_t = o
     extension (v: ssize_t)
       inline def value: posix.sys.types.ssize_t = v
 
   type timeval = posix.sys.time.timeval
-  object timeval: 
+  object timeval:
     val _tag: Tag[timeval] = summon[Tag[posix.sys.time.timeval]]
     inline def apply(inline o: posix.sys.time.timeval): timeval = o
     extension (v: timeval)
       inline def value: posix.sys.time.timeval = v
 
   type uint16_t = scala.scalanative.unsigned.UShort
-  object uint16_t: 
+  object uint16_t:
     val _tag: Tag[uint16_t] = summon[Tag[scala.scalanative.unsigned.UShort]]
     inline def apply(inline o: scala.scalanative.unsigned.UShort): uint16_t = o
     extension (v: uint16_t)
       inline def value: scala.scalanative.unsigned.UShort = v
 
   type uint32_t = scala.scalanative.unsigned.UInt
-  object uint32_t: 
+  object uint32_t:
     val _tag: Tag[uint32_t] = summon[Tag[scala.scalanative.unsigned.UInt]]
     inline def apply(inline o: scala.scalanative.unsigned.UInt): uint32_t = o
     extension (v: uint32_t)
       inline def value: scala.scalanative.unsigned.UInt = v
 
   type uint64_t = scala.scalanative.unsigned.ULong
-  object uint64_t: 
+  object uint64_t:
     val _tag: Tag[uint64_t] = summon[Tag[scala.scalanative.unsigned.ULong]]
     inline def apply(inline o: scala.scalanative.unsigned.ULong): uint64_t = o
     extension (v: uint64_t)
       inline def value: scala.scalanative.unsigned.ULong = v
 
   type uint8_t = scala.scalanative.unsigned.UByte
-  object uint8_t: 
+  object uint8_t:
     val _tag: Tag[uint8_t] = summon[Tag[scala.scalanative.unsigned.UByte]]
     inline def apply(inline o: scala.scalanative.unsigned.UByte): uint8_t = o
     extension (v: uint8_t)
       inline def value: scala.scalanative.unsigned.UByte = v
 
   type va_list = unsafe.CVarArgList
-  object va_list: 
+  object va_list:
     val _tag: Tag[va_list] = summon[Tag[unsafe.CVarArgList]]
     inline def apply(inline o: unsafe.CVarArgList): va_list = o
     extension (v: va_list)
@@ -128,11 +127,15 @@ object structs:
   import _root_.libredis.predef.*
   import _root_.libredis.aliases.*
   import _root_.libredis.structs.*
+
   opaque type hiredisAllocFuncs = CStruct5[CFuncPtr1[size_t, Ptr[Byte]], CFuncPtr2[size_t, size_t, Ptr[Byte]], CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], CFuncPtr1[CString, CString], CFuncPtr1[Ptr[Byte], Unit]]
+  
   object hiredisAllocFuncs:
     given _tag: Tag[hiredisAllocFuncs] = Tag.materializeCStruct5Tag[CFuncPtr1[size_t, Ptr[Byte]], CFuncPtr2[size_t, size_t, Ptr[Byte]], CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], CFuncPtr1[CString, CString], CFuncPtr1[Ptr[Byte], Unit]]
+    
+    // Allocates hiredisAllocFuncs on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[hiredisAllocFuncs] = scala.scalanative.unsafe.alloc[hiredisAllocFuncs](1)
-    def apply(mallocFn : CFuncPtr1[size_t, Ptr[Byte]], callocFn : CFuncPtr2[size_t, size_t, Ptr[Byte]], reallocFn : CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], strdupFn : CFuncPtr1[CString, CString], freeFn : CFuncPtr1[Ptr[Byte], Unit])(using Zone): Ptr[hiredisAllocFuncs] = 
+    def apply(mallocFn : CFuncPtr1[size_t, Ptr[Byte]], callocFn : CFuncPtr2[size_t, size_t, Ptr[Byte]], reallocFn : CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], strdupFn : CFuncPtr1[CString, CString], freeFn : CFuncPtr1[Ptr[Byte], Unit])(using Zone): Ptr[hiredisAllocFuncs] =
       val ____ptr = apply()
       (!____ptr).mallocFn = mallocFn
       (!____ptr).callocFn = callocFn
@@ -140,6 +143,7 @@ object structs:
       (!____ptr).strdupFn = strdupFn
       (!____ptr).freeFn = freeFn
       ____ptr
+    
     extension (struct: hiredisAllocFuncs)
       def mallocFn : CFuncPtr1[size_t, Ptr[Byte]] = struct._1
       def mallocFn_=(value: CFuncPtr1[size_t, Ptr[Byte]]): Unit = !struct.at1 = value
@@ -151,47 +155,22 @@ object structs:
       def strdupFn_=(value: CFuncPtr1[CString, CString]): Unit = !struct.at4 = value
       def freeFn : CFuncPtr1[Ptr[Byte], Unit] = struct._5
       def freeFn_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at5 = value
+    
 
   opaque type redisAsyncContext = CStruct0
+  
   object redisAsyncContext:
     given _tag: Tag[redisAsyncContext] = Tag.materializeCStruct0Tag
+    
 
-  opaque type redisContext = CStruct19[Ptr[Byte], CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], redisFD, CInt, CString, Ptr[Byte], redisConnectionType, Ptr[timeval], Ptr[timeval], redisContext.Struct0, redisContext.Struct1, CStruct0, Ptr[sockaddr], size_t, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte], Ptr[redisPushFn]]
+  opaque type redisContext = CStruct18[Ptr[Byte], CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], redisFD, CInt, CString, Ptr[Byte], redisConnectionType, Ptr[timeval], Ptr[timeval], redisContext.Tcp, redisContext.Unix_sock, Ptr[sockaddr], size_t, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte], Ptr[redisPushFn]]
+  
   object redisContext:
-    opaque type Struct0 = CStruct3[CString, CString, CInt]
-    object Struct0:
-      given _tag: Tag[Struct0] = Tag.materializeCStruct3Tag[CString, CString, CInt]
-      def apply()(using Zone): Ptr[Struct0] = scala.scalanative.unsafe.alloc[Struct0](1)
-      def apply(host : CString, source_addr : CString, port : CInt)(using Zone): Ptr[Struct0] = 
-        val ____ptr = apply()
-        (!____ptr).host = host
-        (!____ptr).source_addr = source_addr
-        (!____ptr).port = port
-        ____ptr
-      extension (struct: Struct0)
-        def host : CString = struct._1
-        def host_=(value: CString): Unit = !struct.at1 = value
-        def source_addr : CString = struct._2
-        def source_addr_=(value: CString): Unit = !struct.at2 = value
-        def port : CInt = struct._3
-        def port_=(value: CInt): Unit = !struct.at3 = value
-    opaque type Struct1 = CStruct1[CString]
-    object Struct1:
-      given _tag: Tag[Struct1] = Tag.materializeCStruct1Tag[CString]
-      def apply()(using Zone): Ptr[Struct1] = scala.scalanative.unsafe.alloc[Struct1](1)
-      def apply(path : CString)(using Zone): Ptr[Struct1] = 
-        val ____ptr = apply()
-        (!____ptr).path = path
-        ____ptr
-      extension (struct: Struct1)
-        def path : CString = struct._1
-        def path_=(value: CString): Unit = !struct.at1 = value
-    opaque type Struct2 = CStruct0
-    object Struct2:
-      given _tag: Tag[Struct2] = Tag.materializeCStruct0Tag
-    given _tag: Tag[redisContext] = Tag.materializeCStruct19Tag[Ptr[Byte], CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], redisFD, CInt, CString, Ptr[Byte], redisConnectionType, Ptr[timeval], Ptr[timeval], redisContext.Struct0, redisContext.Struct1, CStruct0, Ptr[sockaddr], size_t, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte], Ptr[redisPushFn]]
+    given _tag: Tag[redisContext] = Tag.materializeCStruct18Tag[Ptr[Byte], CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], redisFD, CInt, CString, Ptr[Byte], redisConnectionType, Ptr[timeval], Ptr[timeval], redisContext.Tcp, redisContext.Unix_sock, Ptr[sockaddr], size_t, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte], Ptr[redisPushFn]]
+    
+    // Allocates redisContext on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[redisContext] = scala.scalanative.unsafe.alloc[redisContext](1)
-    def apply(funcs : Ptr[redisContextFuncs], err : CInt, errstr : CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], fd : redisFD, flags : CInt, obuf : CString, reader : Ptr[redisReader], connection_type : redisConnectionType, connect_timeout : Ptr[timeval], command_timeout : Ptr[timeval], tcp : redisContext.Struct0, unix_sock : redisContext.Struct1, saddr : Ptr[sockaddr], addrlen : size_t, privdata : Ptr[Byte], free_privdata : CFuncPtr1[Ptr[Byte], Unit], privctx : Ptr[Byte], push_cb : Ptr[redisPushFn])(using Zone): Ptr[redisContext] = 
+    def apply(funcs : Ptr[redisContextFuncs], err : CInt, errstr : CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], fd : redisFD, flags : CInt, obuf : CString, reader : Ptr[redisReader], connection_type : redisConnectionType, connect_timeout : Ptr[timeval], command_timeout : Ptr[timeval], tcp : redisContext.Tcp, unix_sock : redisContext.Unix_sock, saddr : Ptr[sockaddr], addrlen : size_t, privdata : Ptr[Byte], free_privdata : CFuncPtr1[Ptr[Byte], Unit], privctx : Ptr[Byte], push_cb : Ptr[redisPushFn])(using Zone): Ptr[redisContext] =
       val ____ptr = apply()
       (!____ptr).funcs = funcs
       (!____ptr).err = err
@@ -212,6 +191,7 @@ object structs:
       (!____ptr).privctx = privctx
       (!____ptr).push_cb = push_cb
       ____ptr
+    
     extension (struct: redisContext)
       def funcs : Ptr[redisContextFuncs] = struct._1.asInstanceOf[Ptr[redisContextFuncs]]
       def funcs_=(value: Ptr[redisContextFuncs]): Unit = !struct.at1 = value.asInstanceOf[Ptr[Byte]]
@@ -233,28 +213,71 @@ object structs:
       def connect_timeout_=(value: Ptr[timeval]): Unit = !struct.at9 = value
       def command_timeout : Ptr[timeval] = struct._10
       def command_timeout_=(value: Ptr[timeval]): Unit = !struct.at10 = value
-      def tcp : redisContext.Struct0 = struct._11
-      def tcp_=(value: redisContext.Struct0): Unit = !struct.at11 = value
-      def unix_sock : redisContext.Struct1 = struct._12
-      def unix_sock_=(value: redisContext.Struct1): Unit = !struct.at12 = value
-      def saddr : Ptr[sockaddr] = struct._14
-      def saddr_=(value: Ptr[sockaddr]): Unit = !struct.at14 = value
-      def addrlen : size_t = struct._15
-      def addrlen_=(value: size_t): Unit = !struct.at15 = value
-      def privdata : Ptr[Byte] = struct._16
-      def privdata_=(value: Ptr[Byte]): Unit = !struct.at16 = value
-      def free_privdata : CFuncPtr1[Ptr[Byte], Unit] = struct._17
-      def free_privdata_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at17 = value
-      def privctx : Ptr[Byte] = struct._18
-      def privctx_=(value: Ptr[Byte]): Unit = !struct.at18 = value
-      def push_cb : Ptr[redisPushFn] = struct._19
-      def push_cb_=(value: Ptr[redisPushFn]): Unit = !struct.at19 = value
+      def tcp : redisContext.Tcp = struct._11
+      def tcp_=(value: redisContext.Tcp): Unit = !struct.at11 = value
+      def unix_sock : redisContext.Unix_sock = struct._12
+      def unix_sock_=(value: redisContext.Unix_sock): Unit = !struct.at12 = value
+      def saddr : Ptr[sockaddr] = struct._13
+      def saddr_=(value: Ptr[sockaddr]): Unit = !struct.at13 = value
+      def addrlen : size_t = struct._14
+      def addrlen_=(value: size_t): Unit = !struct.at14 = value
+      def privdata : Ptr[Byte] = struct._15
+      def privdata_=(value: Ptr[Byte]): Unit = !struct.at15 = value
+      def free_privdata : CFuncPtr1[Ptr[Byte], Unit] = struct._16
+      def free_privdata_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at16 = value
+      def privctx : Ptr[Byte] = struct._17
+      def privctx_=(value: Ptr[Byte]): Unit = !struct.at17 = value
+      def push_cb : Ptr[redisPushFn] = struct._18
+      def push_cb_=(value: Ptr[redisPushFn]): Unit = !struct.at18 = value
+    
+    opaque type Tcp = CStruct3[CString, CString, CInt]
+    
+    object Tcp:
+      given _tag: Tag[Tcp] = Tag.materializeCStruct3Tag[CString, CString, CInt]
+      
+      // Allocates Tcp on the heap – fields are not initalised or zeroed out
+      def apply()(using Zone): Ptr[Tcp] = scala.scalanative.unsafe.alloc[Tcp](1)
+      def apply(host : CString, source_addr : CString, port : CInt)(using Zone): Ptr[Tcp] =
+        val ____ptr = apply()
+        (!____ptr).host = host
+        (!____ptr).source_addr = source_addr
+        (!____ptr).port = port
+        ____ptr
+      
+      extension (struct: Tcp)
+        def host : CString = struct._1
+        def host_=(value: CString): Unit = !struct.at1 = value
+        def source_addr : CString = struct._2
+        def source_addr_=(value: CString): Unit = !struct.at2 = value
+        def port : CInt = struct._3
+        def port_=(value: CInt): Unit = !struct.at3 = value
+      
+    
+    opaque type Unix_sock = CStruct1[CString]
+    
+    object Unix_sock:
+      given _tag: Tag[Unix_sock] = Tag.materializeCStruct1Tag[CString]
+      
+      // Allocates Unix_sock on the heap – fields are not initalised or zeroed out
+      def apply()(using Zone): Ptr[Unix_sock] = scala.scalanative.unsafe.alloc[Unix_sock](1)
+      def apply(path : CString)(using Zone): Ptr[Unix_sock] =
+        val ____ptr = apply()
+        (!____ptr).path = path
+        ____ptr
+      
+      extension (struct: Unix_sock)
+        def path : CString = struct._1
+        def path_=(value: CString): Unit = !struct.at1 = value
+      
 
   opaque type redisContextFuncs = CStruct6[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr3[Ptr[Byte], CString, size_t, ssize_t], CFuncPtr1[Ptr[Byte], ssize_t]]
+  
   object redisContextFuncs:
     given _tag: Tag[redisContextFuncs] = Tag.materializeCStruct6Tag[CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[Byte], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr1[Ptr[redisAsyncContext], Unit], CFuncPtr3[Ptr[Byte], CString, size_t, ssize_t], CFuncPtr1[Ptr[Byte], ssize_t]]
+    
+    // Allocates redisContextFuncs on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[redisContextFuncs] = scala.scalanative.unsafe.alloc[redisContextFuncs](1)
-    def apply(close : CFuncPtr1[Ptr[redisContext], Unit], free_privctx : CFuncPtr1[Ptr[Byte], Unit], async_read : CFuncPtr1[Ptr[redisAsyncContext], Unit], async_write : CFuncPtr1[Ptr[redisAsyncContext], Unit], read : CFuncPtr3[Ptr[redisContext], CString, size_t, ssize_t], write : CFuncPtr1[Ptr[redisContext], ssize_t])(using Zone): Ptr[redisContextFuncs] = 
+    def apply(close : CFuncPtr1[Ptr[redisContext], Unit], free_privctx : CFuncPtr1[Ptr[Byte], Unit], async_read : CFuncPtr1[Ptr[redisAsyncContext], Unit], async_write : CFuncPtr1[Ptr[redisAsyncContext], Unit], read : CFuncPtr3[Ptr[redisContext], CString, size_t, ssize_t], write : CFuncPtr1[Ptr[redisContext], ssize_t])(using Zone): Ptr[redisContextFuncs] =
       val ____ptr = apply()
       (!____ptr).close = close
       (!____ptr).free_privctx = free_privctx
@@ -263,6 +286,7 @@ object structs:
       (!____ptr).read = read
       (!____ptr).write = write
       ____ptr
+    
     extension (struct: redisContextFuncs)
       def close : CFuncPtr1[Ptr[redisContext], Unit] = struct._1.asInstanceOf[CFuncPtr1[Ptr[redisContext], Unit]]
       def close_=(value: CFuncPtr1[Ptr[redisContext], Unit]): Unit = !struct.at1 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
@@ -276,63 +300,16 @@ object structs:
       def read_=(value: CFuncPtr3[Ptr[redisContext], CString, size_t, ssize_t]): Unit = !struct.at5 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], CString, size_t, ssize_t]]
       def write : CFuncPtr1[Ptr[redisContext], ssize_t] = struct._6.asInstanceOf[CFuncPtr1[Ptr[redisContext], ssize_t]]
       def write_=(value: CFuncPtr1[Ptr[redisContext], ssize_t]): Unit = !struct.at6 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], ssize_t]]
+    
 
-  opaque type redisOptions = CStruct9[CInt, CInt, Ptr[timeval], Ptr[timeval], redisOptions.Union0, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[redisPushFn], Ptr[redisAsyncPushFn]]
+  opaque type redisOptions = CStruct9[CInt, CInt, Ptr[timeval], Ptr[timeval], redisOptions.Endpoint, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[redisPushFn], Ptr[redisAsyncPushFn]]
+  
   object redisOptions:
-    opaque type Union0 = CArray[Byte, Nat.Digit2[Nat._2, Nat._4]]
-    object Union0:
-      /**
-       * use this field for tcp/ip connections
-      */
-      opaque type Struct0 = CStruct3[CString, CString, CInt]
-      object Struct0:
-        given _tag: Tag[Struct0] = Tag.materializeCStruct3Tag[CString, CString, CInt]
-        def apply()(using Zone): Ptr[Struct0] = scala.scalanative.unsafe.alloc[Struct0](1)
-        def apply(source_addr : CString, ip : CString, port : CInt)(using Zone): Ptr[Struct0] = 
-          val ____ptr = apply()
-          (!____ptr).source_addr = source_addr
-          (!____ptr).ip = ip
-          (!____ptr).port = port
-          ____ptr
-        extension (struct: Struct0)
-          def source_addr : CString = struct._1
-          def source_addr_=(value: CString): Unit = !struct.at1 = value
-          def ip : CString = struct._2
-          def ip_=(value: CString): Unit = !struct.at2 = value
-          def port : CInt = struct._3
-          def port_=(value: CInt): Unit = !struct.at3 = value
-      given _tag: Tag[Union0] = Tag.CArray[CChar, Nat.Digit2[Nat._2, Nat._4]](Tag.Byte, Tag.Digit2[Nat._2, Nat._4](Tag.Nat2, Tag.Nat4))
-      def apply()(using Zone): Ptr[Union0] = 
-        val ___ptr = alloc[Union0](1)
-        ___ptr
-      @scala.annotation.targetName("apply_tcp")
-      def apply(tcp: redisOptions.Union0.Struct0)(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
-        val un = !___ptr
-        un.at(0).asInstanceOf[Ptr[redisOptions.Union0.Struct0]].update(0, tcp)
-        ___ptr
-      @scala.annotation.targetName("apply_unix_socket")
-      def apply(unix_socket: CString)(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
-        val un = !___ptr
-        un.at(0).asInstanceOf[Ptr[CString]].update(0, unix_socket)
-        ___ptr
-      @scala.annotation.targetName("apply_fd")
-      def apply(fd: redisFD)(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
-        val un = !___ptr
-        un.at(0).asInstanceOf[Ptr[redisFD]].update(0, fd)
-        ___ptr
-      extension (struct: Union0)
-        def tcp : redisOptions.Union0.Struct0 = !struct.at(0).asInstanceOf[Ptr[redisOptions.Union0.Struct0]]
-        def tcp_=(value: redisOptions.Union0.Struct0): Unit = !struct.at(0).asInstanceOf[Ptr[redisOptions.Union0.Struct0]] = value
-        def unix_socket : CString = !struct.at(0).asInstanceOf[Ptr[CString]]
-        def unix_socket_=(value: CString): Unit = !struct.at(0).asInstanceOf[Ptr[CString]] = value
-        def fd : redisFD = !struct.at(0).asInstanceOf[Ptr[redisFD]]
-        def fd_=(value: redisFD): Unit = !struct.at(0).asInstanceOf[Ptr[redisFD]] = value
-    given _tag: Tag[redisOptions] = Tag.materializeCStruct9Tag[CInt, CInt, Ptr[timeval], Ptr[timeval], redisOptions.Union0, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[redisPushFn], Ptr[redisAsyncPushFn]]
+    given _tag: Tag[redisOptions] = Tag.materializeCStruct9Tag[CInt, CInt, Ptr[timeval], Ptr[timeval], redisOptions.Endpoint, Ptr[Byte], CFuncPtr1[Ptr[Byte], Unit], Ptr[redisPushFn], Ptr[redisAsyncPushFn]]
+    
+    // Allocates redisOptions on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[redisOptions] = scala.scalanative.unsafe.alloc[redisOptions](1)
-    def apply(`type` : CInt, options : CInt, connect_timeout : Ptr[timeval], command_timeout : Ptr[timeval], endpoint : redisOptions.Union0, privdata : Ptr[Byte], free_privdata : CFuncPtr1[Ptr[Byte], Unit], push_cb : Ptr[redisPushFn], async_push_cb : Ptr[redisAsyncPushFn])(using Zone): Ptr[redisOptions] = 
+    def apply(`type` : CInt, options : CInt, connect_timeout : Ptr[timeval], command_timeout : Ptr[timeval], endpoint : redisOptions.Endpoint, privdata : Ptr[Byte], free_privdata : CFuncPtr1[Ptr[Byte], Unit], push_cb : Ptr[redisPushFn], async_push_cb : Ptr[redisAsyncPushFn])(using Zone): Ptr[redisOptions] =
       val ____ptr = apply()
       (!____ptr).`type` = `type`
       (!____ptr).options = options
@@ -344,6 +321,7 @@ object structs:
       (!____ptr).push_cb = push_cb
       (!____ptr).async_push_cb = async_push_cb
       ____ptr
+    
     extension (struct: redisOptions)
       def `type` : CInt = struct._1
       def type_=(value: CInt): Unit = !struct.at1 = value
@@ -353,8 +331,8 @@ object structs:
       def connect_timeout_=(value: Ptr[timeval]): Unit = !struct.at3 = value
       def command_timeout : Ptr[timeval] = struct._4
       def command_timeout_=(value: Ptr[timeval]): Unit = !struct.at4 = value
-      def endpoint : redisOptions.Union0 = struct._5
-      def endpoint_=(value: redisOptions.Union0): Unit = !struct.at5 = value
+      def endpoint : redisOptions.Endpoint = struct._5
+      def endpoint_=(value: redisOptions.Endpoint): Unit = !struct.at5 = value
       def privdata : Ptr[Byte] = struct._6
       def privdata_=(value: Ptr[Byte]): Unit = !struct.at6 = value
       def free_privdata : CFuncPtr1[Ptr[Byte], Unit] = struct._7
@@ -363,12 +341,77 @@ object structs:
       def push_cb_=(value: Ptr[redisPushFn]): Unit = !struct.at8 = value
       def async_push_cb : Ptr[redisAsyncPushFn] = struct._9
       def async_push_cb_=(value: Ptr[redisAsyncPushFn]): Unit = !struct.at9 = value
+    
+    opaque type Endpoint = CArray[Byte, Nat.Digit2[Nat._2, Nat._4]]
+    object Endpoint:
+      /**
+       * use this field for tcp/ip connections
+      */
+      opaque type Tcp = CStruct3[CString, CString, CInt]
+      
+      object Tcp:
+        given _tag: Tag[Tcp] = Tag.materializeCStruct3Tag[CString, CString, CInt]
+        
+        // Allocates Tcp on the heap – fields are not initalised or zeroed out
+        def apply()(using Zone): Ptr[Tcp] = scala.scalanative.unsafe.alloc[Tcp](1)
+        def apply(source_addr : CString, ip : CString, port : CInt)(using Zone): Ptr[Tcp] =
+          val ____ptr = apply()
+          (!____ptr).source_addr = source_addr
+          (!____ptr).ip = ip
+          (!____ptr).port = port
+          ____ptr
+        
+        extension (struct: Tcp)
+          def source_addr : CString = struct._1
+          def source_addr_=(value: CString): Unit = !struct.at1 = value
+          def ip : CString = struct._2
+          def ip_=(value: CString): Unit = !struct.at2 = value
+          def port : CInt = struct._3
+          def port_=(value: CInt): Unit = !struct.at3 = value
+        
+      given _tag: Tag[Endpoint] = Tag.CArray[CChar, Nat.Digit2[Nat._2, Nat._4]](Tag.Byte, Tag.Digit2[Nat._2, Nat._4](Tag.Nat2, Tag.Nat4))
+      
+      def apply()(using Zone): Ptr[Endpoint] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Endpoint](1)
+        ___ptr
+      
+      @scala.annotation.targetName("apply_tcp")
+      def apply(tcp: redisOptions.Endpoint.Tcp)(using Zone): Ptr[Endpoint] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Endpoint](1)
+        val un = !___ptr
+        un.at(0).asInstanceOf[Ptr[redisOptions.Endpoint.Tcp]].update(0, tcp)
+        ___ptr
+      
+      @scala.annotation.targetName("apply_unix_socket")
+      def apply(unix_socket: CString)(using Zone): Ptr[Endpoint] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Endpoint](1)
+        val un = !___ptr
+        un.at(0).asInstanceOf[Ptr[CString]].update(0, unix_socket)
+        ___ptr
+      
+      @scala.annotation.targetName("apply_fd")
+      def apply(fd: redisFD)(using Zone): Ptr[Endpoint] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Endpoint](1)
+        val un = !___ptr
+        un.at(0).asInstanceOf[Ptr[redisFD]].update(0, fd)
+        ___ptr
+      
+      extension (struct: Endpoint)
+        def tcp : redisOptions.Endpoint.Tcp = !struct.at(0).asInstanceOf[Ptr[redisOptions.Endpoint.Tcp]]
+        def tcp_=(value: redisOptions.Endpoint.Tcp): Unit = !struct.at(0).asInstanceOf[Ptr[redisOptions.Endpoint.Tcp]] = value
+        def unix_socket : CString = !struct.at(0).asInstanceOf[Ptr[CString]]
+        def unix_socket_=(value: CString): Unit = !struct.at(0).asInstanceOf[Ptr[CString]] = value
+        def fd : redisFD = !struct.at(0).asInstanceOf[Ptr[redisFD]]
+        def fd_=(value: redisFD): Unit = !struct.at(0).asInstanceOf[Ptr[redisFD]] = value
 
   opaque type redisReadTask = CStruct6[CInt, CLongLong, CInt, Ptr[Byte], Ptr[Byte], Ptr[Byte]]
+  
   object redisReadTask:
     given _tag: Tag[redisReadTask] = Tag.materializeCStruct6Tag[CInt, CLongLong, CInt, Ptr[Byte], Ptr[Byte], Ptr[Byte]]
+    
+    // Allocates redisReadTask on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[redisReadTask] = scala.scalanative.unsafe.alloc[redisReadTask](1)
-    def apply(`type` : CInt, elements : CLongLong, idx : CInt, obj : Ptr[Byte], parent : Ptr[redisReadTask], privdata : Ptr[Byte])(using Zone): Ptr[redisReadTask] = 
+    def apply(`type` : CInt, elements : CLongLong, idx : CInt, obj : Ptr[Byte], parent : Ptr[redisReadTask], privdata : Ptr[Byte])(using Zone): Ptr[redisReadTask] =
       val ____ptr = apply()
       (!____ptr).`type` = `type`
       (!____ptr).elements = elements
@@ -377,6 +420,7 @@ object structs:
       (!____ptr).parent = parent
       (!____ptr).privdata = privdata
       ____ptr
+    
     extension (struct: redisReadTask)
       def `type` : CInt = struct._1
       def type_=(value: CInt): Unit = !struct.at1 = value
@@ -390,12 +434,16 @@ object structs:
       def parent_=(value: Ptr[redisReadTask]): Unit = !struct.at5 = value.asInstanceOf[Ptr[Byte]]
       def privdata : Ptr[Byte] = struct._6
       def privdata_=(value: Ptr[Byte]): Unit = !struct.at6 = value
+    
 
   opaque type redisReader = CStruct13[CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], CString, size_t, size_t, size_t, CLongLong, Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte], Ptr[Byte]]
+  
   object redisReader:
     given _tag: Tag[redisReader] = Tag.materializeCStruct13Tag[CInt, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], CString, size_t, size_t, size_t, CLongLong, Ptr[Byte], CInt, CInt, Ptr[Byte], Ptr[Byte], Ptr[Byte]]
+    
+    // Allocates redisReader on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[redisReader] = scala.scalanative.unsafe.alloc[redisReader](1)
-    def apply(err : CInt, errstr : CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], buf : CString, pos : size_t, len : size_t, maxbuf : size_t, maxelements : CLongLong, task : Ptr[Ptr[redisReadTask]], tasks : CInt, ridx : CInt, reply : Ptr[Byte], fn : Ptr[redisReplyObjectFunctions], privdata : Ptr[Byte])(using Zone): Ptr[redisReader] = 
+    def apply(err : CInt, errstr : CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]], buf : CString, pos : size_t, len : size_t, maxbuf : size_t, maxelements : CLongLong, task : Ptr[Ptr[redisReadTask]], tasks : CInt, ridx : CInt, reply : Ptr[Byte], fn : Ptr[redisReplyObjectFunctions], privdata : Ptr[Byte])(using Zone): Ptr[redisReader] =
       val ____ptr = apply()
       (!____ptr).err = err
       (!____ptr).errstr = errstr
@@ -411,6 +459,7 @@ object structs:
       (!____ptr).fn = fn
       (!____ptr).privdata = privdata
       ____ptr
+    
     extension (struct: redisReader)
       def err : CInt = struct._1
       def err_=(value: CInt): Unit = !struct.at1 = value
@@ -438,12 +487,16 @@ object structs:
       def fn_=(value: Ptr[redisReplyObjectFunctions]): Unit = !struct.at12 = value.asInstanceOf[Ptr[Byte]]
       def privdata : Ptr[Byte] = struct._13
       def privdata_=(value: Ptr[Byte]): Unit = !struct.at13 = value
+    
 
   opaque type redisReply = CStruct8[CInt, CLongLong, Double, size_t, CString, CArray[CChar, Nat._4], size_t, Ptr[Byte]]
+  
   object redisReply:
     given _tag: Tag[redisReply] = Tag.materializeCStruct8Tag[CInt, CLongLong, Double, size_t, CString, CArray[CChar, Nat._4], size_t, Ptr[Byte]]
+    
+    // Allocates redisReply on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[redisReply] = scala.scalanative.unsafe.alloc[redisReply](1)
-    def apply(`type` : CInt, integer : CLongLong, dval : Double, len : size_t, str : CString, vtype : CArray[CChar, Nat._4], elements : size_t, element : Ptr[Ptr[redisReply]])(using Zone): Ptr[redisReply] = 
+    def apply(`type` : CInt, integer : CLongLong, dval : Double, len : size_t, str : CString, vtype : CArray[CChar, Nat._4], elements : size_t, element : Ptr[Ptr[redisReply]])(using Zone): Ptr[redisReply] =
       val ____ptr = apply()
       (!____ptr).`type` = `type`
       (!____ptr).integer = integer
@@ -454,6 +507,7 @@ object structs:
       (!____ptr).elements = elements
       (!____ptr).element = element
       ____ptr
+    
     extension (struct: redisReply)
       def `type` : CInt = struct._1
       def type_=(value: CInt): Unit = !struct.at1 = value
@@ -471,12 +525,16 @@ object structs:
       def elements_=(value: size_t): Unit = !struct.at7 = value
       def element : Ptr[Ptr[redisReply]] = struct._8.asInstanceOf[Ptr[Ptr[redisReply]]]
       def element_=(value: Ptr[Ptr[redisReply]]): Unit = !struct.at8 = value.asInstanceOf[Ptr[Byte]]
+    
 
   opaque type redisReplyObjectFunctions = CStruct7[CFuncPtr3[Ptr[Byte], CString, size_t, Ptr[Byte]], CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], CFuncPtr2[Ptr[Byte], CLongLong, Ptr[Byte]], CFuncPtr4[Ptr[Byte], Double, CString, size_t, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Ptr[Byte]], CFuncPtr2[Ptr[Byte], CInt, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit]]
+  
   object redisReplyObjectFunctions:
     given _tag: Tag[redisReplyObjectFunctions] = Tag.materializeCStruct7Tag[CFuncPtr3[Ptr[Byte], CString, size_t, Ptr[Byte]], CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], CFuncPtr2[Ptr[Byte], CLongLong, Ptr[Byte]], CFuncPtr4[Ptr[Byte], Double, CString, size_t, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Ptr[Byte]], CFuncPtr2[Ptr[Byte], CInt, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit]]
+    
+    // Allocates redisReplyObjectFunctions on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[redisReplyObjectFunctions] = scala.scalanative.unsafe.alloc[redisReplyObjectFunctions](1)
-    def apply(createString : CFuncPtr3[Ptr[redisReadTask], CString, size_t, Ptr[Byte]], createArray : CFuncPtr2[Ptr[redisReadTask], size_t, Ptr[Byte]], createInteger : CFuncPtr2[Ptr[redisReadTask], CLongLong, Ptr[Byte]], createDouble : CFuncPtr4[Ptr[redisReadTask], Double, CString, size_t, Ptr[Byte]], createNil : CFuncPtr1[Ptr[redisReadTask], Ptr[Byte]], createBool : CFuncPtr2[Ptr[redisReadTask], CInt, Ptr[Byte]], freeObject : CFuncPtr1[Ptr[Byte], Unit])(using Zone): Ptr[redisReplyObjectFunctions] = 
+    def apply(createString : CFuncPtr3[Ptr[redisReadTask], CString, size_t, Ptr[Byte]], createArray : CFuncPtr2[Ptr[redisReadTask], size_t, Ptr[Byte]], createInteger : CFuncPtr2[Ptr[redisReadTask], CLongLong, Ptr[Byte]], createDouble : CFuncPtr4[Ptr[redisReadTask], Double, CString, size_t, Ptr[Byte]], createNil : CFuncPtr1[Ptr[redisReadTask], Ptr[Byte]], createBool : CFuncPtr2[Ptr[redisReadTask], CInt, Ptr[Byte]], freeObject : CFuncPtr1[Ptr[Byte], Unit])(using Zone): Ptr[redisReplyObjectFunctions] =
       val ____ptr = apply()
       (!____ptr).createString = createString
       (!____ptr).createArray = createArray
@@ -486,6 +544,7 @@ object structs:
       (!____ptr).createBool = createBool
       (!____ptr).freeObject = freeObject
       ____ptr
+    
     extension (struct: redisReplyObjectFunctions)
       def createString : CFuncPtr3[Ptr[redisReadTask], CString, size_t, Ptr[Byte]] = struct._1.asInstanceOf[CFuncPtr3[Ptr[redisReadTask], CString, size_t, Ptr[Byte]]]
       def createString_=(value: CFuncPtr3[Ptr[redisReadTask], CString, size_t, Ptr[Byte]]): Unit = !struct.at1 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], CString, size_t, Ptr[Byte]]]
@@ -501,21 +560,28 @@ object structs:
       def createBool_=(value: CFuncPtr2[Ptr[redisReadTask], CInt, Ptr[Byte]]): Unit = !struct.at6 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], CInt, Ptr[Byte]]]
       def freeObject : CFuncPtr1[Ptr[Byte], Unit] = struct._7
       def freeObject_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at7 = value
+    
 
   opaque type redisSsl = CStruct0
+  
   object redisSsl:
     given _tag: Tag[redisSsl] = Tag.materializeCStruct0Tag
+    
 
   opaque type sdshdr16 = CStruct3[uint16_t, uint16_t, CUnsignedChar]
+  
   object sdshdr16:
     given _tag: Tag[sdshdr16] = Tag.materializeCStruct3Tag[uint16_t, uint16_t, CUnsignedChar]
+    
+    // Allocates sdshdr16 on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[sdshdr16] = scala.scalanative.unsafe.alloc[sdshdr16](1)
-    def apply(len : uint16_t, alloc : uint16_t, flags : CUnsignedChar)(using Zone): Ptr[sdshdr16] = 
+    def apply(len : uint16_t, alloc : uint16_t, flags : CUnsignedChar)(using Zone): Ptr[sdshdr16] =
       val ____ptr = apply()
       (!____ptr).len = len
       (!____ptr).alloc = alloc
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: sdshdr16)
       def len : uint16_t = struct._1
       def len_=(value: uint16_t): Unit = !struct.at1 = value
@@ -523,17 +589,22 @@ object structs:
       def alloc_=(value: uint16_t): Unit = !struct.at2 = value
       def flags : CUnsignedChar = struct._3
       def flags_=(value: CUnsignedChar): Unit = !struct.at3 = value
+    
 
   opaque type sdshdr32 = CStruct3[uint32_t, uint32_t, CUnsignedChar]
+  
   object sdshdr32:
     given _tag: Tag[sdshdr32] = Tag.materializeCStruct3Tag[uint32_t, uint32_t, CUnsignedChar]
+    
+    // Allocates sdshdr32 on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[sdshdr32] = scala.scalanative.unsafe.alloc[sdshdr32](1)
-    def apply(len : uint32_t, alloc : uint32_t, flags : CUnsignedChar)(using Zone): Ptr[sdshdr32] = 
+    def apply(len : uint32_t, alloc : uint32_t, flags : CUnsignedChar)(using Zone): Ptr[sdshdr32] =
       val ____ptr = apply()
       (!____ptr).len = len
       (!____ptr).alloc = alloc
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: sdshdr32)
       def len : uint32_t = struct._1
       def len_=(value: uint32_t): Unit = !struct.at1 = value
@@ -541,29 +612,39 @@ object structs:
       def alloc_=(value: uint32_t): Unit = !struct.at2 = value
       def flags : CUnsignedChar = struct._3
       def flags_=(value: CUnsignedChar): Unit = !struct.at3 = value
+    
 
   opaque type sdshdr5 = CStruct1[CUnsignedChar]
+  
   object sdshdr5:
     given _tag: Tag[sdshdr5] = Tag.materializeCStruct1Tag[CUnsignedChar]
+    
+    // Allocates sdshdr5 on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[sdshdr5] = scala.scalanative.unsafe.alloc[sdshdr5](1)
-    def apply(flags : CUnsignedChar)(using Zone): Ptr[sdshdr5] = 
+    def apply(flags : CUnsignedChar)(using Zone): Ptr[sdshdr5] =
       val ____ptr = apply()
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: sdshdr5)
       def flags : CUnsignedChar = struct._1
       def flags_=(value: CUnsignedChar): Unit = !struct.at1 = value
+    
 
   opaque type sdshdr64 = CStruct3[uint64_t, uint64_t, CUnsignedChar]
+  
   object sdshdr64:
     given _tag: Tag[sdshdr64] = Tag.materializeCStruct3Tag[uint64_t, uint64_t, CUnsignedChar]
+    
+    // Allocates sdshdr64 on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[sdshdr64] = scala.scalanative.unsafe.alloc[sdshdr64](1)
-    def apply(len : uint64_t, alloc : uint64_t, flags : CUnsignedChar)(using Zone): Ptr[sdshdr64] = 
+    def apply(len : uint64_t, alloc : uint64_t, flags : CUnsignedChar)(using Zone): Ptr[sdshdr64] =
       val ____ptr = apply()
       (!____ptr).len = len
       (!____ptr).alloc = alloc
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: sdshdr64)
       def len : uint64_t = struct._1
       def len_=(value: uint64_t): Unit = !struct.at1 = value
@@ -571,17 +652,22 @@ object structs:
       def alloc_=(value: uint64_t): Unit = !struct.at2 = value
       def flags : CUnsignedChar = struct._3
       def flags_=(value: CUnsignedChar): Unit = !struct.at3 = value
+    
 
   opaque type sdshdr8 = CStruct3[uint8_t, uint8_t, CUnsignedChar]
+  
   object sdshdr8:
     given _tag: Tag[sdshdr8] = Tag.materializeCStruct3Tag[uint8_t, uint8_t, CUnsignedChar]
+    
+    // Allocates sdshdr8 on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[sdshdr8] = scala.scalanative.unsafe.alloc[sdshdr8](1)
-    def apply(len : uint8_t, alloc : uint8_t, flags : CUnsignedChar)(using Zone): Ptr[sdshdr8] = 
+    def apply(len : uint8_t, alloc : uint8_t, flags : CUnsignedChar)(using Zone): Ptr[sdshdr8] =
       val ____ptr = apply()
       (!____ptr).len = len
       (!____ptr).alloc = alloc
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: sdshdr8)
       def len : uint8_t = struct._1
       def len_=(value: uint8_t): Unit = !struct.at1 = value
@@ -589,10 +675,13 @@ object structs:
       def alloc_=(value: uint8_t): Unit = !struct.at2 = value
       def flags : CUnsignedChar = struct._3
       def flags_=(value: CUnsignedChar): Unit = !struct.at3 = value
+    
 
   opaque type sockaddr = CStruct0
+  
   object sockaddr:
     given _tag: Tag[sockaddr] = Tag.materializeCStruct0Tag
+    
 
 
 @extern
@@ -795,18 +884,18 @@ object functions:
   import extern_functions.*
   export extern_functions.*
 
-  def hiredisSetAllocators(ha : Ptr[hiredisAllocFuncs])(using Zone): hiredisAllocFuncs = 
-    val __ptr_0: Ptr[hiredisAllocFuncs] = alloc[hiredisAllocFuncs](1)
+  def hiredisSetAllocators(ha : Ptr[hiredisAllocFuncs])(__return : Ptr[hiredisAllocFuncs]): Unit =
+    __sn_wrap_libredis_hiredisSetAllocators(ha, __return)
+
+  def hiredisSetAllocators(ha : Ptr[hiredisAllocFuncs])(using Zone): hiredisAllocFuncs =
+    val __ptr_0: Ptr[hiredisAllocFuncs] = _root_.scala.scalanative.unsafe.alloc[hiredisAllocFuncs](1)
     __sn_wrap_libredis_hiredisSetAllocators(ha, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def hiredisSetAllocators(ha : Ptr[hiredisAllocFuncs])(__return : Ptr[hiredisAllocFuncs]): Unit = 
-    __sn_wrap_libredis_hiredisSetAllocators(ha, __return)
-
 object types:
-  export _root_.libredis.structs.*
-  export _root_.libredis.aliases.*
-  export _root_.libredis.enumerations.*
+    export _root_.libredis.structs.*
+    export _root_.libredis.aliases.*
+    export _root_.libredis.enumerations.*
 
 object all:
   export _root_.libredis.enumerations.redisConnectionType

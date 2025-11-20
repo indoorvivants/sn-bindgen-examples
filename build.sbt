@@ -9,10 +9,10 @@ import java.nio.file.Paths
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
-ThisBuild / resolvers ++= Resolver.sonatypeOssRepos("snapshots")
+ThisBuild / resolvers += Resolver.sonatypeCentralSnapshots
 
 lazy val Versions = new {
-  val Scala = "3.3.5"
+  val Scala = "3.3.7"
 }
 
 lazy val root = project
@@ -497,6 +497,37 @@ lazy val lua = project
   )
   .settings(bindgenSettings)
   .settings(configurePlatform())
+
+lazy val ffmpeg =
+  project
+    .in(file("example-ffmpeg"))
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(
+      scalaVersion := Versions.Scala,
+      vcpkgDependencies := VcpkgDependencies("ffmpeg"),
+      vcpkgNativeConfig ~= { _.withApproximate(false) },
+      bindgenBindings += {
+        Binding(
+          headerFile = (Compile / baseDirectory).value / "ffmpeg-amalgam.h",
+          packageName = "ffmpeg"
+        )
+          .withCImports(
+            List(
+              "libavformat/avformat.h",
+              "libavcodec/avcodec.h",
+              "libavutil/avutil.h",
+              "libavutil/log.h"
+            )
+          )
+          .withLinkName("ffmpeg_wrapper")
+          .withClangFlags(
+            List("-I" + vcpkgConfigurator.value.includes("ffmpeg"))
+          )
+          // .withLogLevel(bindgen.interface.LogLevel.Trace)
+      }
+    )
+    .settings(bindgenSettings)
+    .settings(configurePlatform())
 
 lazy val openssl = project
   .in(file("example-openssl"))

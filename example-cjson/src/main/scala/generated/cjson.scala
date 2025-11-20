@@ -9,14 +9,14 @@ object aliases:
   import _root_.cjson.aliases.*
   import _root_.cjson.structs.*
   opaque type cJSON_bool = CInt
-  object cJSON_bool: 
+  object cJSON_bool:
     given _tag: Tag[cJSON_bool] = Tag.Int
     inline def apply(inline o: CInt): cJSON_bool = o
     extension (v: cJSON_bool)
       inline def value: CInt = v
 
   type size_t = libc.stddef.size_t
-  object size_t: 
+  object size_t:
     val _tag: Tag[size_t] = summon[Tag[libc.stddef.size_t]]
     inline def apply(inline o: libc.stddef.size_t): size_t = o
     extension (v: size_t)
@@ -25,11 +25,15 @@ object aliases:
 object structs:
   import _root_.cjson.aliases.*
   import _root_.cjson.structs.*
+
   opaque type cJSON = CStruct8[Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt, CString, CInt, Double, CString]
+  
   object cJSON:
     given _tag: Tag[cJSON] = Tag.materializeCStruct8Tag[Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt, CString, CInt, Double, CString]
+    
+    // Allocates cJSON on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[cJSON] = scala.scalanative.unsafe.alloc[cJSON](1)
-    def apply(next : Ptr[cJSON], prev : Ptr[cJSON], child : Ptr[cJSON], `type` : CInt, valuestring : CString, valueint : CInt, valuedouble : Double, string : CString)(using Zone): Ptr[cJSON] = 
+    def apply(next : Ptr[cJSON], prev : Ptr[cJSON], child : Ptr[cJSON], `type` : CInt, valuestring : CString, valueint : CInt, valuedouble : Double, string : CString)(using Zone): Ptr[cJSON] =
       val ____ptr = apply()
       (!____ptr).next = next
       (!____ptr).prev = prev
@@ -40,6 +44,7 @@ object structs:
       (!____ptr).valuedouble = valuedouble
       (!____ptr).string = string
       ____ptr
+    
     extension (struct: cJSON)
       def next : Ptr[cJSON] = struct._1.asInstanceOf[Ptr[cJSON]]
       def next_=(value: Ptr[cJSON]): Unit = !struct.at1 = value.asInstanceOf[Ptr[Byte]]
@@ -57,21 +62,27 @@ object structs:
       def valuedouble_=(value: Double): Unit = !struct.at7 = value
       def string : CString = struct._8
       def string_=(value: CString): Unit = !struct.at8 = value
+    
 
   opaque type cJSON_Hooks = CStruct2[CFuncPtr1[size_t, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit]]
+  
   object cJSON_Hooks:
     given _tag: Tag[cJSON_Hooks] = Tag.materializeCStruct2Tag[CFuncPtr1[size_t, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit]]
+    
+    // Allocates cJSON_Hooks on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[cJSON_Hooks] = scala.scalanative.unsafe.alloc[cJSON_Hooks](1)
-    def apply(malloc_fn : CFuncPtr1[size_t, Ptr[Byte]], free_fn : CFuncPtr1[Ptr[Byte], Unit])(using Zone): Ptr[cJSON_Hooks] = 
+    def apply(malloc_fn : CFuncPtr1[size_t, Ptr[Byte]], free_fn : CFuncPtr1[Ptr[Byte], Unit])(using Zone): Ptr[cJSON_Hooks] =
       val ____ptr = apply()
       (!____ptr).malloc_fn = malloc_fn
       (!____ptr).free_fn = free_fn
       ____ptr
+    
     extension (struct: cJSON_Hooks)
       def malloc_fn : CFuncPtr1[size_t, Ptr[Byte]] = struct._1
       def malloc_fn_=(value: CFuncPtr1[size_t, Ptr[Byte]]): Unit = !struct.at1 = value
       def free_fn : CFuncPtr1[Ptr[Byte], Unit] = struct._2
       def free_fn_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at2 = value
+    
 
 
 @extern
@@ -242,8 +253,8 @@ object functions:
   export extern_functions.*
 
 object types:
-  export _root_.cjson.structs.*
-  export _root_.cjson.aliases.*
+    export _root_.cjson.structs.*
+    export _root_.cjson.aliases.*
 
 object all:
   export _root_.cjson.aliases.cJSON_bool

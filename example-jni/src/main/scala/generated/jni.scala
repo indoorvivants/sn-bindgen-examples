@@ -6,13 +6,12 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[jni] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
-    given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
-    extension (inline t: T)
-     inline def value: CUnsignedInt = eq.apply(t)
-     inline def int: CInt = eq.apply(t).toInt
-     inline def uint: CUnsignedInt = eq.apply(t)
-
+    private[jni] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
+      given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
+      extension (inline t: T)
+        inline def value: CUnsignedInt = eq.apply(t)
+        inline def int: CInt = eq.apply(t).toInt
+        inline def uint: CUnsignedInt = eq.apply(t)
 
 object enumerations:
   import predef.*
@@ -24,12 +23,12 @@ object enumerations:
     val JNILocalRefType = define(1)
     val JNIGlobalRefType = define(2)
     val JNIWeakGlobalRefType = define(3)
-    inline def getName(inline value: _jobjectType): Option[String] =
-      inline value match
-        case JNIInvalidRefType => Some("JNIInvalidRefType")
-        case JNILocalRefType => Some("JNILocalRefType")
-        case JNIGlobalRefType => Some("JNIGlobalRefType")
-        case JNIWeakGlobalRefType => Some("JNIWeakGlobalRefType")
+    def getName(value: _jobjectType): Option[String] =
+      value match
+        case `JNIInvalidRefType` => Some("JNIInvalidRefType")
+        case `JNILocalRefType` => Some("JNILocalRefType")
+        case `JNIGlobalRefType` => Some("JNIGlobalRefType")
+        case `JNIWeakGlobalRefType` => Some("JNIWeakGlobalRefType")
         case _ => _root_.scala.None
     extension (a: _jobjectType)
       inline def &(b: _jobjectType): _jobjectType = a & b
@@ -43,210 +42,210 @@ object aliases:
   import _root_.jni.structs.*
   import _root_.jni.unions.*
   opaque type JNIEnv = Ptr[JNINativeInterface_]
-  object JNIEnv: 
+  object JNIEnv:
     given _tag: Tag[JNIEnv] = Tag.Ptr[JNINativeInterface_](JNINativeInterface_._tag)
     inline def apply(inline o: Ptr[JNINativeInterface_]): JNIEnv = o
     extension (v: JNIEnv)
       inline def value: Ptr[JNINativeInterface_] = v
 
   opaque type JavaVM = Ptr[JNIInvokeInterface_]
-  object JavaVM: 
+  object JavaVM:
     given _tag: Tag[JavaVM] = Tag.Ptr[JNIInvokeInterface_](JNIInvokeInterface_._tag)
     inline def apply(inline o: Ptr[JNIInvokeInterface_]): JavaVM = o
     extension (v: JavaVM)
       inline def value: Ptr[JNIInvokeInterface_] = v
 
   type jarray = jobject
-  object jarray: 
+  object jarray:
     given _tag: Tag[jarray] = jobject._tag
     inline def apply(inline o: jobject): jarray = o
     extension (v: jarray)
       inline def value: jobject = v
 
   opaque type jboolean = CUnsignedChar
-  object jboolean: 
+  object jboolean:
     given _tag: Tag[jboolean] = Tag.UByte
     inline def apply(inline o: CUnsignedChar): jboolean = o
     extension (v: jboolean)
       inline def value: CUnsignedChar = v
 
   type jbooleanArray = jarray
-  object jbooleanArray: 
+  object jbooleanArray:
     given _tag: Tag[jbooleanArray] = jarray._tag
     inline def apply(inline o: jarray): jbooleanArray = o
     extension (v: jbooleanArray)
       inline def value: jarray = v
 
   opaque type jbyte = CChar
-  object jbyte: 
+  object jbyte:
     given _tag: Tag[jbyte] = Tag.Byte
     inline def apply(inline o: CChar): jbyte = o
     extension (v: jbyte)
       inline def value: CChar = v
 
   type jbyteArray = jarray
-  object jbyteArray: 
+  object jbyteArray:
     given _tag: Tag[jbyteArray] = jarray._tag
     inline def apply(inline o: jarray): jbyteArray = o
     extension (v: jbyteArray)
       inline def value: jarray = v
 
   opaque type jchar = CUnsignedShort
-  object jchar: 
+  object jchar:
     given _tag: Tag[jchar] = Tag.UShort
     inline def apply(inline o: CUnsignedShort): jchar = o
     extension (v: jchar)
       inline def value: CUnsignedShort = v
 
   type jcharArray = jarray
-  object jcharArray: 
+  object jcharArray:
     given _tag: Tag[jcharArray] = jarray._tag
     inline def apply(inline o: jarray): jcharArray = o
     extension (v: jcharArray)
       inline def value: jarray = v
 
   type jclass = jobject
-  object jclass: 
+  object jclass:
     given _tag: Tag[jclass] = jobject._tag
     inline def apply(inline o: jobject): jclass = o
     extension (v: jclass)
       inline def value: jobject = v
 
   opaque type jdouble = Double
-  object jdouble: 
+  object jdouble:
     given _tag: Tag[jdouble] = Tag.Double
     inline def apply(inline o: Double): jdouble = o
     extension (v: jdouble)
       inline def value: Double = v
 
   type jdoubleArray = jarray
-  object jdoubleArray: 
+  object jdoubleArray:
     given _tag: Tag[jdoubleArray] = jarray._tag
     inline def apply(inline o: jarray): jdoubleArray = o
     extension (v: jdoubleArray)
       inline def value: jarray = v
 
   opaque type jfieldID = Ptr[_jfieldID]
-  object jfieldID: 
+  object jfieldID:
     given _tag: Tag[jfieldID] = Tag.Ptr[_jfieldID](_jfieldID._tag)
     inline def apply(inline o: Ptr[_jfieldID]): jfieldID = o
     extension (v: jfieldID)
       inline def value: Ptr[_jfieldID] = v
 
   opaque type jfloat = Float
-  object jfloat: 
+  object jfloat:
     given _tag: Tag[jfloat] = Tag.Float
     inline def apply(inline o: Float): jfloat = o
     extension (v: jfloat)
       inline def value: Float = v
 
   type jfloatArray = jarray
-  object jfloatArray: 
+  object jfloatArray:
     given _tag: Tag[jfloatArray] = jarray._tag
     inline def apply(inline o: jarray): jfloatArray = o
     extension (v: jfloatArray)
       inline def value: jarray = v
 
   opaque type jint = CInt
-  object jint: 
+  object jint:
     given _tag: Tag[jint] = Tag.Int
     inline def apply(inline o: CInt): jint = o
     extension (v: jint)
       inline def value: CInt = v
 
   type jintArray = jarray
-  object jintArray: 
+  object jintArray:
     given _tag: Tag[jintArray] = jarray._tag
     inline def apply(inline o: jarray): jintArray = o
     extension (v: jintArray)
       inline def value: jarray = v
 
   opaque type jlong = CLongInt
-  object jlong: 
+  object jlong:
     given _tag: Tag[jlong] = Tag.Size
     inline def apply(inline o: CLongInt): jlong = o
     extension (v: jlong)
       inline def value: CLongInt = v
 
   type jlongArray = jarray
-  object jlongArray: 
+  object jlongArray:
     given _tag: Tag[jlongArray] = jarray._tag
     inline def apply(inline o: jarray): jlongArray = o
     extension (v: jlongArray)
       inline def value: jarray = v
 
   opaque type jmethodID = Ptr[_jmethodID]
-  object jmethodID: 
+  object jmethodID:
     given _tag: Tag[jmethodID] = Tag.Ptr[_jmethodID](_jmethodID._tag)
     inline def apply(inline o: Ptr[_jmethodID]): jmethodID = o
     extension (v: jmethodID)
       inline def value: Ptr[_jmethodID] = v
 
   opaque type jobject = Ptr[_jobject]
-  object jobject: 
+  object jobject:
     given _tag: Tag[jobject] = Tag.Ptr[_jobject](_jobject._tag)
     inline def apply(inline o: Ptr[_jobject]): jobject = o
     extension (v: jobject)
       inline def value: Ptr[_jobject] = v
 
   type jobjectArray = jarray
-  object jobjectArray: 
+  object jobjectArray:
     given _tag: Tag[jobjectArray] = jarray._tag
     inline def apply(inline o: jarray): jobjectArray = o
     extension (v: jobjectArray)
       inline def value: jarray = v
 
   type jobjectRefType = _jobjectType
-  object jobjectRefType: 
+  object jobjectRefType:
     given _tag: Tag[jobjectRefType] = _jobjectType._tag
     inline def apply(inline o: _jobjectType): jobjectRefType = o
     extension (v: jobjectRefType)
       inline def value: _jobjectType = v
 
   opaque type jshort = CShort
-  object jshort: 
+  object jshort:
     given _tag: Tag[jshort] = Tag.Short
     inline def apply(inline o: CShort): jshort = o
     extension (v: jshort)
       inline def value: CShort = v
 
   type jshortArray = jarray
-  object jshortArray: 
+  object jshortArray:
     given _tag: Tag[jshortArray] = jarray._tag
     inline def apply(inline o: jarray): jshortArray = o
     extension (v: jshortArray)
       inline def value: jarray = v
 
   type jsize = jint
-  object jsize: 
+  object jsize:
     given _tag: Tag[jsize] = jint._tag
     inline def apply(inline o: jint): jsize = o
     extension (v: jsize)
       inline def value: jint = v
 
   type jstring = jobject
-  object jstring: 
+  object jstring:
     given _tag: Tag[jstring] = jobject._tag
     inline def apply(inline o: jobject): jstring = o
     extension (v: jstring)
       inline def value: jobject = v
 
   type jthrowable = jobject
-  object jthrowable: 
+  object jthrowable:
     given _tag: Tag[jthrowable] = jobject._tag
     inline def apply(inline o: jobject): jthrowable = o
     extension (v: jthrowable)
       inline def value: jobject = v
 
   type jweak = jobject
-  object jweak: 
+  object jweak:
     given _tag: Tag[jweak] = jobject._tag
     inline def apply(inline o: jobject): jweak = o
     extension (v: jweak)
       inline def value: jobject = v
 
   type va_list = unsafe.CVarArgList
-  object va_list: 
+  object va_list:
     val _tag: Tag[va_list] = summon[Tag[unsafe.CVarArgList]]
     inline def apply(inline o: unsafe.CVarArgList): va_list = o
     extension (v: va_list)
@@ -258,23 +257,32 @@ object structs:
   import _root_.jni.aliases.*
   import _root_.jni.structs.*
   import _root_.jni.unions.*
+
   opaque type JNIEnv_ = CStruct1[Ptr[JNINativeInterface_]]
+  
   object JNIEnv_ :
     given _tag: Tag[JNIEnv_] = Tag.materializeCStruct1Tag[Ptr[JNINativeInterface_]]
+    
+    // Allocates JNIEnv_ on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[JNIEnv_] = scala.scalanative.unsafe.alloc[JNIEnv_](1)
-    def apply(functions : Ptr[JNINativeInterface_])(using Zone): Ptr[JNIEnv_] = 
+    def apply(functions : Ptr[JNINativeInterface_])(using Zone): Ptr[JNIEnv_] =
       val ____ptr = apply()
       (!____ptr).functions = functions
       ____ptr
+    
     extension (struct: JNIEnv_)
       def functions : Ptr[JNINativeInterface_] = struct._1
       def functions_=(value: Ptr[JNINativeInterface_]): Unit = !struct.at1 = value
+    
 
   opaque type JNIInvokeInterface_ = CStruct8[Ptr[Byte], Ptr[Byte], Ptr[Byte], CFuncPtr1[Ptr[Byte], jint], CFuncPtr3[Ptr[Byte], Ptr[Ptr[Byte]], Ptr[Byte], jint], CFuncPtr1[Ptr[Byte], jint], CFuncPtr3[Ptr[Byte], Ptr[Ptr[Byte]], jint, jint], CFuncPtr3[Ptr[Byte], Ptr[Ptr[Byte]], Ptr[Byte], jint]]
+  
   object JNIInvokeInterface_ :
     given _tag: Tag[JNIInvokeInterface_] = Tag.materializeCStruct8Tag[Ptr[Byte], Ptr[Byte], Ptr[Byte], CFuncPtr1[Ptr[Byte], jint], CFuncPtr3[Ptr[Byte], Ptr[Ptr[Byte]], Ptr[Byte], jint], CFuncPtr1[Ptr[Byte], jint], CFuncPtr3[Ptr[Byte], Ptr[Ptr[Byte]], jint, jint], CFuncPtr3[Ptr[Byte], Ptr[Ptr[Byte]], Ptr[Byte], jint]]
+    
+    // Allocates JNIInvokeInterface_ on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[JNIInvokeInterface_] = scala.scalanative.unsafe.alloc[JNIInvokeInterface_](1)
-    def apply(reserved0 : Ptr[Byte], reserved1 : Ptr[Byte], reserved2 : Ptr[Byte], DestroyJavaVM : CFuncPtr1[Ptr[JavaVM], jint], AttachCurrentThread : CFuncPtr3[Ptr[JavaVM], Ptr[Ptr[Byte]], Ptr[Byte], jint], DetachCurrentThread : CFuncPtr1[Ptr[JavaVM], jint], GetEnv : CFuncPtr3[Ptr[JavaVM], Ptr[Ptr[Byte]], jint, jint], AttachCurrentThreadAsDaemon : CFuncPtr3[Ptr[JavaVM], Ptr[Ptr[Byte]], Ptr[Byte], jint])(using Zone): Ptr[JNIInvokeInterface_] = 
+    def apply(reserved0 : Ptr[Byte], reserved1 : Ptr[Byte], reserved2 : Ptr[Byte], DestroyJavaVM : CFuncPtr1[Ptr[JavaVM], jint], AttachCurrentThread : CFuncPtr3[Ptr[JavaVM], Ptr[Ptr[Byte]], Ptr[Byte], jint], DetachCurrentThread : CFuncPtr1[Ptr[JavaVM], jint], GetEnv : CFuncPtr3[Ptr[JavaVM], Ptr[Ptr[Byte]], jint, jint], AttachCurrentThreadAsDaemon : CFuncPtr3[Ptr[JavaVM], Ptr[Ptr[Byte]], Ptr[Byte], jint])(using Zone): Ptr[JNIInvokeInterface_] =
       val ____ptr = apply()
       (!____ptr).reserved0 = reserved0
       (!____ptr).reserved1 = reserved1
@@ -285,6 +293,7 @@ object structs:
       (!____ptr).GetEnv = GetEnv
       (!____ptr).AttachCurrentThreadAsDaemon = AttachCurrentThreadAsDaemon
       ____ptr
+    
     extension (struct: JNIInvokeInterface_)
       def reserved0 : Ptr[Byte] = struct._1
       def reserved0_=(value: Ptr[Byte]): Unit = !struct.at1 = value
@@ -302,11 +311,16 @@ object structs:
       def GetEnv_=(value: CFuncPtr3[Ptr[JavaVM], Ptr[Ptr[Byte]], jint, jint]): Unit = !struct.at7 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[Ptr[Byte]], jint, jint]]
       def AttachCurrentThreadAsDaemon : CFuncPtr3[Ptr[JavaVM], Ptr[Ptr[Byte]], Ptr[Byte], jint] = struct._8.asInstanceOf[CFuncPtr3[Ptr[JavaVM], Ptr[Ptr[Byte]], Ptr[Byte], jint]]
       def AttachCurrentThreadAsDaemon_=(value: CFuncPtr3[Ptr[JavaVM], Ptr[Ptr[Byte]], Ptr[Byte], jint]): Unit = !struct.at8 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[Ptr[Byte]], Ptr[Byte], jint]]
+    
 
   opaque type JNINativeInterface_ = CArray[CChar, Nat.Digit4[Nat._1, Nat._8, Nat._8, Nat._0]]
+  
   object JNINativeInterface_ :
     given _tag: Tag[JNINativeInterface_] = Tag.CArray[CChar, Nat.Digit4[Nat._1, Nat._8, Nat._8, Nat._0]](Tag.Byte, Tag.Digit4[Nat._1, Nat._8, Nat._8, Nat._0](Tag.Nat1, Tag.Nat8, Tag.Nat8, Tag.Nat0))
+    
+    // Allocates JNINativeInterface_ on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[JNINativeInterface_] = scala.scalanative.unsafe.alloc[JNINativeInterface_](1)
+    
     extension (struct: JNINativeInterface_)
       def reserved0: Ptr[Byte] = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]]
       def reserved0_=(value: Ptr[Byte]): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Byte]]] = value
@@ -778,7 +792,7 @@ object structs:
       def GetModule_=(value: CFuncPtr2[Ptr[JNIEnv], jclass, jobject]): Unit = !struct.at(offsets(233)).asInstanceOf[Ptr[CFuncPtr2[Ptr[JNIEnv], jclass, jobject]]] = value
       def IsVirtualThread: CFuncPtr2[Ptr[JNIEnv], jobject, jboolean] = !struct.at(offsets(234)).asInstanceOf[Ptr[CFuncPtr2[Ptr[JNIEnv], jobject, jboolean]]]
       def IsVirtualThread_=(value: CFuncPtr2[Ptr[JNIEnv], jobject, jboolean]): Unit = !struct.at(offsets(234)).asInstanceOf[Ptr[CFuncPtr2[Ptr[JNIEnv], jobject, jboolean]]] = value
-    val offsets: Array[Int] = 
+    val offsets: Array[Int] =
       val res = Array.ofDim[Int](235)
       def align(offset: Int, alignment: Int) = {
         val alignmentMask = alignment - 1
@@ -1025,17 +1039,22 @@ object structs:
       res(234) = align(res(233) + sizeof[CFuncPtr2[Ptr[JNIEnv], jclass, jobject]].toInt, alignmentof[CFuncPtr2[Ptr[JNIEnv], jobject, jboolean]].toInt)
       res
     end offsets
+    
 
   opaque type JNINativeMethod = CStruct3[CString, CString, Ptr[Byte]]
+  
   object JNINativeMethod:
     given _tag: Tag[JNINativeMethod] = Tag.materializeCStruct3Tag[CString, CString, Ptr[Byte]]
+    
+    // Allocates JNINativeMethod on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[JNINativeMethod] = scala.scalanative.unsafe.alloc[JNINativeMethod](1)
-    def apply(name : CString, signature : CString, fnPtr : Ptr[Byte])(using Zone): Ptr[JNINativeMethod] = 
+    def apply(name : CString, signature : CString, fnPtr : Ptr[Byte])(using Zone): Ptr[JNINativeMethod] =
       val ____ptr = apply()
       (!____ptr).name = name
       (!____ptr).signature = signature
       (!____ptr).fnPtr = fnPtr
       ____ptr
+    
     extension (struct: JNINativeMethod)
       def name : CString = struct._1
       def name_=(value: CString): Unit = !struct.at1 = value
@@ -1043,17 +1062,22 @@ object structs:
       def signature_=(value: CString): Unit = !struct.at2 = value
       def fnPtr : Ptr[Byte] = struct._3
       def fnPtr_=(value: Ptr[Byte]): Unit = !struct.at3 = value
+    
 
   opaque type JavaVMAttachArgs = CStruct3[jint, CString, jobject]
+  
   object JavaVMAttachArgs:
     given _tag: Tag[JavaVMAttachArgs] = Tag.materializeCStruct3Tag[jint, CString, jobject]
+    
+    // Allocates JavaVMAttachArgs on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[JavaVMAttachArgs] = scala.scalanative.unsafe.alloc[JavaVMAttachArgs](1)
-    def apply(version : jint, name : CString, group : jobject)(using Zone): Ptr[JavaVMAttachArgs] = 
+    def apply(version : jint, name : CString, group : jobject)(using Zone): Ptr[JavaVMAttachArgs] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).name = name
       (!____ptr).group = group
       ____ptr
+    
     extension (struct: JavaVMAttachArgs)
       def version : jint = struct._1
       def version_=(value: jint): Unit = !struct.at1 = value
@@ -1061,18 +1085,23 @@ object structs:
       def name_=(value: CString): Unit = !struct.at2 = value
       def group : jobject = struct._3
       def group_=(value: jobject): Unit = !struct.at3 = value
+    
 
   opaque type JavaVMInitArgs = CStruct4[jint, jint, Ptr[JavaVMOption], jboolean]
+  
   object JavaVMInitArgs:
     given _tag: Tag[JavaVMInitArgs] = Tag.materializeCStruct4Tag[jint, jint, Ptr[JavaVMOption], jboolean]
+    
+    // Allocates JavaVMInitArgs on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[JavaVMInitArgs] = scala.scalanative.unsafe.alloc[JavaVMInitArgs](1)
-    def apply(version : jint, nOptions : jint, options : Ptr[JavaVMOption], ignoreUnrecognized : jboolean)(using Zone): Ptr[JavaVMInitArgs] = 
+    def apply(version : jint, nOptions : jint, options : Ptr[JavaVMOption], ignoreUnrecognized : jboolean)(using Zone): Ptr[JavaVMInitArgs] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).nOptions = nOptions
       (!____ptr).options = options
       (!____ptr).ignoreUnrecognized = ignoreUnrecognized
       ____ptr
+    
     extension (struct: JavaVMInitArgs)
       def version : jint = struct._1
       def version_=(value: jint): Unit = !struct.at1 = value
@@ -1082,45 +1111,62 @@ object structs:
       def options_=(value: Ptr[JavaVMOption]): Unit = !struct.at3 = value
       def ignoreUnrecognized : jboolean = struct._4
       def ignoreUnrecognized_=(value: jboolean): Unit = !struct.at4 = value
+    
 
   opaque type JavaVMOption = CStruct2[CString, Ptr[Byte]]
+  
   object JavaVMOption:
     given _tag: Tag[JavaVMOption] = Tag.materializeCStruct2Tag[CString, Ptr[Byte]]
+    
+    // Allocates JavaVMOption on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[JavaVMOption] = scala.scalanative.unsafe.alloc[JavaVMOption](1)
-    def apply(optionString : CString, extraInfo : Ptr[Byte])(using Zone): Ptr[JavaVMOption] = 
+    def apply(optionString : CString, extraInfo : Ptr[Byte])(using Zone): Ptr[JavaVMOption] =
       val ____ptr = apply()
       (!____ptr).optionString = optionString
       (!____ptr).extraInfo = extraInfo
       ____ptr
+    
     extension (struct: JavaVMOption)
       def optionString : CString = struct._1
       def optionString_=(value: CString): Unit = !struct.at1 = value
       def extraInfo : Ptr[Byte] = struct._2
       def extraInfo_=(value: Ptr[Byte]): Unit = !struct.at2 = value
+    
 
   opaque type JavaVM_ = CStruct1[Ptr[Byte]]
+  
   object JavaVM_ :
     given _tag: Tag[JavaVM_] = Tag.materializeCStruct1Tag[Ptr[Byte]]
+    
+    // Allocates JavaVM_ on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[JavaVM_] = scala.scalanative.unsafe.alloc[JavaVM_](1)
-    def apply(functions : Ptr[JNIInvokeInterface_])(using Zone): Ptr[JavaVM_] = 
+    def apply(functions : Ptr[JNIInvokeInterface_])(using Zone): Ptr[JavaVM_] =
       val ____ptr = apply()
       (!____ptr).functions = functions
       ____ptr
+    
     extension (struct: JavaVM_)
       def functions : Ptr[JNIInvokeInterface_] = struct._1.asInstanceOf[Ptr[JNIInvokeInterface_]]
       def functions_=(value: Ptr[JNIInvokeInterface_]): Unit = !struct.at1 = value.asInstanceOf[Ptr[Byte]]
+    
 
   opaque type _jfieldID = CStruct0
+  
   object _jfieldID:
     given _tag: Tag[_jfieldID] = Tag.materializeCStruct0Tag
+    
 
   opaque type _jmethodID = CStruct0
+  
   object _jmethodID:
     given _tag: Tag[_jmethodID] = Tag.materializeCStruct0Tag
+    
 
   opaque type _jobject = CStruct0
+  
   object _jobject:
     given _tag: Tag[_jobject] = Tag.materializeCStruct0Tag
+    
 
 object unions:
   import _root_.jni.enumerations.*
@@ -1128,66 +1174,78 @@ object unions:
   import _root_.jni.aliases.*
   import _root_.jni.structs.*
   import _root_.jni.unions.*
+
   opaque type jvalue = CArray[Byte, Nat._8]
   object jvalue:
     given _tag: Tag[jvalue] = Tag.CArray[CChar, Nat._8](Tag.Byte, Tag.Nat8)
-    def apply()(using Zone): Ptr[jvalue] = 
-      val ___ptr = alloc[jvalue](1)
+    
+    def apply()(using Zone): Ptr[jvalue] =
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[jvalue](1)
       ___ptr
+    
     @scala.annotation.targetName("apply_z")
     def apply(z: jboolean)(using Zone): Ptr[jvalue] =
-      val ___ptr = alloc[jvalue](1)
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[jvalue](1)
       val un = !___ptr
       un.at(0).asInstanceOf[Ptr[jboolean]].update(0, z)
       ___ptr
+    
     @scala.annotation.targetName("apply_b")
     def apply(b: jbyte)(using Zone): Ptr[jvalue] =
-      val ___ptr = alloc[jvalue](1)
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[jvalue](1)
       val un = !___ptr
       un.at(0).asInstanceOf[Ptr[jbyte]].update(0, b)
       ___ptr
+    
     @scala.annotation.targetName("apply_c")
     def apply(c: jchar)(using Zone): Ptr[jvalue] =
-      val ___ptr = alloc[jvalue](1)
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[jvalue](1)
       val un = !___ptr
       un.at(0).asInstanceOf[Ptr[jchar]].update(0, c)
       ___ptr
+    
     @scala.annotation.targetName("apply_s")
     def apply(s: jshort)(using Zone): Ptr[jvalue] =
-      val ___ptr = alloc[jvalue](1)
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[jvalue](1)
       val un = !___ptr
       un.at(0).asInstanceOf[Ptr[jshort]].update(0, s)
       ___ptr
+    
     @scala.annotation.targetName("apply_i")
     def apply(i: jint)(using Zone): Ptr[jvalue] =
-      val ___ptr = alloc[jvalue](1)
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[jvalue](1)
       val un = !___ptr
       un.at(0).asInstanceOf[Ptr[jint]].update(0, i)
       ___ptr
+    
     @scala.annotation.targetName("apply_j")
     def apply(j: jlong)(using Zone): Ptr[jvalue] =
-      val ___ptr = alloc[jvalue](1)
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[jvalue](1)
       val un = !___ptr
       un.at(0).asInstanceOf[Ptr[jlong]].update(0, j)
       ___ptr
+    
     @scala.annotation.targetName("apply_f")
     def apply(f: jfloat)(using Zone): Ptr[jvalue] =
-      val ___ptr = alloc[jvalue](1)
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[jvalue](1)
       val un = !___ptr
       un.at(0).asInstanceOf[Ptr[jfloat]].update(0, f)
       ___ptr
+    
     @scala.annotation.targetName("apply_d")
     def apply(d: jdouble)(using Zone): Ptr[jvalue] =
-      val ___ptr = alloc[jvalue](1)
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[jvalue](1)
       val un = !___ptr
       un.at(0).asInstanceOf[Ptr[jdouble]].update(0, d)
       ___ptr
+    
     @scala.annotation.targetName("apply_l")
     def apply(l: jobject)(using Zone): Ptr[jvalue] =
-      val ___ptr = alloc[jvalue](1)
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[jvalue](1)
       val un = !___ptr
       un.at(0).asInstanceOf[Ptr[jobject]].update(0, l)
       ___ptr
+    
     extension (struct: jvalue)
       def z : jboolean = !struct.at(0).asInstanceOf[Ptr[jboolean]]
       def z_=(value: jboolean): Unit = !struct.at(0).asInstanceOf[Ptr[jboolean]] = value
@@ -1237,10 +1295,10 @@ object functions:
   export extern_functions.*
 
 object types:
-  export _root_.jni.structs.*
-  export _root_.jni.aliases.*
-  export _root_.jni.unions.*
-  export _root_.jni.enumerations.*
+    export _root_.jni.structs.*
+    export _root_.jni.aliases.*
+    export _root_.jni.unions.*
+    export _root_.jni.enumerations.*
 
 object all:
   export _root_.jni.enumerations._jobjectType

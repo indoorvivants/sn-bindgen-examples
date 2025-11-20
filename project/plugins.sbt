@@ -5,10 +5,9 @@ val VcpkgVersion =
   sys.env.getOrElse("SBT_VCPKG_VERSION", "0.0.21")
 
 val ScalaNativeVersion =
-  sys.env.getOrElse("SCALA_NATIVE_VERSION", "0.5.6")
+  sys.env.getOrElse("SCALA_NATIVE_VERSION", "0.5.9")
 
-resolvers ++= Resolver.sonatypeOssRepos("snapshots")
-resolvers ++= Resolver.sonatypeOssRepos("releases")
+resolvers += Resolver.sonatypeCentralSnapshots
 
 addSbtPlugin("com.indoorvivants" % "bindgen-sbt-plugin" % BindgenVersion)
 addSbtPlugin("org.scala-native" % "sbt-scala-native" % ScalaNativeVersion)

@@ -6,13 +6,12 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[libpq] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
-    given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
-    extension (inline t: T)
-     inline def value: CUnsignedInt = eq.apply(t)
-     inline def int: CInt = eq.apply(t).toInt
-     inline def uint: CUnsignedInt = eq.apply(t)
-
+    private[libpq] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
+      given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
+      extension (inline t: T)
+        inline def value: CUnsignedInt = eq.apply(t)
+        inline def int: CInt = eq.apply(t).toInt
+        inline def uint: CUnsignedInt = eq.apply(t)
 
 object enumerations:
   import predef.*
@@ -34,22 +33,22 @@ object enumerations:
     val CONNECTION_GSS_STARTUP = define(11)
     val CONNECTION_CHECK_TARGET = define(12)
     val CONNECTION_CHECK_STANDBY = define(13)
-    inline def getName(inline value: ConnStatusType): Option[String] =
-      inline value match
-        case CONNECTION_OK => Some("CONNECTION_OK")
-        case CONNECTION_BAD => Some("CONNECTION_BAD")
-        case CONNECTION_STARTED => Some("CONNECTION_STARTED")
-        case CONNECTION_MADE => Some("CONNECTION_MADE")
-        case CONNECTION_AWAITING_RESPONSE => Some("CONNECTION_AWAITING_RESPONSE")
-        case CONNECTION_AUTH_OK => Some("CONNECTION_AUTH_OK")
-        case CONNECTION_SETENV => Some("CONNECTION_SETENV")
-        case CONNECTION_SSL_STARTUP => Some("CONNECTION_SSL_STARTUP")
-        case CONNECTION_NEEDED => Some("CONNECTION_NEEDED")
-        case CONNECTION_CHECK_WRITABLE => Some("CONNECTION_CHECK_WRITABLE")
-        case CONNECTION_CONSUME => Some("CONNECTION_CONSUME")
-        case CONNECTION_GSS_STARTUP => Some("CONNECTION_GSS_STARTUP")
-        case CONNECTION_CHECK_TARGET => Some("CONNECTION_CHECK_TARGET")
-        case CONNECTION_CHECK_STANDBY => Some("CONNECTION_CHECK_STANDBY")
+    def getName(value: ConnStatusType): Option[String] =
+      value match
+        case `CONNECTION_OK` => Some("CONNECTION_OK")
+        case `CONNECTION_BAD` => Some("CONNECTION_BAD")
+        case `CONNECTION_STARTED` => Some("CONNECTION_STARTED")
+        case `CONNECTION_MADE` => Some("CONNECTION_MADE")
+        case `CONNECTION_AWAITING_RESPONSE` => Some("CONNECTION_AWAITING_RESPONSE")
+        case `CONNECTION_AUTH_OK` => Some("CONNECTION_AUTH_OK")
+        case `CONNECTION_SETENV` => Some("CONNECTION_SETENV")
+        case `CONNECTION_SSL_STARTUP` => Some("CONNECTION_SSL_STARTUP")
+        case `CONNECTION_NEEDED` => Some("CONNECTION_NEEDED")
+        case `CONNECTION_CHECK_WRITABLE` => Some("CONNECTION_CHECK_WRITABLE")
+        case `CONNECTION_CONSUME` => Some("CONNECTION_CONSUME")
+        case `CONNECTION_GSS_STARTUP` => Some("CONNECTION_GSS_STARTUP")
+        case `CONNECTION_CHECK_TARGET` => Some("CONNECTION_CHECK_TARGET")
+        case `CONNECTION_CHECK_STANDBY` => Some("CONNECTION_CHECK_STANDBY")
         case _ => _root_.scala.None
     extension (a: ConnStatusType)
       inline def &(b: ConnStatusType): ConnStatusType = a & b
@@ -72,20 +71,20 @@ object enumerations:
     val PGRES_SINGLE_TUPLE = define(9)
     val PGRES_PIPELINE_SYNC = define(10)
     val PGRES_PIPELINE_ABORTED = define(11)
-    inline def getName(inline value: ExecStatusType): Option[String] =
-      inline value match
-        case PGRES_EMPTY_QUERY => Some("PGRES_EMPTY_QUERY")
-        case PGRES_COMMAND_OK => Some("PGRES_COMMAND_OK")
-        case PGRES_TUPLES_OK => Some("PGRES_TUPLES_OK")
-        case PGRES_COPY_OUT => Some("PGRES_COPY_OUT")
-        case PGRES_COPY_IN => Some("PGRES_COPY_IN")
-        case PGRES_BAD_RESPONSE => Some("PGRES_BAD_RESPONSE")
-        case PGRES_NONFATAL_ERROR => Some("PGRES_NONFATAL_ERROR")
-        case PGRES_FATAL_ERROR => Some("PGRES_FATAL_ERROR")
-        case PGRES_COPY_BOTH => Some("PGRES_COPY_BOTH")
-        case PGRES_SINGLE_TUPLE => Some("PGRES_SINGLE_TUPLE")
-        case PGRES_PIPELINE_SYNC => Some("PGRES_PIPELINE_SYNC")
-        case PGRES_PIPELINE_ABORTED => Some("PGRES_PIPELINE_ABORTED")
+    def getName(value: ExecStatusType): Option[String] =
+      value match
+        case `PGRES_EMPTY_QUERY` => Some("PGRES_EMPTY_QUERY")
+        case `PGRES_COMMAND_OK` => Some("PGRES_COMMAND_OK")
+        case `PGRES_TUPLES_OK` => Some("PGRES_TUPLES_OK")
+        case `PGRES_COPY_OUT` => Some("PGRES_COPY_OUT")
+        case `PGRES_COPY_IN` => Some("PGRES_COPY_IN")
+        case `PGRES_BAD_RESPONSE` => Some("PGRES_BAD_RESPONSE")
+        case `PGRES_NONFATAL_ERROR` => Some("PGRES_NONFATAL_ERROR")
+        case `PGRES_FATAL_ERROR` => Some("PGRES_FATAL_ERROR")
+        case `PGRES_COPY_BOTH` => Some("PGRES_COPY_BOTH")
+        case `PGRES_SINGLE_TUPLE` => Some("PGRES_SINGLE_TUPLE")
+        case `PGRES_PIPELINE_SYNC` => Some("PGRES_PIPELINE_SYNC")
+        case `PGRES_PIPELINE_ABORTED` => Some("PGRES_PIPELINE_ABORTED")
         case _ => _root_.scala.None
     extension (a: ExecStatusType)
       inline def &(b: ExecStatusType): ExecStatusType = a & b
@@ -99,11 +98,11 @@ object enumerations:
     val PQSHOW_CONTEXT_NEVER = define(0)
     val PQSHOW_CONTEXT_ERRORS = define(1)
     val PQSHOW_CONTEXT_ALWAYS = define(2)
-    inline def getName(inline value: PGContextVisibility): Option[String] =
-      inline value match
-        case PQSHOW_CONTEXT_NEVER => Some("PQSHOW_CONTEXT_NEVER")
-        case PQSHOW_CONTEXT_ERRORS => Some("PQSHOW_CONTEXT_ERRORS")
-        case PQSHOW_CONTEXT_ALWAYS => Some("PQSHOW_CONTEXT_ALWAYS")
+    def getName(value: PGContextVisibility): Option[String] =
+      value match
+        case `PQSHOW_CONTEXT_NEVER` => Some("PQSHOW_CONTEXT_NEVER")
+        case `PQSHOW_CONTEXT_ERRORS` => Some("PQSHOW_CONTEXT_ERRORS")
+        case `PQSHOW_CONTEXT_ALWAYS` => Some("PQSHOW_CONTEXT_ALWAYS")
         case _ => _root_.scala.None
     extension (a: PGContextVisibility)
       inline def &(b: PGContextVisibility): PGContextVisibility = a & b
@@ -118,12 +117,12 @@ object enumerations:
     val PQPING_REJECT = define(1)
     val PQPING_NO_RESPONSE = define(2)
     val PQPING_NO_ATTEMPT = define(3)
-    inline def getName(inline value: PGPing): Option[String] =
-      inline value match
-        case PQPING_OK => Some("PQPING_OK")
-        case PQPING_REJECT => Some("PQPING_REJECT")
-        case PQPING_NO_RESPONSE => Some("PQPING_NO_RESPONSE")
-        case PQPING_NO_ATTEMPT => Some("PQPING_NO_ATTEMPT")
+    def getName(value: PGPing): Option[String] =
+      value match
+        case `PQPING_OK` => Some("PQPING_OK")
+        case `PQPING_REJECT` => Some("PQPING_REJECT")
+        case `PQPING_NO_RESPONSE` => Some("PQPING_NO_RESPONSE")
+        case `PQPING_NO_ATTEMPT` => Some("PQPING_NO_ATTEMPT")
         case _ => _root_.scala.None
     extension (a: PGPing)
       inline def &(b: PGPing): PGPing = a & b
@@ -139,13 +138,13 @@ object enumerations:
     val PQTRANS_INTRANS = define(2)
     val PQTRANS_INERROR = define(3)
     val PQTRANS_UNKNOWN = define(4)
-    inline def getName(inline value: PGTransactionStatusType): Option[String] =
-      inline value match
-        case PQTRANS_IDLE => Some("PQTRANS_IDLE")
-        case PQTRANS_ACTIVE => Some("PQTRANS_ACTIVE")
-        case PQTRANS_INTRANS => Some("PQTRANS_INTRANS")
-        case PQTRANS_INERROR => Some("PQTRANS_INERROR")
-        case PQTRANS_UNKNOWN => Some("PQTRANS_UNKNOWN")
+    def getName(value: PGTransactionStatusType): Option[String] =
+      value match
+        case `PQTRANS_IDLE` => Some("PQTRANS_IDLE")
+        case `PQTRANS_ACTIVE` => Some("PQTRANS_ACTIVE")
+        case `PQTRANS_INTRANS` => Some("PQTRANS_INTRANS")
+        case `PQTRANS_INERROR` => Some("PQTRANS_INERROR")
+        case `PQTRANS_UNKNOWN` => Some("PQTRANS_UNKNOWN")
         case _ => _root_.scala.None
     extension (a: PGTransactionStatusType)
       inline def &(b: PGTransactionStatusType): PGTransactionStatusType = a & b
@@ -160,12 +159,12 @@ object enumerations:
     val PQERRORS_DEFAULT = define(1)
     val PQERRORS_VERBOSE = define(2)
     val PQERRORS_SQLSTATE = define(3)
-    inline def getName(inline value: PGVerbosity): Option[String] =
-      inline value match
-        case PQERRORS_TERSE => Some("PQERRORS_TERSE")
-        case PQERRORS_DEFAULT => Some("PQERRORS_DEFAULT")
-        case PQERRORS_VERBOSE => Some("PQERRORS_VERBOSE")
-        case PQERRORS_SQLSTATE => Some("PQERRORS_SQLSTATE")
+    def getName(value: PGVerbosity): Option[String] =
+      value match
+        case `PQERRORS_TERSE` => Some("PQERRORS_TERSE")
+        case `PQERRORS_DEFAULT` => Some("PQERRORS_DEFAULT")
+        case `PQERRORS_VERBOSE` => Some("PQERRORS_VERBOSE")
+        case `PQERRORS_SQLSTATE` => Some("PQERRORS_SQLSTATE")
         case _ => _root_.scala.None
     extension (a: PGVerbosity)
       inline def &(b: PGVerbosity): PGVerbosity = a & b
@@ -179,11 +178,11 @@ object enumerations:
     val PQ_PIPELINE_OFF = define(0)
     val PQ_PIPELINE_ON = define(1)
     val PQ_PIPELINE_ABORTED = define(2)
-    inline def getName(inline value: PGpipelineStatus): Option[String] =
-      inline value match
-        case PQ_PIPELINE_OFF => Some("PQ_PIPELINE_OFF")
-        case PQ_PIPELINE_ON => Some("PQ_PIPELINE_ON")
-        case PQ_PIPELINE_ABORTED => Some("PQ_PIPELINE_ABORTED")
+    def getName(value: PGpipelineStatus): Option[String] =
+      value match
+        case `PQ_PIPELINE_OFF` => Some("PQ_PIPELINE_OFF")
+        case `PQ_PIPELINE_ON` => Some("PQ_PIPELINE_ON")
+        case `PQ_PIPELINE_ABORTED` => Some("PQ_PIPELINE_ABORTED")
         case _ => _root_.scala.None
     extension (a: PGpipelineStatus)
       inline def &(b: PGpipelineStatus): PGpipelineStatus = a & b
@@ -199,13 +198,13 @@ object enumerations:
     val PGRES_POLLING_WRITING = define(2)
     val PGRES_POLLING_OK = define(3)
     val PGRES_POLLING_ACTIVE = define(4)
-    inline def getName(inline value: PostgresPollingStatusType): Option[String] =
-      inline value match
-        case PGRES_POLLING_FAILED => Some("PGRES_POLLING_FAILED")
-        case PGRES_POLLING_READING => Some("PGRES_POLLING_READING")
-        case PGRES_POLLING_WRITING => Some("PGRES_POLLING_WRITING")
-        case PGRES_POLLING_OK => Some("PGRES_POLLING_OK")
-        case PGRES_POLLING_ACTIVE => Some("PGRES_POLLING_ACTIVE")
+    def getName(value: PostgresPollingStatusType): Option[String] =
+      value match
+        case `PGRES_POLLING_FAILED` => Some("PGRES_POLLING_FAILED")
+        case `PGRES_POLLING_READING` => Some("PGRES_POLLING_READING")
+        case `PGRES_POLLING_WRITING` => Some("PGRES_POLLING_WRITING")
+        case `PGRES_POLLING_OK` => Some("PGRES_POLLING_OK")
+        case `PGRES_POLLING_ACTIVE` => Some("PGRES_POLLING_ACTIVE")
         case _ => _root_.scala.None
     extension (a: PostgresPollingStatusType)
       inline def &(b: PostgresPollingStatusType): PostgresPollingStatusType = a & b
@@ -218,21 +217,21 @@ object aliases:
   import _root_.libpq.aliases.*
   import _root_.libpq.structs.*
   type FILE = libc.stdio.FILE
-  object FILE: 
+  object FILE:
     val _tag: Tag[FILE] = summon[Tag[libc.stdio.FILE]]
     inline def apply(inline o: libc.stdio.FILE): FILE = o
     extension (v: FILE)
       inline def value: libc.stdio.FILE = v
 
   opaque type Oid = CUnsignedInt
-  object Oid: 
+  object Oid:
     given _tag: Tag[Oid] = Tag.UInt
     inline def apply(inline o: CUnsignedInt): Oid = o
     extension (v: Oid)
       inline def value: CUnsignedInt = v
 
   opaque type PQnoticeProcessor = CFuncPtr2[Ptr[Byte], CString, Unit]
-  object PQnoticeProcessor: 
+  object PQnoticeProcessor:
     given _tag: Tag[PQnoticeProcessor] = Tag.materializeCFuncPtr2[Ptr[Byte], CString, Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): PQnoticeProcessor = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], CString, Unit]): PQnoticeProcessor = o
@@ -241,7 +240,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type PQnoticeReceiver = CFuncPtr2[Ptr[Byte], Ptr[PGresult], Unit]
-  object PQnoticeReceiver: 
+  object PQnoticeReceiver:
     given _tag: Tag[PQnoticeReceiver] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[PGresult], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): PQnoticeReceiver = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[PGresult], Unit]): PQnoticeReceiver = o
@@ -250,7 +249,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type PQsslKeyPassHook_OpenSSL_type = CFuncPtr3[CString, CInt, Ptr[PGconn], CInt]
-  object PQsslKeyPassHook_OpenSSL_type: 
+  object PQsslKeyPassHook_OpenSSL_type:
     given _tag: Tag[PQsslKeyPassHook_OpenSSL_type] = Tag.materializeCFuncPtr3[CString, CInt, Ptr[PGconn], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): PQsslKeyPassHook_OpenSSL_type = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, CInt, Ptr[PGconn], CInt]): PQsslKeyPassHook_OpenSSL_type = o
@@ -259,14 +258,14 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type pg_int64 = CLongInt
-  object pg_int64: 
+  object pg_int64:
     given _tag: Tag[pg_int64] = Tag.Size
     inline def apply(inline o: CLongInt): pg_int64 = o
     extension (v: pg_int64)
       inline def value: CLongInt = v
 
   opaque type pgthreadlock_t = CFuncPtr1[CInt, Unit]
-  object pgthreadlock_t: 
+  object pgthreadlock_t:
     given _tag: Tag[pgthreadlock_t] = Tag.materializeCFuncPtr1[CInt, Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): pgthreadlock_t = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[CInt, Unit]): pgthreadlock_t = o
@@ -275,14 +274,14 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type pqbool = CChar
-  object pqbool: 
+  object pqbool:
     given _tag: Tag[pqbool] = Tag.Byte
     inline def apply(inline o: CChar): pqbool = o
     extension (v: pqbool)
       inline def value: CChar = v
 
   type size_t = libc.stddef.size_t
-  object size_t: 
+  object size_t:
     val _tag: Tag[size_t] = summon[Tag[libc.stddef.size_t]]
     inline def apply(inline o: libc.stddef.size_t): size_t = o
     extension (v: size_t)
@@ -293,25 +292,34 @@ object structs:
   import _root_.libpq.predef.*
   import _root_.libpq.aliases.*
   import _root_.libpq.structs.*
+
   opaque type PGcancel = CStruct0
+  
   object PGcancel:
     given _tag: Tag[PGcancel] = Tag.materializeCStruct0Tag
+    
 
   opaque type PGconn = CStruct0
+  
   object PGconn:
     given _tag: Tag[PGconn] = Tag.materializeCStruct0Tag
+    
 
   opaque type PGnotify = CStruct4[CString, CInt, CString, Ptr[Byte]]
+  
   object PGnotify:
     given _tag: Tag[PGnotify] = Tag.materializeCStruct4Tag[CString, CInt, CString, Ptr[Byte]]
+    
+    // Allocates PGnotify on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[PGnotify] = scala.scalanative.unsafe.alloc[PGnotify](1)
-    def apply(relname : CString, be_pid : CInt, extra : CString, next : Ptr[pgNotify])(using Zone): Ptr[PGnotify] = 
+    def apply(relname : CString, be_pid : CInt, extra : CString, next : Ptr[pgNotify])(using Zone): Ptr[PGnotify] =
       val ____ptr = apply()
       (!____ptr).relname = relname
       (!____ptr).be_pid = be_pid
       (!____ptr).extra = extra
       (!____ptr).next = next
       ____ptr
+    
     extension (struct: PGnotify)
       def relname : CString = struct._1
       def relname_=(value: CString): Unit = !struct.at1 = value
@@ -321,12 +329,16 @@ object structs:
       def extra_=(value: CString): Unit = !struct.at3 = value
       def next : Ptr[pgNotify] = struct._4.asInstanceOf[Ptr[pgNotify]]
       def next_=(value: Ptr[pgNotify]): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
+    
 
   opaque type PGresAttDesc = CStruct7[CString, Oid, CInt, CInt, Oid, CInt, CInt]
+  
   object PGresAttDesc:
     given _tag: Tag[PGresAttDesc] = Tag.materializeCStruct7Tag[CString, Oid, CInt, CInt, Oid, CInt, CInt]
+    
+    // Allocates PGresAttDesc on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[PGresAttDesc] = scala.scalanative.unsafe.alloc[PGresAttDesc](1)
-    def apply(name : CString, tableid : Oid, columnid : CInt, format : CInt, typid : Oid, typlen : CInt, atttypmod : CInt)(using Zone): Ptr[PGresAttDesc] = 
+    def apply(name : CString, tableid : Oid, columnid : CInt, format : CInt, typid : Oid, typlen : CInt, atttypmod : CInt)(using Zone): Ptr[PGresAttDesc] =
       val ____ptr = apply()
       (!____ptr).name = name
       (!____ptr).tableid = tableid
@@ -336,6 +348,7 @@ object structs:
       (!____ptr).typlen = typlen
       (!____ptr).atttypmod = atttypmod
       ____ptr
+    
     extension (struct: PGresAttDesc)
       def name : CString = struct._1
       def name_=(value: CString): Unit = !struct.at1 = value
@@ -351,57 +364,72 @@ object structs:
       def typlen_=(value: CInt): Unit = !struct.at6 = value
       def atttypmod : CInt = struct._7
       def atttypmod_=(value: CInt): Unit = !struct.at7 = value
+    
 
   opaque type PGresult = CStruct0
+  
   object PGresult:
     given _tag: Tag[PGresult] = Tag.materializeCStruct0Tag
+    
 
-  opaque type PQArgBlock = CStruct3[CInt, CInt, PQArgBlock.Union0]
+  opaque type PQArgBlock = CStruct3[CInt, CInt, PQArgBlock.U]
+  
   object PQArgBlock:
-    opaque type Union0 = CArray[Byte, Nat._8]
-    object Union0:
-      given _tag: Tag[Union0] = Tag.CArray[CChar, Nat._8](Tag.Byte, Tag.Nat8)
-      def apply()(using Zone): Ptr[Union0] = 
-        val ___ptr = alloc[Union0](1)
-        ___ptr
-      @scala.annotation.targetName("apply_ptr")
-      def apply(ptr: Ptr[CInt])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
-        val un = !___ptr
-        un.at(0).asInstanceOf[Ptr[Ptr[CInt]]].update(0, ptr)
-        ___ptr
-      @scala.annotation.targetName("apply_integer")
-      def apply(integer: CInt)(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
-        val un = !___ptr
-        un.at(0).asInstanceOf[Ptr[CInt]].update(0, integer)
-        ___ptr
-      extension (struct: Union0)
-        def ptr : Ptr[CInt] = !struct.at(0).asInstanceOf[Ptr[Ptr[CInt]]]
-        def ptr_=(value: Ptr[CInt]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[CInt]]] = value
-        def integer : CInt = !struct.at(0).asInstanceOf[Ptr[CInt]]
-        def integer_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
-    given _tag: Tag[PQArgBlock] = Tag.materializeCStruct3Tag[CInt, CInt, PQArgBlock.Union0]
+    given _tag: Tag[PQArgBlock] = Tag.materializeCStruct3Tag[CInt, CInt, PQArgBlock.U]
+    
+    // Allocates PQArgBlock on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[PQArgBlock] = scala.scalanative.unsafe.alloc[PQArgBlock](1)
-    def apply(len : CInt, isint : CInt, u : PQArgBlock.Union0)(using Zone): Ptr[PQArgBlock] = 
+    def apply(len : CInt, isint : CInt, u : PQArgBlock.U)(using Zone): Ptr[PQArgBlock] =
       val ____ptr = apply()
       (!____ptr).len = len
       (!____ptr).isint = isint
       (!____ptr).u = u
       ____ptr
+    
     extension (struct: PQArgBlock)
       def len : CInt = struct._1
       def len_=(value: CInt): Unit = !struct.at1 = value
       def isint : CInt = struct._2
       def isint_=(value: CInt): Unit = !struct.at2 = value
-      def u : PQArgBlock.Union0 = struct._3
-      def u_=(value: PQArgBlock.Union0): Unit = !struct.at3 = value
+      def u : PQArgBlock.U = struct._3
+      def u_=(value: PQArgBlock.U): Unit = !struct.at3 = value
+    
+    opaque type U = CArray[Byte, Nat._8]
+    object U:
+      given _tag: Tag[U] = Tag.CArray[CChar, Nat._8](Tag.Byte, Tag.Nat8)
+      
+      def apply()(using Zone): Ptr[U] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
+        ___ptr
+      
+      @scala.annotation.targetName("apply_ptr")
+      def apply(ptr: Ptr[CInt])(using Zone): Ptr[U] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
+        val un = !___ptr
+        un.at(0).asInstanceOf[Ptr[Ptr[CInt]]].update(0, ptr)
+        ___ptr
+      
+      @scala.annotation.targetName("apply_integer")
+      def apply(integer: CInt)(using Zone): Ptr[U] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
+        val un = !___ptr
+        un.at(0).asInstanceOf[Ptr[CInt]].update(0, integer)
+        ___ptr
+      
+      extension (struct: U)
+        def ptr : Ptr[CInt] = !struct.at(0).asInstanceOf[Ptr[Ptr[CInt]]]
+        def ptr_=(value: Ptr[CInt]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[CInt]]] = value
+        def integer : CInt = !struct.at(0).asInstanceOf[Ptr[CInt]]
+        def integer_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
 
   opaque type PQconninfoOption = CStruct7[CString, CString, CString, CString, CString, CString, CInt]
+  
   object PQconninfoOption:
     given _tag: Tag[PQconninfoOption] = Tag.materializeCStruct7Tag[CString, CString, CString, CString, CString, CString, CInt]
+    
+    // Allocates PQconninfoOption on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[PQconninfoOption] = scala.scalanative.unsafe.alloc[PQconninfoOption](1)
-    def apply(keyword : CString, envvar : CString, compiled : CString, `val` : CString, label : CString, dispchar : CString, dispsize : CInt)(using Zone): Ptr[PQconninfoOption] = 
+    def apply(keyword : CString, envvar : CString, compiled : CString, `val` : CString, label : CString, dispchar : CString, dispsize : CInt)(using Zone): Ptr[PQconninfoOption] =
       val ____ptr = apply()
       (!____ptr).keyword = keyword
       (!____ptr).envvar = envvar
@@ -411,6 +439,7 @@ object structs:
       (!____ptr).dispchar = dispchar
       (!____ptr).dispsize = dispsize
       ____ptr
+    
     extension (struct: PQconninfoOption)
       def keyword : CString = struct._1
       def keyword_=(value: CString): Unit = !struct.at1 = value
@@ -426,12 +455,16 @@ object structs:
       def dispchar_=(value: CString): Unit = !struct.at6 = value
       def dispsize : CInt = struct._7
       def dispsize_=(value: CInt): Unit = !struct.at7 = value
+    
 
   opaque type PQprintOpt = CStruct10[pqbool, pqbool, pqbool, pqbool, pqbool, pqbool, CString, CString, CString, Ptr[CString]]
+  
   object PQprintOpt:
     given _tag: Tag[PQprintOpt] = Tag.materializeCStruct10Tag[pqbool, pqbool, pqbool, pqbool, pqbool, pqbool, CString, CString, CString, Ptr[CString]]
+    
+    // Allocates PQprintOpt on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[PQprintOpt] = scala.scalanative.unsafe.alloc[PQprintOpt](1)
-    def apply(header : pqbool, align : pqbool, standard : pqbool, html3 : pqbool, expanded : pqbool, pager : pqbool, fieldSep : CString, tableOpt : CString, caption : CString, fieldName : Ptr[CString])(using Zone): Ptr[PQprintOpt] = 
+    def apply(header : pqbool, align : pqbool, standard : pqbool, html3 : pqbool, expanded : pqbool, pager : pqbool, fieldSep : CString, tableOpt : CString, caption : CString, fieldName : Ptr[CString])(using Zone): Ptr[PQprintOpt] =
       val ____ptr = apply()
       (!____ptr).header = header
       (!____ptr).align = align
@@ -444,6 +477,7 @@ object structs:
       (!____ptr).caption = caption
       (!____ptr).fieldName = fieldName
       ____ptr
+    
     extension (struct: PQprintOpt)
       def header : pqbool = struct._1
       def header_=(value: pqbool): Unit = !struct.at1 = value
@@ -465,12 +499,16 @@ object structs:
       def caption_=(value: CString): Unit = !struct.at9 = value
       def fieldName : Ptr[CString] = struct._10
       def fieldName_=(value: Ptr[CString]): Unit = !struct.at10 = value
+    
 
   opaque type _PQconninfoOption = CStruct7[CString, CString, CString, CString, CString, CString, CInt]
+  
   object _PQconninfoOption:
     given _tag: Tag[_PQconninfoOption] = Tag.materializeCStruct7Tag[CString, CString, CString, CString, CString, CString, CInt]
+    
+    // Allocates _PQconninfoOption on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[_PQconninfoOption] = scala.scalanative.unsafe.alloc[_PQconninfoOption](1)
-    def apply(keyword : CString, envvar : CString, compiled : CString, `val` : CString, label : CString, dispchar : CString, dispsize : CInt)(using Zone): Ptr[_PQconninfoOption] = 
+    def apply(keyword : CString, envvar : CString, compiled : CString, `val` : CString, label : CString, dispchar : CString, dispsize : CInt)(using Zone): Ptr[_PQconninfoOption] =
       val ____ptr = apply()
       (!____ptr).keyword = keyword
       (!____ptr).envvar = envvar
@@ -480,6 +518,7 @@ object structs:
       (!____ptr).dispchar = dispchar
       (!____ptr).dispsize = dispsize
       ____ptr
+    
     extension (struct: _PQconninfoOption)
       def keyword : CString = struct._1
       def keyword_=(value: CString): Unit = !struct.at1 = value
@@ -495,12 +534,16 @@ object structs:
       def dispchar_=(value: CString): Unit = !struct.at6 = value
       def dispsize : CInt = struct._7
       def dispsize_=(value: CInt): Unit = !struct.at7 = value
+    
 
   opaque type _PQprintOpt = CStruct10[pqbool, pqbool, pqbool, pqbool, pqbool, pqbool, CString, CString, CString, Ptr[CString]]
+  
   object _PQprintOpt:
     given _tag: Tag[_PQprintOpt] = Tag.materializeCStruct10Tag[pqbool, pqbool, pqbool, pqbool, pqbool, pqbool, CString, CString, CString, Ptr[CString]]
+    
+    // Allocates _PQprintOpt on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[_PQprintOpt] = scala.scalanative.unsafe.alloc[_PQprintOpt](1)
-    def apply(header : pqbool, align : pqbool, standard : pqbool, html3 : pqbool, expanded : pqbool, pager : pqbool, fieldSep : CString, tableOpt : CString, caption : CString, fieldName : Ptr[CString])(using Zone): Ptr[_PQprintOpt] = 
+    def apply(header : pqbool, align : pqbool, standard : pqbool, html3 : pqbool, expanded : pqbool, pager : pqbool, fieldSep : CString, tableOpt : CString, caption : CString, fieldName : Ptr[CString])(using Zone): Ptr[_PQprintOpt] =
       val ____ptr = apply()
       (!____ptr).header = header
       (!____ptr).align = align
@@ -513,6 +556,7 @@ object structs:
       (!____ptr).caption = caption
       (!____ptr).fieldName = fieldName
       ____ptr
+    
     extension (struct: _PQprintOpt)
       def header : pqbool = struct._1
       def header_=(value: pqbool): Unit = !struct.at1 = value
@@ -534,18 +578,23 @@ object structs:
       def caption_=(value: CString): Unit = !struct.at9 = value
       def fieldName : Ptr[CString] = struct._10
       def fieldName_=(value: Ptr[CString]): Unit = !struct.at10 = value
+    
 
   opaque type pgNotify = CStruct4[CString, CInt, CString, Ptr[Byte]]
+  
   object pgNotify:
     given _tag: Tag[pgNotify] = Tag.materializeCStruct4Tag[CString, CInt, CString, Ptr[Byte]]
+    
+    // Allocates pgNotify on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[pgNotify] = scala.scalanative.unsafe.alloc[pgNotify](1)
-    def apply(relname : CString, be_pid : CInt, extra : CString, next : Ptr[pgNotify])(using Zone): Ptr[pgNotify] = 
+    def apply(relname : CString, be_pid : CInt, extra : CString, next : Ptr[pgNotify])(using Zone): Ptr[pgNotify] =
       val ____ptr = apply()
       (!____ptr).relname = relname
       (!____ptr).be_pid = be_pid
       (!____ptr).extra = extra
       (!____ptr).next = next
       ____ptr
+    
     extension (struct: pgNotify)
       def relname : CString = struct._1
       def relname_=(value: CString): Unit = !struct.at1 = value
@@ -555,24 +604,34 @@ object structs:
       def extra_=(value: CString): Unit = !struct.at3 = value
       def next : Ptr[pgNotify] = struct._4.asInstanceOf[Ptr[pgNotify]]
       def next_=(value: Ptr[pgNotify]): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
+    
 
   opaque type pg_cancel = CStruct0
+  
   object pg_cancel:
     given _tag: Tag[pg_cancel] = Tag.materializeCStruct0Tag
+    
 
   opaque type pg_conn = CStruct0
+  
   object pg_conn:
     given _tag: Tag[pg_conn] = Tag.materializeCStruct0Tag
+    
 
   opaque type pg_result = CStruct0
+  
   object pg_result:
     given _tag: Tag[pg_result] = Tag.materializeCStruct0Tag
+    
 
   opaque type pgresAttDesc = CStruct7[CString, Oid, CInt, CInt, Oid, CInt, CInt]
+  
   object pgresAttDesc:
     given _tag: Tag[pgresAttDesc] = Tag.materializeCStruct7Tag[CString, Oid, CInt, CInt, Oid, CInt, CInt]
+    
+    // Allocates pgresAttDesc on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[pgresAttDesc] = scala.scalanative.unsafe.alloc[pgresAttDesc](1)
-    def apply(name : CString, tableid : Oid, columnid : CInt, format : CInt, typid : Oid, typlen : CInt, atttypmod : CInt)(using Zone): Ptr[pgresAttDesc] = 
+    def apply(name : CString, tableid : Oid, columnid : CInt, format : CInt, typid : Oid, typlen : CInt, atttypmod : CInt)(using Zone): Ptr[pgresAttDesc] =
       val ____ptr = apply()
       (!____ptr).name = name
       (!____ptr).tableid = tableid
@@ -582,6 +641,7 @@ object structs:
       (!____ptr).typlen = typlen
       (!____ptr).atttypmod = atttypmod
       ____ptr
+    
     extension (struct: pgresAttDesc)
       def name : CString = struct._1
       def name_=(value: CString): Unit = !struct.at1 = value
@@ -597,8 +657,10 @@ object structs:
       def typlen_=(value: CInt): Unit = !struct.at6 = value
       def atttypmod : CInt = struct._7
       def atttypmod_=(value: CInt): Unit = !struct.at7 = value
+    
 
 @link("pq")
+
 @extern
 private[libpq] object extern_functions:
   import _root_.libpq.enumerations.*
@@ -945,9 +1007,9 @@ object functions:
   export extern_functions.*
 
 object types:
-  export _root_.libpq.structs.*
-  export _root_.libpq.aliases.*
-  export _root_.libpq.enumerations.*
+    export _root_.libpq.structs.*
+    export _root_.libpq.aliases.*
+    export _root_.libpq.enumerations.*
 
 object all:
   export _root_.libpq.enumerations.ConnStatusType

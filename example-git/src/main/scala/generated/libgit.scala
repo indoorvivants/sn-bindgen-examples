@@ -6,32 +6,31 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[libgit] trait _BindgenEnumCInt[T](using eq: T =:= CInt):
-    given Tag[T] = Tag.Int.asInstanceOf[Tag[T]]
-    extension (inline t: T)
-     inline def value: CInt = eq.apply(t)
-     inline def int: CInt = eq.apply(t).toInt
-  private[libgit] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
-    given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
-    extension (inline t: T)
-     inline def value: CUnsignedInt = eq.apply(t)
-     inline def int: CInt = eq.apply(t).toInt
-     inline def uint: CUnsignedInt = eq.apply(t)
-
+    private[libgit] trait _BindgenEnumCInt[T](using eq: T =:= CInt):
+      given Tag[T] = Tag.Int.asInstanceOf[Tag[T]]
+      extension (inline t: T)
+        inline def value: CInt = eq.apply(t)
+        inline def int: CInt = eq.apply(t).toInt
+    private[libgit] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
+      given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
+      extension (inline t: T)
+        inline def value: CUnsignedInt = eq.apply(t)
+        inline def int: CInt = eq.apply(t).toInt
+        inline def uint: CUnsignedInt = eq.apply(t)
 
 object enumerations:
   import predef.*
   /**
-   * Flags controlling the behavior of git_apply
+   * Flags controlling the behavior of `git_apply`.
   */
   opaque type git_apply_flags_t = CUnsignedInt
   object git_apply_flags_t extends _BindgenEnumCUnsignedInt[git_apply_flags_t]:
     given _tag: Tag[git_apply_flags_t] = Tag.UInt
     inline def define(inline a: Long): git_apply_flags_t = a.toUInt
     val GIT_APPLY_CHECK = define(1)
-    inline def getName(inline value: git_apply_flags_t): Option[String] =
-      inline value match
-        case GIT_APPLY_CHECK => Some("GIT_APPLY_CHECK")
+    def getName(value: git_apply_flags_t): Option[String] =
+      value match
+        case `GIT_APPLY_CHECK` => Some("GIT_APPLY_CHECK")
         case _ => _root_.scala.None
     extension (a: git_apply_flags_t)
       inline def &(b: git_apply_flags_t): git_apply_flags_t = a & b
@@ -48,11 +47,11 @@ object enumerations:
     val GIT_APPLY_LOCATION_WORKDIR = define(0)
     val GIT_APPLY_LOCATION_INDEX = define(1)
     val GIT_APPLY_LOCATION_BOTH = define(2)
-    inline def getName(inline value: git_apply_location_t): Option[String] =
-      inline value match
-        case GIT_APPLY_LOCATION_WORKDIR => Some("GIT_APPLY_LOCATION_WORKDIR")
-        case GIT_APPLY_LOCATION_INDEX => Some("GIT_APPLY_LOCATION_INDEX")
-        case GIT_APPLY_LOCATION_BOTH => Some("GIT_APPLY_LOCATION_BOTH")
+    def getName(value: git_apply_location_t): Option[String] =
+      value match
+        case `GIT_APPLY_LOCATION_WORKDIR` => Some("GIT_APPLY_LOCATION_WORKDIR")
+        case `GIT_APPLY_LOCATION_INDEX` => Some("GIT_APPLY_LOCATION_INDEX")
+        case `GIT_APPLY_LOCATION_BOTH` => Some("GIT_APPLY_LOCATION_BOTH")
         case _ => _root_.scala.None
     extension (a: git_apply_location_t)
       inline def &(b: git_apply_location_t): git_apply_location_t = a & b
@@ -70,12 +69,12 @@ object enumerations:
     val GIT_ATTR_VALUE_TRUE = define(1)
     val GIT_ATTR_VALUE_FALSE = define(2)
     val GIT_ATTR_VALUE_STRING = define(3)
-    inline def getName(inline value: git_attr_value_t): Option[String] =
-      inline value match
-        case GIT_ATTR_VALUE_UNSPECIFIED => Some("GIT_ATTR_VALUE_UNSPECIFIED")
-        case GIT_ATTR_VALUE_TRUE => Some("GIT_ATTR_VALUE_TRUE")
-        case GIT_ATTR_VALUE_FALSE => Some("GIT_ATTR_VALUE_FALSE")
-        case GIT_ATTR_VALUE_STRING => Some("GIT_ATTR_VALUE_STRING")
+    def getName(value: git_attr_value_t): Option[String] =
+      value match
+        case `GIT_ATTR_VALUE_UNSPECIFIED` => Some("GIT_ATTR_VALUE_UNSPECIFIED")
+        case `GIT_ATTR_VALUE_TRUE` => Some("GIT_ATTR_VALUE_TRUE")
+        case `GIT_ATTR_VALUE_FALSE` => Some("GIT_ATTR_VALUE_FALSE")
+        case `GIT_ATTR_VALUE_STRING` => Some("GIT_ATTR_VALUE_STRING")
         case _ => _root_.scala.None
     extension (a: git_attr_value_t)
       inline def &(b: git_attr_value_t): git_attr_value_t = a & b
@@ -97,16 +96,16 @@ object enumerations:
     val GIT_BLAME_FIRST_PARENT = define(16)
     val GIT_BLAME_USE_MAILMAP = define(32)
     val GIT_BLAME_IGNORE_WHITESPACE = define(64)
-    inline def getName(inline value: git_blame_flag_t): Option[String] =
-      inline value match
-        case GIT_BLAME_NORMAL => Some("GIT_BLAME_NORMAL")
-        case GIT_BLAME_TRACK_COPIES_SAME_FILE => Some("GIT_BLAME_TRACK_COPIES_SAME_FILE")
-        case GIT_BLAME_TRACK_COPIES_SAME_COMMIT_MOVES => Some("GIT_BLAME_TRACK_COPIES_SAME_COMMIT_MOVES")
-        case GIT_BLAME_TRACK_COPIES_SAME_COMMIT_COPIES => Some("GIT_BLAME_TRACK_COPIES_SAME_COMMIT_COPIES")
-        case GIT_BLAME_TRACK_COPIES_ANY_COMMIT_COPIES => Some("GIT_BLAME_TRACK_COPIES_ANY_COMMIT_COPIES")
-        case GIT_BLAME_FIRST_PARENT => Some("GIT_BLAME_FIRST_PARENT")
-        case GIT_BLAME_USE_MAILMAP => Some("GIT_BLAME_USE_MAILMAP")
-        case GIT_BLAME_IGNORE_WHITESPACE => Some("GIT_BLAME_IGNORE_WHITESPACE")
+    def getName(value: git_blame_flag_t): Option[String] =
+      value match
+        case `GIT_BLAME_NORMAL` => Some("GIT_BLAME_NORMAL")
+        case `GIT_BLAME_TRACK_COPIES_SAME_FILE` => Some("GIT_BLAME_TRACK_COPIES_SAME_FILE")
+        case `GIT_BLAME_TRACK_COPIES_SAME_COMMIT_MOVES` => Some("GIT_BLAME_TRACK_COPIES_SAME_COMMIT_MOVES")
+        case `GIT_BLAME_TRACK_COPIES_SAME_COMMIT_COPIES` => Some("GIT_BLAME_TRACK_COPIES_SAME_COMMIT_COPIES")
+        case `GIT_BLAME_TRACK_COPIES_ANY_COMMIT_COPIES` => Some("GIT_BLAME_TRACK_COPIES_ANY_COMMIT_COPIES")
+        case `GIT_BLAME_FIRST_PARENT` => Some("GIT_BLAME_FIRST_PARENT")
+        case `GIT_BLAME_USE_MAILMAP` => Some("GIT_BLAME_USE_MAILMAP")
+        case `GIT_BLAME_IGNORE_WHITESPACE` => Some("GIT_BLAME_IGNORE_WHITESPACE")
         case _ => _root_.scala.None
     extension (a: git_blame_flag_t)
       inline def &(b: git_blame_flag_t): git_blame_flag_t = a & b
@@ -124,12 +123,12 @@ object enumerations:
     val GIT_BLOB_FILTER_NO_SYSTEM_ATTRIBUTES = define(2)
     val GIT_BLOB_FILTER_ATTRIBUTES_FROM_HEAD = define(4)
     val GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT = define(8)
-    inline def getName(inline value: git_blob_filter_flag_t): Option[String] =
-      inline value match
-        case GIT_BLOB_FILTER_CHECK_FOR_BINARY => Some("GIT_BLOB_FILTER_CHECK_FOR_BINARY")
-        case GIT_BLOB_FILTER_NO_SYSTEM_ATTRIBUTES => Some("GIT_BLOB_FILTER_NO_SYSTEM_ATTRIBUTES")
-        case GIT_BLOB_FILTER_ATTRIBUTES_FROM_HEAD => Some("GIT_BLOB_FILTER_ATTRIBUTES_FROM_HEAD")
-        case GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT => Some("GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT")
+    def getName(value: git_blob_filter_flag_t): Option[String] =
+      value match
+        case `GIT_BLOB_FILTER_CHECK_FOR_BINARY` => Some("GIT_BLOB_FILTER_CHECK_FOR_BINARY")
+        case `GIT_BLOB_FILTER_NO_SYSTEM_ATTRIBUTES` => Some("GIT_BLOB_FILTER_NO_SYSTEM_ATTRIBUTES")
+        case `GIT_BLOB_FILTER_ATTRIBUTES_FROM_HEAD` => Some("GIT_BLOB_FILTER_ATTRIBUTES_FROM_HEAD")
+        case `GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT` => Some("GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT")
         case _ => _root_.scala.None
     extension (a: git_blob_filter_flag_t)
       inline def &(b: git_blob_filter_flag_t): git_blob_filter_flag_t = a & b
@@ -146,11 +145,11 @@ object enumerations:
     val GIT_BRANCH_LOCAL = define(1)
     val GIT_BRANCH_REMOTE = define(2)
     val GIT_BRANCH_ALL = define(3)
-    inline def getName(inline value: git_branch_t): Option[String] =
-      inline value match
-        case GIT_BRANCH_LOCAL => Some("GIT_BRANCH_LOCAL")
-        case GIT_BRANCH_REMOTE => Some("GIT_BRANCH_REMOTE")
-        case GIT_BRANCH_ALL => Some("GIT_BRANCH_ALL")
+    def getName(value: git_branch_t): Option[String] =
+      value match
+        case `GIT_BRANCH_LOCAL` => Some("GIT_BRANCH_LOCAL")
+        case `GIT_BRANCH_REMOTE` => Some("GIT_BRANCH_REMOTE")
+        case `GIT_BRANCH_ALL` => Some("GIT_BRANCH_ALL")
         case _ => _root_.scala.None
     extension (a: git_branch_t)
       inline def &(b: git_branch_t): git_branch_t = a & b
@@ -168,15 +167,15 @@ object enumerations:
     val GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_384 = define(4)
     val GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_521 = define(5)
     val GIT_CERT_SSH_RAW_TYPE_KEY_ED25519 = define(6)
-    inline def getName(inline value: git_cert_ssh_raw_type_t): Option[String] =
-      inline value match
-        case GIT_CERT_SSH_RAW_TYPE_UNKNOWN => Some("GIT_CERT_SSH_RAW_TYPE_UNKNOWN")
-        case GIT_CERT_SSH_RAW_TYPE_RSA => Some("GIT_CERT_SSH_RAW_TYPE_RSA")
-        case GIT_CERT_SSH_RAW_TYPE_DSS => Some("GIT_CERT_SSH_RAW_TYPE_DSS")
-        case GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_256 => Some("GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_256")
-        case GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_384 => Some("GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_384")
-        case GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_521 => Some("GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_521")
-        case GIT_CERT_SSH_RAW_TYPE_KEY_ED25519 => Some("GIT_CERT_SSH_RAW_TYPE_KEY_ED25519")
+    def getName(value: git_cert_ssh_raw_type_t): Option[String] =
+      value match
+        case `GIT_CERT_SSH_RAW_TYPE_UNKNOWN` => Some("GIT_CERT_SSH_RAW_TYPE_UNKNOWN")
+        case `GIT_CERT_SSH_RAW_TYPE_RSA` => Some("GIT_CERT_SSH_RAW_TYPE_RSA")
+        case `GIT_CERT_SSH_RAW_TYPE_DSS` => Some("GIT_CERT_SSH_RAW_TYPE_DSS")
+        case `GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_256` => Some("GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_256")
+        case `GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_384` => Some("GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_384")
+        case `GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_521` => Some("GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_521")
+        case `GIT_CERT_SSH_RAW_TYPE_KEY_ED25519` => Some("GIT_CERT_SSH_RAW_TYPE_KEY_ED25519")
         case _ => _root_.scala.None
     extension (a: git_cert_ssh_raw_type_t)
       inline def &(b: git_cert_ssh_raw_type_t): git_cert_ssh_raw_type_t = a & b
@@ -194,12 +193,12 @@ object enumerations:
     val GIT_CERT_SSH_SHA1 = define(2)
     val GIT_CERT_SSH_SHA256 = define(4)
     val GIT_CERT_SSH_RAW = define(8)
-    inline def getName(inline value: git_cert_ssh_t): Option[String] =
-      inline value match
-        case GIT_CERT_SSH_MD5 => Some("GIT_CERT_SSH_MD5")
-        case GIT_CERT_SSH_SHA1 => Some("GIT_CERT_SSH_SHA1")
-        case GIT_CERT_SSH_SHA256 => Some("GIT_CERT_SSH_SHA256")
-        case GIT_CERT_SSH_RAW => Some("GIT_CERT_SSH_RAW")
+    def getName(value: git_cert_ssh_t): Option[String] =
+      value match
+        case `GIT_CERT_SSH_MD5` => Some("GIT_CERT_SSH_MD5")
+        case `GIT_CERT_SSH_SHA1` => Some("GIT_CERT_SSH_SHA1")
+        case `GIT_CERT_SSH_SHA256` => Some("GIT_CERT_SSH_SHA256")
+        case `GIT_CERT_SSH_RAW` => Some("GIT_CERT_SSH_RAW")
         case _ => _root_.scala.None
     extension (a: git_cert_ssh_t)
       inline def &(b: git_cert_ssh_t): git_cert_ssh_t = a & b
@@ -217,12 +216,12 @@ object enumerations:
     val GIT_CERT_X509 = define(1)
     val GIT_CERT_HOSTKEY_LIBSSH2 = define(2)
     val GIT_CERT_STRARRAY = define(3)
-    inline def getName(inline value: git_cert_t): Option[String] =
-      inline value match
-        case GIT_CERT_NONE => Some("GIT_CERT_NONE")
-        case GIT_CERT_X509 => Some("GIT_CERT_X509")
-        case GIT_CERT_HOSTKEY_LIBSSH2 => Some("GIT_CERT_HOSTKEY_LIBSSH2")
-        case GIT_CERT_STRARRAY => Some("GIT_CERT_STRARRAY")
+    def getName(value: git_cert_t): Option[String] =
+      value match
+        case `GIT_CERT_NONE` => Some("GIT_CERT_NONE")
+        case `GIT_CERT_X509` => Some("GIT_CERT_X509")
+        case `GIT_CERT_HOSTKEY_LIBSSH2` => Some("GIT_CERT_HOSTKEY_LIBSSH2")
+        case `GIT_CERT_STRARRAY` => Some("GIT_CERT_STRARRAY")
         case _ => _root_.scala.None
     extension (a: git_cert_t)
       inline def &(b: git_cert_t): git_cert_t = a & b
@@ -243,15 +242,15 @@ object enumerations:
     val GIT_CHECKOUT_NOTIFY_UNTRACKED = define(8)
     val GIT_CHECKOUT_NOTIFY_IGNORED = define(16)
     val GIT_CHECKOUT_NOTIFY_ALL = define(65535)
-    inline def getName(inline value: git_checkout_notify_t): Option[String] =
-      inline value match
-        case GIT_CHECKOUT_NOTIFY_NONE => Some("GIT_CHECKOUT_NOTIFY_NONE")
-        case GIT_CHECKOUT_NOTIFY_CONFLICT => Some("GIT_CHECKOUT_NOTIFY_CONFLICT")
-        case GIT_CHECKOUT_NOTIFY_DIRTY => Some("GIT_CHECKOUT_NOTIFY_DIRTY")
-        case GIT_CHECKOUT_NOTIFY_UPDATED => Some("GIT_CHECKOUT_NOTIFY_UPDATED")
-        case GIT_CHECKOUT_NOTIFY_UNTRACKED => Some("GIT_CHECKOUT_NOTIFY_UNTRACKED")
-        case GIT_CHECKOUT_NOTIFY_IGNORED => Some("GIT_CHECKOUT_NOTIFY_IGNORED")
-        case GIT_CHECKOUT_NOTIFY_ALL => Some("GIT_CHECKOUT_NOTIFY_ALL")
+    def getName(value: git_checkout_notify_t): Option[String] =
+      value match
+        case `GIT_CHECKOUT_NOTIFY_NONE` => Some("GIT_CHECKOUT_NOTIFY_NONE")
+        case `GIT_CHECKOUT_NOTIFY_CONFLICT` => Some("GIT_CHECKOUT_NOTIFY_CONFLICT")
+        case `GIT_CHECKOUT_NOTIFY_DIRTY` => Some("GIT_CHECKOUT_NOTIFY_DIRTY")
+        case `GIT_CHECKOUT_NOTIFY_UPDATED` => Some("GIT_CHECKOUT_NOTIFY_UPDATED")
+        case `GIT_CHECKOUT_NOTIFY_UNTRACKED` => Some("GIT_CHECKOUT_NOTIFY_UNTRACKED")
+        case `GIT_CHECKOUT_NOTIFY_IGNORED` => Some("GIT_CHECKOUT_NOTIFY_IGNORED")
+        case `GIT_CHECKOUT_NOTIFY_ALL` => Some("GIT_CHECKOUT_NOTIFY_ALL")
         case _ => _root_.scala.None
     extension (a: git_checkout_notify_t)
       inline def &(b: git_checkout_notify_t): git_checkout_notify_t = a & b
@@ -265,8 +264,7 @@ object enumerations:
   object git_checkout_strategy_t extends _BindgenEnumCUnsignedInt[git_checkout_strategy_t]:
     given _tag: Tag[git_checkout_strategy_t] = Tag.UInt
     inline def define(inline a: Long): git_checkout_strategy_t = a.toUInt
-    val GIT_CHECKOUT_NONE = define(0)
-    val GIT_CHECKOUT_SAFE = define(1)
+    val GIT_CHECKOUT_SAFE = define(0)
     val GIT_CHECKOUT_FORCE = define(2)
     val GIT_CHECKOUT_RECREATE_MISSING = define(4)
     val GIT_CHECKOUT_ALLOW_CONFLICTS = define(16)
@@ -287,34 +285,35 @@ object enumerations:
     val GIT_CHECKOUT_DONT_WRITE_INDEX = define(8388608)
     val GIT_CHECKOUT_DRY_RUN = define(16777216)
     val GIT_CHECKOUT_CONFLICT_STYLE_ZDIFF3 = define(33554432)
+    val GIT_CHECKOUT_NONE = define(1073741824)
     val GIT_CHECKOUT_UPDATE_SUBMODULES = define(65536)
     val GIT_CHECKOUT_UPDATE_SUBMODULES_IF_CHANGED = define(131072)
-    inline def getName(inline value: git_checkout_strategy_t): Option[String] =
-      inline value match
-        case GIT_CHECKOUT_NONE => Some("GIT_CHECKOUT_NONE")
-        case GIT_CHECKOUT_SAFE => Some("GIT_CHECKOUT_SAFE")
-        case GIT_CHECKOUT_FORCE => Some("GIT_CHECKOUT_FORCE")
-        case GIT_CHECKOUT_RECREATE_MISSING => Some("GIT_CHECKOUT_RECREATE_MISSING")
-        case GIT_CHECKOUT_ALLOW_CONFLICTS => Some("GIT_CHECKOUT_ALLOW_CONFLICTS")
-        case GIT_CHECKOUT_REMOVE_UNTRACKED => Some("GIT_CHECKOUT_REMOVE_UNTRACKED")
-        case GIT_CHECKOUT_REMOVE_IGNORED => Some("GIT_CHECKOUT_REMOVE_IGNORED")
-        case GIT_CHECKOUT_UPDATE_ONLY => Some("GIT_CHECKOUT_UPDATE_ONLY")
-        case GIT_CHECKOUT_DONT_UPDATE_INDEX => Some("GIT_CHECKOUT_DONT_UPDATE_INDEX")
-        case GIT_CHECKOUT_NO_REFRESH => Some("GIT_CHECKOUT_NO_REFRESH")
-        case GIT_CHECKOUT_SKIP_UNMERGED => Some("GIT_CHECKOUT_SKIP_UNMERGED")
-        case GIT_CHECKOUT_USE_OURS => Some("GIT_CHECKOUT_USE_OURS")
-        case GIT_CHECKOUT_USE_THEIRS => Some("GIT_CHECKOUT_USE_THEIRS")
-        case GIT_CHECKOUT_DISABLE_PATHSPEC_MATCH => Some("GIT_CHECKOUT_DISABLE_PATHSPEC_MATCH")
-        case GIT_CHECKOUT_SKIP_LOCKED_DIRECTORIES => Some("GIT_CHECKOUT_SKIP_LOCKED_DIRECTORIES")
-        case GIT_CHECKOUT_DONT_OVERWRITE_IGNORED => Some("GIT_CHECKOUT_DONT_OVERWRITE_IGNORED")
-        case GIT_CHECKOUT_CONFLICT_STYLE_MERGE => Some("GIT_CHECKOUT_CONFLICT_STYLE_MERGE")
-        case GIT_CHECKOUT_CONFLICT_STYLE_DIFF3 => Some("GIT_CHECKOUT_CONFLICT_STYLE_DIFF3")
-        case GIT_CHECKOUT_DONT_REMOVE_EXISTING => Some("GIT_CHECKOUT_DONT_REMOVE_EXISTING")
-        case GIT_CHECKOUT_DONT_WRITE_INDEX => Some("GIT_CHECKOUT_DONT_WRITE_INDEX")
-        case GIT_CHECKOUT_DRY_RUN => Some("GIT_CHECKOUT_DRY_RUN")
-        case GIT_CHECKOUT_CONFLICT_STYLE_ZDIFF3 => Some("GIT_CHECKOUT_CONFLICT_STYLE_ZDIFF3")
-        case GIT_CHECKOUT_UPDATE_SUBMODULES => Some("GIT_CHECKOUT_UPDATE_SUBMODULES")
-        case GIT_CHECKOUT_UPDATE_SUBMODULES_IF_CHANGED => Some("GIT_CHECKOUT_UPDATE_SUBMODULES_IF_CHANGED")
+    def getName(value: git_checkout_strategy_t): Option[String] =
+      value match
+        case `GIT_CHECKOUT_SAFE` => Some("GIT_CHECKOUT_SAFE")
+        case `GIT_CHECKOUT_FORCE` => Some("GIT_CHECKOUT_FORCE")
+        case `GIT_CHECKOUT_RECREATE_MISSING` => Some("GIT_CHECKOUT_RECREATE_MISSING")
+        case `GIT_CHECKOUT_ALLOW_CONFLICTS` => Some("GIT_CHECKOUT_ALLOW_CONFLICTS")
+        case `GIT_CHECKOUT_REMOVE_UNTRACKED` => Some("GIT_CHECKOUT_REMOVE_UNTRACKED")
+        case `GIT_CHECKOUT_REMOVE_IGNORED` => Some("GIT_CHECKOUT_REMOVE_IGNORED")
+        case `GIT_CHECKOUT_UPDATE_ONLY` => Some("GIT_CHECKOUT_UPDATE_ONLY")
+        case `GIT_CHECKOUT_DONT_UPDATE_INDEX` => Some("GIT_CHECKOUT_DONT_UPDATE_INDEX")
+        case `GIT_CHECKOUT_NO_REFRESH` => Some("GIT_CHECKOUT_NO_REFRESH")
+        case `GIT_CHECKOUT_SKIP_UNMERGED` => Some("GIT_CHECKOUT_SKIP_UNMERGED")
+        case `GIT_CHECKOUT_USE_OURS` => Some("GIT_CHECKOUT_USE_OURS")
+        case `GIT_CHECKOUT_USE_THEIRS` => Some("GIT_CHECKOUT_USE_THEIRS")
+        case `GIT_CHECKOUT_DISABLE_PATHSPEC_MATCH` => Some("GIT_CHECKOUT_DISABLE_PATHSPEC_MATCH")
+        case `GIT_CHECKOUT_SKIP_LOCKED_DIRECTORIES` => Some("GIT_CHECKOUT_SKIP_LOCKED_DIRECTORIES")
+        case `GIT_CHECKOUT_DONT_OVERWRITE_IGNORED` => Some("GIT_CHECKOUT_DONT_OVERWRITE_IGNORED")
+        case `GIT_CHECKOUT_CONFLICT_STYLE_MERGE` => Some("GIT_CHECKOUT_CONFLICT_STYLE_MERGE")
+        case `GIT_CHECKOUT_CONFLICT_STYLE_DIFF3` => Some("GIT_CHECKOUT_CONFLICT_STYLE_DIFF3")
+        case `GIT_CHECKOUT_DONT_REMOVE_EXISTING` => Some("GIT_CHECKOUT_DONT_REMOVE_EXISTING")
+        case `GIT_CHECKOUT_DONT_WRITE_INDEX` => Some("GIT_CHECKOUT_DONT_WRITE_INDEX")
+        case `GIT_CHECKOUT_DRY_RUN` => Some("GIT_CHECKOUT_DRY_RUN")
+        case `GIT_CHECKOUT_CONFLICT_STYLE_ZDIFF3` => Some("GIT_CHECKOUT_CONFLICT_STYLE_ZDIFF3")
+        case `GIT_CHECKOUT_NONE` => Some("GIT_CHECKOUT_NONE")
+        case `GIT_CHECKOUT_UPDATE_SUBMODULES` => Some("GIT_CHECKOUT_UPDATE_SUBMODULES")
+        case `GIT_CHECKOUT_UPDATE_SUBMODULES_IF_CHANGED` => Some("GIT_CHECKOUT_UPDATE_SUBMODULES_IF_CHANGED")
         case _ => _root_.scala.None
     extension (a: git_checkout_strategy_t)
       inline def &(b: git_checkout_strategy_t): git_checkout_strategy_t = a & b
@@ -332,12 +331,12 @@ object enumerations:
     val GIT_CLONE_LOCAL = define(1)
     val GIT_CLONE_NO_LOCAL = define(2)
     val GIT_CLONE_LOCAL_NO_LINKS = define(3)
-    inline def getName(inline value: git_clone_local_t): Option[String] =
-      inline value match
-        case GIT_CLONE_LOCAL_AUTO => Some("GIT_CLONE_LOCAL_AUTO")
-        case GIT_CLONE_LOCAL => Some("GIT_CLONE_LOCAL")
-        case GIT_CLONE_NO_LOCAL => Some("GIT_CLONE_NO_LOCAL")
-        case GIT_CLONE_LOCAL_NO_LINKS => Some("GIT_CLONE_LOCAL_NO_LINKS")
+    def getName(value: git_clone_local_t): Option[String] =
+      value match
+        case `GIT_CLONE_LOCAL_AUTO` => Some("GIT_CLONE_LOCAL_AUTO")
+        case `GIT_CLONE_LOCAL` => Some("GIT_CLONE_LOCAL")
+        case `GIT_CLONE_NO_LOCAL` => Some("GIT_CLONE_NO_LOCAL")
+        case `GIT_CLONE_LOCAL_NO_LINKS` => Some("GIT_CLONE_LOCAL_NO_LINKS")
         case _ => _root_.scala.None
     extension (a: git_clone_local_t)
       inline def &(b: git_clone_local_t): git_clone_local_t = a & b
@@ -345,7 +344,7 @@ object enumerations:
       inline def is(b: git_clone_local_t): Boolean = (a & b) == b
 
   /**
-   * Priority level of a config file. These priority levels correspond to the natural escalation logic (from higher to lower) when searching for config entries in git.git.
+   * Priority level of a config file.
   */
   opaque type git_config_level_t = CInt
   object git_config_level_t extends _BindgenEnumCInt[git_config_level_t]:
@@ -356,17 +355,19 @@ object enumerations:
     val GIT_CONFIG_LEVEL_XDG = define(3)
     val GIT_CONFIG_LEVEL_GLOBAL = define(4)
     val GIT_CONFIG_LEVEL_LOCAL = define(5)
-    val GIT_CONFIG_LEVEL_APP = define(6)
+    val GIT_CONFIG_LEVEL_WORKTREE = define(6)
+    val GIT_CONFIG_LEVEL_APP = define(7)
     val GIT_CONFIG_HIGHEST_LEVEL = define(-1)
-    inline def getName(inline value: git_config_level_t): Option[String] =
-      inline value match
-        case GIT_CONFIG_LEVEL_PROGRAMDATA => Some("GIT_CONFIG_LEVEL_PROGRAMDATA")
-        case GIT_CONFIG_LEVEL_SYSTEM => Some("GIT_CONFIG_LEVEL_SYSTEM")
-        case GIT_CONFIG_LEVEL_XDG => Some("GIT_CONFIG_LEVEL_XDG")
-        case GIT_CONFIG_LEVEL_GLOBAL => Some("GIT_CONFIG_LEVEL_GLOBAL")
-        case GIT_CONFIG_LEVEL_LOCAL => Some("GIT_CONFIG_LEVEL_LOCAL")
-        case GIT_CONFIG_LEVEL_APP => Some("GIT_CONFIG_LEVEL_APP")
-        case GIT_CONFIG_HIGHEST_LEVEL => Some("GIT_CONFIG_HIGHEST_LEVEL")
+    def getName(value: git_config_level_t): Option[String] =
+      value match
+        case `GIT_CONFIG_LEVEL_PROGRAMDATA` => Some("GIT_CONFIG_LEVEL_PROGRAMDATA")
+        case `GIT_CONFIG_LEVEL_SYSTEM` => Some("GIT_CONFIG_LEVEL_SYSTEM")
+        case `GIT_CONFIG_LEVEL_XDG` => Some("GIT_CONFIG_LEVEL_XDG")
+        case `GIT_CONFIG_LEVEL_GLOBAL` => Some("GIT_CONFIG_LEVEL_GLOBAL")
+        case `GIT_CONFIG_LEVEL_LOCAL` => Some("GIT_CONFIG_LEVEL_LOCAL")
+        case `GIT_CONFIG_LEVEL_WORKTREE` => Some("GIT_CONFIG_LEVEL_WORKTREE")
+        case `GIT_CONFIG_LEVEL_APP` => Some("GIT_CONFIG_LEVEL_APP")
+        case `GIT_CONFIG_HIGHEST_LEVEL` => Some("GIT_CONFIG_HIGHEST_LEVEL")
         case _ => _root_.scala.None
     extension (a: git_config_level_t)
       inline def &(b: git_config_level_t): git_config_level_t = a & b
@@ -384,12 +385,12 @@ object enumerations:
     val GIT_CONFIGMAP_TRUE = define(1)
     val GIT_CONFIGMAP_INT32 = define(2)
     val GIT_CONFIGMAP_STRING = define(3)
-    inline def getName(inline value: git_configmap_t): Option[String] =
-      inline value match
-        case GIT_CONFIGMAP_FALSE => Some("GIT_CONFIGMAP_FALSE")
-        case GIT_CONFIGMAP_TRUE => Some("GIT_CONFIGMAP_TRUE")
-        case GIT_CONFIGMAP_INT32 => Some("GIT_CONFIGMAP_INT32")
-        case GIT_CONFIGMAP_STRING => Some("GIT_CONFIGMAP_STRING")
+    def getName(value: git_configmap_t): Option[String] =
+      value match
+        case `GIT_CONFIGMAP_FALSE` => Some("GIT_CONFIGMAP_FALSE")
+        case `GIT_CONFIGMAP_TRUE` => Some("GIT_CONFIGMAP_TRUE")
+        case `GIT_CONFIGMAP_INT32` => Some("GIT_CONFIGMAP_INT32")
+        case `GIT_CONFIGMAP_STRING` => Some("GIT_CONFIGMAP_STRING")
         case _ => _root_.scala.None
     extension (a: git_configmap_t)
       inline def &(b: git_configmap_t): git_configmap_t = a & b
@@ -410,15 +411,15 @@ object enumerations:
     val GIT_CREDENTIAL_SSH_INTERACTIVE = define(16)
     val GIT_CREDENTIAL_USERNAME = define(32)
     val GIT_CREDENTIAL_SSH_MEMORY = define(64)
-    inline def getName(inline value: git_credential_t): Option[String] =
-      inline value match
-        case GIT_CREDENTIAL_USERPASS_PLAINTEXT => Some("GIT_CREDENTIAL_USERPASS_PLAINTEXT")
-        case GIT_CREDENTIAL_SSH_KEY => Some("GIT_CREDENTIAL_SSH_KEY")
-        case GIT_CREDENTIAL_SSH_CUSTOM => Some("GIT_CREDENTIAL_SSH_CUSTOM")
-        case GIT_CREDENTIAL_DEFAULT => Some("GIT_CREDENTIAL_DEFAULT")
-        case GIT_CREDENTIAL_SSH_INTERACTIVE => Some("GIT_CREDENTIAL_SSH_INTERACTIVE")
-        case GIT_CREDENTIAL_USERNAME => Some("GIT_CREDENTIAL_USERNAME")
-        case GIT_CREDENTIAL_SSH_MEMORY => Some("GIT_CREDENTIAL_SSH_MEMORY")
+    def getName(value: git_credential_t): Option[String] =
+      value match
+        case `GIT_CREDENTIAL_USERPASS_PLAINTEXT` => Some("GIT_CREDENTIAL_USERPASS_PLAINTEXT")
+        case `GIT_CREDENTIAL_SSH_KEY` => Some("GIT_CREDENTIAL_SSH_KEY")
+        case `GIT_CREDENTIAL_SSH_CUSTOM` => Some("GIT_CREDENTIAL_SSH_CUSTOM")
+        case `GIT_CREDENTIAL_DEFAULT` => Some("GIT_CREDENTIAL_DEFAULT")
+        case `GIT_CREDENTIAL_SSH_INTERACTIVE` => Some("GIT_CREDENTIAL_SSH_INTERACTIVE")
+        case `GIT_CREDENTIAL_USERNAME` => Some("GIT_CREDENTIAL_USERNAME")
+        case `GIT_CREDENTIAL_SSH_MEMORY` => Some("GIT_CREDENTIAL_SSH_MEMORY")
         case _ => _root_.scala.None
     extension (a: git_credential_t)
       inline def &(b: git_credential_t): git_credential_t = a & b
@@ -443,19 +444,19 @@ object enumerations:
     val GIT_DELTA_TYPECHANGE = define(8)
     val GIT_DELTA_UNREADABLE = define(9)
     val GIT_DELTA_CONFLICTED = define(10)
-    inline def getName(inline value: git_delta_t): Option[String] =
-      inline value match
-        case GIT_DELTA_UNMODIFIED => Some("GIT_DELTA_UNMODIFIED")
-        case GIT_DELTA_ADDED => Some("GIT_DELTA_ADDED")
-        case GIT_DELTA_DELETED => Some("GIT_DELTA_DELETED")
-        case GIT_DELTA_MODIFIED => Some("GIT_DELTA_MODIFIED")
-        case GIT_DELTA_RENAMED => Some("GIT_DELTA_RENAMED")
-        case GIT_DELTA_COPIED => Some("GIT_DELTA_COPIED")
-        case GIT_DELTA_IGNORED => Some("GIT_DELTA_IGNORED")
-        case GIT_DELTA_UNTRACKED => Some("GIT_DELTA_UNTRACKED")
-        case GIT_DELTA_TYPECHANGE => Some("GIT_DELTA_TYPECHANGE")
-        case GIT_DELTA_UNREADABLE => Some("GIT_DELTA_UNREADABLE")
-        case GIT_DELTA_CONFLICTED => Some("GIT_DELTA_CONFLICTED")
+    def getName(value: git_delta_t): Option[String] =
+      value match
+        case `GIT_DELTA_UNMODIFIED` => Some("GIT_DELTA_UNMODIFIED")
+        case `GIT_DELTA_ADDED` => Some("GIT_DELTA_ADDED")
+        case `GIT_DELTA_DELETED` => Some("GIT_DELTA_DELETED")
+        case `GIT_DELTA_MODIFIED` => Some("GIT_DELTA_MODIFIED")
+        case `GIT_DELTA_RENAMED` => Some("GIT_DELTA_RENAMED")
+        case `GIT_DELTA_COPIED` => Some("GIT_DELTA_COPIED")
+        case `GIT_DELTA_IGNORED` => Some("GIT_DELTA_IGNORED")
+        case `GIT_DELTA_UNTRACKED` => Some("GIT_DELTA_UNTRACKED")
+        case `GIT_DELTA_TYPECHANGE` => Some("GIT_DELTA_TYPECHANGE")
+        case `GIT_DELTA_UNREADABLE` => Some("GIT_DELTA_UNREADABLE")
+        case `GIT_DELTA_CONFLICTED` => Some("GIT_DELTA_CONFLICTED")
         case _ => _root_.scala.None
     extension (a: git_delta_t)
       inline def &(b: git_delta_t): git_delta_t = a & b
@@ -472,11 +473,11 @@ object enumerations:
     val GIT_DESCRIBE_DEFAULT = define(0)
     val GIT_DESCRIBE_TAGS = define(1)
     val GIT_DESCRIBE_ALL = define(2)
-    inline def getName(inline value: git_describe_strategy_t): Option[String] =
-      inline value match
-        case GIT_DESCRIBE_DEFAULT => Some("GIT_DESCRIBE_DEFAULT")
-        case GIT_DESCRIBE_TAGS => Some("GIT_DESCRIBE_TAGS")
-        case GIT_DESCRIBE_ALL => Some("GIT_DESCRIBE_ALL")
+    def getName(value: git_describe_strategy_t): Option[String] =
+      value match
+        case `GIT_DESCRIBE_DEFAULT` => Some("GIT_DESCRIBE_DEFAULT")
+        case `GIT_DESCRIBE_TAGS` => Some("GIT_DESCRIBE_TAGS")
+        case `GIT_DESCRIBE_ALL` => Some("GIT_DESCRIBE_ALL")
         case _ => _root_.scala.None
     extension (a: git_describe_strategy_t)
       inline def &(b: git_describe_strategy_t): git_describe_strategy_t = a & b
@@ -493,11 +494,11 @@ object enumerations:
     val GIT_DIFF_BINARY_NONE = define(0)
     val GIT_DIFF_BINARY_LITERAL = define(1)
     val GIT_DIFF_BINARY_DELTA = define(2)
-    inline def getName(inline value: git_diff_binary_t): Option[String] =
-      inline value match
-        case GIT_DIFF_BINARY_NONE => Some("GIT_DIFF_BINARY_NONE")
-        case GIT_DIFF_BINARY_LITERAL => Some("GIT_DIFF_BINARY_LITERAL")
-        case GIT_DIFF_BINARY_DELTA => Some("GIT_DIFF_BINARY_DELTA")
+    def getName(value: git_diff_binary_t): Option[String] =
+      value match
+        case `GIT_DIFF_BINARY_NONE` => Some("GIT_DIFF_BINARY_NONE")
+        case `GIT_DIFF_BINARY_LITERAL` => Some("GIT_DIFF_BINARY_LITERAL")
+        case `GIT_DIFF_BINARY_DELTA` => Some("GIT_DIFF_BINARY_DELTA")
         case _ => _root_.scala.None
     extension (a: git_diff_binary_t)
       inline def &(b: git_diff_binary_t): git_diff_binary_t = a & b
@@ -527,24 +528,24 @@ object enumerations:
     val GIT_DIFF_FIND_EXACT_MATCH_ONLY = define(16384)
     val GIT_DIFF_BREAK_REWRITES_FOR_RENAMES_ONLY = define(32768)
     val GIT_DIFF_FIND_REMOVE_UNMODIFIED = define(65536)
-    inline def getName(inline value: git_diff_find_t): Option[String] =
-      inline value match
-        case GIT_DIFF_FIND_BY_CONFIG => Some("GIT_DIFF_FIND_BY_CONFIG")
-        case GIT_DIFF_FIND_RENAMES => Some("GIT_DIFF_FIND_RENAMES")
-        case GIT_DIFF_FIND_RENAMES_FROM_REWRITES => Some("GIT_DIFF_FIND_RENAMES_FROM_REWRITES")
-        case GIT_DIFF_FIND_COPIES => Some("GIT_DIFF_FIND_COPIES")
-        case GIT_DIFF_FIND_COPIES_FROM_UNMODIFIED => Some("GIT_DIFF_FIND_COPIES_FROM_UNMODIFIED")
-        case GIT_DIFF_FIND_REWRITES => Some("GIT_DIFF_FIND_REWRITES")
-        case GIT_DIFF_BREAK_REWRITES => Some("GIT_DIFF_BREAK_REWRITES")
-        case GIT_DIFF_FIND_AND_BREAK_REWRITES => Some("GIT_DIFF_FIND_AND_BREAK_REWRITES")
-        case GIT_DIFF_FIND_FOR_UNTRACKED => Some("GIT_DIFF_FIND_FOR_UNTRACKED")
-        case GIT_DIFF_FIND_ALL => Some("GIT_DIFF_FIND_ALL")
-        case GIT_DIFF_FIND_IGNORE_LEADING_WHITESPACE => Some("GIT_DIFF_FIND_IGNORE_LEADING_WHITESPACE")
-        case GIT_DIFF_FIND_IGNORE_WHITESPACE => Some("GIT_DIFF_FIND_IGNORE_WHITESPACE")
-        case GIT_DIFF_FIND_DONT_IGNORE_WHITESPACE => Some("GIT_DIFF_FIND_DONT_IGNORE_WHITESPACE")
-        case GIT_DIFF_FIND_EXACT_MATCH_ONLY => Some("GIT_DIFF_FIND_EXACT_MATCH_ONLY")
-        case GIT_DIFF_BREAK_REWRITES_FOR_RENAMES_ONLY => Some("GIT_DIFF_BREAK_REWRITES_FOR_RENAMES_ONLY")
-        case GIT_DIFF_FIND_REMOVE_UNMODIFIED => Some("GIT_DIFF_FIND_REMOVE_UNMODIFIED")
+    def getName(value: git_diff_find_t): Option[String] =
+      value match
+        case `GIT_DIFF_FIND_BY_CONFIG` => Some("GIT_DIFF_FIND_BY_CONFIG")
+        case `GIT_DIFF_FIND_RENAMES` => Some("GIT_DIFF_FIND_RENAMES")
+        case `GIT_DIFF_FIND_RENAMES_FROM_REWRITES` => Some("GIT_DIFF_FIND_RENAMES_FROM_REWRITES")
+        case `GIT_DIFF_FIND_COPIES` => Some("GIT_DIFF_FIND_COPIES")
+        case `GIT_DIFF_FIND_COPIES_FROM_UNMODIFIED` => Some("GIT_DIFF_FIND_COPIES_FROM_UNMODIFIED")
+        case `GIT_DIFF_FIND_REWRITES` => Some("GIT_DIFF_FIND_REWRITES")
+        case `GIT_DIFF_BREAK_REWRITES` => Some("GIT_DIFF_BREAK_REWRITES")
+        case `GIT_DIFF_FIND_AND_BREAK_REWRITES` => Some("GIT_DIFF_FIND_AND_BREAK_REWRITES")
+        case `GIT_DIFF_FIND_FOR_UNTRACKED` => Some("GIT_DIFF_FIND_FOR_UNTRACKED")
+        case `GIT_DIFF_FIND_ALL` => Some("GIT_DIFF_FIND_ALL")
+        case `GIT_DIFF_FIND_IGNORE_LEADING_WHITESPACE` => Some("GIT_DIFF_FIND_IGNORE_LEADING_WHITESPACE")
+        case `GIT_DIFF_FIND_IGNORE_WHITESPACE` => Some("GIT_DIFF_FIND_IGNORE_WHITESPACE")
+        case `GIT_DIFF_FIND_DONT_IGNORE_WHITESPACE` => Some("GIT_DIFF_FIND_DONT_IGNORE_WHITESPACE")
+        case `GIT_DIFF_FIND_EXACT_MATCH_ONLY` => Some("GIT_DIFF_FIND_EXACT_MATCH_ONLY")
+        case `GIT_DIFF_BREAK_REWRITES_FOR_RENAMES_ONLY` => Some("GIT_DIFF_BREAK_REWRITES_FOR_RENAMES_ONLY")
+        case `GIT_DIFF_FIND_REMOVE_UNMODIFIED` => Some("GIT_DIFF_FIND_REMOVE_UNMODIFIED")
         case _ => _root_.scala.None
     extension (a: git_diff_find_t)
       inline def &(b: git_diff_find_t): git_diff_find_t = a & b
@@ -563,13 +564,13 @@ object enumerations:
     val GIT_DIFF_FLAG_VALID_ID = define(4)
     val GIT_DIFF_FLAG_EXISTS = define(8)
     val GIT_DIFF_FLAG_VALID_SIZE = define(16)
-    inline def getName(inline value: git_diff_flag_t): Option[String] =
-      inline value match
-        case GIT_DIFF_FLAG_BINARY => Some("GIT_DIFF_FLAG_BINARY")
-        case GIT_DIFF_FLAG_NOT_BINARY => Some("GIT_DIFF_FLAG_NOT_BINARY")
-        case GIT_DIFF_FLAG_VALID_ID => Some("GIT_DIFF_FLAG_VALID_ID")
-        case GIT_DIFF_FLAG_EXISTS => Some("GIT_DIFF_FLAG_EXISTS")
-        case GIT_DIFF_FLAG_VALID_SIZE => Some("GIT_DIFF_FLAG_VALID_SIZE")
+    def getName(value: git_diff_flag_t): Option[String] =
+      value match
+        case `GIT_DIFF_FLAG_BINARY` => Some("GIT_DIFF_FLAG_BINARY")
+        case `GIT_DIFF_FLAG_NOT_BINARY` => Some("GIT_DIFF_FLAG_NOT_BINARY")
+        case `GIT_DIFF_FLAG_VALID_ID` => Some("GIT_DIFF_FLAG_VALID_ID")
+        case `GIT_DIFF_FLAG_EXISTS` => Some("GIT_DIFF_FLAG_EXISTS")
+        case `GIT_DIFF_FLAG_VALID_SIZE` => Some("GIT_DIFF_FLAG_VALID_SIZE")
         case _ => _root_.scala.None
     extension (a: git_diff_flag_t)
       inline def &(b: git_diff_flag_t): git_diff_flag_t = a & b
@@ -585,10 +586,10 @@ object enumerations:
     inline def define(inline a: Long): git_diff_format_email_flags_t = a.toUInt
     val GIT_DIFF_FORMAT_EMAIL_NONE = define(0)
     val GIT_DIFF_FORMAT_EMAIL_EXCLUDE_SUBJECT_PATCH_MARKER = define(1)
-    inline def getName(inline value: git_diff_format_email_flags_t): Option[String] =
-      inline value match
-        case GIT_DIFF_FORMAT_EMAIL_NONE => Some("GIT_DIFF_FORMAT_EMAIL_NONE")
-        case GIT_DIFF_FORMAT_EMAIL_EXCLUDE_SUBJECT_PATCH_MARKER => Some("GIT_DIFF_FORMAT_EMAIL_EXCLUDE_SUBJECT_PATCH_MARKER")
+    def getName(value: git_diff_format_email_flags_t): Option[String] =
+      value match
+        case `GIT_DIFF_FORMAT_EMAIL_NONE` => Some("GIT_DIFF_FORMAT_EMAIL_NONE")
+        case `GIT_DIFF_FORMAT_EMAIL_EXCLUDE_SUBJECT_PATCH_MARKER` => Some("GIT_DIFF_FORMAT_EMAIL_EXCLUDE_SUBJECT_PATCH_MARKER")
         case _ => _root_.scala.None
     extension (a: git_diff_format_email_flags_t)
       inline def &(b: git_diff_format_email_flags_t): git_diff_format_email_flags_t = a & b
@@ -608,14 +609,14 @@ object enumerations:
     val GIT_DIFF_FORMAT_NAME_ONLY = define(4)
     val GIT_DIFF_FORMAT_NAME_STATUS = define(5)
     val GIT_DIFF_FORMAT_PATCH_ID = define(6)
-    inline def getName(inline value: git_diff_format_t): Option[String] =
-      inline value match
-        case GIT_DIFF_FORMAT_PATCH => Some("GIT_DIFF_FORMAT_PATCH")
-        case GIT_DIFF_FORMAT_PATCH_HEADER => Some("GIT_DIFF_FORMAT_PATCH_HEADER")
-        case GIT_DIFF_FORMAT_RAW => Some("GIT_DIFF_FORMAT_RAW")
-        case GIT_DIFF_FORMAT_NAME_ONLY => Some("GIT_DIFF_FORMAT_NAME_ONLY")
-        case GIT_DIFF_FORMAT_NAME_STATUS => Some("GIT_DIFF_FORMAT_NAME_STATUS")
-        case GIT_DIFF_FORMAT_PATCH_ID => Some("GIT_DIFF_FORMAT_PATCH_ID")
+    def getName(value: git_diff_format_t): Option[String] =
+      value match
+        case `GIT_DIFF_FORMAT_PATCH` => Some("GIT_DIFF_FORMAT_PATCH")
+        case `GIT_DIFF_FORMAT_PATCH_HEADER` => Some("GIT_DIFF_FORMAT_PATCH_HEADER")
+        case `GIT_DIFF_FORMAT_RAW` => Some("GIT_DIFF_FORMAT_RAW")
+        case `GIT_DIFF_FORMAT_NAME_ONLY` => Some("GIT_DIFF_FORMAT_NAME_ONLY")
+        case `GIT_DIFF_FORMAT_NAME_STATUS` => Some("GIT_DIFF_FORMAT_NAME_STATUS")
+        case `GIT_DIFF_FORMAT_PATCH_ID` => Some("GIT_DIFF_FORMAT_PATCH_ID")
         case _ => _root_.scala.None
     extension (a: git_diff_format_t)
       inline def &(b: git_diff_format_t): git_diff_format_t = a & b
@@ -638,17 +639,17 @@ object enumerations:
     val GIT_DIFF_LINE_FILE_HDR = define(70)
     val GIT_DIFF_LINE_HUNK_HDR = define(72)
     val GIT_DIFF_LINE_BINARY = define(66)
-    inline def getName(inline value: git_diff_line_t): Option[String] =
-      inline value match
-        case GIT_DIFF_LINE_CONTEXT => Some("GIT_DIFF_LINE_CONTEXT")
-        case GIT_DIFF_LINE_ADDITION => Some("GIT_DIFF_LINE_ADDITION")
-        case GIT_DIFF_LINE_DELETION => Some("GIT_DIFF_LINE_DELETION")
-        case GIT_DIFF_LINE_CONTEXT_EOFNL => Some("GIT_DIFF_LINE_CONTEXT_EOFNL")
-        case GIT_DIFF_LINE_ADD_EOFNL => Some("GIT_DIFF_LINE_ADD_EOFNL")
-        case GIT_DIFF_LINE_DEL_EOFNL => Some("GIT_DIFF_LINE_DEL_EOFNL")
-        case GIT_DIFF_LINE_FILE_HDR => Some("GIT_DIFF_LINE_FILE_HDR")
-        case GIT_DIFF_LINE_HUNK_HDR => Some("GIT_DIFF_LINE_HUNK_HDR")
-        case GIT_DIFF_LINE_BINARY => Some("GIT_DIFF_LINE_BINARY")
+    def getName(value: git_diff_line_t): Option[String] =
+      value match
+        case `GIT_DIFF_LINE_CONTEXT` => Some("GIT_DIFF_LINE_CONTEXT")
+        case `GIT_DIFF_LINE_ADDITION` => Some("GIT_DIFF_LINE_ADDITION")
+        case `GIT_DIFF_LINE_DELETION` => Some("GIT_DIFF_LINE_DELETION")
+        case `GIT_DIFF_LINE_CONTEXT_EOFNL` => Some("GIT_DIFF_LINE_CONTEXT_EOFNL")
+        case `GIT_DIFF_LINE_ADD_EOFNL` => Some("GIT_DIFF_LINE_ADD_EOFNL")
+        case `GIT_DIFF_LINE_DEL_EOFNL` => Some("GIT_DIFF_LINE_DEL_EOFNL")
+        case `GIT_DIFF_LINE_FILE_HDR` => Some("GIT_DIFF_LINE_FILE_HDR")
+        case `GIT_DIFF_LINE_HUNK_HDR` => Some("GIT_DIFF_LINE_HUNK_HDR")
+        case `GIT_DIFF_LINE_BINARY` => Some("GIT_DIFF_LINE_BINARY")
         case _ => _root_.scala.None
     extension (a: git_diff_line_t)
       inline def &(b: git_diff_line_t): git_diff_line_t = a & b
@@ -693,39 +694,39 @@ object enumerations:
     val GIT_DIFF_PATIENCE = define(268435456)
     val GIT_DIFF_MINIMAL = define(536870912)
     val GIT_DIFF_SHOW_BINARY = define(1073741824)
-    inline def getName(inline value: git_diff_option_t): Option[String] =
-      inline value match
-        case GIT_DIFF_NORMAL => Some("GIT_DIFF_NORMAL")
-        case GIT_DIFF_REVERSE => Some("GIT_DIFF_REVERSE")
-        case GIT_DIFF_INCLUDE_IGNORED => Some("GIT_DIFF_INCLUDE_IGNORED")
-        case GIT_DIFF_RECURSE_IGNORED_DIRS => Some("GIT_DIFF_RECURSE_IGNORED_DIRS")
-        case GIT_DIFF_INCLUDE_UNTRACKED => Some("GIT_DIFF_INCLUDE_UNTRACKED")
-        case GIT_DIFF_RECURSE_UNTRACKED_DIRS => Some("GIT_DIFF_RECURSE_UNTRACKED_DIRS")
-        case GIT_DIFF_INCLUDE_UNMODIFIED => Some("GIT_DIFF_INCLUDE_UNMODIFIED")
-        case GIT_DIFF_INCLUDE_TYPECHANGE => Some("GIT_DIFF_INCLUDE_TYPECHANGE")
-        case GIT_DIFF_INCLUDE_TYPECHANGE_TREES => Some("GIT_DIFF_INCLUDE_TYPECHANGE_TREES")
-        case GIT_DIFF_IGNORE_FILEMODE => Some("GIT_DIFF_IGNORE_FILEMODE")
-        case GIT_DIFF_IGNORE_SUBMODULES => Some("GIT_DIFF_IGNORE_SUBMODULES")
-        case GIT_DIFF_IGNORE_CASE => Some("GIT_DIFF_IGNORE_CASE")
-        case GIT_DIFF_INCLUDE_CASECHANGE => Some("GIT_DIFF_INCLUDE_CASECHANGE")
-        case GIT_DIFF_DISABLE_PATHSPEC_MATCH => Some("GIT_DIFF_DISABLE_PATHSPEC_MATCH")
-        case GIT_DIFF_SKIP_BINARY_CHECK => Some("GIT_DIFF_SKIP_BINARY_CHECK")
-        case GIT_DIFF_ENABLE_FAST_UNTRACKED_DIRS => Some("GIT_DIFF_ENABLE_FAST_UNTRACKED_DIRS")
-        case GIT_DIFF_UPDATE_INDEX => Some("GIT_DIFF_UPDATE_INDEX")
-        case GIT_DIFF_INCLUDE_UNREADABLE => Some("GIT_DIFF_INCLUDE_UNREADABLE")
-        case GIT_DIFF_INCLUDE_UNREADABLE_AS_UNTRACKED => Some("GIT_DIFF_INCLUDE_UNREADABLE_AS_UNTRACKED")
-        case GIT_DIFF_INDENT_HEURISTIC => Some("GIT_DIFF_INDENT_HEURISTIC")
-        case GIT_DIFF_IGNORE_BLANK_LINES => Some("GIT_DIFF_IGNORE_BLANK_LINES")
-        case GIT_DIFF_FORCE_TEXT => Some("GIT_DIFF_FORCE_TEXT")
-        case GIT_DIFF_FORCE_BINARY => Some("GIT_DIFF_FORCE_BINARY")
-        case GIT_DIFF_IGNORE_WHITESPACE => Some("GIT_DIFF_IGNORE_WHITESPACE")
-        case GIT_DIFF_IGNORE_WHITESPACE_CHANGE => Some("GIT_DIFF_IGNORE_WHITESPACE_CHANGE")
-        case GIT_DIFF_IGNORE_WHITESPACE_EOL => Some("GIT_DIFF_IGNORE_WHITESPACE_EOL")
-        case GIT_DIFF_SHOW_UNTRACKED_CONTENT => Some("GIT_DIFF_SHOW_UNTRACKED_CONTENT")
-        case GIT_DIFF_SHOW_UNMODIFIED => Some("GIT_DIFF_SHOW_UNMODIFIED")
-        case GIT_DIFF_PATIENCE => Some("GIT_DIFF_PATIENCE")
-        case GIT_DIFF_MINIMAL => Some("GIT_DIFF_MINIMAL")
-        case GIT_DIFF_SHOW_BINARY => Some("GIT_DIFF_SHOW_BINARY")
+    def getName(value: git_diff_option_t): Option[String] =
+      value match
+        case `GIT_DIFF_NORMAL` => Some("GIT_DIFF_NORMAL")
+        case `GIT_DIFF_REVERSE` => Some("GIT_DIFF_REVERSE")
+        case `GIT_DIFF_INCLUDE_IGNORED` => Some("GIT_DIFF_INCLUDE_IGNORED")
+        case `GIT_DIFF_RECURSE_IGNORED_DIRS` => Some("GIT_DIFF_RECURSE_IGNORED_DIRS")
+        case `GIT_DIFF_INCLUDE_UNTRACKED` => Some("GIT_DIFF_INCLUDE_UNTRACKED")
+        case `GIT_DIFF_RECURSE_UNTRACKED_DIRS` => Some("GIT_DIFF_RECURSE_UNTRACKED_DIRS")
+        case `GIT_DIFF_INCLUDE_UNMODIFIED` => Some("GIT_DIFF_INCLUDE_UNMODIFIED")
+        case `GIT_DIFF_INCLUDE_TYPECHANGE` => Some("GIT_DIFF_INCLUDE_TYPECHANGE")
+        case `GIT_DIFF_INCLUDE_TYPECHANGE_TREES` => Some("GIT_DIFF_INCLUDE_TYPECHANGE_TREES")
+        case `GIT_DIFF_IGNORE_FILEMODE` => Some("GIT_DIFF_IGNORE_FILEMODE")
+        case `GIT_DIFF_IGNORE_SUBMODULES` => Some("GIT_DIFF_IGNORE_SUBMODULES")
+        case `GIT_DIFF_IGNORE_CASE` => Some("GIT_DIFF_IGNORE_CASE")
+        case `GIT_DIFF_INCLUDE_CASECHANGE` => Some("GIT_DIFF_INCLUDE_CASECHANGE")
+        case `GIT_DIFF_DISABLE_PATHSPEC_MATCH` => Some("GIT_DIFF_DISABLE_PATHSPEC_MATCH")
+        case `GIT_DIFF_SKIP_BINARY_CHECK` => Some("GIT_DIFF_SKIP_BINARY_CHECK")
+        case `GIT_DIFF_ENABLE_FAST_UNTRACKED_DIRS` => Some("GIT_DIFF_ENABLE_FAST_UNTRACKED_DIRS")
+        case `GIT_DIFF_UPDATE_INDEX` => Some("GIT_DIFF_UPDATE_INDEX")
+        case `GIT_DIFF_INCLUDE_UNREADABLE` => Some("GIT_DIFF_INCLUDE_UNREADABLE")
+        case `GIT_DIFF_INCLUDE_UNREADABLE_AS_UNTRACKED` => Some("GIT_DIFF_INCLUDE_UNREADABLE_AS_UNTRACKED")
+        case `GIT_DIFF_INDENT_HEURISTIC` => Some("GIT_DIFF_INDENT_HEURISTIC")
+        case `GIT_DIFF_IGNORE_BLANK_LINES` => Some("GIT_DIFF_IGNORE_BLANK_LINES")
+        case `GIT_DIFF_FORCE_TEXT` => Some("GIT_DIFF_FORCE_TEXT")
+        case `GIT_DIFF_FORCE_BINARY` => Some("GIT_DIFF_FORCE_BINARY")
+        case `GIT_DIFF_IGNORE_WHITESPACE` => Some("GIT_DIFF_IGNORE_WHITESPACE")
+        case `GIT_DIFF_IGNORE_WHITESPACE_CHANGE` => Some("GIT_DIFF_IGNORE_WHITESPACE_CHANGE")
+        case `GIT_DIFF_IGNORE_WHITESPACE_EOL` => Some("GIT_DIFF_IGNORE_WHITESPACE_EOL")
+        case `GIT_DIFF_SHOW_UNTRACKED_CONTENT` => Some("GIT_DIFF_SHOW_UNTRACKED_CONTENT")
+        case `GIT_DIFF_SHOW_UNMODIFIED` => Some("GIT_DIFF_SHOW_UNMODIFIED")
+        case `GIT_DIFF_PATIENCE` => Some("GIT_DIFF_PATIENCE")
+        case `GIT_DIFF_MINIMAL` => Some("GIT_DIFF_MINIMAL")
+        case `GIT_DIFF_SHOW_BINARY` => Some("GIT_DIFF_SHOW_BINARY")
         case _ => _root_.scala.None
     extension (a: git_diff_option_t)
       inline def &(b: git_diff_option_t): git_diff_option_t = a & b
@@ -744,13 +745,13 @@ object enumerations:
     val GIT_DIFF_STATS_SHORT = define(2)
     val GIT_DIFF_STATS_NUMBER = define(4)
     val GIT_DIFF_STATS_INCLUDE_SUMMARY = define(8)
-    inline def getName(inline value: git_diff_stats_format_t): Option[String] =
-      inline value match
-        case GIT_DIFF_STATS_NONE => Some("GIT_DIFF_STATS_NONE")
-        case GIT_DIFF_STATS_FULL => Some("GIT_DIFF_STATS_FULL")
-        case GIT_DIFF_STATS_SHORT => Some("GIT_DIFF_STATS_SHORT")
-        case GIT_DIFF_STATS_NUMBER => Some("GIT_DIFF_STATS_NUMBER")
-        case GIT_DIFF_STATS_INCLUDE_SUMMARY => Some("GIT_DIFF_STATS_INCLUDE_SUMMARY")
+    def getName(value: git_diff_stats_format_t): Option[String] =
+      value match
+        case `GIT_DIFF_STATS_NONE` => Some("GIT_DIFF_STATS_NONE")
+        case `GIT_DIFF_STATS_FULL` => Some("GIT_DIFF_STATS_FULL")
+        case `GIT_DIFF_STATS_SHORT` => Some("GIT_DIFF_STATS_SHORT")
+        case `GIT_DIFF_STATS_NUMBER` => Some("GIT_DIFF_STATS_NUMBER")
+        case `GIT_DIFF_STATS_INCLUDE_SUMMARY` => Some("GIT_DIFF_STATS_INCLUDE_SUMMARY")
         case _ => _root_.scala.None
     extension (a: git_diff_stats_format_t)
       inline def &(b: git_diff_stats_format_t): git_diff_stats_format_t = a & b
@@ -766,10 +767,10 @@ object enumerations:
     inline def define(inline a: Long): git_direction = a.toUInt
     val GIT_DIRECTION_FETCH = define(0)
     val GIT_DIRECTION_PUSH = define(1)
-    inline def getName(inline value: git_direction): Option[String] =
-      inline value match
-        case GIT_DIRECTION_FETCH => Some("GIT_DIRECTION_FETCH")
-        case GIT_DIRECTION_PUSH => Some("GIT_DIRECTION_PUSH")
+    def getName(value: git_direction): Option[String] =
+      value match
+        case `GIT_DIRECTION_FETCH` => Some("GIT_DIRECTION_FETCH")
+        case `GIT_DIRECTION_PUSH` => Some("GIT_DIRECTION_PUSH")
         case _ => _root_.scala.None
     extension (a: git_direction)
       inline def &(b: git_direction): git_direction = a & b
@@ -787,12 +788,12 @@ object enumerations:
     val GIT_EMAIL_CREATE_OMIT_NUMBERS = define(1)
     val GIT_EMAIL_CREATE_ALWAYS_NUMBER = define(2)
     val GIT_EMAIL_CREATE_NO_RENAMES = define(4)
-    inline def getName(inline value: git_email_create_flags_t): Option[String] =
-      inline value match
-        case GIT_EMAIL_CREATE_DEFAULT => Some("GIT_EMAIL_CREATE_DEFAULT")
-        case GIT_EMAIL_CREATE_OMIT_NUMBERS => Some("GIT_EMAIL_CREATE_OMIT_NUMBERS")
-        case GIT_EMAIL_CREATE_ALWAYS_NUMBER => Some("GIT_EMAIL_CREATE_ALWAYS_NUMBER")
-        case GIT_EMAIL_CREATE_NO_RENAMES => Some("GIT_EMAIL_CREATE_NO_RENAMES")
+    def getName(value: git_email_create_flags_t): Option[String] =
+      value match
+        case `GIT_EMAIL_CREATE_DEFAULT` => Some("GIT_EMAIL_CREATE_DEFAULT")
+        case `GIT_EMAIL_CREATE_OMIT_NUMBERS` => Some("GIT_EMAIL_CREATE_OMIT_NUMBERS")
+        case `GIT_EMAIL_CREATE_ALWAYS_NUMBER` => Some("GIT_EMAIL_CREATE_ALWAYS_NUMBER")
+        case `GIT_EMAIL_CREATE_NO_RENAMES` => Some("GIT_EMAIL_CREATE_NO_RENAMES")
         case _ => _root_.scala.None
     extension (a: git_email_create_flags_t)
       inline def &(b: git_email_create_flags_t): git_email_create_flags_t = a & b
@@ -837,39 +838,47 @@ object enumerations:
     val GIT_EINDEXDIRTY = define(-34)
     val GIT_EAPPLYFAIL = define(-35)
     val GIT_EOWNER = define(-36)
-    inline def getName(inline value: git_error_code): Option[String] =
-      inline value match
-        case GIT_OK => Some("GIT_OK")
-        case GIT_ERROR => Some("GIT_ERROR")
-        case GIT_ENOTFOUND => Some("GIT_ENOTFOUND")
-        case GIT_EEXISTS => Some("GIT_EEXISTS")
-        case GIT_EAMBIGUOUS => Some("GIT_EAMBIGUOUS")
-        case GIT_EBUFS => Some("GIT_EBUFS")
-        case GIT_EUSER => Some("GIT_EUSER")
-        case GIT_EBAREREPO => Some("GIT_EBAREREPO")
-        case GIT_EUNBORNBRANCH => Some("GIT_EUNBORNBRANCH")
-        case GIT_EUNMERGED => Some("GIT_EUNMERGED")
-        case GIT_ENONFASTFORWARD => Some("GIT_ENONFASTFORWARD")
-        case GIT_EINVALIDSPEC => Some("GIT_EINVALIDSPEC")
-        case GIT_ECONFLICT => Some("GIT_ECONFLICT")
-        case GIT_ELOCKED => Some("GIT_ELOCKED")
-        case GIT_EMODIFIED => Some("GIT_EMODIFIED")
-        case GIT_EAUTH => Some("GIT_EAUTH")
-        case GIT_ECERTIFICATE => Some("GIT_ECERTIFICATE")
-        case GIT_EAPPLIED => Some("GIT_EAPPLIED")
-        case GIT_EPEEL => Some("GIT_EPEEL")
-        case GIT_EEOF => Some("GIT_EEOF")
-        case GIT_EINVALID => Some("GIT_EINVALID")
-        case GIT_EUNCOMMITTED => Some("GIT_EUNCOMMITTED")
-        case GIT_EDIRECTORY => Some("GIT_EDIRECTORY")
-        case GIT_EMERGECONFLICT => Some("GIT_EMERGECONFLICT")
-        case GIT_PASSTHROUGH => Some("GIT_PASSTHROUGH")
-        case GIT_ITEROVER => Some("GIT_ITEROVER")
-        case GIT_RETRY => Some("GIT_RETRY")
-        case GIT_EMISMATCH => Some("GIT_EMISMATCH")
-        case GIT_EINDEXDIRTY => Some("GIT_EINDEXDIRTY")
-        case GIT_EAPPLYFAIL => Some("GIT_EAPPLYFAIL")
-        case GIT_EOWNER => Some("GIT_EOWNER")
+    val GIT_TIMEOUT = define(-37)
+    val GIT_EUNCHANGED = define(-38)
+    val GIT_ENOTSUPPORTED = define(-39)
+    val GIT_EREADONLY = define(-40)
+    def getName(value: git_error_code): Option[String] =
+      value match
+        case `GIT_OK` => Some("GIT_OK")
+        case `GIT_ERROR` => Some("GIT_ERROR")
+        case `GIT_ENOTFOUND` => Some("GIT_ENOTFOUND")
+        case `GIT_EEXISTS` => Some("GIT_EEXISTS")
+        case `GIT_EAMBIGUOUS` => Some("GIT_EAMBIGUOUS")
+        case `GIT_EBUFS` => Some("GIT_EBUFS")
+        case `GIT_EUSER` => Some("GIT_EUSER")
+        case `GIT_EBAREREPO` => Some("GIT_EBAREREPO")
+        case `GIT_EUNBORNBRANCH` => Some("GIT_EUNBORNBRANCH")
+        case `GIT_EUNMERGED` => Some("GIT_EUNMERGED")
+        case `GIT_ENONFASTFORWARD` => Some("GIT_ENONFASTFORWARD")
+        case `GIT_EINVALIDSPEC` => Some("GIT_EINVALIDSPEC")
+        case `GIT_ECONFLICT` => Some("GIT_ECONFLICT")
+        case `GIT_ELOCKED` => Some("GIT_ELOCKED")
+        case `GIT_EMODIFIED` => Some("GIT_EMODIFIED")
+        case `GIT_EAUTH` => Some("GIT_EAUTH")
+        case `GIT_ECERTIFICATE` => Some("GIT_ECERTIFICATE")
+        case `GIT_EAPPLIED` => Some("GIT_EAPPLIED")
+        case `GIT_EPEEL` => Some("GIT_EPEEL")
+        case `GIT_EEOF` => Some("GIT_EEOF")
+        case `GIT_EINVALID` => Some("GIT_EINVALID")
+        case `GIT_EUNCOMMITTED` => Some("GIT_EUNCOMMITTED")
+        case `GIT_EDIRECTORY` => Some("GIT_EDIRECTORY")
+        case `GIT_EMERGECONFLICT` => Some("GIT_EMERGECONFLICT")
+        case `GIT_PASSTHROUGH` => Some("GIT_PASSTHROUGH")
+        case `GIT_ITEROVER` => Some("GIT_ITEROVER")
+        case `GIT_RETRY` => Some("GIT_RETRY")
+        case `GIT_EMISMATCH` => Some("GIT_EMISMATCH")
+        case `GIT_EINDEXDIRTY` => Some("GIT_EINDEXDIRTY")
+        case `GIT_EAPPLYFAIL` => Some("GIT_EAPPLYFAIL")
+        case `GIT_EOWNER` => Some("GIT_EOWNER")
+        case `GIT_TIMEOUT` => Some("GIT_TIMEOUT")
+        case `GIT_EUNCHANGED` => Some("GIT_EUNCHANGED")
+        case `GIT_ENOTSUPPORTED` => Some("GIT_ENOTSUPPORTED")
+        case `GIT_EREADONLY` => Some("GIT_EREADONLY")
         case _ => _root_.scala.None
     extension (a: git_error_code)
       inline def &(b: git_error_code): git_error_code = a & b
@@ -877,7 +886,7 @@ object enumerations:
       inline def is(b: git_error_code): Boolean = (a & b) == b
 
   /**
-   * Error classes
+   * Error classes are the category of error. They reflect the area of the code where an error occurred.
   */
   opaque type git_error_t = CUnsignedInt
   object git_error_t extends _BindgenEnumCUnsignedInt[git_error_t]:
@@ -919,44 +928,46 @@ object enumerations:
     val GIT_ERROR_SHA = define(33)
     val GIT_ERROR_HTTP = define(34)
     val GIT_ERROR_INTERNAL = define(35)
-    inline def getName(inline value: git_error_t): Option[String] =
-      inline value match
-        case GIT_ERROR_NONE => Some("GIT_ERROR_NONE")
-        case GIT_ERROR_NOMEMORY => Some("GIT_ERROR_NOMEMORY")
-        case GIT_ERROR_OS => Some("GIT_ERROR_OS")
-        case GIT_ERROR_INVALID => Some("GIT_ERROR_INVALID")
-        case GIT_ERROR_REFERENCE => Some("GIT_ERROR_REFERENCE")
-        case GIT_ERROR_ZLIB => Some("GIT_ERROR_ZLIB")
-        case GIT_ERROR_REPOSITORY => Some("GIT_ERROR_REPOSITORY")
-        case GIT_ERROR_CONFIG => Some("GIT_ERROR_CONFIG")
-        case GIT_ERROR_REGEX => Some("GIT_ERROR_REGEX")
-        case GIT_ERROR_ODB => Some("GIT_ERROR_ODB")
-        case GIT_ERROR_INDEX => Some("GIT_ERROR_INDEX")
-        case GIT_ERROR_OBJECT => Some("GIT_ERROR_OBJECT")
-        case GIT_ERROR_NET => Some("GIT_ERROR_NET")
-        case GIT_ERROR_TAG => Some("GIT_ERROR_TAG")
-        case GIT_ERROR_TREE => Some("GIT_ERROR_TREE")
-        case GIT_ERROR_INDEXER => Some("GIT_ERROR_INDEXER")
-        case GIT_ERROR_SSL => Some("GIT_ERROR_SSL")
-        case GIT_ERROR_SUBMODULE => Some("GIT_ERROR_SUBMODULE")
-        case GIT_ERROR_THREAD => Some("GIT_ERROR_THREAD")
-        case GIT_ERROR_STASH => Some("GIT_ERROR_STASH")
-        case GIT_ERROR_CHECKOUT => Some("GIT_ERROR_CHECKOUT")
-        case GIT_ERROR_FETCHHEAD => Some("GIT_ERROR_FETCHHEAD")
-        case GIT_ERROR_MERGE => Some("GIT_ERROR_MERGE")
-        case GIT_ERROR_SSH => Some("GIT_ERROR_SSH")
-        case GIT_ERROR_FILTER => Some("GIT_ERROR_FILTER")
-        case GIT_ERROR_REVERT => Some("GIT_ERROR_REVERT")
-        case GIT_ERROR_CALLBACK => Some("GIT_ERROR_CALLBACK")
-        case GIT_ERROR_CHERRYPICK => Some("GIT_ERROR_CHERRYPICK")
-        case GIT_ERROR_DESCRIBE => Some("GIT_ERROR_DESCRIBE")
-        case GIT_ERROR_REBASE => Some("GIT_ERROR_REBASE")
-        case GIT_ERROR_FILESYSTEM => Some("GIT_ERROR_FILESYSTEM")
-        case GIT_ERROR_PATCH => Some("GIT_ERROR_PATCH")
-        case GIT_ERROR_WORKTREE => Some("GIT_ERROR_WORKTREE")
-        case GIT_ERROR_SHA => Some("GIT_ERROR_SHA")
-        case GIT_ERROR_HTTP => Some("GIT_ERROR_HTTP")
-        case GIT_ERROR_INTERNAL => Some("GIT_ERROR_INTERNAL")
+    val GIT_ERROR_GRAFTS = define(36)
+    def getName(value: git_error_t): Option[String] =
+      value match
+        case `GIT_ERROR_NONE` => Some("GIT_ERROR_NONE")
+        case `GIT_ERROR_NOMEMORY` => Some("GIT_ERROR_NOMEMORY")
+        case `GIT_ERROR_OS` => Some("GIT_ERROR_OS")
+        case `GIT_ERROR_INVALID` => Some("GIT_ERROR_INVALID")
+        case `GIT_ERROR_REFERENCE` => Some("GIT_ERROR_REFERENCE")
+        case `GIT_ERROR_ZLIB` => Some("GIT_ERROR_ZLIB")
+        case `GIT_ERROR_REPOSITORY` => Some("GIT_ERROR_REPOSITORY")
+        case `GIT_ERROR_CONFIG` => Some("GIT_ERROR_CONFIG")
+        case `GIT_ERROR_REGEX` => Some("GIT_ERROR_REGEX")
+        case `GIT_ERROR_ODB` => Some("GIT_ERROR_ODB")
+        case `GIT_ERROR_INDEX` => Some("GIT_ERROR_INDEX")
+        case `GIT_ERROR_OBJECT` => Some("GIT_ERROR_OBJECT")
+        case `GIT_ERROR_NET` => Some("GIT_ERROR_NET")
+        case `GIT_ERROR_TAG` => Some("GIT_ERROR_TAG")
+        case `GIT_ERROR_TREE` => Some("GIT_ERROR_TREE")
+        case `GIT_ERROR_INDEXER` => Some("GIT_ERROR_INDEXER")
+        case `GIT_ERROR_SSL` => Some("GIT_ERROR_SSL")
+        case `GIT_ERROR_SUBMODULE` => Some("GIT_ERROR_SUBMODULE")
+        case `GIT_ERROR_THREAD` => Some("GIT_ERROR_THREAD")
+        case `GIT_ERROR_STASH` => Some("GIT_ERROR_STASH")
+        case `GIT_ERROR_CHECKOUT` => Some("GIT_ERROR_CHECKOUT")
+        case `GIT_ERROR_FETCHHEAD` => Some("GIT_ERROR_FETCHHEAD")
+        case `GIT_ERROR_MERGE` => Some("GIT_ERROR_MERGE")
+        case `GIT_ERROR_SSH` => Some("GIT_ERROR_SSH")
+        case `GIT_ERROR_FILTER` => Some("GIT_ERROR_FILTER")
+        case `GIT_ERROR_REVERT` => Some("GIT_ERROR_REVERT")
+        case `GIT_ERROR_CALLBACK` => Some("GIT_ERROR_CALLBACK")
+        case `GIT_ERROR_CHERRYPICK` => Some("GIT_ERROR_CHERRYPICK")
+        case `GIT_ERROR_DESCRIBE` => Some("GIT_ERROR_DESCRIBE")
+        case `GIT_ERROR_REBASE` => Some("GIT_ERROR_REBASE")
+        case `GIT_ERROR_FILESYSTEM` => Some("GIT_ERROR_FILESYSTEM")
+        case `GIT_ERROR_PATCH` => Some("GIT_ERROR_PATCH")
+        case `GIT_ERROR_WORKTREE` => Some("GIT_ERROR_WORKTREE")
+        case `GIT_ERROR_SHA` => Some("GIT_ERROR_SHA")
+        case `GIT_ERROR_HTTP` => Some("GIT_ERROR_HTTP")
+        case `GIT_ERROR_INTERNAL` => Some("GIT_ERROR_INTERNAL")
+        case `GIT_ERROR_GRAFTS` => Some("GIT_ERROR_GRAFTS")
         case _ => _root_.scala.None
     extension (a: git_error_t)
       inline def &(b: git_error_t): git_error_t = a & b
@@ -964,7 +975,7 @@ object enumerations:
       inline def is(b: git_error_t): Boolean = (a & b) == b
 
   /**
-   * Combinations of these values describe the features with which libgit2 was compiled
+   * Configurable features of libgit2; either optional settings (like threading), or features that can be enabled by one of a number of different backend "providers" (like HTTPS, which can be provided by OpenSSL, mbedTLS, or system libraries).
   */
   opaque type git_feature_t = CUnsignedInt
   object git_feature_t extends _BindgenEnumCUnsignedInt[git_feature_t]:
@@ -974,17 +985,52 @@ object enumerations:
     val GIT_FEATURE_HTTPS = define(2)
     val GIT_FEATURE_SSH = define(4)
     val GIT_FEATURE_NSEC = define(8)
-    inline def getName(inline value: git_feature_t): Option[String] =
-      inline value match
-        case GIT_FEATURE_THREADS => Some("GIT_FEATURE_THREADS")
-        case GIT_FEATURE_HTTPS => Some("GIT_FEATURE_HTTPS")
-        case GIT_FEATURE_SSH => Some("GIT_FEATURE_SSH")
-        case GIT_FEATURE_NSEC => Some("GIT_FEATURE_NSEC")
+    val GIT_FEATURE_HTTP_PARSER = define(16)
+    val GIT_FEATURE_REGEX = define(32)
+    val GIT_FEATURE_I18N = define(64)
+    val GIT_FEATURE_AUTH_NTLM = define(128)
+    val GIT_FEATURE_AUTH_NEGOTIATE = define(256)
+    val GIT_FEATURE_COMPRESSION = define(512)
+    val GIT_FEATURE_SHA1 = define(1024)
+    val GIT_FEATURE_SHA256 = define(2048)
+    def getName(value: git_feature_t): Option[String] =
+      value match
+        case `GIT_FEATURE_THREADS` => Some("GIT_FEATURE_THREADS")
+        case `GIT_FEATURE_HTTPS` => Some("GIT_FEATURE_HTTPS")
+        case `GIT_FEATURE_SSH` => Some("GIT_FEATURE_SSH")
+        case `GIT_FEATURE_NSEC` => Some("GIT_FEATURE_NSEC")
+        case `GIT_FEATURE_HTTP_PARSER` => Some("GIT_FEATURE_HTTP_PARSER")
+        case `GIT_FEATURE_REGEX` => Some("GIT_FEATURE_REGEX")
+        case `GIT_FEATURE_I18N` => Some("GIT_FEATURE_I18N")
+        case `GIT_FEATURE_AUTH_NTLM` => Some("GIT_FEATURE_AUTH_NTLM")
+        case `GIT_FEATURE_AUTH_NEGOTIATE` => Some("GIT_FEATURE_AUTH_NEGOTIATE")
+        case `GIT_FEATURE_COMPRESSION` => Some("GIT_FEATURE_COMPRESSION")
+        case `GIT_FEATURE_SHA1` => Some("GIT_FEATURE_SHA1")
+        case `GIT_FEATURE_SHA256` => Some("GIT_FEATURE_SHA256")
         case _ => _root_.scala.None
     extension (a: git_feature_t)
       inline def &(b: git_feature_t): git_feature_t = a & b
       inline def |(b: git_feature_t): git_feature_t = a | b
       inline def is(b: git_feature_t): Boolean = (a & b) == b
+
+  /**
+   * Constants for fetch depth (shallowness of fetch).
+  */
+  opaque type git_fetch_depth_t = CUnsignedInt
+  object git_fetch_depth_t extends _BindgenEnumCUnsignedInt[git_fetch_depth_t]:
+    given _tag: Tag[git_fetch_depth_t] = Tag.UInt
+    inline def define(inline a: Long): git_fetch_depth_t = a.toUInt
+    val GIT_FETCH_DEPTH_FULL = define(0)
+    val GIT_FETCH_DEPTH_UNSHALLOW = define(2147483647)
+    def getName(value: git_fetch_depth_t): Option[String] =
+      value match
+        case `GIT_FETCH_DEPTH_FULL` => Some("GIT_FETCH_DEPTH_FULL")
+        case `GIT_FETCH_DEPTH_UNSHALLOW` => Some("GIT_FETCH_DEPTH_UNSHALLOW")
+        case _ => _root_.scala.None
+    extension (a: git_fetch_depth_t)
+      inline def &(b: git_fetch_depth_t): git_fetch_depth_t = a & b
+      inline def |(b: git_fetch_depth_t): git_fetch_depth_t = a | b
+      inline def is(b: git_fetch_depth_t): Boolean = (a & b) == b
 
   /**
    * Acceptable prune settings when fetching
@@ -996,11 +1042,11 @@ object enumerations:
     val GIT_FETCH_PRUNE_UNSPECIFIED = define(0)
     val GIT_FETCH_PRUNE = define(1)
     val GIT_FETCH_NO_PRUNE = define(2)
-    inline def getName(inline value: git_fetch_prune_t): Option[String] =
-      inline value match
-        case GIT_FETCH_PRUNE_UNSPECIFIED => Some("GIT_FETCH_PRUNE_UNSPECIFIED")
-        case GIT_FETCH_PRUNE => Some("GIT_FETCH_PRUNE")
-        case GIT_FETCH_NO_PRUNE => Some("GIT_FETCH_NO_PRUNE")
+    def getName(value: git_fetch_prune_t): Option[String] =
+      value match
+        case `GIT_FETCH_PRUNE_UNSPECIFIED` => Some("GIT_FETCH_PRUNE_UNSPECIFIED")
+        case `GIT_FETCH_PRUNE` => Some("GIT_FETCH_PRUNE")
+        case `GIT_FETCH_NO_PRUNE` => Some("GIT_FETCH_NO_PRUNE")
         case _ => _root_.scala.None
     extension (a: git_fetch_prune_t)
       inline def &(b: git_fetch_prune_t): git_fetch_prune_t = a & b
@@ -1020,14 +1066,14 @@ object enumerations:
     val GIT_FILEMODE_BLOB_EXECUTABLE = define(33261)
     val GIT_FILEMODE_LINK = define(40960)
     val GIT_FILEMODE_COMMIT = define(57344)
-    inline def getName(inline value: git_filemode_t): Option[String] =
-      inline value match
-        case GIT_FILEMODE_UNREADABLE => Some("GIT_FILEMODE_UNREADABLE")
-        case GIT_FILEMODE_TREE => Some("GIT_FILEMODE_TREE")
-        case GIT_FILEMODE_BLOB => Some("GIT_FILEMODE_BLOB")
-        case GIT_FILEMODE_BLOB_EXECUTABLE => Some("GIT_FILEMODE_BLOB_EXECUTABLE")
-        case GIT_FILEMODE_LINK => Some("GIT_FILEMODE_LINK")
-        case GIT_FILEMODE_COMMIT => Some("GIT_FILEMODE_COMMIT")
+    def getName(value: git_filemode_t): Option[String] =
+      value match
+        case `GIT_FILEMODE_UNREADABLE` => Some("GIT_FILEMODE_UNREADABLE")
+        case `GIT_FILEMODE_TREE` => Some("GIT_FILEMODE_TREE")
+        case `GIT_FILEMODE_BLOB` => Some("GIT_FILEMODE_BLOB")
+        case `GIT_FILEMODE_BLOB_EXECUTABLE` => Some("GIT_FILEMODE_BLOB_EXECUTABLE")
+        case `GIT_FILEMODE_LINK` => Some("GIT_FILEMODE_LINK")
+        case `GIT_FILEMODE_COMMIT` => Some("GIT_FILEMODE_COMMIT")
         case _ => _root_.scala.None
     extension (a: git_filemode_t)
       inline def &(b: git_filemode_t): git_filemode_t = a & b
@@ -1046,13 +1092,13 @@ object enumerations:
     val GIT_FILTER_NO_SYSTEM_ATTRIBUTES = define(2)
     val GIT_FILTER_ATTRIBUTES_FROM_HEAD = define(4)
     val GIT_FILTER_ATTRIBUTES_FROM_COMMIT = define(8)
-    inline def getName(inline value: git_filter_flag_t): Option[String] =
-      inline value match
-        case GIT_FILTER_DEFAULT => Some("GIT_FILTER_DEFAULT")
-        case GIT_FILTER_ALLOW_UNSAFE => Some("GIT_FILTER_ALLOW_UNSAFE")
-        case GIT_FILTER_NO_SYSTEM_ATTRIBUTES => Some("GIT_FILTER_NO_SYSTEM_ATTRIBUTES")
-        case GIT_FILTER_ATTRIBUTES_FROM_HEAD => Some("GIT_FILTER_ATTRIBUTES_FROM_HEAD")
-        case GIT_FILTER_ATTRIBUTES_FROM_COMMIT => Some("GIT_FILTER_ATTRIBUTES_FROM_COMMIT")
+    def getName(value: git_filter_flag_t): Option[String] =
+      value match
+        case `GIT_FILTER_DEFAULT` => Some("GIT_FILTER_DEFAULT")
+        case `GIT_FILTER_ALLOW_UNSAFE` => Some("GIT_FILTER_ALLOW_UNSAFE")
+        case `GIT_FILTER_NO_SYSTEM_ATTRIBUTES` => Some("GIT_FILTER_NO_SYSTEM_ATTRIBUTES")
+        case `GIT_FILTER_ATTRIBUTES_FROM_HEAD` => Some("GIT_FILTER_ATTRIBUTES_FROM_HEAD")
+        case `GIT_FILTER_ATTRIBUTES_FROM_COMMIT` => Some("GIT_FILTER_ATTRIBUTES_FROM_COMMIT")
         case _ => _root_.scala.None
     extension (a: git_filter_flag_t)
       inline def &(b: git_filter_flag_t): git_filter_flag_t = a & b
@@ -1070,12 +1116,12 @@ object enumerations:
     val GIT_FILTER_SMUDGE = define(0)
     val GIT_FILTER_TO_ODB = define(1)
     val GIT_FILTER_CLEAN = define(1)
-    inline def getName(inline value: git_filter_mode_t): Option[String] =
-      inline value match
-        case GIT_FILTER_TO_WORKTREE => Some("GIT_FILTER_TO_WORKTREE")
-        case GIT_FILTER_SMUDGE => Some("GIT_FILTER_SMUDGE")
-        case GIT_FILTER_TO_ODB => Some("GIT_FILTER_TO_ODB")
-        case GIT_FILTER_CLEAN => Some("GIT_FILTER_CLEAN")
+    def getName(value: git_filter_mode_t): Option[String] =
+      value match
+        case `GIT_FILTER_TO_WORKTREE` => Some("GIT_FILTER_TO_WORKTREE")
+        case `GIT_FILTER_SMUDGE` => Some("GIT_FILTER_SMUDGE")
+        case `GIT_FILTER_TO_ODB` => Some("GIT_FILTER_TO_ODB")
+        case `GIT_FILTER_CLEAN` => Some("GIT_FILTER_CLEAN")
         case _ => _root_.scala.None
     extension (a: git_filter_mode_t)
       inline def &(b: git_filter_mode_t): git_filter_mode_t = a & b
@@ -1093,12 +1139,12 @@ object enumerations:
     val GIT_INDEX_ADD_FORCE = define(1)
     val GIT_INDEX_ADD_DISABLE_PATHSPEC_MATCH = define(2)
     val GIT_INDEX_ADD_CHECK_PATHSPEC = define(4)
-    inline def getName(inline value: git_index_add_option_t): Option[String] =
-      inline value match
-        case GIT_INDEX_ADD_DEFAULT => Some("GIT_INDEX_ADD_DEFAULT")
-        case GIT_INDEX_ADD_FORCE => Some("GIT_INDEX_ADD_FORCE")
-        case GIT_INDEX_ADD_DISABLE_PATHSPEC_MATCH => Some("GIT_INDEX_ADD_DISABLE_PATHSPEC_MATCH")
-        case GIT_INDEX_ADD_CHECK_PATHSPEC => Some("GIT_INDEX_ADD_CHECK_PATHSPEC")
+    def getName(value: git_index_add_option_t): Option[String] =
+      value match
+        case `GIT_INDEX_ADD_DEFAULT` => Some("GIT_INDEX_ADD_DEFAULT")
+        case `GIT_INDEX_ADD_FORCE` => Some("GIT_INDEX_ADD_FORCE")
+        case `GIT_INDEX_ADD_DISABLE_PATHSPEC_MATCH` => Some("GIT_INDEX_ADD_DISABLE_PATHSPEC_MATCH")
+        case `GIT_INDEX_ADD_CHECK_PATHSPEC` => Some("GIT_INDEX_ADD_CHECK_PATHSPEC")
         case _ => _root_.scala.None
     extension (a: git_index_add_option_t)
       inline def &(b: git_index_add_option_t): git_index_add_option_t = a & b
@@ -1116,12 +1162,12 @@ object enumerations:
     val GIT_INDEX_CAPABILITY_NO_FILEMODE = define(2)
     val GIT_INDEX_CAPABILITY_NO_SYMLINKS = define(4)
     val GIT_INDEX_CAPABILITY_FROM_OWNER = define(-1)
-    inline def getName(inline value: git_index_capability_t): Option[String] =
-      inline value match
-        case GIT_INDEX_CAPABILITY_IGNORE_CASE => Some("GIT_INDEX_CAPABILITY_IGNORE_CASE")
-        case GIT_INDEX_CAPABILITY_NO_FILEMODE => Some("GIT_INDEX_CAPABILITY_NO_FILEMODE")
-        case GIT_INDEX_CAPABILITY_NO_SYMLINKS => Some("GIT_INDEX_CAPABILITY_NO_SYMLINKS")
-        case GIT_INDEX_CAPABILITY_FROM_OWNER => Some("GIT_INDEX_CAPABILITY_FROM_OWNER")
+    def getName(value: git_index_capability_t): Option[String] =
+      value match
+        case `GIT_INDEX_CAPABILITY_IGNORE_CASE` => Some("GIT_INDEX_CAPABILITY_IGNORE_CASE")
+        case `GIT_INDEX_CAPABILITY_NO_FILEMODE` => Some("GIT_INDEX_CAPABILITY_NO_FILEMODE")
+        case `GIT_INDEX_CAPABILITY_NO_SYMLINKS` => Some("GIT_INDEX_CAPABILITY_NO_SYMLINKS")
+        case `GIT_INDEX_CAPABILITY_FROM_OWNER` => Some("GIT_INDEX_CAPABILITY_FROM_OWNER")
         case _ => _root_.scala.None
     extension (a: git_index_capability_t)
       inline def &(b: git_index_capability_t): git_index_capability_t = a & b
@@ -1139,12 +1185,12 @@ object enumerations:
     val GIT_INDEX_ENTRY_SKIP_WORKTREE = define(16384)
     val GIT_INDEX_ENTRY_EXTENDED_FLAGS = define(24576)
     val GIT_INDEX_ENTRY_UPTODATE = define(4)
-    inline def getName(inline value: git_index_entry_extended_flag_t): Option[String] =
-      inline value match
-        case GIT_INDEX_ENTRY_INTENT_TO_ADD => Some("GIT_INDEX_ENTRY_INTENT_TO_ADD")
-        case GIT_INDEX_ENTRY_SKIP_WORKTREE => Some("GIT_INDEX_ENTRY_SKIP_WORKTREE")
-        case GIT_INDEX_ENTRY_EXTENDED_FLAGS => Some("GIT_INDEX_ENTRY_EXTENDED_FLAGS")
-        case GIT_INDEX_ENTRY_UPTODATE => Some("GIT_INDEX_ENTRY_UPTODATE")
+    def getName(value: git_index_entry_extended_flag_t): Option[String] =
+      value match
+        case `GIT_INDEX_ENTRY_INTENT_TO_ADD` => Some("GIT_INDEX_ENTRY_INTENT_TO_ADD")
+        case `GIT_INDEX_ENTRY_SKIP_WORKTREE` => Some("GIT_INDEX_ENTRY_SKIP_WORKTREE")
+        case `GIT_INDEX_ENTRY_EXTENDED_FLAGS` => Some("GIT_INDEX_ENTRY_EXTENDED_FLAGS")
+        case `GIT_INDEX_ENTRY_UPTODATE` => Some("GIT_INDEX_ENTRY_UPTODATE")
         case _ => _root_.scala.None
     extension (a: git_index_entry_extended_flag_t)
       inline def &(b: git_index_entry_extended_flag_t): git_index_entry_extended_flag_t = a & b
@@ -1160,10 +1206,10 @@ object enumerations:
     inline def define(inline a: Long): git_index_entry_flag_t = a.toUInt
     val GIT_INDEX_ENTRY_EXTENDED = define(16384)
     val GIT_INDEX_ENTRY_VALID = define(32768)
-    inline def getName(inline value: git_index_entry_flag_t): Option[String] =
-      inline value match
-        case GIT_INDEX_ENTRY_EXTENDED => Some("GIT_INDEX_ENTRY_EXTENDED")
-        case GIT_INDEX_ENTRY_VALID => Some("GIT_INDEX_ENTRY_VALID")
+    def getName(value: git_index_entry_flag_t): Option[String] =
+      value match
+        case `GIT_INDEX_ENTRY_EXTENDED` => Some("GIT_INDEX_ENTRY_EXTENDED")
+        case `GIT_INDEX_ENTRY_VALID` => Some("GIT_INDEX_ENTRY_VALID")
         case _ => _root_.scala.None
     extension (a: git_index_entry_flag_t)
       inline def &(b: git_index_entry_flag_t): git_index_entry_flag_t = a & b
@@ -1182,13 +1228,13 @@ object enumerations:
     val GIT_INDEX_STAGE_ANCESTOR = define(1)
     val GIT_INDEX_STAGE_OURS = define(2)
     val GIT_INDEX_STAGE_THEIRS = define(3)
-    inline def getName(inline value: git_index_stage_t): Option[String] =
-      inline value match
-        case GIT_INDEX_STAGE_ANY => Some("GIT_INDEX_STAGE_ANY")
-        case GIT_INDEX_STAGE_NORMAL => Some("GIT_INDEX_STAGE_NORMAL")
-        case GIT_INDEX_STAGE_ANCESTOR => Some("GIT_INDEX_STAGE_ANCESTOR")
-        case GIT_INDEX_STAGE_OURS => Some("GIT_INDEX_STAGE_OURS")
-        case GIT_INDEX_STAGE_THEIRS => Some("GIT_INDEX_STAGE_THEIRS")
+    def getName(value: git_index_stage_t): Option[String] =
+      value match
+        case `GIT_INDEX_STAGE_ANY` => Some("GIT_INDEX_STAGE_ANY")
+        case `GIT_INDEX_STAGE_NORMAL` => Some("GIT_INDEX_STAGE_NORMAL")
+        case `GIT_INDEX_STAGE_ANCESTOR` => Some("GIT_INDEX_STAGE_ANCESTOR")
+        case `GIT_INDEX_STAGE_OURS` => Some("GIT_INDEX_STAGE_OURS")
+        case `GIT_INDEX_STAGE_THEIRS` => Some("GIT_INDEX_STAGE_THEIRS")
         case _ => _root_.scala.None
     extension (a: git_index_stage_t)
       inline def &(b: git_index_stage_t): git_index_stage_t = a & b
@@ -1241,47 +1287,61 @@ object enumerations:
     val GIT_OPT_SET_OWNER_VALIDATION = define(36)
     val GIT_OPT_GET_HOMEDIR = define(37)
     val GIT_OPT_SET_HOMEDIR = define(38)
-    inline def getName(inline value: git_libgit2_opt_t): Option[String] =
-      inline value match
-        case GIT_OPT_GET_MWINDOW_SIZE => Some("GIT_OPT_GET_MWINDOW_SIZE")
-        case GIT_OPT_SET_MWINDOW_SIZE => Some("GIT_OPT_SET_MWINDOW_SIZE")
-        case GIT_OPT_GET_MWINDOW_MAPPED_LIMIT => Some("GIT_OPT_GET_MWINDOW_MAPPED_LIMIT")
-        case GIT_OPT_SET_MWINDOW_MAPPED_LIMIT => Some("GIT_OPT_SET_MWINDOW_MAPPED_LIMIT")
-        case GIT_OPT_GET_SEARCH_PATH => Some("GIT_OPT_GET_SEARCH_PATH")
-        case GIT_OPT_SET_SEARCH_PATH => Some("GIT_OPT_SET_SEARCH_PATH")
-        case GIT_OPT_SET_CACHE_OBJECT_LIMIT => Some("GIT_OPT_SET_CACHE_OBJECT_LIMIT")
-        case GIT_OPT_SET_CACHE_MAX_SIZE => Some("GIT_OPT_SET_CACHE_MAX_SIZE")
-        case GIT_OPT_ENABLE_CACHING => Some("GIT_OPT_ENABLE_CACHING")
-        case GIT_OPT_GET_CACHED_MEMORY => Some("GIT_OPT_GET_CACHED_MEMORY")
-        case GIT_OPT_GET_TEMPLATE_PATH => Some("GIT_OPT_GET_TEMPLATE_PATH")
-        case GIT_OPT_SET_TEMPLATE_PATH => Some("GIT_OPT_SET_TEMPLATE_PATH")
-        case GIT_OPT_SET_SSL_CERT_LOCATIONS => Some("GIT_OPT_SET_SSL_CERT_LOCATIONS")
-        case GIT_OPT_SET_USER_AGENT => Some("GIT_OPT_SET_USER_AGENT")
-        case GIT_OPT_ENABLE_STRICT_OBJECT_CREATION => Some("GIT_OPT_ENABLE_STRICT_OBJECT_CREATION")
-        case GIT_OPT_ENABLE_STRICT_SYMBOLIC_REF_CREATION => Some("GIT_OPT_ENABLE_STRICT_SYMBOLIC_REF_CREATION")
-        case GIT_OPT_SET_SSL_CIPHERS => Some("GIT_OPT_SET_SSL_CIPHERS")
-        case GIT_OPT_GET_USER_AGENT => Some("GIT_OPT_GET_USER_AGENT")
-        case GIT_OPT_ENABLE_OFS_DELTA => Some("GIT_OPT_ENABLE_OFS_DELTA")
-        case GIT_OPT_ENABLE_FSYNC_GITDIR => Some("GIT_OPT_ENABLE_FSYNC_GITDIR")
-        case GIT_OPT_GET_WINDOWS_SHAREMODE => Some("GIT_OPT_GET_WINDOWS_SHAREMODE")
-        case GIT_OPT_SET_WINDOWS_SHAREMODE => Some("GIT_OPT_SET_WINDOWS_SHAREMODE")
-        case GIT_OPT_ENABLE_STRICT_HASH_VERIFICATION => Some("GIT_OPT_ENABLE_STRICT_HASH_VERIFICATION")
-        case GIT_OPT_SET_ALLOCATOR => Some("GIT_OPT_SET_ALLOCATOR")
-        case GIT_OPT_ENABLE_UNSAVED_INDEX_SAFETY => Some("GIT_OPT_ENABLE_UNSAVED_INDEX_SAFETY")
-        case GIT_OPT_GET_PACK_MAX_OBJECTS => Some("GIT_OPT_GET_PACK_MAX_OBJECTS")
-        case GIT_OPT_SET_PACK_MAX_OBJECTS => Some("GIT_OPT_SET_PACK_MAX_OBJECTS")
-        case GIT_OPT_DISABLE_PACK_KEEP_FILE_CHECKS => Some("GIT_OPT_DISABLE_PACK_KEEP_FILE_CHECKS")
-        case GIT_OPT_ENABLE_HTTP_EXPECT_CONTINUE => Some("GIT_OPT_ENABLE_HTTP_EXPECT_CONTINUE")
-        case GIT_OPT_GET_MWINDOW_FILE_LIMIT => Some("GIT_OPT_GET_MWINDOW_FILE_LIMIT")
-        case GIT_OPT_SET_MWINDOW_FILE_LIMIT => Some("GIT_OPT_SET_MWINDOW_FILE_LIMIT")
-        case GIT_OPT_SET_ODB_PACKED_PRIORITY => Some("GIT_OPT_SET_ODB_PACKED_PRIORITY")
-        case GIT_OPT_SET_ODB_LOOSE_PRIORITY => Some("GIT_OPT_SET_ODB_LOOSE_PRIORITY")
-        case GIT_OPT_GET_EXTENSIONS => Some("GIT_OPT_GET_EXTENSIONS")
-        case GIT_OPT_SET_EXTENSIONS => Some("GIT_OPT_SET_EXTENSIONS")
-        case GIT_OPT_GET_OWNER_VALIDATION => Some("GIT_OPT_GET_OWNER_VALIDATION")
-        case GIT_OPT_SET_OWNER_VALIDATION => Some("GIT_OPT_SET_OWNER_VALIDATION")
-        case GIT_OPT_GET_HOMEDIR => Some("GIT_OPT_GET_HOMEDIR")
-        case GIT_OPT_SET_HOMEDIR => Some("GIT_OPT_SET_HOMEDIR")
+    val GIT_OPT_SET_SERVER_CONNECT_TIMEOUT = define(39)
+    val GIT_OPT_GET_SERVER_CONNECT_TIMEOUT = define(40)
+    val GIT_OPT_SET_SERVER_TIMEOUT = define(41)
+    val GIT_OPT_GET_SERVER_TIMEOUT = define(42)
+    val GIT_OPT_SET_USER_AGENT_PRODUCT = define(43)
+    val GIT_OPT_GET_USER_AGENT_PRODUCT = define(44)
+    val GIT_OPT_ADD_SSL_X509_CERT = define(45)
+    def getName(value: git_libgit2_opt_t): Option[String] =
+      value match
+        case `GIT_OPT_GET_MWINDOW_SIZE` => Some("GIT_OPT_GET_MWINDOW_SIZE")
+        case `GIT_OPT_SET_MWINDOW_SIZE` => Some("GIT_OPT_SET_MWINDOW_SIZE")
+        case `GIT_OPT_GET_MWINDOW_MAPPED_LIMIT` => Some("GIT_OPT_GET_MWINDOW_MAPPED_LIMIT")
+        case `GIT_OPT_SET_MWINDOW_MAPPED_LIMIT` => Some("GIT_OPT_SET_MWINDOW_MAPPED_LIMIT")
+        case `GIT_OPT_GET_SEARCH_PATH` => Some("GIT_OPT_GET_SEARCH_PATH")
+        case `GIT_OPT_SET_SEARCH_PATH` => Some("GIT_OPT_SET_SEARCH_PATH")
+        case `GIT_OPT_SET_CACHE_OBJECT_LIMIT` => Some("GIT_OPT_SET_CACHE_OBJECT_LIMIT")
+        case `GIT_OPT_SET_CACHE_MAX_SIZE` => Some("GIT_OPT_SET_CACHE_MAX_SIZE")
+        case `GIT_OPT_ENABLE_CACHING` => Some("GIT_OPT_ENABLE_CACHING")
+        case `GIT_OPT_GET_CACHED_MEMORY` => Some("GIT_OPT_GET_CACHED_MEMORY")
+        case `GIT_OPT_GET_TEMPLATE_PATH` => Some("GIT_OPT_GET_TEMPLATE_PATH")
+        case `GIT_OPT_SET_TEMPLATE_PATH` => Some("GIT_OPT_SET_TEMPLATE_PATH")
+        case `GIT_OPT_SET_SSL_CERT_LOCATIONS` => Some("GIT_OPT_SET_SSL_CERT_LOCATIONS")
+        case `GIT_OPT_SET_USER_AGENT` => Some("GIT_OPT_SET_USER_AGENT")
+        case `GIT_OPT_ENABLE_STRICT_OBJECT_CREATION` => Some("GIT_OPT_ENABLE_STRICT_OBJECT_CREATION")
+        case `GIT_OPT_ENABLE_STRICT_SYMBOLIC_REF_CREATION` => Some("GIT_OPT_ENABLE_STRICT_SYMBOLIC_REF_CREATION")
+        case `GIT_OPT_SET_SSL_CIPHERS` => Some("GIT_OPT_SET_SSL_CIPHERS")
+        case `GIT_OPT_GET_USER_AGENT` => Some("GIT_OPT_GET_USER_AGENT")
+        case `GIT_OPT_ENABLE_OFS_DELTA` => Some("GIT_OPT_ENABLE_OFS_DELTA")
+        case `GIT_OPT_ENABLE_FSYNC_GITDIR` => Some("GIT_OPT_ENABLE_FSYNC_GITDIR")
+        case `GIT_OPT_GET_WINDOWS_SHAREMODE` => Some("GIT_OPT_GET_WINDOWS_SHAREMODE")
+        case `GIT_OPT_SET_WINDOWS_SHAREMODE` => Some("GIT_OPT_SET_WINDOWS_SHAREMODE")
+        case `GIT_OPT_ENABLE_STRICT_HASH_VERIFICATION` => Some("GIT_OPT_ENABLE_STRICT_HASH_VERIFICATION")
+        case `GIT_OPT_SET_ALLOCATOR` => Some("GIT_OPT_SET_ALLOCATOR")
+        case `GIT_OPT_ENABLE_UNSAVED_INDEX_SAFETY` => Some("GIT_OPT_ENABLE_UNSAVED_INDEX_SAFETY")
+        case `GIT_OPT_GET_PACK_MAX_OBJECTS` => Some("GIT_OPT_GET_PACK_MAX_OBJECTS")
+        case `GIT_OPT_SET_PACK_MAX_OBJECTS` => Some("GIT_OPT_SET_PACK_MAX_OBJECTS")
+        case `GIT_OPT_DISABLE_PACK_KEEP_FILE_CHECKS` => Some("GIT_OPT_DISABLE_PACK_KEEP_FILE_CHECKS")
+        case `GIT_OPT_ENABLE_HTTP_EXPECT_CONTINUE` => Some("GIT_OPT_ENABLE_HTTP_EXPECT_CONTINUE")
+        case `GIT_OPT_GET_MWINDOW_FILE_LIMIT` => Some("GIT_OPT_GET_MWINDOW_FILE_LIMIT")
+        case `GIT_OPT_SET_MWINDOW_FILE_LIMIT` => Some("GIT_OPT_SET_MWINDOW_FILE_LIMIT")
+        case `GIT_OPT_SET_ODB_PACKED_PRIORITY` => Some("GIT_OPT_SET_ODB_PACKED_PRIORITY")
+        case `GIT_OPT_SET_ODB_LOOSE_PRIORITY` => Some("GIT_OPT_SET_ODB_LOOSE_PRIORITY")
+        case `GIT_OPT_GET_EXTENSIONS` => Some("GIT_OPT_GET_EXTENSIONS")
+        case `GIT_OPT_SET_EXTENSIONS` => Some("GIT_OPT_SET_EXTENSIONS")
+        case `GIT_OPT_GET_OWNER_VALIDATION` => Some("GIT_OPT_GET_OWNER_VALIDATION")
+        case `GIT_OPT_SET_OWNER_VALIDATION` => Some("GIT_OPT_SET_OWNER_VALIDATION")
+        case `GIT_OPT_GET_HOMEDIR` => Some("GIT_OPT_GET_HOMEDIR")
+        case `GIT_OPT_SET_HOMEDIR` => Some("GIT_OPT_SET_HOMEDIR")
+        case `GIT_OPT_SET_SERVER_CONNECT_TIMEOUT` => Some("GIT_OPT_SET_SERVER_CONNECT_TIMEOUT")
+        case `GIT_OPT_GET_SERVER_CONNECT_TIMEOUT` => Some("GIT_OPT_GET_SERVER_CONNECT_TIMEOUT")
+        case `GIT_OPT_SET_SERVER_TIMEOUT` => Some("GIT_OPT_SET_SERVER_TIMEOUT")
+        case `GIT_OPT_GET_SERVER_TIMEOUT` => Some("GIT_OPT_GET_SERVER_TIMEOUT")
+        case `GIT_OPT_SET_USER_AGENT_PRODUCT` => Some("GIT_OPT_SET_USER_AGENT_PRODUCT")
+        case `GIT_OPT_GET_USER_AGENT_PRODUCT` => Some("GIT_OPT_GET_USER_AGENT_PRODUCT")
+        case `GIT_OPT_ADD_SSL_X509_CERT` => Some("GIT_OPT_ADD_SSL_X509_CERT")
         case _ => _root_.scala.None
     extension (a: git_libgit2_opt_t)
       inline def &(b: git_libgit2_opt_t): git_libgit2_opt_t = a & b
@@ -1300,13 +1360,13 @@ object enumerations:
     val GIT_MERGE_ANALYSIS_UP_TO_DATE = define(2)
     val GIT_MERGE_ANALYSIS_FASTFORWARD = define(4)
     val GIT_MERGE_ANALYSIS_UNBORN = define(8)
-    inline def getName(inline value: git_merge_analysis_t): Option[String] =
-      inline value match
-        case GIT_MERGE_ANALYSIS_NONE => Some("GIT_MERGE_ANALYSIS_NONE")
-        case GIT_MERGE_ANALYSIS_NORMAL => Some("GIT_MERGE_ANALYSIS_NORMAL")
-        case GIT_MERGE_ANALYSIS_UP_TO_DATE => Some("GIT_MERGE_ANALYSIS_UP_TO_DATE")
-        case GIT_MERGE_ANALYSIS_FASTFORWARD => Some("GIT_MERGE_ANALYSIS_FASTFORWARD")
-        case GIT_MERGE_ANALYSIS_UNBORN => Some("GIT_MERGE_ANALYSIS_UNBORN")
+    def getName(value: git_merge_analysis_t): Option[String] =
+      value match
+        case `GIT_MERGE_ANALYSIS_NONE` => Some("GIT_MERGE_ANALYSIS_NONE")
+        case `GIT_MERGE_ANALYSIS_NORMAL` => Some("GIT_MERGE_ANALYSIS_NORMAL")
+        case `GIT_MERGE_ANALYSIS_UP_TO_DATE` => Some("GIT_MERGE_ANALYSIS_UP_TO_DATE")
+        case `GIT_MERGE_ANALYSIS_FASTFORWARD` => Some("GIT_MERGE_ANALYSIS_FASTFORWARD")
+        case `GIT_MERGE_ANALYSIS_UNBORN` => Some("GIT_MERGE_ANALYSIS_UNBORN")
         case _ => _root_.scala.None
     extension (a: git_merge_analysis_t)
       inline def &(b: git_merge_analysis_t): git_merge_analysis_t = a & b
@@ -1324,12 +1384,12 @@ object enumerations:
     val GIT_MERGE_FILE_FAVOR_OURS = define(1)
     val GIT_MERGE_FILE_FAVOR_THEIRS = define(2)
     val GIT_MERGE_FILE_FAVOR_UNION = define(3)
-    inline def getName(inline value: git_merge_file_favor_t): Option[String] =
-      inline value match
-        case GIT_MERGE_FILE_FAVOR_NORMAL => Some("GIT_MERGE_FILE_FAVOR_NORMAL")
-        case GIT_MERGE_FILE_FAVOR_OURS => Some("GIT_MERGE_FILE_FAVOR_OURS")
-        case GIT_MERGE_FILE_FAVOR_THEIRS => Some("GIT_MERGE_FILE_FAVOR_THEIRS")
-        case GIT_MERGE_FILE_FAVOR_UNION => Some("GIT_MERGE_FILE_FAVOR_UNION")
+    def getName(value: git_merge_file_favor_t): Option[String] =
+      value match
+        case `GIT_MERGE_FILE_FAVOR_NORMAL` => Some("GIT_MERGE_FILE_FAVOR_NORMAL")
+        case `GIT_MERGE_FILE_FAVOR_OURS` => Some("GIT_MERGE_FILE_FAVOR_OURS")
+        case `GIT_MERGE_FILE_FAVOR_THEIRS` => Some("GIT_MERGE_FILE_FAVOR_THEIRS")
+        case `GIT_MERGE_FILE_FAVOR_UNION` => Some("GIT_MERGE_FILE_FAVOR_UNION")
         case _ => _root_.scala.None
     extension (a: git_merge_file_favor_t)
       inline def &(b: git_merge_file_favor_t): git_merge_file_favor_t = a & b
@@ -1354,19 +1414,19 @@ object enumerations:
     val GIT_MERGE_FILE_DIFF_MINIMAL = define(128)
     val GIT_MERGE_FILE_STYLE_ZDIFF3 = define(256)
     val GIT_MERGE_FILE_ACCEPT_CONFLICTS = define(512)
-    inline def getName(inline value: git_merge_file_flag_t): Option[String] =
-      inline value match
-        case GIT_MERGE_FILE_DEFAULT => Some("GIT_MERGE_FILE_DEFAULT")
-        case GIT_MERGE_FILE_STYLE_MERGE => Some("GIT_MERGE_FILE_STYLE_MERGE")
-        case GIT_MERGE_FILE_STYLE_DIFF3 => Some("GIT_MERGE_FILE_STYLE_DIFF3")
-        case GIT_MERGE_FILE_SIMPLIFY_ALNUM => Some("GIT_MERGE_FILE_SIMPLIFY_ALNUM")
-        case GIT_MERGE_FILE_IGNORE_WHITESPACE => Some("GIT_MERGE_FILE_IGNORE_WHITESPACE")
-        case GIT_MERGE_FILE_IGNORE_WHITESPACE_CHANGE => Some("GIT_MERGE_FILE_IGNORE_WHITESPACE_CHANGE")
-        case GIT_MERGE_FILE_IGNORE_WHITESPACE_EOL => Some("GIT_MERGE_FILE_IGNORE_WHITESPACE_EOL")
-        case GIT_MERGE_FILE_DIFF_PATIENCE => Some("GIT_MERGE_FILE_DIFF_PATIENCE")
-        case GIT_MERGE_FILE_DIFF_MINIMAL => Some("GIT_MERGE_FILE_DIFF_MINIMAL")
-        case GIT_MERGE_FILE_STYLE_ZDIFF3 => Some("GIT_MERGE_FILE_STYLE_ZDIFF3")
-        case GIT_MERGE_FILE_ACCEPT_CONFLICTS => Some("GIT_MERGE_FILE_ACCEPT_CONFLICTS")
+    def getName(value: git_merge_file_flag_t): Option[String] =
+      value match
+        case `GIT_MERGE_FILE_DEFAULT` => Some("GIT_MERGE_FILE_DEFAULT")
+        case `GIT_MERGE_FILE_STYLE_MERGE` => Some("GIT_MERGE_FILE_STYLE_MERGE")
+        case `GIT_MERGE_FILE_STYLE_DIFF3` => Some("GIT_MERGE_FILE_STYLE_DIFF3")
+        case `GIT_MERGE_FILE_SIMPLIFY_ALNUM` => Some("GIT_MERGE_FILE_SIMPLIFY_ALNUM")
+        case `GIT_MERGE_FILE_IGNORE_WHITESPACE` => Some("GIT_MERGE_FILE_IGNORE_WHITESPACE")
+        case `GIT_MERGE_FILE_IGNORE_WHITESPACE_CHANGE` => Some("GIT_MERGE_FILE_IGNORE_WHITESPACE_CHANGE")
+        case `GIT_MERGE_FILE_IGNORE_WHITESPACE_EOL` => Some("GIT_MERGE_FILE_IGNORE_WHITESPACE_EOL")
+        case `GIT_MERGE_FILE_DIFF_PATIENCE` => Some("GIT_MERGE_FILE_DIFF_PATIENCE")
+        case `GIT_MERGE_FILE_DIFF_MINIMAL` => Some("GIT_MERGE_FILE_DIFF_MINIMAL")
+        case `GIT_MERGE_FILE_STYLE_ZDIFF3` => Some("GIT_MERGE_FILE_STYLE_ZDIFF3")
+        case `GIT_MERGE_FILE_ACCEPT_CONFLICTS` => Some("GIT_MERGE_FILE_ACCEPT_CONFLICTS")
         case _ => _root_.scala.None
     extension (a: git_merge_file_flag_t)
       inline def &(b: git_merge_file_flag_t): git_merge_file_flag_t = a & b
@@ -1385,13 +1445,13 @@ object enumerations:
     val GIT_MERGE_SKIP_REUC = define(4)
     val GIT_MERGE_NO_RECURSIVE = define(8)
     val GIT_MERGE_VIRTUAL_BASE = define(16)
-    inline def getName(inline value: git_merge_flag_t): Option[String] =
-      inline value match
-        case GIT_MERGE_FIND_RENAMES => Some("GIT_MERGE_FIND_RENAMES")
-        case GIT_MERGE_FAIL_ON_CONFLICT => Some("GIT_MERGE_FAIL_ON_CONFLICT")
-        case GIT_MERGE_SKIP_REUC => Some("GIT_MERGE_SKIP_REUC")
-        case GIT_MERGE_NO_RECURSIVE => Some("GIT_MERGE_NO_RECURSIVE")
-        case GIT_MERGE_VIRTUAL_BASE => Some("GIT_MERGE_VIRTUAL_BASE")
+    def getName(value: git_merge_flag_t): Option[String] =
+      value match
+        case `GIT_MERGE_FIND_RENAMES` => Some("GIT_MERGE_FIND_RENAMES")
+        case `GIT_MERGE_FAIL_ON_CONFLICT` => Some("GIT_MERGE_FAIL_ON_CONFLICT")
+        case `GIT_MERGE_SKIP_REUC` => Some("GIT_MERGE_SKIP_REUC")
+        case `GIT_MERGE_NO_RECURSIVE` => Some("GIT_MERGE_NO_RECURSIVE")
+        case `GIT_MERGE_VIRTUAL_BASE` => Some("GIT_MERGE_VIRTUAL_BASE")
         case _ => _root_.scala.None
     extension (a: git_merge_flag_t)
       inline def &(b: git_merge_flag_t): git_merge_flag_t = a & b
@@ -1408,11 +1468,11 @@ object enumerations:
     val GIT_MERGE_PREFERENCE_NONE = define(0)
     val GIT_MERGE_PREFERENCE_NO_FASTFORWARD = define(1)
     val GIT_MERGE_PREFERENCE_FASTFORWARD_ONLY = define(2)
-    inline def getName(inline value: git_merge_preference_t): Option[String] =
-      inline value match
-        case GIT_MERGE_PREFERENCE_NONE => Some("GIT_MERGE_PREFERENCE_NONE")
-        case GIT_MERGE_PREFERENCE_NO_FASTFORWARD => Some("GIT_MERGE_PREFERENCE_NO_FASTFORWARD")
-        case GIT_MERGE_PREFERENCE_FASTFORWARD_ONLY => Some("GIT_MERGE_PREFERENCE_FASTFORWARD_ONLY")
+    def getName(value: git_merge_preference_t): Option[String] =
+      value match
+        case `GIT_MERGE_PREFERENCE_NONE` => Some("GIT_MERGE_PREFERENCE_NONE")
+        case `GIT_MERGE_PREFERENCE_NO_FASTFORWARD` => Some("GIT_MERGE_PREFERENCE_NO_FASTFORWARD")
+        case `GIT_MERGE_PREFERENCE_FASTFORWARD_ONLY` => Some("GIT_MERGE_PREFERENCE_FASTFORWARD_ONLY")
         case _ => _root_.scala.None
     extension (a: git_merge_preference_t)
       inline def &(b: git_merge_preference_t): git_merge_preference_t = a & b
@@ -1434,16 +1494,16 @@ object enumerations:
     val GIT_OBJECT_TAG = define(4)
     val GIT_OBJECT_OFS_DELTA = define(6)
     val GIT_OBJECT_REF_DELTA = define(7)
-    inline def getName(inline value: git_object_t): Option[String] =
-      inline value match
-        case GIT_OBJECT_ANY => Some("GIT_OBJECT_ANY")
-        case GIT_OBJECT_INVALID => Some("GIT_OBJECT_INVALID")
-        case GIT_OBJECT_COMMIT => Some("GIT_OBJECT_COMMIT")
-        case GIT_OBJECT_TREE => Some("GIT_OBJECT_TREE")
-        case GIT_OBJECT_BLOB => Some("GIT_OBJECT_BLOB")
-        case GIT_OBJECT_TAG => Some("GIT_OBJECT_TAG")
-        case GIT_OBJECT_OFS_DELTA => Some("GIT_OBJECT_OFS_DELTA")
-        case GIT_OBJECT_REF_DELTA => Some("GIT_OBJECT_REF_DELTA")
+    def getName(value: git_object_t): Option[String] =
+      value match
+        case `GIT_OBJECT_ANY` => Some("GIT_OBJECT_ANY")
+        case `GIT_OBJECT_INVALID` => Some("GIT_OBJECT_INVALID")
+        case `GIT_OBJECT_COMMIT` => Some("GIT_OBJECT_COMMIT")
+        case `GIT_OBJECT_TREE` => Some("GIT_OBJECT_TREE")
+        case `GIT_OBJECT_BLOB` => Some("GIT_OBJECT_BLOB")
+        case `GIT_OBJECT_TAG` => Some("GIT_OBJECT_TAG")
+        case `GIT_OBJECT_OFS_DELTA` => Some("GIT_OBJECT_OFS_DELTA")
+        case `GIT_OBJECT_REF_DELTA` => Some("GIT_OBJECT_REF_DELTA")
         case _ => _root_.scala.None
     extension (a: git_object_t)
       inline def &(b: git_object_t): git_object_t = a & b
@@ -1455,9 +1515,9 @@ object enumerations:
     given _tag: Tag[git_odb_backend_loose_flag_t] = Tag.UInt
     inline def define(inline a: Long): git_odb_backend_loose_flag_t = a.toUInt
     val GIT_ODB_BACKEND_LOOSE_FSYNC = define(1)
-    inline def getName(inline value: git_odb_backend_loose_flag_t): Option[String] =
-      inline value match
-        case GIT_ODB_BACKEND_LOOSE_FSYNC => Some("GIT_ODB_BACKEND_LOOSE_FSYNC")
+    def getName(value: git_odb_backend_loose_flag_t): Option[String] =
+      value match
+        case `GIT_ODB_BACKEND_LOOSE_FSYNC` => Some("GIT_ODB_BACKEND_LOOSE_FSYNC")
         case _ => _root_.scala.None
     extension (a: git_odb_backend_loose_flag_t)
       inline def &(b: git_odb_backend_loose_flag_t): git_odb_backend_loose_flag_t = a & b
@@ -1472,9 +1532,9 @@ object enumerations:
     given _tag: Tag[git_odb_lookup_flags_t] = Tag.UInt
     inline def define(inline a: Long): git_odb_lookup_flags_t = a.toUInt
     val GIT_ODB_LOOKUP_NO_REFRESH = define(1)
-    inline def getName(inline value: git_odb_lookup_flags_t): Option[String] =
-      inline value match
-        case GIT_ODB_LOOKUP_NO_REFRESH => Some("GIT_ODB_LOOKUP_NO_REFRESH")
+    def getName(value: git_odb_lookup_flags_t): Option[String] =
+      value match
+        case `GIT_ODB_LOOKUP_NO_REFRESH` => Some("GIT_ODB_LOOKUP_NO_REFRESH")
         case _ => _root_.scala.None
     extension (a: git_odb_lookup_flags_t)
       inline def &(b: git_odb_lookup_flags_t): git_odb_lookup_flags_t = a & b
@@ -1491,11 +1551,11 @@ object enumerations:
     val GIT_STREAM_RDONLY = define(2)
     val GIT_STREAM_WRONLY = define(4)
     val GIT_STREAM_RW = define(6)
-    inline def getName(inline value: git_odb_stream_t): Option[String] =
-      inline value match
-        case GIT_STREAM_RDONLY => Some("GIT_STREAM_RDONLY")
-        case GIT_STREAM_WRONLY => Some("GIT_STREAM_WRONLY")
-        case GIT_STREAM_RW => Some("GIT_STREAM_RW")
+    def getName(value: git_odb_stream_t): Option[String] =
+      value match
+        case `GIT_STREAM_RDONLY` => Some("GIT_STREAM_RDONLY")
+        case `GIT_STREAM_WRONLY` => Some("GIT_STREAM_WRONLY")
+        case `GIT_STREAM_RW` => Some("GIT_STREAM_RW")
         case _ => _root_.scala.None
     extension (a: git_odb_stream_t)
       inline def &(b: git_odb_stream_t): git_odb_stream_t = a & b
@@ -1510,9 +1570,9 @@ object enumerations:
     given _tag: Tag[git_oid_t] = Tag.UInt
     inline def define(inline a: Long): git_oid_t = a.toUInt
     val GIT_OID_SHA1 = define(1)
-    inline def getName(inline value: git_oid_t): Option[String] =
-      inline value match
-        case GIT_OID_SHA1 => Some("GIT_OID_SHA1")
+    def getName(value: git_oid_t): Option[String] =
+      value match
+        case `GIT_OID_SHA1` => Some("GIT_OID_SHA1")
         case _ => _root_.scala.None
     extension (a: git_oid_t)
       inline def &(b: git_oid_t): git_oid_t = a & b
@@ -1528,10 +1588,10 @@ object enumerations:
     inline def define(inline a: Long): git_packbuilder_stage_t = a.toUInt
     val GIT_PACKBUILDER_ADDING_OBJECTS = define(0)
     val GIT_PACKBUILDER_DELTAFICATION = define(1)
-    inline def getName(inline value: git_packbuilder_stage_t): Option[String] =
-      inline value match
-        case GIT_PACKBUILDER_ADDING_OBJECTS => Some("GIT_PACKBUILDER_ADDING_OBJECTS")
-        case GIT_PACKBUILDER_DELTAFICATION => Some("GIT_PACKBUILDER_DELTAFICATION")
+    def getName(value: git_packbuilder_stage_t): Option[String] =
+      value match
+        case `GIT_PACKBUILDER_ADDING_OBJECTS` => Some("GIT_PACKBUILDER_ADDING_OBJECTS")
+        case `GIT_PACKBUILDER_DELTAFICATION` => Some("GIT_PACKBUILDER_DELTAFICATION")
         case _ => _root_.scala.None
     extension (a: git_packbuilder_stage_t)
       inline def &(b: git_packbuilder_stage_t): git_packbuilder_stage_t = a & b
@@ -1552,15 +1612,15 @@ object enumerations:
     val GIT_PATHSPEC_NO_MATCH_ERROR = define(8)
     val GIT_PATHSPEC_FIND_FAILURES = define(16)
     val GIT_PATHSPEC_FAILURES_ONLY = define(32)
-    inline def getName(inline value: git_pathspec_flag_t): Option[String] =
-      inline value match
-        case GIT_PATHSPEC_DEFAULT => Some("GIT_PATHSPEC_DEFAULT")
-        case GIT_PATHSPEC_IGNORE_CASE => Some("GIT_PATHSPEC_IGNORE_CASE")
-        case GIT_PATHSPEC_USE_CASE => Some("GIT_PATHSPEC_USE_CASE")
-        case GIT_PATHSPEC_NO_GLOB => Some("GIT_PATHSPEC_NO_GLOB")
-        case GIT_PATHSPEC_NO_MATCH_ERROR => Some("GIT_PATHSPEC_NO_MATCH_ERROR")
-        case GIT_PATHSPEC_FIND_FAILURES => Some("GIT_PATHSPEC_FIND_FAILURES")
-        case GIT_PATHSPEC_FAILURES_ONLY => Some("GIT_PATHSPEC_FAILURES_ONLY")
+    def getName(value: git_pathspec_flag_t): Option[String] =
+      value match
+        case `GIT_PATHSPEC_DEFAULT` => Some("GIT_PATHSPEC_DEFAULT")
+        case `GIT_PATHSPEC_IGNORE_CASE` => Some("GIT_PATHSPEC_IGNORE_CASE")
+        case `GIT_PATHSPEC_USE_CASE` => Some("GIT_PATHSPEC_USE_CASE")
+        case `GIT_PATHSPEC_NO_GLOB` => Some("GIT_PATHSPEC_NO_GLOB")
+        case `GIT_PATHSPEC_NO_MATCH_ERROR` => Some("GIT_PATHSPEC_NO_MATCH_ERROR")
+        case `GIT_PATHSPEC_FIND_FAILURES` => Some("GIT_PATHSPEC_FIND_FAILURES")
+        case `GIT_PATHSPEC_FAILURES_ONLY` => Some("GIT_PATHSPEC_FAILURES_ONLY")
         case _ => _root_.scala.None
     extension (a: git_pathspec_flag_t)
       inline def &(b: git_pathspec_flag_t): git_pathspec_flag_t = a & b
@@ -1577,11 +1637,11 @@ object enumerations:
     val GIT_PROXY_NONE = define(0)
     val GIT_PROXY_AUTO = define(1)
     val GIT_PROXY_SPECIFIED = define(2)
-    inline def getName(inline value: git_proxy_t): Option[String] =
-      inline value match
-        case GIT_PROXY_NONE => Some("GIT_PROXY_NONE")
-        case GIT_PROXY_AUTO => Some("GIT_PROXY_AUTO")
-        case GIT_PROXY_SPECIFIED => Some("GIT_PROXY_SPECIFIED")
+    def getName(value: git_proxy_t): Option[String] =
+      value match
+        case `GIT_PROXY_NONE` => Some("GIT_PROXY_NONE")
+        case `GIT_PROXY_AUTO` => Some("GIT_PROXY_AUTO")
+        case `GIT_PROXY_SPECIFIED` => Some("GIT_PROXY_SPECIFIED")
         case _ => _root_.scala.None
     extension (a: git_proxy_t)
       inline def &(b: git_proxy_t): git_proxy_t = a & b
@@ -1601,14 +1661,14 @@ object enumerations:
     val GIT_REBASE_OPERATION_SQUASH = define(3)
     val GIT_REBASE_OPERATION_FIXUP = define(4)
     val GIT_REBASE_OPERATION_EXEC = define(5)
-    inline def getName(inline value: git_rebase_operation_t): Option[String] =
-      inline value match
-        case GIT_REBASE_OPERATION_PICK => Some("GIT_REBASE_OPERATION_PICK")
-        case GIT_REBASE_OPERATION_REWORD => Some("GIT_REBASE_OPERATION_REWORD")
-        case GIT_REBASE_OPERATION_EDIT => Some("GIT_REBASE_OPERATION_EDIT")
-        case GIT_REBASE_OPERATION_SQUASH => Some("GIT_REBASE_OPERATION_SQUASH")
-        case GIT_REBASE_OPERATION_FIXUP => Some("GIT_REBASE_OPERATION_FIXUP")
-        case GIT_REBASE_OPERATION_EXEC => Some("GIT_REBASE_OPERATION_EXEC")
+    def getName(value: git_rebase_operation_t): Option[String] =
+      value match
+        case `GIT_REBASE_OPERATION_PICK` => Some("GIT_REBASE_OPERATION_PICK")
+        case `GIT_REBASE_OPERATION_REWORD` => Some("GIT_REBASE_OPERATION_REWORD")
+        case `GIT_REBASE_OPERATION_EDIT` => Some("GIT_REBASE_OPERATION_EDIT")
+        case `GIT_REBASE_OPERATION_SQUASH` => Some("GIT_REBASE_OPERATION_SQUASH")
+        case `GIT_REBASE_OPERATION_FIXUP` => Some("GIT_REBASE_OPERATION_FIXUP")
+        case `GIT_REBASE_OPERATION_EXEC` => Some("GIT_REBASE_OPERATION_EXEC")
         case _ => _root_.scala.None
     extension (a: git_rebase_operation_t)
       inline def &(b: git_rebase_operation_t): git_rebase_operation_t = a & b
@@ -1626,12 +1686,12 @@ object enumerations:
     val GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL = define(1)
     val GIT_REFERENCE_FORMAT_REFSPEC_PATTERN = define(2)
     val GIT_REFERENCE_FORMAT_REFSPEC_SHORTHAND = define(4)
-    inline def getName(inline value: git_reference_format_t): Option[String] =
-      inline value match
-        case GIT_REFERENCE_FORMAT_NORMAL => Some("GIT_REFERENCE_FORMAT_NORMAL")
-        case GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL => Some("GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL")
-        case GIT_REFERENCE_FORMAT_REFSPEC_PATTERN => Some("GIT_REFERENCE_FORMAT_REFSPEC_PATTERN")
-        case GIT_REFERENCE_FORMAT_REFSPEC_SHORTHAND => Some("GIT_REFERENCE_FORMAT_REFSPEC_SHORTHAND")
+    def getName(value: git_reference_format_t): Option[String] =
+      value match
+        case `GIT_REFERENCE_FORMAT_NORMAL` => Some("GIT_REFERENCE_FORMAT_NORMAL")
+        case `GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL` => Some("GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL")
+        case `GIT_REFERENCE_FORMAT_REFSPEC_PATTERN` => Some("GIT_REFERENCE_FORMAT_REFSPEC_PATTERN")
+        case `GIT_REFERENCE_FORMAT_REFSPEC_SHORTHAND` => Some("GIT_REFERENCE_FORMAT_REFSPEC_SHORTHAND")
         case _ => _root_.scala.None
     extension (a: git_reference_format_t)
       inline def &(b: git_reference_format_t): git_reference_format_t = a & b
@@ -1649,12 +1709,12 @@ object enumerations:
     val GIT_REFERENCE_DIRECT = define(1)
     val GIT_REFERENCE_SYMBOLIC = define(2)
     val GIT_REFERENCE_ALL = define(3)
-    inline def getName(inline value: git_reference_t): Option[String] =
-      inline value match
-        case GIT_REFERENCE_INVALID => Some("GIT_REFERENCE_INVALID")
-        case GIT_REFERENCE_DIRECT => Some("GIT_REFERENCE_DIRECT")
-        case GIT_REFERENCE_SYMBOLIC => Some("GIT_REFERENCE_SYMBOLIC")
-        case GIT_REFERENCE_ALL => Some("GIT_REFERENCE_ALL")
+    def getName(value: git_reference_t): Option[String] =
+      value match
+        case `GIT_REFERENCE_INVALID` => Some("GIT_REFERENCE_INVALID")
+        case `GIT_REFERENCE_DIRECT` => Some("GIT_REFERENCE_DIRECT")
+        case `GIT_REFERENCE_SYMBOLIC` => Some("GIT_REFERENCE_SYMBOLIC")
+        case `GIT_REFERENCE_ALL` => Some("GIT_REFERENCE_ALL")
         case _ => _root_.scala.None
     extension (a: git_reference_t)
       inline def &(b: git_reference_t): git_reference_t = a & b
@@ -1672,12 +1732,12 @@ object enumerations:
     val GIT_REMOTE_DOWNLOAD_TAGS_AUTO = define(1)
     val GIT_REMOTE_DOWNLOAD_TAGS_NONE = define(2)
     val GIT_REMOTE_DOWNLOAD_TAGS_ALL = define(3)
-    inline def getName(inline value: git_remote_autotag_option_t): Option[String] =
-      inline value match
-        case GIT_REMOTE_DOWNLOAD_TAGS_UNSPECIFIED => Some("GIT_REMOTE_DOWNLOAD_TAGS_UNSPECIFIED")
-        case GIT_REMOTE_DOWNLOAD_TAGS_AUTO => Some("GIT_REMOTE_DOWNLOAD_TAGS_AUTO")
-        case GIT_REMOTE_DOWNLOAD_TAGS_NONE => Some("GIT_REMOTE_DOWNLOAD_TAGS_NONE")
-        case GIT_REMOTE_DOWNLOAD_TAGS_ALL => Some("GIT_REMOTE_DOWNLOAD_TAGS_ALL")
+    def getName(value: git_remote_autotag_option_t): Option[String] =
+      value match
+        case `GIT_REMOTE_DOWNLOAD_TAGS_UNSPECIFIED` => Some("GIT_REMOTE_DOWNLOAD_TAGS_UNSPECIFIED")
+        case `GIT_REMOTE_DOWNLOAD_TAGS_AUTO` => Some("GIT_REMOTE_DOWNLOAD_TAGS_AUTO")
+        case `GIT_REMOTE_DOWNLOAD_TAGS_NONE` => Some("GIT_REMOTE_DOWNLOAD_TAGS_NONE")
+        case `GIT_REMOTE_DOWNLOAD_TAGS_ALL` => Some("GIT_REMOTE_DOWNLOAD_TAGS_ALL")
         case _ => _root_.scala.None
     extension (a: git_remote_autotag_option_t)
       inline def &(b: git_remote_autotag_option_t): git_remote_autotag_option_t = a & b
@@ -1694,11 +1754,11 @@ object enumerations:
     val GIT_REMOTE_COMPLETION_DOWNLOAD = define(0)
     val GIT_REMOTE_COMPLETION_INDEXING = define(1)
     val GIT_REMOTE_COMPLETION_ERROR = define(2)
-    inline def getName(inline value: git_remote_completion_t): Option[String] =
-      inline value match
-        case GIT_REMOTE_COMPLETION_DOWNLOAD => Some("GIT_REMOTE_COMPLETION_DOWNLOAD")
-        case GIT_REMOTE_COMPLETION_INDEXING => Some("GIT_REMOTE_COMPLETION_INDEXING")
-        case GIT_REMOTE_COMPLETION_ERROR => Some("GIT_REMOTE_COMPLETION_ERROR")
+    def getName(value: git_remote_completion_t): Option[String] =
+      value match
+        case `GIT_REMOTE_COMPLETION_DOWNLOAD` => Some("GIT_REMOTE_COMPLETION_DOWNLOAD")
+        case `GIT_REMOTE_COMPLETION_INDEXING` => Some("GIT_REMOTE_COMPLETION_INDEXING")
+        case `GIT_REMOTE_COMPLETION_ERROR` => Some("GIT_REMOTE_COMPLETION_ERROR")
         case _ => _root_.scala.None
     extension (a: git_remote_completion_t)
       inline def &(b: git_remote_completion_t): git_remote_completion_t = a & b
@@ -1714,10 +1774,10 @@ object enumerations:
     inline def define(inline a: Long): git_remote_create_flags = a.toUInt
     val GIT_REMOTE_CREATE_SKIP_INSTEADOF = define(1)
     val GIT_REMOTE_CREATE_SKIP_DEFAULT_FETCHSPEC = define(2)
-    inline def getName(inline value: git_remote_create_flags): Option[String] =
-      inline value match
-        case GIT_REMOTE_CREATE_SKIP_INSTEADOF => Some("GIT_REMOTE_CREATE_SKIP_INSTEADOF")
-        case GIT_REMOTE_CREATE_SKIP_DEFAULT_FETCHSPEC => Some("GIT_REMOTE_CREATE_SKIP_DEFAULT_FETCHSPEC")
+    def getName(value: git_remote_create_flags): Option[String] =
+      value match
+        case `GIT_REMOTE_CREATE_SKIP_INSTEADOF` => Some("GIT_REMOTE_CREATE_SKIP_INSTEADOF")
+        case `GIT_REMOTE_CREATE_SKIP_DEFAULT_FETCHSPEC` => Some("GIT_REMOTE_CREATE_SKIP_DEFAULT_FETCHSPEC")
         case _ => _root_.scala.None
     extension (a: git_remote_create_flags)
       inline def &(b: git_remote_create_flags): git_remote_create_flags = a & b
@@ -1734,16 +1794,35 @@ object enumerations:
     val GIT_REMOTE_REDIRECT_NONE = define(1)
     val GIT_REMOTE_REDIRECT_INITIAL = define(2)
     val GIT_REMOTE_REDIRECT_ALL = define(4)
-    inline def getName(inline value: git_remote_redirect_t): Option[String] =
-      inline value match
-        case GIT_REMOTE_REDIRECT_NONE => Some("GIT_REMOTE_REDIRECT_NONE")
-        case GIT_REMOTE_REDIRECT_INITIAL => Some("GIT_REMOTE_REDIRECT_INITIAL")
-        case GIT_REMOTE_REDIRECT_ALL => Some("GIT_REMOTE_REDIRECT_ALL")
+    def getName(value: git_remote_redirect_t): Option[String] =
+      value match
+        case `GIT_REMOTE_REDIRECT_NONE` => Some("GIT_REMOTE_REDIRECT_NONE")
+        case `GIT_REMOTE_REDIRECT_INITIAL` => Some("GIT_REMOTE_REDIRECT_INITIAL")
+        case `GIT_REMOTE_REDIRECT_ALL` => Some("GIT_REMOTE_REDIRECT_ALL")
         case _ => _root_.scala.None
     extension (a: git_remote_redirect_t)
       inline def &(b: git_remote_redirect_t): git_remote_redirect_t = a & b
       inline def |(b: git_remote_redirect_t): git_remote_redirect_t = a | b
       inline def is(b: git_remote_redirect_t): Boolean = (a & b) == b
+
+  /**
+   * How to handle reference updates.
+  */
+  opaque type git_remote_update_flags = CUnsignedInt
+  object git_remote_update_flags extends _BindgenEnumCUnsignedInt[git_remote_update_flags]:
+    given _tag: Tag[git_remote_update_flags] = Tag.UInt
+    inline def define(inline a: Long): git_remote_update_flags = a.toUInt
+    val GIT_REMOTE_UPDATE_FETCHHEAD = define(1)
+    val GIT_REMOTE_UPDATE_REPORT_UNCHANGED = define(2)
+    def getName(value: git_remote_update_flags): Option[String] =
+      value match
+        case `GIT_REMOTE_UPDATE_FETCHHEAD` => Some("GIT_REMOTE_UPDATE_FETCHHEAD")
+        case `GIT_REMOTE_UPDATE_REPORT_UNCHANGED` => Some("GIT_REMOTE_UPDATE_REPORT_UNCHANGED")
+        case _ => _root_.scala.None
+    extension (a: git_remote_update_flags)
+      inline def &(b: git_remote_update_flags): git_remote_update_flags = a & b
+      inline def |(b: git_remote_update_flags): git_remote_update_flags = a | b
+      inline def is(b: git_remote_update_flags): Boolean = (a & b) == b
 
   /**
    * Option flags for `git_repository_init_ext`.
@@ -1759,15 +1838,15 @@ object enumerations:
     val GIT_REPOSITORY_INIT_MKPATH = define(16)
     val GIT_REPOSITORY_INIT_EXTERNAL_TEMPLATE = define(32)
     val GIT_REPOSITORY_INIT_RELATIVE_GITLINK = define(64)
-    inline def getName(inline value: git_repository_init_flag_t): Option[String] =
-      inline value match
-        case GIT_REPOSITORY_INIT_BARE => Some("GIT_REPOSITORY_INIT_BARE")
-        case GIT_REPOSITORY_INIT_NO_REINIT => Some("GIT_REPOSITORY_INIT_NO_REINIT")
-        case GIT_REPOSITORY_INIT_NO_DOTGIT_DIR => Some("GIT_REPOSITORY_INIT_NO_DOTGIT_DIR")
-        case GIT_REPOSITORY_INIT_MKDIR => Some("GIT_REPOSITORY_INIT_MKDIR")
-        case GIT_REPOSITORY_INIT_MKPATH => Some("GIT_REPOSITORY_INIT_MKPATH")
-        case GIT_REPOSITORY_INIT_EXTERNAL_TEMPLATE => Some("GIT_REPOSITORY_INIT_EXTERNAL_TEMPLATE")
-        case GIT_REPOSITORY_INIT_RELATIVE_GITLINK => Some("GIT_REPOSITORY_INIT_RELATIVE_GITLINK")
+    def getName(value: git_repository_init_flag_t): Option[String] =
+      value match
+        case `GIT_REPOSITORY_INIT_BARE` => Some("GIT_REPOSITORY_INIT_BARE")
+        case `GIT_REPOSITORY_INIT_NO_REINIT` => Some("GIT_REPOSITORY_INIT_NO_REINIT")
+        case `GIT_REPOSITORY_INIT_NO_DOTGIT_DIR` => Some("GIT_REPOSITORY_INIT_NO_DOTGIT_DIR")
+        case `GIT_REPOSITORY_INIT_MKDIR` => Some("GIT_REPOSITORY_INIT_MKDIR")
+        case `GIT_REPOSITORY_INIT_MKPATH` => Some("GIT_REPOSITORY_INIT_MKPATH")
+        case `GIT_REPOSITORY_INIT_EXTERNAL_TEMPLATE` => Some("GIT_REPOSITORY_INIT_EXTERNAL_TEMPLATE")
+        case `GIT_REPOSITORY_INIT_RELATIVE_GITLINK` => Some("GIT_REPOSITORY_INIT_RELATIVE_GITLINK")
         case _ => _root_.scala.None
     extension (a: git_repository_init_flag_t)
       inline def &(b: git_repository_init_flag_t): git_repository_init_flag_t = a & b
@@ -1784,11 +1863,11 @@ object enumerations:
     val GIT_REPOSITORY_INIT_SHARED_UMASK = define(0)
     val GIT_REPOSITORY_INIT_SHARED_GROUP = define(1533)
     val GIT_REPOSITORY_INIT_SHARED_ALL = define(1535)
-    inline def getName(inline value: git_repository_init_mode_t): Option[String] =
-      inline value match
-        case GIT_REPOSITORY_INIT_SHARED_UMASK => Some("GIT_REPOSITORY_INIT_SHARED_UMASK")
-        case GIT_REPOSITORY_INIT_SHARED_GROUP => Some("GIT_REPOSITORY_INIT_SHARED_GROUP")
-        case GIT_REPOSITORY_INIT_SHARED_ALL => Some("GIT_REPOSITORY_INIT_SHARED_ALL")
+    def getName(value: git_repository_init_mode_t): Option[String] =
+      value match
+        case `GIT_REPOSITORY_INIT_SHARED_UMASK` => Some("GIT_REPOSITORY_INIT_SHARED_UMASK")
+        case `GIT_REPOSITORY_INIT_SHARED_GROUP` => Some("GIT_REPOSITORY_INIT_SHARED_GROUP")
+        case `GIT_REPOSITORY_INIT_SHARED_ALL` => Some("GIT_REPOSITORY_INIT_SHARED_ALL")
         case _ => _root_.scala.None
     extension (a: git_repository_init_mode_t)
       inline def &(b: git_repository_init_mode_t): git_repository_init_mode_t = a & b
@@ -1816,24 +1895,26 @@ object enumerations:
     val GIT_REPOSITORY_ITEM_LOGS = define(11)
     val GIT_REPOSITORY_ITEM_MODULES = define(12)
     val GIT_REPOSITORY_ITEM_WORKTREES = define(13)
-    val GIT_REPOSITORY_ITEM__LAST = define(14)
-    inline def getName(inline value: git_repository_item_t): Option[String] =
-      inline value match
-        case GIT_REPOSITORY_ITEM_GITDIR => Some("GIT_REPOSITORY_ITEM_GITDIR")
-        case GIT_REPOSITORY_ITEM_WORKDIR => Some("GIT_REPOSITORY_ITEM_WORKDIR")
-        case GIT_REPOSITORY_ITEM_COMMONDIR => Some("GIT_REPOSITORY_ITEM_COMMONDIR")
-        case GIT_REPOSITORY_ITEM_INDEX => Some("GIT_REPOSITORY_ITEM_INDEX")
-        case GIT_REPOSITORY_ITEM_OBJECTS => Some("GIT_REPOSITORY_ITEM_OBJECTS")
-        case GIT_REPOSITORY_ITEM_REFS => Some("GIT_REPOSITORY_ITEM_REFS")
-        case GIT_REPOSITORY_ITEM_PACKED_REFS => Some("GIT_REPOSITORY_ITEM_PACKED_REFS")
-        case GIT_REPOSITORY_ITEM_REMOTES => Some("GIT_REPOSITORY_ITEM_REMOTES")
-        case GIT_REPOSITORY_ITEM_CONFIG => Some("GIT_REPOSITORY_ITEM_CONFIG")
-        case GIT_REPOSITORY_ITEM_INFO => Some("GIT_REPOSITORY_ITEM_INFO")
-        case GIT_REPOSITORY_ITEM_HOOKS => Some("GIT_REPOSITORY_ITEM_HOOKS")
-        case GIT_REPOSITORY_ITEM_LOGS => Some("GIT_REPOSITORY_ITEM_LOGS")
-        case GIT_REPOSITORY_ITEM_MODULES => Some("GIT_REPOSITORY_ITEM_MODULES")
-        case GIT_REPOSITORY_ITEM_WORKTREES => Some("GIT_REPOSITORY_ITEM_WORKTREES")
-        case GIT_REPOSITORY_ITEM__LAST => Some("GIT_REPOSITORY_ITEM__LAST")
+    val GIT_REPOSITORY_ITEM_WORKTREE_CONFIG = define(14)
+    val GIT_REPOSITORY_ITEM__LAST = define(15)
+    def getName(value: git_repository_item_t): Option[String] =
+      value match
+        case `GIT_REPOSITORY_ITEM_GITDIR` => Some("GIT_REPOSITORY_ITEM_GITDIR")
+        case `GIT_REPOSITORY_ITEM_WORKDIR` => Some("GIT_REPOSITORY_ITEM_WORKDIR")
+        case `GIT_REPOSITORY_ITEM_COMMONDIR` => Some("GIT_REPOSITORY_ITEM_COMMONDIR")
+        case `GIT_REPOSITORY_ITEM_INDEX` => Some("GIT_REPOSITORY_ITEM_INDEX")
+        case `GIT_REPOSITORY_ITEM_OBJECTS` => Some("GIT_REPOSITORY_ITEM_OBJECTS")
+        case `GIT_REPOSITORY_ITEM_REFS` => Some("GIT_REPOSITORY_ITEM_REFS")
+        case `GIT_REPOSITORY_ITEM_PACKED_REFS` => Some("GIT_REPOSITORY_ITEM_PACKED_REFS")
+        case `GIT_REPOSITORY_ITEM_REMOTES` => Some("GIT_REPOSITORY_ITEM_REMOTES")
+        case `GIT_REPOSITORY_ITEM_CONFIG` => Some("GIT_REPOSITORY_ITEM_CONFIG")
+        case `GIT_REPOSITORY_ITEM_INFO` => Some("GIT_REPOSITORY_ITEM_INFO")
+        case `GIT_REPOSITORY_ITEM_HOOKS` => Some("GIT_REPOSITORY_ITEM_HOOKS")
+        case `GIT_REPOSITORY_ITEM_LOGS` => Some("GIT_REPOSITORY_ITEM_LOGS")
+        case `GIT_REPOSITORY_ITEM_MODULES` => Some("GIT_REPOSITORY_ITEM_MODULES")
+        case `GIT_REPOSITORY_ITEM_WORKTREES` => Some("GIT_REPOSITORY_ITEM_WORKTREES")
+        case `GIT_REPOSITORY_ITEM_WORKTREE_CONFIG` => Some("GIT_REPOSITORY_ITEM_WORKTREE_CONFIG")
+        case `GIT_REPOSITORY_ITEM__LAST` => Some("GIT_REPOSITORY_ITEM__LAST")
         case _ => _root_.scala.None
     extension (a: git_repository_item_t)
       inline def &(b: git_repository_item_t): git_repository_item_t = a & b
@@ -1852,13 +1933,13 @@ object enumerations:
     val GIT_REPOSITORY_OPEN_BARE = define(4)
     val GIT_REPOSITORY_OPEN_NO_DOTGIT = define(8)
     val GIT_REPOSITORY_OPEN_FROM_ENV = define(16)
-    inline def getName(inline value: git_repository_open_flag_t): Option[String] =
-      inline value match
-        case GIT_REPOSITORY_OPEN_NO_SEARCH => Some("GIT_REPOSITORY_OPEN_NO_SEARCH")
-        case GIT_REPOSITORY_OPEN_CROSS_FS => Some("GIT_REPOSITORY_OPEN_CROSS_FS")
-        case GIT_REPOSITORY_OPEN_BARE => Some("GIT_REPOSITORY_OPEN_BARE")
-        case GIT_REPOSITORY_OPEN_NO_DOTGIT => Some("GIT_REPOSITORY_OPEN_NO_DOTGIT")
-        case GIT_REPOSITORY_OPEN_FROM_ENV => Some("GIT_REPOSITORY_OPEN_FROM_ENV")
+    def getName(value: git_repository_open_flag_t): Option[String] =
+      value match
+        case `GIT_REPOSITORY_OPEN_NO_SEARCH` => Some("GIT_REPOSITORY_OPEN_NO_SEARCH")
+        case `GIT_REPOSITORY_OPEN_CROSS_FS` => Some("GIT_REPOSITORY_OPEN_CROSS_FS")
+        case `GIT_REPOSITORY_OPEN_BARE` => Some("GIT_REPOSITORY_OPEN_BARE")
+        case `GIT_REPOSITORY_OPEN_NO_DOTGIT` => Some("GIT_REPOSITORY_OPEN_NO_DOTGIT")
+        case `GIT_REPOSITORY_OPEN_FROM_ENV` => Some("GIT_REPOSITORY_OPEN_FROM_ENV")
         case _ => _root_.scala.None
     extension (a: git_repository_open_flag_t)
       inline def &(b: git_repository_open_flag_t): git_repository_open_flag_t = a & b
@@ -1884,20 +1965,20 @@ object enumerations:
     val GIT_REPOSITORY_STATE_REBASE_MERGE = define(9)
     val GIT_REPOSITORY_STATE_APPLY_MAILBOX = define(10)
     val GIT_REPOSITORY_STATE_APPLY_MAILBOX_OR_REBASE = define(11)
-    inline def getName(inline value: git_repository_state_t): Option[String] =
-      inline value match
-        case GIT_REPOSITORY_STATE_NONE => Some("GIT_REPOSITORY_STATE_NONE")
-        case GIT_REPOSITORY_STATE_MERGE => Some("GIT_REPOSITORY_STATE_MERGE")
-        case GIT_REPOSITORY_STATE_REVERT => Some("GIT_REPOSITORY_STATE_REVERT")
-        case GIT_REPOSITORY_STATE_REVERT_SEQUENCE => Some("GIT_REPOSITORY_STATE_REVERT_SEQUENCE")
-        case GIT_REPOSITORY_STATE_CHERRYPICK => Some("GIT_REPOSITORY_STATE_CHERRYPICK")
-        case GIT_REPOSITORY_STATE_CHERRYPICK_SEQUENCE => Some("GIT_REPOSITORY_STATE_CHERRYPICK_SEQUENCE")
-        case GIT_REPOSITORY_STATE_BISECT => Some("GIT_REPOSITORY_STATE_BISECT")
-        case GIT_REPOSITORY_STATE_REBASE => Some("GIT_REPOSITORY_STATE_REBASE")
-        case GIT_REPOSITORY_STATE_REBASE_INTERACTIVE => Some("GIT_REPOSITORY_STATE_REBASE_INTERACTIVE")
-        case GIT_REPOSITORY_STATE_REBASE_MERGE => Some("GIT_REPOSITORY_STATE_REBASE_MERGE")
-        case GIT_REPOSITORY_STATE_APPLY_MAILBOX => Some("GIT_REPOSITORY_STATE_APPLY_MAILBOX")
-        case GIT_REPOSITORY_STATE_APPLY_MAILBOX_OR_REBASE => Some("GIT_REPOSITORY_STATE_APPLY_MAILBOX_OR_REBASE")
+    def getName(value: git_repository_state_t): Option[String] =
+      value match
+        case `GIT_REPOSITORY_STATE_NONE` => Some("GIT_REPOSITORY_STATE_NONE")
+        case `GIT_REPOSITORY_STATE_MERGE` => Some("GIT_REPOSITORY_STATE_MERGE")
+        case `GIT_REPOSITORY_STATE_REVERT` => Some("GIT_REPOSITORY_STATE_REVERT")
+        case `GIT_REPOSITORY_STATE_REVERT_SEQUENCE` => Some("GIT_REPOSITORY_STATE_REVERT_SEQUENCE")
+        case `GIT_REPOSITORY_STATE_CHERRYPICK` => Some("GIT_REPOSITORY_STATE_CHERRYPICK")
+        case `GIT_REPOSITORY_STATE_CHERRYPICK_SEQUENCE` => Some("GIT_REPOSITORY_STATE_CHERRYPICK_SEQUENCE")
+        case `GIT_REPOSITORY_STATE_BISECT` => Some("GIT_REPOSITORY_STATE_BISECT")
+        case `GIT_REPOSITORY_STATE_REBASE` => Some("GIT_REPOSITORY_STATE_REBASE")
+        case `GIT_REPOSITORY_STATE_REBASE_INTERACTIVE` => Some("GIT_REPOSITORY_STATE_REBASE_INTERACTIVE")
+        case `GIT_REPOSITORY_STATE_REBASE_MERGE` => Some("GIT_REPOSITORY_STATE_REBASE_MERGE")
+        case `GIT_REPOSITORY_STATE_APPLY_MAILBOX` => Some("GIT_REPOSITORY_STATE_APPLY_MAILBOX")
+        case `GIT_REPOSITORY_STATE_APPLY_MAILBOX_OR_REBASE` => Some("GIT_REPOSITORY_STATE_APPLY_MAILBOX_OR_REBASE")
         case _ => _root_.scala.None
     extension (a: git_repository_state_t)
       inline def &(b: git_repository_state_t): git_repository_state_t = a & b
@@ -1914,11 +1995,11 @@ object enumerations:
     val GIT_RESET_SOFT = define(1)
     val GIT_RESET_MIXED = define(2)
     val GIT_RESET_HARD = define(3)
-    inline def getName(inline value: git_reset_t): Option[String] =
-      inline value match
-        case GIT_RESET_SOFT => Some("GIT_RESET_SOFT")
-        case GIT_RESET_MIXED => Some("GIT_RESET_MIXED")
-        case GIT_RESET_HARD => Some("GIT_RESET_HARD")
+    def getName(value: git_reset_t): Option[String] =
+      value match
+        case `GIT_RESET_SOFT` => Some("GIT_RESET_SOFT")
+        case `GIT_RESET_MIXED` => Some("GIT_RESET_MIXED")
+        case `GIT_RESET_HARD` => Some("GIT_RESET_HARD")
         case _ => _root_.scala.None
     extension (a: git_reset_t)
       inline def &(b: git_reset_t): git_reset_t = a & b
@@ -1935,11 +2016,11 @@ object enumerations:
     val GIT_REVSPEC_SINGLE = define(1)
     val GIT_REVSPEC_RANGE = define(2)
     val GIT_REVSPEC_MERGE_BASE = define(4)
-    inline def getName(inline value: git_revspec_t): Option[String] =
-      inline value match
-        case GIT_REVSPEC_SINGLE => Some("GIT_REVSPEC_SINGLE")
-        case GIT_REVSPEC_RANGE => Some("GIT_REVSPEC_RANGE")
-        case GIT_REVSPEC_MERGE_BASE => Some("GIT_REVSPEC_MERGE_BASE")
+    def getName(value: git_revspec_t): Option[String] =
+      value match
+        case `GIT_REVSPEC_SINGLE` => Some("GIT_REVSPEC_SINGLE")
+        case `GIT_REVSPEC_RANGE` => Some("GIT_REVSPEC_RANGE")
+        case `GIT_REVSPEC_MERGE_BASE` => Some("GIT_REVSPEC_MERGE_BASE")
         case _ => _root_.scala.None
     extension (a: git_revspec_t)
       inline def &(b: git_revspec_t): git_revspec_t = a & b
@@ -1957,12 +2038,12 @@ object enumerations:
     val GIT_SORT_TOPOLOGICAL = define(1)
     val GIT_SORT_TIME = define(2)
     val GIT_SORT_REVERSE = define(4)
-    inline def getName(inline value: git_sort_t): Option[String] =
-      inline value match
-        case GIT_SORT_NONE => Some("GIT_SORT_NONE")
-        case GIT_SORT_TOPOLOGICAL => Some("GIT_SORT_TOPOLOGICAL")
-        case GIT_SORT_TIME => Some("GIT_SORT_TIME")
-        case GIT_SORT_REVERSE => Some("GIT_SORT_REVERSE")
+    def getName(value: git_sort_t): Option[String] =
+      value match
+        case `GIT_SORT_NONE` => Some("GIT_SORT_NONE")
+        case `GIT_SORT_TOPOLOGICAL` => Some("GIT_SORT_TOPOLOGICAL")
+        case `GIT_SORT_TIME` => Some("GIT_SORT_TIME")
+        case `GIT_SORT_REVERSE` => Some("GIT_SORT_REVERSE")
         case _ => _root_.scala.None
     extension (a: git_sort_t)
       inline def &(b: git_sort_t): git_sort_t = a & b
@@ -1978,10 +2059,10 @@ object enumerations:
     inline def define(inline a: Long): git_stash_apply_flags = a.toUInt
     val GIT_STASH_APPLY_DEFAULT = define(0)
     val GIT_STASH_APPLY_REINSTATE_INDEX = define(1)
-    inline def getName(inline value: git_stash_apply_flags): Option[String] =
-      inline value match
-        case GIT_STASH_APPLY_DEFAULT => Some("GIT_STASH_APPLY_DEFAULT")
-        case GIT_STASH_APPLY_REINSTATE_INDEX => Some("GIT_STASH_APPLY_REINSTATE_INDEX")
+    def getName(value: git_stash_apply_flags): Option[String] =
+      value match
+        case `GIT_STASH_APPLY_DEFAULT` => Some("GIT_STASH_APPLY_DEFAULT")
+        case `GIT_STASH_APPLY_REINSTATE_INDEX` => Some("GIT_STASH_APPLY_REINSTATE_INDEX")
         case _ => _root_.scala.None
     extension (a: git_stash_apply_flags)
       inline def &(b: git_stash_apply_flags): git_stash_apply_flags = a & b
@@ -2003,16 +2084,16 @@ object enumerations:
     val GIT_STASH_APPLY_PROGRESS_CHECKOUT_UNTRACKED = define(5)
     val GIT_STASH_APPLY_PROGRESS_CHECKOUT_MODIFIED = define(6)
     val GIT_STASH_APPLY_PROGRESS_DONE = define(7)
-    inline def getName(inline value: git_stash_apply_progress_t): Option[String] =
-      inline value match
-        case GIT_STASH_APPLY_PROGRESS_NONE => Some("GIT_STASH_APPLY_PROGRESS_NONE")
-        case GIT_STASH_APPLY_PROGRESS_LOADING_STASH => Some("GIT_STASH_APPLY_PROGRESS_LOADING_STASH")
-        case GIT_STASH_APPLY_PROGRESS_ANALYZE_INDEX => Some("GIT_STASH_APPLY_PROGRESS_ANALYZE_INDEX")
-        case GIT_STASH_APPLY_PROGRESS_ANALYZE_MODIFIED => Some("GIT_STASH_APPLY_PROGRESS_ANALYZE_MODIFIED")
-        case GIT_STASH_APPLY_PROGRESS_ANALYZE_UNTRACKED => Some("GIT_STASH_APPLY_PROGRESS_ANALYZE_UNTRACKED")
-        case GIT_STASH_APPLY_PROGRESS_CHECKOUT_UNTRACKED => Some("GIT_STASH_APPLY_PROGRESS_CHECKOUT_UNTRACKED")
-        case GIT_STASH_APPLY_PROGRESS_CHECKOUT_MODIFIED => Some("GIT_STASH_APPLY_PROGRESS_CHECKOUT_MODIFIED")
-        case GIT_STASH_APPLY_PROGRESS_DONE => Some("GIT_STASH_APPLY_PROGRESS_DONE")
+    def getName(value: git_stash_apply_progress_t): Option[String] =
+      value match
+        case `GIT_STASH_APPLY_PROGRESS_NONE` => Some("GIT_STASH_APPLY_PROGRESS_NONE")
+        case `GIT_STASH_APPLY_PROGRESS_LOADING_STASH` => Some("GIT_STASH_APPLY_PROGRESS_LOADING_STASH")
+        case `GIT_STASH_APPLY_PROGRESS_ANALYZE_INDEX` => Some("GIT_STASH_APPLY_PROGRESS_ANALYZE_INDEX")
+        case `GIT_STASH_APPLY_PROGRESS_ANALYZE_MODIFIED` => Some("GIT_STASH_APPLY_PROGRESS_ANALYZE_MODIFIED")
+        case `GIT_STASH_APPLY_PROGRESS_ANALYZE_UNTRACKED` => Some("GIT_STASH_APPLY_PROGRESS_ANALYZE_UNTRACKED")
+        case `GIT_STASH_APPLY_PROGRESS_CHECKOUT_UNTRACKED` => Some("GIT_STASH_APPLY_PROGRESS_CHECKOUT_UNTRACKED")
+        case `GIT_STASH_APPLY_PROGRESS_CHECKOUT_MODIFIED` => Some("GIT_STASH_APPLY_PROGRESS_CHECKOUT_MODIFIED")
+        case `GIT_STASH_APPLY_PROGRESS_DONE` => Some("GIT_STASH_APPLY_PROGRESS_DONE")
         case _ => _root_.scala.None
     extension (a: git_stash_apply_progress_t)
       inline def &(b: git_stash_apply_progress_t): git_stash_apply_progress_t = a & b
@@ -2031,13 +2112,13 @@ object enumerations:
     val GIT_STASH_INCLUDE_UNTRACKED = define(2)
     val GIT_STASH_INCLUDE_IGNORED = define(4)
     val GIT_STASH_KEEP_ALL = define(8)
-    inline def getName(inline value: git_stash_flags): Option[String] =
-      inline value match
-        case GIT_STASH_DEFAULT => Some("GIT_STASH_DEFAULT")
-        case GIT_STASH_KEEP_INDEX => Some("GIT_STASH_KEEP_INDEX")
-        case GIT_STASH_INCLUDE_UNTRACKED => Some("GIT_STASH_INCLUDE_UNTRACKED")
-        case GIT_STASH_INCLUDE_IGNORED => Some("GIT_STASH_INCLUDE_IGNORED")
-        case GIT_STASH_KEEP_ALL => Some("GIT_STASH_KEEP_ALL")
+    def getName(value: git_stash_flags): Option[String] =
+      value match
+        case `GIT_STASH_DEFAULT` => Some("GIT_STASH_DEFAULT")
+        case `GIT_STASH_KEEP_INDEX` => Some("GIT_STASH_KEEP_INDEX")
+        case `GIT_STASH_INCLUDE_UNTRACKED` => Some("GIT_STASH_INCLUDE_UNTRACKED")
+        case `GIT_STASH_INCLUDE_IGNORED` => Some("GIT_STASH_INCLUDE_IGNORED")
+        case `GIT_STASH_KEEP_ALL` => Some("GIT_STASH_KEEP_ALL")
         case _ => _root_.scala.None
     extension (a: git_stash_flags)
       inline def &(b: git_stash_flags): git_stash_flags = a & b
@@ -2067,24 +2148,24 @@ object enumerations:
     val GIT_STATUS_OPT_UPDATE_INDEX = define(8192)
     val GIT_STATUS_OPT_INCLUDE_UNREADABLE = define(16384)
     val GIT_STATUS_OPT_INCLUDE_UNREADABLE_AS_UNTRACKED = define(32768)
-    inline def getName(inline value: git_status_opt_t): Option[String] =
-      inline value match
-        case GIT_STATUS_OPT_INCLUDE_UNTRACKED => Some("GIT_STATUS_OPT_INCLUDE_UNTRACKED")
-        case GIT_STATUS_OPT_INCLUDE_IGNORED => Some("GIT_STATUS_OPT_INCLUDE_IGNORED")
-        case GIT_STATUS_OPT_INCLUDE_UNMODIFIED => Some("GIT_STATUS_OPT_INCLUDE_UNMODIFIED")
-        case GIT_STATUS_OPT_EXCLUDE_SUBMODULES => Some("GIT_STATUS_OPT_EXCLUDE_SUBMODULES")
-        case GIT_STATUS_OPT_RECURSE_UNTRACKED_DIRS => Some("GIT_STATUS_OPT_RECURSE_UNTRACKED_DIRS")
-        case GIT_STATUS_OPT_DISABLE_PATHSPEC_MATCH => Some("GIT_STATUS_OPT_DISABLE_PATHSPEC_MATCH")
-        case GIT_STATUS_OPT_RECURSE_IGNORED_DIRS => Some("GIT_STATUS_OPT_RECURSE_IGNORED_DIRS")
-        case GIT_STATUS_OPT_RENAMES_HEAD_TO_INDEX => Some("GIT_STATUS_OPT_RENAMES_HEAD_TO_INDEX")
-        case GIT_STATUS_OPT_RENAMES_INDEX_TO_WORKDIR => Some("GIT_STATUS_OPT_RENAMES_INDEX_TO_WORKDIR")
-        case GIT_STATUS_OPT_SORT_CASE_SENSITIVELY => Some("GIT_STATUS_OPT_SORT_CASE_SENSITIVELY")
-        case GIT_STATUS_OPT_SORT_CASE_INSENSITIVELY => Some("GIT_STATUS_OPT_SORT_CASE_INSENSITIVELY")
-        case GIT_STATUS_OPT_RENAMES_FROM_REWRITES => Some("GIT_STATUS_OPT_RENAMES_FROM_REWRITES")
-        case GIT_STATUS_OPT_NO_REFRESH => Some("GIT_STATUS_OPT_NO_REFRESH")
-        case GIT_STATUS_OPT_UPDATE_INDEX => Some("GIT_STATUS_OPT_UPDATE_INDEX")
-        case GIT_STATUS_OPT_INCLUDE_UNREADABLE => Some("GIT_STATUS_OPT_INCLUDE_UNREADABLE")
-        case GIT_STATUS_OPT_INCLUDE_UNREADABLE_AS_UNTRACKED => Some("GIT_STATUS_OPT_INCLUDE_UNREADABLE_AS_UNTRACKED")
+    def getName(value: git_status_opt_t): Option[String] =
+      value match
+        case `GIT_STATUS_OPT_INCLUDE_UNTRACKED` => Some("GIT_STATUS_OPT_INCLUDE_UNTRACKED")
+        case `GIT_STATUS_OPT_INCLUDE_IGNORED` => Some("GIT_STATUS_OPT_INCLUDE_IGNORED")
+        case `GIT_STATUS_OPT_INCLUDE_UNMODIFIED` => Some("GIT_STATUS_OPT_INCLUDE_UNMODIFIED")
+        case `GIT_STATUS_OPT_EXCLUDE_SUBMODULES` => Some("GIT_STATUS_OPT_EXCLUDE_SUBMODULES")
+        case `GIT_STATUS_OPT_RECURSE_UNTRACKED_DIRS` => Some("GIT_STATUS_OPT_RECURSE_UNTRACKED_DIRS")
+        case `GIT_STATUS_OPT_DISABLE_PATHSPEC_MATCH` => Some("GIT_STATUS_OPT_DISABLE_PATHSPEC_MATCH")
+        case `GIT_STATUS_OPT_RECURSE_IGNORED_DIRS` => Some("GIT_STATUS_OPT_RECURSE_IGNORED_DIRS")
+        case `GIT_STATUS_OPT_RENAMES_HEAD_TO_INDEX` => Some("GIT_STATUS_OPT_RENAMES_HEAD_TO_INDEX")
+        case `GIT_STATUS_OPT_RENAMES_INDEX_TO_WORKDIR` => Some("GIT_STATUS_OPT_RENAMES_INDEX_TO_WORKDIR")
+        case `GIT_STATUS_OPT_SORT_CASE_SENSITIVELY` => Some("GIT_STATUS_OPT_SORT_CASE_SENSITIVELY")
+        case `GIT_STATUS_OPT_SORT_CASE_INSENSITIVELY` => Some("GIT_STATUS_OPT_SORT_CASE_INSENSITIVELY")
+        case `GIT_STATUS_OPT_RENAMES_FROM_REWRITES` => Some("GIT_STATUS_OPT_RENAMES_FROM_REWRITES")
+        case `GIT_STATUS_OPT_NO_REFRESH` => Some("GIT_STATUS_OPT_NO_REFRESH")
+        case `GIT_STATUS_OPT_UPDATE_INDEX` => Some("GIT_STATUS_OPT_UPDATE_INDEX")
+        case `GIT_STATUS_OPT_INCLUDE_UNREADABLE` => Some("GIT_STATUS_OPT_INCLUDE_UNREADABLE")
+        case `GIT_STATUS_OPT_INCLUDE_UNREADABLE_AS_UNTRACKED` => Some("GIT_STATUS_OPT_INCLUDE_UNREADABLE_AS_UNTRACKED")
         case _ => _root_.scala.None
     extension (a: git_status_opt_t)
       inline def &(b: git_status_opt_t): git_status_opt_t = a & b
@@ -2101,11 +2182,11 @@ object enumerations:
     val GIT_STATUS_SHOW_INDEX_AND_WORKDIR = define(0)
     val GIT_STATUS_SHOW_INDEX_ONLY = define(1)
     val GIT_STATUS_SHOW_WORKDIR_ONLY = define(2)
-    inline def getName(inline value: git_status_show_t): Option[String] =
-      inline value match
-        case GIT_STATUS_SHOW_INDEX_AND_WORKDIR => Some("GIT_STATUS_SHOW_INDEX_AND_WORKDIR")
-        case GIT_STATUS_SHOW_INDEX_ONLY => Some("GIT_STATUS_SHOW_INDEX_ONLY")
-        case GIT_STATUS_SHOW_WORKDIR_ONLY => Some("GIT_STATUS_SHOW_WORKDIR_ONLY")
+    def getName(value: git_status_show_t): Option[String] =
+      value match
+        case `GIT_STATUS_SHOW_INDEX_AND_WORKDIR` => Some("GIT_STATUS_SHOW_INDEX_AND_WORKDIR")
+        case `GIT_STATUS_SHOW_INDEX_ONLY` => Some("GIT_STATUS_SHOW_INDEX_ONLY")
+        case `GIT_STATUS_SHOW_WORKDIR_ONLY` => Some("GIT_STATUS_SHOW_WORKDIR_ONLY")
         case _ => _root_.scala.None
     extension (a: git_status_show_t)
       inline def &(b: git_status_show_t): git_status_show_t = a & b
@@ -2133,22 +2214,22 @@ object enumerations:
     val GIT_STATUS_WT_UNREADABLE = define(4096)
     val GIT_STATUS_IGNORED = define(16384)
     val GIT_STATUS_CONFLICTED = define(32768)
-    inline def getName(inline value: git_status_t): Option[String] =
-      inline value match
-        case GIT_STATUS_CURRENT => Some("GIT_STATUS_CURRENT")
-        case GIT_STATUS_INDEX_NEW => Some("GIT_STATUS_INDEX_NEW")
-        case GIT_STATUS_INDEX_MODIFIED => Some("GIT_STATUS_INDEX_MODIFIED")
-        case GIT_STATUS_INDEX_DELETED => Some("GIT_STATUS_INDEX_DELETED")
-        case GIT_STATUS_INDEX_RENAMED => Some("GIT_STATUS_INDEX_RENAMED")
-        case GIT_STATUS_INDEX_TYPECHANGE => Some("GIT_STATUS_INDEX_TYPECHANGE")
-        case GIT_STATUS_WT_NEW => Some("GIT_STATUS_WT_NEW")
-        case GIT_STATUS_WT_MODIFIED => Some("GIT_STATUS_WT_MODIFIED")
-        case GIT_STATUS_WT_DELETED => Some("GIT_STATUS_WT_DELETED")
-        case GIT_STATUS_WT_TYPECHANGE => Some("GIT_STATUS_WT_TYPECHANGE")
-        case GIT_STATUS_WT_RENAMED => Some("GIT_STATUS_WT_RENAMED")
-        case GIT_STATUS_WT_UNREADABLE => Some("GIT_STATUS_WT_UNREADABLE")
-        case GIT_STATUS_IGNORED => Some("GIT_STATUS_IGNORED")
-        case GIT_STATUS_CONFLICTED => Some("GIT_STATUS_CONFLICTED")
+    def getName(value: git_status_t): Option[String] =
+      value match
+        case `GIT_STATUS_CURRENT` => Some("GIT_STATUS_CURRENT")
+        case `GIT_STATUS_INDEX_NEW` => Some("GIT_STATUS_INDEX_NEW")
+        case `GIT_STATUS_INDEX_MODIFIED` => Some("GIT_STATUS_INDEX_MODIFIED")
+        case `GIT_STATUS_INDEX_DELETED` => Some("GIT_STATUS_INDEX_DELETED")
+        case `GIT_STATUS_INDEX_RENAMED` => Some("GIT_STATUS_INDEX_RENAMED")
+        case `GIT_STATUS_INDEX_TYPECHANGE` => Some("GIT_STATUS_INDEX_TYPECHANGE")
+        case `GIT_STATUS_WT_NEW` => Some("GIT_STATUS_WT_NEW")
+        case `GIT_STATUS_WT_MODIFIED` => Some("GIT_STATUS_WT_MODIFIED")
+        case `GIT_STATUS_WT_DELETED` => Some("GIT_STATUS_WT_DELETED")
+        case `GIT_STATUS_WT_TYPECHANGE` => Some("GIT_STATUS_WT_TYPECHANGE")
+        case `GIT_STATUS_WT_RENAMED` => Some("GIT_STATUS_WT_RENAMED")
+        case `GIT_STATUS_WT_UNREADABLE` => Some("GIT_STATUS_WT_UNREADABLE")
+        case `GIT_STATUS_IGNORED` => Some("GIT_STATUS_IGNORED")
+        case `GIT_STATUS_CONFLICTED` => Some("GIT_STATUS_CONFLICTED")
         case _ => _root_.scala.None
     extension (a: git_status_t)
       inline def &(b: git_status_t): git_status_t = a & b
@@ -2167,13 +2248,13 @@ object enumerations:
     val GIT_SUBMODULE_IGNORE_UNTRACKED = define(2)
     val GIT_SUBMODULE_IGNORE_DIRTY = define(3)
     val GIT_SUBMODULE_IGNORE_ALL = define(4)
-    inline def getName(inline value: git_submodule_ignore_t): Option[String] =
-      inline value match
-        case GIT_SUBMODULE_IGNORE_UNSPECIFIED => Some("GIT_SUBMODULE_IGNORE_UNSPECIFIED")
-        case GIT_SUBMODULE_IGNORE_NONE => Some("GIT_SUBMODULE_IGNORE_NONE")
-        case GIT_SUBMODULE_IGNORE_UNTRACKED => Some("GIT_SUBMODULE_IGNORE_UNTRACKED")
-        case GIT_SUBMODULE_IGNORE_DIRTY => Some("GIT_SUBMODULE_IGNORE_DIRTY")
-        case GIT_SUBMODULE_IGNORE_ALL => Some("GIT_SUBMODULE_IGNORE_ALL")
+    def getName(value: git_submodule_ignore_t): Option[String] =
+      value match
+        case `GIT_SUBMODULE_IGNORE_UNSPECIFIED` => Some("GIT_SUBMODULE_IGNORE_UNSPECIFIED")
+        case `GIT_SUBMODULE_IGNORE_NONE` => Some("GIT_SUBMODULE_IGNORE_NONE")
+        case `GIT_SUBMODULE_IGNORE_UNTRACKED` => Some("GIT_SUBMODULE_IGNORE_UNTRACKED")
+        case `GIT_SUBMODULE_IGNORE_DIRTY` => Some("GIT_SUBMODULE_IGNORE_DIRTY")
+        case `GIT_SUBMODULE_IGNORE_ALL` => Some("GIT_SUBMODULE_IGNORE_ALL")
         case _ => _root_.scala.None
     extension (a: git_submodule_ignore_t)
       inline def &(b: git_submodule_ignore_t): git_submodule_ignore_t = a & b
@@ -2190,11 +2271,11 @@ object enumerations:
     val GIT_SUBMODULE_RECURSE_NO = define(0)
     val GIT_SUBMODULE_RECURSE_YES = define(1)
     val GIT_SUBMODULE_RECURSE_ONDEMAND = define(2)
-    inline def getName(inline value: git_submodule_recurse_t): Option[String] =
-      inline value match
-        case GIT_SUBMODULE_RECURSE_NO => Some("GIT_SUBMODULE_RECURSE_NO")
-        case GIT_SUBMODULE_RECURSE_YES => Some("GIT_SUBMODULE_RECURSE_YES")
-        case GIT_SUBMODULE_RECURSE_ONDEMAND => Some("GIT_SUBMODULE_RECURSE_ONDEMAND")
+    def getName(value: git_submodule_recurse_t): Option[String] =
+      value match
+        case `GIT_SUBMODULE_RECURSE_NO` => Some("GIT_SUBMODULE_RECURSE_NO")
+        case `GIT_SUBMODULE_RECURSE_YES` => Some("GIT_SUBMODULE_RECURSE_YES")
+        case `GIT_SUBMODULE_RECURSE_ONDEMAND` => Some("GIT_SUBMODULE_RECURSE_ONDEMAND")
         case _ => _root_.scala.None
     extension (a: git_submodule_recurse_t)
       inline def &(b: git_submodule_recurse_t): git_submodule_recurse_t = a & b
@@ -2222,22 +2303,22 @@ object enumerations:
     val GIT_SUBMODULE_STATUS_WD_INDEX_MODIFIED = define(2048)
     val GIT_SUBMODULE_STATUS_WD_WD_MODIFIED = define(4096)
     val GIT_SUBMODULE_STATUS_WD_UNTRACKED = define(8192)
-    inline def getName(inline value: git_submodule_status_t): Option[String] =
-      inline value match
-        case GIT_SUBMODULE_STATUS_IN_HEAD => Some("GIT_SUBMODULE_STATUS_IN_HEAD")
-        case GIT_SUBMODULE_STATUS_IN_INDEX => Some("GIT_SUBMODULE_STATUS_IN_INDEX")
-        case GIT_SUBMODULE_STATUS_IN_CONFIG => Some("GIT_SUBMODULE_STATUS_IN_CONFIG")
-        case GIT_SUBMODULE_STATUS_IN_WD => Some("GIT_SUBMODULE_STATUS_IN_WD")
-        case GIT_SUBMODULE_STATUS_INDEX_ADDED => Some("GIT_SUBMODULE_STATUS_INDEX_ADDED")
-        case GIT_SUBMODULE_STATUS_INDEX_DELETED => Some("GIT_SUBMODULE_STATUS_INDEX_DELETED")
-        case GIT_SUBMODULE_STATUS_INDEX_MODIFIED => Some("GIT_SUBMODULE_STATUS_INDEX_MODIFIED")
-        case GIT_SUBMODULE_STATUS_WD_UNINITIALIZED => Some("GIT_SUBMODULE_STATUS_WD_UNINITIALIZED")
-        case GIT_SUBMODULE_STATUS_WD_ADDED => Some("GIT_SUBMODULE_STATUS_WD_ADDED")
-        case GIT_SUBMODULE_STATUS_WD_DELETED => Some("GIT_SUBMODULE_STATUS_WD_DELETED")
-        case GIT_SUBMODULE_STATUS_WD_MODIFIED => Some("GIT_SUBMODULE_STATUS_WD_MODIFIED")
-        case GIT_SUBMODULE_STATUS_WD_INDEX_MODIFIED => Some("GIT_SUBMODULE_STATUS_WD_INDEX_MODIFIED")
-        case GIT_SUBMODULE_STATUS_WD_WD_MODIFIED => Some("GIT_SUBMODULE_STATUS_WD_WD_MODIFIED")
-        case GIT_SUBMODULE_STATUS_WD_UNTRACKED => Some("GIT_SUBMODULE_STATUS_WD_UNTRACKED")
+    def getName(value: git_submodule_status_t): Option[String] =
+      value match
+        case `GIT_SUBMODULE_STATUS_IN_HEAD` => Some("GIT_SUBMODULE_STATUS_IN_HEAD")
+        case `GIT_SUBMODULE_STATUS_IN_INDEX` => Some("GIT_SUBMODULE_STATUS_IN_INDEX")
+        case `GIT_SUBMODULE_STATUS_IN_CONFIG` => Some("GIT_SUBMODULE_STATUS_IN_CONFIG")
+        case `GIT_SUBMODULE_STATUS_IN_WD` => Some("GIT_SUBMODULE_STATUS_IN_WD")
+        case `GIT_SUBMODULE_STATUS_INDEX_ADDED` => Some("GIT_SUBMODULE_STATUS_INDEX_ADDED")
+        case `GIT_SUBMODULE_STATUS_INDEX_DELETED` => Some("GIT_SUBMODULE_STATUS_INDEX_DELETED")
+        case `GIT_SUBMODULE_STATUS_INDEX_MODIFIED` => Some("GIT_SUBMODULE_STATUS_INDEX_MODIFIED")
+        case `GIT_SUBMODULE_STATUS_WD_UNINITIALIZED` => Some("GIT_SUBMODULE_STATUS_WD_UNINITIALIZED")
+        case `GIT_SUBMODULE_STATUS_WD_ADDED` => Some("GIT_SUBMODULE_STATUS_WD_ADDED")
+        case `GIT_SUBMODULE_STATUS_WD_DELETED` => Some("GIT_SUBMODULE_STATUS_WD_DELETED")
+        case `GIT_SUBMODULE_STATUS_WD_MODIFIED` => Some("GIT_SUBMODULE_STATUS_WD_MODIFIED")
+        case `GIT_SUBMODULE_STATUS_WD_INDEX_MODIFIED` => Some("GIT_SUBMODULE_STATUS_WD_INDEX_MODIFIED")
+        case `GIT_SUBMODULE_STATUS_WD_WD_MODIFIED` => Some("GIT_SUBMODULE_STATUS_WD_WD_MODIFIED")
+        case `GIT_SUBMODULE_STATUS_WD_UNTRACKED` => Some("GIT_SUBMODULE_STATUS_WD_UNTRACKED")
         case _ => _root_.scala.None
     extension (a: git_submodule_status_t)
       inline def &(b: git_submodule_status_t): git_submodule_status_t = a & b
@@ -2256,13 +2337,13 @@ object enumerations:
     val GIT_SUBMODULE_UPDATE_MERGE = define(3)
     val GIT_SUBMODULE_UPDATE_NONE = define(4)
     val GIT_SUBMODULE_UPDATE_DEFAULT = define(0)
-    inline def getName(inline value: git_submodule_update_t): Option[String] =
-      inline value match
-        case GIT_SUBMODULE_UPDATE_CHECKOUT => Some("GIT_SUBMODULE_UPDATE_CHECKOUT")
-        case GIT_SUBMODULE_UPDATE_REBASE => Some("GIT_SUBMODULE_UPDATE_REBASE")
-        case GIT_SUBMODULE_UPDATE_MERGE => Some("GIT_SUBMODULE_UPDATE_MERGE")
-        case GIT_SUBMODULE_UPDATE_NONE => Some("GIT_SUBMODULE_UPDATE_NONE")
-        case GIT_SUBMODULE_UPDATE_DEFAULT => Some("GIT_SUBMODULE_UPDATE_DEFAULT")
+    def getName(value: git_submodule_update_t): Option[String] =
+      value match
+        case `GIT_SUBMODULE_UPDATE_CHECKOUT` => Some("GIT_SUBMODULE_UPDATE_CHECKOUT")
+        case `GIT_SUBMODULE_UPDATE_REBASE` => Some("GIT_SUBMODULE_UPDATE_REBASE")
+        case `GIT_SUBMODULE_UPDATE_MERGE` => Some("GIT_SUBMODULE_UPDATE_MERGE")
+        case `GIT_SUBMODULE_UPDATE_NONE` => Some("GIT_SUBMODULE_UPDATE_NONE")
+        case `GIT_SUBMODULE_UPDATE_DEFAULT` => Some("GIT_SUBMODULE_UPDATE_DEFAULT")
         case _ => _root_.scala.None
     extension (a: git_submodule_update_t)
       inline def &(b: git_submodule_update_t): git_submodule_update_t = a & b
@@ -2283,15 +2364,15 @@ object enumerations:
     val GIT_TRACE_INFO = define(4)
     val GIT_TRACE_DEBUG = define(5)
     val GIT_TRACE_TRACE = define(6)
-    inline def getName(inline value: git_trace_level_t): Option[String] =
-      inline value match
-        case GIT_TRACE_NONE => Some("GIT_TRACE_NONE")
-        case GIT_TRACE_FATAL => Some("GIT_TRACE_FATAL")
-        case GIT_TRACE_ERROR => Some("GIT_TRACE_ERROR")
-        case GIT_TRACE_WARN => Some("GIT_TRACE_WARN")
-        case GIT_TRACE_INFO => Some("GIT_TRACE_INFO")
-        case GIT_TRACE_DEBUG => Some("GIT_TRACE_DEBUG")
-        case GIT_TRACE_TRACE => Some("GIT_TRACE_TRACE")
+    def getName(value: git_trace_level_t): Option[String] =
+      value match
+        case `GIT_TRACE_NONE` => Some("GIT_TRACE_NONE")
+        case `GIT_TRACE_FATAL` => Some("GIT_TRACE_FATAL")
+        case `GIT_TRACE_ERROR` => Some("GIT_TRACE_ERROR")
+        case `GIT_TRACE_WARN` => Some("GIT_TRACE_WARN")
+        case `GIT_TRACE_INFO` => Some("GIT_TRACE_INFO")
+        case `GIT_TRACE_DEBUG` => Some("GIT_TRACE_DEBUG")
+        case `GIT_TRACE_TRACE` => Some("GIT_TRACE_TRACE")
         case _ => _root_.scala.None
     extension (a: git_trace_level_t)
       inline def &(b: git_trace_level_t): git_trace_level_t = a & b
@@ -2307,10 +2388,10 @@ object enumerations:
     inline def define(inline a: Long): git_tree_update_t = a.toUInt
     val GIT_TREE_UPDATE_UPSERT = define(0)
     val GIT_TREE_UPDATE_REMOVE = define(1)
-    inline def getName(inline value: git_tree_update_t): Option[String] =
-      inline value match
-        case GIT_TREE_UPDATE_UPSERT => Some("GIT_TREE_UPDATE_UPSERT")
-        case GIT_TREE_UPDATE_REMOVE => Some("GIT_TREE_UPDATE_REMOVE")
+    def getName(value: git_tree_update_t): Option[String] =
+      value match
+        case `GIT_TREE_UPDATE_UPSERT` => Some("GIT_TREE_UPDATE_UPSERT")
+        case `GIT_TREE_UPDATE_REMOVE` => Some("GIT_TREE_UPDATE_REMOVE")
         case _ => _root_.scala.None
     extension (a: git_tree_update_t)
       inline def &(b: git_tree_update_t): git_tree_update_t = a & b
@@ -2326,10 +2407,10 @@ object enumerations:
     inline def define(inline a: Long): git_treewalk_mode = a.toUInt
     val GIT_TREEWALK_PRE = define(0)
     val GIT_TREEWALK_POST = define(1)
-    inline def getName(inline value: git_treewalk_mode): Option[String] =
-      inline value match
-        case GIT_TREEWALK_PRE => Some("GIT_TREEWALK_PRE")
-        case GIT_TREEWALK_POST => Some("GIT_TREEWALK_POST")
+    def getName(value: git_treewalk_mode): Option[String] =
+      value match
+        case `GIT_TREEWALK_PRE` => Some("GIT_TREEWALK_PRE")
+        case `GIT_TREEWALK_POST` => Some("GIT_TREEWALK_POST")
         case _ => _root_.scala.None
     extension (a: git_treewalk_mode)
       inline def &(b: git_treewalk_mode): git_treewalk_mode = a & b
@@ -2346,11 +2427,11 @@ object enumerations:
     val GIT_WORKTREE_PRUNE_VALID = define(1)
     val GIT_WORKTREE_PRUNE_LOCKED = define(2)
     val GIT_WORKTREE_PRUNE_WORKING_TREE = define(4)
-    inline def getName(inline value: git_worktree_prune_t): Option[String] =
-      inline value match
-        case GIT_WORKTREE_PRUNE_VALID => Some("GIT_WORKTREE_PRUNE_VALID")
-        case GIT_WORKTREE_PRUNE_LOCKED => Some("GIT_WORKTREE_PRUNE_LOCKED")
-        case GIT_WORKTREE_PRUNE_WORKING_TREE => Some("GIT_WORKTREE_PRUNE_WORKING_TREE")
+    def getName(value: git_worktree_prune_t): Option[String] =
+      value match
+        case `GIT_WORKTREE_PRUNE_VALID` => Some("GIT_WORKTREE_PRUNE_VALID")
+        case `GIT_WORKTREE_PRUNE_LOCKED` => Some("GIT_WORKTREE_PRUNE_LOCKED")
+        case `GIT_WORKTREE_PRUNE_WORKING_TREE` => Some("GIT_WORKTREE_PRUNE_WORKING_TREE")
         case _ => _root_.scala.None
     extension (a: git_worktree_prune_t)
       inline def &(b: git_worktree_prune_t): git_worktree_prune_t = a & b
@@ -2366,7 +2447,7 @@ object aliases:
    * When applying a patch, callback that will be made per delta (file).
   */
   opaque type git_apply_delta_cb = CFuncPtr2[Ptr[git_diff_delta], Ptr[Byte], CInt]
-  object git_apply_delta_cb: 
+  object git_apply_delta_cb:
     given _tag: Tag[git_apply_delta_cb] = Tag.materializeCFuncPtr2[Ptr[git_diff_delta], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_apply_delta_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_diff_delta], Ptr[Byte], CInt]): git_apply_delta_cb = o
@@ -2378,7 +2459,7 @@ object aliases:
    * When applying a patch, callback that will be made per hunk.
   */
   opaque type git_apply_hunk_cb = CFuncPtr2[Ptr[git_diff_hunk], Ptr[Byte], CInt]
-  object git_apply_hunk_cb: 
+  object git_apply_hunk_cb:
     given _tag: Tag[git_apply_hunk_cb] = Tag.materializeCFuncPtr2[Ptr[git_diff_hunk], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_apply_hunk_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_diff_hunk], Ptr[Byte], CInt]): git_apply_hunk_cb = o
@@ -2390,7 +2471,7 @@ object aliases:
    * The callback used with git_attr_foreach.
   */
   opaque type git_attr_foreach_cb = CFuncPtr3[CString, CString, Ptr[Byte], CInt]
-  object git_attr_foreach_cb: 
+  object git_attr_foreach_cb:
     given _tag: Tag[git_attr_foreach_cb] = Tag.materializeCFuncPtr3[CString, CString, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_attr_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, CString, Ptr[Byte], CInt]): git_attr_foreach_cb = o
@@ -2399,17 +2480,17 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type git_attr_t = git_attr_value_t
-  object git_attr_t: 
+  object git_attr_t:
     given _tag: Tag[git_attr_t] = git_attr_value_t._tag
     inline def apply(inline o: git_attr_value_t): git_attr_t = o
     extension (v: git_attr_t)
       inline def value: git_attr_value_t = v
 
   /**
-   * Checkout notification callback function
+   * Checkout notification callback function.
   */
   opaque type git_checkout_notify_cb = CFuncPtr6[git_checkout_notify_t, CString, Ptr[git_diff_file], Ptr[git_diff_file], Ptr[git_diff_file], Ptr[Byte], CInt]
-  object git_checkout_notify_cb: 
+  object git_checkout_notify_cb:
     given _tag: Tag[git_checkout_notify_cb] = Tag.materializeCFuncPtr6[git_checkout_notify_t, CString, Ptr[git_diff_file], Ptr[git_diff_file], Ptr[git_diff_file], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_checkout_notify_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr6[git_checkout_notify_t, CString, Ptr[git_diff_file], Ptr[git_diff_file], Ptr[git_diff_file], Ptr[Byte], CInt]): git_checkout_notify_cb = o
@@ -2418,10 +2499,10 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
-   * Checkout perfdata notification function
+   * Checkout performance data reporting function.
   */
   opaque type git_checkout_perfdata_cb = CFuncPtr2[Ptr[git_checkout_perfdata], Ptr[Byte], Unit]
-  object git_checkout_perfdata_cb: 
+  object git_checkout_perfdata_cb:
     given _tag: Tag[git_checkout_perfdata_cb] = Tag.materializeCFuncPtr2[Ptr[git_checkout_perfdata], Ptr[Byte], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_checkout_perfdata_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_checkout_perfdata], Ptr[Byte], Unit]): git_checkout_perfdata_cb = o
@@ -2430,10 +2511,10 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
-   * Checkout progress notification function
+   * Checkout progress notification function.
   */
   opaque type git_checkout_progress_cb = CFuncPtr4[CString, size_t, size_t, Ptr[Byte], Unit]
-  object git_checkout_progress_cb: 
+  object git_checkout_progress_cb:
     given _tag: Tag[git_checkout_progress_cb] = Tag.materializeCFuncPtr4[CString, size_t, size_t, Ptr[Byte], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_checkout_progress_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[CString, size_t, size_t, Ptr[Byte], Unit]): git_checkout_progress_cb = o
@@ -2445,7 +2526,7 @@ object aliases:
    * Commit creation callback: used when a function is going to create commits (for example, in `git_rebase_commit`) to allow callers to override the commit creation behavior. For example, users may wish to sign commits by providing this information to `git_commit_create_buffer`, signing that buffer, then calling `git_commit_create_with_signature`. The resultant commit id should be set in the `out` object id parameter.
   */
   opaque type git_commit_create_cb = CFuncPtr9[Ptr[git_oid], Ptr[git_signature], Ptr[git_signature], CString, CString, Ptr[git_tree], size_t, Ptr[Ptr[git_commit]], Ptr[Byte], CInt]
-  object git_commit_create_cb: 
+  object git_commit_create_cb:
     given _tag: Tag[git_commit_create_cb] = Tag.materializeCFuncPtr9[Ptr[git_oid], Ptr[git_signature], Ptr[git_signature], CString, CString, Ptr[git_tree], size_t, Ptr[Ptr[git_commit]], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_commit_create_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr9[Ptr[git_oid], Ptr[git_signature], Ptr[git_signature], CString, CString, Ptr[git_tree], size_t, Ptr[Ptr[git_commit]], Ptr[Byte], CInt]): git_commit_create_cb = o
@@ -2457,7 +2538,7 @@ object aliases:
    * Provide a commit signature during commit creation.
   */
   opaque type git_commit_signing_cb = CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt]
-  object git_commit_signing_cb: 
+  object git_commit_signing_cb:
     given _tag: Tag[git_commit_signing_cb] = Tag.materializeCFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_commit_signing_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt]): git_commit_signing_cb = o
@@ -2466,10 +2547,10 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
-   * A config enumeration callback
+   * A config enumeration callback.
   */
   opaque type git_config_foreach_cb = CFuncPtr2[Ptr[git_config_entry], Ptr[Byte], CInt]
-  object git_config_foreach_cb: 
+  object git_config_foreach_cb:
     given _tag: Tag[git_config_foreach_cb] = Tag.materializeCFuncPtr2[Ptr[git_config_entry], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_config_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_config_entry], Ptr[Byte], CInt]): git_config_foreach_cb = o
@@ -2481,91 +2562,91 @@ object aliases:
    * These types are retained for backward compatibility. The newer versions of these values should be preferred in all new code.
   */
   type git_cred = git_credential
-  object git_cred: 
+  object git_cred:
     given _tag: Tag[git_cred] = git_credential._tag
     inline def apply(inline o: git_credential): git_cred = o
     extension (v: git_cred)
       inline def value: git_credential = v
 
   type git_cred_acquire_cb = git_credential_acquire_cb
-  object git_cred_acquire_cb: 
+  object git_cred_acquire_cb:
     given _tag: Tag[git_cred_acquire_cb] = git_credential_acquire_cb._tag
     inline def apply(inline o: git_credential_acquire_cb): git_cred_acquire_cb = o
     extension (v: git_cred_acquire_cb)
       inline def value: git_credential_acquire_cb = v
 
   type git_cred_default = git_credential_default
-  object git_cred_default: 
+  object git_cred_default:
     given _tag: Tag[git_cred_default] = git_credential_default._tag
     inline def apply(inline o: git_credential_default): git_cred_default = o
     extension (v: git_cred_default)
       inline def value: git_credential_default = v
 
   type git_cred_sign_callback = git_credential_sign_cb
-  object git_cred_sign_callback: 
+  object git_cred_sign_callback:
     given _tag: Tag[git_cred_sign_callback] = git_credential_sign_cb._tag
     inline def apply(inline o: git_credential_sign_cb): git_cred_sign_callback = o
     extension (v: git_cred_sign_callback)
       inline def value: git_credential_sign_cb = v
 
   type git_cred_sign_cb = git_credential_sign_cb
-  object git_cred_sign_cb: 
+  object git_cred_sign_cb:
     given _tag: Tag[git_cred_sign_cb] = git_credential_sign_cb._tag
     inline def apply(inline o: git_credential_sign_cb): git_cred_sign_cb = o
     extension (v: git_cred_sign_cb)
       inline def value: git_credential_sign_cb = v
 
   type git_cred_ssh_custom = git_credential_ssh_custom
-  object git_cred_ssh_custom: 
+  object git_cred_ssh_custom:
     given _tag: Tag[git_cred_ssh_custom] = git_credential_ssh_custom._tag
     inline def apply(inline o: git_credential_ssh_custom): git_cred_ssh_custom = o
     extension (v: git_cred_ssh_custom)
       inline def value: git_credential_ssh_custom = v
 
   type git_cred_ssh_interactive = git_credential_ssh_interactive
-  object git_cred_ssh_interactive: 
+  object git_cred_ssh_interactive:
     given _tag: Tag[git_cred_ssh_interactive] = git_credential_ssh_interactive._tag
     inline def apply(inline o: git_credential_ssh_interactive): git_cred_ssh_interactive = o
     extension (v: git_cred_ssh_interactive)
       inline def value: git_credential_ssh_interactive = v
 
   type git_cred_ssh_interactive_callback = git_credential_ssh_interactive_cb
-  object git_cred_ssh_interactive_callback: 
+  object git_cred_ssh_interactive_callback:
     given _tag: Tag[git_cred_ssh_interactive_callback] = git_credential_ssh_interactive_cb._tag
     inline def apply(inline o: git_credential_ssh_interactive_cb): git_cred_ssh_interactive_callback = o
     extension (v: git_cred_ssh_interactive_callback)
       inline def value: git_credential_ssh_interactive_cb = v
 
   type git_cred_ssh_interactive_cb = git_credential_ssh_interactive_cb
-  object git_cred_ssh_interactive_cb: 
+  object git_cred_ssh_interactive_cb:
     given _tag: Tag[git_cred_ssh_interactive_cb] = git_credential_ssh_interactive_cb._tag
     inline def apply(inline o: git_credential_ssh_interactive_cb): git_cred_ssh_interactive_cb = o
     extension (v: git_cred_ssh_interactive_cb)
       inline def value: git_credential_ssh_interactive_cb = v
 
   type git_cred_ssh_key = git_credential_ssh_key
-  object git_cred_ssh_key: 
+  object git_cred_ssh_key:
     given _tag: Tag[git_cred_ssh_key] = git_credential_ssh_key._tag
     inline def apply(inline o: git_credential_ssh_key): git_cred_ssh_key = o
     extension (v: git_cred_ssh_key)
       inline def value: git_credential_ssh_key = v
 
   type git_cred_username = git_credential_username
-  object git_cred_username: 
+  object git_cred_username:
     given _tag: Tag[git_cred_username] = git_credential_username._tag
     inline def apply(inline o: git_credential_username): git_cred_username = o
     extension (v: git_cred_username)
       inline def value: git_credential_username = v
 
   type git_cred_userpass_payload = git_credential_userpass_payload
-  object git_cred_userpass_payload: 
+  object git_cred_userpass_payload:
     given _tag: Tag[git_cred_userpass_payload] = git_credential_userpass_payload._tag
     inline def apply(inline o: git_credential_userpass_payload): git_cred_userpass_payload = o
     extension (v: git_cred_userpass_payload)
       inline def value: git_credential_userpass_payload = v
 
   type git_cred_userpass_plaintext = git_credential_userpass_plaintext
-  object git_cred_userpass_plaintext: 
+  object git_cred_userpass_plaintext:
     given _tag: Tag[git_cred_userpass_plaintext] = git_credential_userpass_plaintext._tag
     inline def apply(inline o: git_credential_userpass_plaintext): git_cred_userpass_plaintext = o
     extension (v: git_cred_userpass_plaintext)
@@ -2575,7 +2656,7 @@ object aliases:
    * Credential acquisition callback.
   */
   opaque type git_credential_acquire_cb = CFuncPtr5[Ptr[Ptr[git_credential]], CString, CString, CUnsignedInt, Ptr[Byte], CInt]
-  object git_credential_acquire_cb: 
+  object git_credential_acquire_cb:
     given _tag: Tag[git_credential_acquire_cb] = Tag.materializeCFuncPtr5[Ptr[Ptr[git_credential]], CString, CString, CUnsignedInt, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_credential_acquire_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[Ptr[Ptr[git_credential]], CString, CString, CUnsignedInt, Ptr[Byte], CInt]): git_credential_acquire_cb = o
@@ -2583,8 +2664,11 @@ object aliases:
       inline def value: CFuncPtr5[Ptr[Ptr[git_credential]], CString, CString, CUnsignedInt, Ptr[Byte], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
+  /**
+   * Callback for credential signing.
+  */
   opaque type git_credential_sign_cb = CFuncPtr6[Ptr[LIBSSH2_SESSION], Ptr[Ptr[CUnsignedChar]], Ptr[size_t], Ptr[CUnsignedChar], size_t, Ptr[Ptr[Byte]], CInt]
-  object git_credential_sign_cb: 
+  object git_credential_sign_cb:
     given _tag: Tag[git_credential_sign_cb] = Tag.materializeCFuncPtr6[Ptr[LIBSSH2_SESSION], Ptr[Ptr[CUnsignedChar]], Ptr[size_t], Ptr[CUnsignedChar], size_t, Ptr[Ptr[Byte]], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_credential_sign_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr6[Ptr[LIBSSH2_SESSION], Ptr[Ptr[CUnsignedChar]], Ptr[size_t], Ptr[CUnsignedChar], size_t, Ptr[Ptr[Byte]], CInt]): git_credential_sign_cb = o
@@ -2592,8 +2676,11 @@ object aliases:
       inline def value: CFuncPtr6[Ptr[LIBSSH2_SESSION], Ptr[Ptr[CUnsignedChar]], Ptr[size_t], Ptr[CUnsignedChar], size_t, Ptr[Ptr[Byte]], CInt] = v
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
+  /**
+   * Callback for interactive SSH credentials.
+  */
   opaque type git_credential_ssh_interactive_cb = CFuncPtr8[CString, CInt, CString, CInt, CInt, Ptr[LIBSSH2_USERAUTH_KBDINT_PROMPT], Ptr[LIBSSH2_USERAUTH_KBDINT_RESPONSE], Ptr[Ptr[Byte]], Unit]
-  object git_credential_ssh_interactive_cb: 
+  object git_credential_ssh_interactive_cb:
     given _tag: Tag[git_credential_ssh_interactive_cb] = Tag.materializeCFuncPtr8[CString, CInt, CString, CInt, CInt, Ptr[LIBSSH2_USERAUTH_KBDINT_PROMPT], Ptr[LIBSSH2_USERAUTH_KBDINT_RESPONSE], Ptr[Ptr[Byte]], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_credential_ssh_interactive_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr8[CString, CInt, CString, CInt, CInt, Ptr[LIBSSH2_USERAUTH_KBDINT_PROMPT], Ptr[LIBSSH2_USERAUTH_KBDINT_RESPONSE], Ptr[Ptr[Byte]], Unit]): git_credential_ssh_interactive_cb = o
@@ -2602,7 +2689,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type git_cvar_map = git_configmap
-  object git_cvar_map: 
+  object git_cvar_map:
     given _tag: Tag[git_cvar_map] = git_configmap._tag
     inline def apply(inline o: git_configmap): git_cvar_map = o
     extension (v: git_cvar_map)
@@ -2612,7 +2699,7 @@ object aliases:
    * When iterating over a diff, callback that will be made for binary content within the diff.
   */
   opaque type git_diff_binary_cb = CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_binary], Ptr[Byte], CInt]
-  object git_diff_binary_cb: 
+  object git_diff_binary_cb:
     given _tag: Tag[git_diff_binary_cb] = Tag.materializeCFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_binary], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_diff_binary_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_binary], Ptr[Byte], CInt]): git_diff_binary_cb = o
@@ -2624,7 +2711,7 @@ object aliases:
    * When iterating over a diff, callback that will be made per file.
   */
   opaque type git_diff_file_cb = CFuncPtr3[Ptr[git_diff_delta], Float, Ptr[Byte], CInt]
-  object git_diff_file_cb: 
+  object git_diff_file_cb:
     given _tag: Tag[git_diff_file_cb] = Tag.materializeCFuncPtr3[Ptr[git_diff_delta], Float, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_diff_file_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[git_diff_delta], Float, Ptr[Byte], CInt]): git_diff_file_cb = o
@@ -2636,7 +2723,7 @@ object aliases:
    * When iterating over a diff, callback that will be made per hunk.
   */
   opaque type git_diff_hunk_cb = CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[Byte], CInt]
-  object git_diff_hunk_cb: 
+  object git_diff_hunk_cb:
     given _tag: Tag[git_diff_hunk_cb] = Tag.materializeCFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_diff_hunk_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[Byte], CInt]): git_diff_hunk_cb = o
@@ -2648,7 +2735,7 @@ object aliases:
    * When iterating over a diff, callback that will be made per text diff line. In this context, the provided range will be NULL.
   */
   opaque type git_diff_line_cb = CFuncPtr4[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[git_diff_line], Ptr[Byte], CInt]
-  object git_diff_line_cb: 
+  object git_diff_line_cb:
     given _tag: Tag[git_diff_line_cb] = Tag.materializeCFuncPtr4[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[git_diff_line], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_diff_line_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[git_diff_delta], Ptr[git_diff_hunk], Ptr[git_diff_line], Ptr[Byte], CInt]): git_diff_line_cb = o
@@ -2660,7 +2747,7 @@ object aliases:
    * Diff notification callback function.
   */
   opaque type git_diff_notify_cb = CFuncPtr4[Ptr[git_diff], Ptr[git_diff_delta], CString, Ptr[Byte], CInt]
-  object git_diff_notify_cb: 
+  object git_diff_notify_cb:
     given _tag: Tag[git_diff_notify_cb] = Tag.materializeCFuncPtr4[Ptr[git_diff], Ptr[git_diff_delta], CString, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_diff_notify_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[git_diff], Ptr[git_diff_delta], CString, Ptr[Byte], CInt]): git_diff_notify_cb = o
@@ -2672,7 +2759,7 @@ object aliases:
    * Diff progress callback.
   */
   opaque type git_diff_progress_cb = CFuncPtr4[Ptr[git_diff], CString, CString, Ptr[Byte], CInt]
-  object git_diff_progress_cb: 
+  object git_diff_progress_cb:
     given _tag: Tag[git_diff_progress_cb] = Tag.materializeCFuncPtr4[Ptr[git_diff], CString, CString, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_diff_progress_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[git_diff], CString, CString, Ptr[Byte], CInt]): git_diff_progress_cb = o
@@ -2684,7 +2771,7 @@ object aliases:
    * Callback for listing the remote heads
   */
   opaque type git_headlist_cb = CFuncPtr2[Ptr[git_remote_head], Ptr[Byte], CInt]
-  object git_headlist_cb: 
+  object git_headlist_cb:
     given _tag: Tag[git_headlist_cb] = Tag.materializeCFuncPtr2[Ptr[git_remote_head], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_headlist_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_remote_head], Ptr[Byte], CInt]): git_headlist_cb = o
@@ -2696,7 +2783,7 @@ object aliases:
    * Callback for APIs that add/remove/update files matching pathspec
   */
   opaque type git_index_matched_path_cb = CFuncPtr3[CString, CString, Ptr[Byte], CInt]
-  object git_index_matched_path_cb: 
+  object git_index_matched_path_cb:
     given _tag: Tag[git_index_matched_path_cb] = Tag.materializeCFuncPtr3[CString, CString, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_index_matched_path_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, CString, Ptr[Byte], CInt]): git_index_matched_path_cb = o
@@ -2708,7 +2795,7 @@ object aliases:
    * Type for progress callbacks during indexing. Return a value less than zero to cancel the indexing or download.
   */
   opaque type git_indexer_progress_cb = CFuncPtr2[Ptr[git_indexer_progress], Ptr[Byte], CInt]
-  object git_indexer_progress_cb: 
+  object git_indexer_progress_cb:
     given _tag: Tag[git_indexer_progress_cb] = Tag.materializeCFuncPtr2[Ptr[git_indexer_progress], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_indexer_progress_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_indexer_progress], Ptr[Byte], CInt]): git_indexer_progress_cb = o
@@ -2720,7 +2807,7 @@ object aliases:
    * Callback for git_note_foreach.
   */
   opaque type git_note_foreach_cb = CFuncPtr3[Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt]
-  object git_note_foreach_cb: 
+  object git_note_foreach_cb:
     given _tag: Tag[git_note_foreach_cb] = Tag.materializeCFuncPtr3[Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_note_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt]): git_note_foreach_cb = o
@@ -2732,7 +2819,7 @@ object aliases:
    * The maximum size of an object
   */
   type git_object_size_t = uint64_t
-  object git_object_size_t: 
+  object git_object_size_t:
     given _tag: Tag[git_object_size_t] = uint64_t._tag
     inline def apply(inline o: uint64_t): git_object_size_t = o
     extension (v: git_object_size_t)
@@ -2742,7 +2829,7 @@ object aliases:
    * Function type for callbacks from git_odb_foreach.
   */
   opaque type git_odb_foreach_cb = CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
-  object git_odb_foreach_cb: 
+  object git_odb_foreach_cb:
     given _tag: Tag[git_odb_foreach_cb] = Tag.materializeCFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_odb_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]): git_odb_foreach_cb = o
@@ -2751,7 +2838,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type git_off_t = int64_t
-  object git_off_t: 
+  object git_off_t:
     given _tag: Tag[git_off_t] = int64_t._tag
     inline def apply(inline o: int64_t): git_off_t = o
     extension (v: git_off_t)
@@ -2761,7 +2848,7 @@ object aliases:
    * Callback used to iterate over packed objects
   */
   opaque type git_packbuilder_foreach_cb = CFuncPtr3[Ptr[Byte], size_t, Ptr[Byte], CInt]
-  object git_packbuilder_foreach_cb: 
+  object git_packbuilder_foreach_cb:
     given _tag: Tag[git_packbuilder_foreach_cb] = Tag.materializeCFuncPtr3[Ptr[Byte], size_t, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_packbuilder_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], size_t, Ptr[Byte], CInt]): git_packbuilder_foreach_cb = o
@@ -2770,10 +2857,10 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
-   * Packbuilder progress notification function
+   * Packbuilder progress notification function.
   */
   opaque type git_packbuilder_progress = CFuncPtr4[CInt, uint32_t, uint32_t, Ptr[Byte], CInt]
-  object git_packbuilder_progress: 
+  object git_packbuilder_progress:
     given _tag: Tag[git_packbuilder_progress] = Tag.materializeCFuncPtr4[CInt, uint32_t, uint32_t, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_packbuilder_progress = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[CInt, uint32_t, uint32_t, Ptr[Byte], CInt]): git_packbuilder_progress = o
@@ -2785,7 +2872,7 @@ object aliases:
    * Callback used to inform of upcoming updates.
   */
   opaque type git_push_negotiation = CFuncPtr3[Ptr[Ptr[git_push_update]], size_t, Ptr[Byte], CInt]
-  object git_push_negotiation: 
+  object git_push_negotiation:
     given _tag: Tag[git_push_negotiation] = Tag.materializeCFuncPtr3[Ptr[Ptr[git_push_update]], size_t, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_push_negotiation = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Ptr[git_push_update]], size_t, Ptr[Byte], CInt]): git_push_negotiation = o
@@ -2797,17 +2884,17 @@ object aliases:
    * Type definition for push transfer progress callbacks.
   */
   type git_push_transfer_progress = git_push_transfer_progress_cb
-  object git_push_transfer_progress: 
+  object git_push_transfer_progress:
     given _tag: Tag[git_push_transfer_progress] = git_push_transfer_progress_cb._tag
     inline def apply(inline o: git_push_transfer_progress_cb): git_push_transfer_progress = o
     extension (v: git_push_transfer_progress)
       inline def value: git_push_transfer_progress_cb = v
 
   /**
-   * Push network progress notification function
+   * Push network progress notification callback.
   */
   opaque type git_push_transfer_progress_cb = CFuncPtr4[CUnsignedInt, CUnsignedInt, size_t, Ptr[Byte], CInt]
-  object git_push_transfer_progress_cb: 
+  object git_push_transfer_progress_cb:
     given _tag: Tag[git_push_transfer_progress_cb] = Tag.materializeCFuncPtr4[CUnsignedInt, CUnsignedInt, size_t, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_push_transfer_progress_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[CUnsignedInt, CUnsignedInt, size_t, Ptr[Byte], CInt]): git_push_transfer_progress_cb = o
@@ -2819,7 +2906,7 @@ object aliases:
    * Callback used to inform of the update status from the remote.
   */
   opaque type git_push_update_reference_cb = CFuncPtr3[CString, CString, Ptr[Byte], CInt]
-  object git_push_update_reference_cb: 
+  object git_push_update_reference_cb:
     given _tag: Tag[git_push_update_reference_cb] = Tag.materializeCFuncPtr3[CString, CString, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_push_update_reference_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, CString, Ptr[Byte], CInt]): git_push_update_reference_cb = o
@@ -2831,7 +2918,7 @@ object aliases:
    * Callback used to iterate over references
   */
   opaque type git_reference_foreach_cb = CFuncPtr2[Ptr[git_reference], Ptr[Byte], CInt]
-  object git_reference_foreach_cb: 
+  object git_reference_foreach_cb:
     given _tag: Tag[git_reference_foreach_cb] = Tag.materializeCFuncPtr2[Ptr[git_reference], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_reference_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_reference], Ptr[Byte], CInt]): git_reference_foreach_cb = o
@@ -2843,7 +2930,7 @@ object aliases:
    * Callback used to iterate over reference names
   */
   opaque type git_reference_foreach_name_cb = CFuncPtr2[CString, Ptr[Byte], CInt]
-  object git_reference_foreach_name_cb: 
+  object git_reference_foreach_name_cb:
     given _tag: Tag[git_reference_foreach_name_cb] = Tag.materializeCFuncPtr2[CString, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_reference_foreach_name_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[CString, Ptr[Byte], CInt]): git_reference_foreach_name_cb = o
@@ -2855,7 +2942,7 @@ object aliases:
    * The signature of a function matching git_remote_create, with an additional void* as a callback payload.
   */
   opaque type git_remote_create_cb = CFuncPtr5[Ptr[Ptr[git_remote]], Ptr[git_repository], CString, CString, Ptr[Byte], CInt]
-  object git_remote_create_cb: 
+  object git_remote_create_cb:
     given _tag: Tag[git_remote_create_cb] = Tag.materializeCFuncPtr5[Ptr[Ptr[git_remote]], Ptr[git_repository], CString, CString, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_remote_create_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[Ptr[Ptr[git_remote]], Ptr[git_repository], CString, CString, Ptr[Byte], CInt]): git_remote_create_cb = o
@@ -2867,7 +2954,7 @@ object aliases:
    * Callback invoked immediately before we attempt to connect to the given url. Callers may change the URL before the connection by calling `git_remote_set_instance_url` in the callback.
   */
   opaque type git_remote_ready_cb = CFuncPtr3[Ptr[git_remote], CInt, Ptr[Byte], CInt]
-  object git_remote_ready_cb: 
+  object git_remote_ready_cb:
     given _tag: Tag[git_remote_ready_cb] = Tag.materializeCFuncPtr3[Ptr[git_remote], CInt, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_remote_ready_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[git_remote], CInt, Ptr[Byte], CInt]): git_remote_ready_cb = o
@@ -2879,7 +2966,7 @@ object aliases:
    * The signature of a function matching git_repository_init, with an additional void * as callback payload.
   */
   opaque type git_repository_create_cb = CFuncPtr4[Ptr[Ptr[git_repository]], CString, CInt, Ptr[Byte], CInt]
-  object git_repository_create_cb: 
+  object git_repository_create_cb:
     given _tag: Tag[git_repository_create_cb] = Tag.materializeCFuncPtr4[Ptr[Ptr[git_repository]], CString, CInt, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_repository_create_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[Ptr[git_repository]], CString, CInt, Ptr[Byte], CInt]): git_repository_create_cb = o
@@ -2891,7 +2978,7 @@ object aliases:
    * Callback used to iterate over each FETCH_HEAD entry
   */
   opaque type git_repository_fetchhead_foreach_cb = CFuncPtr5[CString, CString, Ptr[git_oid], CUnsignedInt, Ptr[Byte], CInt]
-  object git_repository_fetchhead_foreach_cb: 
+  object git_repository_fetchhead_foreach_cb:
     given _tag: Tag[git_repository_fetchhead_foreach_cb] = Tag.materializeCFuncPtr5[CString, CString, Ptr[git_oid], CUnsignedInt, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_repository_fetchhead_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr5[CString, CString, Ptr[git_oid], CUnsignedInt, Ptr[Byte], CInt]): git_repository_fetchhead_foreach_cb = o
@@ -2903,7 +2990,7 @@ object aliases:
    * Callback used to iterate over each MERGE_HEAD entry
   */
   opaque type git_repository_mergehead_foreach_cb = CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
-  object git_repository_mergehead_foreach_cb: 
+  object git_repository_mergehead_foreach_cb:
     given _tag: Tag[git_repository_mergehead_foreach_cb] = Tag.materializeCFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_repository_mergehead_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]): git_repository_mergehead_foreach_cb = o
@@ -2915,7 +3002,7 @@ object aliases:
    * These enumeration values are retained for backward compatibility. The newer versions of these values should be preferred in all new code.
   */
   type git_revparse_mode_t = git_revspec_t
-  object git_revparse_mode_t: 
+  object git_revparse_mode_t:
     given _tag: Tag[git_revparse_mode_t] = git_revspec_t._tag
     inline def apply(inline o: git_revspec_t): git_revparse_mode_t = o
     extension (v: git_revparse_mode_t)
@@ -2925,7 +3012,7 @@ object aliases:
    * This is a callback function that user can provide to hide a commit and its parents. If the callback function returns non-zero value, then this commit and its parents will be hidden.
   */
   opaque type git_revwalk_hide_cb = CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
-  object git_revwalk_hide_cb: 
+  object git_revwalk_hide_cb:
     given _tag: Tag[git_revwalk_hide_cb] = Tag.materializeCFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_revwalk_hide_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_oid], Ptr[Byte], CInt]): git_revwalk_hide_cb = o
@@ -2937,7 +3024,7 @@ object aliases:
    * Stash application progress notification function. Return 0 to continue processing, or a negative value to abort the stash application.
   */
   opaque type git_stash_apply_progress_cb = CFuncPtr2[git_stash_apply_progress_t, Ptr[Byte], CInt]
-  object git_stash_apply_progress_cb: 
+  object git_stash_apply_progress_cb:
     given _tag: Tag[git_stash_apply_progress_cb] = Tag.materializeCFuncPtr2[git_stash_apply_progress_t, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_stash_apply_progress_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[git_stash_apply_progress_t, Ptr[Byte], CInt]): git_stash_apply_progress_cb = o
@@ -2949,7 +3036,7 @@ object aliases:
    * This is a callback function you can provide to iterate over all the stashed states that will be invoked per entry.
   */
   opaque type git_stash_cb = CFuncPtr4[size_t, CString, Ptr[git_oid], Ptr[Byte], CInt]
-  object git_stash_cb: 
+  object git_stash_cb:
     given _tag: Tag[git_stash_cb] = Tag.materializeCFuncPtr4[size_t, CString, Ptr[git_oid], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_stash_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[size_t, CString, Ptr[git_oid], Ptr[Byte], CInt]): git_stash_cb = o
@@ -2961,7 +3048,7 @@ object aliases:
    * Function pointer to receive status on individual files
   */
   opaque type git_status_cb = CFuncPtr3[CString, CUnsignedInt, Ptr[Byte], CInt]
-  object git_status_cb: 
+  object git_status_cb:
     given _tag: Tag[git_status_cb] = Tag.materializeCFuncPtr3[CString, CUnsignedInt, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_status_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, CUnsignedInt, Ptr[Byte], CInt]): git_status_cb = o
@@ -2973,7 +3060,7 @@ object aliases:
    * Function pointer to receive each submodule
   */
   opaque type git_submodule_cb = CFuncPtr3[Ptr[git_submodule], CString, Ptr[Byte], CInt]
-  object git_submodule_cb: 
+  object git_submodule_cb:
     given _tag: Tag[git_submodule_cb] = Tag.materializeCFuncPtr3[Ptr[git_submodule], CString, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_submodule_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[git_submodule], CString, Ptr[Byte], CInt]): git_submodule_cb = o
@@ -2985,7 +3072,7 @@ object aliases:
    * Callback used to iterate over tag names
   */
   opaque type git_tag_foreach_cb = CFuncPtr3[CString, Ptr[git_oid], Ptr[Byte], CInt]
-  object git_tag_foreach_cb: 
+  object git_tag_foreach_cb:
     given _tag: Tag[git_tag_foreach_cb] = Tag.materializeCFuncPtr3[CString, Ptr[git_oid], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_tag_foreach_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, Ptr[git_oid], Ptr[Byte], CInt]): git_tag_foreach_cb = o
@@ -2994,7 +3081,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type git_time_t = int64_t
-  object git_time_t: 
+  object git_time_t:
     given _tag: Tag[git_time_t] = int64_t._tag
     inline def apply(inline o: int64_t): git_time_t = o
     extension (v: git_time_t)
@@ -3004,7 +3091,7 @@ object aliases:
    * These types are retained for backward compatibility. The newer versions of these values should be preferred in all new code.
   */
   type git_trace_callback = git_trace_cb
-  object git_trace_callback: 
+  object git_trace_callback:
     given _tag: Tag[git_trace_callback] = git_trace_cb._tag
     inline def apply(inline o: git_trace_cb): git_trace_callback = o
     extension (v: git_trace_callback)
@@ -3014,7 +3101,7 @@ object aliases:
    * An instance for a tracing function
   */
   opaque type git_trace_cb = CFuncPtr2[git_trace_level_t, CString, Unit]
-  object git_trace_cb: 
+  object git_trace_cb:
     given _tag: Tag[git_trace_cb] = Tag.materializeCFuncPtr2[git_trace_level_t, CString, Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_trace_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[git_trace_level_t, CString, Unit]): git_trace_cb = o
@@ -3026,7 +3113,7 @@ object aliases:
    * This structure is used to provide callers information about the progress of indexing a packfile.
   */
   type git_transfer_progress = git_indexer_progress
-  object git_transfer_progress: 
+  object git_transfer_progress:
     given _tag: Tag[git_transfer_progress] = git_indexer_progress._tag
     inline def apply(inline o: git_indexer_progress): git_transfer_progress = o
     extension (v: git_transfer_progress)
@@ -3036,17 +3123,17 @@ object aliases:
    * Type definition for progress callbacks during indexing.
   */
   type git_transfer_progress_cb = git_indexer_progress_cb
-  object git_transfer_progress_cb: 
+  object git_transfer_progress_cb:
     given _tag: Tag[git_transfer_progress_cb] = git_indexer_progress_cb._tag
     inline def apply(inline o: git_indexer_progress_cb): git_transfer_progress_cb = o
     extension (v: git_transfer_progress_cb)
       inline def value: git_indexer_progress_cb = v
 
   /**
-   * Signature of a function which creates a transport
+   * Signature of a function which creates a transport.
   */
   opaque type git_transport_cb = CFuncPtr3[Ptr[Ptr[git_transport]], Ptr[git_remote], Ptr[Byte], CInt]
-  object git_transport_cb: 
+  object git_transport_cb:
     given _tag: Tag[git_transport_cb] = Tag.materializeCFuncPtr3[Ptr[Ptr[git_transport]], Ptr[git_remote], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_transport_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Ptr[git_transport]], Ptr[git_remote], Ptr[Byte], CInt]): git_transport_cb = o
@@ -3058,7 +3145,7 @@ object aliases:
    * Callback for the user's custom certificate checks.
   */
   opaque type git_transport_certificate_check_cb = CFuncPtr4[Ptr[git_cert], CInt, CString, Ptr[Byte], CInt]
-  object git_transport_certificate_check_cb: 
+  object git_transport_certificate_check_cb:
     given _tag: Tag[git_transport_certificate_check_cb] = Tag.materializeCFuncPtr4[Ptr[git_cert], CInt, CString, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_transport_certificate_check_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[git_cert], CInt, CString, Ptr[Byte], CInt]): git_transport_certificate_check_cb = o
@@ -3070,7 +3157,7 @@ object aliases:
    * Callback for messages received by the transport.
   */
   opaque type git_transport_message_cb = CFuncPtr3[CString, CInt, Ptr[Byte], CInt]
-  object git_transport_message_cb: 
+  object git_transport_message_cb:
     given _tag: Tag[git_transport_message_cb] = Tag.materializeCFuncPtr3[CString, CInt, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_transport_message_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, CInt, Ptr[Byte], CInt]): git_transport_message_cb = o
@@ -3082,7 +3169,7 @@ object aliases:
    * Callback for git_treebuilder_filter
   */
   opaque type git_treebuilder_filter_cb = CFuncPtr2[Ptr[git_tree_entry], Ptr[Byte], CInt]
-  object git_treebuilder_filter_cb: 
+  object git_treebuilder_filter_cb:
     given _tag: Tag[git_treebuilder_filter_cb] = Tag.materializeCFuncPtr2[Ptr[git_tree_entry], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_treebuilder_filter_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[git_tree_entry], Ptr[Byte], CInt]): git_treebuilder_filter_cb = o
@@ -3091,10 +3178,10 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   /**
-   * Callback for the tree traversal method
+   * Callback for the tree traversal method.
   */
   opaque type git_treewalk_cb = CFuncPtr3[CString, Ptr[git_tree_entry], Ptr[Byte], CInt]
-  object git_treewalk_cb: 
+  object git_treewalk_cb:
     given _tag: Tag[git_treewalk_cb] = Tag.materializeCFuncPtr3[CString, Ptr[git_tree_entry], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_treewalk_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, Ptr[git_tree_entry], Ptr[Byte], CInt]): git_treewalk_cb = o
@@ -3106,7 +3193,7 @@ object aliases:
    * Callback to resolve URLs before connecting to remote
   */
   opaque type git_url_resolve_cb = CFuncPtr4[Ptr[git_buf], CString, CInt, Ptr[Byte], CInt]
-  object git_url_resolve_cb: 
+  object git_url_resolve_cb:
     given _tag: Tag[git_url_resolve_cb] = Tag.materializeCFuncPtr4[Ptr[git_buf], CString, CInt, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): git_url_resolve_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[git_buf], CString, CInt, Ptr[Byte], CInt]): git_url_resolve_cb = o
@@ -3115,42 +3202,42 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type int32_t = scala.scalanative.unsafe.CInt
-  object int32_t: 
+  object int32_t:
     val _tag: Tag[int32_t] = summon[Tag[scala.scalanative.unsafe.CInt]]
     inline def apply(inline o: scala.scalanative.unsafe.CInt): int32_t = o
     extension (v: int32_t)
       inline def value: scala.scalanative.unsafe.CInt = v
 
   type int64_t = scala.Long
-  object int64_t: 
+  object int64_t:
     val _tag: Tag[int64_t] = summon[Tag[scala.Long]]
     inline def apply(inline o: scala.Long): int64_t = o
     extension (v: int64_t)
       inline def value: scala.Long = v
 
   type size_t = libc.stddef.size_t
-  object size_t: 
+  object size_t:
     val _tag: Tag[size_t] = summon[Tag[libc.stddef.size_t]]
     inline def apply(inline o: libc.stddef.size_t): size_t = o
     extension (v: size_t)
       inline def value: libc.stddef.size_t = v
 
   type uint16_t = scala.scalanative.unsigned.UShort
-  object uint16_t: 
+  object uint16_t:
     val _tag: Tag[uint16_t] = summon[Tag[scala.scalanative.unsigned.UShort]]
     inline def apply(inline o: scala.scalanative.unsigned.UShort): uint16_t = o
     extension (v: uint16_t)
       inline def value: scala.scalanative.unsigned.UShort = v
 
   type uint32_t = scala.scalanative.unsigned.UInt
-  object uint32_t: 
+  object uint32_t:
     val _tag: Tag[uint32_t] = summon[Tag[scala.scalanative.unsigned.UInt]]
     inline def apply(inline o: scala.scalanative.unsigned.UInt): uint32_t = o
     extension (v: uint32_t)
       inline def value: scala.scalanative.unsigned.UInt = v
 
   type uint64_t = scala.scalanative.unsigned.ULong
-  object uint64_t: 
+  object uint64_t:
     val _tag: Tag[uint64_t] = summon[Tag[scala.scalanative.unsigned.ULong]]
     inline def apply(inline o: scala.scalanative.unsigned.ULong): uint64_t = o
     extension (v: uint64_t)
@@ -3161,42 +3248,60 @@ object structs:
   import _root_.libgit.predef.*
   import _root_.libgit.aliases.*
   import _root_.libgit.structs.*
+
   opaque type LIBSSH2_SESSION = CStruct0
+  
   object LIBSSH2_SESSION:
     given _tag: Tag[LIBSSH2_SESSION] = Tag.materializeCStruct0Tag
+    
 
   opaque type LIBSSH2_USERAUTH_KBDINT_PROMPT = CStruct0
+  
   object LIBSSH2_USERAUTH_KBDINT_PROMPT:
     given _tag: Tag[LIBSSH2_USERAUTH_KBDINT_PROMPT] = Tag.materializeCStruct0Tag
+    
 
   opaque type LIBSSH2_USERAUTH_KBDINT_RESPONSE = CStruct0
+  
   object LIBSSH2_USERAUTH_KBDINT_RESPONSE:
     given _tag: Tag[LIBSSH2_USERAUTH_KBDINT_RESPONSE] = Tag.materializeCStruct0Tag
+    
 
   opaque type _LIBSSH2_SESSION = CStruct0
+  
   object _LIBSSH2_SESSION:
     given _tag: Tag[_LIBSSH2_SESSION] = Tag.materializeCStruct0Tag
+    
 
   opaque type _LIBSSH2_USERAUTH_KBDINT_PROMPT = CStruct0
+  
   object _LIBSSH2_USERAUTH_KBDINT_PROMPT:
     given _tag: Tag[_LIBSSH2_USERAUTH_KBDINT_PROMPT] = Tag.materializeCStruct0Tag
+    
 
   opaque type _LIBSSH2_USERAUTH_KBDINT_RESPONSE = CStruct0
+  
   object _LIBSSH2_USERAUTH_KBDINT_RESPONSE:
     given _tag: Tag[_LIBSSH2_USERAUTH_KBDINT_RESPONSE] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_annotated_commit = CStruct0
+  
   object git_annotated_commit:
     given _tag: Tag[git_annotated_commit] = Tag.materializeCStruct0Tag
+    
 
   /**
-   * Apply options structure
+   * Apply options structure.
   */
   opaque type git_apply_options = CStruct5[CUnsignedInt, git_apply_delta_cb, git_apply_hunk_cb, Ptr[Byte], CUnsignedInt]
+  
   object git_apply_options:
     given _tag: Tag[git_apply_options] = Tag.materializeCStruct5Tag[CUnsignedInt, git_apply_delta_cb, git_apply_hunk_cb, Ptr[Byte], CUnsignedInt]
+    
+    // Allocates git_apply_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_apply_options] = scala.scalanative.unsafe.alloc[git_apply_options](1)
-    def apply(version : CUnsignedInt, delta_cb : git_apply_delta_cb, hunk_cb : git_apply_hunk_cb, payload : Ptr[Byte], flags : CUnsignedInt)(using Zone): Ptr[git_apply_options] = 
+    def apply(version : CUnsignedInt, delta_cb : git_apply_delta_cb, hunk_cb : git_apply_hunk_cb, payload : Ptr[Byte], flags : CUnsignedInt)(using Zone): Ptr[git_apply_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).delta_cb = delta_cb
@@ -3204,6 +3309,7 @@ object structs:
       (!____ptr).payload = payload
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: git_apply_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -3215,21 +3321,26 @@ object structs:
       def payload_=(value: Ptr[Byte]): Unit = !struct.at4 = value
       def flags : CUnsignedInt = struct._5
       def flags_=(value: CUnsignedInt): Unit = !struct.at5 = value
+    
 
   /**
    * An options structure for querying attributes.
   */
   opaque type git_attr_options = CStruct4[CUnsignedInt, CUnsignedInt, Ptr[git_oid], git_oid]
+  
   object git_attr_options:
     given _tag: Tag[git_attr_options] = Tag.materializeCStruct4Tag[CUnsignedInt, CUnsignedInt, Ptr[git_oid], git_oid]
+    
+    // Allocates git_attr_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_attr_options] = scala.scalanative.unsafe.alloc[git_attr_options](1)
-    def apply(version : CUnsignedInt, flags : CUnsignedInt, commit_id : Ptr[git_oid], attr_commit_id : git_oid)(using Zone): Ptr[git_attr_options] = 
+    def apply(version : CUnsignedInt, flags : CUnsignedInt, commit_id : Ptr[git_oid], attr_commit_id : git_oid)(using Zone): Ptr[git_attr_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
       (!____ptr).commit_id = commit_id
       (!____ptr).attr_commit_id = attr_commit_id
       ____ptr
+    
     extension (struct: git_attr_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -3239,30 +3350,40 @@ object structs:
       def commit_id_=(value: Ptr[git_oid]): Unit = !struct.at3 = value
       def attr_commit_id : git_oid = struct._4
       def attr_commit_id_=(value: git_oid): Unit = !struct.at4 = value
+    
 
   opaque type git_blame = CStruct0
+  
   object git_blame:
     given _tag: Tag[git_blame] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Structure that represents a blame hunk.
   */
-  opaque type git_blame_hunk = CStruct9[size_t, git_oid, size_t, Ptr[git_signature], git_oid, CString, size_t, Ptr[git_signature], CChar]
+  opaque type git_blame_hunk = CStruct12[size_t, git_oid, size_t, Ptr[git_signature], Ptr[git_signature], git_oid, CString, size_t, Ptr[git_signature], Ptr[git_signature], CString, CChar]
+  
   object git_blame_hunk:
-    given _tag: Tag[git_blame_hunk] = Tag.materializeCStruct9Tag[size_t, git_oid, size_t, Ptr[git_signature], git_oid, CString, size_t, Ptr[git_signature], CChar]
+    given _tag: Tag[git_blame_hunk] = Tag.materializeCStruct12Tag[size_t, git_oid, size_t, Ptr[git_signature], Ptr[git_signature], git_oid, CString, size_t, Ptr[git_signature], Ptr[git_signature], CString, CChar]
+    
+    // Allocates git_blame_hunk on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_blame_hunk] = scala.scalanative.unsafe.alloc[git_blame_hunk](1)
-    def apply(lines_in_hunk : size_t, final_commit_id : git_oid, final_start_line_number : size_t, final_signature : Ptr[git_signature], orig_commit_id : git_oid, orig_path : CString, orig_start_line_number : size_t, orig_signature : Ptr[git_signature], boundary : CChar)(using Zone): Ptr[git_blame_hunk] = 
+    def apply(lines_in_hunk : size_t, final_commit_id : git_oid, final_start_line_number : size_t, final_signature : Ptr[git_signature], final_committer : Ptr[git_signature], orig_commit_id : git_oid, orig_path : CString, orig_start_line_number : size_t, orig_signature : Ptr[git_signature], orig_committer : Ptr[git_signature], summary : CString, boundary : CChar)(using Zone): Ptr[git_blame_hunk] =
       val ____ptr = apply()
       (!____ptr).lines_in_hunk = lines_in_hunk
       (!____ptr).final_commit_id = final_commit_id
       (!____ptr).final_start_line_number = final_start_line_number
       (!____ptr).final_signature = final_signature
+      (!____ptr).final_committer = final_committer
       (!____ptr).orig_commit_id = orig_commit_id
       (!____ptr).orig_path = orig_path
       (!____ptr).orig_start_line_number = orig_start_line_number
       (!____ptr).orig_signature = orig_signature
+      (!____ptr).orig_committer = orig_committer
+      (!____ptr).summary = summary
       (!____ptr).boundary = boundary
       ____ptr
+    
     extension (struct: git_blame_hunk)
       def lines_in_hunk : size_t = struct._1
       def lines_in_hunk_=(value: size_t): Unit = !struct.at1 = value
@@ -3272,25 +3393,58 @@ object structs:
       def final_start_line_number_=(value: size_t): Unit = !struct.at3 = value
       def final_signature : Ptr[git_signature] = struct._4
       def final_signature_=(value: Ptr[git_signature]): Unit = !struct.at4 = value
-      def orig_commit_id : git_oid = struct._5
-      def orig_commit_id_=(value: git_oid): Unit = !struct.at5 = value
-      def orig_path : CString = struct._6
-      def orig_path_=(value: CString): Unit = !struct.at6 = value
-      def orig_start_line_number : size_t = struct._7
-      def orig_start_line_number_=(value: size_t): Unit = !struct.at7 = value
-      def orig_signature : Ptr[git_signature] = struct._8
-      def orig_signature_=(value: Ptr[git_signature]): Unit = !struct.at8 = value
-      def boundary : CChar = struct._9
-      def boundary_=(value: CChar): Unit = !struct.at9 = value
+      def final_committer : Ptr[git_signature] = struct._5
+      def final_committer_=(value: Ptr[git_signature]): Unit = !struct.at5 = value
+      def orig_commit_id : git_oid = struct._6
+      def orig_commit_id_=(value: git_oid): Unit = !struct.at6 = value
+      def orig_path : CString = struct._7
+      def orig_path_=(value: CString): Unit = !struct.at7 = value
+      def orig_start_line_number : size_t = struct._8
+      def orig_start_line_number_=(value: size_t): Unit = !struct.at8 = value
+      def orig_signature : Ptr[git_signature] = struct._9
+      def orig_signature_=(value: Ptr[git_signature]): Unit = !struct.at9 = value
+      def orig_committer : Ptr[git_signature] = struct._10
+      def orig_committer_=(value: Ptr[git_signature]): Unit = !struct.at10 = value
+      def summary : CString = struct._11
+      def summary_=(value: CString): Unit = !struct.at11 = value
+      def boundary : CChar = struct._12
+      def boundary_=(value: CChar): Unit = !struct.at12 = value
+    
+
+  /**
+   * Structure that represents a line in a blamed file.
+  */
+  opaque type git_blame_line = CStruct2[CString, size_t]
+  
+  object git_blame_line:
+    given _tag: Tag[git_blame_line] = Tag.materializeCStruct2Tag[CString, size_t]
+    
+    // Allocates git_blame_line on the heap – fields are not initalised or zeroed out
+    def apply()(using Zone): Ptr[git_blame_line] = scala.scalanative.unsafe.alloc[git_blame_line](1)
+    def apply(ptr : CString, len : size_t)(using Zone): Ptr[git_blame_line] =
+      val ____ptr = apply()
+      (!____ptr).ptr = ptr
+      (!____ptr).len = len
+      ____ptr
+    
+    extension (struct: git_blame_line)
+      def ptr : CString = struct._1
+      def ptr_=(value: CString): Unit = !struct.at1 = value
+      def len : size_t = struct._2
+      def len_=(value: size_t): Unit = !struct.at2 = value
+    
 
   /**
    * Blame options structure
   */
-  opaque type git_blame_options = CStruct7[CUnsignedInt, uint32_t, uint16_t, git_oid, git_oid, size_t, size_t]
+  opaque type git_blame_options = CStruct7[CUnsignedInt, CUnsignedInt, uint16_t, git_oid, git_oid, size_t, size_t]
+  
   object git_blame_options:
-    given _tag: Tag[git_blame_options] = Tag.materializeCStruct7Tag[CUnsignedInt, uint32_t, uint16_t, git_oid, git_oid, size_t, size_t]
+    given _tag: Tag[git_blame_options] = Tag.materializeCStruct7Tag[CUnsignedInt, CUnsignedInt, uint16_t, git_oid, git_oid, size_t, size_t]
+    
+    // Allocates git_blame_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_blame_options] = scala.scalanative.unsafe.alloc[git_blame_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t, min_match_characters : uint16_t, newest_commit : git_oid, oldest_commit : git_oid, min_line : size_t, max_line : size_t)(using Zone): Ptr[git_blame_options] = 
+    def apply(version : CUnsignedInt, flags : CUnsignedInt, min_match_characters : uint16_t, newest_commit : git_oid, oldest_commit : git_oid, min_line : size_t, max_line : size_t)(using Zone): Ptr[git_blame_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
@@ -3300,11 +3454,12 @@ object structs:
       (!____ptr).min_line = min_line
       (!____ptr).max_line = max_line
       ____ptr
+    
     extension (struct: git_blame_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
+      def flags : CUnsignedInt = struct._2
+      def flags_=(value: CUnsignedInt): Unit = !struct.at2 = value
       def min_match_characters : uint16_t = struct._3
       def min_match_characters_=(value: uint16_t): Unit = !struct.at3 = value
       def newest_commit : git_oid = struct._4
@@ -3315,25 +3470,32 @@ object structs:
       def min_line_=(value: size_t): Unit = !struct.at6 = value
       def max_line : size_t = struct._7
       def max_line_=(value: size_t): Unit = !struct.at7 = value
+    
 
   opaque type git_blob = CStruct0
+  
   object git_blob:
     given _tag: Tag[git_blob] = Tag.materializeCStruct0Tag
+    
 
   /**
    * The options used when applying filter options to a file.
   */
   opaque type git_blob_filter_options = CStruct4[CInt, uint32_t, Ptr[git_oid], git_oid]
+  
   object git_blob_filter_options:
     given _tag: Tag[git_blob_filter_options] = Tag.materializeCStruct4Tag[CInt, uint32_t, Ptr[git_oid], git_oid]
+    
+    // Allocates git_blob_filter_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_blob_filter_options] = scala.scalanative.unsafe.alloc[git_blob_filter_options](1)
-    def apply(version : CInt, flags : uint32_t, commit_id : Ptr[git_oid], attr_commit_id : git_oid)(using Zone): Ptr[git_blob_filter_options] = 
+    def apply(version : CInt, flags : uint32_t, commit_id : Ptr[git_oid], attr_commit_id : git_oid)(using Zone): Ptr[git_blob_filter_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
       (!____ptr).commit_id = commit_id
       (!____ptr).attr_commit_id = attr_commit_id
       ____ptr
+    
     extension (struct: git_blob_filter_options)
       def version : CInt = struct._1
       def version_=(value: CInt): Unit = !struct.at1 = value
@@ -3343,24 +3505,31 @@ object structs:
       def commit_id_=(value: Ptr[git_oid]): Unit = !struct.at3 = value
       def attr_commit_id : git_oid = struct._4
       def attr_commit_id_=(value: git_oid): Unit = !struct.at4 = value
+    
 
   opaque type git_branch_iterator = CStruct0
+  
   object git_branch_iterator:
     given _tag: Tag[git_branch_iterator] = Tag.materializeCStruct0Tag
+    
 
   /**
    * A data buffer for exporting data from libgit2
   */
   opaque type git_buf = CStruct3[CString, size_t, size_t]
+  
   object git_buf:
     given _tag: Tag[git_buf] = Tag.materializeCStruct3Tag[CString, size_t, size_t]
+    
+    // Allocates git_buf on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_buf] = scala.scalanative.unsafe.alloc[git_buf](1)
-    def apply(ptr : CString, reserved : size_t, size : size_t)(using Zone): Ptr[git_buf] = 
+    def apply(ptr : CString, reserved : size_t, size : size_t)(using Zone): Ptr[git_buf] =
       val ____ptr = apply()
       (!____ptr).ptr = ptr
       (!____ptr).reserved = reserved
       (!____ptr).size = size
       ____ptr
+    
     extension (struct: git_buf)
       def ptr : CString = struct._1
       def ptr_=(value: CString): Unit = !struct.at1 = value
@@ -3368,30 +3537,39 @@ object structs:
       def reserved_=(value: size_t): Unit = !struct.at2 = value
       def size : size_t = struct._3
       def size_=(value: size_t): Unit = !struct.at3 = value
+    
 
   /**
    * Parent type for `git_cert_hostkey` and `git_cert_x509`.
   */
   opaque type git_cert = CStruct1[git_cert_t]
+  
   object git_cert:
     given _tag: Tag[git_cert] = Tag.materializeCStruct1Tag[git_cert_t]
+    
+    // Allocates git_cert on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_cert] = scala.scalanative.unsafe.alloc[git_cert](1)
-    def apply(cert_type : git_cert_t)(using Zone): Ptr[git_cert] = 
+    def apply(cert_type : git_cert_t)(using Zone): Ptr[git_cert] =
       val ____ptr = apply()
       (!____ptr).cert_type = cert_type
       ____ptr
+    
     extension (struct: git_cert)
       def cert_type : git_cert_t = struct._1
       def cert_type_=(value: git_cert_t): Unit = !struct.at1 = value
+    
 
   /**
    * Hostkey information taken from libssh2
   */
   opaque type git_cert_hostkey = CStruct8[git_cert, git_cert_ssh_t, CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]], CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]], CArray[CUnsignedChar, Nat.Digit2[Nat._3, Nat._2]], git_cert_ssh_raw_type_t, CString, size_t]
+  
   object git_cert_hostkey:
     given _tag: Tag[git_cert_hostkey] = Tag.materializeCStruct8Tag[git_cert, git_cert_ssh_t, CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]], CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]], CArray[CUnsignedChar, Nat.Digit2[Nat._3, Nat._2]], git_cert_ssh_raw_type_t, CString, size_t]
+    
+    // Allocates git_cert_hostkey on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_cert_hostkey] = scala.scalanative.unsafe.alloc[git_cert_hostkey](1)
-    def apply(parent : git_cert, `type` : git_cert_ssh_t, hash_md5 : CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]], hash_sha1 : CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]], hash_sha256 : CArray[CUnsignedChar, Nat.Digit2[Nat._3, Nat._2]], raw_type : git_cert_ssh_raw_type_t, hostkey : CString, hostkey_len : size_t)(using Zone): Ptr[git_cert_hostkey] = 
+    def apply(parent : git_cert, `type` : git_cert_ssh_t, hash_md5 : CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]], hash_sha1 : CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]], hash_sha256 : CArray[CUnsignedChar, Nat.Digit2[Nat._3, Nat._2]], raw_type : git_cert_ssh_raw_type_t, hostkey : CString, hostkey_len : size_t)(using Zone): Ptr[git_cert_hostkey] =
       val ____ptr = apply()
       (!____ptr).parent = parent
       (!____ptr).`type` = `type`
@@ -3402,6 +3580,7 @@ object structs:
       (!____ptr).hostkey = hostkey
       (!____ptr).hostkey_len = hostkey_len
       ____ptr
+    
     extension (struct: git_cert_hostkey)
       def parent : git_cert = struct._1
       def parent_=(value: git_cert): Unit = !struct.at1 = value
@@ -3419,20 +3598,25 @@ object structs:
       def hostkey_=(value: CString): Unit = !struct.at7 = value
       def hostkey_len : size_t = struct._8
       def hostkey_len_=(value: size_t): Unit = !struct.at8 = value
+    
 
   /**
    * X.509 certificate information
   */
   opaque type git_cert_x509 = CStruct3[git_cert, Ptr[Byte], size_t]
+  
   object git_cert_x509:
     given _tag: Tag[git_cert_x509] = Tag.materializeCStruct3Tag[git_cert, Ptr[Byte], size_t]
+    
+    // Allocates git_cert_x509 on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_cert_x509] = scala.scalanative.unsafe.alloc[git_cert_x509](1)
-    def apply(parent : git_cert, data : Ptr[Byte], len : size_t)(using Zone): Ptr[git_cert_x509] = 
+    def apply(parent : git_cert, data : Ptr[Byte], len : size_t)(using Zone): Ptr[git_cert_x509] =
       val ____ptr = apply()
       (!____ptr).parent = parent
       (!____ptr).data = data
       (!____ptr).len = len
       ____ptr
+    
     extension (struct: git_cert_x509)
       def parent : git_cert = struct._1
       def parent_=(value: git_cert): Unit = !struct.at1 = value
@@ -3440,15 +3624,19 @@ object structs:
       def data_=(value: Ptr[Byte]): Unit = !struct.at2 = value
       def len : size_t = struct._3
       def len_=(value: size_t): Unit = !struct.at3 = value
+    
 
   /**
    * Checkout options structure
   */
   opaque type git_checkout_options = CStruct20[CUnsignedInt, CUnsignedInt, CInt, CUnsignedInt, CUnsignedInt, CInt, CUnsignedInt, git_checkout_notify_cb, Ptr[Byte], git_checkout_progress_cb, Ptr[Byte], git_strarray, Ptr[git_tree], Ptr[git_index], CString, CString, CString, CString, git_checkout_perfdata_cb, Ptr[Byte]]
+  
   object git_checkout_options:
     given _tag: Tag[git_checkout_options] = Tag.materializeCStruct20Tag[CUnsignedInt, CUnsignedInt, CInt, CUnsignedInt, CUnsignedInt, CInt, CUnsignedInt, git_checkout_notify_cb, Ptr[Byte], git_checkout_progress_cb, Ptr[Byte], git_strarray, Ptr[git_tree], Ptr[git_index], CString, CString, CString, CString, git_checkout_perfdata_cb, Ptr[Byte]]
+    
+    // Allocates git_checkout_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_checkout_options] = scala.scalanative.unsafe.alloc[git_checkout_options](1)
-    def apply(version : CUnsignedInt, checkout_strategy : CUnsignedInt, disable_filters : CInt, dir_mode : CUnsignedInt, file_mode : CUnsignedInt, file_open_flags : CInt, notify_flags : CUnsignedInt, notify_cb : git_checkout_notify_cb, notify_payload : Ptr[Byte], progress_cb : git_checkout_progress_cb, progress_payload : Ptr[Byte], paths : git_strarray, baseline : Ptr[git_tree], baseline_index : Ptr[git_index], target_directory : CString, ancestor_label : CString, our_label : CString, their_label : CString, perfdata_cb : git_checkout_perfdata_cb, perfdata_payload : Ptr[Byte])(using Zone): Ptr[git_checkout_options] = 
+    def apply(version : CUnsignedInt, checkout_strategy : CUnsignedInt, disable_filters : CInt, dir_mode : CUnsignedInt, file_mode : CUnsignedInt, file_open_flags : CInt, notify_flags : CUnsignedInt, notify_cb : git_checkout_notify_cb, notify_payload : Ptr[Byte], progress_cb : git_checkout_progress_cb, progress_payload : Ptr[Byte], paths : git_strarray, baseline : Ptr[git_tree], baseline_index : Ptr[git_index], target_directory : CString, ancestor_label : CString, our_label : CString, their_label : CString, perfdata_cb : git_checkout_perfdata_cb, perfdata_payload : Ptr[Byte])(using Zone): Ptr[git_checkout_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).checkout_strategy = checkout_strategy
@@ -3471,6 +3659,7 @@ object structs:
       (!____ptr).perfdata_cb = perfdata_cb
       (!____ptr).perfdata_payload = perfdata_payload
       ____ptr
+    
     extension (struct: git_checkout_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -3512,20 +3701,25 @@ object structs:
       def perfdata_cb_=(value: git_checkout_perfdata_cb): Unit = !struct.at19 = value
       def perfdata_payload : Ptr[Byte] = struct._20
       def perfdata_payload_=(value: Ptr[Byte]): Unit = !struct.at20 = value
+    
 
   /**
    * Checkout performance-reporting structure
   */
   opaque type git_checkout_perfdata = CStruct3[size_t, size_t, size_t]
+  
   object git_checkout_perfdata:
     given _tag: Tag[git_checkout_perfdata] = Tag.materializeCStruct3Tag[size_t, size_t, size_t]
+    
+    // Allocates git_checkout_perfdata on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_checkout_perfdata] = scala.scalanative.unsafe.alloc[git_checkout_perfdata](1)
-    def apply(mkdir_calls : size_t, stat_calls : size_t, chmod_calls : size_t)(using Zone): Ptr[git_checkout_perfdata] = 
+    def apply(mkdir_calls : size_t, stat_calls : size_t, chmod_calls : size_t)(using Zone): Ptr[git_checkout_perfdata] =
       val ____ptr = apply()
       (!____ptr).mkdir_calls = mkdir_calls
       (!____ptr).stat_calls = stat_calls
       (!____ptr).chmod_calls = chmod_calls
       ____ptr
+    
     extension (struct: git_checkout_perfdata)
       def mkdir_calls : size_t = struct._1
       def mkdir_calls_=(value: size_t): Unit = !struct.at1 = value
@@ -3533,21 +3727,26 @@ object structs:
       def stat_calls_=(value: size_t): Unit = !struct.at2 = value
       def chmod_calls : size_t = struct._3
       def chmod_calls_=(value: size_t): Unit = !struct.at3 = value
+    
 
   /**
    * Cherry-pick options
   */
   opaque type git_cherrypick_options = CStruct4[CUnsignedInt, CUnsignedInt, git_merge_options, git_checkout_options]
+  
   object git_cherrypick_options:
     given _tag: Tag[git_cherrypick_options] = Tag.materializeCStruct4Tag[CUnsignedInt, CUnsignedInt, git_merge_options, git_checkout_options]
+    
+    // Allocates git_cherrypick_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_cherrypick_options] = scala.scalanative.unsafe.alloc[git_cherrypick_options](1)
-    def apply(version : CUnsignedInt, mainline : CUnsignedInt, merge_opts : git_merge_options, checkout_opts : git_checkout_options)(using Zone): Ptr[git_cherrypick_options] = 
+    def apply(version : CUnsignedInt, mainline : CUnsignedInt, merge_opts : git_merge_options, checkout_opts : git_checkout_options)(using Zone): Ptr[git_cherrypick_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).mainline = mainline
       (!____ptr).merge_opts = merge_opts
       (!____ptr).checkout_opts = checkout_opts
       ____ptr
+    
     extension (struct: git_cherrypick_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -3557,15 +3756,19 @@ object structs:
       def merge_opts_=(value: git_merge_options): Unit = !struct.at3 = value
       def checkout_opts : git_checkout_options = struct._4
       def checkout_opts_=(value: git_checkout_options): Unit = !struct.at4 = value
+    
 
   /**
    * Clone options structure
   */
   opaque type git_clone_options = CStruct10[CUnsignedInt, git_checkout_options, git_fetch_options, CInt, git_clone_local_t, CString, git_repository_create_cb, Ptr[Byte], git_remote_create_cb, Ptr[Byte]]
+  
   object git_clone_options:
     given _tag: Tag[git_clone_options] = Tag.materializeCStruct10Tag[CUnsignedInt, git_checkout_options, git_fetch_options, CInt, git_clone_local_t, CString, git_repository_create_cb, Ptr[Byte], git_remote_create_cb, Ptr[Byte]]
+    
+    // Allocates git_clone_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_clone_options] = scala.scalanative.unsafe.alloc[git_clone_options](1)
-    def apply(version : CUnsignedInt, checkout_opts : git_checkout_options, fetch_opts : git_fetch_options, bare : CInt, local : git_clone_local_t, checkout_branch : CString, repository_cb : git_repository_create_cb, repository_cb_payload : Ptr[Byte], remote_cb : git_remote_create_cb, remote_cb_payload : Ptr[Byte])(using Zone): Ptr[git_clone_options] = 
+    def apply(version : CUnsignedInt, checkout_opts : git_checkout_options, fetch_opts : git_fetch_options, bare : CInt, local : git_clone_local_t, checkout_branch : CString, repository_cb : git_repository_create_cb, repository_cb_payload : Ptr[Byte], remote_cb : git_remote_create_cb, remote_cb_payload : Ptr[Byte])(using Zone): Ptr[git_clone_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).checkout_opts = checkout_opts
@@ -3578,6 +3781,7 @@ object structs:
       (!____ptr).remote_cb = remote_cb
       (!____ptr).remote_cb_payload = remote_cb_payload
       ____ptr
+    
     extension (struct: git_clone_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -3599,74 +3803,148 @@ object structs:
       def remote_cb_=(value: git_remote_create_cb): Unit = !struct.at9 = value
       def remote_cb_payload : Ptr[Byte] = struct._10
       def remote_cb_payload_=(value: Ptr[Byte]): Unit = !struct.at10 = value
+    
 
   opaque type git_commit = CStruct0
+  
   object git_commit:
     given _tag: Tag[git_commit] = Tag.materializeCStruct0Tag
+    
+
+  opaque type git_commit_create_options = CStruct5[CUnsignedInt, CUnsignedInt, Ptr[git_signature], Ptr[git_signature], CString]
+  
+  object git_commit_create_options:
+    given _tag: Tag[git_commit_create_options] = Tag.materializeCStruct5Tag[CUnsignedInt, CUnsignedInt, Ptr[git_signature], Ptr[git_signature], CString]
+    
+    // Allocates git_commit_create_options on the heap – fields are not initalised or zeroed out
+    def apply()(using Zone): Ptr[git_commit_create_options] = scala.scalanative.unsafe.alloc[git_commit_create_options](1)
+    def apply(version : CUnsignedInt, allow_empty_commit : CUnsignedInt, author : Ptr[git_signature], committer : Ptr[git_signature], message_encoding : CString)(using Zone): Ptr[git_commit_create_options] =
+      val ____ptr = apply()
+      (!____ptr).version = version
+      (!____ptr).allow_empty_commit = allow_empty_commit
+      (!____ptr).author = author
+      (!____ptr).committer = committer
+      (!____ptr).message_encoding = message_encoding
+      ____ptr
+    
+    extension (struct: git_commit_create_options)
+      def version : CUnsignedInt = struct._1
+      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
+      def allow_empty_commit : CUnsignedInt = struct._2
+      def allow_empty_commit_=(value: CUnsignedInt): Unit = !struct.at2 = value
+      def author : Ptr[git_signature] = struct._3
+      def author_=(value: Ptr[git_signature]): Unit = !struct.at3 = value
+      def committer : Ptr[git_signature] = struct._4
+      def committer_=(value: Ptr[git_signature]): Unit = !struct.at4 = value
+      def message_encoding : CString = struct._5
+      def message_encoding_=(value: CString): Unit = !struct.at5 = value
+    
 
   opaque type git_commit_graph = CStruct0
+  
   object git_commit_graph:
     given _tag: Tag[git_commit_graph] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_commit_graph_writer = CStruct0
+  
   object git_commit_graph_writer:
     given _tag: Tag[git_commit_graph_writer] = Tag.materializeCStruct0Tag
+    
+
+  /**
+   * An array of commits returned from the library
+  */
+  opaque type git_commitarray = CStruct2[Ptr[Ptr[git_commit]], size_t]
+  
+  object git_commitarray:
+    given _tag: Tag[git_commitarray] = Tag.materializeCStruct2Tag[Ptr[Ptr[git_commit]], size_t]
+    
+    // Allocates git_commitarray on the heap – fields are not initalised or zeroed out
+    def apply()(using Zone): Ptr[git_commitarray] = scala.scalanative.unsafe.alloc[git_commitarray](1)
+    def apply(commits : Ptr[Ptr[git_commit]], count : size_t)(using Zone): Ptr[git_commitarray] =
+      val ____ptr = apply()
+      (!____ptr).commits = commits
+      (!____ptr).count = count
+      ____ptr
+    
+    extension (struct: git_commitarray)
+      def commits : Ptr[Ptr[git_commit]] = struct._1
+      def commits_=(value: Ptr[Ptr[git_commit]]): Unit = !struct.at1 = value
+      def count : size_t = struct._2
+      def count_=(value: size_t): Unit = !struct.at2 = value
+    
 
   opaque type git_config = CStruct0
+  
   object git_config:
     given _tag: Tag[git_config] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_config_backend = CStruct0
+  
   object git_config_backend:
     given _tag: Tag[git_config_backend] = Tag.materializeCStruct0Tag
+    
 
   /**
    * An entry in a configuration file
   */
-  opaque type git_config_entry = CStruct6[CString, CString, CUnsignedInt, git_config_level_t, CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte]]
+  opaque type git_config_entry = CStruct6[CString, CString, CString, CString, CUnsignedInt, git_config_level_t]
+  
   object git_config_entry:
-    given _tag: Tag[git_config_entry] = Tag.materializeCStruct6Tag[CString, CString, CUnsignedInt, git_config_level_t, CFuncPtr1[Ptr[Byte], Unit], Ptr[Byte]]
+    given _tag: Tag[git_config_entry] = Tag.materializeCStruct6Tag[CString, CString, CString, CString, CUnsignedInt, git_config_level_t]
+    
+    // Allocates git_config_entry on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_config_entry] = scala.scalanative.unsafe.alloc[git_config_entry](1)
-    def apply(name : CString, value : CString, include_depth : CUnsignedInt, level : git_config_level_t, free : CFuncPtr1[Ptr[git_config_entry], Unit], payload : Ptr[Byte])(using Zone): Ptr[git_config_entry] = 
+    def apply(name : CString, value : CString, backend_type : CString, origin_path : CString, include_depth : CUnsignedInt, level : git_config_level_t)(using Zone): Ptr[git_config_entry] =
       val ____ptr = apply()
       (!____ptr).name = name
       (!____ptr).value = value
+      (!____ptr).backend_type = backend_type
+      (!____ptr).origin_path = origin_path
       (!____ptr).include_depth = include_depth
       (!____ptr).level = level
-      (!____ptr).free = free
-      (!____ptr).payload = payload
       ____ptr
+    
     extension (struct: git_config_entry)
       def name : CString = struct._1
       def name_=(value: CString): Unit = !struct.at1 = value
       def value : CString = struct._2
       def value_=(value: CString): Unit = !struct.at2 = value
-      def include_depth : CUnsignedInt = struct._3
-      def include_depth_=(value: CUnsignedInt): Unit = !struct.at3 = value
-      def level : git_config_level_t = struct._4
-      def level_=(value: git_config_level_t): Unit = !struct.at4 = value
-      def free : CFuncPtr1[Ptr[git_config_entry], Unit] = struct._5.asInstanceOf[CFuncPtr1[Ptr[git_config_entry], Unit]]
-      def free_=(value: CFuncPtr1[Ptr[git_config_entry], Unit]): Unit = !struct.at5 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
-      def payload : Ptr[Byte] = struct._6
-      def payload_=(value: Ptr[Byte]): Unit = !struct.at6 = value
+      def backend_type : CString = struct._3
+      def backend_type_=(value: CString): Unit = !struct.at3 = value
+      def origin_path : CString = struct._4
+      def origin_path_=(value: CString): Unit = !struct.at4 = value
+      def include_depth : CUnsignedInt = struct._5
+      def include_depth_=(value: CUnsignedInt): Unit = !struct.at5 = value
+      def level : git_config_level_t = struct._6
+      def level_=(value: git_config_level_t): Unit = !struct.at6 = value
+    
 
   opaque type git_config_iterator = CStruct0
+  
   object git_config_iterator:
     given _tag: Tag[git_config_iterator] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Mapping from config variables to values.
   */
   opaque type git_configmap = CStruct3[git_configmap_t, CString, CInt]
+  
   object git_configmap:
     given _tag: Tag[git_configmap] = Tag.materializeCStruct3Tag[git_configmap_t, CString, CInt]
+    
+    // Allocates git_configmap on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_configmap] = scala.scalanative.unsafe.alloc[git_configmap](1)
-    def apply(`type` : git_configmap_t, str_match : CString, map_value : CInt)(using Zone): Ptr[git_configmap] = 
+    def apply(`type` : git_configmap_t, str_match : CString, map_value : CInt)(using Zone): Ptr[git_configmap] =
       val ____ptr = apply()
       (!____ptr).`type` = `type`
       (!____ptr).str_match = str_match
       (!____ptr).map_value = map_value
       ____ptr
+    
     extension (struct: git_configmap)
       def `type` : git_configmap_t = struct._1
       def type_=(value: git_configmap_t): Unit = !struct.at1 = value
@@ -3674,51 +3952,65 @@ object structs:
       def str_match_=(value: CString): Unit = !struct.at2 = value
       def map_value : CInt = struct._3
       def map_value_=(value: CInt): Unit = !struct.at3 = value
+    
 
   /**
    * The base structure for all credential types
   */
   opaque type git_credential = CStruct2[git_credential_t, CFuncPtr1[Ptr[Byte], Unit]]
+  
   object git_credential:
     given _tag: Tag[git_credential] = Tag.materializeCStruct2Tag[git_credential_t, CFuncPtr1[Ptr[Byte], Unit]]
+    
+    // Allocates git_credential on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential] = scala.scalanative.unsafe.alloc[git_credential](1)
-    def apply(credtype : git_credential_t, free : CFuncPtr1[Ptr[git_credential], Unit])(using Zone): Ptr[git_credential] = 
+    def apply(credtype : git_credential_t, free : CFuncPtr1[Ptr[git_credential], Unit])(using Zone): Ptr[git_credential] =
       val ____ptr = apply()
       (!____ptr).credtype = credtype
       (!____ptr).free = free
       ____ptr
+    
     extension (struct: git_credential)
       def credtype : git_credential_t = struct._1
       def credtype_=(value: git_credential_t): Unit = !struct.at1 = value
       def free : CFuncPtr1[Ptr[git_credential], Unit] = struct._2.asInstanceOf[CFuncPtr1[Ptr[git_credential], Unit]]
       def free_=(value: CFuncPtr1[Ptr[git_credential], Unit]): Unit = !struct.at2 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
+    
 
   /**
    * The base structure for all credential types
   */
   opaque type git_credential_default = CStruct2[git_credential_t, CFuncPtr1[Ptr[Byte], Unit]]
+  
   object git_credential_default:
     given _tag: Tag[git_credential_default] = Tag.materializeCStruct2Tag[git_credential_t, CFuncPtr1[Ptr[Byte], Unit]]
+    
+    // Allocates git_credential_default on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_default] = scala.scalanative.unsafe.alloc[git_credential_default](1)
-    def apply(credtype : git_credential_t, free : CFuncPtr1[Ptr[git_credential], Unit])(using Zone): Ptr[git_credential_default] = 
+    def apply(credtype : git_credential_t, free : CFuncPtr1[Ptr[git_credential], Unit])(using Zone): Ptr[git_credential_default] =
       val ____ptr = apply()
       (!____ptr).credtype = credtype
       (!____ptr).free = free
       ____ptr
+    
     extension (struct: git_credential_default)
       def credtype : git_credential_t = struct._1
       def credtype_=(value: git_credential_t): Unit = !struct.at1 = value
       def free : CFuncPtr1[Ptr[git_credential], Unit] = struct._2.asInstanceOf[CFuncPtr1[Ptr[git_credential], Unit]]
       def free_=(value: CFuncPtr1[Ptr[git_credential], Unit]): Unit = !struct.at2 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
+    
 
   /**
    * A key with a custom signature function
   */
   opaque type git_credential_ssh_custom = CStruct6[git_credential, CString, CString, size_t, git_credential_sign_cb, Ptr[Byte]]
+  
   object git_credential_ssh_custom:
     given _tag: Tag[git_credential_ssh_custom] = Tag.materializeCStruct6Tag[git_credential, CString, CString, size_t, git_credential_sign_cb, Ptr[Byte]]
+    
+    // Allocates git_credential_ssh_custom on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_ssh_custom] = scala.scalanative.unsafe.alloc[git_credential_ssh_custom](1)
-    def apply(parent : git_credential, username : CString, publickey : CString, publickey_len : size_t, sign_callback : git_credential_sign_cb, payload : Ptr[Byte])(using Zone): Ptr[git_credential_ssh_custom] = 
+    def apply(parent : git_credential, username : CString, publickey : CString, publickey_len : size_t, sign_callback : git_credential_sign_cb, payload : Ptr[Byte])(using Zone): Ptr[git_credential_ssh_custom] =
       val ____ptr = apply()
       (!____ptr).parent = parent
       (!____ptr).username = username
@@ -3727,6 +4019,7 @@ object structs:
       (!____ptr).sign_callback = sign_callback
       (!____ptr).payload = payload
       ____ptr
+    
     extension (struct: git_credential_ssh_custom)
       def parent : git_credential = struct._1
       def parent_=(value: git_credential): Unit = !struct.at1 = value
@@ -3740,21 +4033,26 @@ object structs:
       def sign_callback_=(value: git_credential_sign_cb): Unit = !struct.at5 = value
       def payload : Ptr[Byte] = struct._6
       def payload_=(value: Ptr[Byte]): Unit = !struct.at6 = value
+    
 
   /**
    * Keyboard-interactive based ssh authentication
   */
   opaque type git_credential_ssh_interactive = CStruct4[git_credential, CString, git_credential_ssh_interactive_cb, Ptr[Byte]]
+  
   object git_credential_ssh_interactive:
     given _tag: Tag[git_credential_ssh_interactive] = Tag.materializeCStruct4Tag[git_credential, CString, git_credential_ssh_interactive_cb, Ptr[Byte]]
+    
+    // Allocates git_credential_ssh_interactive on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_ssh_interactive] = scala.scalanative.unsafe.alloc[git_credential_ssh_interactive](1)
-    def apply(parent : git_credential, username : CString, prompt_callback : git_credential_ssh_interactive_cb, payload : Ptr[Byte])(using Zone): Ptr[git_credential_ssh_interactive] = 
+    def apply(parent : git_credential, username : CString, prompt_callback : git_credential_ssh_interactive_cb, payload : Ptr[Byte])(using Zone): Ptr[git_credential_ssh_interactive] =
       val ____ptr = apply()
       (!____ptr).parent = parent
       (!____ptr).username = username
       (!____ptr).prompt_callback = prompt_callback
       (!____ptr).payload = payload
       ____ptr
+    
     extension (struct: git_credential_ssh_interactive)
       def parent : git_credential = struct._1
       def parent_=(value: git_credential): Unit = !struct.at1 = value
@@ -3764,15 +4062,19 @@ object structs:
       def prompt_callback_=(value: git_credential_ssh_interactive_cb): Unit = !struct.at3 = value
       def payload : Ptr[Byte] = struct._4
       def payload_=(value: Ptr[Byte]): Unit = !struct.at4 = value
+    
 
   /**
    * A ssh key from disk
   */
   opaque type git_credential_ssh_key = CStruct5[git_credential, CString, CString, CString, CString]
+  
   object git_credential_ssh_key:
     given _tag: Tag[git_credential_ssh_key] = Tag.materializeCStruct5Tag[git_credential, CString, CString, CString, CString]
+    
+    // Allocates git_credential_ssh_key on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_ssh_key] = scala.scalanative.unsafe.alloc[git_credential_ssh_key](1)
-    def apply(parent : git_credential, username : CString, publickey : CString, privatekey : CString, passphrase : CString)(using Zone): Ptr[git_credential_ssh_key] = 
+    def apply(parent : git_credential, username : CString, publickey : CString, privatekey : CString, passphrase : CString)(using Zone): Ptr[git_credential_ssh_key] =
       val ____ptr = apply()
       (!____ptr).parent = parent
       (!____ptr).username = username
@@ -3780,6 +4082,7 @@ object structs:
       (!____ptr).privatekey = privatekey
       (!____ptr).passphrase = passphrase
       ____ptr
+    
     extension (struct: git_credential_ssh_key)
       def parent : git_credential = struct._1
       def parent_=(value: git_credential): Unit = !struct.at1 = value
@@ -3791,56 +4094,71 @@ object structs:
       def privatekey_=(value: CString): Unit = !struct.at4 = value
       def passphrase : CString = struct._5
       def passphrase_=(value: CString): Unit = !struct.at5 = value
+    
 
   /**
    * Username-only credential information
   */
   opaque type git_credential_username = CStruct2[git_credential, CArray[CChar, Nat._1]]
+  
   object git_credential_username:
     given _tag: Tag[git_credential_username] = Tag.materializeCStruct2Tag[git_credential, CArray[CChar, Nat._1]]
+    
+    // Allocates git_credential_username on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_username] = scala.scalanative.unsafe.alloc[git_credential_username](1)
-    def apply(parent : git_credential, username : CArray[CChar, Nat._1])(using Zone): Ptr[git_credential_username] = 
+    def apply(parent : git_credential, username : CArray[CChar, Nat._1])(using Zone): Ptr[git_credential_username] =
       val ____ptr = apply()
       (!____ptr).parent = parent
       (!____ptr).username = username
       ____ptr
+    
     extension (struct: git_credential_username)
       def parent : git_credential = struct._1
       def parent_=(value: git_credential): Unit = !struct.at1 = value
       def username : CArray[CChar, Nat._1] = struct._2
       def username_=(value: CArray[CChar, Nat._1]): Unit = !struct.at2 = value
+    
 
   /**
    * Payload for git_credential_userpass_plaintext.
   */
   opaque type git_credential_userpass_payload = CStruct2[CString, CString]
+  
   object git_credential_userpass_payload:
     given _tag: Tag[git_credential_userpass_payload] = Tag.materializeCStruct2Tag[CString, CString]
+    
+    // Allocates git_credential_userpass_payload on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_userpass_payload] = scala.scalanative.unsafe.alloc[git_credential_userpass_payload](1)
-    def apply(username : CString, password : CString)(using Zone): Ptr[git_credential_userpass_payload] = 
+    def apply(username : CString, password : CString)(using Zone): Ptr[git_credential_userpass_payload] =
       val ____ptr = apply()
       (!____ptr).username = username
       (!____ptr).password = password
       ____ptr
+    
     extension (struct: git_credential_userpass_payload)
       def username : CString = struct._1
       def username_=(value: CString): Unit = !struct.at1 = value
       def password : CString = struct._2
       def password_=(value: CString): Unit = !struct.at2 = value
+    
 
   /**
    * A plaintext username and password
   */
   opaque type git_credential_userpass_plaintext = CStruct3[git_credential, CString, CString]
+  
   object git_credential_userpass_plaintext:
     given _tag: Tag[git_credential_userpass_plaintext] = Tag.materializeCStruct3Tag[git_credential, CString, CString]
+    
+    // Allocates git_credential_userpass_plaintext on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_userpass_plaintext] = scala.scalanative.unsafe.alloc[git_credential_userpass_plaintext](1)
-    def apply(parent : git_credential, username : CString, password : CString)(using Zone): Ptr[git_credential_userpass_plaintext] = 
+    def apply(parent : git_credential, username : CString, password : CString)(using Zone): Ptr[git_credential_userpass_plaintext] =
       val ____ptr = apply()
       (!____ptr).parent = parent
       (!____ptr).username = username
       (!____ptr).password = password
       ____ptr
+    
     extension (struct: git_credential_userpass_plaintext)
       def parent : git_credential = struct._1
       def parent_=(value: git_credential): Unit = !struct.at1 = value
@@ -3848,21 +4166,26 @@ object structs:
       def username_=(value: CString): Unit = !struct.at2 = value
       def password : CString = struct._3
       def password_=(value: CString): Unit = !struct.at3 = value
+    
 
   /**
    * Describe format options structure
   */
   opaque type git_describe_format_options = CStruct4[CUnsignedInt, CUnsignedInt, CInt, CString]
+  
   object git_describe_format_options:
     given _tag: Tag[git_describe_format_options] = Tag.materializeCStruct4Tag[CUnsignedInt, CUnsignedInt, CInt, CString]
+    
+    // Allocates git_describe_format_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_describe_format_options] = scala.scalanative.unsafe.alloc[git_describe_format_options](1)
-    def apply(version : CUnsignedInt, abbreviated_size : CUnsignedInt, always_use_long_format : CInt, dirty_suffix : CString)(using Zone): Ptr[git_describe_format_options] = 
+    def apply(version : CUnsignedInt, abbreviated_size : CUnsignedInt, always_use_long_format : CInt, dirty_suffix : CString)(using Zone): Ptr[git_describe_format_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).abbreviated_size = abbreviated_size
       (!____ptr).always_use_long_format = always_use_long_format
       (!____ptr).dirty_suffix = dirty_suffix
       ____ptr
+    
     extension (struct: git_describe_format_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -3872,15 +4195,19 @@ object structs:
       def always_use_long_format_=(value: CInt): Unit = !struct.at3 = value
       def dirty_suffix : CString = struct._4
       def dirty_suffix_=(value: CString): Unit = !struct.at4 = value
+    
 
   /**
    * Describe options structure
   */
   opaque type git_describe_options = CStruct6[CUnsignedInt, CUnsignedInt, CUnsignedInt, CString, CInt, CInt]
+  
   object git_describe_options:
     given _tag: Tag[git_describe_options] = Tag.materializeCStruct6Tag[CUnsignedInt, CUnsignedInt, CUnsignedInt, CString, CInt, CInt]
+    
+    // Allocates git_describe_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_describe_options] = scala.scalanative.unsafe.alloc[git_describe_options](1)
-    def apply(version : CUnsignedInt, max_candidates_tags : CUnsignedInt, describe_strategy : CUnsignedInt, pattern : CString, only_follow_first_parent : CInt, show_commit_oid_as_fallback : CInt)(using Zone): Ptr[git_describe_options] = 
+    def apply(version : CUnsignedInt, max_candidates_tags : CUnsignedInt, describe_strategy : CUnsignedInt, pattern : CString, only_follow_first_parent : CInt, show_commit_oid_as_fallback : CInt)(using Zone): Ptr[git_describe_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).max_candidates_tags = max_candidates_tags
@@ -3889,6 +4216,7 @@ object structs:
       (!____ptr).only_follow_first_parent = only_follow_first_parent
       (!____ptr).show_commit_oid_as_fallback = show_commit_oid_as_fallback
       ____ptr
+    
     extension (struct: git_describe_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -3902,28 +4230,37 @@ object structs:
       def only_follow_first_parent_=(value: CInt): Unit = !struct.at5 = value
       def show_commit_oid_as_fallback : CInt = struct._6
       def show_commit_oid_as_fallback_=(value: CInt): Unit = !struct.at6 = value
+    
 
   opaque type git_describe_result = CStruct0
+  
   object git_describe_result:
     given _tag: Tag[git_describe_result] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_diff = CStruct0
+  
   object git_diff:
     given _tag: Tag[git_diff] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Structure describing the binary contents of a diff.
   */
   opaque type git_diff_binary = CStruct3[CUnsignedInt, git_diff_binary_file, git_diff_binary_file]
+  
   object git_diff_binary:
     given _tag: Tag[git_diff_binary] = Tag.materializeCStruct3Tag[CUnsignedInt, git_diff_binary_file, git_diff_binary_file]
+    
+    // Allocates git_diff_binary on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_binary] = scala.scalanative.unsafe.alloc[git_diff_binary](1)
-    def apply(contains_data : CUnsignedInt, old_file : git_diff_binary_file, new_file : git_diff_binary_file)(using Zone): Ptr[git_diff_binary] = 
+    def apply(contains_data : CUnsignedInt, old_file : git_diff_binary_file, new_file : git_diff_binary_file)(using Zone): Ptr[git_diff_binary] =
       val ____ptr = apply()
       (!____ptr).contains_data = contains_data
       (!____ptr).old_file = old_file
       (!____ptr).new_file = new_file
       ____ptr
+    
     extension (struct: git_diff_binary)
       def contains_data : CUnsignedInt = struct._1
       def contains_data_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -3931,21 +4268,26 @@ object structs:
       def old_file_=(value: git_diff_binary_file): Unit = !struct.at2 = value
       def new_file : git_diff_binary_file = struct._3
       def new_file_=(value: git_diff_binary_file): Unit = !struct.at3 = value
+    
 
   /**
    * The contents of one of the files in a binary diff.
   */
   opaque type git_diff_binary_file = CStruct4[git_diff_binary_t, CString, size_t, size_t]
+  
   object git_diff_binary_file:
     given _tag: Tag[git_diff_binary_file] = Tag.materializeCStruct4Tag[git_diff_binary_t, CString, size_t, size_t]
+    
+    // Allocates git_diff_binary_file on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_binary_file] = scala.scalanative.unsafe.alloc[git_diff_binary_file](1)
-    def apply(`type` : git_diff_binary_t, data : CString, datalen : size_t, inflatedlen : size_t)(using Zone): Ptr[git_diff_binary_file] = 
+    def apply(`type` : git_diff_binary_t, data : CString, datalen : size_t, inflatedlen : size_t)(using Zone): Ptr[git_diff_binary_file] =
       val ____ptr = apply()
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).datalen = datalen
       (!____ptr).inflatedlen = inflatedlen
       ____ptr
+    
     extension (struct: git_diff_binary_file)
       def `type` : git_diff_binary_t = struct._1
       def type_=(value: git_diff_binary_t): Unit = !struct.at1 = value
@@ -3955,15 +4297,19 @@ object structs:
       def datalen_=(value: size_t): Unit = !struct.at3 = value
       def inflatedlen : size_t = struct._4
       def inflatedlen_=(value: size_t): Unit = !struct.at4 = value
+    
 
   /**
    * Description of changes to one entry.
   */
   opaque type git_diff_delta = CStruct6[git_delta_t, uint32_t, uint16_t, uint16_t, git_diff_file, git_diff_file]
+  
   object git_diff_delta:
     given _tag: Tag[git_diff_delta] = Tag.materializeCStruct6Tag[git_delta_t, uint32_t, uint16_t, uint16_t, git_diff_file, git_diff_file]
+    
+    // Allocates git_diff_delta on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_delta] = scala.scalanative.unsafe.alloc[git_diff_delta](1)
-    def apply(status : git_delta_t, flags : uint32_t, similarity : uint16_t, nfiles : uint16_t, old_file : git_diff_file, new_file : git_diff_file)(using Zone): Ptr[git_diff_delta] = 
+    def apply(status : git_delta_t, flags : uint32_t, similarity : uint16_t, nfiles : uint16_t, old_file : git_diff_file, new_file : git_diff_file)(using Zone): Ptr[git_diff_delta] =
       val ____ptr = apply()
       (!____ptr).status = status
       (!____ptr).flags = flags
@@ -3972,6 +4318,7 @@ object structs:
       (!____ptr).old_file = old_file
       (!____ptr).new_file = new_file
       ____ptr
+    
     extension (struct: git_diff_delta)
       def status : git_delta_t = struct._1
       def status_=(value: git_delta_t): Unit = !struct.at1 = value
@@ -3985,15 +4332,19 @@ object structs:
       def old_file_=(value: git_diff_file): Unit = !struct.at5 = value
       def new_file : git_diff_file = struct._6
       def new_file_=(value: git_diff_file): Unit = !struct.at6 = value
+    
 
   /**
    * Description of one side of a delta.
   */
   opaque type git_diff_file = CStruct6[git_oid, CString, git_object_size_t, uint32_t, uint16_t, uint16_t]
+  
   object git_diff_file:
     given _tag: Tag[git_diff_file] = Tag.materializeCStruct6Tag[git_oid, CString, git_object_size_t, uint32_t, uint16_t, uint16_t]
+    
+    // Allocates git_diff_file on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_file] = scala.scalanative.unsafe.alloc[git_diff_file](1)
-    def apply(id : git_oid, path : CString, size : git_object_size_t, flags : uint32_t, mode : uint16_t, id_abbrev : uint16_t)(using Zone): Ptr[git_diff_file] = 
+    def apply(id : git_oid, path : CString, size : git_object_size_t, flags : uint32_t, mode : uint16_t, id_abbrev : uint16_t)(using Zone): Ptr[git_diff_file] =
       val ____ptr = apply()
       (!____ptr).id = id
       (!____ptr).path = path
@@ -4002,6 +4353,7 @@ object structs:
       (!____ptr).mode = mode
       (!____ptr).id_abbrev = id_abbrev
       ____ptr
+    
     extension (struct: git_diff_file)
       def id : git_oid = struct._1
       def id_=(value: git_oid): Unit = !struct.at1 = value
@@ -4015,15 +4367,19 @@ object structs:
       def mode_=(value: uint16_t): Unit = !struct.at5 = value
       def id_abbrev : uint16_t = struct._6
       def id_abbrev_=(value: uint16_t): Unit = !struct.at6 = value
+    
 
   /**
    * Control behavior of rename and copy detection
   */
   opaque type git_diff_find_options = CStruct8[CUnsignedInt, uint32_t, uint16_t, uint16_t, uint16_t, uint16_t, size_t, Ptr[git_diff_similarity_metric]]
+  
   object git_diff_find_options:
     given _tag: Tag[git_diff_find_options] = Tag.materializeCStruct8Tag[CUnsignedInt, uint32_t, uint16_t, uint16_t, uint16_t, uint16_t, size_t, Ptr[git_diff_similarity_metric]]
+    
+    // Allocates git_diff_find_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_find_options] = scala.scalanative.unsafe.alloc[git_diff_find_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t, rename_threshold : uint16_t, rename_from_rewrite_threshold : uint16_t, copy_threshold : uint16_t, break_rewrite_threshold : uint16_t, rename_limit : size_t, metric : Ptr[git_diff_similarity_metric])(using Zone): Ptr[git_diff_find_options] = 
+    def apply(version : CUnsignedInt, flags : uint32_t, rename_threshold : uint16_t, rename_from_rewrite_threshold : uint16_t, copy_threshold : uint16_t, break_rewrite_threshold : uint16_t, rename_limit : size_t, metric : Ptr[git_diff_similarity_metric])(using Zone): Ptr[git_diff_find_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
@@ -4034,6 +4390,7 @@ object structs:
       (!____ptr).rename_limit = rename_limit
       (!____ptr).metric = metric
       ____ptr
+    
     extension (struct: git_diff_find_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4051,15 +4408,19 @@ object structs:
       def rename_limit_=(value: size_t): Unit = !struct.at7 = value
       def metric : Ptr[git_diff_similarity_metric] = struct._8
       def metric_=(value: Ptr[git_diff_similarity_metric]): Unit = !struct.at8 = value
+    
 
   /**
    * Options for controlling the formatting of the generated e-mail.
   */
   opaque type git_diff_format_email_options = CStruct8[CUnsignedInt, uint32_t, size_t, size_t, Ptr[git_oid], CString, CString, Ptr[git_signature]]
+  
   object git_diff_format_email_options:
     given _tag: Tag[git_diff_format_email_options] = Tag.materializeCStruct8Tag[CUnsignedInt, uint32_t, size_t, size_t, Ptr[git_oid], CString, CString, Ptr[git_signature]]
+    
+    // Allocates git_diff_format_email_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_format_email_options] = scala.scalanative.unsafe.alloc[git_diff_format_email_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t, patch_no : size_t, total_patches : size_t, id : Ptr[git_oid], summary : CString, body : CString, author : Ptr[git_signature])(using Zone): Ptr[git_diff_format_email_options] = 
+    def apply(version : CUnsignedInt, flags : uint32_t, patch_no : size_t, total_patches : size_t, id : Ptr[git_oid], summary : CString, body : CString, author : Ptr[git_signature])(using Zone): Ptr[git_diff_format_email_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
@@ -4070,6 +4431,7 @@ object structs:
       (!____ptr).body = body
       (!____ptr).author = author
       ____ptr
+    
     extension (struct: git_diff_format_email_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4087,15 +4449,19 @@ object structs:
       def body_=(value: CString): Unit = !struct.at7 = value
       def author : Ptr[git_signature] = struct._8
       def author_=(value: Ptr[git_signature]): Unit = !struct.at8 = value
+    
 
   /**
    * Structure describing a hunk of a diff.
   */
   opaque type git_diff_hunk = CStruct6[CInt, CInt, CInt, CInt, size_t, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]
+  
   object git_diff_hunk:
     given _tag: Tag[git_diff_hunk] = Tag.materializeCStruct6Tag[CInt, CInt, CInt, CInt, size_t, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]
+    
+    // Allocates git_diff_hunk on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_hunk] = scala.scalanative.unsafe.alloc[git_diff_hunk](1)
-    def apply(old_start : CInt, old_lines : CInt, new_start : CInt, new_lines : CInt, header_len : size_t, header : CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]])(using Zone): Ptr[git_diff_hunk] = 
+    def apply(old_start : CInt, old_lines : CInt, new_start : CInt, new_lines : CInt, header_len : size_t, header : CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]])(using Zone): Ptr[git_diff_hunk] =
       val ____ptr = apply()
       (!____ptr).old_start = old_start
       (!____ptr).old_lines = old_lines
@@ -4104,6 +4470,7 @@ object structs:
       (!____ptr).header_len = header_len
       (!____ptr).header = header
       ____ptr
+    
     extension (struct: git_diff_hunk)
       def old_start : CInt = struct._1
       def old_start_=(value: CInt): Unit = !struct.at1 = value
@@ -4117,15 +4484,19 @@ object structs:
       def header_len_=(value: size_t): Unit = !struct.at5 = value
       def header : CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]] = struct._6
       def header_=(value: CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]): Unit = !struct.at6 = value
+    
 
   /**
    * Structure describing a line (or data span) of a diff.
   */
   opaque type git_diff_line = CStruct7[CChar, CInt, CInt, CInt, size_t, git_off_t, CString]
+  
   object git_diff_line:
     given _tag: Tag[git_diff_line] = Tag.materializeCStruct7Tag[CChar, CInt, CInt, CInt, size_t, git_off_t, CString]
+    
+    // Allocates git_diff_line on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_line] = scala.scalanative.unsafe.alloc[git_diff_line](1)
-    def apply(origin : CChar, old_lineno : CInt, new_lineno : CInt, num_lines : CInt, content_len : size_t, content_offset : git_off_t, content : CString)(using Zone): Ptr[git_diff_line] = 
+    def apply(origin : CChar, old_lineno : CInt, new_lineno : CInt, num_lines : CInt, content_len : size_t, content_offset : git_off_t, content : CString)(using Zone): Ptr[git_diff_line] =
       val ____ptr = apply()
       (!____ptr).origin = origin
       (!____ptr).old_lineno = old_lineno
@@ -4135,6 +4506,7 @@ object structs:
       (!____ptr).content_offset = content_offset
       (!____ptr).content = content
       ____ptr
+    
     extension (struct: git_diff_line)
       def origin : CChar = struct._1
       def origin_=(value: CChar): Unit = !struct.at1 = value
@@ -4150,15 +4522,19 @@ object structs:
       def content_offset_=(value: git_off_t): Unit = !struct.at6 = value
       def content : CString = struct._7
       def content_=(value: CString): Unit = !struct.at7 = value
+    
 
   /**
    * Structure describing options about how the diff should be executed.
   */
-  opaque type git_diff_options = CStruct13[CUnsignedInt, uint32_t, git_submodule_ignore_t, git_strarray, git_diff_notify_cb, git_diff_progress_cb, Ptr[Byte], uint32_t, uint32_t, uint16_t, git_off_t, CString, CString]
+  opaque type git_diff_options = CStruct14[CUnsignedInt, uint32_t, git_submodule_ignore_t, git_strarray, git_diff_notify_cb, git_diff_progress_cb, Ptr[Byte], uint32_t, uint32_t, git_oid_t, uint16_t, git_off_t, CString, CString]
+  
   object git_diff_options:
-    given _tag: Tag[git_diff_options] = Tag.materializeCStruct13Tag[CUnsignedInt, uint32_t, git_submodule_ignore_t, git_strarray, git_diff_notify_cb, git_diff_progress_cb, Ptr[Byte], uint32_t, uint32_t, uint16_t, git_off_t, CString, CString]
+    given _tag: Tag[git_diff_options] = Tag.materializeCStruct14Tag[CUnsignedInt, uint32_t, git_submodule_ignore_t, git_strarray, git_diff_notify_cb, git_diff_progress_cb, Ptr[Byte], uint32_t, uint32_t, git_oid_t, uint16_t, git_off_t, CString, CString]
+    
+    // Allocates git_diff_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_options] = scala.scalanative.unsafe.alloc[git_diff_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t, ignore_submodules : git_submodule_ignore_t, pathspec : git_strarray, notify_cb : git_diff_notify_cb, progress_cb : git_diff_progress_cb, payload : Ptr[Byte], context_lines : uint32_t, interhunk_lines : uint32_t, id_abbrev : uint16_t, max_size : git_off_t, old_prefix : CString, new_prefix : CString)(using Zone): Ptr[git_diff_options] = 
+    def apply(version : CUnsignedInt, flags : uint32_t, ignore_submodules : git_submodule_ignore_t, pathspec : git_strarray, notify_cb : git_diff_notify_cb, progress_cb : git_diff_progress_cb, payload : Ptr[Byte], context_lines : uint32_t, interhunk_lines : uint32_t, oid_type : git_oid_t, id_abbrev : uint16_t, max_size : git_off_t, old_prefix : CString, new_prefix : CString)(using Zone): Ptr[git_diff_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
@@ -4169,11 +4545,13 @@ object structs:
       (!____ptr).payload = payload
       (!____ptr).context_lines = context_lines
       (!____ptr).interhunk_lines = interhunk_lines
+      (!____ptr).oid_type = oid_type
       (!____ptr).id_abbrev = id_abbrev
       (!____ptr).max_size = max_size
       (!____ptr).old_prefix = old_prefix
       (!____ptr).new_prefix = new_prefix
       ____ptr
+    
     extension (struct: git_diff_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4193,38 +4571,72 @@ object structs:
       def context_lines_=(value: uint32_t): Unit = !struct.at8 = value
       def interhunk_lines : uint32_t = struct._9
       def interhunk_lines_=(value: uint32_t): Unit = !struct.at9 = value
-      def id_abbrev : uint16_t = struct._10
-      def id_abbrev_=(value: uint16_t): Unit = !struct.at10 = value
-      def max_size : git_off_t = struct._11
-      def max_size_=(value: git_off_t): Unit = !struct.at11 = value
-      def old_prefix : CString = struct._12
-      def old_prefix_=(value: CString): Unit = !struct.at12 = value
-      def new_prefix : CString = struct._13
-      def new_prefix_=(value: CString): Unit = !struct.at13 = value
+      def oid_type : git_oid_t = struct._10
+      def oid_type_=(value: git_oid_t): Unit = !struct.at10 = value
+      def id_abbrev : uint16_t = struct._11
+      def id_abbrev_=(value: uint16_t): Unit = !struct.at11 = value
+      def max_size : git_off_t = struct._12
+      def max_size_=(value: git_off_t): Unit = !struct.at12 = value
+      def old_prefix : CString = struct._13
+      def old_prefix_=(value: CString): Unit = !struct.at13 = value
+      def new_prefix : CString = struct._14
+      def new_prefix_=(value: CString): Unit = !struct.at14 = value
+    
+
+  /**
+   * Options for parsing a diff / patch file.
+  */
+  opaque type git_diff_parse_options = CStruct2[CUnsignedInt, git_oid_t]
+  
+  object git_diff_parse_options:
+    given _tag: Tag[git_diff_parse_options] = Tag.materializeCStruct2Tag[CUnsignedInt, git_oid_t]
+    
+    // Allocates git_diff_parse_options on the heap – fields are not initalised or zeroed out
+    def apply()(using Zone): Ptr[git_diff_parse_options] = scala.scalanative.unsafe.alloc[git_diff_parse_options](1)
+    def apply(version : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_diff_parse_options] =
+      val ____ptr = apply()
+      (!____ptr).version = version
+      (!____ptr).oid_type = oid_type
+      ____ptr
+    
+    extension (struct: git_diff_parse_options)
+      def version : CUnsignedInt = struct._1
+      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
+      def oid_type : git_oid_t = struct._2
+      def oid_type_=(value: git_oid_t): Unit = !struct.at2 = value
+    
 
   /**
    * Patch ID options structure
   */
   opaque type git_diff_patchid_options = CStruct1[CUnsignedInt]
+  
   object git_diff_patchid_options:
     given _tag: Tag[git_diff_patchid_options] = Tag.materializeCStruct1Tag[CUnsignedInt]
+    
+    // Allocates git_diff_patchid_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_patchid_options] = scala.scalanative.unsafe.alloc[git_diff_patchid_options](1)
-    def apply(version : CUnsignedInt)(using Zone): Ptr[git_diff_patchid_options] = 
+    def apply(version : CUnsignedInt)(using Zone): Ptr[git_diff_patchid_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       ____ptr
+    
     extension (struct: git_diff_patchid_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
+    
 
   /**
    * Pluggable similarity metric
   */
   opaque type git_diff_similarity_metric = CStruct5[CFuncPtr4[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, Ptr[Byte], CInt], CFuncPtr5[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, size_t, Ptr[Byte], CInt], CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit], CFuncPtr4[Ptr[CInt], Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt], Ptr[Byte]]
+  
   object git_diff_similarity_metric:
     given _tag: Tag[git_diff_similarity_metric] = Tag.materializeCStruct5Tag[CFuncPtr4[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, Ptr[Byte], CInt], CFuncPtr5[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, size_t, Ptr[Byte], CInt], CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit], CFuncPtr4[Ptr[CInt], Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt], Ptr[Byte]]
+    
+    // Allocates git_diff_similarity_metric on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_similarity_metric] = scala.scalanative.unsafe.alloc[git_diff_similarity_metric](1)
-    def apply(file_signature : CFuncPtr4[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, Ptr[Byte], CInt], buffer_signature : CFuncPtr5[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, size_t, Ptr[Byte], CInt], free_signature : CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit], similarity : CFuncPtr4[Ptr[CInt], Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt], payload : Ptr[Byte])(using Zone): Ptr[git_diff_similarity_metric] = 
+    def apply(file_signature : CFuncPtr4[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, Ptr[Byte], CInt], buffer_signature : CFuncPtr5[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, size_t, Ptr[Byte], CInt], free_signature : CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit], similarity : CFuncPtr4[Ptr[CInt], Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt], payload : Ptr[Byte])(using Zone): Ptr[git_diff_similarity_metric] =
       val ____ptr = apply()
       (!____ptr).file_signature = file_signature
       (!____ptr).buffer_signature = buffer_signature
@@ -4232,6 +4644,7 @@ object structs:
       (!____ptr).similarity = similarity
       (!____ptr).payload = payload
       ____ptr
+    
     extension (struct: git_diff_similarity_metric)
       def file_signature : CFuncPtr4[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, Ptr[Byte], CInt] = struct._1
       def file_signature_=(value: CFuncPtr4[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, Ptr[Byte], CInt]): Unit = !struct.at1 = value
@@ -4243,19 +4656,25 @@ object structs:
       def similarity_=(value: CFuncPtr4[Ptr[CInt], Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt]): Unit = !struct.at4 = value
       def payload : Ptr[Byte] = struct._5
       def payload_=(value: Ptr[Byte]): Unit = !struct.at5 = value
+    
 
   opaque type git_diff_stats = CStruct0
+  
   object git_diff_stats:
     given _tag: Tag[git_diff_stats] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Options for controlling the formatting of the generated e-mail.
   */
   opaque type git_email_create_options = CStruct7[CUnsignedInt, uint32_t, git_diff_options, git_diff_find_options, CString, size_t, size_t]
+  
   object git_email_create_options:
     given _tag: Tag[git_email_create_options] = Tag.materializeCStruct7Tag[CUnsignedInt, uint32_t, git_diff_options, git_diff_find_options, CString, size_t, size_t]
+    
+    // Allocates git_email_create_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_email_create_options] = scala.scalanative.unsafe.alloc[git_email_create_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t, diff_opts : git_diff_options, diff_find_opts : git_diff_find_options, subject_prefix : CString, start_number : size_t, reroll_number : size_t)(using Zone): Ptr[git_email_create_options] = 
+    def apply(version : CUnsignedInt, flags : uint32_t, diff_opts : git_diff_options, diff_find_opts : git_diff_find_options, subject_prefix : CString, start_number : size_t, reroll_number : size_t)(using Zone): Ptr[git_email_create_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
@@ -4265,6 +4684,7 @@ object structs:
       (!____ptr).start_number = start_number
       (!____ptr).reroll_number = reroll_number
       ____ptr
+    
     extension (struct: git_email_create_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4280,33 +4700,42 @@ object structs:
       def start_number_=(value: size_t): Unit = !struct.at6 = value
       def reroll_number : size_t = struct._7
       def reroll_number_=(value: size_t): Unit = !struct.at7 = value
+    
 
   /**
    * Structure to store extra details of the last error that occurred.
   */
   opaque type git_error = CStruct2[CString, CInt]
+  
   object git_error:
     given _tag: Tag[git_error] = Tag.materializeCStruct2Tag[CString, CInt]
+    
+    // Allocates git_error on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_error] = scala.scalanative.unsafe.alloc[git_error](1)
-    def apply(message : CString, klass : CInt)(using Zone): Ptr[git_error] = 
+    def apply(message : CString, klass : CInt)(using Zone): Ptr[git_error] =
       val ____ptr = apply()
       (!____ptr).message = message
       (!____ptr).klass = klass
       ____ptr
+    
     extension (struct: git_error)
       def message : CString = struct._1
       def message_=(value: CString): Unit = !struct.at1 = value
       def klass : CInt = struct._2
       def klass_=(value: CInt): Unit = !struct.at2 = value
+    
 
   /**
    * Fetch options structure.
   */
-  opaque type git_fetch_options = CStruct8[CInt, git_remote_callbacks, git_fetch_prune_t, CInt, git_remote_autotag_option_t, git_proxy_options, git_remote_redirect_t, git_strarray]
+  opaque type git_fetch_options = CStruct9[CInt, git_remote_callbacks, git_fetch_prune_t, CUnsignedInt, git_remote_autotag_option_t, git_proxy_options, CInt, git_remote_redirect_t, git_strarray]
+  
   object git_fetch_options:
-    given _tag: Tag[git_fetch_options] = Tag.materializeCStruct8Tag[CInt, git_remote_callbacks, git_fetch_prune_t, CInt, git_remote_autotag_option_t, git_proxy_options, git_remote_redirect_t, git_strarray]
+    given _tag: Tag[git_fetch_options] = Tag.materializeCStruct9Tag[CInt, git_remote_callbacks, git_fetch_prune_t, CUnsignedInt, git_remote_autotag_option_t, git_proxy_options, CInt, git_remote_redirect_t, git_strarray]
+    
+    // Allocates git_fetch_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_fetch_options] = scala.scalanative.unsafe.alloc[git_fetch_options](1)
-    def apply(version : CInt, callbacks : git_remote_callbacks, prune : git_fetch_prune_t, update_fetchhead : CInt, download_tags : git_remote_autotag_option_t, proxy_opts : git_proxy_options, follow_redirects : git_remote_redirect_t, custom_headers : git_strarray)(using Zone): Ptr[git_fetch_options] = 
+    def apply(version : CInt, callbacks : git_remote_callbacks, prune : git_fetch_prune_t, update_fetchhead : CUnsignedInt, download_tags : git_remote_autotag_option_t, proxy_opts : git_proxy_options, depth : CInt, follow_redirects : git_remote_redirect_t, custom_headers : git_strarray)(using Zone): Ptr[git_fetch_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).callbacks = callbacks
@@ -4314,9 +4743,11 @@ object structs:
       (!____ptr).update_fetchhead = update_fetchhead
       (!____ptr).download_tags = download_tags
       (!____ptr).proxy_opts = proxy_opts
+      (!____ptr).depth = depth
       (!____ptr).follow_redirects = follow_redirects
       (!____ptr).custom_headers = custom_headers
       ____ptr
+    
     extension (struct: git_fetch_options)
       def version : CInt = struct._1
       def version_=(value: CInt): Unit = !struct.at1 = value
@@ -4324,39 +4755,50 @@ object structs:
       def callbacks_=(value: git_remote_callbacks): Unit = !struct.at2 = value
       def prune : git_fetch_prune_t = struct._3
       def prune_=(value: git_fetch_prune_t): Unit = !struct.at3 = value
-      def update_fetchhead : CInt = struct._4
-      def update_fetchhead_=(value: CInt): Unit = !struct.at4 = value
+      def update_fetchhead : CUnsignedInt = struct._4
+      def update_fetchhead_=(value: CUnsignedInt): Unit = !struct.at4 = value
       def download_tags : git_remote_autotag_option_t = struct._5
       def download_tags_=(value: git_remote_autotag_option_t): Unit = !struct.at5 = value
       def proxy_opts : git_proxy_options = struct._6
       def proxy_opts_=(value: git_proxy_options): Unit = !struct.at6 = value
-      def follow_redirects : git_remote_redirect_t = struct._7
-      def follow_redirects_=(value: git_remote_redirect_t): Unit = !struct.at7 = value
-      def custom_headers : git_strarray = struct._8
-      def custom_headers_=(value: git_strarray): Unit = !struct.at8 = value
+      def depth : CInt = struct._7
+      def depth_=(value: CInt): Unit = !struct.at7 = value
+      def follow_redirects : git_remote_redirect_t = struct._8
+      def follow_redirects_=(value: git_remote_redirect_t): Unit = !struct.at8 = value
+      def custom_headers : git_strarray = struct._9
+      def custom_headers_=(value: git_strarray): Unit = !struct.at9 = value
+    
 
   opaque type git_filter = CStruct0
+  
   object git_filter:
     given _tag: Tag[git_filter] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_filter_list = CStruct0
+  
   object git_filter_list:
     given _tag: Tag[git_filter_list] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Filtering options
   */
   opaque type git_filter_options = CStruct4[CUnsignedInt, uint32_t, Ptr[git_oid], git_oid]
+  
   object git_filter_options:
     given _tag: Tag[git_filter_options] = Tag.materializeCStruct4Tag[CUnsignedInt, uint32_t, Ptr[git_oid], git_oid]
+    
+    // Allocates git_filter_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_filter_options] = scala.scalanative.unsafe.alloc[git_filter_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t, commit_id : Ptr[git_oid], attr_commit_id : git_oid)(using Zone): Ptr[git_filter_options] = 
+    def apply(version : CUnsignedInt, flags : uint32_t, commit_id : Ptr[git_oid], attr_commit_id : git_oid)(using Zone): Ptr[git_filter_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
       (!____ptr).commit_id = commit_id
       (!____ptr).attr_commit_id = attr_commit_id
       ____ptr
+    
     extension (struct: git_filter_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4366,23 +4808,31 @@ object structs:
       def commit_id_=(value: Ptr[git_oid]): Unit = !struct.at3 = value
       def attr_commit_id : git_oid = struct._4
       def attr_commit_id_=(value: git_oid): Unit = !struct.at4 = value
+    
 
   opaque type git_index = CStruct0
+  
   object git_index:
     given _tag: Tag[git_index] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_index_conflict_iterator = CStruct0
+  
   object git_index_conflict_iterator:
     given _tag: Tag[git_index_conflict_iterator] = Tag.materializeCStruct0Tag
+    
 
   /**
    * In-memory representation of a file entry in the index.
   */
   opaque type git_index_entry = CStruct12[git_index_time, git_index_time, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, git_oid, uint16_t, uint16_t, CString]
+  
   object git_index_entry:
     given _tag: Tag[git_index_entry] = Tag.materializeCStruct12Tag[git_index_time, git_index_time, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, git_oid, uint16_t, uint16_t, CString]
+    
+    // Allocates git_index_entry on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_index_entry] = scala.scalanative.unsafe.alloc[git_index_entry](1)
-    def apply(ctime : git_index_time, mtime : git_index_time, dev : uint32_t, ino : uint32_t, mode : uint32_t, uid : uint32_t, gid : uint32_t, file_size : uint32_t, id : git_oid, flags : uint16_t, flags_extended : uint16_t, path : CString)(using Zone): Ptr[git_index_entry] = 
+    def apply(ctime : git_index_time, mtime : git_index_time, dev : uint32_t, ino : uint32_t, mode : uint32_t, uid : uint32_t, gid : uint32_t, file_size : uint32_t, id : git_oid, flags : uint16_t, flags_extended : uint16_t, path : CString)(using Zone): Ptr[git_index_entry] =
       val ____ptr = apply()
       (!____ptr).ctime = ctime
       (!____ptr).mtime = mtime
@@ -4397,6 +4847,7 @@ object structs:
       (!____ptr).flags_extended = flags_extended
       (!____ptr).path = path
       ____ptr
+    
     extension (struct: git_index_entry)
       def ctime : git_index_time = struct._1
       def ctime_=(value: git_index_time): Unit = !struct.at1 = value
@@ -4422,47 +4873,61 @@ object structs:
       def flags_extended_=(value: uint16_t): Unit = !struct.at11 = value
       def path : CString = struct._12
       def path_=(value: CString): Unit = !struct.at12 = value
+    
 
   opaque type git_index_iterator = CStruct0
+  
   object git_index_iterator:
     given _tag: Tag[git_index_iterator] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Time structure used in a git index entry
   */
   opaque type git_index_time = CStruct2[int32_t, uint32_t]
+  
   object git_index_time:
     given _tag: Tag[git_index_time] = Tag.materializeCStruct2Tag[int32_t, uint32_t]
+    
+    // Allocates git_index_time on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_index_time] = scala.scalanative.unsafe.alloc[git_index_time](1)
-    def apply(seconds : int32_t, nanoseconds : uint32_t)(using Zone): Ptr[git_index_time] = 
+    def apply(seconds : int32_t, nanoseconds : uint32_t)(using Zone): Ptr[git_index_time] =
       val ____ptr = apply()
       (!____ptr).seconds = seconds
       (!____ptr).nanoseconds = nanoseconds
       ____ptr
+    
     extension (struct: git_index_time)
       def seconds : int32_t = struct._1
       def seconds_=(value: int32_t): Unit = !struct.at1 = value
       def nanoseconds : uint32_t = struct._2
       def nanoseconds_=(value: uint32_t): Unit = !struct.at2 = value
+    
 
   opaque type git_indexer = CStruct0
+  
   object git_indexer:
     given _tag: Tag[git_indexer] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Options for indexer configuration
   */
   opaque type git_indexer_options = CStruct4[CUnsignedInt, git_indexer_progress_cb, Ptr[Byte], CUnsignedChar]
+  
   object git_indexer_options:
     given _tag: Tag[git_indexer_options] = Tag.materializeCStruct4Tag[CUnsignedInt, git_indexer_progress_cb, Ptr[Byte], CUnsignedChar]
+    
+    // Allocates git_indexer_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_indexer_options] = scala.scalanative.unsafe.alloc[git_indexer_options](1)
-    def apply(version : CUnsignedInt, progress_cb : git_indexer_progress_cb, progress_cb_payload : Ptr[Byte], verify : CUnsignedChar)(using Zone): Ptr[git_indexer_options] = 
+    def apply(version : CUnsignedInt, progress_cb : git_indexer_progress_cb, progress_cb_payload : Ptr[Byte], verify : CUnsignedChar)(using Zone): Ptr[git_indexer_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).progress_cb = progress_cb
       (!____ptr).progress_cb_payload = progress_cb_payload
       (!____ptr).verify = verify
       ____ptr
+    
     extension (struct: git_indexer_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4472,15 +4937,19 @@ object structs:
       def progress_cb_payload_=(value: Ptr[Byte]): Unit = !struct.at3 = value
       def verify : CUnsignedChar = struct._4
       def verify_=(value: CUnsignedChar): Unit = !struct.at4 = value
+    
 
   /**
    * This structure is used to provide callers information about the progress of indexing a packfile, either directly or part of a fetch or clone that downloads a packfile.
   */
   opaque type git_indexer_progress = CStruct7[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, size_t]
+  
   object git_indexer_progress:
     given _tag: Tag[git_indexer_progress] = Tag.materializeCStruct7Tag[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, size_t]
+    
+    // Allocates git_indexer_progress on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_indexer_progress] = scala.scalanative.unsafe.alloc[git_indexer_progress](1)
-    def apply(total_objects : CUnsignedInt, indexed_objects : CUnsignedInt, received_objects : CUnsignedInt, local_objects : CUnsignedInt, total_deltas : CUnsignedInt, indexed_deltas : CUnsignedInt, received_bytes : size_t)(using Zone): Ptr[git_indexer_progress] = 
+    def apply(total_objects : CUnsignedInt, indexed_objects : CUnsignedInt, received_objects : CUnsignedInt, local_objects : CUnsignedInt, total_deltas : CUnsignedInt, indexed_deltas : CUnsignedInt, received_bytes : size_t)(using Zone): Ptr[git_indexer_progress] =
       val ____ptr = apply()
       (!____ptr).total_objects = total_objects
       (!____ptr).indexed_objects = indexed_objects
@@ -4490,6 +4959,7 @@ object structs:
       (!____ptr).indexed_deltas = indexed_deltas
       (!____ptr).received_bytes = received_bytes
       ____ptr
+    
     extension (struct: git_indexer_progress)
       def total_objects : CUnsignedInt = struct._1
       def total_objects_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4505,23 +4975,31 @@ object structs:
       def indexed_deltas_=(value: CUnsignedInt): Unit = !struct.at6 = value
       def received_bytes : size_t = struct._7
       def received_bytes_=(value: size_t): Unit = !struct.at7 = value
+    
 
   opaque type git_iterator = CStruct0
+  
   object git_iterator:
     given _tag: Tag[git_iterator] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_mailmap = CStruct0
+  
   object git_mailmap:
     given _tag: Tag[git_mailmap] = Tag.materializeCStruct0Tag
+    
 
   /**
    * The file inputs to `git_merge_file`. Callers should populate the `git_merge_file_input` structure with descriptions of the files in each side of the conflict for use in producing the merge file.
   */
   opaque type git_merge_file_input = CStruct5[CUnsignedInt, CString, size_t, CString, CUnsignedInt]
+  
   object git_merge_file_input:
     given _tag: Tag[git_merge_file_input] = Tag.materializeCStruct5Tag[CUnsignedInt, CString, size_t, CString, CUnsignedInt]
+    
+    // Allocates git_merge_file_input on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_merge_file_input] = scala.scalanative.unsafe.alloc[git_merge_file_input](1)
-    def apply(version : CUnsignedInt, ptr : CString, size : size_t, path : CString, mode : CUnsignedInt)(using Zone): Ptr[git_merge_file_input] = 
+    def apply(version : CUnsignedInt, ptr : CString, size : size_t, path : CString, mode : CUnsignedInt)(using Zone): Ptr[git_merge_file_input] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).ptr = ptr
@@ -4529,6 +5007,7 @@ object structs:
       (!____ptr).path = path
       (!____ptr).mode = mode
       ____ptr
+    
     extension (struct: git_merge_file_input)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4540,15 +5019,19 @@ object structs:
       def path_=(value: CString): Unit = !struct.at4 = value
       def mode : CUnsignedInt = struct._5
       def mode_=(value: CUnsignedInt): Unit = !struct.at5 = value
+    
 
   /**
    * Options for merging a file
   */
   opaque type git_merge_file_options = CStruct7[CUnsignedInt, CString, CString, CString, git_merge_file_favor_t, uint32_t, CUnsignedShort]
+  
   object git_merge_file_options:
     given _tag: Tag[git_merge_file_options] = Tag.materializeCStruct7Tag[CUnsignedInt, CString, CString, CString, git_merge_file_favor_t, uint32_t, CUnsignedShort]
+    
+    // Allocates git_merge_file_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_merge_file_options] = scala.scalanative.unsafe.alloc[git_merge_file_options](1)
-    def apply(version : CUnsignedInt, ancestor_label : CString, our_label : CString, their_label : CString, favor : git_merge_file_favor_t, flags : uint32_t, marker_size : CUnsignedShort)(using Zone): Ptr[git_merge_file_options] = 
+    def apply(version : CUnsignedInt, ancestor_label : CString, our_label : CString, their_label : CString, favor : git_merge_file_favor_t, flags : uint32_t, marker_size : CUnsignedShort)(using Zone): Ptr[git_merge_file_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).ancestor_label = ancestor_label
@@ -4558,6 +5041,7 @@ object structs:
       (!____ptr).flags = flags
       (!____ptr).marker_size = marker_size
       ____ptr
+    
     extension (struct: git_merge_file_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4573,15 +5057,19 @@ object structs:
       def flags_=(value: uint32_t): Unit = !struct.at6 = value
       def marker_size : CUnsignedShort = struct._7
       def marker_size_=(value: CUnsignedShort): Unit = !struct.at7 = value
+    
 
   /**
    * Information about file-level merging
   */
   opaque type git_merge_file_result = CStruct5[CUnsignedInt, CString, CUnsignedInt, CString, size_t]
+  
   object git_merge_file_result:
     given _tag: Tag[git_merge_file_result] = Tag.materializeCStruct5Tag[CUnsignedInt, CString, CUnsignedInt, CString, size_t]
+    
+    // Allocates git_merge_file_result on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_merge_file_result] = scala.scalanative.unsafe.alloc[git_merge_file_result](1)
-    def apply(automergeable : CUnsignedInt, path : CString, mode : CUnsignedInt, ptr : CString, len : size_t)(using Zone): Ptr[git_merge_file_result] = 
+    def apply(automergeable : CUnsignedInt, path : CString, mode : CUnsignedInt, ptr : CString, len : size_t)(using Zone): Ptr[git_merge_file_result] =
       val ____ptr = apply()
       (!____ptr).automergeable = automergeable
       (!____ptr).path = path
@@ -4589,6 +5077,7 @@ object structs:
       (!____ptr).ptr = ptr
       (!____ptr).len = len
       ____ptr
+    
     extension (struct: git_merge_file_result)
       def automergeable : CUnsignedInt = struct._1
       def automergeable_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4600,15 +5089,19 @@ object structs:
       def ptr_=(value: CString): Unit = !struct.at4 = value
       def len : size_t = struct._5
       def len_=(value: size_t): Unit = !struct.at5 = value
+    
 
   /**
    * Merging options
   */
   opaque type git_merge_options = CStruct9[CUnsignedInt, uint32_t, CUnsignedInt, CUnsignedInt, Ptr[git_diff_similarity_metric], CUnsignedInt, CString, git_merge_file_favor_t, uint32_t]
+  
   object git_merge_options:
     given _tag: Tag[git_merge_options] = Tag.materializeCStruct9Tag[CUnsignedInt, uint32_t, CUnsignedInt, CUnsignedInt, Ptr[git_diff_similarity_metric], CUnsignedInt, CString, git_merge_file_favor_t, uint32_t]
+    
+    // Allocates git_merge_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_merge_options] = scala.scalanative.unsafe.alloc[git_merge_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t, rename_threshold : CUnsignedInt, target_limit : CUnsignedInt, metric : Ptr[git_diff_similarity_metric], recursion_limit : CUnsignedInt, default_driver : CString, file_favor : git_merge_file_favor_t, file_flags : uint32_t)(using Zone): Ptr[git_merge_options] = 
+    def apply(version : CUnsignedInt, flags : uint32_t, rename_threshold : CUnsignedInt, target_limit : CUnsignedInt, metric : Ptr[git_diff_similarity_metric], recursion_limit : CUnsignedInt, default_driver : CString, file_favor : git_merge_file_favor_t, file_flags : uint32_t)(using Zone): Ptr[git_merge_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
@@ -4620,6 +5113,7 @@ object structs:
       (!____ptr).file_favor = file_favor
       (!____ptr).file_flags = file_flags
       ____ptr
+    
     extension (struct: git_merge_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4639,38 +5133,48 @@ object structs:
       def file_favor_=(value: git_merge_file_favor_t): Unit = !struct.at8 = value
       def file_flags : uint32_t = struct._9
       def file_flags_=(value: uint32_t): Unit = !struct.at9 = value
+    
 
   /**
    * Represents a single git message trailer.
   */
   opaque type git_message_trailer = CStruct2[CString, CString]
+  
   object git_message_trailer:
     given _tag: Tag[git_message_trailer] = Tag.materializeCStruct2Tag[CString, CString]
+    
+    // Allocates git_message_trailer on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_message_trailer] = scala.scalanative.unsafe.alloc[git_message_trailer](1)
-    def apply(key : CString, value : CString)(using Zone): Ptr[git_message_trailer] = 
+    def apply(key : CString, value : CString)(using Zone): Ptr[git_message_trailer] =
       val ____ptr = apply()
       (!____ptr).key = key
       (!____ptr).value = value
       ____ptr
+    
     extension (struct: git_message_trailer)
       def key : CString = struct._1
       def key_=(value: CString): Unit = !struct.at1 = value
       def value : CString = struct._2
       def value_=(value: CString): Unit = !struct.at2 = value
+    
 
   /**
    * Represents an array of git message trailers.
   */
   opaque type git_message_trailer_array = CStruct3[Ptr[git_message_trailer], size_t, CString]
+  
   object git_message_trailer_array:
     given _tag: Tag[git_message_trailer_array] = Tag.materializeCStruct3Tag[Ptr[git_message_trailer], size_t, CString]
+    
+    // Allocates git_message_trailer_array on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_message_trailer_array] = scala.scalanative.unsafe.alloc[git_message_trailer_array](1)
-    def apply(trailers : Ptr[git_message_trailer], count : size_t, _trailer_block : CString)(using Zone): Ptr[git_message_trailer_array] = 
+    def apply(trailers : Ptr[git_message_trailer], count : size_t, _trailer_block : CString)(using Zone): Ptr[git_message_trailer_array] =
       val ____ptr = apply()
       (!____ptr).trailers = trailers
       (!____ptr).count = count
       (!____ptr)._trailer_block = _trailer_block
       ____ptr
+    
     extension (struct: git_message_trailer_array)
       def trailers : Ptr[git_message_trailer] = struct._1
       def trailers_=(value: Ptr[git_message_trailer]): Unit = !struct.at1 = value
@@ -4678,39 +5182,55 @@ object structs:
       def count_=(value: size_t): Unit = !struct.at2 = value
       def _trailer_block : CString = struct._3
       def _trailer_block_=(value: CString): Unit = !struct.at3 = value
+    
 
   opaque type git_midx_writer = CStruct0
+  
   object git_midx_writer:
     given _tag: Tag[git_midx_writer] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_note = CStruct0
+  
   object git_note:
     given _tag: Tag[git_note] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_note_iterator = CStruct0
+  
   object git_note_iterator:
     given _tag: Tag[git_note_iterator] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_object = CStruct0
+  
   object git_object:
     given _tag: Tag[git_object] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_odb = CStruct0
+  
   object git_odb:
     given _tag: Tag[git_odb] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_odb_backend = CStruct0
+  
   object git_odb_backend:
     given _tag: Tag[git_odb_backend] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Options for configuring a loose object backend.
   */
   opaque type git_odb_backend_loose_options = CStruct6[CUnsignedInt, uint32_t, CInt, CUnsignedInt, CUnsignedInt, git_oid_t]
+  
   object git_odb_backend_loose_options:
     given _tag: Tag[git_odb_backend_loose_options] = Tag.materializeCStruct6Tag[CUnsignedInt, uint32_t, CInt, CUnsignedInt, CUnsignedInt, git_oid_t]
+    
+    // Allocates git_odb_backend_loose_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_odb_backend_loose_options] = scala.scalanative.unsafe.alloc[git_odb_backend_loose_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t, compression_level : CInt, dir_mode : CUnsignedInt, file_mode : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_backend_loose_options] = 
+    def apply(version : CUnsignedInt, flags : uint32_t, compression_level : CInt, dir_mode : CUnsignedInt, file_mode : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_backend_loose_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
@@ -4719,6 +5239,7 @@ object structs:
       (!____ptr).file_mode = file_mode
       (!____ptr).oid_type = oid_type
       ____ptr
+    
     extension (struct: git_odb_backend_loose_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4732,38 +5253,48 @@ object structs:
       def file_mode_=(value: CUnsignedInt): Unit = !struct.at5 = value
       def oid_type : git_oid_t = struct._6
       def oid_type_=(value: git_oid_t): Unit = !struct.at6 = value
+    
 
   /**
    * Options for configuring a packfile object backend.
   */
   opaque type git_odb_backend_pack_options = CStruct2[CUnsignedInt, git_oid_t]
+  
   object git_odb_backend_pack_options:
     given _tag: Tag[git_odb_backend_pack_options] = Tag.materializeCStruct2Tag[CUnsignedInt, git_oid_t]
+    
+    // Allocates git_odb_backend_pack_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_odb_backend_pack_options] = scala.scalanative.unsafe.alloc[git_odb_backend_pack_options](1)
-    def apply(version : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_backend_pack_options] = 
+    def apply(version : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_backend_pack_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).oid_type = oid_type
       ____ptr
+    
     extension (struct: git_odb_backend_pack_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
       def oid_type : git_oid_t = struct._2
       def oid_type_=(value: git_oid_t): Unit = !struct.at2 = value
+    
 
   /**
    * The information about object IDs to query in `git_odb_expand_ids`, which will be populated upon return.
   */
   opaque type git_odb_expand_id = CStruct3[git_oid, CUnsignedShort, git_object_t]
+  
   object git_odb_expand_id:
     given _tag: Tag[git_odb_expand_id] = Tag.materializeCStruct3Tag[git_oid, CUnsignedShort, git_object_t]
+    
+    // Allocates git_odb_expand_id on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_odb_expand_id] = scala.scalanative.unsafe.alloc[git_odb_expand_id](1)
-    def apply(id : git_oid, length : CUnsignedShort, `type` : git_object_t)(using Zone): Ptr[git_odb_expand_id] = 
+    def apply(id : git_oid, length : CUnsignedShort, `type` : git_object_t)(using Zone): Ptr[git_odb_expand_id] =
       val ____ptr = apply()
       (!____ptr).id = id
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       ____ptr
+    
     extension (struct: git_odb_expand_id)
       def id : git_oid = struct._1
       def id_=(value: git_oid): Unit = !struct.at1 = value
@@ -4771,37 +5302,48 @@ object structs:
       def length_=(value: CUnsignedShort): Unit = !struct.at2 = value
       def `type` : git_object_t = struct._3
       def type_=(value: git_object_t): Unit = !struct.at3 = value
+    
 
   opaque type git_odb_object = CStruct0
+  
   object git_odb_object:
     given _tag: Tag[git_odb_object] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Options for configuring a loose object backend.
   */
   opaque type git_odb_options = CStruct2[CUnsignedInt, git_oid_t]
+  
   object git_odb_options:
     given _tag: Tag[git_odb_options] = Tag.materializeCStruct2Tag[CUnsignedInt, git_oid_t]
+    
+    // Allocates git_odb_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_odb_options] = scala.scalanative.unsafe.alloc[git_odb_options](1)
-    def apply(version : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_options] = 
+    def apply(version : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).oid_type = oid_type
       ____ptr
+    
     extension (struct: git_odb_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
       def oid_type : git_oid_t = struct._2
       def oid_type_=(value: git_oid_t): Unit = !struct.at2 = value
+    
 
   /**
    * A stream to read/write from a backend.
   */
   opaque type git_odb_stream = CStruct9[Ptr[git_odb_backend], CUnsignedInt, Ptr[Byte], git_object_size_t, git_object_size_t, CFuncPtr3[Ptr[Byte], CString, size_t, CInt], CFuncPtr3[Ptr[Byte], CString, size_t, CInt], CFuncPtr2[Ptr[Byte], Ptr[git_oid], CInt], CFuncPtr1[Ptr[Byte], Unit]]
+  
   object git_odb_stream:
     given _tag: Tag[git_odb_stream] = Tag.materializeCStruct9Tag[Ptr[git_odb_backend], CUnsignedInt, Ptr[Byte], git_object_size_t, git_object_size_t, CFuncPtr3[Ptr[Byte], CString, size_t, CInt], CFuncPtr3[Ptr[Byte], CString, size_t, CInt], CFuncPtr2[Ptr[Byte], Ptr[git_oid], CInt], CFuncPtr1[Ptr[Byte], Unit]]
+    
+    // Allocates git_odb_stream on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_odb_stream] = scala.scalanative.unsafe.alloc[git_odb_stream](1)
-    def apply(backend : Ptr[git_odb_backend], mode : CUnsignedInt, hash_ctx : Ptr[Byte], declared_size : git_object_size_t, received_bytes : git_object_size_t, read : CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt], write : CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt], finalize_write : CFuncPtr2[Ptr[git_odb_stream], Ptr[git_oid], CInt], free : CFuncPtr1[Ptr[git_odb_stream], Unit])(using Zone): Ptr[git_odb_stream] = 
+    def apply(backend : Ptr[git_odb_backend], mode : CUnsignedInt, hash_ctx : Ptr[Byte], declared_size : git_object_size_t, received_bytes : git_object_size_t, read : CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt], write : CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt], finalize_write : CFuncPtr2[Ptr[git_odb_stream], Ptr[git_oid], CInt], free : CFuncPtr1[Ptr[git_odb_stream], Unit])(using Zone): Ptr[git_odb_stream] =
       val ____ptr = apply()
       (!____ptr).backend = backend
       (!____ptr).mode = mode
@@ -4813,6 +5355,7 @@ object structs:
       (!____ptr).finalize_write = finalize_write
       (!____ptr).free = free
       ____ptr
+    
     extension (struct: git_odb_stream)
       def backend : Ptr[git_odb_backend] = struct._1
       def backend_=(value: Ptr[git_odb_backend]): Unit = !struct.at1 = value
@@ -4832,21 +5375,26 @@ object structs:
       def finalize_write_=(value: CFuncPtr2[Ptr[git_odb_stream], Ptr[git_oid], CInt]): Unit = !struct.at8 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[git_oid], CInt]]
       def free : CFuncPtr1[Ptr[git_odb_stream], Unit] = struct._9.asInstanceOf[CFuncPtr1[Ptr[git_odb_stream], Unit]]
       def free_=(value: CFuncPtr1[Ptr[git_odb_stream], Unit]): Unit = !struct.at9 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
+    
 
   /**
    * A stream to write a pack file to the ODB
   */
   opaque type git_odb_writepack = CStruct4[Ptr[git_odb_backend], CFuncPtr4[Ptr[Byte], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt], CFuncPtr2[Ptr[Byte], Ptr[git_indexer_progress], CInt], CFuncPtr1[Ptr[Byte], Unit]]
+  
   object git_odb_writepack:
     given _tag: Tag[git_odb_writepack] = Tag.materializeCStruct4Tag[Ptr[git_odb_backend], CFuncPtr4[Ptr[Byte], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt], CFuncPtr2[Ptr[Byte], Ptr[git_indexer_progress], CInt], CFuncPtr1[Ptr[Byte], Unit]]
+    
+    // Allocates git_odb_writepack on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_odb_writepack] = scala.scalanative.unsafe.alloc[git_odb_writepack](1)
-    def apply(backend : Ptr[git_odb_backend], append : CFuncPtr4[Ptr[git_odb_writepack], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt], commit : CFuncPtr2[Ptr[git_odb_writepack], Ptr[git_indexer_progress], CInt], free : CFuncPtr1[Ptr[git_odb_writepack], Unit])(using Zone): Ptr[git_odb_writepack] = 
+    def apply(backend : Ptr[git_odb_backend], append : CFuncPtr4[Ptr[git_odb_writepack], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt], commit : CFuncPtr2[Ptr[git_odb_writepack], Ptr[git_indexer_progress], CInt], free : CFuncPtr1[Ptr[git_odb_writepack], Unit])(using Zone): Ptr[git_odb_writepack] =
       val ____ptr = apply()
       (!____ptr).backend = backend
       (!____ptr).append = append
       (!____ptr).commit = commit
       (!____ptr).free = free
       ____ptr
+    
     extension (struct: git_odb_writepack)
       def backend : Ptr[git_odb_backend] = struct._1
       def backend_=(value: Ptr[git_odb_backend]): Unit = !struct.at1 = value
@@ -4856,68 +5404,92 @@ object structs:
       def commit_=(value: CFuncPtr2[Ptr[git_odb_writepack], Ptr[git_indexer_progress], CInt]): Unit = !struct.at3 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[git_indexer_progress], CInt]]
       def free : CFuncPtr1[Ptr[git_odb_writepack], Unit] = struct._4.asInstanceOf[CFuncPtr1[Ptr[git_odb_writepack], Unit]]
       def free_=(value: CFuncPtr1[Ptr[git_odb_writepack], Unit]): Unit = !struct.at4 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
+    
 
   /**
    * Unique identity of any object (commit, tree, blob, tag).
   */
   opaque type git_oid = CStruct1[CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]]]
+  
   object git_oid:
     given _tag: Tag[git_oid] = Tag.materializeCStruct1Tag[CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]]]
+    
+    // Allocates git_oid on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_oid] = scala.scalanative.unsafe.alloc[git_oid](1)
-    def apply(id : CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]])(using Zone): Ptr[git_oid] = 
+    def apply(id : CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]])(using Zone): Ptr[git_oid] =
       val ____ptr = apply()
       (!____ptr).id = id
       ____ptr
+    
     extension (struct: git_oid)
       def id : CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]] = struct._1
       def id_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]]): Unit = !struct.at1 = value
+    
 
   opaque type git_oid_shorten = CStruct0
+  
   object git_oid_shorten:
     given _tag: Tag[git_oid_shorten] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Array of object ids
   */
   opaque type git_oidarray = CStruct2[Ptr[git_oid], size_t]
+  
   object git_oidarray:
     given _tag: Tag[git_oidarray] = Tag.materializeCStruct2Tag[Ptr[git_oid], size_t]
+    
+    // Allocates git_oidarray on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_oidarray] = scala.scalanative.unsafe.alloc[git_oidarray](1)
-    def apply(ids : Ptr[git_oid], count : size_t)(using Zone): Ptr[git_oidarray] = 
+    def apply(ids : Ptr[git_oid], count : size_t)(using Zone): Ptr[git_oidarray] =
       val ____ptr = apply()
       (!____ptr).ids = ids
       (!____ptr).count = count
       ____ptr
+    
     extension (struct: git_oidarray)
       def ids : Ptr[git_oid] = struct._1
       def ids_=(value: Ptr[git_oid]): Unit = !struct.at1 = value
       def count : size_t = struct._2
       def count_=(value: size_t): Unit = !struct.at2 = value
+    
 
   opaque type git_packbuilder = CStruct0
+  
   object git_packbuilder:
     given _tag: Tag[git_packbuilder] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_patch = CStruct0
+  
   object git_patch:
     given _tag: Tag[git_patch] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_pathspec = CStruct0
+  
   object git_pathspec:
     given _tag: Tag[git_pathspec] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_pathspec_match_list = CStruct0
+  
   object git_pathspec_match_list:
     given _tag: Tag[git_pathspec_match_list] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Options for connecting through a proxy
   */
   opaque type git_proxy_options = CStruct6[CUnsignedInt, git_proxy_t, CString, Ptr[Byte], git_transport_certificate_check_cb, Ptr[Byte]]
+  
   object git_proxy_options:
     given _tag: Tag[git_proxy_options] = Tag.materializeCStruct6Tag[CUnsignedInt, git_proxy_t, CString, Ptr[Byte], git_transport_certificate_check_cb, Ptr[Byte]]
+    
+    // Allocates git_proxy_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_proxy_options] = scala.scalanative.unsafe.alloc[git_proxy_options](1)
-    def apply(version : CUnsignedInt, `type` : git_proxy_t, url : CString, credentials : git_credential_acquire_cb, certificate_check : git_transport_certificate_check_cb, payload : Ptr[Byte])(using Zone): Ptr[git_proxy_options] = 
+    def apply(version : CUnsignedInt, `type` : git_proxy_t, url : CString, credentials : git_credential_acquire_cb, certificate_check : git_transport_certificate_check_cb, payload : Ptr[Byte])(using Zone): Ptr[git_proxy_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).`type` = `type`
@@ -4926,6 +5498,7 @@ object structs:
       (!____ptr).certificate_check = certificate_check
       (!____ptr).payload = payload
       ____ptr
+    
     extension (struct: git_proxy_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4939,19 +5512,25 @@ object structs:
       def certificate_check_=(value: git_transport_certificate_check_cb): Unit = !struct.at5 = value
       def payload : Ptr[Byte] = struct._6
       def payload_=(value: Ptr[Byte]): Unit = !struct.at6 = value
+    
 
   opaque type git_push = CStruct0
+  
   object git_push:
     given _tag: Tag[git_push] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Controls the behavior of a git_push object.
   */
-  opaque type git_push_options = CStruct6[CUnsignedInt, CUnsignedInt, git_remote_callbacks, git_proxy_options, git_remote_redirect_t, git_strarray]
+  opaque type git_push_options = CStruct7[CUnsignedInt, CUnsignedInt, git_remote_callbacks, git_proxy_options, git_remote_redirect_t, git_strarray, git_strarray]
+  
   object git_push_options:
-    given _tag: Tag[git_push_options] = Tag.materializeCStruct6Tag[CUnsignedInt, CUnsignedInt, git_remote_callbacks, git_proxy_options, git_remote_redirect_t, git_strarray]
+    given _tag: Tag[git_push_options] = Tag.materializeCStruct7Tag[CUnsignedInt, CUnsignedInt, git_remote_callbacks, git_proxy_options, git_remote_redirect_t, git_strarray, git_strarray]
+    
+    // Allocates git_push_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_push_options] = scala.scalanative.unsafe.alloc[git_push_options](1)
-    def apply(version : CUnsignedInt, pb_parallelism : CUnsignedInt, callbacks : git_remote_callbacks, proxy_opts : git_proxy_options, follow_redirects : git_remote_redirect_t, custom_headers : git_strarray)(using Zone): Ptr[git_push_options] = 
+    def apply(version : CUnsignedInt, pb_parallelism : CUnsignedInt, callbacks : git_remote_callbacks, proxy_opts : git_proxy_options, follow_redirects : git_remote_redirect_t, custom_headers : git_strarray, remote_push_options : git_strarray)(using Zone): Ptr[git_push_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).pb_parallelism = pb_parallelism
@@ -4959,7 +5538,9 @@ object structs:
       (!____ptr).proxy_opts = proxy_opts
       (!____ptr).follow_redirects = follow_redirects
       (!____ptr).custom_headers = custom_headers
+      (!____ptr).remote_push_options = remote_push_options
       ____ptr
+    
     extension (struct: git_push_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -4973,21 +5554,28 @@ object structs:
       def follow_redirects_=(value: git_remote_redirect_t): Unit = !struct.at5 = value
       def custom_headers : git_strarray = struct._6
       def custom_headers_=(value: git_strarray): Unit = !struct.at6 = value
+      def remote_push_options : git_strarray = struct._7
+      def remote_push_options_=(value: git_strarray): Unit = !struct.at7 = value
+    
 
   /**
    * Represents an update which will be performed on the remote during push
   */
   opaque type git_push_update = CStruct4[CString, CString, git_oid, git_oid]
+  
   object git_push_update:
     given _tag: Tag[git_push_update] = Tag.materializeCStruct4Tag[CString, CString, git_oid, git_oid]
+    
+    // Allocates git_push_update on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_push_update] = scala.scalanative.unsafe.alloc[git_push_update](1)
-    def apply(src_refname : CString, dst_refname : CString, src : git_oid, dst : git_oid)(using Zone): Ptr[git_push_update] = 
+    def apply(src_refname : CString, dst_refname : CString, src : git_oid, dst : git_oid)(using Zone): Ptr[git_push_update] =
       val ____ptr = apply()
       (!____ptr).src_refname = src_refname
       (!____ptr).dst_refname = dst_refname
       (!____ptr).src = src
       (!____ptr).dst = dst
       ____ptr
+    
     extension (struct: git_push_update)
       def src_refname : CString = struct._1
       def src_refname_=(value: CString): Unit = !struct.at1 = value
@@ -4997,24 +5585,31 @@ object structs:
       def src_=(value: git_oid): Unit = !struct.at3 = value
       def dst : git_oid = struct._4
       def dst_=(value: git_oid): Unit = !struct.at4 = value
+    
 
   opaque type git_rebase = CStruct0
+  
   object git_rebase:
     given _tag: Tag[git_rebase] = Tag.materializeCStruct0Tag
+    
 
   /**
    * A rebase operation
   */
   opaque type git_rebase_operation = CStruct3[git_rebase_operation_t, git_oid, CString]
+  
   object git_rebase_operation:
     given _tag: Tag[git_rebase_operation] = Tag.materializeCStruct3Tag[git_rebase_operation_t, git_oid, CString]
+    
+    // Allocates git_rebase_operation on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_rebase_operation] = scala.scalanative.unsafe.alloc[git_rebase_operation](1)
-    def apply(`type` : git_rebase_operation_t, id : git_oid, exec : CString)(using Zone): Ptr[git_rebase_operation] = 
+    def apply(`type` : git_rebase_operation_t, id : git_oid, exec : CString)(using Zone): Ptr[git_rebase_operation] =
       val ____ptr = apply()
       (!____ptr).`type` = `type`
       (!____ptr).id = id
       (!____ptr).exec = exec
       ____ptr
+    
     extension (struct: git_rebase_operation)
       def `type` : git_rebase_operation_t = struct._1
       def type_=(value: git_rebase_operation_t): Unit = !struct.at1 = value
@@ -5022,15 +5617,19 @@ object structs:
       def id_=(value: git_oid): Unit = !struct.at2 = value
       def exec : CString = struct._3
       def exec_=(value: CString): Unit = !struct.at3 = value
+    
 
   /**
    * Rebase options
   */
   opaque type git_rebase_options = CStruct9[CUnsignedInt, CInt, CInt, CString, git_merge_options, git_checkout_options, git_commit_create_cb, CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt], Ptr[Byte]]
+  
   object git_rebase_options:
     given _tag: Tag[git_rebase_options] = Tag.materializeCStruct9Tag[CUnsignedInt, CInt, CInt, CString, git_merge_options, git_checkout_options, git_commit_create_cb, CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt], Ptr[Byte]]
+    
+    // Allocates git_rebase_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_rebase_options] = scala.scalanative.unsafe.alloc[git_rebase_options](1)
-    def apply(version : CUnsignedInt, quiet : CInt, inmemory : CInt, rewrite_notes_ref : CString, merge_options : git_merge_options, checkout_options : git_checkout_options, commit_create_cb : git_commit_create_cb, signing_cb : CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt], payload : Ptr[Byte])(using Zone): Ptr[git_rebase_options] = 
+    def apply(version : CUnsignedInt, quiet : CInt, inmemory : CInt, rewrite_notes_ref : CString, merge_options : git_merge_options, checkout_options : git_checkout_options, commit_create_cb : git_commit_create_cb, signing_cb : CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt], payload : Ptr[Byte])(using Zone): Ptr[git_rebase_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).quiet = quiet
@@ -5042,6 +5641,7 @@ object structs:
       (!____ptr).signing_cb = signing_cb
       (!____ptr).payload = payload
       ____ptr
+    
     extension (struct: git_rebase_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -5061,47 +5661,67 @@ object structs:
       def signing_cb_=(value: CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt]): Unit = !struct.at8 = value
       def payload : Ptr[Byte] = struct._9
       def payload_=(value: Ptr[Byte]): Unit = !struct.at9 = value
+    
 
   opaque type git_refdb = CStruct0
+  
   object git_refdb:
     given _tag: Tag[git_refdb] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_refdb_backend = CStruct0
+  
   object git_refdb_backend:
     given _tag: Tag[git_refdb_backend] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_reference = CStruct0
+  
   object git_reference:
     given _tag: Tag[git_reference] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_reference_iterator = CStruct0
+  
   object git_reference_iterator:
     given _tag: Tag[git_reference_iterator] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_reflog = CStruct0
+  
   object git_reflog:
     given _tag: Tag[git_reflog] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_reflog_entry = CStruct0
+  
   object git_reflog_entry:
     given _tag: Tag[git_reflog_entry] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_refspec = CStruct0
+  
   object git_refspec:
     given _tag: Tag[git_refspec] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_remote = CStruct0
+  
   object git_remote:
     given _tag: Tag[git_remote] = Tag.materializeCStruct0Tag
+    
 
   /**
    * The callback settings structure
   */
-  opaque type git_remote_callbacks = CStruct15[CUnsignedInt, git_transport_message_cb, CFuncPtr2[git_remote_completion_t, Ptr[Byte], CInt], Ptr[Byte], git_transport_certificate_check_cb, git_indexer_progress_cb, CFuncPtr4[CString, Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt], git_packbuilder_progress, git_push_transfer_progress_cb, git_push_update_reference_cb, git_push_negotiation, git_transport_cb, git_remote_ready_cb, Ptr[Byte], git_url_resolve_cb]
+  opaque type git_remote_callbacks = CStruct16[CUnsignedInt, git_transport_message_cb, CFuncPtr2[git_remote_completion_t, Ptr[Byte], CInt], Ptr[Byte], git_transport_certificate_check_cb, git_indexer_progress_cb, CFuncPtr4[CString, Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt], git_packbuilder_progress, git_push_transfer_progress_cb, git_push_update_reference_cb, git_push_negotiation, git_transport_cb, git_remote_ready_cb, Ptr[Byte], git_url_resolve_cb, CFuncPtr5[CString, Ptr[git_oid], Ptr[git_oid], Ptr[git_refspec], Ptr[Byte], CInt]]
+  
   object git_remote_callbacks:
-    given _tag: Tag[git_remote_callbacks] = Tag.materializeCStruct15Tag[CUnsignedInt, git_transport_message_cb, CFuncPtr2[git_remote_completion_t, Ptr[Byte], CInt], Ptr[Byte], git_transport_certificate_check_cb, git_indexer_progress_cb, CFuncPtr4[CString, Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt], git_packbuilder_progress, git_push_transfer_progress_cb, git_push_update_reference_cb, git_push_negotiation, git_transport_cb, git_remote_ready_cb, Ptr[Byte], git_url_resolve_cb]
+    given _tag: Tag[git_remote_callbacks] = Tag.materializeCStruct16Tag[CUnsignedInt, git_transport_message_cb, CFuncPtr2[git_remote_completion_t, Ptr[Byte], CInt], Ptr[Byte], git_transport_certificate_check_cb, git_indexer_progress_cb, CFuncPtr4[CString, Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt], git_packbuilder_progress, git_push_transfer_progress_cb, git_push_update_reference_cb, git_push_negotiation, git_transport_cb, git_remote_ready_cb, Ptr[Byte], git_url_resolve_cb, CFuncPtr5[CString, Ptr[git_oid], Ptr[git_oid], Ptr[git_refspec], Ptr[Byte], CInt]]
+    
+    // Allocates git_remote_callbacks on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_remote_callbacks] = scala.scalanative.unsafe.alloc[git_remote_callbacks](1)
-    def apply(version : CUnsignedInt, sideband_progress : git_transport_message_cb, completion : CFuncPtr2[git_remote_completion_t, Ptr[Byte], CInt], credentials : git_credential_acquire_cb, certificate_check : git_transport_certificate_check_cb, transfer_progress : git_indexer_progress_cb, update_tips : CFuncPtr4[CString, Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt], pack_progress : git_packbuilder_progress, push_transfer_progress : git_push_transfer_progress_cb, push_update_reference : git_push_update_reference_cb, push_negotiation : git_push_negotiation, transport : git_transport_cb, remote_ready : git_remote_ready_cb, payload : Ptr[Byte], resolve_url : git_url_resolve_cb)(using Zone): Ptr[git_remote_callbacks] = 
+    def apply(version : CUnsignedInt, sideband_progress : git_transport_message_cb, completion : CFuncPtr2[git_remote_completion_t, Ptr[Byte], CInt], credentials : git_credential_acquire_cb, certificate_check : git_transport_certificate_check_cb, transfer_progress : git_indexer_progress_cb, update_tips : CFuncPtr4[CString, Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt], pack_progress : git_packbuilder_progress, push_transfer_progress : git_push_transfer_progress_cb, push_update_reference : git_push_update_reference_cb, push_negotiation : git_push_negotiation, transport : git_transport_cb, remote_ready : git_remote_ready_cb, payload : Ptr[Byte], resolve_url : git_url_resolve_cb, update_refs : CFuncPtr5[CString, Ptr[git_oid], Ptr[git_oid], Ptr[git_refspec], Ptr[Byte], CInt])(using Zone): Ptr[git_remote_callbacks] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).sideband_progress = sideband_progress
@@ -5118,7 +5738,9 @@ object structs:
       (!____ptr).remote_ready = remote_ready
       (!____ptr).payload = payload
       (!____ptr).resolve_url = resolve_url
+      (!____ptr).update_refs = update_refs
       ____ptr
+    
     extension (struct: git_remote_callbacks)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -5150,15 +5772,21 @@ object structs:
       def payload_=(value: Ptr[Byte]): Unit = !struct.at14 = value
       def resolve_url : git_url_resolve_cb = struct._15
       def resolve_url_=(value: git_url_resolve_cb): Unit = !struct.at15 = value
+      def update_refs : CFuncPtr5[CString, Ptr[git_oid], Ptr[git_oid], Ptr[git_refspec], Ptr[Byte], CInt] = struct._16
+      def update_refs_=(value: CFuncPtr5[CString, Ptr[git_oid], Ptr[git_oid], Ptr[git_refspec], Ptr[Byte], CInt]): Unit = !struct.at16 = value
+    
 
   /**
    * Remote creation options structure
   */
   opaque type git_remote_connect_options = CStruct5[CUnsignedInt, git_remote_callbacks, git_proxy_options, git_remote_redirect_t, git_strarray]
+  
   object git_remote_connect_options:
     given _tag: Tag[git_remote_connect_options] = Tag.materializeCStruct5Tag[CUnsignedInt, git_remote_callbacks, git_proxy_options, git_remote_redirect_t, git_strarray]
+    
+    // Allocates git_remote_connect_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_remote_connect_options] = scala.scalanative.unsafe.alloc[git_remote_connect_options](1)
-    def apply(version : CUnsignedInt, callbacks : git_remote_callbacks, proxy_opts : git_proxy_options, follow_redirects : git_remote_redirect_t, custom_headers : git_strarray)(using Zone): Ptr[git_remote_connect_options] = 
+    def apply(version : CUnsignedInt, callbacks : git_remote_callbacks, proxy_opts : git_proxy_options, follow_redirects : git_remote_redirect_t, custom_headers : git_strarray)(using Zone): Ptr[git_remote_connect_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).callbacks = callbacks
@@ -5166,6 +5794,7 @@ object structs:
       (!____ptr).follow_redirects = follow_redirects
       (!____ptr).custom_headers = custom_headers
       ____ptr
+    
     extension (struct: git_remote_connect_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -5177,15 +5806,19 @@ object structs:
       def follow_redirects_=(value: git_remote_redirect_t): Unit = !struct.at4 = value
       def custom_headers : git_strarray = struct._5
       def custom_headers_=(value: git_strarray): Unit = !struct.at5 = value
+    
 
   /**
    * Remote creation options structure
   */
   opaque type git_remote_create_options = CStruct5[CUnsignedInt, Ptr[git_repository], CString, CString, CUnsignedInt]
+  
   object git_remote_create_options:
     given _tag: Tag[git_remote_create_options] = Tag.materializeCStruct5Tag[CUnsignedInt, Ptr[git_repository], CString, CString, CUnsignedInt]
+    
+    // Allocates git_remote_create_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_remote_create_options] = scala.scalanative.unsafe.alloc[git_remote_create_options](1)
-    def apply(version : CUnsignedInt, repository : Ptr[git_repository], name : CString, fetchspec : CString, flags : CUnsignedInt)(using Zone): Ptr[git_remote_create_options] = 
+    def apply(version : CUnsignedInt, repository : Ptr[git_repository], name : CString, fetchspec : CString, flags : CUnsignedInt)(using Zone): Ptr[git_remote_create_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).repository = repository
@@ -5193,6 +5826,7 @@ object structs:
       (!____ptr).fetchspec = fetchspec
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: git_remote_create_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -5204,15 +5838,19 @@ object structs:
       def fetchspec_=(value: CString): Unit = !struct.at4 = value
       def flags : CUnsignedInt = struct._5
       def flags_=(value: CUnsignedInt): Unit = !struct.at5 = value
+    
 
   /**
    * Description of a reference advertised by a remote server, given out on `ls` calls.
   */
   opaque type git_remote_head = CStruct5[CInt, git_oid, git_oid, CString, CString]
+  
   object git_remote_head:
     given _tag: Tag[git_remote_head] = Tag.materializeCStruct5Tag[CInt, git_oid, git_oid, CString, CString]
+    
+    // Allocates git_remote_head on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_remote_head] = scala.scalanative.unsafe.alloc[git_remote_head](1)
-    def apply(local : CInt, oid : git_oid, loid : git_oid, name : CString, symref_target : CString)(using Zone): Ptr[git_remote_head] = 
+    def apply(local : CInt, oid : git_oid, loid : git_oid, name : CString, symref_target : CString)(using Zone): Ptr[git_remote_head] =
       val ____ptr = apply()
       (!____ptr).local = local
       (!____ptr).oid = oid
@@ -5220,6 +5858,7 @@ object structs:
       (!____ptr).name = name
       (!____ptr).symref_target = symref_target
       ____ptr
+    
     extension (struct: git_remote_head)
       def local : CInt = struct._1
       def local_=(value: CInt): Unit = !struct.at1 = value
@@ -5231,19 +5870,25 @@ object structs:
       def name_=(value: CString): Unit = !struct.at4 = value
       def symref_target : CString = struct._5
       def symref_target_=(value: CString): Unit = !struct.at5 = value
+    
 
   opaque type git_repository = CStruct0
+  
   object git_repository:
     given _tag: Tag[git_repository] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Extended options structure for `git_repository_init_ext`.
   */
   opaque type git_repository_init_options = CStruct8[CUnsignedInt, uint32_t, uint32_t, CString, CString, CString, CString, CString]
+  
   object git_repository_init_options:
     given _tag: Tag[git_repository_init_options] = Tag.materializeCStruct8Tag[CUnsignedInt, uint32_t, uint32_t, CString, CString, CString, CString, CString]
+    
+    // Allocates git_repository_init_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_repository_init_options] = scala.scalanative.unsafe.alloc[git_repository_init_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t, mode : uint32_t, workdir_path : CString, description : CString, template_path : CString, initial_head : CString, origin_url : CString)(using Zone): Ptr[git_repository_init_options] = 
+    def apply(version : CUnsignedInt, flags : uint32_t, mode : uint32_t, workdir_path : CString, description : CString, template_path : CString, initial_head : CString, origin_url : CString)(using Zone): Ptr[git_repository_init_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
@@ -5254,6 +5899,7 @@ object structs:
       (!____ptr).initial_head = initial_head
       (!____ptr).origin_url = origin_url
       ____ptr
+    
     extension (struct: git_repository_init_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -5271,21 +5917,26 @@ object structs:
       def initial_head_=(value: CString): Unit = !struct.at7 = value
       def origin_url : CString = struct._8
       def origin_url_=(value: CString): Unit = !struct.at8 = value
+    
 
   /**
    * Options for revert
   */
   opaque type git_revert_options = CStruct4[CUnsignedInt, CUnsignedInt, git_merge_options, git_checkout_options]
+  
   object git_revert_options:
     given _tag: Tag[git_revert_options] = Tag.materializeCStruct4Tag[CUnsignedInt, CUnsignedInt, git_merge_options, git_checkout_options]
+    
+    // Allocates git_revert_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_revert_options] = scala.scalanative.unsafe.alloc[git_revert_options](1)
-    def apply(version : CUnsignedInt, mainline : CUnsignedInt, merge_opts : git_merge_options, checkout_opts : git_checkout_options)(using Zone): Ptr[git_revert_options] = 
+    def apply(version : CUnsignedInt, mainline : CUnsignedInt, merge_opts : git_merge_options, checkout_opts : git_checkout_options)(using Zone): Ptr[git_revert_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).mainline = mainline
       (!____ptr).merge_opts = merge_opts
       (!____ptr).checkout_opts = checkout_opts
       ____ptr
+    
     extension (struct: git_revert_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -5295,20 +5946,25 @@ object structs:
       def merge_opts_=(value: git_merge_options): Unit = !struct.at3 = value
       def checkout_opts : git_checkout_options = struct._4
       def checkout_opts_=(value: git_checkout_options): Unit = !struct.at4 = value
+    
 
   /**
    * Git Revision Spec: output of a `git_revparse` operation
   */
   opaque type git_revspec = CStruct3[Ptr[git_object], Ptr[git_object], CUnsignedInt]
+  
   object git_revspec:
     given _tag: Tag[git_revspec] = Tag.materializeCStruct3Tag[Ptr[git_object], Ptr[git_object], CUnsignedInt]
+    
+    // Allocates git_revspec on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_revspec] = scala.scalanative.unsafe.alloc[git_revspec](1)
-    def apply(from : Ptr[git_object], to : Ptr[git_object], flags : CUnsignedInt)(using Zone): Ptr[git_revspec] = 
+    def apply(from : Ptr[git_object], to : Ptr[git_object], flags : CUnsignedInt)(using Zone): Ptr[git_revspec] =
       val ____ptr = apply()
       (!____ptr).from = from
       (!____ptr).to = to
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: git_revspec)
       def from : Ptr[git_object] = struct._1
       def from_=(value: Ptr[git_object]): Unit = !struct.at1 = value
@@ -5316,24 +5972,31 @@ object structs:
       def to_=(value: Ptr[git_object]): Unit = !struct.at2 = value
       def flags : CUnsignedInt = struct._3
       def flags_=(value: CUnsignedInt): Unit = !struct.at3 = value
+    
 
   opaque type git_revwalk = CStruct0
+  
   object git_revwalk:
     given _tag: Tag[git_revwalk] = Tag.materializeCStruct0Tag
+    
 
   /**
    * An action signature (e.g. for committers, taggers, etc)
   */
   opaque type git_signature = CStruct3[CString, CString, git_time]
+  
   object git_signature:
     given _tag: Tag[git_signature] = Tag.materializeCStruct3Tag[CString, CString, git_time]
+    
+    // Allocates git_signature on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_signature] = scala.scalanative.unsafe.alloc[git_signature](1)
-    def apply(name : CString, email : CString, when : git_time)(using Zone): Ptr[git_signature] = 
+    def apply(name : CString, email : CString, when : git_time)(using Zone): Ptr[git_signature] =
       val ____ptr = apply()
       (!____ptr).name = name
       (!____ptr).email = email
       (!____ptr).when = when
       ____ptr
+    
     extension (struct: git_signature)
       def name : CString = struct._1
       def name_=(value: CString): Unit = !struct.at1 = value
@@ -5341,15 +6004,19 @@ object structs:
       def email_=(value: CString): Unit = !struct.at2 = value
       def when : git_time = struct._3
       def when_=(value: git_time): Unit = !struct.at3 = value
+    
 
   /**
    * Stash application options structure
   */
   opaque type git_stash_apply_options = CStruct5[CUnsignedInt, uint32_t, git_checkout_options, git_stash_apply_progress_cb, Ptr[Byte]]
+  
   object git_stash_apply_options:
     given _tag: Tag[git_stash_apply_options] = Tag.materializeCStruct5Tag[CUnsignedInt, uint32_t, git_checkout_options, git_stash_apply_progress_cb, Ptr[Byte]]
+    
+    // Allocates git_stash_apply_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_stash_apply_options] = scala.scalanative.unsafe.alloc[git_stash_apply_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t, checkout_options : git_checkout_options, progress_cb : git_stash_apply_progress_cb, progress_payload : Ptr[Byte])(using Zone): Ptr[git_stash_apply_options] = 
+    def apply(version : CUnsignedInt, flags : uint32_t, checkout_options : git_checkout_options, progress_cb : git_stash_apply_progress_cb, progress_payload : Ptr[Byte])(using Zone): Ptr[git_stash_apply_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
@@ -5357,6 +6024,7 @@ object structs:
       (!____ptr).progress_cb = progress_cb
       (!____ptr).progress_payload = progress_payload
       ____ptr
+    
     extension (struct: git_stash_apply_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -5368,15 +6036,19 @@ object structs:
       def progress_cb_=(value: git_stash_apply_progress_cb): Unit = !struct.at4 = value
       def progress_payload : Ptr[Byte] = struct._5
       def progress_payload_=(value: Ptr[Byte]): Unit = !struct.at5 = value
+    
 
   /**
    * Stash save options structure
   */
   opaque type git_stash_save_options = CStruct5[CUnsignedInt, uint32_t, Ptr[git_signature], CString, git_strarray]
+  
   object git_stash_save_options:
     given _tag: Tag[git_stash_save_options] = Tag.materializeCStruct5Tag[CUnsignedInt, uint32_t, Ptr[git_signature], CString, git_strarray]
+    
+    // Allocates git_stash_save_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_stash_save_options] = scala.scalanative.unsafe.alloc[git_stash_save_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t, stasher : Ptr[git_signature], message : CString, paths : git_strarray)(using Zone): Ptr[git_stash_save_options] = 
+    def apply(version : CUnsignedInt, flags : uint32_t, stasher : Ptr[git_signature], message : CString, paths : git_strarray)(using Zone): Ptr[git_stash_save_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
@@ -5384,6 +6056,7 @@ object structs:
       (!____ptr).message = message
       (!____ptr).paths = paths
       ____ptr
+    
     extension (struct: git_stash_save_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -5395,20 +6068,25 @@ object structs:
       def message_=(value: CString): Unit = !struct.at4 = value
       def paths : git_strarray = struct._5
       def paths_=(value: git_strarray): Unit = !struct.at5 = value
+    
 
   /**
    * A status entry, providing the differences between the file as it exists in HEAD and the index, and providing the differences between the index and the working directory.
   */
   opaque type git_status_entry = CStruct3[git_status_t, Ptr[git_diff_delta], Ptr[git_diff_delta]]
+  
   object git_status_entry:
     given _tag: Tag[git_status_entry] = Tag.materializeCStruct3Tag[git_status_t, Ptr[git_diff_delta], Ptr[git_diff_delta]]
+    
+    // Allocates git_status_entry on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_status_entry] = scala.scalanative.unsafe.alloc[git_status_entry](1)
-    def apply(status : git_status_t, head_to_index : Ptr[git_diff_delta], index_to_workdir : Ptr[git_diff_delta])(using Zone): Ptr[git_status_entry] = 
+    def apply(status : git_status_t, head_to_index : Ptr[git_diff_delta], index_to_workdir : Ptr[git_diff_delta])(using Zone): Ptr[git_status_entry] =
       val ____ptr = apply()
       (!____ptr).status = status
       (!____ptr).head_to_index = head_to_index
       (!____ptr).index_to_workdir = index_to_workdir
       ____ptr
+    
     extension (struct: git_status_entry)
       def status : git_status_t = struct._1
       def status_=(value: git_status_t): Unit = !struct.at1 = value
@@ -5416,19 +6094,25 @@ object structs:
       def head_to_index_=(value: Ptr[git_diff_delta]): Unit = !struct.at2 = value
       def index_to_workdir : Ptr[git_diff_delta] = struct._3
       def index_to_workdir_=(value: Ptr[git_diff_delta]): Unit = !struct.at3 = value
+    
 
   opaque type git_status_list = CStruct0
+  
   object git_status_list:
     given _tag: Tag[git_status_list] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Options to control how `git_status_foreach_ext()` will issue callbacks.
   */
   opaque type git_status_options = CStruct6[CUnsignedInt, git_status_show_t, CUnsignedInt, git_strarray, Ptr[git_tree], uint16_t]
+  
   object git_status_options:
     given _tag: Tag[git_status_options] = Tag.materializeCStruct6Tag[CUnsignedInt, git_status_show_t, CUnsignedInt, git_strarray, Ptr[git_tree], uint16_t]
+    
+    // Allocates git_status_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_status_options] = scala.scalanative.unsafe.alloc[git_status_options](1)
-    def apply(version : CUnsignedInt, show : git_status_show_t, flags : CUnsignedInt, pathspec : git_strarray, baseline : Ptr[git_tree], rename_threshold : uint16_t)(using Zone): Ptr[git_status_options] = 
+    def apply(version : CUnsignedInt, show : git_status_show_t, flags : CUnsignedInt, pathspec : git_strarray, baseline : Ptr[git_tree], rename_threshold : uint16_t)(using Zone): Ptr[git_status_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).show = show
@@ -5437,6 +6121,7 @@ object structs:
       (!____ptr).baseline = baseline
       (!____ptr).rename_threshold = rename_threshold
       ____ptr
+    
     extension (struct: git_status_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -5450,43 +6135,55 @@ object structs:
       def baseline_=(value: Ptr[git_tree]): Unit = !struct.at5 = value
       def rename_threshold : uint16_t = struct._6
       def rename_threshold_=(value: uint16_t): Unit = !struct.at6 = value
+    
 
   /**
    * Array of strings
   */
   opaque type git_strarray = CStruct2[Ptr[CString], size_t]
+  
   object git_strarray:
     given _tag: Tag[git_strarray] = Tag.materializeCStruct2Tag[Ptr[CString], size_t]
+    
+    // Allocates git_strarray on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_strarray] = scala.scalanative.unsafe.alloc[git_strarray](1)
-    def apply(strings : Ptr[CString], count : size_t)(using Zone): Ptr[git_strarray] = 
+    def apply(strings : Ptr[CString], count : size_t)(using Zone): Ptr[git_strarray] =
       val ____ptr = apply()
       (!____ptr).strings = strings
       (!____ptr).count = count
       ____ptr
+    
     extension (struct: git_strarray)
       def strings : Ptr[CString] = struct._1
       def strings_=(value: Ptr[CString]): Unit = !struct.at1 = value
       def count : size_t = struct._2
       def count_=(value: size_t): Unit = !struct.at2 = value
+    
 
   opaque type git_submodule = CStruct0
+  
   object git_submodule:
     given _tag: Tag[git_submodule] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Submodule update options structure
   */
   opaque type git_submodule_update_options = CStruct4[CUnsignedInt, git_checkout_options, git_fetch_options, CInt]
+  
   object git_submodule_update_options:
     given _tag: Tag[git_submodule_update_options] = Tag.materializeCStruct4Tag[CUnsignedInt, git_checkout_options, git_fetch_options, CInt]
+    
+    // Allocates git_submodule_update_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_submodule_update_options] = scala.scalanative.unsafe.alloc[git_submodule_update_options](1)
-    def apply(version : CUnsignedInt, checkout_opts : git_checkout_options, fetch_opts : git_fetch_options, allow_fetch : CInt)(using Zone): Ptr[git_submodule_update_options] = 
+    def apply(version : CUnsignedInt, checkout_opts : git_checkout_options, fetch_opts : git_fetch_options, allow_fetch : CInt)(using Zone): Ptr[git_submodule_update_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).checkout_opts = checkout_opts
       (!____ptr).fetch_opts = fetch_opts
       (!____ptr).allow_fetch = allow_fetch
       ____ptr
+    
     extension (struct: git_submodule_update_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -5496,24 +6193,31 @@ object structs:
       def fetch_opts_=(value: git_fetch_options): Unit = !struct.at3 = value
       def allow_fetch : CInt = struct._4
       def allow_fetch_=(value: CInt): Unit = !struct.at4 = value
+    
 
   opaque type git_tag = CStruct0
+  
   object git_tag:
     given _tag: Tag[git_tag] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Time in a signature
   */
   opaque type git_time = CStruct3[git_time_t, CInt, CChar]
+  
   object git_time:
     given _tag: Tag[git_time] = Tag.materializeCStruct3Tag[git_time_t, CInt, CChar]
+    
+    // Allocates git_time on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_time] = scala.scalanative.unsafe.alloc[git_time](1)
-    def apply(time : git_time_t, offset : CInt, sign : CChar)(using Zone): Ptr[git_time] = 
+    def apply(time : git_time_t, offset : CInt, sign : CChar)(using Zone): Ptr[git_time] =
       val ____ptr = apply()
       (!____ptr).time = time
       (!____ptr).offset = offset
       (!____ptr).sign = sign
       ____ptr
+    
     extension (struct: git_time)
       def time : git_time_t = struct._1
       def time_=(value: git_time_t): Unit = !struct.at1 = value
@@ -5521,37 +6225,50 @@ object structs:
       def offset_=(value: CInt): Unit = !struct.at2 = value
       def sign : CChar = struct._3
       def sign_=(value: CChar): Unit = !struct.at3 = value
+    
 
   opaque type git_transaction = CStruct0
+  
   object git_transaction:
     given _tag: Tag[git_transaction] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_transport = CStruct0
+  
   object git_transport:
     given _tag: Tag[git_transport] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_tree = CStruct0
+  
   object git_tree:
     given _tag: Tag[git_tree] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_tree_entry = CStruct0
+  
   object git_tree_entry:
     given _tag: Tag[git_tree_entry] = Tag.materializeCStruct0Tag
+    
 
   /**
    * An action to perform during the update of a tree
   */
   opaque type git_tree_update = CStruct4[git_tree_update_t, git_oid, git_filemode_t, CString]
+  
   object git_tree_update:
     given _tag: Tag[git_tree_update] = Tag.materializeCStruct4Tag[git_tree_update_t, git_oid, git_filemode_t, CString]
+    
+    // Allocates git_tree_update on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_tree_update] = scala.scalanative.unsafe.alloc[git_tree_update](1)
-    def apply(action : git_tree_update_t, id : git_oid, filemode : git_filemode_t, path : CString)(using Zone): Ptr[git_tree_update] = 
+    def apply(action : git_tree_update_t, id : git_oid, filemode : git_filemode_t, path : CString)(using Zone): Ptr[git_tree_update] =
       val ____ptr = apply()
       (!____ptr).action = action
       (!____ptr).id = id
       (!____ptr).filemode = filemode
       (!____ptr).path = path
       ____ptr
+    
     extension (struct: git_tree_update)
       def action : git_tree_update_t = struct._1
       def action_=(value: git_tree_update_t): Unit = !struct.at1 = value
@@ -5561,70 +6278,92 @@ object structs:
       def filemode_=(value: git_filemode_t): Unit = !struct.at3 = value
       def path : CString = struct._4
       def path_=(value: CString): Unit = !struct.at4 = value
+    
 
   opaque type git_treebuilder = CStruct0
+  
   object git_treebuilder:
     given _tag: Tag[git_treebuilder] = Tag.materializeCStruct0Tag
+    
 
   opaque type git_worktree = CStruct0
+  
   object git_worktree:
     given _tag: Tag[git_worktree] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Worktree add options structure
   */
-  opaque type git_worktree_add_options = CStruct4[CUnsignedInt, CInt, Ptr[git_reference], git_checkout_options]
+  opaque type git_worktree_add_options = CStruct5[CUnsignedInt, CInt, CInt, Ptr[git_reference], git_checkout_options]
+  
   object git_worktree_add_options:
-    given _tag: Tag[git_worktree_add_options] = Tag.materializeCStruct4Tag[CUnsignedInt, CInt, Ptr[git_reference], git_checkout_options]
+    given _tag: Tag[git_worktree_add_options] = Tag.materializeCStruct5Tag[CUnsignedInt, CInt, CInt, Ptr[git_reference], git_checkout_options]
+    
+    // Allocates git_worktree_add_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_worktree_add_options] = scala.scalanative.unsafe.alloc[git_worktree_add_options](1)
-    def apply(version : CUnsignedInt, lock : CInt, ref : Ptr[git_reference], checkout_options : git_checkout_options)(using Zone): Ptr[git_worktree_add_options] = 
+    def apply(version : CUnsignedInt, lock : CInt, checkout_existing : CInt, ref : Ptr[git_reference], checkout_options : git_checkout_options)(using Zone): Ptr[git_worktree_add_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).lock = lock
+      (!____ptr).checkout_existing = checkout_existing
       (!____ptr).ref = ref
       (!____ptr).checkout_options = checkout_options
       ____ptr
+    
     extension (struct: git_worktree_add_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
       def lock : CInt = struct._2
       def lock_=(value: CInt): Unit = !struct.at2 = value
-      def ref : Ptr[git_reference] = struct._3
-      def ref_=(value: Ptr[git_reference]): Unit = !struct.at3 = value
-      def checkout_options : git_checkout_options = struct._4
-      def checkout_options_=(value: git_checkout_options): Unit = !struct.at4 = value
+      def checkout_existing : CInt = struct._3
+      def checkout_existing_=(value: CInt): Unit = !struct.at3 = value
+      def ref : Ptr[git_reference] = struct._4
+      def ref_=(value: Ptr[git_reference]): Unit = !struct.at4 = value
+      def checkout_options : git_checkout_options = struct._5
+      def checkout_options_=(value: git_checkout_options): Unit = !struct.at5 = value
+    
 
   /**
    * Worktree prune options structure
   */
   opaque type git_worktree_prune_options = CStruct2[CUnsignedInt, uint32_t]
+  
   object git_worktree_prune_options:
     given _tag: Tag[git_worktree_prune_options] = Tag.materializeCStruct2Tag[CUnsignedInt, uint32_t]
+    
+    // Allocates git_worktree_prune_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_worktree_prune_options] = scala.scalanative.unsafe.alloc[git_worktree_prune_options](1)
-    def apply(version : CUnsignedInt, flags : uint32_t)(using Zone): Ptr[git_worktree_prune_options] = 
+    def apply(version : CUnsignedInt, flags : uint32_t)(using Zone): Ptr[git_worktree_prune_options] =
       val ____ptr = apply()
       (!____ptr).version = version
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: git_worktree_prune_options)
       def version : CUnsignedInt = struct._1
       def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
       def flags : uint32_t = struct._2
       def flags_=(value: uint32_t): Unit = !struct.at2 = value
+    
 
   /**
    * A type to write in a streaming fashion, for example, for filters.
   */
   opaque type git_writestream = CStruct3[CFuncPtr3[Ptr[Byte], CString, size_t, CInt], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], Unit]]
+  
   object git_writestream:
     given _tag: Tag[git_writestream] = Tag.materializeCStruct3Tag[CFuncPtr3[Ptr[Byte], CString, size_t, CInt], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], Unit]]
+    
+    // Allocates git_writestream on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_writestream] = scala.scalanative.unsafe.alloc[git_writestream](1)
-    def apply(write : CFuncPtr3[Ptr[git_writestream], CString, size_t, CInt], close : CFuncPtr1[Ptr[git_writestream], CInt], free : CFuncPtr1[Ptr[git_writestream], Unit])(using Zone): Ptr[git_writestream] = 
+    def apply(write : CFuncPtr3[Ptr[git_writestream], CString, size_t, CInt], close : CFuncPtr1[Ptr[git_writestream], CInt], free : CFuncPtr1[Ptr[git_writestream], Unit])(using Zone): Ptr[git_writestream] =
       val ____ptr = apply()
       (!____ptr).write = write
       (!____ptr).close = close
       (!____ptr).free = free
       ____ptr
+    
     extension (struct: git_writestream)
       def write : CFuncPtr3[Ptr[git_writestream], CString, size_t, CInt] = struct._1.asInstanceOf[CFuncPtr3[Ptr[git_writestream], CString, size_t, CInt]]
       def write_=(value: CFuncPtr3[Ptr[git_writestream], CString, size_t, CInt]): Unit = !struct.at1 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], CString, size_t, CInt]]
@@ -5632,8 +6371,10 @@ object structs:
       def close_=(value: CFuncPtr1[Ptr[git_writestream], CInt]): Unit = !struct.at2 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], CInt]]
       def free : CFuncPtr1[Ptr[git_writestream], Unit] = struct._3.asInstanceOf[CFuncPtr1[Ptr[git_writestream], Unit]]
       def free_=(value: CFuncPtr1[Ptr[git_writestream], Unit]): Unit = !struct.at3 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
+    
 
 @link("git2")
+
 @extern
 private[libgit] object extern_functions:
   import _root_.libgit.enumerations.*
@@ -5736,14 +6477,19 @@ private[libgit] object extern_functions:
   def git_attr_value(attr : CString): git_attr_value_t = extern
 
   /**
-   * Get blame data for a file that has been modified in memory. The `reference` parameter is a pre-calculated blame for the in-odb history of the file. This means that once a file blame is completed (which can be expensive), updating the buffer blame is very fast.
+   * Get blame data for a file that has been modified in memory. The `blame` parameter is a pre-calculated blame for the in-odb history of the file. This means that once a file blame is completed (which can be expensive), updating the buffer blame is very fast.
   */
-  def git_blame_buffer(out : Ptr[Ptr[git_blame]], reference : Ptr[git_blame], buffer : CString, buffer_len : size_t): CInt = extern
+  def git_blame_buffer(out : Ptr[Ptr[git_blame]], base : Ptr[git_blame], buffer : CString, buffer_len : size_t): CInt = extern
 
   /**
-   * Get the blame for a single file.
+   * Get the blame for a single file in the repository.
   */
   def git_blame_file(out : Ptr[Ptr[git_blame]], repo : Ptr[git_repository], path : CString, options : Ptr[git_blame_options]): CInt = extern
+
+  /**
+   * Get the blame for a single file in the repository, using the specified buffer contents as the uncommitted changes of the file (the working directory contents).
+  */
+  def git_blame_file_from_buffer(out : Ptr[Ptr[git_blame]], repo : Ptr[git_repository], path : CString, contents : CString, contents_len : size_t, options : Ptr[git_blame_options]): CInt = extern
 
   /**
    * Free memory allocated by git_blame_file or git_blame_buffer.
@@ -5766,9 +6512,34 @@ private[libgit] object extern_functions:
   def git_blame_get_hunk_count(blame : Ptr[git_blame]): uint32_t = extern
 
   /**
+   * Gets the blame hunk at the given index.
+  */
+  def git_blame_hunk_byindex(blame : Ptr[git_blame], index : size_t): Ptr[git_blame_hunk] = extern
+
+  /**
+   * Gets the hunk that relates to the given line number in the newest commit.
+  */
+  def git_blame_hunk_byline(blame : Ptr[git_blame], lineno : size_t): Ptr[git_blame_hunk] = extern
+
+  /**
+   * Gets the number of hunks that exist in the blame structure.
+  */
+  def git_blame_hunkcount(blame : Ptr[git_blame]): size_t = extern
+
+  /**
    * These functions are retained for backward compatibility. The newer versions of these functions should be preferred in all new code.
   */
   def git_blame_init_options(opts : Ptr[git_blame_options], version : CUnsignedInt): CInt = extern
+
+  /**
+   * Gets the information about the line in the blame.
+  */
+  def git_blame_line_byindex(blame : Ptr[git_blame], idx : size_t): Ptr[git_blame_line] = extern
+
+  /**
+   * Gets the number of lines that exist in the blame structure.
+  */
+  def git_blame_linecount(blame : Ptr[git_blame]): size_t = extern
 
   /**
    * Initialize git_blame_options structure
@@ -5776,27 +6547,27 @@ private[libgit] object extern_functions:
   def git_blame_options_init(opts : Ptr[git_blame_options], version : CUnsignedInt): CInt = extern
 
   /**
-   * Write an in-memory buffer to the ODB as a blob
+   * Write an in-memory buffer to the object database as a blob.
   */
   def git_blob_create_from_buffer(id : Ptr[git_oid], repo : Ptr[git_repository], buffer : Ptr[Byte], len : size_t): CInt = extern
 
   /**
-   * Read a file from the filesystem and write its content to the Object Database as a loose blob
+   * Read a file from the filesystem (not necessarily inside the working folder of the repository) and write it to the object database.
   */
   def git_blob_create_from_disk(id : Ptr[git_oid], repo : Ptr[git_repository], path : CString): CInt = extern
 
   /**
-   * Create a stream to write a new blob into the object db
+   * Create a stream to write a new blob into the object database.
   */
   def git_blob_create_from_stream(out : Ptr[Ptr[git_writestream]], repo : Ptr[git_repository], hintpath : CString): CInt = extern
 
   /**
-   * Close the stream and write the blob to the object db
+   * Close the stream and finalize writing the blob to the object database.
   */
   def git_blob_create_from_stream_commit(out : Ptr[git_oid], stream : Ptr[git_writestream]): CInt = extern
 
   /**
-   * Read a file from the working folder of a repository and write it to the Object Database as a loose blob
+   * Read a file from the working folder of a repository and write it to the object database.
   */
   def git_blob_create_from_workdir(id : Ptr[git_oid], repo : Ptr[git_repository], relative_path : CString): CInt = extern
 
@@ -5846,7 +6617,7 @@ private[libgit] object extern_functions:
   def git_blob_id(blob : Ptr[git_blob]): Ptr[git_oid] = extern
 
   /**
-   * Determine if the blob content is most certainly binary or not.
+   * Determine if the blob content is most likely binary or not.
   */
   def git_blob_is_binary(blob : Ptr[git_blob]): CInt = extern
 
@@ -5883,7 +6654,7 @@ private[libgit] object extern_functions:
   /**
    * Create a new branch pointing at a target commit
   */
-  def git_branch_create_from_annotated(ref_out : Ptr[Ptr[git_reference]], repository : Ptr[git_repository], branch_name : CString, commit : Ptr[git_annotated_commit], force : CInt): CInt = extern
+  def git_branch_create_from_annotated(ref_out : Ptr[Ptr[git_reference]], repo : Ptr[git_repository], branch_name : CString, target : Ptr[git_annotated_commit], force : CInt): CInt = extern
 
   /**
    * Delete an existing branch reference.
@@ -6087,6 +6858,11 @@ private[libgit] object extern_functions:
   def git_commit_create_buffer(out : Ptr[git_buf], repo : Ptr[git_repository], author : Ptr[git_signature], committer : Ptr[git_signature], message_encoding : CString, message : CString, tree : Ptr[git_tree], parent_count : size_t, parents : Ptr[Ptr[git_commit]]): CInt = extern
 
   /**
+   * Commits the staged changes in the repository; this is a near analog to `git commit -m message`.
+  */
+  def git_commit_create_from_stage(id : Ptr[git_oid], repo : Ptr[git_repository], message : CString, opts : Ptr[git_commit_create_options]): CInt = extern
+
+  /**
    * Create new commit in the repository using a variable argument list.
   */
   def git_commit_create_v(id : Ptr[git_oid], repo : Ptr[git_repository], update_ref : CString, author : Ptr[git_signature], committer : Ptr[git_signature], message_encoding : CString, message : CString, tree : Ptr[git_tree], parent_count : size_t, rest: Any*): CInt = extern
@@ -6202,6 +6978,11 @@ private[libgit] object extern_functions:
   def git_commit_tree_id(commit : Ptr[git_commit]): Ptr[git_oid] = extern
 
   /**
+   * Free the commits contained in a commit array. This method should be called on `git_commitarray` objects that were provided by the library. Not doing so will result in a memory leak.
+  */
+  def git_commitarray_dispose(array : Ptr[git_commitarray]): Unit = extern
+
+  /**
    * Add an on-disk config file instance to an existing config
   */
   def git_config_add_file_ondisk(cfg : Ptr[git_config], path : CString, level : git_config_level_t, repo : Ptr[git_repository], force : CInt): CInt = extern
@@ -6222,7 +7003,7 @@ private[libgit] object extern_functions:
   def git_config_delete_multivar(cfg : Ptr[git_config], name : CString, regexp : CString): CInt = extern
 
   /**
-   * Free a config entry
+   * Free a config entry.
   */
   def git_config_entry_free(entry : Ptr[git_config_entry]): Unit = extern
 
@@ -6410,6 +7191,11 @@ private[libgit] object extern_functions:
    * Set the value of a string config variable in the config file with the highest level (usually the local one).
   */
   def git_config_set_string(cfg : Ptr[git_config], name : CString, value : CString): CInt = extern
+
+  /**
+   * Set the write order for configuration backends. By default, the write ordering does not match the read ordering; for example, the worktree configuration is a high-priority for reading, but is not written to unless explicitly chosen.
+  */
+  def git_config_set_writeorder(cfg : Ptr[git_config], levels : Ptr[git_config_level_t], len : size_t): CInt = extern
 
   /**
    * Create a snapshot of the configuration
@@ -6718,34 +7504,9 @@ private[libgit] object extern_functions:
   def git_email_create_from_commit(out : Ptr[git_buf], commit : Ptr[git_commit], opts : Ptr[git_email_create_options]): CInt = extern
 
   /**
-   * Create a diff for a commit in mbox format for sending via email.
-  */
-  def git_email_create_from_diff(out : Ptr[git_buf], diff : Ptr[git_diff], patch_idx : size_t, patch_count : size_t, commit_id : Ptr[git_oid], summary : CString, body : CString, author : Ptr[git_signature], opts : Ptr[git_email_create_options]): CInt = extern
-
-  /**
-   * Clear the last library error that occurred for this thread.
-  */
-  def git_error_clear(): Unit = extern
-
-  /**
    * Return the last `git_error` object that was generated for the current thread.
   */
   def git_error_last(): Ptr[git_error] = extern
-
-  /**
-   * Set the error message string for this thread, using `printf`-style formatting.
-  */
-  def git_error_set(error_class : CInt, fmt : CString, rest: Any*): Unit = extern
-
-  /**
-   * Set the error message to a special value for memory allocation failure.
-  */
-  def git_error_set_oom(): Unit = extern
-
-  /**
-   * Set the error message string for this thread. This function is like `git_error_set` but takes a static string instead of a `printf`-style format.
-  */
-  def git_error_set_str(error_class : CInt, string : CString): CInt = extern
 
   def git_fetch_init_options(opts : Ptr[git_fetch_options], version : CUnsignedInt): CInt = extern
 
@@ -6979,12 +7740,12 @@ private[libgit] object extern_functions:
   /**
    * Create an in-memory index object.
   */
-  def git_index_new(out : Ptr[Ptr[git_index]]): CInt = extern
+  def git_index_new(index_out : Ptr[Ptr[git_index]]): CInt = extern
 
   /**
    * Create a new bare Git index object as a memory representation of the Git index file in 'index_path', without a repository to back it.
   */
-  def git_index_open(out : Ptr[Ptr[git_index]], index_path : CString): CInt = extern
+  def git_index_open(index_out : Ptr[Ptr[git_index]], index_path : CString): CInt = extern
 
   /**
    * Get the repository this index relates to
@@ -7097,6 +7858,11 @@ private[libgit] object extern_functions:
    * Initializes a `git_indexer_options` with default values. Equivalent to creating an instance with GIT_INDEXER_OPTIONS_INIT.
   */
   def git_indexer_options_init(opts : Ptr[git_indexer_options], version : CUnsignedInt): CInt = extern
+
+  /**
+   * Query the backend details for the compile-time feature in libgit2.
+  */
+  def git_libgit2_feature_backend(feature : git_feature_t): CString = extern
 
   /**
    * Query compile time options for libgit2.
@@ -7439,10 +8205,19 @@ private[libgit] object extern_functions:
   */
   def git_odb_add_disk_alternate(odb : Ptr[git_odb], path : CString): CInt = extern
 
+  /**
+   * Create a backend for loose objects
+  */
   def git_odb_backend_loose(out : Ptr[Ptr[git_odb_backend]], objects_dir : CString, compression_level : CInt, do_fsync : CInt, dir_mode : CUnsignedInt, file_mode : CUnsignedInt): CInt = extern
 
+  /**
+   * Create a backend out of a single packfile
+  */
   def git_odb_backend_one_pack(out : Ptr[Ptr[git_odb_backend]], index_file : CString): CInt = extern
 
+  /**
+   * Create a backend for a directory containing packfiles.
+  */
   def git_odb_backend_pack(out : Ptr[Ptr[git_odb_backend]], objects_dir : CString): CInt = extern
 
   /**
@@ -7480,11 +8255,20 @@ private[libgit] object extern_functions:
   */
   def git_odb_get_backend(out : Ptr[Ptr[git_odb_backend]], odb : Ptr[git_odb], pos : size_t): CInt = extern
 
-  def git_odb_hash(out : Ptr[git_oid], data : Ptr[Byte], len : size_t, `type` : git_object_t): CInt = extern
+  /**
+   * Determine the object-ID (sha1 or sha256 hash) of a data buffer
+  */
+  def git_odb_hash(oid : Ptr[git_oid], data : Ptr[Byte], len : size_t, object_type : git_object_t): CInt = extern
 
-  def git_odb_hashfile(out : Ptr[git_oid], path : CString, `type` : git_object_t): CInt = extern
+  /**
+   * Read a file from disk and fill a git_oid with the object id that the file would have if it were written to the Object Database as an object of the given type (w/o applying filters). Similar functionality to git.git's `git hash-object` without the `-w` flag, however, with the --no-filters flag. If you need filters, see git_repository_hashfile.
+  */
+  def git_odb_hashfile(oid : Ptr[git_oid], path : CString, object_type : git_object_t): CInt = extern
 
-  def git_odb_new(out : Ptr[Ptr[git_odb]]): CInt = extern
+  /**
+   * Create a new object database with no backends.
+  */
+  def git_odb_new(odb : Ptr[Ptr[git_odb]]): CInt = extern
 
   /**
    * Get the number of ODB backend objects
@@ -7521,7 +8305,10 @@ private[libgit] object extern_functions:
   */
   def git_odb_object_type(`object` : Ptr[git_odb_object]): git_object_t = extern
 
-  def git_odb_open(out : Ptr[Ptr[git_odb]], objects_dir : CString): CInt = extern
+  /**
+   * Create a new object database and automatically add the two default backends:
+  */
+  def git_odb_open(odb_out : Ptr[Ptr[git_odb]], objects_dir : CString): CInt = extern
 
   /**
    * Open a stream to read an object from the ODB
@@ -7536,7 +8323,7 @@ private[libgit] object extern_functions:
   /**
    * Read an object from the database.
   */
-  def git_odb_read(out : Ptr[Ptr[git_odb_object]], db : Ptr[git_odb], id : Ptr[git_oid]): CInt = extern
+  def git_odb_read(obj : Ptr[Ptr[git_odb_object]], db : Ptr[git_odb], id : Ptr[git_oid]): CInt = extern
 
   /**
    * Read the header of an object from the database, without reading its full contents.
@@ -7546,7 +8333,7 @@ private[libgit] object extern_functions:
   /**
    * Read an object from the database, given a prefix of its identifier.
   */
-  def git_odb_read_prefix(out : Ptr[Ptr[git_odb_object]], db : Ptr[git_odb], short_id : Ptr[git_oid], len : size_t): CInt = extern
+  def git_odb_read_prefix(obj : Ptr[Ptr[git_odb_object]], db : Ptr[git_odb], short_id : Ptr[git_oid], len : size_t): CInt = extern
 
   /**
    * Refresh the object database to load newly added files.
@@ -7613,12 +8400,24 @@ private[libgit] object extern_functions:
   */
   def git_oid_fmt(out : CString, id : Ptr[git_oid]): CInt = extern
 
+  /**
+   * Copy an already raw oid into a git_oid structure.
+  */
   def git_oid_fromraw(out : Ptr[git_oid], raw : Ptr[CUnsignedChar]): CInt = extern
 
+  /**
+   * Parse a hex formatted object id into a git_oid.
+  */
   def git_oid_fromstr(out : Ptr[git_oid], str : CString): CInt = extern
 
+  /**
+   * Parse N characters of a hex formatted object id into a git_oid.
+  */
   def git_oid_fromstrn(out : Ptr[git_oid], str : CString, length : size_t): CInt = extern
 
+  /**
+   * Parse a hex formatted NUL-terminated string into a git_oid.
+  */
   def git_oid_fromstrp(out : Ptr[git_oid], str : CString): CInt = extern
 
   /**
@@ -8345,6 +9144,11 @@ private[libgit] object extern_functions:
   def git_refspec_src_matches(refspec : Ptr[git_refspec], refname : CString): CInt = extern
 
   /**
+   * Check if a refspec's source descriptor matches a negative reference
+  */
+  def git_refspec_src_matches_negative(refspec : Ptr[git_refspec], refname : CString): CInt = extern
+
+  /**
    * Get the refspec's string
   */
   def git_refspec_string(refspec : Ptr[git_refspec]): CString = extern
@@ -8579,7 +9383,7 @@ private[libgit] object extern_functions:
   /**
    * Update the tips to the new state.
   */
-  def git_remote_update_tips(remote : Ptr[git_remote], callbacks : Ptr[git_remote_callbacks], update_fetchhead : CInt, download_tags : git_remote_autotag_option_t, reflog_message : CString): CInt = extern
+  def git_remote_update_tips(remote : Ptr[git_remote], callbacks : Ptr[git_remote_callbacks], update_flags : CUnsignedInt, download_tags : git_remote_autotag_option_t, reflog_message : CString): CInt = extern
 
   /**
    * Create a packfile and send it to the server
@@ -8590,6 +9394,11 @@ private[libgit] object extern_functions:
    * Get the remote's url
   */
   def git_remote_url(remote : Ptr[git_remote]): CString = extern
+
+  /**
+   * Gets the parents of the next commit, given the current repository state. Generally, this is the HEAD commit, except when performing a merge, in which case it is two or more commits.
+  */
+  def git_repository_commit_parents(commits : Ptr[git_commitarray], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Get the path of the shared common directory for this repository.
@@ -8831,7 +9640,7 @@ private[libgit] object extern_functions:
   /**
    * Sets the current head to the specified commit oid and optionally resets the index and working tree to match.
   */
-  def git_reset_from_annotated(repo : Ptr[git_repository], commit : Ptr[git_annotated_commit], reset_type : git_reset_t, checkout_opts : Ptr[git_checkout_options]): CInt = extern
+  def git_reset_from_annotated(repo : Ptr[git_repository], target : Ptr[git_annotated_commit], reset_type : git_reset_t, checkout_opts : Ptr[git_checkout_options]): CInt = extern
 
   /**
    * Reverts the given commit, producing changes in the index and working directory.
@@ -8954,6 +9763,11 @@ private[libgit] object extern_functions:
    * Create a new action signature with default user and now timestamp.
   */
   def git_signature_default(out : Ptr[Ptr[git_signature]], repo : Ptr[git_repository]): CInt = extern
+
+  /**
+   * Create a new author and/or committer signatures with default information based on the configuration and environment variables.
+  */
+  def git_signature_default_from_env(author_out : Ptr[Ptr[git_signature]], committer_out : Ptr[Ptr[git_signature]], repo : Ptr[git_repository]): CInt = extern
 
   /**
    * Create a copy of an existing signature. All internal strings are also duplicated.
@@ -9682,9 +10496,9 @@ object functions:
   export extern_functions.*
 
 object types:
-  export _root_.libgit.structs.*
-  export _root_.libgit.aliases.*
-  export _root_.libgit.enumerations.*
+    export _root_.libgit.structs.*
+    export _root_.libgit.aliases.*
+    export _root_.libgit.enumerations.*
 
 object all:
   export _root_.libgit.enumerations.git_apply_flags_t
@@ -9717,6 +10531,7 @@ object all:
   export _root_.libgit.enumerations.git_error_code
   export _root_.libgit.enumerations.git_error_t
   export _root_.libgit.enumerations.git_feature_t
+  export _root_.libgit.enumerations.git_fetch_depth_t
   export _root_.libgit.enumerations.git_fetch_prune_t
   export _root_.libgit.enumerations.git_filemode_t
   export _root_.libgit.enumerations.git_filter_flag_t
@@ -9747,6 +10562,7 @@ object all:
   export _root_.libgit.enumerations.git_remote_completion_t
   export _root_.libgit.enumerations.git_remote_create_flags
   export _root_.libgit.enumerations.git_remote_redirect_t
+  export _root_.libgit.enumerations.git_remote_update_flags
   export _root_.libgit.enumerations.git_repository_init_flag_t
   export _root_.libgit.enumerations.git_repository_init_mode_t
   export _root_.libgit.enumerations.git_repository_item_t
@@ -9857,6 +10673,7 @@ object all:
   export _root_.libgit.structs.git_attr_options
   export _root_.libgit.structs.git_blame
   export _root_.libgit.structs.git_blame_hunk
+  export _root_.libgit.structs.git_blame_line
   export _root_.libgit.structs.git_blame_options
   export _root_.libgit.structs.git_blob
   export _root_.libgit.structs.git_blob_filter_options
@@ -9870,8 +10687,10 @@ object all:
   export _root_.libgit.structs.git_cherrypick_options
   export _root_.libgit.structs.git_clone_options
   export _root_.libgit.structs.git_commit
+  export _root_.libgit.structs.git_commit_create_options
   export _root_.libgit.structs.git_commit_graph
   export _root_.libgit.structs.git_commit_graph_writer
+  export _root_.libgit.structs.git_commitarray
   export _root_.libgit.structs.git_config
   export _root_.libgit.structs.git_config_backend
   export _root_.libgit.structs.git_config_entry
@@ -9898,6 +10717,7 @@ object all:
   export _root_.libgit.structs.git_diff_hunk
   export _root_.libgit.structs.git_diff_line
   export _root_.libgit.structs.git_diff_options
+  export _root_.libgit.structs.git_diff_parse_options
   export _root_.libgit.structs.git_diff_patchid_options
   export _root_.libgit.structs.git_diff_similarity_metric
   export _root_.libgit.structs.git_diff_stats
@@ -10009,11 +10829,17 @@ object all:
   export _root_.libgit.functions.git_attr_value
   export _root_.libgit.functions.git_blame_buffer
   export _root_.libgit.functions.git_blame_file
+  export _root_.libgit.functions.git_blame_file_from_buffer
   export _root_.libgit.functions.git_blame_free
   export _root_.libgit.functions.git_blame_get_hunk_byindex
   export _root_.libgit.functions.git_blame_get_hunk_byline
   export _root_.libgit.functions.git_blame_get_hunk_count
+  export _root_.libgit.functions.git_blame_hunk_byindex
+  export _root_.libgit.functions.git_blame_hunk_byline
+  export _root_.libgit.functions.git_blame_hunkcount
   export _root_.libgit.functions.git_blame_init_options
+  export _root_.libgit.functions.git_blame_line_byindex
+  export _root_.libgit.functions.git_blame_linecount
   export _root_.libgit.functions.git_blame_options_init
   export _root_.libgit.functions.git_blob_create_from_buffer
   export _root_.libgit.functions.git_blob_create_from_disk
@@ -10082,6 +10908,7 @@ object all:
   export _root_.libgit.functions.git_commit_committer_with_mailmap
   export _root_.libgit.functions.git_commit_create
   export _root_.libgit.functions.git_commit_create_buffer
+  export _root_.libgit.functions.git_commit_create_from_stage
   export _root_.libgit.functions.git_commit_create_v
   export _root_.libgit.functions.git_commit_create_with_signature
   export _root_.libgit.functions.git_commit_dup
@@ -10105,6 +10932,7 @@ object all:
   export _root_.libgit.functions.git_commit_time_offset
   export _root_.libgit.functions.git_commit_tree
   export _root_.libgit.functions.git_commit_tree_id
+  export _root_.libgit.functions.git_commitarray_dispose
   export _root_.libgit.functions.git_config_add_file_ondisk
   export _root_.libgit.functions.git_config_backend_foreach_match
   export _root_.libgit.functions.git_config_delete_entry
@@ -10147,6 +10975,7 @@ object all:
   export _root_.libgit.functions.git_config_set_int64
   export _root_.libgit.functions.git_config_set_multivar
   export _root_.libgit.functions.git_config_set_string
+  export _root_.libgit.functions.git_config_set_writeorder
   export _root_.libgit.functions.git_config_snapshot
   export _root_.libgit.functions.git_cred_default_new
   export _root_.libgit.functions.git_cred_free
@@ -10219,12 +11048,7 @@ object all:
   export _root_.libgit.functions.git_diff_tree_to_workdir
   export _root_.libgit.functions.git_diff_tree_to_workdir_with_index
   export _root_.libgit.functions.git_email_create_from_commit
-  export _root_.libgit.functions.git_email_create_from_diff
-  export _root_.libgit.functions.git_error_clear
   export _root_.libgit.functions.git_error_last
-  export _root_.libgit.functions.git_error_set
-  export _root_.libgit.functions.git_error_set_oom
-  export _root_.libgit.functions.git_error_set_str
   export _root_.libgit.functions.git_fetch_init_options
   export _root_.libgit.functions.git_fetch_options_init
   export _root_.libgit.functions.git_filter_list_apply_to_blob
@@ -10297,6 +11121,7 @@ object all:
   export _root_.libgit.functions.git_indexer_name
   export _root_.libgit.functions.git_indexer_new
   export _root_.libgit.functions.git_indexer_options_init
+  export _root_.libgit.functions.git_libgit2_feature_backend
   export _root_.libgit.functions.git_libgit2_features
   export _root_.libgit.functions.git_libgit2_init
   export _root_.libgit.functions.git_libgit2_opts
@@ -10557,6 +11382,7 @@ object all:
   export _root_.libgit.functions.git_refspec_rtransform
   export _root_.libgit.functions.git_refspec_src
   export _root_.libgit.functions.git_refspec_src_matches
+  export _root_.libgit.functions.git_refspec_src_matches_negative
   export _root_.libgit.functions.git_refspec_string
   export _root_.libgit.functions.git_refspec_transform
   export _root_.libgit.functions.git_remote_add_fetch
@@ -10607,6 +11433,7 @@ object all:
   export _root_.libgit.functions.git_remote_update_tips
   export _root_.libgit.functions.git_remote_upload
   export _root_.libgit.functions.git_remote_url
+  export _root_.libgit.functions.git_repository_commit_parents
   export _root_.libgit.functions.git_repository_commondir
   export _root_.libgit.functions.git_repository_config
   export _root_.libgit.functions.git_repository_config_snapshot
@@ -10681,6 +11508,7 @@ object all:
   export _root_.libgit.functions.git_revwalk_simplify_first_parent
   export _root_.libgit.functions.git_revwalk_sorting
   export _root_.libgit.functions.git_signature_default
+  export _root_.libgit.functions.git_signature_default_from_env
   export _root_.libgit.functions.git_signature_dup
   export _root_.libgit.functions.git_signature_free
   export _root_.libgit.functions.git_signature_from_buffer

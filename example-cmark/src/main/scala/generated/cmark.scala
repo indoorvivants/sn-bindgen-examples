@@ -6,13 +6,12 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[cmark] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
-    given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
-    extension (inline t: T)
-     inline def value: CUnsignedInt = eq.apply(t)
-     inline def int: CInt = eq.apply(t).toInt
-     inline def uint: CUnsignedInt = eq.apply(t)
-
+    private[cmark] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
+      given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
+      extension (inline t: T)
+        inline def value: CUnsignedInt = eq.apply(t)
+        inline def int: CInt = eq.apply(t).toInt
+        inline def uint: CUnsignedInt = eq.apply(t)
 
 object enumerations:
   import predef.*
@@ -23,11 +22,11 @@ object enumerations:
     val CMARK_NO_DELIM = define(0)
     val CMARK_PERIOD_DELIM = define(1)
     val CMARK_PAREN_DELIM = define(2)
-    inline def getName(inline value: cmark_delim_type): Option[String] =
-      inline value match
-        case CMARK_NO_DELIM => Some("CMARK_NO_DELIM")
-        case CMARK_PERIOD_DELIM => Some("CMARK_PERIOD_DELIM")
-        case CMARK_PAREN_DELIM => Some("CMARK_PAREN_DELIM")
+    def getName(value: cmark_delim_type): Option[String] =
+      value match
+        case `CMARK_NO_DELIM` => Some("CMARK_NO_DELIM")
+        case `CMARK_PERIOD_DELIM` => Some("CMARK_PERIOD_DELIM")
+        case `CMARK_PAREN_DELIM` => Some("CMARK_PAREN_DELIM")
         case _ => _root_.scala.None
     extension (a: cmark_delim_type)
       inline def &(b: cmark_delim_type): cmark_delim_type = a & b
@@ -45,12 +44,12 @@ object enumerations:
     val CMARK_EVENT_DONE = define(1)
     val CMARK_EVENT_ENTER = define(2)
     val CMARK_EVENT_EXIT = define(3)
-    inline def getName(inline value: cmark_event_type): Option[String] =
-      inline value match
-        case CMARK_EVENT_NONE => Some("CMARK_EVENT_NONE")
-        case CMARK_EVENT_DONE => Some("CMARK_EVENT_DONE")
-        case CMARK_EVENT_ENTER => Some("CMARK_EVENT_ENTER")
-        case CMARK_EVENT_EXIT => Some("CMARK_EVENT_EXIT")
+    def getName(value: cmark_event_type): Option[String] =
+      value match
+        case `CMARK_EVENT_NONE` => Some("CMARK_EVENT_NONE")
+        case `CMARK_EVENT_DONE` => Some("CMARK_EVENT_DONE")
+        case `CMARK_EVENT_ENTER` => Some("CMARK_EVENT_ENTER")
+        case `CMARK_EVENT_EXIT` => Some("CMARK_EVENT_EXIT")
         case _ => _root_.scala.None
     extension (a: cmark_event_type)
       inline def &(b: cmark_event_type): cmark_event_type = a & b
@@ -64,11 +63,11 @@ object enumerations:
     val CMARK_NO_LIST = define(0)
     val CMARK_BULLET_LIST = define(1)
     val CMARK_ORDERED_LIST = define(2)
-    inline def getName(inline value: cmark_list_type): Option[String] =
-      inline value match
-        case CMARK_NO_LIST => Some("CMARK_NO_LIST")
-        case CMARK_BULLET_LIST => Some("CMARK_BULLET_LIST")
-        case CMARK_ORDERED_LIST => Some("CMARK_ORDERED_LIST")
+    def getName(value: cmark_list_type): Option[String] =
+      value match
+        case `CMARK_NO_LIST` => Some("CMARK_NO_LIST")
+        case `CMARK_BULLET_LIST` => Some("CMARK_BULLET_LIST")
+        case `CMARK_ORDERED_LIST` => Some("CMARK_ORDERED_LIST")
         case _ => _root_.scala.None
     extension (a: cmark_list_type)
       inline def &(b: cmark_list_type): cmark_list_type = a & b
@@ -107,33 +106,33 @@ object enumerations:
     val CMARK_NODE_IMAGE = define(20)
     val CMARK_NODE_FIRST_INLINE = define(11)
     val CMARK_NODE_LAST_INLINE = define(20)
-    inline def getName(inline value: cmark_node_type): Option[String] =
-      inline value match
-        case CMARK_NODE_NONE => Some("CMARK_NODE_NONE")
-        case CMARK_NODE_DOCUMENT => Some("CMARK_NODE_DOCUMENT")
-        case CMARK_NODE_BLOCK_QUOTE => Some("CMARK_NODE_BLOCK_QUOTE")
-        case CMARK_NODE_LIST => Some("CMARK_NODE_LIST")
-        case CMARK_NODE_ITEM => Some("CMARK_NODE_ITEM")
-        case CMARK_NODE_CODE_BLOCK => Some("CMARK_NODE_CODE_BLOCK")
-        case CMARK_NODE_HTML_BLOCK => Some("CMARK_NODE_HTML_BLOCK")
-        case CMARK_NODE_CUSTOM_BLOCK => Some("CMARK_NODE_CUSTOM_BLOCK")
-        case CMARK_NODE_PARAGRAPH => Some("CMARK_NODE_PARAGRAPH")
-        case CMARK_NODE_HEADING => Some("CMARK_NODE_HEADING")
-        case CMARK_NODE_THEMATIC_BREAK => Some("CMARK_NODE_THEMATIC_BREAK")
-        case CMARK_NODE_FIRST_BLOCK => Some("CMARK_NODE_FIRST_BLOCK")
-        case CMARK_NODE_LAST_BLOCK => Some("CMARK_NODE_LAST_BLOCK")
-        case CMARK_NODE_TEXT => Some("CMARK_NODE_TEXT")
-        case CMARK_NODE_SOFTBREAK => Some("CMARK_NODE_SOFTBREAK")
-        case CMARK_NODE_LINEBREAK => Some("CMARK_NODE_LINEBREAK")
-        case CMARK_NODE_CODE => Some("CMARK_NODE_CODE")
-        case CMARK_NODE_HTML_INLINE => Some("CMARK_NODE_HTML_INLINE")
-        case CMARK_NODE_CUSTOM_INLINE => Some("CMARK_NODE_CUSTOM_INLINE")
-        case CMARK_NODE_EMPH => Some("CMARK_NODE_EMPH")
-        case CMARK_NODE_STRONG => Some("CMARK_NODE_STRONG")
-        case CMARK_NODE_LINK => Some("CMARK_NODE_LINK")
-        case CMARK_NODE_IMAGE => Some("CMARK_NODE_IMAGE")
-        case CMARK_NODE_FIRST_INLINE => Some("CMARK_NODE_FIRST_INLINE")
-        case CMARK_NODE_LAST_INLINE => Some("CMARK_NODE_LAST_INLINE")
+    def getName(value: cmark_node_type): Option[String] =
+      value match
+        case `CMARK_NODE_NONE` => Some("CMARK_NODE_NONE")
+        case `CMARK_NODE_DOCUMENT` => Some("CMARK_NODE_DOCUMENT")
+        case `CMARK_NODE_BLOCK_QUOTE` => Some("CMARK_NODE_BLOCK_QUOTE")
+        case `CMARK_NODE_LIST` => Some("CMARK_NODE_LIST")
+        case `CMARK_NODE_ITEM` => Some("CMARK_NODE_ITEM")
+        case `CMARK_NODE_CODE_BLOCK` => Some("CMARK_NODE_CODE_BLOCK")
+        case `CMARK_NODE_HTML_BLOCK` => Some("CMARK_NODE_HTML_BLOCK")
+        case `CMARK_NODE_CUSTOM_BLOCK` => Some("CMARK_NODE_CUSTOM_BLOCK")
+        case `CMARK_NODE_PARAGRAPH` => Some("CMARK_NODE_PARAGRAPH")
+        case `CMARK_NODE_HEADING` => Some("CMARK_NODE_HEADING")
+        case `CMARK_NODE_THEMATIC_BREAK` => Some("CMARK_NODE_THEMATIC_BREAK")
+        case `CMARK_NODE_FIRST_BLOCK` => Some("CMARK_NODE_FIRST_BLOCK")
+        case `CMARK_NODE_LAST_BLOCK` => Some("CMARK_NODE_LAST_BLOCK")
+        case `CMARK_NODE_TEXT` => Some("CMARK_NODE_TEXT")
+        case `CMARK_NODE_SOFTBREAK` => Some("CMARK_NODE_SOFTBREAK")
+        case `CMARK_NODE_LINEBREAK` => Some("CMARK_NODE_LINEBREAK")
+        case `CMARK_NODE_CODE` => Some("CMARK_NODE_CODE")
+        case `CMARK_NODE_HTML_INLINE` => Some("CMARK_NODE_HTML_INLINE")
+        case `CMARK_NODE_CUSTOM_INLINE` => Some("CMARK_NODE_CUSTOM_INLINE")
+        case `CMARK_NODE_EMPH` => Some("CMARK_NODE_EMPH")
+        case `CMARK_NODE_STRONG` => Some("CMARK_NODE_STRONG")
+        case `CMARK_NODE_LINK` => Some("CMARK_NODE_LINK")
+        case `CMARK_NODE_IMAGE` => Some("CMARK_NODE_IMAGE")
+        case `CMARK_NODE_FIRST_INLINE` => Some("CMARK_NODE_FIRST_INLINE")
+        case `CMARK_NODE_LAST_INLINE` => Some("CMARK_NODE_LAST_INLINE")
         case _ => _root_.scala.None
     extension (a: cmark_node_type)
       inline def &(b: cmark_node_type): cmark_node_type = a & b
@@ -146,14 +145,14 @@ object aliases:
   import _root_.cmark.aliases.*
   import _root_.cmark.structs.*
   type FILE = libc.stdio.FILE
-  object FILE: 
+  object FILE:
     val _tag: Tag[FILE] = summon[Tag[libc.stdio.FILE]]
     inline def apply(inline o: libc.stdio.FILE): FILE = o
     extension (v: FILE)
       inline def value: libc.stdio.FILE = v
 
   type size_t = libc.stddef.size_t
-  object size_t: 
+  object size_t:
     val _tag: Tag[size_t] = summon[Tag[libc.stddef.size_t]]
     inline def apply(inline o: libc.stddef.size_t): size_t = o
     extension (v: size_t)
@@ -164,23 +163,30 @@ object structs:
   import _root_.cmark.predef.*
   import _root_.cmark.aliases.*
   import _root_.cmark.structs.*
+
   opaque type cmark_iter = CStruct0
+  
   object cmark_iter:
     given _tag: Tag[cmark_iter] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Defines the memory allocation functions to be used by CMark when parsing and allocating a document tree
   */
   opaque type cmark_mem = CStruct3[CFuncPtr2[size_t, size_t, Ptr[Byte]], CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit]]
+  
   object cmark_mem:
     given _tag: Tag[cmark_mem] = Tag.materializeCStruct3Tag[CFuncPtr2[size_t, size_t, Ptr[Byte]], CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], CFuncPtr1[Ptr[Byte], Unit]]
+    
+    // Allocates cmark_mem on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[cmark_mem] = scala.scalanative.unsafe.alloc[cmark_mem](1)
-    def apply(calloc : CFuncPtr2[size_t, size_t, Ptr[Byte]], realloc : CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], free : CFuncPtr1[Ptr[Byte], Unit])(using Zone): Ptr[cmark_mem] = 
+    def apply(calloc : CFuncPtr2[size_t, size_t, Ptr[Byte]], realloc : CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]], free : CFuncPtr1[Ptr[Byte], Unit])(using Zone): Ptr[cmark_mem] =
       val ____ptr = apply()
       (!____ptr).calloc = calloc
       (!____ptr).realloc = realloc
       (!____ptr).free = free
       ____ptr
+    
     extension (struct: cmark_mem)
       def calloc : CFuncPtr2[size_t, size_t, Ptr[Byte]] = struct._1
       def calloc_=(value: CFuncPtr2[size_t, size_t, Ptr[Byte]]): Unit = !struct.at1 = value
@@ -188,14 +194,19 @@ object structs:
       def realloc_=(value: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]]): Unit = !struct.at2 = value
       def free : CFuncPtr1[Ptr[Byte], Unit] = struct._3
       def free_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at3 = value
+    
 
   opaque type cmark_node = CStruct0
+  
   object cmark_node:
     given _tag: Tag[cmark_node] = Tag.materializeCStruct0Tag
+    
 
   opaque type cmark_parser = CStruct0
+  
   object cmark_parser:
     given _tag: Tag[cmark_parser] = Tag.materializeCStruct0Tag
+    
 
 
 @extern
@@ -510,6 +521,11 @@ private[cmark] object extern_functions:
   def cmark_parser_new_with_mem(options : CInt, mem : Ptr[cmark_mem]): Ptr[cmark_parser] = extern
 
   /**
+   * Creates a new parser object with the given node to use as the root node of the parsed AST.
+  */
+  def cmark_parser_new_with_mem_into_root(options : CInt, mem : Ptr[cmark_mem], root : Ptr[cmark_node]): Ptr[cmark_parser] = extern
+
+  /**
    * Render a 'node' tree as a commonmark document. It is the caller's responsibility to free the returned buffer.
   */
   def cmark_render_commonmark(root : Ptr[cmark_node], options : CInt, width : CInt): CString = extern
@@ -554,9 +570,9 @@ object functions:
   export extern_functions.*
 
 object types:
-  export _root_.cmark.structs.*
-  export _root_.cmark.aliases.*
-  export _root_.cmark.enumerations.*
+    export _root_.cmark.structs.*
+    export _root_.cmark.aliases.*
+    export _root_.cmark.enumerations.*
 
 object all:
   export _root_.cmark.enumerations.cmark_delim_type
@@ -630,6 +646,7 @@ object all:
   export _root_.cmark.functions.cmark_parser_free
   export _root_.cmark.functions.cmark_parser_new
   export _root_.cmark.functions.cmark_parser_new_with_mem
+  export _root_.cmark.functions.cmark_parser_new_with_mem_into_root
   export _root_.cmark.functions.cmark_render_commonmark
   export _root_.cmark.functions.cmark_render_html
   export _root_.cmark.functions.cmark_render_latex
