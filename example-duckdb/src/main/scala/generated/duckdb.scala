@@ -6,13 +6,12 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[duckdb] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
-    given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
-    extension (inline t: T)
-     inline def value: CUnsignedInt = eq.apply(t)
-     inline def int: CInt = eq.apply(t).toInt
-     inline def uint: CUnsignedInt = eq.apply(t)
-
+    private[duckdb] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
+      given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
+      extension (inline t: T)
+        inline def value: CUnsignedInt = eq.apply(t)
+        inline def int: CInt = eq.apply(t).toInt
+        inline def uint: CUnsignedInt = eq.apply(t)
 
 object enumerations:
   import predef.*
@@ -49,37 +48,37 @@ object enumerations:
     val DUCKDB_TYPE_MAP = define(26)
     val DUCKDB_TYPE_UUID = define(27)
     val DUCKDB_TYPE_JSON = define(28)
-    inline def getName(inline value: DUCKDB_TYPE): Option[String] =
-      inline value match
-        case DUCKDB_TYPE_INVALID => Some("DUCKDB_TYPE_INVALID")
-        case DUCKDB_TYPE_BOOLEAN => Some("DUCKDB_TYPE_BOOLEAN")
-        case DUCKDB_TYPE_TINYINT => Some("DUCKDB_TYPE_TINYINT")
-        case DUCKDB_TYPE_SMALLINT => Some("DUCKDB_TYPE_SMALLINT")
-        case DUCKDB_TYPE_INTEGER => Some("DUCKDB_TYPE_INTEGER")
-        case DUCKDB_TYPE_BIGINT => Some("DUCKDB_TYPE_BIGINT")
-        case DUCKDB_TYPE_UTINYINT => Some("DUCKDB_TYPE_UTINYINT")
-        case DUCKDB_TYPE_USMALLINT => Some("DUCKDB_TYPE_USMALLINT")
-        case DUCKDB_TYPE_UINTEGER => Some("DUCKDB_TYPE_UINTEGER")
-        case DUCKDB_TYPE_UBIGINT => Some("DUCKDB_TYPE_UBIGINT")
-        case DUCKDB_TYPE_FLOAT => Some("DUCKDB_TYPE_FLOAT")
-        case DUCKDB_TYPE_DOUBLE => Some("DUCKDB_TYPE_DOUBLE")
-        case DUCKDB_TYPE_TIMESTAMP => Some("DUCKDB_TYPE_TIMESTAMP")
-        case DUCKDB_TYPE_DATE => Some("DUCKDB_TYPE_DATE")
-        case DUCKDB_TYPE_TIME => Some("DUCKDB_TYPE_TIME")
-        case DUCKDB_TYPE_INTERVAL => Some("DUCKDB_TYPE_INTERVAL")
-        case DUCKDB_TYPE_HUGEINT => Some("DUCKDB_TYPE_HUGEINT")
-        case DUCKDB_TYPE_VARCHAR => Some("DUCKDB_TYPE_VARCHAR")
-        case DUCKDB_TYPE_BLOB => Some("DUCKDB_TYPE_BLOB")
-        case DUCKDB_TYPE_DECIMAL => Some("DUCKDB_TYPE_DECIMAL")
-        case DUCKDB_TYPE_TIMESTAMP_S => Some("DUCKDB_TYPE_TIMESTAMP_S")
-        case DUCKDB_TYPE_TIMESTAMP_MS => Some("DUCKDB_TYPE_TIMESTAMP_MS")
-        case DUCKDB_TYPE_TIMESTAMP_NS => Some("DUCKDB_TYPE_TIMESTAMP_NS")
-        case DUCKDB_TYPE_ENUM => Some("DUCKDB_TYPE_ENUM")
-        case DUCKDB_TYPE_LIST => Some("DUCKDB_TYPE_LIST")
-        case DUCKDB_TYPE_STRUCT => Some("DUCKDB_TYPE_STRUCT")
-        case DUCKDB_TYPE_MAP => Some("DUCKDB_TYPE_MAP")
-        case DUCKDB_TYPE_UUID => Some("DUCKDB_TYPE_UUID")
-        case DUCKDB_TYPE_JSON => Some("DUCKDB_TYPE_JSON")
+    def getName(value: DUCKDB_TYPE): Option[String] =
+      value match
+        case `DUCKDB_TYPE_INVALID` => Some("DUCKDB_TYPE_INVALID")
+        case `DUCKDB_TYPE_BOOLEAN` => Some("DUCKDB_TYPE_BOOLEAN")
+        case `DUCKDB_TYPE_TINYINT` => Some("DUCKDB_TYPE_TINYINT")
+        case `DUCKDB_TYPE_SMALLINT` => Some("DUCKDB_TYPE_SMALLINT")
+        case `DUCKDB_TYPE_INTEGER` => Some("DUCKDB_TYPE_INTEGER")
+        case `DUCKDB_TYPE_BIGINT` => Some("DUCKDB_TYPE_BIGINT")
+        case `DUCKDB_TYPE_UTINYINT` => Some("DUCKDB_TYPE_UTINYINT")
+        case `DUCKDB_TYPE_USMALLINT` => Some("DUCKDB_TYPE_USMALLINT")
+        case `DUCKDB_TYPE_UINTEGER` => Some("DUCKDB_TYPE_UINTEGER")
+        case `DUCKDB_TYPE_UBIGINT` => Some("DUCKDB_TYPE_UBIGINT")
+        case `DUCKDB_TYPE_FLOAT` => Some("DUCKDB_TYPE_FLOAT")
+        case `DUCKDB_TYPE_DOUBLE` => Some("DUCKDB_TYPE_DOUBLE")
+        case `DUCKDB_TYPE_TIMESTAMP` => Some("DUCKDB_TYPE_TIMESTAMP")
+        case `DUCKDB_TYPE_DATE` => Some("DUCKDB_TYPE_DATE")
+        case `DUCKDB_TYPE_TIME` => Some("DUCKDB_TYPE_TIME")
+        case `DUCKDB_TYPE_INTERVAL` => Some("DUCKDB_TYPE_INTERVAL")
+        case `DUCKDB_TYPE_HUGEINT` => Some("DUCKDB_TYPE_HUGEINT")
+        case `DUCKDB_TYPE_VARCHAR` => Some("DUCKDB_TYPE_VARCHAR")
+        case `DUCKDB_TYPE_BLOB` => Some("DUCKDB_TYPE_BLOB")
+        case `DUCKDB_TYPE_DECIMAL` => Some("DUCKDB_TYPE_DECIMAL")
+        case `DUCKDB_TYPE_TIMESTAMP_S` => Some("DUCKDB_TYPE_TIMESTAMP_S")
+        case `DUCKDB_TYPE_TIMESTAMP_MS` => Some("DUCKDB_TYPE_TIMESTAMP_MS")
+        case `DUCKDB_TYPE_TIMESTAMP_NS` => Some("DUCKDB_TYPE_TIMESTAMP_NS")
+        case `DUCKDB_TYPE_ENUM` => Some("DUCKDB_TYPE_ENUM")
+        case `DUCKDB_TYPE_LIST` => Some("DUCKDB_TYPE_LIST")
+        case `DUCKDB_TYPE_STRUCT` => Some("DUCKDB_TYPE_STRUCT")
+        case `DUCKDB_TYPE_MAP` => Some("DUCKDB_TYPE_MAP")
+        case `DUCKDB_TYPE_UUID` => Some("DUCKDB_TYPE_UUID")
+        case `DUCKDB_TYPE_JSON` => Some("DUCKDB_TYPE_JSON")
         case _ => _root_.scala.None
     extension (a: DUCKDB_TYPE)
       inline def &(b: DUCKDB_TYPE): DUCKDB_TYPE = a & b
@@ -92,10 +91,10 @@ object enumerations:
     inline def define(inline a: Long): duckdb_state = a.toUInt
     val DuckDBSuccess = define(0)
     val DuckDBError = define(1)
-    inline def getName(inline value: duckdb_state): Option[String] =
-      inline value match
-        case DuckDBSuccess => Some("DuckDBSuccess")
-        case DuckDBError => Some("DuckDBError")
+    def getName(value: duckdb_state): Option[String] =
+      value match
+        case `DuckDBSuccess` => Some("DuckDBSuccess")
+        case `DuckDBError` => Some("DuckDBError")
         case _ => _root_.scala.None
     extension (a: duckdb_state)
       inline def &(b: duckdb_state): duckdb_state = a & b
@@ -108,70 +107,70 @@ object aliases:
   import _root_.duckdb.aliases.*
   import _root_.duckdb.structs.*
   opaque type duckdb_appender = Ptr[Byte]
-  object duckdb_appender: 
+  object duckdb_appender:
     given _tag: Tag[duckdb_appender] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_appender = o
     extension (v: duckdb_appender)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_arrow = Ptr[Byte]
-  object duckdb_arrow: 
+  object duckdb_arrow:
     given _tag: Tag[duckdb_arrow] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_arrow = o
     extension (v: duckdb_arrow)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_arrow_array = Ptr[Byte]
-  object duckdb_arrow_array: 
+  object duckdb_arrow_array:
     given _tag: Tag[duckdb_arrow_array] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_arrow_array = o
     extension (v: duckdb_arrow_array)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_arrow_schema = Ptr[Byte]
-  object duckdb_arrow_schema: 
+  object duckdb_arrow_schema:
     given _tag: Tag[duckdb_arrow_schema] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_arrow_schema = o
     extension (v: duckdb_arrow_schema)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_bind_info = Ptr[Byte]
-  object duckdb_bind_info: 
+  object duckdb_bind_info:
     given _tag: Tag[duckdb_bind_info] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_bind_info = o
     extension (v: duckdb_bind_info)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_config = Ptr[Byte]
-  object duckdb_config: 
+  object duckdb_config:
     given _tag: Tag[duckdb_config] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_config = o
     extension (v: duckdb_config)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_connection = Ptr[Byte]
-  object duckdb_connection: 
+  object duckdb_connection:
     given _tag: Tag[duckdb_connection] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_connection = o
     extension (v: duckdb_connection)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_data_chunk = Ptr[Byte]
-  object duckdb_data_chunk: 
+  object duckdb_data_chunk:
     given _tag: Tag[duckdb_data_chunk] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_data_chunk = o
     extension (v: duckdb_data_chunk)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_database = Ptr[Byte]
-  object duckdb_database: 
+  object duckdb_database:
     given _tag: Tag[duckdb_database] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_database = o
     extension (v: duckdb_database)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_delete_callback_t = CFuncPtr1[Ptr[Byte], Unit]
-  object duckdb_delete_callback_t: 
+  object duckdb_delete_callback_t:
     given _tag: Tag[duckdb_delete_callback_t] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): duckdb_delete_callback_t = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): duckdb_delete_callback_t = o
@@ -180,35 +179,35 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type duckdb_function_info = Ptr[Byte]
-  object duckdb_function_info: 
+  object duckdb_function_info:
     given _tag: Tag[duckdb_function_info] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_function_info = o
     extension (v: duckdb_function_info)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_init_info = Ptr[Byte]
-  object duckdb_init_info: 
+  object duckdb_init_info:
     given _tag: Tag[duckdb_init_info] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_init_info = o
     extension (v: duckdb_init_info)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_logical_type = Ptr[Byte]
-  object duckdb_logical_type: 
+  object duckdb_logical_type:
     given _tag: Tag[duckdb_logical_type] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_logical_type = o
     extension (v: duckdb_logical_type)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_prepared_statement = Ptr[Byte]
-  object duckdb_prepared_statement: 
+  object duckdb_prepared_statement:
     given _tag: Tag[duckdb_prepared_statement] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_prepared_statement = o
     extension (v: duckdb_prepared_statement)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_replacement_callback_t = CFuncPtr3[duckdb_replacement_scan_info, CString, Ptr[Byte], Unit]
-  object duckdb_replacement_callback_t: 
+  object duckdb_replacement_callback_t:
     given _tag: Tag[duckdb_replacement_callback_t] = Tag.materializeCFuncPtr3[duckdb_replacement_scan_info, CString, Ptr[Byte], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): duckdb_replacement_callback_t = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[duckdb_replacement_scan_info, CString, Ptr[Byte], Unit]): duckdb_replacement_callback_t = o
@@ -217,21 +216,21 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type duckdb_replacement_scan_info = Ptr[Byte]
-  object duckdb_replacement_scan_info: 
+  object duckdb_replacement_scan_info:
     given _tag: Tag[duckdb_replacement_scan_info] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_replacement_scan_info = o
     extension (v: duckdb_replacement_scan_info)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_table_function = Ptr[Byte]
-  object duckdb_table_function: 
+  object duckdb_table_function:
     given _tag: Tag[duckdb_table_function] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_table_function = o
     extension (v: duckdb_table_function)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_table_function_bind_t = CFuncPtr1[duckdb_bind_info, Unit]
-  object duckdb_table_function_bind_t: 
+  object duckdb_table_function_bind_t:
     given _tag: Tag[duckdb_table_function_bind_t] = Tag.materializeCFuncPtr1[duckdb_bind_info, Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): duckdb_table_function_bind_t = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[duckdb_bind_info, Unit]): duckdb_table_function_bind_t = o
@@ -240,7 +239,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type duckdb_table_function_init_t = CFuncPtr1[duckdb_init_info, Unit]
-  object duckdb_table_function_init_t: 
+  object duckdb_table_function_init_t:
     given _tag: Tag[duckdb_table_function_init_t] = Tag.materializeCFuncPtr1[duckdb_init_info, Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): duckdb_table_function_init_t = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[duckdb_init_info, Unit]): duckdb_table_function_init_t = o
@@ -249,7 +248,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type duckdb_table_function_t = CFuncPtr2[duckdb_function_info, duckdb_data_chunk, Unit]
-  object duckdb_table_function_t: 
+  object duckdb_table_function_t:
     given _tag: Tag[duckdb_table_function_t] = Tag.materializeCFuncPtr2[duckdb_function_info, duckdb_data_chunk, Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): duckdb_table_function_t = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[duckdb_function_info, duckdb_data_chunk, Unit]): duckdb_table_function_t = o
@@ -258,91 +257,91 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type duckdb_type = DUCKDB_TYPE
-  object duckdb_type: 
+  object duckdb_type:
     given _tag: Tag[duckdb_type] = DUCKDB_TYPE._tag
     inline def apply(inline o: DUCKDB_TYPE): duckdb_type = o
     extension (v: duckdb_type)
       inline def value: DUCKDB_TYPE = v
 
   opaque type duckdb_value = Ptr[Byte]
-  object duckdb_value: 
+  object duckdb_value:
     given _tag: Tag[duckdb_value] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_value = o
     extension (v: duckdb_value)
       inline def value: Ptr[Byte] = v
 
   opaque type duckdb_vector = Ptr[Byte]
-  object duckdb_vector: 
+  object duckdb_vector:
     given _tag: Tag[duckdb_vector] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): duckdb_vector = o
     extension (v: duckdb_vector)
       inline def value: Ptr[Byte] = v
 
   type idx_t = uint64_t
-  object idx_t: 
+  object idx_t:
     given _tag: Tag[idx_t] = uint64_t._tag
     inline def apply(inline o: uint64_t): idx_t = o
     extension (v: idx_t)
       inline def value: uint64_t = v
 
   type int16_t = scala.Short
-  object int16_t: 
+  object int16_t:
     val _tag: Tag[int16_t] = summon[Tag[scala.Short]]
     inline def apply(inline o: scala.Short): int16_t = o
     extension (v: int16_t)
       inline def value: scala.Short = v
 
   type int32_t = scala.scalanative.unsafe.CInt
-  object int32_t: 
+  object int32_t:
     val _tag: Tag[int32_t] = summon[Tag[scala.scalanative.unsafe.CInt]]
     inline def apply(inline o: scala.scalanative.unsafe.CInt): int32_t = o
     extension (v: int32_t)
       inline def value: scala.scalanative.unsafe.CInt = v
 
   type int64_t = scala.Long
-  object int64_t: 
+  object int64_t:
     val _tag: Tag[int64_t] = summon[Tag[scala.Long]]
     inline def apply(inline o: scala.Long): int64_t = o
     extension (v: int64_t)
       inline def value: scala.Long = v
 
   type int8_t = scala.scalanative.unsafe.CChar
-  object int8_t: 
+  object int8_t:
     val _tag: Tag[int8_t] = summon[Tag[scala.scalanative.unsafe.CChar]]
     inline def apply(inline o: scala.scalanative.unsafe.CChar): int8_t = o
     extension (v: int8_t)
       inline def value: scala.scalanative.unsafe.CChar = v
 
   type size_t = libc.stddef.size_t
-  object size_t: 
+  object size_t:
     val _tag: Tag[size_t] = summon[Tag[libc.stddef.size_t]]
     inline def apply(inline o: libc.stddef.size_t): size_t = o
     extension (v: size_t)
       inline def value: libc.stddef.size_t = v
 
   type uint16_t = scala.scalanative.unsigned.UShort
-  object uint16_t: 
+  object uint16_t:
     val _tag: Tag[uint16_t] = summon[Tag[scala.scalanative.unsigned.UShort]]
     inline def apply(inline o: scala.scalanative.unsigned.UShort): uint16_t = o
     extension (v: uint16_t)
       inline def value: scala.scalanative.unsigned.UShort = v
 
   type uint32_t = scala.scalanative.unsigned.UInt
-  object uint32_t: 
+  object uint32_t:
     val _tag: Tag[uint32_t] = summon[Tag[scala.scalanative.unsigned.UInt]]
     inline def apply(inline o: scala.scalanative.unsigned.UInt): uint32_t = o
     extension (v: uint32_t)
       inline def value: scala.scalanative.unsigned.UInt = v
 
   type uint64_t = scala.scalanative.unsigned.ULong
-  object uint64_t: 
+  object uint64_t:
     val _tag: Tag[uint64_t] = summon[Tag[scala.scalanative.unsigned.ULong]]
     inline def apply(inline o: scala.scalanative.unsigned.ULong): uint64_t = o
     extension (v: uint64_t)
       inline def value: scala.scalanative.unsigned.ULong = v
 
   type uint8_t = scala.scalanative.unsigned.UByte
-  object uint8_t: 
+  object uint8_t:
     val _tag: Tag[uint8_t] = summon[Tag[scala.scalanative.unsigned.UByte]]
     inline def apply(inline o: scala.scalanative.unsigned.UByte): uint8_t = o
     extension (v: uint8_t)
@@ -353,26 +352,35 @@ object structs:
   import _root_.duckdb.predef.*
   import _root_.duckdb.aliases.*
   import _root_.duckdb.structs.*
+
   opaque type duckdb_blob = CStruct2[Ptr[Byte], idx_t]
+  
   object duckdb_blob:
     given _tag: Tag[duckdb_blob] = Tag.materializeCStruct2Tag[Ptr[Byte], idx_t]
+    
+    // Allocates duckdb_blob on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[duckdb_blob] = scala.scalanative.unsafe.alloc[duckdb_blob](1)
-    def apply(data : Ptr[Byte], size : idx_t)(using Zone): Ptr[duckdb_blob] = 
+    def apply(data : Ptr[Byte], size : idx_t)(using Zone): Ptr[duckdb_blob] =
       val ____ptr = apply()
       (!____ptr).data = data
       (!____ptr).size = size
       ____ptr
+    
     extension (struct: duckdb_blob)
       def data : Ptr[Byte] = struct._1
       def data_=(value: Ptr[Byte]): Unit = !struct.at1 = value
       def size : idx_t = struct._2
       def size_=(value: idx_t): Unit = !struct.at2 = value
+    
 
   opaque type duckdb_column = CStruct5[Ptr[Byte], Ptr[Boolean], duckdb_type, CString, Ptr[Byte]]
+  
   object duckdb_column:
     given _tag: Tag[duckdb_column] = Tag.materializeCStruct5Tag[Ptr[Byte], Ptr[Boolean], duckdb_type, CString, Ptr[Byte]]
+    
+    // Allocates duckdb_column on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[duckdb_column] = scala.scalanative.unsafe.alloc[duckdb_column](1)
-    def apply(__deprecated_data : Ptr[Byte], __deprecated_nullmask : Ptr[Boolean], __deprecated_type : duckdb_type, __deprecated_name : CString, internal_data : Ptr[Byte])(using Zone): Ptr[duckdb_column] = 
+    def apply(__deprecated_data : Ptr[Byte], __deprecated_nullmask : Ptr[Boolean], __deprecated_type : duckdb_type, __deprecated_name : CString, internal_data : Ptr[Byte])(using Zone): Ptr[duckdb_column] =
       val ____ptr = apply()
       (!____ptr).__deprecated_data = __deprecated_data
       (!____ptr).__deprecated_nullmask = __deprecated_nullmask
@@ -380,6 +388,7 @@ object structs:
       (!____ptr).__deprecated_name = __deprecated_name
       (!____ptr).internal_data = internal_data
       ____ptr
+    
     extension (struct: duckdb_column)
       def __deprecated_data : Ptr[Byte] = struct._1
       def __deprecated_data_=(value: Ptr[Byte]): Unit = !struct.at1 = value
@@ -391,32 +400,42 @@ object structs:
       def __deprecated_name_=(value: CString): Unit = !struct.at4 = value
       def internal_data : Ptr[Byte] = struct._5
       def internal_data_=(value: Ptr[Byte]): Unit = !struct.at5 = value
+    
 
   /**
    * Days are stored as days since 1970-01-01 Use the duckdb_from_date/duckdb_to_date function to extract individual information
   */
   opaque type duckdb_date = CStruct1[int32_t]
+  
   object duckdb_date:
     given _tag: Tag[duckdb_date] = Tag.materializeCStruct1Tag[int32_t]
+    
+    // Allocates duckdb_date on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[duckdb_date] = scala.scalanative.unsafe.alloc[duckdb_date](1)
-    def apply(days : int32_t)(using Zone): Ptr[duckdb_date] = 
+    def apply(days : int32_t)(using Zone): Ptr[duckdb_date] =
       val ____ptr = apply()
       (!____ptr).days = days
       ____ptr
+    
     extension (struct: duckdb_date)
       def days : int32_t = struct._1
       def days_=(value: int32_t): Unit = !struct.at1 = value
+    
 
   opaque type duckdb_date_struct = CStruct3[int32_t, int8_t, int8_t]
+  
   object duckdb_date_struct:
     given _tag: Tag[duckdb_date_struct] = Tag.materializeCStruct3Tag[int32_t, int8_t, int8_t]
+    
+    // Allocates duckdb_date_struct on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[duckdb_date_struct] = scala.scalanative.unsafe.alloc[duckdb_date_struct](1)
-    def apply(year : int32_t, month : int8_t, day : int8_t)(using Zone): Ptr[duckdb_date_struct] = 
+    def apply(year : int32_t, month : int8_t, day : int8_t)(using Zone): Ptr[duckdb_date_struct] =
       val ____ptr = apply()
       (!____ptr).year = year
       (!____ptr).month = month
       (!____ptr).day = day
       ____ptr
+    
     extension (struct: duckdb_date_struct)
       def year : int32_t = struct._1
       def year_=(value: int32_t): Unit = !struct.at1 = value
@@ -424,17 +443,22 @@ object structs:
       def month_=(value: int8_t): Unit = !struct.at2 = value
       def day : int8_t = struct._3
       def day_=(value: int8_t): Unit = !struct.at3 = value
+    
 
   opaque type duckdb_decimal = CStruct3[uint8_t, uint8_t, duckdb_hugeint]
+  
   object duckdb_decimal:
     given _tag: Tag[duckdb_decimal] = Tag.materializeCStruct3Tag[uint8_t, uint8_t, duckdb_hugeint]
+    
+    // Allocates duckdb_decimal on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[duckdb_decimal] = scala.scalanative.unsafe.alloc[duckdb_decimal](1)
-    def apply(width : uint8_t, scale : uint8_t, value : duckdb_hugeint)(using Zone): Ptr[duckdb_decimal] = 
+    def apply(width : uint8_t, scale : uint8_t, value : duckdb_hugeint)(using Zone): Ptr[duckdb_decimal] =
       val ____ptr = apply()
       (!____ptr).width = width
       (!____ptr).scale = scale
       (!____ptr).value = value
       ____ptr
+    
     extension (struct: duckdb_decimal)
       def width : uint8_t = struct._1
       def width_=(value: uint8_t): Unit = !struct.at1 = value
@@ -442,35 +466,45 @@ object structs:
       def scale_=(value: uint8_t): Unit = !struct.at2 = value
       def value : duckdb_hugeint = struct._3
       def value_=(value: duckdb_hugeint): Unit = !struct.at3 = value
+    
 
   /**
    * Hugeints are composed in a (lower, upper) component The value of the hugeint is upper * 2^64 + lower For easy usage, the functions duckdb_hugeint_to_double/duckdb_double_to_hugeint are recommended
   */
   opaque type duckdb_hugeint = CStruct2[uint64_t, int64_t]
+  
   object duckdb_hugeint:
     given _tag: Tag[duckdb_hugeint] = Tag.materializeCStruct2Tag[uint64_t, int64_t]
+    
+    // Allocates duckdb_hugeint on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[duckdb_hugeint] = scala.scalanative.unsafe.alloc[duckdb_hugeint](1)
-    def apply(lower : uint64_t, upper : int64_t)(using Zone): Ptr[duckdb_hugeint] = 
+    def apply(lower : uint64_t, upper : int64_t)(using Zone): Ptr[duckdb_hugeint] =
       val ____ptr = apply()
       (!____ptr).lower = lower
       (!____ptr).upper = upper
       ____ptr
+    
     extension (struct: duckdb_hugeint)
       def lower : uint64_t = struct._1
       def lower_=(value: uint64_t): Unit = !struct.at1 = value
       def upper : int64_t = struct._2
       def upper_=(value: int64_t): Unit = !struct.at2 = value
+    
 
   opaque type duckdb_interval = CStruct3[int32_t, int32_t, int64_t]
+  
   object duckdb_interval:
     given _tag: Tag[duckdb_interval] = Tag.materializeCStruct3Tag[int32_t, int32_t, int64_t]
+    
+    // Allocates duckdb_interval on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[duckdb_interval] = scala.scalanative.unsafe.alloc[duckdb_interval](1)
-    def apply(months : int32_t, days : int32_t, micros : int64_t)(using Zone): Ptr[duckdb_interval] = 
+    def apply(months : int32_t, days : int32_t, micros : int64_t)(using Zone): Ptr[duckdb_interval] =
       val ____ptr = apply()
       (!____ptr).months = months
       (!____ptr).days = days
       (!____ptr).micros = micros
       ____ptr
+    
     extension (struct: duckdb_interval)
       def months : int32_t = struct._1
       def months_=(value: int32_t): Unit = !struct.at1 = value
@@ -478,12 +512,16 @@ object structs:
       def days_=(value: int32_t): Unit = !struct.at2 = value
       def micros : int64_t = struct._3
       def micros_=(value: int64_t): Unit = !struct.at3 = value
+    
 
   opaque type duckdb_result = CStruct6[idx_t, idx_t, idx_t, Ptr[duckdb_column], CString, Ptr[Byte]]
+  
   object duckdb_result:
     given _tag: Tag[duckdb_result] = Tag.materializeCStruct6Tag[idx_t, idx_t, idx_t, Ptr[duckdb_column], CString, Ptr[Byte]]
+    
+    // Allocates duckdb_result on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[duckdb_result] = scala.scalanative.unsafe.alloc[duckdb_result](1)
-    def apply(__deprecated_column_count : idx_t, __deprecated_row_count : idx_t, __deprecated_rows_changed : idx_t, __deprecated_columns : Ptr[duckdb_column], __deprecated_error_message : CString, internal_data : Ptr[Byte])(using Zone): Ptr[duckdb_result] = 
+    def apply(__deprecated_column_count : idx_t, __deprecated_row_count : idx_t, __deprecated_rows_changed : idx_t, __deprecated_columns : Ptr[duckdb_column], __deprecated_error_message : CString, internal_data : Ptr[Byte])(using Zone): Ptr[duckdb_result] =
       val ____ptr = apply()
       (!____ptr).__deprecated_column_count = __deprecated_column_count
       (!____ptr).__deprecated_row_count = __deprecated_row_count
@@ -492,6 +530,7 @@ object structs:
       (!____ptr).__deprecated_error_message = __deprecated_error_message
       (!____ptr).internal_data = internal_data
       ____ptr
+    
     extension (struct: duckdb_result)
       def __deprecated_column_count : idx_t = struct._1
       def __deprecated_column_count_=(value: idx_t): Unit = !struct.at1 = value
@@ -505,33 +544,43 @@ object structs:
       def __deprecated_error_message_=(value: CString): Unit = !struct.at5 = value
       def internal_data : Ptr[Byte] = struct._6
       def internal_data_=(value: Ptr[Byte]): Unit = !struct.at6 = value
+    
 
   /**
    * Time is stored as microseconds since 00:00:00 Use the duckdb_from_time/duckdb_to_time function to extract individual information
   */
   opaque type duckdb_time = CStruct1[int64_t]
+  
   object duckdb_time:
     given _tag: Tag[duckdb_time] = Tag.materializeCStruct1Tag[int64_t]
+    
+    // Allocates duckdb_time on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[duckdb_time] = scala.scalanative.unsafe.alloc[duckdb_time](1)
-    def apply(micros : int64_t)(using Zone): Ptr[duckdb_time] = 
+    def apply(micros : int64_t)(using Zone): Ptr[duckdb_time] =
       val ____ptr = apply()
       (!____ptr).micros = micros
       ____ptr
+    
     extension (struct: duckdb_time)
       def micros : int64_t = struct._1
       def micros_=(value: int64_t): Unit = !struct.at1 = value
+    
 
   opaque type duckdb_time_struct = CStruct4[int8_t, int8_t, int8_t, int32_t]
+  
   object duckdb_time_struct:
     given _tag: Tag[duckdb_time_struct] = Tag.materializeCStruct4Tag[int8_t, int8_t, int8_t, int32_t]
+    
+    // Allocates duckdb_time_struct on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[duckdb_time_struct] = scala.scalanative.unsafe.alloc[duckdb_time_struct](1)
-    def apply(hour : int8_t, min : int8_t, sec : int8_t, micros : int32_t)(using Zone): Ptr[duckdb_time_struct] = 
+    def apply(hour : int8_t, min : int8_t, sec : int8_t, micros : int32_t)(using Zone): Ptr[duckdb_time_struct] =
       val ____ptr = apply()
       (!____ptr).hour = hour
       (!____ptr).min = min
       (!____ptr).sec = sec
       (!____ptr).micros = micros
       ____ptr
+    
     extension (struct: duckdb_time_struct)
       def hour : int8_t = struct._1
       def hour_=(value: int8_t): Unit = !struct.at1 = value
@@ -541,38 +590,50 @@ object structs:
       def sec_=(value: int8_t): Unit = !struct.at3 = value
       def micros : int32_t = struct._4
       def micros_=(value: int32_t): Unit = !struct.at4 = value
+    
 
   /**
    * Timestamps are stored as microseconds since 1970-01-01 Use the duckdb_from_timestamp/duckdb_to_timestamp function to extract individual information
   */
   opaque type duckdb_timestamp = CStruct1[int64_t]
+  
   object duckdb_timestamp:
     given _tag: Tag[duckdb_timestamp] = Tag.materializeCStruct1Tag[int64_t]
+    
+    // Allocates duckdb_timestamp on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[duckdb_timestamp] = scala.scalanative.unsafe.alloc[duckdb_timestamp](1)
-    def apply(micros : int64_t)(using Zone): Ptr[duckdb_timestamp] = 
+    def apply(micros : int64_t)(using Zone): Ptr[duckdb_timestamp] =
       val ____ptr = apply()
       (!____ptr).micros = micros
       ____ptr
+    
     extension (struct: duckdb_timestamp)
       def micros : int64_t = struct._1
       def micros_=(value: int64_t): Unit = !struct.at1 = value
+    
 
   opaque type duckdb_timestamp_struct = CStruct2[duckdb_date_struct, duckdb_time_struct]
+  
   object duckdb_timestamp_struct:
     given _tag: Tag[duckdb_timestamp_struct] = Tag.materializeCStruct2Tag[duckdb_date_struct, duckdb_time_struct]
+    
+    // Allocates duckdb_timestamp_struct on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[duckdb_timestamp_struct] = scala.scalanative.unsafe.alloc[duckdb_timestamp_struct](1)
-    def apply(date : duckdb_date_struct, time : duckdb_time_struct)(using Zone): Ptr[duckdb_timestamp_struct] = 
+    def apply(date : duckdb_date_struct, time : duckdb_time_struct)(using Zone): Ptr[duckdb_timestamp_struct] =
       val ____ptr = apply()
       (!____ptr).date = date
       (!____ptr).time = time
       ____ptr
+    
     extension (struct: duckdb_timestamp_struct)
       def date : duckdb_date_struct = struct._1
       def date_=(value: duckdb_date_struct): Unit = !struct.at1 = value
       def time : duckdb_time_struct = struct._2
       def time_=(value: duckdb_time_struct): Unit = !struct.at2 = value
+    
 
 @link("duckdb")
+
 @extern
 private[duckdb] object extern_functions:
   import _root_.duckdb.enumerations.*
@@ -1472,177 +1533,183 @@ object functions:
   /**
    * Append a duckdb_date value to the appender.
   */
-  def duckdb_append_date(appender : duckdb_appender, value : Ptr[duckdb_date]): duckdb_state = 
+  def duckdb_append_date(appender : duckdb_appender, value : Ptr[duckdb_date]): duckdb_state =
     __sn_wrap_duckdb_duckdb_append_date(appender, value)
 
   /**
    * Append a duckdb_date value to the appender.
   */
-  def duckdb_append_date(appender : duckdb_appender, value : duckdb_date)(using Zone): duckdb_state = 
-    val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
+  def duckdb_append_date(appender : duckdb_appender, value : duckdb_date)(using Zone): duckdb_state =
+    val __ptr_0: Ptr[duckdb_date] = _root_.scala.scalanative.unsafe.alloc[duckdb_date](1)
     !(__ptr_0 + 0) = value
     __sn_wrap_duckdb_duckdb_append_date(appender, (__ptr_0 + 0))
 
   /**
    * Append a duckdb_hugeint value to the appender.
   */
-  def duckdb_append_hugeint(appender : duckdb_appender, value : duckdb_hugeint)(using Zone): duckdb_state = 
-    val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
+  def duckdb_append_hugeint(appender : duckdb_appender, value : duckdb_hugeint)(using Zone): duckdb_state =
+    val __ptr_0: Ptr[duckdb_hugeint] = _root_.scala.scalanative.unsafe.alloc[duckdb_hugeint](1)
     !(__ptr_0 + 0) = value
     __sn_wrap_duckdb_duckdb_append_hugeint(appender, (__ptr_0 + 0))
 
   /**
    * Append a duckdb_hugeint value to the appender.
   */
-  def duckdb_append_hugeint(appender : duckdb_appender, value : Ptr[duckdb_hugeint]): duckdb_state = 
+  def duckdb_append_hugeint(appender : duckdb_appender, value : Ptr[duckdb_hugeint]): duckdb_state =
     __sn_wrap_duckdb_duckdb_append_hugeint(appender, value)
 
   /**
    * Append a duckdb_interval value to the appender.
   */
-  def duckdb_append_interval(appender : duckdb_appender, value : duckdb_interval)(using Zone): duckdb_state = 
-    val __ptr_0: Ptr[duckdb_interval] = alloc[duckdb_interval](1)
-    !(__ptr_0 + 0) = value
-    __sn_wrap_duckdb_duckdb_append_interval(appender, (__ptr_0 + 0))
+  def duckdb_append_interval(appender : duckdb_appender, value : Ptr[duckdb_interval]): duckdb_state =
+    __sn_wrap_duckdb_duckdb_append_interval(appender, value)
 
   /**
    * Append a duckdb_interval value to the appender.
   */
-  def duckdb_append_interval(appender : duckdb_appender, value : Ptr[duckdb_interval]): duckdb_state = 
-    __sn_wrap_duckdb_duckdb_append_interval(appender, value)
+  def duckdb_append_interval(appender : duckdb_appender, value : duckdb_interval)(using Zone): duckdb_state =
+    val __ptr_0: Ptr[duckdb_interval] = _root_.scala.scalanative.unsafe.alloc[duckdb_interval](1)
+    !(__ptr_0 + 0) = value
+    __sn_wrap_duckdb_duckdb_append_interval(appender, (__ptr_0 + 0))
 
   /**
    * Append a duckdb_time value to the appender.
   */
-  def duckdb_append_time(appender : duckdb_appender, value : Ptr[duckdb_time]): duckdb_state = 
+  def duckdb_append_time(appender : duckdb_appender, value : Ptr[duckdb_time]): duckdb_state =
     __sn_wrap_duckdb_duckdb_append_time(appender, value)
 
   /**
    * Append a duckdb_time value to the appender.
   */
-  def duckdb_append_time(appender : duckdb_appender, value : duckdb_time)(using Zone): duckdb_state = 
-    val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
+  def duckdb_append_time(appender : duckdb_appender, value : duckdb_time)(using Zone): duckdb_state =
+    val __ptr_0: Ptr[duckdb_time] = _root_.scala.scalanative.unsafe.alloc[duckdb_time](1)
     !(__ptr_0 + 0) = value
     __sn_wrap_duckdb_duckdb_append_time(appender, (__ptr_0 + 0))
 
   /**
    * Append a duckdb_timestamp value to the appender.
   */
-  def duckdb_append_timestamp(appender : duckdb_appender, value : Ptr[duckdb_timestamp]): duckdb_state = 
+  def duckdb_append_timestamp(appender : duckdb_appender, value : Ptr[duckdb_timestamp]): duckdb_state =
     __sn_wrap_duckdb_duckdb_append_timestamp(appender, value)
 
   /**
    * Append a duckdb_timestamp value to the appender.
   */
-  def duckdb_append_timestamp(appender : duckdb_appender, value : duckdb_timestamp)(using Zone): duckdb_state = 
-    val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
+  def duckdb_append_timestamp(appender : duckdb_appender, value : duckdb_timestamp)(using Zone): duckdb_state =
+    val __ptr_0: Ptr[duckdb_timestamp] = _root_.scala.scalanative.unsafe.alloc[duckdb_timestamp](1)
     !(__ptr_0 + 0) = value
     __sn_wrap_duckdb_duckdb_append_timestamp(appender, (__ptr_0 + 0))
 
   /**
    * Binds a duckdb_date value to the prepared statement at the specified index.
   */
-  def duckdb_bind_date(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_date]): duckdb_state = 
+  def duckdb_bind_date(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_date]): duckdb_state =
     __sn_wrap_duckdb_duckdb_bind_date(prepared_statement, param_idx, `val`)
 
   /**
    * Binds a duckdb_date value to the prepared statement at the specified index.
   */
-  def duckdb_bind_date(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_date)(using Zone): duckdb_state = 
-    val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
+  def duckdb_bind_date(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_date)(using Zone): duckdb_state =
+    val __ptr_0: Ptr[duckdb_date] = _root_.scala.scalanative.unsafe.alloc[duckdb_date](1)
     !(__ptr_0 + 0) = `val`
     __sn_wrap_duckdb_duckdb_bind_date(prepared_statement, param_idx, (__ptr_0 + 0))
 
   /**
    * Binds an duckdb_hugeint value to the prepared statement at the specified index.
   */
-  def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_hugeint)(using Zone): duckdb_state = 
-    val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
-    !(__ptr_0 + 0) = `val`
-    __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, (__ptr_0 + 0))
+  def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_hugeint]): duckdb_state =
+    __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, `val`)
 
   /**
    * Binds an duckdb_hugeint value to the prepared statement at the specified index.
   */
-  def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_hugeint]): duckdb_state = 
-    __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, `val`)
+  def duckdb_bind_hugeint(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_hugeint)(using Zone): duckdb_state =
+    val __ptr_0: Ptr[duckdb_hugeint] = _root_.scala.scalanative.unsafe.alloc[duckdb_hugeint](1)
+    !(__ptr_0 + 0) = `val`
+    __sn_wrap_duckdb_duckdb_bind_hugeint(prepared_statement, param_idx, (__ptr_0 + 0))
 
   /**
    * Binds a duckdb_interval value to the prepared statement at the specified index.
   */
-  def duckdb_bind_interval(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_interval)(using Zone): duckdb_state = 
-    val __ptr_0: Ptr[duckdb_interval] = alloc[duckdb_interval](1)
+  def duckdb_bind_interval(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_interval)(using Zone): duckdb_state =
+    val __ptr_0: Ptr[duckdb_interval] = _root_.scala.scalanative.unsafe.alloc[duckdb_interval](1)
     !(__ptr_0 + 0) = `val`
     __sn_wrap_duckdb_duckdb_bind_interval(prepared_statement, param_idx, (__ptr_0 + 0))
 
   /**
    * Binds a duckdb_interval value to the prepared statement at the specified index.
   */
-  def duckdb_bind_interval(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_interval]): duckdb_state = 
+  def duckdb_bind_interval(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_interval]): duckdb_state =
     __sn_wrap_duckdb_duckdb_bind_interval(prepared_statement, param_idx, `val`)
 
   /**
    * Binds a duckdb_time value to the prepared statement at the specified index.
   */
-  def duckdb_bind_time(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_time]): duckdb_state = 
+  def duckdb_bind_time(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_time]): duckdb_state =
     __sn_wrap_duckdb_duckdb_bind_time(prepared_statement, param_idx, `val`)
 
   /**
    * Binds a duckdb_time value to the prepared statement at the specified index.
   */
-  def duckdb_bind_time(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_time)(using Zone): duckdb_state = 
-    val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
+  def duckdb_bind_time(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_time)(using Zone): duckdb_state =
+    val __ptr_0: Ptr[duckdb_time] = _root_.scala.scalanative.unsafe.alloc[duckdb_time](1)
     !(__ptr_0 + 0) = `val`
     __sn_wrap_duckdb_duckdb_bind_time(prepared_statement, param_idx, (__ptr_0 + 0))
 
   /**
    * Binds a duckdb_timestamp value to the prepared statement at the specified index.
   */
-  def duckdb_bind_timestamp(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_timestamp]): duckdb_state = 
+  def duckdb_bind_timestamp(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : Ptr[duckdb_timestamp]): duckdb_state =
     __sn_wrap_duckdb_duckdb_bind_timestamp(prepared_statement, param_idx, `val`)
 
   /**
    * Binds a duckdb_timestamp value to the prepared statement at the specified index.
   */
-  def duckdb_bind_timestamp(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_timestamp)(using Zone): duckdb_state = 
-    val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
+  def duckdb_bind_timestamp(prepared_statement : duckdb_prepared_statement, param_idx : idx_t, `val` : duckdb_timestamp)(using Zone): duckdb_state =
+    val __ptr_0: Ptr[duckdb_timestamp] = _root_.scala.scalanative.unsafe.alloc[duckdb_timestamp](1)
     !(__ptr_0 + 0) = `val`
     __sn_wrap_duckdb_duckdb_bind_timestamp(prepared_statement, param_idx, (__ptr_0 + 0))
 
   /**
    * Converts a duckdb_decimal object (as obtained from a `DUCKDB_TYPE_DECIMAL` column) into a double.
   */
-  def duckdb_decimal_to_double(`val` : duckdb_decimal)(using Zone): Double = 
-    val __ptr_0: Ptr[duckdb_decimal] = alloc[duckdb_decimal](1)
-    !(__ptr_0 + 0) = `val`
-    __sn_wrap_duckdb_duckdb_decimal_to_double((__ptr_0 + 0))
+  def duckdb_decimal_to_double(`val` : Ptr[duckdb_decimal]): Double =
+    __sn_wrap_duckdb_duckdb_decimal_to_double(`val`)
 
   /**
    * Converts a duckdb_decimal object (as obtained from a `DUCKDB_TYPE_DECIMAL` column) into a double.
   */
-  def duckdb_decimal_to_double(`val` : Ptr[duckdb_decimal]): Double = 
-    __sn_wrap_duckdb_duckdb_decimal_to_double(`val`)
+  def duckdb_decimal_to_double(`val` : duckdb_decimal)(using Zone): Double =
+    val __ptr_0: Ptr[duckdb_decimal] = _root_.scala.scalanative.unsafe.alloc[duckdb_decimal](1)
+    !(__ptr_0 + 0) = `val`
+    __sn_wrap_duckdb_duckdb_decimal_to_double((__ptr_0 + 0))
 
   /**
    * Converts a double value to a duckdb_hugeint object.
   */
-  def duckdb_double_to_hugeint(`val` : Double)(using Zone): duckdb_hugeint = 
-    val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
+  def duckdb_double_to_hugeint(`val` : Double)(using Zone): duckdb_hugeint =
+    val __ptr_0: Ptr[duckdb_hugeint] = _root_.scala.scalanative.unsafe.alloc[duckdb_hugeint](1)
     __sn_wrap_duckdb_duckdb_double_to_hugeint(`val`, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
    * Converts a double value to a duckdb_hugeint object.
   */
-  def duckdb_double_to_hugeint(`val` : Double)(__return : Ptr[duckdb_hugeint]): Unit = 
+  def duckdb_double_to_hugeint(`val` : Double)(__return : Ptr[duckdb_hugeint]): Unit =
     __sn_wrap_duckdb_duckdb_double_to_hugeint(`val`, __return)
 
   /**
    * Decompose a `duckdb_date` object into year, month and date (stored as `duckdb_date_struct`).
   */
-  def duckdb_from_date(date : duckdb_date)(using Zone): duckdb_date_struct = 
-    val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
-    val __ptr_1: Ptr[duckdb_date_struct] = alloc[duckdb_date_struct](1)
+  def duckdb_from_date(date : Ptr[duckdb_date])(__return : Ptr[duckdb_date_struct]): Unit =
+    __sn_wrap_duckdb_duckdb_from_date(date, __return)
+
+  /**
+   * Decompose a `duckdb_date` object into year, month and date (stored as `duckdb_date_struct`).
+  */
+  def duckdb_from_date(date : duckdb_date)(using Zone): duckdb_date_struct =
+    val __ptr_0: Ptr[duckdb_date] = _root_.scala.scalanative.unsafe.alloc[duckdb_date](1)
+    val __ptr_1: Ptr[duckdb_date_struct] = _root_.scala.scalanative.unsafe.alloc[duckdb_date_struct](1)
     !(__ptr_0 + 0) = date
     __sn_wrap_duckdb_duckdb_from_date((__ptr_0 + 0), (__ptr_1 + 0))
     !(__ptr_1 + 0)
@@ -1650,29 +1717,17 @@ object functions:
   /**
    * Decompose a `duckdb_date` object into year, month and date (stored as `duckdb_date_struct`).
   */
-  def duckdb_from_date(date : Ptr[duckdb_date])(__return : Ptr[duckdb_date_struct]): Unit = 
-    __sn_wrap_duckdb_duckdb_from_date(date, __return)
-
-  /**
-   * Decompose a `duckdb_date` object into year, month and date (stored as `duckdb_date_struct`).
-  */
-  def duckdb_from_date(date : Ptr[duckdb_date])(using Zone): duckdb_date_struct = 
-    val __ptr_0: Ptr[duckdb_date_struct] = alloc[duckdb_date_struct](1)
+  def duckdb_from_date(date : Ptr[duckdb_date])(using Zone): duckdb_date_struct =
+    val __ptr_0: Ptr[duckdb_date_struct] = _root_.scala.scalanative.unsafe.alloc[duckdb_date_struct](1)
     __sn_wrap_duckdb_duckdb_from_date(date, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
    * Decompose a `duckdb_time` object into hour, minute, second and microsecond (stored as `duckdb_time_struct`).
   */
-  def duckdb_from_time(time : Ptr[duckdb_time])(__return : Ptr[duckdb_time_struct]): Unit = 
-    __sn_wrap_duckdb_duckdb_from_time(time, __return)
-
-  /**
-   * Decompose a `duckdb_time` object into hour, minute, second and microsecond (stored as `duckdb_time_struct`).
-  */
-  def duckdb_from_time(time : duckdb_time)(using Zone): duckdb_time_struct = 
-    val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
-    val __ptr_1: Ptr[duckdb_time_struct] = alloc[duckdb_time_struct](1)
+  def duckdb_from_time(time : duckdb_time)(using Zone): duckdb_time_struct =
+    val __ptr_0: Ptr[duckdb_time] = _root_.scala.scalanative.unsafe.alloc[duckdb_time](1)
+    val __ptr_1: Ptr[duckdb_time_struct] = _root_.scala.scalanative.unsafe.alloc[duckdb_time_struct](1)
     !(__ptr_0 + 0) = time
     __sn_wrap_duckdb_duckdb_from_time((__ptr_0 + 0), (__ptr_1 + 0))
     !(__ptr_1 + 0)
@@ -1680,107 +1735,121 @@ object functions:
   /**
    * Decompose a `duckdb_time` object into hour, minute, second and microsecond (stored as `duckdb_time_struct`).
   */
-  def duckdb_from_time(time : Ptr[duckdb_time])(using Zone): duckdb_time_struct = 
-    val __ptr_0: Ptr[duckdb_time_struct] = alloc[duckdb_time_struct](1)
+  def duckdb_from_time(time : Ptr[duckdb_time])(__return : Ptr[duckdb_time_struct]): Unit =
+    __sn_wrap_duckdb_duckdb_from_time(time, __return)
+
+  /**
+   * Decompose a `duckdb_time` object into hour, minute, second and microsecond (stored as `duckdb_time_struct`).
+  */
+  def duckdb_from_time(time : Ptr[duckdb_time])(using Zone): duckdb_time_struct =
+    val __ptr_0: Ptr[duckdb_time_struct] = _root_.scala.scalanative.unsafe.alloc[duckdb_time_struct](1)
     __sn_wrap_duckdb_duckdb_from_time(time, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
    * Decompose a `duckdb_timestamp` object into a `duckdb_timestamp_struct`.
   */
-  def duckdb_from_timestamp(ts : Ptr[duckdb_timestamp])(__return : Ptr[duckdb_timestamp_struct]): Unit = 
-    __sn_wrap_duckdb_duckdb_from_timestamp(ts, __return)
-
-  /**
-   * Decompose a `duckdb_timestamp` object into a `duckdb_timestamp_struct`.
-  */
-  def duckdb_from_timestamp(ts : Ptr[duckdb_timestamp])(using Zone): duckdb_timestamp_struct = 
-    val __ptr_0: Ptr[duckdb_timestamp_struct] = alloc[duckdb_timestamp_struct](1)
+  def duckdb_from_timestamp(ts : Ptr[duckdb_timestamp])(using Zone): duckdb_timestamp_struct =
+    val __ptr_0: Ptr[duckdb_timestamp_struct] = _root_.scala.scalanative.unsafe.alloc[duckdb_timestamp_struct](1)
     __sn_wrap_duckdb_duckdb_from_timestamp(ts, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
    * Decompose a `duckdb_timestamp` object into a `duckdb_timestamp_struct`.
   */
-  def duckdb_from_timestamp(ts : duckdb_timestamp)(using Zone): duckdb_timestamp_struct = 
-    val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
-    val __ptr_1: Ptr[duckdb_timestamp_struct] = alloc[duckdb_timestamp_struct](1)
+  def duckdb_from_timestamp(ts : duckdb_timestamp)(using Zone): duckdb_timestamp_struct =
+    val __ptr_0: Ptr[duckdb_timestamp] = _root_.scala.scalanative.unsafe.alloc[duckdb_timestamp](1)
+    val __ptr_1: Ptr[duckdb_timestamp_struct] = _root_.scala.scalanative.unsafe.alloc[duckdb_timestamp_struct](1)
     !(__ptr_0 + 0) = ts
     __sn_wrap_duckdb_duckdb_from_timestamp((__ptr_0 + 0), (__ptr_1 + 0))
     !(__ptr_1 + 0)
 
   /**
-   * Converts a duckdb_hugeint object (as obtained from a `DUCKDB_TYPE_HUGEINT` column) into a double.
+   * Decompose a `duckdb_timestamp` object into a `duckdb_timestamp_struct`.
   */
-  def duckdb_hugeint_to_double(`val` : Ptr[duckdb_hugeint]): Double = 
-    __sn_wrap_duckdb_duckdb_hugeint_to_double(`val`)
+  def duckdb_from_timestamp(ts : Ptr[duckdb_timestamp])(__return : Ptr[duckdb_timestamp_struct]): Unit =
+    __sn_wrap_duckdb_duckdb_from_timestamp(ts, __return)
 
   /**
    * Converts a duckdb_hugeint object (as obtained from a `DUCKDB_TYPE_HUGEINT` column) into a double.
   */
-  def duckdb_hugeint_to_double(`val` : duckdb_hugeint)(using Zone): Double = 
-    val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
+  def duckdb_hugeint_to_double(`val` : duckdb_hugeint)(using Zone): Double =
+    val __ptr_0: Ptr[duckdb_hugeint] = _root_.scala.scalanative.unsafe.alloc[duckdb_hugeint](1)
     !(__ptr_0 + 0) = `val`
     __sn_wrap_duckdb_duckdb_hugeint_to_double((__ptr_0 + 0))
 
   /**
+   * Converts a duckdb_hugeint object (as obtained from a `DUCKDB_TYPE_HUGEINT` column) into a double.
+  */
+  def duckdb_hugeint_to_double(`val` : Ptr[duckdb_hugeint]): Double =
+    __sn_wrap_duckdb_duckdb_hugeint_to_double(`val`)
+
+  /**
    * Returns the number of data chunks present in the result.
   */
-  def duckdb_result_chunk_count(result : duckdb_result)(using Zone): idx_t = 
-    val __ptr_0: Ptr[duckdb_result] = alloc[duckdb_result](1)
+  def duckdb_result_chunk_count(result : duckdb_result)(using Zone): idx_t =
+    val __ptr_0: Ptr[duckdb_result] = _root_.scala.scalanative.unsafe.alloc[duckdb_result](1)
     !(__ptr_0 + 0) = result
     __sn_wrap_duckdb_duckdb_result_chunk_count((__ptr_0 + 0))
 
   /**
    * Returns the number of data chunks present in the result.
   */
-  def duckdb_result_chunk_count(result : Ptr[duckdb_result]): idx_t = 
+  def duckdb_result_chunk_count(result : Ptr[duckdb_result]): idx_t =
     __sn_wrap_duckdb_duckdb_result_chunk_count(result)
 
   /**
    * Fetches a data chunk from the duckdb_result. This function should be called repeatedly until the result is exhausted.
   */
-  def duckdb_result_get_chunk(result : Ptr[duckdb_result], chunk_index : idx_t): duckdb_data_chunk = 
+  def duckdb_result_get_chunk(result : Ptr[duckdb_result], chunk_index : idx_t): duckdb_data_chunk =
     __sn_wrap_duckdb_duckdb_result_get_chunk(result, chunk_index)
 
   /**
    * Fetches a data chunk from the duckdb_result. This function should be called repeatedly until the result is exhausted.
   */
-  def duckdb_result_get_chunk(result : duckdb_result, chunk_index : idx_t)(using Zone): duckdb_data_chunk = 
-    val __ptr_0: Ptr[duckdb_result] = alloc[duckdb_result](1)
+  def duckdb_result_get_chunk(result : duckdb_result, chunk_index : idx_t)(using Zone): duckdb_data_chunk =
+    val __ptr_0: Ptr[duckdb_result] = _root_.scala.scalanative.unsafe.alloc[duckdb_result](1)
     !(__ptr_0 + 0) = result
     __sn_wrap_duckdb_duckdb_result_get_chunk((__ptr_0 + 0), chunk_index)
 
   /**
    * Re-compose a `duckdb_date` from year, month and date (`duckdb_date_struct`).
   */
-  def duckdb_to_date(date : Ptr[duckdb_date_struct])(__return : Ptr[duckdb_date]): Unit = 
-    __sn_wrap_duckdb_duckdb_to_date(date, __return)
+  def duckdb_to_date(date : duckdb_date_struct)(using Zone): duckdb_date =
+    val __ptr_0: Ptr[duckdb_date] = _root_.scala.scalanative.unsafe.alloc[duckdb_date](1)
+    val __ptr_1: Ptr[duckdb_date_struct] = _root_.scala.scalanative.unsafe.alloc[duckdb_date_struct](1)
+    !(__ptr_1 + 0) = date
+    __sn_wrap_duckdb_duckdb_to_date((__ptr_1 + 0), (__ptr_0 + 0))
+    !(__ptr_0 + 0)
 
   /**
    * Re-compose a `duckdb_date` from year, month and date (`duckdb_date_struct`).
   */
-  def duckdb_to_date(date : Ptr[duckdb_date_struct])(using Zone): duckdb_date = 
-    val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
+  def duckdb_to_date(date : Ptr[duckdb_date_struct])(using Zone): duckdb_date =
+    val __ptr_0: Ptr[duckdb_date] = _root_.scala.scalanative.unsafe.alloc[duckdb_date](1)
     __sn_wrap_duckdb_duckdb_to_date(date, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
    * Re-compose a `duckdb_date` from year, month and date (`duckdb_date_struct`).
   */
-  def duckdb_to_date(date : duckdb_date_struct)(using Zone): duckdb_date = 
-    val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
-    val __ptr_1: Ptr[duckdb_date_struct] = alloc[duckdb_date_struct](1)
-    !(__ptr_1 + 0) = date
-    __sn_wrap_duckdb_duckdb_to_date((__ptr_1 + 0), (__ptr_0 + 0))
+  def duckdb_to_date(date : Ptr[duckdb_date_struct])(__return : Ptr[duckdb_date]): Unit =
+    __sn_wrap_duckdb_duckdb_to_date(date, __return)
+
+  /**
+   * Re-compose a `duckdb_time` from hour, minute, second and microsecond (`duckdb_time_struct`).
+  */
+  def duckdb_to_time(time : Ptr[duckdb_time_struct])(using Zone): duckdb_time =
+    val __ptr_0: Ptr[duckdb_time] = _root_.scala.scalanative.unsafe.alloc[duckdb_time](1)
+    __sn_wrap_duckdb_duckdb_to_time(time, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
    * Re-compose a `duckdb_time` from hour, minute, second and microsecond (`duckdb_time_struct`).
   */
-  def duckdb_to_time(time : duckdb_time_struct)(using Zone): duckdb_time = 
-    val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
-    val __ptr_1: Ptr[duckdb_time_struct] = alloc[duckdb_time_struct](1)
+  def duckdb_to_time(time : duckdb_time_struct)(using Zone): duckdb_time =
+    val __ptr_0: Ptr[duckdb_time] = _root_.scala.scalanative.unsafe.alloc[duckdb_time](1)
+    val __ptr_1: Ptr[duckdb_time_struct] = _root_.scala.scalanative.unsafe.alloc[duckdb_time_struct](1)
     !(__ptr_1 + 0) = time
     __sn_wrap_duckdb_duckdb_to_time((__ptr_1 + 0), (__ptr_0 + 0))
     !(__ptr_0 + 0)
@@ -1788,143 +1857,135 @@ object functions:
   /**
    * Re-compose a `duckdb_time` from hour, minute, second and microsecond (`duckdb_time_struct`).
   */
-  def duckdb_to_time(time : Ptr[duckdb_time_struct])(using Zone): duckdb_time = 
-    val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
-    __sn_wrap_duckdb_duckdb_to_time(time, (__ptr_0 + 0))
-    !(__ptr_0 + 0)
-
-  /**
-   * Re-compose a `duckdb_time` from hour, minute, second and microsecond (`duckdb_time_struct`).
-  */
-  def duckdb_to_time(time : Ptr[duckdb_time_struct])(__return : Ptr[duckdb_time]): Unit = 
+  def duckdb_to_time(time : Ptr[duckdb_time_struct])(__return : Ptr[duckdb_time]): Unit =
     __sn_wrap_duckdb_duckdb_to_time(time, __return)
 
   /**
    * Re-compose a `duckdb_timestamp` from a duckdb_timestamp_struct.
   */
-  def duckdb_to_timestamp(ts : Ptr[duckdb_timestamp_struct])(using Zone): duckdb_timestamp = 
-    val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
+  def duckdb_to_timestamp(ts : Ptr[duckdb_timestamp_struct])(using Zone): duckdb_timestamp =
+    val __ptr_0: Ptr[duckdb_timestamp] = _root_.scala.scalanative.unsafe.alloc[duckdb_timestamp](1)
     __sn_wrap_duckdb_duckdb_to_timestamp(ts, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
    * Re-compose a `duckdb_timestamp` from a duckdb_timestamp_struct.
   */
-  def duckdb_to_timestamp(ts : duckdb_timestamp_struct)(using Zone): duckdb_timestamp = 
-    val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
-    val __ptr_1: Ptr[duckdb_timestamp_struct] = alloc[duckdb_timestamp_struct](1)
+  def duckdb_to_timestamp(ts : Ptr[duckdb_timestamp_struct])(__return : Ptr[duckdb_timestamp]): Unit =
+    __sn_wrap_duckdb_duckdb_to_timestamp(ts, __return)
+
+  /**
+   * Re-compose a `duckdb_timestamp` from a duckdb_timestamp_struct.
+  */
+  def duckdb_to_timestamp(ts : duckdb_timestamp_struct)(using Zone): duckdb_timestamp =
+    val __ptr_0: Ptr[duckdb_timestamp] = _root_.scala.scalanative.unsafe.alloc[duckdb_timestamp](1)
+    val __ptr_1: Ptr[duckdb_timestamp_struct] = _root_.scala.scalanative.unsafe.alloc[duckdb_timestamp_struct](1)
     !(__ptr_1 + 0) = ts
     __sn_wrap_duckdb_duckdb_to_timestamp((__ptr_1 + 0), (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
-   * Re-compose a `duckdb_timestamp` from a duckdb_timestamp_struct.
-  */
-  def duckdb_to_timestamp(ts : Ptr[duckdb_timestamp_struct])(__return : Ptr[duckdb_timestamp]): Unit = 
-    __sn_wrap_duckdb_duckdb_to_timestamp(ts, __return)
-
-  /**
    * returns: The duckdb_blob value at the specified location. Returns a blob with blob.data set to nullptr if the value cannot be converted. The resulting "blob.data" must be freed with `duckdb_free.`
   */
-  def duckdb_value_blob(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_blob = 
-    val __ptr_0: Ptr[duckdb_blob] = alloc[duckdb_blob](1)
+  def duckdb_value_blob(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_blob =
+    val __ptr_0: Ptr[duckdb_blob] = _root_.scala.scalanative.unsafe.alloc[duckdb_blob](1)
     __sn_wrap_duckdb_duckdb_value_blob(result, col, row, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
    * returns: The duckdb_blob value at the specified location. Returns a blob with blob.data set to nullptr if the value cannot be converted. The resulting "blob.data" must be freed with `duckdb_free.`
   */
-  def duckdb_value_blob(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_blob]): Unit = 
+  def duckdb_value_blob(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_blob]): Unit =
     __sn_wrap_duckdb_duckdb_value_blob(result, col, row, __return)
 
   /**
    * returns: The duckdb_date value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_date(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_date]): Unit = 
+  def duckdb_value_date(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_date]): Unit =
     __sn_wrap_duckdb_duckdb_value_date(result, col, row, __return)
 
   /**
    * returns: The duckdb_date value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_date(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_date = 
-    val __ptr_0: Ptr[duckdb_date] = alloc[duckdb_date](1)
+  def duckdb_value_date(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_date =
+    val __ptr_0: Ptr[duckdb_date] = _root_.scala.scalanative.unsafe.alloc[duckdb_date](1)
     __sn_wrap_duckdb_duckdb_value_date(result, col, row, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
    * returns: The duckdb_decimal value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_decimal(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_decimal]): Unit = 
-    __sn_wrap_duckdb_duckdb_value_decimal(result, col, row, __return)
-
-  /**
-   * returns: The duckdb_decimal value at the specified location, or 0 if the value cannot be converted.
-  */
-  def duckdb_value_decimal(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_decimal = 
-    val __ptr_0: Ptr[duckdb_decimal] = alloc[duckdb_decimal](1)
+  def duckdb_value_decimal(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_decimal =
+    val __ptr_0: Ptr[duckdb_decimal] = _root_.scala.scalanative.unsafe.alloc[duckdb_decimal](1)
     __sn_wrap_duckdb_duckdb_value_decimal(result, col, row, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
-   * returns: The duckdb_hugeint value at the specified location, or 0 if the value cannot be converted.
+   * returns: The duckdb_decimal value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_hugeint(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_hugeint]): Unit = 
-    __sn_wrap_duckdb_duckdb_value_hugeint(result, col, row, __return)
+  def duckdb_value_decimal(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_decimal]): Unit =
+    __sn_wrap_duckdb_duckdb_value_decimal(result, col, row, __return)
 
   /**
    * returns: The duckdb_hugeint value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_hugeint(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_hugeint = 
-    val __ptr_0: Ptr[duckdb_hugeint] = alloc[duckdb_hugeint](1)
+  def duckdb_value_hugeint(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_hugeint =
+    val __ptr_0: Ptr[duckdb_hugeint] = _root_.scala.scalanative.unsafe.alloc[duckdb_hugeint](1)
     __sn_wrap_duckdb_duckdb_value_hugeint(result, col, row, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
-   * returns: The duckdb_interval value at the specified location, or 0 if the value cannot be converted.
+   * returns: The duckdb_hugeint value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_interval(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_interval]): Unit = 
-    __sn_wrap_duckdb_duckdb_value_interval(result, col, row, __return)
+  def duckdb_value_hugeint(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_hugeint]): Unit =
+    __sn_wrap_duckdb_duckdb_value_hugeint(result, col, row, __return)
 
   /**
    * returns: The duckdb_interval value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_interval(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_interval = 
-    val __ptr_0: Ptr[duckdb_interval] = alloc[duckdb_interval](1)
+  def duckdb_value_interval(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_interval =
+    val __ptr_0: Ptr[duckdb_interval] = _root_.scala.scalanative.unsafe.alloc[duckdb_interval](1)
     __sn_wrap_duckdb_duckdb_value_interval(result, col, row, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
+   * returns: The duckdb_interval value at the specified location, or 0 if the value cannot be converted.
+  */
+  def duckdb_value_interval(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_interval]): Unit =
+    __sn_wrap_duckdb_duckdb_value_interval(result, col, row, __return)
+
+  /**
    * returns: The duckdb_time value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_time(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_time = 
-    val __ptr_0: Ptr[duckdb_time] = alloc[duckdb_time](1)
+  def duckdb_value_time(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_time =
+    val __ptr_0: Ptr[duckdb_time] = _root_.scala.scalanative.unsafe.alloc[duckdb_time](1)
     __sn_wrap_duckdb_duckdb_value_time(result, col, row, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
   /**
    * returns: The duckdb_time value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_time(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_time]): Unit = 
+  def duckdb_value_time(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_time]): Unit =
     __sn_wrap_duckdb_duckdb_value_time(result, col, row, __return)
 
   /**
    * returns: The duckdb_timestamp value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_timestamp(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_timestamp]): Unit = 
+  def duckdb_value_timestamp(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(__return : Ptr[duckdb_timestamp]): Unit =
     __sn_wrap_duckdb_duckdb_value_timestamp(result, col, row, __return)
 
   /**
    * returns: The duckdb_timestamp value at the specified location, or 0 if the value cannot be converted.
   */
-  def duckdb_value_timestamp(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_timestamp = 
-    val __ptr_0: Ptr[duckdb_timestamp] = alloc[duckdb_timestamp](1)
+  def duckdb_value_timestamp(result : Ptr[duckdb_result], col : idx_t, row : idx_t)(using Zone): duckdb_timestamp =
+    val __ptr_0: Ptr[duckdb_timestamp] = _root_.scala.scalanative.unsafe.alloc[duckdb_timestamp](1)
     __sn_wrap_duckdb_duckdb_value_timestamp(result, col, row, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
 object types:
-  export _root_.duckdb.structs.*
-  export _root_.duckdb.aliases.*
-  export _root_.duckdb.enumerations.*
+    export _root_.duckdb.structs.*
+    export _root_.duckdb.aliases.*
+    export _root_.duckdb.enumerations.*
 
 object all:
   export _root_.duckdb.enumerations.DUCKDB_TYPE

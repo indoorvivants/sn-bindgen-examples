@@ -6,13 +6,12 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[s2n] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
-    given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
-    extension (inline t: T)
-     inline def value: CUnsignedInt = eq.apply(t)
-     inline def int: CInt = eq.apply(t).toInt
-     inline def uint: CUnsignedInt = eq.apply(t)
-
+    private[s2n] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
+      given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
+      extension (inline t: T)
+        inline def value: CUnsignedInt = eq.apply(t)
+        inline def int: CInt = eq.apply(t).toInt
+        inline def uint: CUnsignedInt = eq.apply(t)
 
 object enumerations:
   import predef.*
@@ -25,10 +24,10 @@ object enumerations:
     inline def define(inline a: Long): s2n_alert_behavior = a.toUInt
     val S2N_ALERT_FAIL_ON_WARNINGS = define(0)
     val S2N_ALERT_IGNORE_WARNINGS = define(1)
-    inline def getName(inline value: s2n_alert_behavior): Option[String] =
-      inline value match
-        case S2N_ALERT_FAIL_ON_WARNINGS => Some("S2N_ALERT_FAIL_ON_WARNINGS")
-        case S2N_ALERT_IGNORE_WARNINGS => Some("S2N_ALERT_IGNORE_WARNINGS")
+    def getName(value: s2n_alert_behavior): Option[String] =
+      value match
+        case `S2N_ALERT_FAIL_ON_WARNINGS` => Some("S2N_ALERT_FAIL_ON_WARNINGS")
+        case `S2N_ALERT_IGNORE_WARNINGS` => Some("S2N_ALERT_IGNORE_WARNINGS")
         case _ => _root_.scala.None
     extension (a: s2n_alert_behavior)
       inline def &(b: s2n_alert_behavior): s2n_alert_behavior = a & b
@@ -44,10 +43,10 @@ object enumerations:
     inline def define(inline a: Long): s2n_async_pkey_op_type = a.toUInt
     val S2N_ASYNC_DECRYPT = define(0)
     val S2N_ASYNC_SIGN = define(1)
-    inline def getName(inline value: s2n_async_pkey_op_type): Option[String] =
-      inline value match
-        case S2N_ASYNC_DECRYPT => Some("S2N_ASYNC_DECRYPT")
-        case S2N_ASYNC_SIGN => Some("S2N_ASYNC_SIGN")
+    def getName(value: s2n_async_pkey_op_type): Option[String] =
+      value match
+        case `S2N_ASYNC_DECRYPT` => Some("S2N_ASYNC_DECRYPT")
+        case `S2N_ASYNC_SIGN` => Some("S2N_ASYNC_SIGN")
         case _ => _root_.scala.None
     extension (a: s2n_async_pkey_op_type)
       inline def &(b: s2n_async_pkey_op_type): s2n_async_pkey_op_type = a & b
@@ -63,10 +62,10 @@ object enumerations:
     inline def define(inline a: Long): s2n_async_pkey_validation_mode = a.toUInt
     val S2N_ASYNC_PKEY_VALIDATION_FAST = define(0)
     val S2N_ASYNC_PKEY_VALIDATION_STRICT = define(1)
-    inline def getName(inline value: s2n_async_pkey_validation_mode): Option[String] =
-      inline value match
-        case S2N_ASYNC_PKEY_VALIDATION_FAST => Some("S2N_ASYNC_PKEY_VALIDATION_FAST")
-        case S2N_ASYNC_PKEY_VALIDATION_STRICT => Some("S2N_ASYNC_PKEY_VALIDATION_STRICT")
+    def getName(value: s2n_async_pkey_validation_mode): Option[String] =
+      value match
+        case `S2N_ASYNC_PKEY_VALIDATION_FAST` => Some("S2N_ASYNC_PKEY_VALIDATION_FAST")
+        case `S2N_ASYNC_PKEY_VALIDATION_STRICT` => Some("S2N_ASYNC_PKEY_VALIDATION_STRICT")
         case _ => _root_.scala.None
     extension (a: s2n_async_pkey_validation_mode)
       inline def &(b: s2n_async_pkey_validation_mode): s2n_async_pkey_validation_mode = a & b
@@ -82,10 +81,10 @@ object enumerations:
     inline def define(inline a: Long): s2n_blinding = a.toUInt
     val S2N_BUILT_IN_BLINDING = define(0)
     val S2N_SELF_SERVICE_BLINDING = define(1)
-    inline def getName(inline value: s2n_blinding): Option[String] =
-      inline value match
-        case S2N_BUILT_IN_BLINDING => Some("S2N_BUILT_IN_BLINDING")
-        case S2N_SELF_SERVICE_BLINDING => Some("S2N_SELF_SERVICE_BLINDING")
+    def getName(value: s2n_blinding): Option[String] =
+      value match
+        case `S2N_BUILT_IN_BLINDING` => Some("S2N_BUILT_IN_BLINDING")
+        case `S2N_SELF_SERVICE_BLINDING` => Some("S2N_SELF_SERVICE_BLINDING")
         case _ => _root_.scala.None
     extension (a: s2n_blinding)
       inline def &(b: s2n_blinding): s2n_blinding = a & b
@@ -104,13 +103,13 @@ object enumerations:
     val S2N_BLOCKED_ON_WRITE = define(2)
     val S2N_BLOCKED_ON_APPLICATION_INPUT = define(3)
     val S2N_BLOCKED_ON_EARLY_DATA = define(4)
-    inline def getName(inline value: s2n_blocked_status): Option[String] =
-      inline value match
-        case S2N_NOT_BLOCKED => Some("S2N_NOT_BLOCKED")
-        case S2N_BLOCKED_ON_READ => Some("S2N_BLOCKED_ON_READ")
-        case S2N_BLOCKED_ON_WRITE => Some("S2N_BLOCKED_ON_WRITE")
-        case S2N_BLOCKED_ON_APPLICATION_INPUT => Some("S2N_BLOCKED_ON_APPLICATION_INPUT")
-        case S2N_BLOCKED_ON_EARLY_DATA => Some("S2N_BLOCKED_ON_EARLY_DATA")
+    def getName(value: s2n_blocked_status): Option[String] =
+      value match
+        case `S2N_NOT_BLOCKED` => Some("S2N_NOT_BLOCKED")
+        case `S2N_BLOCKED_ON_READ` => Some("S2N_BLOCKED_ON_READ")
+        case `S2N_BLOCKED_ON_WRITE` => Some("S2N_BLOCKED_ON_WRITE")
+        case `S2N_BLOCKED_ON_APPLICATION_INPUT` => Some("S2N_BLOCKED_ON_APPLICATION_INPUT")
+        case `S2N_BLOCKED_ON_EARLY_DATA` => Some("S2N_BLOCKED_ON_EARLY_DATA")
         case _ => _root_.scala.None
     extension (a: s2n_blocked_status)
       inline def &(b: s2n_blocked_status): s2n_blocked_status = a & b
@@ -127,11 +126,11 @@ object enumerations:
     val S2N_CERT_AUTH_NONE = define(0)
     val S2N_CERT_AUTH_REQUIRED = define(1)
     val S2N_CERT_AUTH_OPTIONAL = define(2)
-    inline def getName(inline value: s2n_cert_auth_type): Option[String] =
-      inline value match
-        case S2N_CERT_AUTH_NONE => Some("S2N_CERT_AUTH_NONE")
-        case S2N_CERT_AUTH_REQUIRED => Some("S2N_CERT_AUTH_REQUIRED")
-        case S2N_CERT_AUTH_OPTIONAL => Some("S2N_CERT_AUTH_OPTIONAL")
+    def getName(value: s2n_cert_auth_type): Option[String] =
+      value match
+        case `S2N_CERT_AUTH_NONE` => Some("S2N_CERT_AUTH_NONE")
+        case `S2N_CERT_AUTH_REQUIRED` => Some("S2N_CERT_AUTH_REQUIRED")
+        case `S2N_CERT_AUTH_OPTIONAL` => Some("S2N_CERT_AUTH_OPTIONAL")
         case _ => _root_.scala.None
     extension (a: s2n_cert_auth_type)
       inline def &(b: s2n_cert_auth_type): s2n_cert_auth_type = a & b
@@ -147,10 +146,10 @@ object enumerations:
     inline def define(inline a: Long): s2n_client_hello_cb_mode = a.toUInt
     val S2N_CLIENT_HELLO_CB_BLOCKING = define(0)
     val S2N_CLIENT_HELLO_CB_NONBLOCKING = define(1)
-    inline def getName(inline value: s2n_client_hello_cb_mode): Option[String] =
-      inline value match
-        case S2N_CLIENT_HELLO_CB_BLOCKING => Some("S2N_CLIENT_HELLO_CB_BLOCKING")
-        case S2N_CLIENT_HELLO_CB_NONBLOCKING => Some("S2N_CLIENT_HELLO_CB_NONBLOCKING")
+    def getName(value: s2n_client_hello_cb_mode): Option[String] =
+      value match
+        case `S2N_CLIENT_HELLO_CB_BLOCKING` => Some("S2N_CLIENT_HELLO_CB_BLOCKING")
+        case `S2N_CLIENT_HELLO_CB_NONBLOCKING` => Some("S2N_CLIENT_HELLO_CB_NONBLOCKING")
         case _ => _root_.scala.None
     extension (a: s2n_client_hello_cb_mode)
       inline def &(b: s2n_client_hello_cb_mode): s2n_client_hello_cb_mode = a & b
@@ -166,10 +165,10 @@ object enumerations:
     inline def define(inline a: Long): s2n_ct_support_level = a.toUInt
     val S2N_CT_SUPPORT_NONE = define(0)
     val S2N_CT_SUPPORT_REQUEST = define(1)
-    inline def getName(inline value: s2n_ct_support_level): Option[String] =
-      inline value match
-        case S2N_CT_SUPPORT_NONE => Some("S2N_CT_SUPPORT_NONE")
-        case S2N_CT_SUPPORT_REQUEST => Some("S2N_CT_SUPPORT_REQUEST")
+    def getName(value: s2n_ct_support_level): Option[String] =
+      value match
+        case `S2N_CT_SUPPORT_NONE` => Some("S2N_CT_SUPPORT_NONE")
+        case `S2N_CT_SUPPORT_REQUEST` => Some("S2N_CT_SUPPORT_REQUEST")
         case _ => _root_.scala.None
     extension (a: s2n_ct_support_level)
       inline def &(b: s2n_ct_support_level): s2n_ct_support_level = a & b
@@ -187,12 +186,12 @@ object enumerations:
     val S2N_EARLY_DATA_STATUS_NOT_REQUESTED = define(1)
     val S2N_EARLY_DATA_STATUS_REJECTED = define(2)
     val S2N_EARLY_DATA_STATUS_END = define(3)
-    inline def getName(inline value: s2n_early_data_status_t): Option[String] =
-      inline value match
-        case S2N_EARLY_DATA_STATUS_OK => Some("S2N_EARLY_DATA_STATUS_OK")
-        case S2N_EARLY_DATA_STATUS_NOT_REQUESTED => Some("S2N_EARLY_DATA_STATUS_NOT_REQUESTED")
-        case S2N_EARLY_DATA_STATUS_REJECTED => Some("S2N_EARLY_DATA_STATUS_REJECTED")
-        case S2N_EARLY_DATA_STATUS_END => Some("S2N_EARLY_DATA_STATUS_END")
+    def getName(value: s2n_early_data_status_t): Option[String] =
+      value match
+        case `S2N_EARLY_DATA_STATUS_OK` => Some("S2N_EARLY_DATA_STATUS_OK")
+        case `S2N_EARLY_DATA_STATUS_NOT_REQUESTED` => Some("S2N_EARLY_DATA_STATUS_NOT_REQUESTED")
+        case `S2N_EARLY_DATA_STATUS_REJECTED` => Some("S2N_EARLY_DATA_STATUS_REJECTED")
+        case `S2N_EARLY_DATA_STATUS_END` => Some("S2N_EARLY_DATA_STATUS_END")
         case _ => _root_.scala.None
     extension (a: s2n_early_data_status_t)
       inline def &(b: s2n_early_data_status_t): s2n_early_data_status_t = a & b
@@ -214,16 +213,16 @@ object enumerations:
     val S2N_ERR_T_PROTO = define(5)
     val S2N_ERR_T_INTERNAL = define(6)
     val S2N_ERR_T_USAGE = define(7)
-    inline def getName(inline value: s2n_error_type): Option[String] =
-      inline value match
-        case S2N_ERR_T_OK => Some("S2N_ERR_T_OK")
-        case S2N_ERR_T_IO => Some("S2N_ERR_T_IO")
-        case S2N_ERR_T_CLOSED => Some("S2N_ERR_T_CLOSED")
-        case S2N_ERR_T_BLOCKED => Some("S2N_ERR_T_BLOCKED")
-        case S2N_ERR_T_ALERT => Some("S2N_ERR_T_ALERT")
-        case S2N_ERR_T_PROTO => Some("S2N_ERR_T_PROTO")
-        case S2N_ERR_T_INTERNAL => Some("S2N_ERR_T_INTERNAL")
-        case S2N_ERR_T_USAGE => Some("S2N_ERR_T_USAGE")
+    def getName(value: s2n_error_type): Option[String] =
+      value match
+        case `S2N_ERR_T_OK` => Some("S2N_ERR_T_OK")
+        case `S2N_ERR_T_IO` => Some("S2N_ERR_T_IO")
+        case `S2N_ERR_T_CLOSED` => Some("S2N_ERR_T_CLOSED")
+        case `S2N_ERR_T_BLOCKED` => Some("S2N_ERR_T_BLOCKED")
+        case `S2N_ERR_T_ALERT` => Some("S2N_ERR_T_ALERT")
+        case `S2N_ERR_T_PROTO` => Some("S2N_ERR_T_PROTO")
+        case `S2N_ERR_T_INTERNAL` => Some("S2N_ERR_T_INTERNAL")
+        case `S2N_ERR_T_USAGE` => Some("S2N_ERR_T_USAGE")
         case _ => _root_.scala.None
     extension (a: s2n_error_type)
       inline def &(b: s2n_error_type): s2n_error_type = a & b
@@ -241,12 +240,12 @@ object enumerations:
     val S2N_TLS_MAX_FRAG_LEN_1024 = define(2)
     val S2N_TLS_MAX_FRAG_LEN_2048 = define(3)
     val S2N_TLS_MAX_FRAG_LEN_4096 = define(4)
-    inline def getName(inline value: s2n_max_frag_len): Option[String] =
-      inline value match
-        case S2N_TLS_MAX_FRAG_LEN_512 => Some("S2N_TLS_MAX_FRAG_LEN_512")
-        case S2N_TLS_MAX_FRAG_LEN_1024 => Some("S2N_TLS_MAX_FRAG_LEN_1024")
-        case S2N_TLS_MAX_FRAG_LEN_2048 => Some("S2N_TLS_MAX_FRAG_LEN_2048")
-        case S2N_TLS_MAX_FRAG_LEN_4096 => Some("S2N_TLS_MAX_FRAG_LEN_4096")
+    def getName(value: s2n_max_frag_len): Option[String] =
+      value match
+        case `S2N_TLS_MAX_FRAG_LEN_512` => Some("S2N_TLS_MAX_FRAG_LEN_512")
+        case `S2N_TLS_MAX_FRAG_LEN_1024` => Some("S2N_TLS_MAX_FRAG_LEN_1024")
+        case `S2N_TLS_MAX_FRAG_LEN_2048` => Some("S2N_TLS_MAX_FRAG_LEN_2048")
+        case `S2N_TLS_MAX_FRAG_LEN_4096` => Some("S2N_TLS_MAX_FRAG_LEN_4096")
         case _ => _root_.scala.None
     extension (a: s2n_max_frag_len)
       inline def &(b: s2n_max_frag_len): s2n_max_frag_len = a & b
@@ -262,10 +261,10 @@ object enumerations:
     inline def define(inline a: Long): s2n_mode = a.toUInt
     val S2N_SERVER = define(0)
     val S2N_CLIENT = define(1)
-    inline def getName(inline value: s2n_mode): Option[String] =
-      inline value match
-        case S2N_SERVER => Some("S2N_SERVER")
-        case S2N_CLIENT => Some("S2N_CLIENT")
+    def getName(value: s2n_mode): Option[String] =
+      value match
+        case `S2N_SERVER` => Some("S2N_SERVER")
+        case `S2N_CLIENT` => Some("S2N_CLIENT")
         case _ => _root_.scala.None
     extension (a: s2n_mode)
       inline def &(b: s2n_mode): s2n_mode = a & b
@@ -281,10 +280,10 @@ object enumerations:
     inline def define(inline a: Long): s2n_psk_hmac = a.toUInt
     val S2N_PSK_HMAC_SHA256 = define(0)
     val S2N_PSK_HMAC_SHA384 = define(1)
-    inline def getName(inline value: s2n_psk_hmac): Option[String] =
-      inline value match
-        case S2N_PSK_HMAC_SHA256 => Some("S2N_PSK_HMAC_SHA256")
-        case S2N_PSK_HMAC_SHA384 => Some("S2N_PSK_HMAC_SHA384")
+    def getName(value: s2n_psk_hmac): Option[String] =
+      value match
+        case `S2N_PSK_HMAC_SHA256` => Some("S2N_PSK_HMAC_SHA256")
+        case `S2N_PSK_HMAC_SHA384` => Some("S2N_PSK_HMAC_SHA384")
         case _ => _root_.scala.None
     extension (a: s2n_psk_hmac)
       inline def &(b: s2n_psk_hmac): s2n_psk_hmac = a & b
@@ -300,10 +299,10 @@ object enumerations:
     inline def define(inline a: Long): s2n_psk_mode = a.toUInt
     val S2N_PSK_MODE_RESUMPTION = define(0)
     val S2N_PSK_MODE_EXTERNAL = define(1)
-    inline def getName(inline value: s2n_psk_mode): Option[String] =
-      inline value match
-        case S2N_PSK_MODE_RESUMPTION => Some("S2N_PSK_MODE_RESUMPTION")
-        case S2N_PSK_MODE_EXTERNAL => Some("S2N_PSK_MODE_EXTERNAL")
+    def getName(value: s2n_psk_mode): Option[String] =
+      value match
+        case `S2N_PSK_MODE_RESUMPTION` => Some("S2N_PSK_MODE_RESUMPTION")
+        case `S2N_PSK_MODE_EXTERNAL` => Some("S2N_PSK_MODE_EXTERNAL")
         case _ => _root_.scala.None
     extension (a: s2n_psk_mode)
       inline def &(b: s2n_psk_mode): s2n_psk_mode = a & b
@@ -319,10 +318,10 @@ object enumerations:
     inline def define(inline a: Long): s2n_status_request_type = a.toUInt
     val S2N_STATUS_REQUEST_NONE = define(0)
     val S2N_STATUS_REQUEST_OCSP = define(1)
-    inline def getName(inline value: s2n_status_request_type): Option[String] =
-      inline value match
-        case S2N_STATUS_REQUEST_NONE => Some("S2N_STATUS_REQUEST_NONE")
-        case S2N_STATUS_REQUEST_OCSP => Some("S2N_STATUS_REQUEST_OCSP")
+    def getName(value: s2n_status_request_type): Option[String] =
+      value match
+        case `S2N_STATUS_REQUEST_NONE` => Some("S2N_STATUS_REQUEST_NONE")
+        case `S2N_STATUS_REQUEST_OCSP` => Some("S2N_STATUS_REQUEST_OCSP")
         case _ => _root_.scala.None
     extension (a: s2n_status_request_type)
       inline def &(b: s2n_status_request_type): s2n_status_request_type = a & b
@@ -345,17 +344,17 @@ object enumerations:
     val S2N_EXTENSION_ALPN = define(16)
     val S2N_EXTENSION_CERTIFICATE_TRANSPARENCY = define(18)
     val S2N_EXTENSION_RENEGOTIATION_INFO = define(65281)
-    inline def getName(inline value: s2n_tls_extension_type): Option[String] =
-      inline value match
-        case S2N_EXTENSION_SERVER_NAME => Some("S2N_EXTENSION_SERVER_NAME")
-        case S2N_EXTENSION_MAX_FRAG_LEN => Some("S2N_EXTENSION_MAX_FRAG_LEN")
-        case S2N_EXTENSION_OCSP_STAPLING => Some("S2N_EXTENSION_OCSP_STAPLING")
-        case S2N_EXTENSION_SUPPORTED_GROUPS => Some("S2N_EXTENSION_SUPPORTED_GROUPS")
-        case S2N_EXTENSION_EC_POINT_FORMATS => Some("S2N_EXTENSION_EC_POINT_FORMATS")
-        case S2N_EXTENSION_SIGNATURE_ALGORITHMS => Some("S2N_EXTENSION_SIGNATURE_ALGORITHMS")
-        case S2N_EXTENSION_ALPN => Some("S2N_EXTENSION_ALPN")
-        case S2N_EXTENSION_CERTIFICATE_TRANSPARENCY => Some("S2N_EXTENSION_CERTIFICATE_TRANSPARENCY")
-        case S2N_EXTENSION_RENEGOTIATION_INFO => Some("S2N_EXTENSION_RENEGOTIATION_INFO")
+    def getName(value: s2n_tls_extension_type): Option[String] =
+      value match
+        case `S2N_EXTENSION_SERVER_NAME` => Some("S2N_EXTENSION_SERVER_NAME")
+        case `S2N_EXTENSION_MAX_FRAG_LEN` => Some("S2N_EXTENSION_MAX_FRAG_LEN")
+        case `S2N_EXTENSION_OCSP_STAPLING` => Some("S2N_EXTENSION_OCSP_STAPLING")
+        case `S2N_EXTENSION_SUPPORTED_GROUPS` => Some("S2N_EXTENSION_SUPPORTED_GROUPS")
+        case `S2N_EXTENSION_EC_POINT_FORMATS` => Some("S2N_EXTENSION_EC_POINT_FORMATS")
+        case `S2N_EXTENSION_SIGNATURE_ALGORITHMS` => Some("S2N_EXTENSION_SIGNATURE_ALGORITHMS")
+        case `S2N_EXTENSION_ALPN` => Some("S2N_EXTENSION_ALPN")
+        case `S2N_EXTENSION_CERTIFICATE_TRANSPARENCY` => Some("S2N_EXTENSION_CERTIFICATE_TRANSPARENCY")
+        case `S2N_EXTENSION_RENEGOTIATION_INFO` => Some("S2N_EXTENSION_RENEGOTIATION_INFO")
         case _ => _root_.scala.None
     extension (a: s2n_tls_extension_type)
       inline def &(b: s2n_tls_extension_type): s2n_tls_extension_type = a & b
@@ -377,16 +376,16 @@ object enumerations:
     val S2N_TLS_HASH_SHA384 = define(5)
     val S2N_TLS_HASH_SHA512 = define(6)
     val S2N_TLS_HASH_MD5_SHA1 = define(224)
-    inline def getName(inline value: s2n_tls_hash_algorithm): Option[String] =
-      inline value match
-        case S2N_TLS_HASH_NONE => Some("S2N_TLS_HASH_NONE")
-        case S2N_TLS_HASH_MD5 => Some("S2N_TLS_HASH_MD5")
-        case S2N_TLS_HASH_SHA1 => Some("S2N_TLS_HASH_SHA1")
-        case S2N_TLS_HASH_SHA224 => Some("S2N_TLS_HASH_SHA224")
-        case S2N_TLS_HASH_SHA256 => Some("S2N_TLS_HASH_SHA256")
-        case S2N_TLS_HASH_SHA384 => Some("S2N_TLS_HASH_SHA384")
-        case S2N_TLS_HASH_SHA512 => Some("S2N_TLS_HASH_SHA512")
-        case S2N_TLS_HASH_MD5_SHA1 => Some("S2N_TLS_HASH_MD5_SHA1")
+    def getName(value: s2n_tls_hash_algorithm): Option[String] =
+      value match
+        case `S2N_TLS_HASH_NONE` => Some("S2N_TLS_HASH_NONE")
+        case `S2N_TLS_HASH_MD5` => Some("S2N_TLS_HASH_MD5")
+        case `S2N_TLS_HASH_SHA1` => Some("S2N_TLS_HASH_SHA1")
+        case `S2N_TLS_HASH_SHA224` => Some("S2N_TLS_HASH_SHA224")
+        case `S2N_TLS_HASH_SHA256` => Some("S2N_TLS_HASH_SHA256")
+        case `S2N_TLS_HASH_SHA384` => Some("S2N_TLS_HASH_SHA384")
+        case `S2N_TLS_HASH_SHA512` => Some("S2N_TLS_HASH_SHA512")
+        case `S2N_TLS_HASH_MD5_SHA1` => Some("S2N_TLS_HASH_MD5_SHA1")
         case _ => _root_.scala.None
     extension (a: s2n_tls_hash_algorithm)
       inline def &(b: s2n_tls_hash_algorithm): s2n_tls_hash_algorithm = a & b
@@ -405,13 +404,13 @@ object enumerations:
     val S2N_TLS_SIGNATURE_ECDSA = define(3)
     val S2N_TLS_SIGNATURE_RSA_PSS_RSAE = define(224)
     val S2N_TLS_SIGNATURE_RSA_PSS_PSS = define(225)
-    inline def getName(inline value: s2n_tls_signature_algorithm): Option[String] =
-      inline value match
-        case S2N_TLS_SIGNATURE_ANONYMOUS => Some("S2N_TLS_SIGNATURE_ANONYMOUS")
-        case S2N_TLS_SIGNATURE_RSA => Some("S2N_TLS_SIGNATURE_RSA")
-        case S2N_TLS_SIGNATURE_ECDSA => Some("S2N_TLS_SIGNATURE_ECDSA")
-        case S2N_TLS_SIGNATURE_RSA_PSS_RSAE => Some("S2N_TLS_SIGNATURE_RSA_PSS_RSAE")
-        case S2N_TLS_SIGNATURE_RSA_PSS_PSS => Some("S2N_TLS_SIGNATURE_RSA_PSS_PSS")
+    def getName(value: s2n_tls_signature_algorithm): Option[String] =
+      value match
+        case `S2N_TLS_SIGNATURE_ANONYMOUS` => Some("S2N_TLS_SIGNATURE_ANONYMOUS")
+        case `S2N_TLS_SIGNATURE_RSA` => Some("S2N_TLS_SIGNATURE_RSA")
+        case `S2N_TLS_SIGNATURE_ECDSA` => Some("S2N_TLS_SIGNATURE_ECDSA")
+        case `S2N_TLS_SIGNATURE_RSA_PSS_RSAE` => Some("S2N_TLS_SIGNATURE_RSA_PSS_RSAE")
+        case `S2N_TLS_SIGNATURE_RSA_PSS_PSS` => Some("S2N_TLS_SIGNATURE_RSA_PSS_PSS")
         case _ => _root_.scala.None
     extension (a: s2n_tls_signature_algorithm)
       inline def &(b: s2n_tls_signature_algorithm): s2n_tls_signature_algorithm = a & b
@@ -424,10 +423,10 @@ object enumerations:
     inline def define(inline a: Long): s2n_verify_after_sign = a.toUInt
     val S2N_VERIFY_AFTER_SIGN_DISABLED = define(0)
     val S2N_VERIFY_AFTER_SIGN_ENABLED = define(1)
-    inline def getName(inline value: s2n_verify_after_sign): Option[String] =
-      inline value match
-        case S2N_VERIFY_AFTER_SIGN_DISABLED => Some("S2N_VERIFY_AFTER_SIGN_DISABLED")
-        case S2N_VERIFY_AFTER_SIGN_ENABLED => Some("S2N_VERIFY_AFTER_SIGN_ENABLED")
+    def getName(value: s2n_verify_after_sign): Option[String] =
+      value match
+        case `S2N_VERIFY_AFTER_SIGN_DISABLED` => Some("S2N_VERIFY_AFTER_SIGN_DISABLED")
+        case `S2N_VERIFY_AFTER_SIGN_ENABLED` => Some("S2N_VERIFY_AFTER_SIGN_ENABLED")
         case _ => _root_.scala.None
     extension (a: s2n_verify_after_sign)
       inline def &(b: s2n_verify_after_sign): s2n_verify_after_sign = a & b
@@ -440,14 +439,14 @@ object aliases:
   import _root_.s2n.aliases.*
   import _root_.s2n.structs.*
   type FILE = libc.stdio.FILE
-  object FILE: 
+  object FILE:
     val _tag: Tag[FILE] = summon[Tag[libc.stdio.FILE]]
     inline def apply(inline o: libc.stdio.FILE): FILE = o
     extension (v: FILE)
       inline def value: libc.stdio.FILE = v
 
   type iovec = posix.sys.uio.iovec
-  object iovec: 
+  object iovec:
     val _tag: Tag[iovec] = summon[Tag[posix.sys.uio.iovec]]
     inline def apply(inline o: posix.sys.uio.iovec): iovec = o
     extension (v: iovec)
@@ -457,7 +456,7 @@ object aliases:
    * Callback function for handling private key operations
   */
   opaque type s2n_async_pkey_fn = CFuncPtr2[Ptr[s2n_connection], Ptr[s2n_async_pkey_op], CInt]
-  object s2n_async_pkey_fn: 
+  object s2n_async_pkey_fn:
     given _tag: Tag[s2n_async_pkey_fn] = Tag.materializeCFuncPtr2[Ptr[s2n_connection], Ptr[s2n_async_pkey_op], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_async_pkey_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[s2n_connection], Ptr[s2n_async_pkey_op], CInt]): s2n_async_pkey_fn = o
@@ -469,7 +468,7 @@ object aliases:
    * Cache callback function that allows the caller to set a callback function that will be used to delete SSL session data from a cache.
   */
   opaque type s2n_cache_delete_callback = CFuncPtr4[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, CInt]
-  object s2n_cache_delete_callback: 
+  object s2n_cache_delete_callback:
     given _tag: Tag[s2n_cache_delete_callback] = Tag.materializeCFuncPtr4[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_cache_delete_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, CInt]): s2n_cache_delete_callback = o
@@ -481,7 +480,7 @@ object aliases:
    * Cache callback function that allows the caller to retrieve SSL session data from a cache.
   */
   opaque type s2n_cache_retrieve_callback = CFuncPtr6[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, Ptr[Byte], Ptr[uint64_t], CInt]
-  object s2n_cache_retrieve_callback: 
+  object s2n_cache_retrieve_callback:
     given _tag: Tag[s2n_cache_retrieve_callback] = Tag.materializeCFuncPtr6[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, Ptr[Byte], Ptr[uint64_t], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_cache_retrieve_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr6[Ptr[s2n_connection], Ptr[Byte], Ptr[Byte], uint64_t, Ptr[Byte], Ptr[uint64_t], CInt]): s2n_cache_retrieve_callback = o
@@ -493,7 +492,7 @@ object aliases:
    * Cache callback function that allows the caller to store SSL session data in a cache.
   */
   opaque type s2n_cache_store_callback = CFuncPtr7[Ptr[s2n_connection], Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, CInt]
-  object s2n_cache_store_callback: 
+  object s2n_cache_store_callback:
     given _tag: Tag[s2n_cache_store_callback] = Tag.materializeCFuncPtr7[Ptr[s2n_connection], Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_cache_store_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr7[Ptr[s2n_connection], Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, Ptr[Byte], uint64_t, CInt]): s2n_cache_store_callback = o
@@ -505,7 +504,7 @@ object aliases:
    * A callback function that is invoked if s2n-tls cannot resolve a conflict between two certificates with the same domain name. This function is invoked while certificates are added to an `s2n_config`.
   */
   opaque type s2n_cert_tiebreak_callback = CFuncPtr4[Ptr[s2n_cert_chain_and_key], Ptr[s2n_cert_chain_and_key], Ptr[uint8_t], uint32_t, Ptr[s2n_cert_chain_and_key]]
-  object s2n_cert_tiebreak_callback: 
+  object s2n_cert_tiebreak_callback:
     given _tag: Tag[s2n_cert_tiebreak_callback] = Tag.materializeCFuncPtr4[Ptr[s2n_cert_chain_and_key], Ptr[s2n_cert_chain_and_key], Ptr[uint8_t], uint32_t, Ptr[s2n_cert_chain_and_key]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_cert_tiebreak_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[s2n_cert_chain_and_key], Ptr[s2n_cert_chain_and_key], Ptr[uint8_t], uint32_t, Ptr[s2n_cert_chain_and_key]]): s2n_cert_tiebreak_callback = o
@@ -517,7 +516,7 @@ object aliases:
    * The callback function takes a s2n-tls connection as input, which receives the ClientHello and the context previously provided in `s2n_config_set_client_hello_cb`. The callback can access any ClientHello information from the connection and use the `s2n_connection_set_config` call to change the config of the connection.
   */
   type s2n_client_hello_fn = CFuncPtr2[Ptr[s2n_connection], Ptr[Byte], CInt]
-  object s2n_client_hello_fn: 
+  object s2n_client_hello_fn:
     given _tag: Tag[s2n_client_hello_fn] = Tag.materializeCFuncPtr2[Ptr[s2n_connection], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[s2n_connection], Ptr[Byte], CInt]): s2n_client_hello_fn = o
     extension (v: s2n_client_hello_fn)
@@ -527,7 +526,7 @@ object aliases:
    * Callback function type used to get the system time.
   */
   opaque type s2n_clock_time_nanoseconds = CFuncPtr2[Ptr[Byte], Ptr[uint64_t], CInt]
-  object s2n_clock_time_nanoseconds: 
+  object s2n_clock_time_nanoseconds:
     given _tag: Tag[s2n_clock_time_nanoseconds] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[uint64_t], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_clock_time_nanoseconds = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[uint64_t], CInt]): s2n_clock_time_nanoseconds = o
@@ -539,7 +538,7 @@ object aliases:
    * A callback which can be implemented to accept or reject early data.
   */
   opaque type s2n_early_data_cb = CFuncPtr2[Ptr[s2n_connection], Ptr[s2n_offered_early_data], CInt]
-  object s2n_early_data_cb: 
+  object s2n_early_data_cb:
     given _tag: Tag[s2n_early_data_cb] = Tag.materializeCFuncPtr2[Ptr[s2n_connection], Ptr[s2n_offered_early_data], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_early_data_cb = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[s2n_connection], Ptr[s2n_offered_early_data], CInt]): s2n_early_data_cb = o
@@ -551,7 +550,7 @@ object aliases:
    * Callback function for handling key log events
   */
   opaque type s2n_key_log_fn = CFuncPtr4[Ptr[Byte], Ptr[s2n_connection], Ptr[uint8_t], size_t, CInt]
-  object s2n_key_log_fn: 
+  object s2n_key_log_fn:
     given _tag: Tag[s2n_key_log_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], Ptr[s2n_connection], Ptr[uint8_t], size_t, CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_key_log_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], Ptr[s2n_connection], Ptr[uint8_t], size_t, CInt]): s2n_key_log_fn = o
@@ -563,7 +562,7 @@ object aliases:
    * Will be called when `s2n_cleanup` is executed.
   */
   opaque type s2n_mem_cleanup_callback = CFuncPtr0[CInt]
-  object s2n_mem_cleanup_callback: 
+  object s2n_mem_cleanup_callback:
     given _tag: Tag[s2n_mem_cleanup_callback] = Tag.materializeCFuncPtr0[CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_mem_cleanup_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr0[CInt]): s2n_mem_cleanup_callback = o
@@ -575,7 +574,7 @@ object aliases:
    * Frees memory allocated by s2n_mem_malloc_callback.
   */
   opaque type s2n_mem_free_callback = CFuncPtr2[Ptr[Byte], uint32_t, CInt]
-  object s2n_mem_free_callback: 
+  object s2n_mem_free_callback:
     given _tag: Tag[s2n_mem_free_callback] = Tag.materializeCFuncPtr2[Ptr[Byte], uint32_t, CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_mem_free_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], uint32_t, CInt]): s2n_mem_free_callback = o
@@ -587,7 +586,7 @@ object aliases:
    * Called when `s2n_init` is executed.
   */
   opaque type s2n_mem_init_callback = CFuncPtr0[CInt]
-  object s2n_mem_init_callback: 
+  object s2n_mem_init_callback:
     given _tag: Tag[s2n_mem_init_callback] = Tag.materializeCFuncPtr0[CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_mem_init_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr0[CInt]): s2n_mem_init_callback = o
@@ -599,7 +598,7 @@ object aliases:
    * A function that can allocate at least `requested` bytes of memory.
   */
   opaque type s2n_mem_malloc_callback = CFuncPtr3[Ptr[Ptr[Byte]], uint32_t, Ptr[uint32_t], CInt]
-  object s2n_mem_malloc_callback: 
+  object s2n_mem_malloc_callback:
     given _tag: Tag[s2n_mem_malloc_callback] = Tag.materializeCFuncPtr3[Ptr[Ptr[Byte]], uint32_t, Ptr[uint32_t], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_mem_malloc_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Ptr[Byte]], uint32_t, Ptr[uint32_t], CInt]): s2n_mem_malloc_callback = o
@@ -611,7 +610,7 @@ object aliases:
    * Callback function to select a PSK from a list of offered PSKs. Use this callback to implement custom PSK selection logic. The s2n-tls default PSK selection logic chooses the first matching PSK from the list of offered PSKs sent by the client.
   */
   opaque type s2n_psk_selection_callback = CFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_offered_psk_list], CInt]
-  object s2n_psk_selection_callback: 
+  object s2n_psk_selection_callback:
     given _tag: Tag[s2n_psk_selection_callback] = Tag.materializeCFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_offered_psk_list], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_psk_selection_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_offered_psk_list], CInt]): s2n_psk_selection_callback = o
@@ -623,7 +622,7 @@ object aliases:
    * A callback function that will be called when `s2n_cleanup` is executed.
   */
   opaque type s2n_rand_cleanup_callback = CFuncPtr0[CInt]
-  object s2n_rand_cleanup_callback: 
+  object s2n_rand_cleanup_callback:
     given _tag: Tag[s2n_rand_cleanup_callback] = Tag.materializeCFuncPtr0[CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_rand_cleanup_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr0[CInt]): s2n_rand_cleanup_callback = o
@@ -635,7 +634,7 @@ object aliases:
    * A callback function that will be called when s2n-tls is initialized.
   */
   opaque type s2n_rand_init_callback = CFuncPtr0[CInt]
-  object s2n_rand_init_callback: 
+  object s2n_rand_init_callback:
     given _tag: Tag[s2n_rand_init_callback] = Tag.materializeCFuncPtr0[CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_rand_init_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr0[CInt]): s2n_rand_init_callback = o
@@ -647,7 +646,7 @@ object aliases:
    * A callback function that will be used to mix in entropy every time the RNG is invoked.
   */
   opaque type s2n_rand_mix_callback = CFuncPtr2[Ptr[Byte], uint32_t, CInt]
-  object s2n_rand_mix_callback: 
+  object s2n_rand_mix_callback:
     given _tag: Tag[s2n_rand_mix_callback] = Tag.materializeCFuncPtr2[Ptr[Byte], uint32_t, CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_rand_mix_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], uint32_t, CInt]): s2n_rand_mix_callback = o
@@ -659,7 +658,7 @@ object aliases:
    * A callback function that will be used to provide entropy to the s2n-tls random number generators.
   */
   opaque type s2n_rand_seed_callback = CFuncPtr2[Ptr[Byte], uint32_t, CInt]
-  object s2n_rand_seed_callback: 
+  object s2n_rand_seed_callback:
     given _tag: Tag[s2n_rand_seed_callback] = Tag.materializeCFuncPtr2[Ptr[Byte], uint32_t, CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_rand_seed_callback = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], uint32_t, CInt]): s2n_rand_seed_callback = o
@@ -671,7 +670,7 @@ object aliases:
    * Function pointer for a user provided send callback.
   */
   type s2n_recv_fn = CFuncPtr3[Ptr[Byte], Ptr[uint8_t], uint32_t, CInt]
-  object s2n_recv_fn: 
+  object s2n_recv_fn:
     given _tag: Tag[s2n_recv_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[uint8_t], uint32_t, CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[uint8_t], uint32_t, CInt]): s2n_recv_fn = o
     extension (v: s2n_recv_fn)
@@ -681,7 +680,7 @@ object aliases:
    * Function pointer for a user provided send callback.
   */
   type s2n_send_fn = CFuncPtr3[Ptr[Byte], Ptr[uint8_t], uint32_t, CInt]
-  object s2n_send_fn: 
+  object s2n_send_fn:
     given _tag: Tag[s2n_send_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[uint8_t], uint32_t, CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[uint8_t], uint32_t, CInt]): s2n_send_fn = o
     extension (v: s2n_send_fn)
@@ -691,7 +690,7 @@ object aliases:
    * Callback function for receiving a session ticket.
   */
   opaque type s2n_session_ticket_fn = CFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_session_ticket], CInt]
-  object s2n_session_ticket_fn: 
+  object s2n_session_ticket_fn:
     given _tag: Tag[s2n_session_ticket_fn] = Tag.materializeCFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_session_ticket], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_session_ticket_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[s2n_connection], Ptr[Byte], Ptr[s2n_session_ticket], CInt]): s2n_session_ticket_fn = o
@@ -703,7 +702,7 @@ object aliases:
    * A callback function invoked (usually multiple times) during X.509 validation for each name encountered in the leaf certificate.
   */
   opaque type s2n_verify_host_fn = CFuncPtr3[CString, size_t, Ptr[Byte], uint8_t]
-  object s2n_verify_host_fn: 
+  object s2n_verify_host_fn:
     given _tag: Tag[s2n_verify_host_fn] = Tag.materializeCFuncPtr3[CString, size_t, Ptr[Byte], uint8_t]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): s2n_verify_host_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[CString, size_t, Ptr[Byte], uint8_t]): s2n_verify_host_fn = o
@@ -712,42 +711,42 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type size_t = libc.stddef.size_t
-  object size_t: 
+  object size_t:
     val _tag: Tag[size_t] = summon[Tag[libc.stddef.size_t]]
     inline def apply(inline o: libc.stddef.size_t): size_t = o
     extension (v: size_t)
       inline def value: libc.stddef.size_t = v
 
   type ssize_t = posix.sys.types.ssize_t
-  object ssize_t: 
+  object ssize_t:
     val _tag: Tag[ssize_t] = summon[Tag[posix.sys.types.ssize_t]]
     inline def apply(inline o: posix.sys.types.ssize_t): ssize_t = o
     extension (v: ssize_t)
       inline def value: posix.sys.types.ssize_t = v
 
   type uint16_t = scala.scalanative.unsigned.UShort
-  object uint16_t: 
+  object uint16_t:
     val _tag: Tag[uint16_t] = summon[Tag[scala.scalanative.unsigned.UShort]]
     inline def apply(inline o: scala.scalanative.unsigned.UShort): uint16_t = o
     extension (v: uint16_t)
       inline def value: scala.scalanative.unsigned.UShort = v
 
   type uint32_t = scala.scalanative.unsigned.UInt
-  object uint32_t: 
+  object uint32_t:
     val _tag: Tag[uint32_t] = summon[Tag[scala.scalanative.unsigned.UInt]]
     inline def apply(inline o: scala.scalanative.unsigned.UInt): uint32_t = o
     extension (v: uint32_t)
       inline def value: scala.scalanative.unsigned.UInt = v
 
   type uint64_t = scala.scalanative.unsigned.ULong
-  object uint64_t: 
+  object uint64_t:
     val _tag: Tag[uint64_t] = summon[Tag[scala.scalanative.unsigned.ULong]]
     inline def apply(inline o: scala.scalanative.unsigned.ULong): uint64_t = o
     extension (v: uint64_t)
       inline def value: scala.scalanative.unsigned.ULong = v
 
   type uint8_t = scala.scalanative.unsigned.UByte
-  object uint8_t: 
+  object uint8_t:
     val _tag: Tag[uint8_t] = summon[Tag[scala.scalanative.unsigned.UByte]]
     inline def apply(inline o: scala.scalanative.unsigned.UByte): uint8_t = o
     extension (v: uint8_t)
@@ -758,98 +757,129 @@ object structs:
   import _root_.s2n.predef.*
   import _root_.s2n.aliases.*
   import _root_.s2n.structs.*
+
   /**
    * Opaque async private key operation handle
   */
   opaque type s2n_async_pkey_op = CStruct0
+  
   object s2n_async_pkey_op:
     given _tag: Tag[s2n_async_pkey_op] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Opaque certificate type.
   */
   opaque type s2n_cert = CStruct0
+  
   object s2n_cert:
     given _tag: Tag[s2n_cert] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Opaque certificate chain and key type.
   */
   opaque type s2n_cert_chain_and_key = CStruct0
+  
   object s2n_cert_chain_and_key:
     given _tag: Tag[s2n_cert_chain_and_key] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Opaque key type.
   */
   opaque type s2n_cert_private_key = CStruct0
+  
   object s2n_cert_private_key:
     given _tag: Tag[s2n_cert_private_key] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Opaque key type.
   */
   opaque type s2n_cert_public_key = CStruct0
+  
   object s2n_cert_public_key:
     given _tag: Tag[s2n_cert_public_key] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Opaque client hello handle
   */
   opaque type s2n_client_hello = CStruct0
+  
   object s2n_client_hello:
     given _tag: Tag[s2n_client_hello] = Tag.materializeCStruct0Tag
+    
 
   /**
    * An opaque configuration object, used by clients and servers for holding cryptographic certificates, keys and preferences.
   */
   opaque type s2n_config = CStruct0
+  
   object s2n_config:
     given _tag: Tag[s2n_config] = Tag.materializeCStruct0Tag
+    
 
   /**
    * An opaque connection. Used to track each s2n connection.
   */
   opaque type s2n_connection = CStruct0
+  
   object s2n_connection:
     given _tag: Tag[s2n_connection] = Tag.materializeCStruct0Tag
+    
 
   opaque type s2n_offered_early_data = CStruct0
+  
   object s2n_offered_early_data:
     given _tag: Tag[s2n_offered_early_data] = Tag.materializeCStruct0Tag
+    
 
   opaque type s2n_offered_psk = CStruct0
+  
   object s2n_offered_psk:
     given _tag: Tag[s2n_offered_psk] = Tag.materializeCStruct0Tag
+    
 
   opaque type s2n_offered_psk_list = CStruct0
+  
   object s2n_offered_psk_list:
     given _tag: Tag[s2n_offered_psk_list] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Opaque key type.
   */
   opaque type s2n_pkey = CStruct0
+  
   object s2n_pkey:
     given _tag: Tag[s2n_pkey] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Opaque pre shared key handle
   */
   opaque type s2n_psk = CStruct0
+  
   object s2n_psk:
     given _tag: Tag[s2n_psk] = Tag.materializeCStruct0Tag
+    
 
   opaque type s2n_session_ticket = CStruct0
+  
   object s2n_session_ticket:
     given _tag: Tag[s2n_session_ticket] = Tag.materializeCStruct0Tag
+    
 
   /**
    * Opaque stack trace structure.
   */
   opaque type s2n_stacktrace = CStruct0
+  
   object s2n_stacktrace:
     given _tag: Tag[s2n_stacktrace] = Tag.materializeCStruct0Tag
+    
 
 
 @extern
@@ -1968,9 +1998,9 @@ object functions:
   export extern_functions.*
 
 object types:
-  export _root_.s2n.structs.*
-  export _root_.s2n.aliases.*
-  export _root_.s2n.enumerations.*
+    export _root_.s2n.structs.*
+    export _root_.s2n.aliases.*
+    export _root_.s2n.enumerations.*
 
 object all:
   export _root_.s2n.enumerations.s2n_alert_behavior

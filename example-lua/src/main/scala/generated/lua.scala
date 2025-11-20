@@ -9,28 +9,28 @@ object aliases:
   import _root_.lua.aliases.*
   import _root_.lua.structs.*
   type FILE = libc.stdio.FILE
-  object FILE: 
+  object FILE:
     val _tag: Tag[FILE] = summon[Tag[libc.stdio.FILE]]
     inline def apply(inline o: libc.stdio.FILE): FILE = o
     extension (v: FILE)
       inline def value: libc.stdio.FILE = v
 
   opaque type __darwin_intptr_t = CLongInt
-  object __darwin_intptr_t: 
+  object __darwin_intptr_t:
     given _tag: Tag[__darwin_intptr_t] = Tag.Size
     inline def apply(inline o: CLongInt): __darwin_intptr_t = o
     extension (v: __darwin_intptr_t)
       inline def value: CLongInt = v
 
   type intptr_t = __darwin_intptr_t
-  object intptr_t: 
+  object intptr_t:
     given _tag: Tag[intptr_t] = __darwin_intptr_t._tag
     inline def apply(inline o: __darwin_intptr_t): intptr_t = o
     extension (v: intptr_t)
       inline def value: __darwin_intptr_t = v
 
   opaque type lua_Alloc = CFuncPtr4[Ptr[Byte], Ptr[Byte], size_t, size_t, Ptr[Byte]]
-  object lua_Alloc: 
+  object lua_Alloc:
     given _tag: Tag[lua_Alloc] = Tag.materializeCFuncPtr4[Ptr[Byte], Ptr[Byte], size_t, size_t, Ptr[Byte]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): lua_Alloc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], Ptr[Byte], size_t, size_t, Ptr[Byte]]): lua_Alloc = o
@@ -39,7 +39,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type lua_CFunction = CFuncPtr1[Ptr[lua_State], CInt]
-  object lua_CFunction: 
+  object lua_CFunction:
     given _tag: Tag[lua_CFunction] = Tag.materializeCFuncPtr1[Ptr[lua_State], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): lua_CFunction = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[lua_State], CInt]): lua_CFunction = o
@@ -48,7 +48,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type lua_Hook = CFuncPtr2[Ptr[lua_State], Ptr[lua_Debug], Unit]
-  object lua_Hook: 
+  object lua_Hook:
     given _tag: Tag[lua_Hook] = Tag.materializeCFuncPtr2[Ptr[lua_State], Ptr[lua_Debug], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): lua_Hook = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[lua_State], Ptr[lua_Debug], Unit]): lua_Hook = o
@@ -57,21 +57,21 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type lua_Integer = CLongLong
-  object lua_Integer: 
+  object lua_Integer:
     given _tag: Tag[lua_Integer] = Tag.Long
     inline def apply(inline o: CLongLong): lua_Integer = o
     extension (v: lua_Integer)
       inline def value: CLongLong = v
 
   type lua_KContext = intptr_t
-  object lua_KContext: 
+  object lua_KContext:
     given _tag: Tag[lua_KContext] = intptr_t._tag
     inline def apply(inline o: intptr_t): lua_KContext = o
     extension (v: lua_KContext)
       inline def value: intptr_t = v
 
   opaque type lua_KFunction = CFuncPtr3[Ptr[lua_State], CInt, lua_KContext, CInt]
-  object lua_KFunction: 
+  object lua_KFunction:
     given _tag: Tag[lua_KFunction] = Tag.materializeCFuncPtr3[Ptr[lua_State], CInt, lua_KContext, CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): lua_KFunction = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[lua_State], CInt, lua_KContext, CInt]): lua_KFunction = o
@@ -80,14 +80,14 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type lua_Number = Double
-  object lua_Number: 
+  object lua_Number:
     given _tag: Tag[lua_Number] = Tag.Double
     inline def apply(inline o: Double): lua_Number = o
     extension (v: lua_Number)
       inline def value: Double = v
 
   opaque type lua_Reader = CFuncPtr3[Ptr[lua_State], Ptr[Byte], Ptr[size_t], CString]
-  object lua_Reader: 
+  object lua_Reader:
     given _tag: Tag[lua_Reader] = Tag.materializeCFuncPtr3[Ptr[lua_State], Ptr[Byte], Ptr[size_t], CString]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): lua_Reader = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[lua_State], Ptr[Byte], Ptr[size_t], CString]): lua_Reader = o
@@ -96,14 +96,14 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type lua_Unsigned = CUnsignedLongLong
-  object lua_Unsigned: 
+  object lua_Unsigned:
     given _tag: Tag[lua_Unsigned] = Tag.ULong
     inline def apply(inline o: CUnsignedLongLong): lua_Unsigned = o
     extension (v: lua_Unsigned)
       inline def value: CUnsignedLongLong = v
 
   opaque type lua_WarnFunction = CFuncPtr3[Ptr[Byte], CString, CInt, Unit]
-  object lua_WarnFunction: 
+  object lua_WarnFunction:
     given _tag: Tag[lua_WarnFunction] = Tag.materializeCFuncPtr3[Ptr[Byte], CString, CInt, Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): lua_WarnFunction = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CString, CInt, Unit]): lua_WarnFunction = o
@@ -112,7 +112,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type lua_Writer = CFuncPtr4[Ptr[lua_State], Ptr[Byte], size_t, Ptr[Byte], CInt]
-  object lua_Writer: 
+  object lua_Writer:
     given _tag: Tag[lua_Writer] = Tag.materializeCFuncPtr4[Ptr[lua_State], Ptr[Byte], size_t, Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): lua_Writer = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[lua_State], Ptr[Byte], size_t, Ptr[Byte], CInt]): lua_Writer = o
@@ -121,14 +121,14 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type size_t = libc.stddef.size_t
-  object size_t: 
+  object size_t:
     val _tag: Tag[size_t] = summon[Tag[libc.stddef.size_t]]
     inline def apply(inline o: libc.stddef.size_t): size_t = o
     extension (v: size_t)
       inline def value: libc.stddef.size_t = v
 
   type va_list = unsafe.CVarArgList
-  object va_list: 
+  object va_list:
     val _tag: Tag[va_list] = summon[Tag[unsafe.CVarArgList]]
     inline def apply(inline o: unsafe.CVarArgList): va_list = o
     extension (v: va_list)
@@ -137,55 +137,92 @@ object aliases:
 object structs:
   import _root_.lua.aliases.*
   import _root_.lua.structs.*
+
   opaque type CallInfo = CStruct0
+  
   object CallInfo:
     given _tag: Tag[CallInfo] = Tag.materializeCStruct0Tag
+    
 
-  opaque type luaL_Buffer = CStruct5[CString, size_t, size_t, Ptr[lua_State], luaL_Buffer.Union0]
+  opaque type luaL_Buffer = CStruct5[CString, size_t, size_t, Ptr[lua_State], luaL_Buffer.Init]
+  
   object luaL_Buffer:
-    opaque type Union0 = CArray[Byte, Nat.Digit4[Nat._1, Nat._0, Nat._2, Nat._4]]
-    object Union0:
-      given _tag: Tag[Union0] = Tag.CArray[CChar, Nat.Digit4[Nat._1, Nat._0, Nat._2, Nat._4]](Tag.Byte, Tag.Digit4[Nat._1, Nat._0, Nat._2, Nat._4](Tag.Nat1, Tag.Nat0, Tag.Nat2, Tag.Nat4))
-      def apply()(using Zone): Ptr[Union0] = 
-        val ___ptr = alloc[Union0](1)
+    given _tag: Tag[luaL_Buffer] = Tag.materializeCStruct5Tag[CString, size_t, size_t, Ptr[lua_State], luaL_Buffer.Init]
+    
+    // Allocates luaL_Buffer on the heap – fields are not initalised or zeroed out
+    def apply()(using Zone): Ptr[luaL_Buffer] = scala.scalanative.unsafe.alloc[luaL_Buffer](1)
+    def apply(b : CString, size : size_t, n : size_t, L : Ptr[lua_State], init : luaL_Buffer.Init)(using Zone): Ptr[luaL_Buffer] =
+      val ____ptr = apply()
+      (!____ptr).b = b
+      (!____ptr).size = size
+      (!____ptr).n = n
+      (!____ptr).L = L
+      (!____ptr).init = init
+      ____ptr
+    
+    extension (struct: luaL_Buffer)
+      def b : CString = struct._1
+      def b_=(value: CString): Unit = !struct.at1 = value
+      def size : size_t = struct._2
+      def size_=(value: size_t): Unit = !struct.at2 = value
+      def n : size_t = struct._3
+      def n_=(value: size_t): Unit = !struct.at3 = value
+      def L : Ptr[lua_State] = struct._4
+      def L_=(value: Ptr[lua_State]): Unit = !struct.at4 = value
+      def init : luaL_Buffer.Init = struct._5
+      def init_=(value: luaL_Buffer.Init): Unit = !struct.at5 = value
+    
+    opaque type Init = CArray[Byte, Nat.Digit4[Nat._1, Nat._0, Nat._2, Nat._4]]
+    object Init:
+      given _tag: Tag[Init] = Tag.CArray[CChar, Nat.Digit4[Nat._1, Nat._0, Nat._2, Nat._4]](Tag.Byte, Tag.Digit4[Nat._1, Nat._0, Nat._2, Nat._4](Tag.Nat1, Tag.Nat0, Tag.Nat2, Tag.Nat4))
+      
+      def apply()(using Zone): Ptr[Init] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Init](1)
         ___ptr
+      
       @scala.annotation.targetName("apply_n")
-      def apply(n: lua_Number)(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(n: lua_Number)(using Zone): Ptr[Init] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Init](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[lua_Number]].update(0, n)
         ___ptr
+      
       @scala.annotation.targetName("apply_u")
-      def apply(u: Double)(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(u: Double)(using Zone): Ptr[Init] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Init](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Double]].update(0, u)
         ___ptr
+      
       @scala.annotation.targetName("apply_s")
-      def apply(s: Ptr[Byte])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(s: Ptr[Byte])(using Zone): Ptr[Init] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Init](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[Byte]]].update(0, s)
         ___ptr
+      
       @scala.annotation.targetName("apply_i")
-      def apply(i: lua_Integer)(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(i: lua_Integer)(using Zone): Ptr[Init] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Init](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[lua_Integer]].update(0, i)
         ___ptr
+      
       @scala.annotation.targetName("apply_l")
-      def apply(l: CLongInt)(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(l: CLongInt)(using Zone): Ptr[Init] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Init](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[CLongInt]].update(0, l)
         ___ptr
+      
       @scala.annotation.targetName("apply_b")
-      def apply(b: CArray[CChar, Nat.Digit4[Nat._1, Nat._0, Nat._2, Nat._4]])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(b: CArray[CChar, Nat.Digit4[Nat._1, Nat._0, Nat._2, Nat._4]])(using Zone): Ptr[Init] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Init](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[CArray[CChar, Nat.Digit4[Nat._1, Nat._0, Nat._2, Nat._4]]]].update(0, b)
         ___ptr
-      extension (struct: Union0)
+      
+      extension (struct: Init)
         def n : lua_Number = !struct.at(0).asInstanceOf[Ptr[lua_Number]]
         def n_=(value: lua_Number): Unit = !struct.at(0).asInstanceOf[Ptr[lua_Number]] = value
         def u : Double = !struct.at(0).asInstanceOf[Ptr[Double]]
@@ -198,66 +235,55 @@ object structs:
         def l_=(value: CLongInt): Unit = !struct.at(0).asInstanceOf[Ptr[CLongInt]] = value
         def b : CArray[CChar, Nat.Digit4[Nat._1, Nat._0, Nat._2, Nat._4]] = !struct.at(0).asInstanceOf[Ptr[CArray[CChar, Nat.Digit4[Nat._1, Nat._0, Nat._2, Nat._4]]]]
         def b_=(value: CArray[CChar, Nat.Digit4[Nat._1, Nat._0, Nat._2, Nat._4]]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[CChar, Nat.Digit4[Nat._1, Nat._0, Nat._2, Nat._4]]]] = value
-    given _tag: Tag[luaL_Buffer] = Tag.materializeCStruct5Tag[CString, size_t, size_t, Ptr[lua_State], luaL_Buffer.Union0]
-    def apply()(using Zone): Ptr[luaL_Buffer] = scala.scalanative.unsafe.alloc[luaL_Buffer](1)
-    def apply(b : CString, size : size_t, n : size_t, L : Ptr[lua_State], init : luaL_Buffer.Union0)(using Zone): Ptr[luaL_Buffer] = 
-      val ____ptr = apply()
-      (!____ptr).b = b
-      (!____ptr).size = size
-      (!____ptr).n = n
-      (!____ptr).L = L
-      (!____ptr).init = init
-      ____ptr
-    extension (struct: luaL_Buffer)
-      def b : CString = struct._1
-      def b_=(value: CString): Unit = !struct.at1 = value
-      def size : size_t = struct._2
-      def size_=(value: size_t): Unit = !struct.at2 = value
-      def n : size_t = struct._3
-      def n_=(value: size_t): Unit = !struct.at3 = value
-      def L : Ptr[lua_State] = struct._4
-      def L_=(value: Ptr[lua_State]): Unit = !struct.at4 = value
-      def init : luaL_Buffer.Union0 = struct._5
-      def init_=(value: luaL_Buffer.Union0): Unit = !struct.at5 = value
 
   opaque type luaL_Reg = CStruct2[CString, lua_CFunction]
+  
   object luaL_Reg:
     given _tag: Tag[luaL_Reg] = Tag.materializeCStruct2Tag[CString, lua_CFunction]
+    
+    // Allocates luaL_Reg on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[luaL_Reg] = scala.scalanative.unsafe.alloc[luaL_Reg](1)
-    def apply(name : CString, func : lua_CFunction)(using Zone): Ptr[luaL_Reg] = 
+    def apply(name : CString, func : lua_CFunction)(using Zone): Ptr[luaL_Reg] =
       val ____ptr = apply()
       (!____ptr).name = name
       (!____ptr).func = func
       ____ptr
+    
     extension (struct: luaL_Reg)
       def name : CString = struct._1
       def name_=(value: CString): Unit = !struct.at1 = value
       def func : lua_CFunction = struct._2
       def func_=(value: lua_CFunction): Unit = !struct.at2 = value
+    
 
   opaque type luaL_Stream = CStruct2[Ptr[FILE], lua_CFunction]
+  
   object luaL_Stream:
     given _tag: Tag[luaL_Stream] = Tag.materializeCStruct2Tag[Ptr[FILE], lua_CFunction]
+    
+    // Allocates luaL_Stream on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[luaL_Stream] = scala.scalanative.unsafe.alloc[luaL_Stream](1)
-    def apply(f : Ptr[FILE], closef : lua_CFunction)(using Zone): Ptr[luaL_Stream] = 
+    def apply(f : Ptr[FILE], closef : lua_CFunction)(using Zone): Ptr[luaL_Stream] =
       val ____ptr = apply()
       (!____ptr).f = f
       (!____ptr).closef = closef
       ____ptr
+    
     extension (struct: luaL_Stream)
       def f : Ptr[FILE] = struct._1
       def f_=(value: Ptr[FILE]): Unit = !struct.at1 = value
       def closef : lua_CFunction = struct._2
       def closef_=(value: lua_CFunction): Unit = !struct.at2 = value
+    
 
-  opaque type lua_Debug = CStruct18[CInt, CString, CString, CString, CString, size_t, CInt, CInt, CInt, CUnsignedChar, CUnsignedChar, CChar, CChar, CUnsignedShort, CUnsignedShort, CArray[CChar, Nat.Digit2[Nat._6, Nat._0]], CStruct0, Ptr[CallInfo]]
+  opaque type lua_Debug = CStruct17[CInt, CString, CString, CString, CString, size_t, CInt, CInt, CInt, CUnsignedChar, CUnsignedChar, CChar, CChar, CUnsignedShort, CUnsignedShort, CArray[CChar, Nat.Digit2[Nat._6, Nat._0]], Ptr[CallInfo]]
+  
   object lua_Debug:
-    opaque type Struct0 = CStruct0
-    object Struct0:
-      given _tag: Tag[Struct0] = Tag.materializeCStruct0Tag
-    given _tag: Tag[lua_Debug] = Tag.materializeCStruct18Tag[CInt, CString, CString, CString, CString, size_t, CInt, CInt, CInt, CUnsignedChar, CUnsignedChar, CChar, CChar, CUnsignedShort, CUnsignedShort, CArray[CChar, Nat.Digit2[Nat._6, Nat._0]], CStruct0, Ptr[CallInfo]]
+    given _tag: Tag[lua_Debug] = Tag.materializeCStruct17Tag[CInt, CString, CString, CString, CString, size_t, CInt, CInt, CInt, CUnsignedChar, CUnsignedChar, CChar, CChar, CUnsignedShort, CUnsignedShort, CArray[CChar, Nat.Digit2[Nat._6, Nat._0]], Ptr[CallInfo]]
+    
+    // Allocates lua_Debug on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[lua_Debug] = scala.scalanative.unsafe.alloc[lua_Debug](1)
-    def apply(event : CInt, name : CString, namewhat : CString, what : CString, source : CString, srclen : size_t, currentline : CInt, linedefined : CInt, lastlinedefined : CInt, nups : CUnsignedChar, nparams : CUnsignedChar, isvararg : CChar, istailcall : CChar, ftransfer : CUnsignedShort, ntransfer : CUnsignedShort, short_src : CArray[CChar, Nat.Digit2[Nat._6, Nat._0]], i_ci : Ptr[CallInfo])(using Zone): Ptr[lua_Debug] = 
+    def apply(event : CInt, name : CString, namewhat : CString, what : CString, source : CString, srclen : size_t, currentline : CInt, linedefined : CInt, lastlinedefined : CInt, nups : CUnsignedChar, nparams : CUnsignedChar, isvararg : CChar, istailcall : CChar, ftransfer : CUnsignedShort, ntransfer : CUnsignedShort, short_src : CArray[CChar, Nat.Digit2[Nat._6, Nat._0]], i_ci : Ptr[CallInfo])(using Zone): Ptr[lua_Debug] =
       val ____ptr = apply()
       (!____ptr).event = event
       (!____ptr).name = name
@@ -277,6 +303,7 @@ object structs:
       (!____ptr).short_src = short_src
       (!____ptr).i_ci = i_ci
       ____ptr
+    
     extension (struct: lua_Debug)
       def event : CInt = struct._1
       def event_=(value: CInt): Unit = !struct.at1 = value
@@ -310,12 +337,15 @@ object structs:
       def ntransfer_=(value: CUnsignedShort): Unit = !struct.at15 = value
       def short_src : CArray[CChar, Nat.Digit2[Nat._6, Nat._0]] = struct._16
       def short_src_=(value: CArray[CChar, Nat.Digit2[Nat._6, Nat._0]]): Unit = !struct.at16 = value
-      def i_ci : Ptr[CallInfo] = struct._18
-      def i_ci_=(value: Ptr[CallInfo]): Unit = !struct.at18 = value
+      def i_ci : Ptr[CallInfo] = struct._17
+      def i_ci_=(value: Ptr[CallInfo]): Unit = !struct.at17 = value
+    
 
   opaque type lua_State = CStruct0
+  
   object lua_State:
     given _tag: Tag[lua_State] = Tag.materializeCStruct0Tag
+    
 
 
 @extern
@@ -638,8 +668,8 @@ object functions:
   export extern_functions.*
 
 object types:
-  export _root_.lua.structs.*
-  export _root_.lua.aliases.*
+    export _root_.lua.structs.*
+    export _root_.lua.aliases.*
 
 object all:
   export _root_.lua.aliases.FILE

@@ -6,13 +6,12 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-  private[openssl] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
-    given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
-    extension (inline t: T)
-     inline def value: CUnsignedInt = eq.apply(t)
-     inline def int: CInt = eq.apply(t).toInt
-     inline def uint: CUnsignedInt = eq.apply(t)
-
+    private[openssl] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
+      given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
+      extension (inline t: T)
+        inline def value: CUnsignedInt = eq.apply(t)
+        inline def int: CInt = eq.apply(t).toInt
+        inline def uint: CUnsignedInt = eq.apply(t)
 
 object enumerations:
   import predef.*
@@ -22,10 +21,10 @@ object enumerations:
     inline def define(inline a: Long): BIO_hostserv_priorities = a.toUInt
     val BIO_PARSE_PRIO_HOST = define(0)
     val BIO_PARSE_PRIO_SERV = define(1)
-    inline def getName(inline value: BIO_hostserv_priorities): Option[String] =
-      inline value match
-        case BIO_PARSE_PRIO_HOST => Some("BIO_PARSE_PRIO_HOST")
-        case BIO_PARSE_PRIO_SERV => Some("BIO_PARSE_PRIO_SERV")
+    def getName(value: BIO_hostserv_priorities): Option[String] =
+      value match
+        case `BIO_PARSE_PRIO_HOST` => Some("BIO_PARSE_PRIO_HOST")
+        case `BIO_PARSE_PRIO_SERV` => Some("BIO_PARSE_PRIO_SERV")
         case _ => _root_.scala.None
     extension (a: BIO_hostserv_priorities)
       inline def &(b: BIO_hostserv_priorities): BIO_hostserv_priorities = a & b
@@ -38,10 +37,10 @@ object enumerations:
     inline def define(inline a: Long): BIO_lookup_type = a.toUInt
     val BIO_LOOKUP_CLIENT = define(0)
     val BIO_LOOKUP_SERVER = define(1)
-    inline def getName(inline value: BIO_lookup_type): Option[String] =
-      inline value match
-        case BIO_LOOKUP_CLIENT => Some("BIO_LOOKUP_CLIENT")
-        case BIO_LOOKUP_SERVER => Some("BIO_LOOKUP_SERVER")
+    def getName(value: BIO_lookup_type): Option[String] =
+      value match
+        case `BIO_LOOKUP_CLIENT` => Some("BIO_LOOKUP_CLIENT")
+        case `BIO_LOOKUP_SERVER` => Some("BIO_LOOKUP_SERVER")
         case _ => _root_.scala.None
     extension (a: BIO_lookup_type)
       inline def &(b: BIO_lookup_type): BIO_lookup_type = a & b
@@ -53,9 +52,9 @@ object enumerations:
     given _tag: Tag[BIO_sock_info_type] = Tag.UInt
     inline def define(inline a: Long): BIO_sock_info_type = a.toUInt
     val BIO_SOCK_INFO_ADDRESS = define(0)
-    inline def getName(inline value: BIO_sock_info_type): Option[String] =
-      inline value match
-        case BIO_SOCK_INFO_ADDRESS => Some("BIO_SOCK_INFO_ADDRESS")
+    def getName(value: BIO_sock_info_type): Option[String] =
+      value match
+        case `BIO_SOCK_INFO_ADDRESS` => Some("BIO_SOCK_INFO_ADDRESS")
         case _ => _root_.scala.None
     extension (a: BIO_sock_info_type)
       inline def &(b: BIO_sock_info_type): BIO_sock_info_type = a & b
@@ -69,28 +68,28 @@ object aliases:
   import _root_.openssl.structs.*
   import _root_.openssl.unions.*
   opaque type ASN1_BOOLEAN = CInt
-  object ASN1_BOOLEAN: 
+  object ASN1_BOOLEAN:
     given _tag: Tag[ASN1_BOOLEAN] = Tag.Int
     inline def apply(inline o: CInt): ASN1_BOOLEAN = o
     extension (v: ASN1_BOOLEAN)
       inline def value: CInt = v
 
   type ASN1_ITEM_EXP = CFuncPtr0[Ptr[ASN1_ITEM]]
-  object ASN1_ITEM_EXP: 
+  object ASN1_ITEM_EXP:
     given _tag: Tag[ASN1_ITEM_EXP] = Tag.materializeCFuncPtr0[Ptr[ASN1_ITEM]]
     inline def apply(inline o: CFuncPtr0[Ptr[ASN1_ITEM]]): ASN1_ITEM_EXP = o
     extension (v: ASN1_ITEM_EXP)
       inline def value: CFuncPtr0[Ptr[ASN1_ITEM]] = v
 
   opaque type ASN1_NULL = CInt
-  object ASN1_NULL: 
+  object ASN1_NULL:
     given _tag: Tag[ASN1_NULL] = Tag.Int
     inline def apply(inline o: CInt): ASN1_NULL = o
     extension (v: ASN1_NULL)
       inline def value: CInt = v
 
   opaque type BIO_callback_fn = CFuncPtr6[Ptr[BIO], CInt, CString, CInt, CLongInt, CLongInt, CLongInt]
-  object BIO_callback_fn: 
+  object BIO_callback_fn:
     given _tag: Tag[BIO_callback_fn] = Tag.materializeCFuncPtr6[Ptr[BIO], CInt, CString, CInt, CLongInt, CLongInt, CLongInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): BIO_callback_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr6[Ptr[BIO], CInt, CString, CInt, CLongInt, CLongInt, CLongInt]): BIO_callback_fn = o
@@ -99,7 +98,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type BIO_callback_fn_ex = CFuncPtr8[Ptr[BIO], CInt, CString, size_t, CInt, CLongInt, CInt, Ptr[size_t], CLongInt]
-  object BIO_callback_fn_ex: 
+  object BIO_callback_fn_ex:
     given _tag: Tag[BIO_callback_fn_ex] = Tag.materializeCFuncPtr8[Ptr[BIO], CInt, CString, size_t, CInt, CLongInt, CInt, Ptr[size_t], CLongInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): BIO_callback_fn_ex = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr8[Ptr[BIO], CInt, CString, size_t, CInt, CLongInt, CInt, Ptr[size_t], CLongInt]): BIO_callback_fn_ex = o
@@ -108,7 +107,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type BIO_dgram_sctp_notification_handler_fn = CFuncPtr3[Ptr[BIO], Ptr[Byte], Ptr[Byte], Unit]
-  object BIO_dgram_sctp_notification_handler_fn: 
+  object BIO_dgram_sctp_notification_handler_fn:
     given _tag: Tag[BIO_dgram_sctp_notification_handler_fn] = Tag.materializeCFuncPtr3[Ptr[BIO], Ptr[Byte], Ptr[Byte], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): BIO_dgram_sctp_notification_handler_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[BIO], Ptr[Byte], Ptr[Byte], Unit]): BIO_dgram_sctp_notification_handler_fn = o
@@ -117,63 +116,63 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type BIO_info_cb = CFuncPtr3[Ptr[BIO], CInt, CInt, CInt]
-  object BIO_info_cb: 
+  object BIO_info_cb:
     given _tag: Tag[BIO_info_cb] = Tag.materializeCFuncPtr3[Ptr[BIO], CInt, CInt, CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[BIO], CInt, CInt, CInt]): BIO_info_cb = o
     extension (v: BIO_info_cb)
       inline def value: CFuncPtr3[Ptr[BIO], CInt, CInt, CInt] = v
 
   type CRYPTO_EX_dup = CFuncPtr6[Ptr[CRYPTO_EX_DATA], Ptr[CRYPTO_EX_DATA], Ptr[Ptr[Byte]], CInt, CLongInt, Ptr[Byte], CInt]
-  object CRYPTO_EX_dup: 
+  object CRYPTO_EX_dup:
     given _tag: Tag[CRYPTO_EX_dup] = Tag.materializeCFuncPtr6[Ptr[CRYPTO_EX_DATA], Ptr[CRYPTO_EX_DATA], Ptr[Ptr[Byte]], CInt, CLongInt, Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr6[Ptr[CRYPTO_EX_DATA], Ptr[CRYPTO_EX_DATA], Ptr[Ptr[Byte]], CInt, CLongInt, Ptr[Byte], CInt]): CRYPTO_EX_dup = o
     extension (v: CRYPTO_EX_dup)
       inline def value: CFuncPtr6[Ptr[CRYPTO_EX_DATA], Ptr[CRYPTO_EX_DATA], Ptr[Ptr[Byte]], CInt, CLongInt, Ptr[Byte], CInt] = v
 
   type CRYPTO_EX_free = CFuncPtr6[Ptr[Byte], Ptr[Byte], Ptr[CRYPTO_EX_DATA], CInt, CLongInt, Ptr[Byte], Unit]
-  object CRYPTO_EX_free: 
+  object CRYPTO_EX_free:
     given _tag: Tag[CRYPTO_EX_free] = Tag.materializeCFuncPtr6[Ptr[Byte], Ptr[Byte], Ptr[CRYPTO_EX_DATA], CInt, CLongInt, Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], Ptr[Byte], Ptr[CRYPTO_EX_DATA], CInt, CLongInt, Ptr[Byte], Unit]): CRYPTO_EX_free = o
     extension (v: CRYPTO_EX_free)
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[Byte], Ptr[CRYPTO_EX_DATA], CInt, CLongInt, Ptr[Byte], Unit] = v
 
   type CRYPTO_EX_new = CFuncPtr6[Ptr[Byte], Ptr[Byte], Ptr[CRYPTO_EX_DATA], CInt, CLongInt, Ptr[Byte], Unit]
-  object CRYPTO_EX_new: 
+  object CRYPTO_EX_new:
     given _tag: Tag[CRYPTO_EX_new] = Tag.materializeCFuncPtr6[Ptr[Byte], Ptr[Byte], Ptr[CRYPTO_EX_DATA], CInt, CLongInt, Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], Ptr[Byte], Ptr[CRYPTO_EX_DATA], CInt, CLongInt, Ptr[Byte], Unit]): CRYPTO_EX_new = o
     extension (v: CRYPTO_EX_new)
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[Byte], Ptr[CRYPTO_EX_DATA], CInt, CLongInt, Ptr[Byte], Unit] = v
 
   type CRYPTO_ONCE = pthread_once_t
-  object CRYPTO_ONCE: 
+  object CRYPTO_ONCE:
     given _tag: Tag[CRYPTO_ONCE] = pthread_once_t._tag
     inline def apply(inline o: pthread_once_t): CRYPTO_ONCE = o
     extension (v: CRYPTO_ONCE)
       inline def value: pthread_once_t = v
 
   type CRYPTO_RWLOCK = Unit
-  object CRYPTO_RWLOCK: 
+  object CRYPTO_RWLOCK:
     given _tag: Tag[CRYPTO_RWLOCK] = Tag.Unit
     inline def apply(inline o: Unit): CRYPTO_RWLOCK = o
     extension (v: CRYPTO_RWLOCK)
       inline def value: Unit = v
 
   type CRYPTO_THREAD_ID = pthread_t
-  object CRYPTO_THREAD_ID: 
+  object CRYPTO_THREAD_ID:
     given _tag: Tag[CRYPTO_THREAD_ID] = pthread_t._tag
     inline def apply(inline o: pthread_t): CRYPTO_THREAD_ID = o
     extension (v: CRYPTO_THREAD_ID)
       inline def value: pthread_t = v
 
   type CRYPTO_THREAD_LOCAL = pthread_key_t
-  object CRYPTO_THREAD_LOCAL: 
+  object CRYPTO_THREAD_LOCAL:
     given _tag: Tag[CRYPTO_THREAD_LOCAL] = pthread_key_t._tag
     inline def apply(inline o: pthread_key_t): CRYPTO_THREAD_LOCAL = o
     extension (v: CRYPTO_THREAD_LOCAL)
       inline def value: pthread_key_t = v
 
   opaque type CRYPTO_free_fn = CFuncPtr3[Ptr[Byte], CString, CInt, Unit]
-  object CRYPTO_free_fn: 
+  object CRYPTO_free_fn:
     given _tag: Tag[CRYPTO_free_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], CString, CInt, Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): CRYPTO_free_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CString, CInt, Unit]): CRYPTO_free_fn = o
@@ -182,7 +181,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type CRYPTO_malloc_fn = CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
-  object CRYPTO_malloc_fn: 
+  object CRYPTO_malloc_fn:
     given _tag: Tag[CRYPTO_malloc_fn] = Tag.materializeCFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): CRYPTO_malloc_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]): CRYPTO_malloc_fn = o
@@ -191,7 +190,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type CRYPTO_realloc_fn = CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Ptr[Byte]]
-  object CRYPTO_realloc_fn: 
+  object CRYPTO_realloc_fn:
     given _tag: Tag[CRYPTO_realloc_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], size_t, CString, CInt, Ptr[Byte]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): CRYPTO_realloc_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Ptr[Byte]]): CRYPTO_realloc_fn = o
@@ -200,56 +199,56 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type EVP_PBE_KEYGEN = CFuncPtr7[Ptr[EVP_CIPHER_CTX], CString, CInt, Ptr[ASN1_TYPE], Ptr[EVP_CIPHER], Ptr[EVP_MD], CInt, CInt]
-  object EVP_PBE_KEYGEN: 
+  object EVP_PBE_KEYGEN:
     given _tag: Tag[EVP_PBE_KEYGEN] = Tag.materializeCFuncPtr7[Ptr[EVP_CIPHER_CTX], CString, CInt, Ptr[ASN1_TYPE], Ptr[EVP_CIPHER], Ptr[EVP_MD], CInt, CInt]
     inline def apply(inline o: CFuncPtr7[Ptr[EVP_CIPHER_CTX], CString, CInt, Ptr[ASN1_TYPE], Ptr[EVP_CIPHER], Ptr[EVP_MD], CInt, CInt]): EVP_PBE_KEYGEN = o
     extension (v: EVP_PBE_KEYGEN)
       inline def value: CFuncPtr7[Ptr[EVP_CIPHER_CTX], CString, CInt, Ptr[ASN1_TYPE], Ptr[EVP_CIPHER], Ptr[EVP_MD], CInt, CInt] = v
 
   type EVP_PBE_KEYGEN_EX = CFuncPtr9[Ptr[EVP_CIPHER_CTX], CString, CInt, Ptr[ASN1_TYPE], Ptr[EVP_CIPHER], Ptr[EVP_MD], CInt, Ptr[OSSL_LIB_CTX], CString, CInt]
-  object EVP_PBE_KEYGEN_EX: 
+  object EVP_PBE_KEYGEN_EX:
     given _tag: Tag[EVP_PBE_KEYGEN_EX] = Tag.materializeCFuncPtr9[Ptr[EVP_CIPHER_CTX], CString, CInt, Ptr[ASN1_TYPE], Ptr[EVP_CIPHER], Ptr[EVP_MD], CInt, Ptr[OSSL_LIB_CTX], CString, CInt]
     inline def apply(inline o: CFuncPtr9[Ptr[EVP_CIPHER_CTX], CString, CInt, Ptr[ASN1_TYPE], Ptr[EVP_CIPHER], Ptr[EVP_MD], CInt, Ptr[OSSL_LIB_CTX], CString, CInt]): EVP_PBE_KEYGEN_EX = o
     extension (v: EVP_PBE_KEYGEN_EX)
       inline def value: CFuncPtr9[Ptr[EVP_CIPHER_CTX], CString, CInt, Ptr[ASN1_TYPE], Ptr[EVP_CIPHER], Ptr[EVP_MD], CInt, Ptr[OSSL_LIB_CTX], CString, CInt] = v
 
   type EVP_PKEY_gen_cb = CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]
-  object EVP_PKEY_gen_cb: 
+  object EVP_PKEY_gen_cb:
     given _tag: Tag[EVP_PKEY_gen_cb] = Tag.materializeCFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt]): EVP_PKEY_gen_cb = o
     extension (v: EVP_PKEY_gen_cb)
       inline def value: CFuncPtr1[Ptr[EVP_PKEY_CTX], CInt] = v
 
   type FILE = libc.stdio.FILE
-  object FILE: 
+  object FILE:
     val _tag: Tag[FILE] = summon[Tag[libc.stdio.FILE]]
     inline def apply(inline o: libc.stdio.FILE): FILE = o
     extension (v: FILE)
       inline def value: libc.stdio.FILE = v
 
   opaque type OPENSSL_BLOCK = Ptr[Byte]
-  object OPENSSL_BLOCK: 
+  object OPENSSL_BLOCK:
     given _tag: Tag[OPENSSL_BLOCK] = Tag.Ptr(Tag.Byte)
     inline def apply(inline o: Ptr[Byte]): OPENSSL_BLOCK = o
     extension (v: OPENSSL_BLOCK)
       inline def value: Ptr[Byte] = v
 
   opaque type OPENSSL_CSTRING = CString
-  object OPENSSL_CSTRING: 
+  object OPENSSL_CSTRING:
     given _tag: Tag[OPENSSL_CSTRING] = Tag.Ptr[CChar](Tag.Byte)
     inline def apply(inline o: CString): OPENSSL_CSTRING = o
     extension (v: OPENSSL_CSTRING)
       inline def value: CString = v
 
   opaque type OPENSSL_STRING = CString
-  object OPENSSL_STRING: 
+  object OPENSSL_STRING:
     given _tag: Tag[OPENSSL_STRING] = Tag.Ptr[CChar](Tag.Byte)
     inline def apply(inline o: CString): OPENSSL_STRING = o
     extension (v: OPENSSL_STRING)
       inline def value: CString = v
 
   opaque type OPENSSL_sk_compfunc = CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]
-  object OPENSSL_sk_compfunc: 
+  object OPENSSL_sk_compfunc:
     given _tag: Tag[OPENSSL_sk_compfunc] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): OPENSSL_sk_compfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]): OPENSSL_sk_compfunc = o
@@ -258,7 +257,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type OPENSSL_sk_copyfunc = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OPENSSL_sk_copyfunc: 
+  object OPENSSL_sk_copyfunc:
     given _tag: Tag[OPENSSL_sk_copyfunc] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): OPENSSL_sk_copyfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OPENSSL_sk_copyfunc = o
@@ -267,7 +266,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type OPENSSL_sk_freefunc = CFuncPtr1[Ptr[Byte], Unit]
-  object OPENSSL_sk_freefunc: 
+  object OPENSSL_sk_freefunc:
     given _tag: Tag[OPENSSL_sk_freefunc] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): OPENSSL_sk_freefunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OPENSSL_sk_freefunc = o
@@ -276,1652 +275,1652 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type OSSL_CALLBACK = CFuncPtr2[Ptr[OSSL_PARAM], Ptr[Byte], CInt]
-  object OSSL_CALLBACK: 
+  object OSSL_CALLBACK:
     given _tag: Tag[OSSL_CALLBACK] = Tag.materializeCFuncPtr2[Ptr[OSSL_PARAM], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[OSSL_PARAM], Ptr[Byte], CInt]): OSSL_CALLBACK = o
     extension (v: OSSL_CALLBACK)
       inline def value: CFuncPtr2[Ptr[OSSL_PARAM], Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_BIO_ctrl_fn = CFuncPtr4[Ptr[OSSL_CORE_BIO], CInt, CLongInt, Ptr[Byte], CInt]
-  object OSSL_FUNC_BIO_ctrl_fn: 
+  object OSSL_FUNC_BIO_ctrl_fn:
     given _tag: Tag[OSSL_FUNC_BIO_ctrl_fn] = Tag.materializeCFuncPtr4[Ptr[OSSL_CORE_BIO], CInt, CLongInt, Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[OSSL_CORE_BIO], CInt, CLongInt, Ptr[Byte], CInt]): OSSL_FUNC_BIO_ctrl_fn = o
     extension (v: OSSL_FUNC_BIO_ctrl_fn)
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_BIO], CInt, CLongInt, Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_BIO_free_fn = CFuncPtr1[Ptr[OSSL_CORE_BIO], CInt]
-  object OSSL_FUNC_BIO_free_fn: 
+  object OSSL_FUNC_BIO_free_fn:
     given _tag: Tag[OSSL_FUNC_BIO_free_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_CORE_BIO], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_CORE_BIO], CInt]): OSSL_FUNC_BIO_free_fn = o
     extension (v: OSSL_FUNC_BIO_free_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_BIO], CInt] = v
 
   type OSSL_FUNC_BIO_gets_fn = CFuncPtr3[Ptr[OSSL_CORE_BIO], CString, CInt, CInt]
-  object OSSL_FUNC_BIO_gets_fn: 
+  object OSSL_FUNC_BIO_gets_fn:
     given _tag: Tag[OSSL_FUNC_BIO_gets_fn] = Tag.materializeCFuncPtr3[Ptr[OSSL_CORE_BIO], CString, CInt, CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[OSSL_CORE_BIO], CString, CInt, CInt]): OSSL_FUNC_BIO_gets_fn = o
     extension (v: OSSL_FUNC_BIO_gets_fn)
       inline def value: CFuncPtr3[Ptr[OSSL_CORE_BIO], CString, CInt, CInt] = v
 
   type OSSL_FUNC_BIO_new_file_fn = CFuncPtr2[CString, CString, Ptr[OSSL_CORE_BIO]]
-  object OSSL_FUNC_BIO_new_file_fn: 
+  object OSSL_FUNC_BIO_new_file_fn:
     given _tag: Tag[OSSL_FUNC_BIO_new_file_fn] = Tag.materializeCFuncPtr2[CString, CString, Ptr[OSSL_CORE_BIO]]
     inline def apply(inline o: CFuncPtr2[CString, CString, Ptr[OSSL_CORE_BIO]]): OSSL_FUNC_BIO_new_file_fn = o
     extension (v: OSSL_FUNC_BIO_new_file_fn)
       inline def value: CFuncPtr2[CString, CString, Ptr[OSSL_CORE_BIO]] = v
 
   type OSSL_FUNC_BIO_new_membuf_fn = CFuncPtr2[Ptr[Byte], CInt, Ptr[OSSL_CORE_BIO]]
-  object OSSL_FUNC_BIO_new_membuf_fn: 
+  object OSSL_FUNC_BIO_new_membuf_fn:
     given _tag: Tag[OSSL_FUNC_BIO_new_membuf_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], CInt, Ptr[OSSL_CORE_BIO]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], CInt, Ptr[OSSL_CORE_BIO]]): OSSL_FUNC_BIO_new_membuf_fn = o
     extension (v: OSSL_FUNC_BIO_new_membuf_fn)
       inline def value: CFuncPtr2[Ptr[Byte], CInt, Ptr[OSSL_CORE_BIO]] = v
 
   type OSSL_FUNC_BIO_puts_fn = CFuncPtr2[Ptr[OSSL_CORE_BIO], CString, CInt]
-  object OSSL_FUNC_BIO_puts_fn: 
+  object OSSL_FUNC_BIO_puts_fn:
     given _tag: Tag[OSSL_FUNC_BIO_puts_fn] = Tag.materializeCFuncPtr2[Ptr[OSSL_CORE_BIO], CString, CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[OSSL_CORE_BIO], CString, CInt]): OSSL_FUNC_BIO_puts_fn = o
     extension (v: OSSL_FUNC_BIO_puts_fn)
       inline def value: CFuncPtr2[Ptr[OSSL_CORE_BIO], CString, CInt] = v
 
   type OSSL_FUNC_BIO_read_ex_fn = CFuncPtr4[Ptr[OSSL_CORE_BIO], Ptr[Byte], size_t, Ptr[size_t], CInt]
-  object OSSL_FUNC_BIO_read_ex_fn: 
+  object OSSL_FUNC_BIO_read_ex_fn:
     given _tag: Tag[OSSL_FUNC_BIO_read_ex_fn] = Tag.materializeCFuncPtr4[Ptr[OSSL_CORE_BIO], Ptr[Byte], size_t, Ptr[size_t], CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[OSSL_CORE_BIO], Ptr[Byte], size_t, Ptr[size_t], CInt]): OSSL_FUNC_BIO_read_ex_fn = o
     extension (v: OSSL_FUNC_BIO_read_ex_fn)
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_BIO], Ptr[Byte], size_t, Ptr[size_t], CInt] = v
 
   type OSSL_FUNC_BIO_up_ref_fn = CFuncPtr1[Ptr[OSSL_CORE_BIO], CInt]
-  object OSSL_FUNC_BIO_up_ref_fn: 
+  object OSSL_FUNC_BIO_up_ref_fn:
     given _tag: Tag[OSSL_FUNC_BIO_up_ref_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_CORE_BIO], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_CORE_BIO], CInt]): OSSL_FUNC_BIO_up_ref_fn = o
     extension (v: OSSL_FUNC_BIO_up_ref_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_BIO], CInt] = v
 
   type OSSL_FUNC_BIO_vprintf_fn = CFuncPtr3[Ptr[OSSL_CORE_BIO], CString, va_list, CInt]
-  object OSSL_FUNC_BIO_vprintf_fn: 
+  object OSSL_FUNC_BIO_vprintf_fn:
     given _tag: Tag[OSSL_FUNC_BIO_vprintf_fn] = Tag.materializeCFuncPtr3[Ptr[OSSL_CORE_BIO], CString, va_list, CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[OSSL_CORE_BIO], CString, va_list, CInt]): OSSL_FUNC_BIO_vprintf_fn = o
     extension (v: OSSL_FUNC_BIO_vprintf_fn)
       inline def value: CFuncPtr3[Ptr[OSSL_CORE_BIO], CString, va_list, CInt] = v
 
   type OSSL_FUNC_BIO_vsnprintf_fn = CFuncPtr4[CString, size_t, CString, va_list, CInt]
-  object OSSL_FUNC_BIO_vsnprintf_fn: 
+  object OSSL_FUNC_BIO_vsnprintf_fn:
     given _tag: Tag[OSSL_FUNC_BIO_vsnprintf_fn] = Tag.materializeCFuncPtr4[CString, size_t, CString, va_list, CInt]
     inline def apply(inline o: CFuncPtr4[CString, size_t, CString, va_list, CInt]): OSSL_FUNC_BIO_vsnprintf_fn = o
     extension (v: OSSL_FUNC_BIO_vsnprintf_fn)
       inline def value: CFuncPtr4[CString, size_t, CString, va_list, CInt] = v
 
   type OSSL_FUNC_BIO_write_ex_fn = CFuncPtr4[Ptr[OSSL_CORE_BIO], Ptr[Byte], size_t, Ptr[size_t], CInt]
-  object OSSL_FUNC_BIO_write_ex_fn: 
+  object OSSL_FUNC_BIO_write_ex_fn:
     given _tag: Tag[OSSL_FUNC_BIO_write_ex_fn] = Tag.materializeCFuncPtr4[Ptr[OSSL_CORE_BIO], Ptr[Byte], size_t, Ptr[size_t], CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[OSSL_CORE_BIO], Ptr[Byte], size_t, Ptr[size_t], CInt]): OSSL_FUNC_BIO_write_ex_fn = o
     extension (v: OSSL_FUNC_BIO_write_ex_fn)
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_BIO], Ptr[Byte], size_t, Ptr[size_t], CInt] = v
 
   type OSSL_FUNC_CRYPTO_clear_free_fn = CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Unit]
-  object OSSL_FUNC_CRYPTO_clear_free_fn: 
+  object OSSL_FUNC_CRYPTO_clear_free_fn:
     given _tag: Tag[OSSL_FUNC_CRYPTO_clear_free_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], size_t, CString, CInt, Unit]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Unit]): OSSL_FUNC_CRYPTO_clear_free_fn = o
     extension (v: OSSL_FUNC_CRYPTO_clear_free_fn)
       inline def value: CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Unit] = v
 
   type OSSL_FUNC_CRYPTO_clear_realloc_fn = CFuncPtr5[Ptr[Byte], size_t, size_t, CString, CInt, Ptr[Byte]]
-  object OSSL_FUNC_CRYPTO_clear_realloc_fn: 
+  object OSSL_FUNC_CRYPTO_clear_realloc_fn:
     given _tag: Tag[OSSL_FUNC_CRYPTO_clear_realloc_fn] = Tag.materializeCFuncPtr5[Ptr[Byte], size_t, size_t, CString, CInt, Ptr[Byte]]
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], size_t, size_t, CString, CInt, Ptr[Byte]]): OSSL_FUNC_CRYPTO_clear_realloc_fn = o
     extension (v: OSSL_FUNC_CRYPTO_clear_realloc_fn)
       inline def value: CFuncPtr5[Ptr[Byte], size_t, size_t, CString, CInt, Ptr[Byte]] = v
 
   type OSSL_FUNC_CRYPTO_free_fn = CFuncPtr3[Ptr[Byte], CString, CInt, Unit]
-  object OSSL_FUNC_CRYPTO_free_fn: 
+  object OSSL_FUNC_CRYPTO_free_fn:
     given _tag: Tag[OSSL_FUNC_CRYPTO_free_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], CString, CInt, Unit]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CString, CInt, Unit]): OSSL_FUNC_CRYPTO_free_fn = o
     extension (v: OSSL_FUNC_CRYPTO_free_fn)
       inline def value: CFuncPtr3[Ptr[Byte], CString, CInt, Unit] = v
 
   type OSSL_FUNC_CRYPTO_malloc_fn = CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
-  object OSSL_FUNC_CRYPTO_malloc_fn: 
+  object OSSL_FUNC_CRYPTO_malloc_fn:
     given _tag: Tag[OSSL_FUNC_CRYPTO_malloc_fn] = Tag.materializeCFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
     inline def apply(inline o: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]): OSSL_FUNC_CRYPTO_malloc_fn = o
     extension (v: OSSL_FUNC_CRYPTO_malloc_fn)
       inline def value: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]] = v
 
   type OSSL_FUNC_CRYPTO_realloc_fn = CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Ptr[Byte]]
-  object OSSL_FUNC_CRYPTO_realloc_fn: 
+  object OSSL_FUNC_CRYPTO_realloc_fn:
     given _tag: Tag[OSSL_FUNC_CRYPTO_realloc_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], size_t, CString, CInt, Ptr[Byte]]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Ptr[Byte]]): OSSL_FUNC_CRYPTO_realloc_fn = o
     extension (v: OSSL_FUNC_CRYPTO_realloc_fn)
       inline def value: CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Ptr[Byte]] = v
 
   type OSSL_FUNC_CRYPTO_secure_allocated_fn = CFuncPtr1[Ptr[Byte], CInt]
-  object OSSL_FUNC_CRYPTO_secure_allocated_fn: 
+  object OSSL_FUNC_CRYPTO_secure_allocated_fn:
     given _tag: Tag[OSSL_FUNC_CRYPTO_secure_allocated_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], CInt]): OSSL_FUNC_CRYPTO_secure_allocated_fn = o
     extension (v: OSSL_FUNC_CRYPTO_secure_allocated_fn)
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_CRYPTO_secure_clear_free_fn = CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Unit]
-  object OSSL_FUNC_CRYPTO_secure_clear_free_fn: 
+  object OSSL_FUNC_CRYPTO_secure_clear_free_fn:
     given _tag: Tag[OSSL_FUNC_CRYPTO_secure_clear_free_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], size_t, CString, CInt, Unit]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Unit]): OSSL_FUNC_CRYPTO_secure_clear_free_fn = o
     extension (v: OSSL_FUNC_CRYPTO_secure_clear_free_fn)
       inline def value: CFuncPtr4[Ptr[Byte], size_t, CString, CInt, Unit] = v
 
   type OSSL_FUNC_CRYPTO_secure_free_fn = CFuncPtr3[Ptr[Byte], CString, CInt, Unit]
-  object OSSL_FUNC_CRYPTO_secure_free_fn: 
+  object OSSL_FUNC_CRYPTO_secure_free_fn:
     given _tag: Tag[OSSL_FUNC_CRYPTO_secure_free_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], CString, CInt, Unit]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CString, CInt, Unit]): OSSL_FUNC_CRYPTO_secure_free_fn = o
     extension (v: OSSL_FUNC_CRYPTO_secure_free_fn)
       inline def value: CFuncPtr3[Ptr[Byte], CString, CInt, Unit] = v
 
   type OSSL_FUNC_CRYPTO_secure_malloc_fn = CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
-  object OSSL_FUNC_CRYPTO_secure_malloc_fn: 
+  object OSSL_FUNC_CRYPTO_secure_malloc_fn:
     given _tag: Tag[OSSL_FUNC_CRYPTO_secure_malloc_fn] = Tag.materializeCFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
     inline def apply(inline o: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]): OSSL_FUNC_CRYPTO_secure_malloc_fn = o
     extension (v: OSSL_FUNC_CRYPTO_secure_malloc_fn)
       inline def value: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]] = v
 
   type OSSL_FUNC_CRYPTO_secure_zalloc_fn = CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
-  object OSSL_FUNC_CRYPTO_secure_zalloc_fn: 
+  object OSSL_FUNC_CRYPTO_secure_zalloc_fn:
     given _tag: Tag[OSSL_FUNC_CRYPTO_secure_zalloc_fn] = Tag.materializeCFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
     inline def apply(inline o: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]): OSSL_FUNC_CRYPTO_secure_zalloc_fn = o
     extension (v: OSSL_FUNC_CRYPTO_secure_zalloc_fn)
       inline def value: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]] = v
 
   type OSSL_FUNC_CRYPTO_zalloc_fn = CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
-  object OSSL_FUNC_CRYPTO_zalloc_fn: 
+  object OSSL_FUNC_CRYPTO_zalloc_fn:
     given _tag: Tag[OSSL_FUNC_CRYPTO_zalloc_fn] = Tag.materializeCFuncPtr3[size_t, CString, CInt, Ptr[Byte]]
     inline def apply(inline o: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]]): OSSL_FUNC_CRYPTO_zalloc_fn = o
     extension (v: OSSL_FUNC_CRYPTO_zalloc_fn)
       inline def value: CFuncPtr3[size_t, CString, CInt, Ptr[Byte]] = v
 
   type OSSL_FUNC_OPENSSL_cleanse_fn = CFuncPtr2[Ptr[Byte], size_t, Unit]
-  object OSSL_FUNC_OPENSSL_cleanse_fn: 
+  object OSSL_FUNC_OPENSSL_cleanse_fn:
     given _tag: Tag[OSSL_FUNC_OPENSSL_cleanse_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], size_t, Unit]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], size_t, Unit]): OSSL_FUNC_OPENSSL_cleanse_fn = o
     extension (v: OSSL_FUNC_OPENSSL_cleanse_fn)
       inline def value: CFuncPtr2[Ptr[Byte], size_t, Unit] = v
 
   type OSSL_FUNC_asym_cipher_decrypt_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_asym_cipher_decrypt_fn: 
+  object OSSL_FUNC_asym_cipher_decrypt_fn:
     given _tag: Tag[OSSL_FUNC_asym_cipher_decrypt_fn] = Tag.materializeCFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_asym_cipher_decrypt_fn = o
     extension (v: OSSL_FUNC_asym_cipher_decrypt_fn)
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_asym_cipher_decrypt_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_asym_cipher_decrypt_init_fn: 
+  object OSSL_FUNC_asym_cipher_decrypt_init_fn:
     given _tag: Tag[OSSL_FUNC_asym_cipher_decrypt_init_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_asym_cipher_decrypt_init_fn = o
     extension (v: OSSL_FUNC_asym_cipher_decrypt_init_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_asym_cipher_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_asym_cipher_dupctx_fn: 
+  object OSSL_FUNC_asym_cipher_dupctx_fn:
     given _tag: Tag[OSSL_FUNC_asym_cipher_dupctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_asym_cipher_dupctx_fn = o
     extension (v: OSSL_FUNC_asym_cipher_dupctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_asym_cipher_encrypt_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_asym_cipher_encrypt_fn: 
+  object OSSL_FUNC_asym_cipher_encrypt_fn:
     given _tag: Tag[OSSL_FUNC_asym_cipher_encrypt_fn] = Tag.materializeCFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_asym_cipher_encrypt_fn = o
     extension (v: OSSL_FUNC_asym_cipher_encrypt_fn)
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_asym_cipher_encrypt_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_asym_cipher_encrypt_init_fn: 
+  object OSSL_FUNC_asym_cipher_encrypt_init_fn:
     given _tag: Tag[OSSL_FUNC_asym_cipher_encrypt_init_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_asym_cipher_encrypt_init_fn = o
     extension (v: OSSL_FUNC_asym_cipher_encrypt_init_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_asym_cipher_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_asym_cipher_freectx_fn: 
+  object OSSL_FUNC_asym_cipher_freectx_fn:
     given _tag: Tag[OSSL_FUNC_asym_cipher_freectx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_asym_cipher_freectx_fn = o
     extension (v: OSSL_FUNC_asym_cipher_freectx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_asym_cipher_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_asym_cipher_get_ctx_params_fn: 
+  object OSSL_FUNC_asym_cipher_get_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_asym_cipher_get_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_asym_cipher_get_ctx_params_fn = o
     extension (v: OSSL_FUNC_asym_cipher_get_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_asym_cipher_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_asym_cipher_gettable_ctx_params_fn: 
+  object OSSL_FUNC_asym_cipher_gettable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_asym_cipher_gettable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_asym_cipher_gettable_ctx_params_fn = o
     extension (v: OSSL_FUNC_asym_cipher_gettable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_asym_cipher_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_asym_cipher_newctx_fn: 
+  object OSSL_FUNC_asym_cipher_newctx_fn:
     given _tag: Tag[OSSL_FUNC_asym_cipher_newctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_asym_cipher_newctx_fn = o
     extension (v: OSSL_FUNC_asym_cipher_newctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_asym_cipher_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_asym_cipher_set_ctx_params_fn: 
+  object OSSL_FUNC_asym_cipher_set_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_asym_cipher_set_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_asym_cipher_set_ctx_params_fn = o
     extension (v: OSSL_FUNC_asym_cipher_set_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_asym_cipher_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_asym_cipher_settable_ctx_params_fn: 
+  object OSSL_FUNC_asym_cipher_settable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_asym_cipher_settable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_asym_cipher_settable_ctx_params_fn = o
     extension (v: OSSL_FUNC_asym_cipher_settable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_cipher_cipher_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_cipher_cipher_fn: 
+  object OSSL_FUNC_cipher_cipher_fn:
     given _tag: Tag[OSSL_FUNC_cipher_cipher_fn] = Tag.materializeCFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_cipher_cipher_fn = o
     extension (v: OSSL_FUNC_cipher_cipher_fn)
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_cipher_decrypt_init_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_cipher_decrypt_init_fn: 
+  object OSSL_FUNC_cipher_decrypt_init_fn:
     given _tag: Tag[OSSL_FUNC_cipher_decrypt_init_fn] = Tag.materializeCFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_cipher_decrypt_init_fn = o
     extension (v: OSSL_FUNC_cipher_decrypt_init_fn)
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_cipher_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_cipher_dupctx_fn: 
+  object OSSL_FUNC_cipher_dupctx_fn:
     given _tag: Tag[OSSL_FUNC_cipher_dupctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_cipher_dupctx_fn = o
     extension (v: OSSL_FUNC_cipher_dupctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_cipher_encrypt_init_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_cipher_encrypt_init_fn: 
+  object OSSL_FUNC_cipher_encrypt_init_fn:
     given _tag: Tag[OSSL_FUNC_cipher_encrypt_init_fn] = Tag.materializeCFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_cipher_encrypt_init_fn = o
     extension (v: OSSL_FUNC_cipher_encrypt_init_fn)
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_cipher_final_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
-  object OSSL_FUNC_cipher_final_fn: 
+  object OSSL_FUNC_cipher_final_fn:
     given _tag: Tag[OSSL_FUNC_cipher_final_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]): OSSL_FUNC_cipher_final_fn = o
     extension (v: OSSL_FUNC_cipher_final_fn)
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt] = v
 
   type OSSL_FUNC_cipher_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_cipher_freectx_fn: 
+  object OSSL_FUNC_cipher_freectx_fn:
     given _tag: Tag[OSSL_FUNC_cipher_freectx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_cipher_freectx_fn = o
     extension (v: OSSL_FUNC_cipher_freectx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_cipher_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_cipher_get_ctx_params_fn: 
+  object OSSL_FUNC_cipher_get_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_cipher_get_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_cipher_get_ctx_params_fn = o
     extension (v: OSSL_FUNC_cipher_get_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_cipher_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_cipher_get_params_fn: 
+  object OSSL_FUNC_cipher_get_params_fn:
     given _tag: Tag[OSSL_FUNC_cipher_get_params_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_cipher_get_params_fn = o
     extension (v: OSSL_FUNC_cipher_get_params_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_cipher_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_cipher_gettable_ctx_params_fn: 
+  object OSSL_FUNC_cipher_gettable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_cipher_gettable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_cipher_gettable_ctx_params_fn = o
     extension (v: OSSL_FUNC_cipher_gettable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_cipher_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_cipher_gettable_params_fn: 
+  object OSSL_FUNC_cipher_gettable_params_fn:
     given _tag: Tag[OSSL_FUNC_cipher_gettable_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_cipher_gettable_params_fn = o
     extension (v: OSSL_FUNC_cipher_gettable_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_cipher_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_cipher_newctx_fn: 
+  object OSSL_FUNC_cipher_newctx_fn:
     given _tag: Tag[OSSL_FUNC_cipher_newctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_cipher_newctx_fn = o
     extension (v: OSSL_FUNC_cipher_newctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_cipher_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_cipher_set_ctx_params_fn: 
+  object OSSL_FUNC_cipher_set_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_cipher_set_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_cipher_set_ctx_params_fn = o
     extension (v: OSSL_FUNC_cipher_set_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_cipher_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_cipher_settable_ctx_params_fn: 
+  object OSSL_FUNC_cipher_settable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_cipher_settable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_cipher_settable_ctx_params_fn = o
     extension (v: OSSL_FUNC_cipher_settable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_cipher_update_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_cipher_update_fn: 
+  object OSSL_FUNC_cipher_update_fn:
     given _tag: Tag[OSSL_FUNC_cipher_update_fn] = Tag.materializeCFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_cipher_update_fn = o
     extension (v: OSSL_FUNC_cipher_update_fn)
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_cleanup_entropy_fn = CFuncPtr3[Ptr[OSSL_CORE_HANDLE], Ptr[CUnsignedChar], size_t, Unit]
-  object OSSL_FUNC_cleanup_entropy_fn: 
+  object OSSL_FUNC_cleanup_entropy_fn:
     given _tag: Tag[OSSL_FUNC_cleanup_entropy_fn] = Tag.materializeCFuncPtr3[Ptr[OSSL_CORE_HANDLE], Ptr[CUnsignedChar], size_t, Unit]
     inline def apply(inline o: CFuncPtr3[Ptr[OSSL_CORE_HANDLE], Ptr[CUnsignedChar], size_t, Unit]): OSSL_FUNC_cleanup_entropy_fn = o
     extension (v: OSSL_FUNC_cleanup_entropy_fn)
       inline def value: CFuncPtr3[Ptr[OSSL_CORE_HANDLE], Ptr[CUnsignedChar], size_t, Unit] = v
 
   type OSSL_FUNC_cleanup_nonce_fn = CFuncPtr3[Ptr[OSSL_CORE_HANDLE], Ptr[CUnsignedChar], size_t, Unit]
-  object OSSL_FUNC_cleanup_nonce_fn: 
+  object OSSL_FUNC_cleanup_nonce_fn:
     given _tag: Tag[OSSL_FUNC_cleanup_nonce_fn] = Tag.materializeCFuncPtr3[Ptr[OSSL_CORE_HANDLE], Ptr[CUnsignedChar], size_t, Unit]
     inline def apply(inline o: CFuncPtr3[Ptr[OSSL_CORE_HANDLE], Ptr[CUnsignedChar], size_t, Unit]): OSSL_FUNC_cleanup_nonce_fn = o
     extension (v: OSSL_FUNC_cleanup_nonce_fn)
       inline def value: CFuncPtr3[Ptr[OSSL_CORE_HANDLE], Ptr[CUnsignedChar], size_t, Unit] = v
 
   type OSSL_FUNC_core_clear_last_error_mark_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt]
-  object OSSL_FUNC_core_clear_last_error_mark_fn: 
+  object OSSL_FUNC_core_clear_last_error_mark_fn:
     given _tag: Tag[OSSL_FUNC_core_clear_last_error_mark_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt]): OSSL_FUNC_core_clear_last_error_mark_fn = o
     extension (v: OSSL_FUNC_core_clear_last_error_mark_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt] = v
 
   type OSSL_FUNC_core_get_libctx_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OPENSSL_CORE_CTX]]
-  object OSSL_FUNC_core_get_libctx_fn: 
+  object OSSL_FUNC_core_get_libctx_fn:
     given _tag: Tag[OSSL_FUNC_core_get_libctx_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OPENSSL_CORE_CTX]]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OPENSSL_CORE_CTX]]): OSSL_FUNC_core_get_libctx_fn = o
     extension (v: OSSL_FUNC_core_get_libctx_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OPENSSL_CORE_CTX]] = v
 
   type OSSL_FUNC_core_get_params_fn = CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_core_get_params_fn: 
+  object OSSL_FUNC_core_get_params_fn:
     given _tag: Tag[OSSL_FUNC_core_get_params_fn] = Tag.materializeCFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_core_get_params_fn = o
     extension (v: OSSL_FUNC_core_get_params_fn)
       inline def value: CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_core_gettable_params_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_core_gettable_params_fn: 
+  object OSSL_FUNC_core_gettable_params_fn:
     given _tag: Tag[OSSL_FUNC_core_gettable_params_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_PARAM]]): OSSL_FUNC_core_gettable_params_fn = o
     extension (v: OSSL_FUNC_core_gettable_params_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_core_new_error_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Unit]
-  object OSSL_FUNC_core_new_error_fn: 
+  object OSSL_FUNC_core_new_error_fn:
     given _tag: Tag[OSSL_FUNC_core_new_error_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_CORE_HANDLE], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Unit]): OSSL_FUNC_core_new_error_fn = o
     extension (v: OSSL_FUNC_core_new_error_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Unit] = v
 
   type OSSL_FUNC_core_obj_add_sigid_fn = CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CString, CString, CInt]
-  object OSSL_FUNC_core_obj_add_sigid_fn: 
+  object OSSL_FUNC_core_obj_add_sigid_fn:
     given _tag: Tag[OSSL_FUNC_core_obj_add_sigid_fn] = Tag.materializeCFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CString, CString, CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CString, CString, CInt]): OSSL_FUNC_core_obj_add_sigid_fn = o
     extension (v: OSSL_FUNC_core_obj_add_sigid_fn)
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CString, CString, CInt] = v
 
   type OSSL_FUNC_core_obj_create_fn = CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CString, CString, CInt]
-  object OSSL_FUNC_core_obj_create_fn: 
+  object OSSL_FUNC_core_obj_create_fn:
     given _tag: Tag[OSSL_FUNC_core_obj_create_fn] = Tag.materializeCFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CString, CString, CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CString, CString, CInt]): OSSL_FUNC_core_obj_create_fn = o
     extension (v: OSSL_FUNC_core_obj_create_fn)
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CString, CString, CInt] = v
 
   type OSSL_FUNC_core_pop_error_to_mark_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt]
-  object OSSL_FUNC_core_pop_error_to_mark_fn: 
+  object OSSL_FUNC_core_pop_error_to_mark_fn:
     given _tag: Tag[OSSL_FUNC_core_pop_error_to_mark_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt]): OSSL_FUNC_core_pop_error_to_mark_fn = o
     extension (v: OSSL_FUNC_core_pop_error_to_mark_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt] = v
 
   type OSSL_FUNC_core_set_error_debug_fn = CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CInt, CString, Unit]
-  object OSSL_FUNC_core_set_error_debug_fn: 
+  object OSSL_FUNC_core_set_error_debug_fn:
     given _tag: Tag[OSSL_FUNC_core_set_error_debug_fn] = Tag.materializeCFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CInt, CString, Unit]
     inline def apply(inline o: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CInt, CString, Unit]): OSSL_FUNC_core_set_error_debug_fn = o
     extension (v: OSSL_FUNC_core_set_error_debug_fn)
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], CString, CInt, CString, Unit] = v
 
   type OSSL_FUNC_core_set_error_mark_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt]
-  object OSSL_FUNC_core_set_error_mark_fn: 
+  object OSSL_FUNC_core_set_error_mark_fn:
     given _tag: Tag[OSSL_FUNC_core_set_error_mark_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt]): OSSL_FUNC_core_set_error_mark_fn = o
     extension (v: OSSL_FUNC_core_set_error_mark_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CInt] = v
 
   type OSSL_FUNC_core_thread_start_fn = CFuncPtr3[Ptr[OSSL_CORE_HANDLE], OSSL_thread_stop_handler_fn, Ptr[Byte], CInt]
-  object OSSL_FUNC_core_thread_start_fn: 
+  object OSSL_FUNC_core_thread_start_fn:
     given _tag: Tag[OSSL_FUNC_core_thread_start_fn] = Tag.materializeCFuncPtr3[Ptr[OSSL_CORE_HANDLE], OSSL_thread_stop_handler_fn, Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[OSSL_CORE_HANDLE], OSSL_thread_stop_handler_fn, Ptr[Byte], CInt]): OSSL_FUNC_core_thread_start_fn = o
     extension (v: OSSL_FUNC_core_thread_start_fn)
       inline def value: CFuncPtr3[Ptr[OSSL_CORE_HANDLE], OSSL_thread_stop_handler_fn, Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_core_vset_error_fn = CFuncPtr4[Ptr[OSSL_CORE_HANDLE], uint32_t, CString, va_list, Unit]
-  object OSSL_FUNC_core_vset_error_fn: 
+  object OSSL_FUNC_core_vset_error_fn:
     given _tag: Tag[OSSL_FUNC_core_vset_error_fn] = Tag.materializeCFuncPtr4[Ptr[OSSL_CORE_HANDLE], uint32_t, CString, va_list, Unit]
     inline def apply(inline o: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], uint32_t, CString, va_list, Unit]): OSSL_FUNC_core_vset_error_fn = o
     extension (v: OSSL_FUNC_core_vset_error_fn)
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], uint32_t, CString, va_list, Unit] = v
 
   type OSSL_FUNC_decoder_decode_fn = CFuncPtr7[Ptr[Byte], Ptr[OSSL_CORE_BIO], CInt, Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt]
-  object OSSL_FUNC_decoder_decode_fn: 
+  object OSSL_FUNC_decoder_decode_fn:
     given _tag: Tag[OSSL_FUNC_decoder_decode_fn] = Tag.materializeCFuncPtr7[Ptr[Byte], Ptr[OSSL_CORE_BIO], CInt, Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr7[Ptr[Byte], Ptr[OSSL_CORE_BIO], CInt, Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt]): OSSL_FUNC_decoder_decode_fn = o
     extension (v: OSSL_FUNC_decoder_decode_fn)
       inline def value: CFuncPtr7[Ptr[Byte], Ptr[OSSL_CORE_BIO], CInt, Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_decoder_does_selection_fn = CFuncPtr2[Ptr[Byte], CInt, CInt]
-  object OSSL_FUNC_decoder_does_selection_fn: 
+  object OSSL_FUNC_decoder_does_selection_fn:
     given _tag: Tag[OSSL_FUNC_decoder_does_selection_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], CInt, CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], CInt, CInt]): OSSL_FUNC_decoder_does_selection_fn = o
     extension (v: OSSL_FUNC_decoder_does_selection_fn)
       inline def value: CFuncPtr2[Ptr[Byte], CInt, CInt] = v
 
   type OSSL_FUNC_decoder_export_object_fn = CFuncPtr5[Ptr[Byte], Ptr[Byte], size_t, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]
-  object OSSL_FUNC_decoder_export_object_fn: 
+  object OSSL_FUNC_decoder_export_object_fn:
     given _tag: Tag[OSSL_FUNC_decoder_export_object_fn] = Tag.materializeCFuncPtr5[Ptr[Byte], Ptr[Byte], size_t, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], Ptr[Byte], size_t, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]): OSSL_FUNC_decoder_export_object_fn = o
     extension (v: OSSL_FUNC_decoder_export_object_fn)
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[Byte], size_t, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_decoder_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_decoder_freectx_fn: 
+  object OSSL_FUNC_decoder_freectx_fn:
     given _tag: Tag[OSSL_FUNC_decoder_freectx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_decoder_freectx_fn = o
     extension (v: OSSL_FUNC_decoder_freectx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_decoder_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_decoder_get_params_fn: 
+  object OSSL_FUNC_decoder_get_params_fn:
     given _tag: Tag[OSSL_FUNC_decoder_get_params_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_decoder_get_params_fn = o
     extension (v: OSSL_FUNC_decoder_get_params_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_decoder_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_decoder_gettable_params_fn: 
+  object OSSL_FUNC_decoder_gettable_params_fn:
     given _tag: Tag[OSSL_FUNC_decoder_gettable_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_decoder_gettable_params_fn = o
     extension (v: OSSL_FUNC_decoder_gettable_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_decoder_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_decoder_newctx_fn: 
+  object OSSL_FUNC_decoder_newctx_fn:
     given _tag: Tag[OSSL_FUNC_decoder_newctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_decoder_newctx_fn = o
     extension (v: OSSL_FUNC_decoder_newctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_decoder_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_decoder_set_ctx_params_fn: 
+  object OSSL_FUNC_decoder_set_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_decoder_set_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_decoder_set_ctx_params_fn = o
     extension (v: OSSL_FUNC_decoder_set_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_decoder_settable_ctx_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_decoder_settable_ctx_params_fn: 
+  object OSSL_FUNC_decoder_settable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_decoder_settable_ctx_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_decoder_settable_ctx_params_fn = o
     extension (v: OSSL_FUNC_decoder_settable_ctx_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_digest_digest_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
-  object OSSL_FUNC_digest_digest_fn: 
+  object OSSL_FUNC_digest_digest_fn:
     given _tag: Tag[OSSL_FUNC_digest_digest_fn] = Tag.materializeCFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]): OSSL_FUNC_digest_digest_fn = o
     extension (v: OSSL_FUNC_digest_digest_fn)
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt] = v
 
   type OSSL_FUNC_digest_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_digest_dupctx_fn: 
+  object OSSL_FUNC_digest_dupctx_fn:
     given _tag: Tag[OSSL_FUNC_digest_dupctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_digest_dupctx_fn = o
     extension (v: OSSL_FUNC_digest_dupctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_digest_final_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
-  object OSSL_FUNC_digest_final_fn: 
+  object OSSL_FUNC_digest_final_fn:
     given _tag: Tag[OSSL_FUNC_digest_final_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]): OSSL_FUNC_digest_final_fn = o
     extension (v: OSSL_FUNC_digest_final_fn)
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt] = v
 
   type OSSL_FUNC_digest_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_digest_freectx_fn: 
+  object OSSL_FUNC_digest_freectx_fn:
     given _tag: Tag[OSSL_FUNC_digest_freectx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_digest_freectx_fn = o
     extension (v: OSSL_FUNC_digest_freectx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_digest_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_digest_get_ctx_params_fn: 
+  object OSSL_FUNC_digest_get_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_digest_get_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_digest_get_ctx_params_fn = o
     extension (v: OSSL_FUNC_digest_get_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_digest_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_digest_get_params_fn: 
+  object OSSL_FUNC_digest_get_params_fn:
     given _tag: Tag[OSSL_FUNC_digest_get_params_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_digest_get_params_fn = o
     extension (v: OSSL_FUNC_digest_get_params_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_digest_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_digest_gettable_ctx_params_fn: 
+  object OSSL_FUNC_digest_gettable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_digest_gettable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_digest_gettable_ctx_params_fn = o
     extension (v: OSSL_FUNC_digest_gettable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_digest_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_digest_gettable_params_fn: 
+  object OSSL_FUNC_digest_gettable_params_fn:
     given _tag: Tag[OSSL_FUNC_digest_gettable_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_digest_gettable_params_fn = o
     extension (v: OSSL_FUNC_digest_gettable_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_digest_init_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_digest_init_fn: 
+  object OSSL_FUNC_digest_init_fn:
     given _tag: Tag[OSSL_FUNC_digest_init_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_digest_init_fn = o
     extension (v: OSSL_FUNC_digest_init_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_digest_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_digest_newctx_fn: 
+  object OSSL_FUNC_digest_newctx_fn:
     given _tag: Tag[OSSL_FUNC_digest_newctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_digest_newctx_fn = o
     extension (v: OSSL_FUNC_digest_newctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_digest_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_digest_set_ctx_params_fn: 
+  object OSSL_FUNC_digest_set_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_digest_set_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_digest_set_ctx_params_fn = o
     extension (v: OSSL_FUNC_digest_set_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_digest_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_digest_settable_ctx_params_fn: 
+  object OSSL_FUNC_digest_settable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_digest_settable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_digest_settable_ctx_params_fn = o
     extension (v: OSSL_FUNC_digest_settable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_digest_update_fn = CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_digest_update_fn: 
+  object OSSL_FUNC_digest_update_fn:
     given _tag: Tag[OSSL_FUNC_digest_update_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_digest_update_fn = o
     extension (v: OSSL_FUNC_digest_update_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_encoder_does_selection_fn = CFuncPtr2[Ptr[Byte], CInt, CInt]
-  object OSSL_FUNC_encoder_does_selection_fn: 
+  object OSSL_FUNC_encoder_does_selection_fn:
     given _tag: Tag[OSSL_FUNC_encoder_does_selection_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], CInt, CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], CInt, CInt]): OSSL_FUNC_encoder_does_selection_fn = o
     extension (v: OSSL_FUNC_encoder_does_selection_fn)
       inline def value: CFuncPtr2[Ptr[Byte], CInt, CInt] = v
 
   type OSSL_FUNC_encoder_encode_fn = CFuncPtr7[Ptr[Byte], Ptr[OSSL_CORE_BIO], Ptr[Byte], Ptr[OSSL_PARAM], CInt, Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt]
-  object OSSL_FUNC_encoder_encode_fn: 
+  object OSSL_FUNC_encoder_encode_fn:
     given _tag: Tag[OSSL_FUNC_encoder_encode_fn] = Tag.materializeCFuncPtr7[Ptr[Byte], Ptr[OSSL_CORE_BIO], Ptr[Byte], Ptr[OSSL_PARAM], CInt, Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr7[Ptr[Byte], Ptr[OSSL_CORE_BIO], Ptr[Byte], Ptr[OSSL_PARAM], CInt, Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt]): OSSL_FUNC_encoder_encode_fn = o
     extension (v: OSSL_FUNC_encoder_encode_fn)
       inline def value: CFuncPtr7[Ptr[Byte], Ptr[OSSL_CORE_BIO], Ptr[Byte], Ptr[OSSL_PARAM], CInt, Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_encoder_free_object_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_encoder_free_object_fn: 
+  object OSSL_FUNC_encoder_free_object_fn:
     given _tag: Tag[OSSL_FUNC_encoder_free_object_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_encoder_free_object_fn = o
     extension (v: OSSL_FUNC_encoder_free_object_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_encoder_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_encoder_freectx_fn: 
+  object OSSL_FUNC_encoder_freectx_fn:
     given _tag: Tag[OSSL_FUNC_encoder_freectx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_encoder_freectx_fn = o
     extension (v: OSSL_FUNC_encoder_freectx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_encoder_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_encoder_get_params_fn: 
+  object OSSL_FUNC_encoder_get_params_fn:
     given _tag: Tag[OSSL_FUNC_encoder_get_params_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_encoder_get_params_fn = o
     extension (v: OSSL_FUNC_encoder_get_params_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_encoder_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_encoder_gettable_params_fn: 
+  object OSSL_FUNC_encoder_gettable_params_fn:
     given _tag: Tag[OSSL_FUNC_encoder_gettable_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_encoder_gettable_params_fn = o
     extension (v: OSSL_FUNC_encoder_gettable_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_encoder_import_object_fn = CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], Ptr[Byte]]
-  object OSSL_FUNC_encoder_import_object_fn: 
+  object OSSL_FUNC_encoder_import_object_fn:
     given _tag: Tag[OSSL_FUNC_encoder_import_object_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], Ptr[Byte]]): OSSL_FUNC_encoder_import_object_fn = o
     extension (v: OSSL_FUNC_encoder_import_object_fn)
       inline def value: CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], Ptr[Byte]] = v
 
   type OSSL_FUNC_encoder_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_encoder_newctx_fn: 
+  object OSSL_FUNC_encoder_newctx_fn:
     given _tag: Tag[OSSL_FUNC_encoder_newctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_encoder_newctx_fn = o
     extension (v: OSSL_FUNC_encoder_newctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_encoder_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_encoder_set_ctx_params_fn: 
+  object OSSL_FUNC_encoder_set_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_encoder_set_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_encoder_set_ctx_params_fn = o
     extension (v: OSSL_FUNC_encoder_set_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_encoder_settable_ctx_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_encoder_settable_ctx_params_fn: 
+  object OSSL_FUNC_encoder_settable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_encoder_settable_ctx_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_encoder_settable_ctx_params_fn = o
     extension (v: OSSL_FUNC_encoder_settable_ctx_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_get_entropy_fn = CFuncPtr5[Ptr[OSSL_CORE_HANDLE], Ptr[Ptr[CUnsignedChar]], CInt, size_t, size_t, size_t]
-  object OSSL_FUNC_get_entropy_fn: 
+  object OSSL_FUNC_get_entropy_fn:
     given _tag: Tag[OSSL_FUNC_get_entropy_fn] = Tag.materializeCFuncPtr5[Ptr[OSSL_CORE_HANDLE], Ptr[Ptr[CUnsignedChar]], CInt, size_t, size_t, size_t]
     inline def apply(inline o: CFuncPtr5[Ptr[OSSL_CORE_HANDLE], Ptr[Ptr[CUnsignedChar]], CInt, size_t, size_t, size_t]): OSSL_FUNC_get_entropy_fn = o
     extension (v: OSSL_FUNC_get_entropy_fn)
       inline def value: CFuncPtr5[Ptr[OSSL_CORE_HANDLE], Ptr[Ptr[CUnsignedChar]], CInt, size_t, size_t, size_t] = v
 
   type OSSL_FUNC_get_nonce_fn = CFuncPtr6[Ptr[OSSL_CORE_HANDLE], Ptr[Ptr[CUnsignedChar]], size_t, size_t, Ptr[Byte], size_t, size_t]
-  object OSSL_FUNC_get_nonce_fn: 
+  object OSSL_FUNC_get_nonce_fn:
     given _tag: Tag[OSSL_FUNC_get_nonce_fn] = Tag.materializeCFuncPtr6[Ptr[OSSL_CORE_HANDLE], Ptr[Ptr[CUnsignedChar]], size_t, size_t, Ptr[Byte], size_t, size_t]
     inline def apply(inline o: CFuncPtr6[Ptr[OSSL_CORE_HANDLE], Ptr[Ptr[CUnsignedChar]], size_t, size_t, Ptr[Byte], size_t, size_t]): OSSL_FUNC_get_nonce_fn = o
     extension (v: OSSL_FUNC_get_nonce_fn)
       inline def value: CFuncPtr6[Ptr[OSSL_CORE_HANDLE], Ptr[Ptr[CUnsignedChar]], size_t, size_t, Ptr[Byte], size_t, size_t] = v
 
   type OSSL_FUNC_kdf_derive_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_kdf_derive_fn: 
+  object OSSL_FUNC_kdf_derive_fn:
     given _tag: Tag[OSSL_FUNC_kdf_derive_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_kdf_derive_fn = o
     extension (v: OSSL_FUNC_kdf_derive_fn)
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_kdf_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_kdf_dupctx_fn: 
+  object OSSL_FUNC_kdf_dupctx_fn:
     given _tag: Tag[OSSL_FUNC_kdf_dupctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_kdf_dupctx_fn = o
     extension (v: OSSL_FUNC_kdf_dupctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_kdf_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_kdf_freectx_fn: 
+  object OSSL_FUNC_kdf_freectx_fn:
     given _tag: Tag[OSSL_FUNC_kdf_freectx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_kdf_freectx_fn = o
     extension (v: OSSL_FUNC_kdf_freectx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_kdf_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_kdf_get_ctx_params_fn: 
+  object OSSL_FUNC_kdf_get_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_kdf_get_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_kdf_get_ctx_params_fn = o
     extension (v: OSSL_FUNC_kdf_get_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_kdf_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_kdf_get_params_fn: 
+  object OSSL_FUNC_kdf_get_params_fn:
     given _tag: Tag[OSSL_FUNC_kdf_get_params_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_kdf_get_params_fn = o
     extension (v: OSSL_FUNC_kdf_get_params_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_kdf_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_kdf_gettable_ctx_params_fn: 
+  object OSSL_FUNC_kdf_gettable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_kdf_gettable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_kdf_gettable_ctx_params_fn = o
     extension (v: OSSL_FUNC_kdf_gettable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_kdf_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_kdf_gettable_params_fn: 
+  object OSSL_FUNC_kdf_gettable_params_fn:
     given _tag: Tag[OSSL_FUNC_kdf_gettable_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_kdf_gettable_params_fn = o
     extension (v: OSSL_FUNC_kdf_gettable_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_kdf_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_kdf_newctx_fn: 
+  object OSSL_FUNC_kdf_newctx_fn:
     given _tag: Tag[OSSL_FUNC_kdf_newctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_kdf_newctx_fn = o
     extension (v: OSSL_FUNC_kdf_newctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_kdf_reset_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_kdf_reset_fn: 
+  object OSSL_FUNC_kdf_reset_fn:
     given _tag: Tag[OSSL_FUNC_kdf_reset_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_kdf_reset_fn = o
     extension (v: OSSL_FUNC_kdf_reset_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_kdf_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_kdf_set_ctx_params_fn: 
+  object OSSL_FUNC_kdf_set_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_kdf_set_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_kdf_set_ctx_params_fn = o
     extension (v: OSSL_FUNC_kdf_set_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_kdf_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_kdf_settable_ctx_params_fn: 
+  object OSSL_FUNC_kdf_settable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_kdf_settable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_kdf_settable_ctx_params_fn = o
     extension (v: OSSL_FUNC_kdf_settable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_kem_decapsulate_fn = CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_kem_decapsulate_fn: 
+  object OSSL_FUNC_kem_decapsulate_fn:
     given _tag: Tag[OSSL_FUNC_kem_decapsulate_fn] = Tag.materializeCFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_kem_decapsulate_fn = o
     extension (v: OSSL_FUNC_kem_decapsulate_fn)
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_kem_decapsulate_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_kem_decapsulate_init_fn: 
+  object OSSL_FUNC_kem_decapsulate_init_fn:
     given _tag: Tag[OSSL_FUNC_kem_decapsulate_init_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_kem_decapsulate_init_fn = o
     extension (v: OSSL_FUNC_kem_decapsulate_init_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_kem_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_kem_dupctx_fn: 
+  object OSSL_FUNC_kem_dupctx_fn:
     given _tag: Tag[OSSL_FUNC_kem_dupctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_kem_dupctx_fn = o
     extension (v: OSSL_FUNC_kem_dupctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_kem_encapsulate_fn = CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], Ptr[size_t], CInt]
-  object OSSL_FUNC_kem_encapsulate_fn: 
+  object OSSL_FUNC_kem_encapsulate_fn:
     given _tag: Tag[OSSL_FUNC_kem_encapsulate_fn] = Tag.materializeCFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], Ptr[size_t], CInt]
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], Ptr[size_t], CInt]): OSSL_FUNC_kem_encapsulate_fn = o
     extension (v: OSSL_FUNC_kem_encapsulate_fn)
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], Ptr[CUnsignedChar], Ptr[size_t], CInt] = v
 
   type OSSL_FUNC_kem_encapsulate_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_kem_encapsulate_init_fn: 
+  object OSSL_FUNC_kem_encapsulate_init_fn:
     given _tag: Tag[OSSL_FUNC_kem_encapsulate_init_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_kem_encapsulate_init_fn = o
     extension (v: OSSL_FUNC_kem_encapsulate_init_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_kem_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_kem_freectx_fn: 
+  object OSSL_FUNC_kem_freectx_fn:
     given _tag: Tag[OSSL_FUNC_kem_freectx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_kem_freectx_fn = o
     extension (v: OSSL_FUNC_kem_freectx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_kem_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_kem_get_ctx_params_fn: 
+  object OSSL_FUNC_kem_get_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_kem_get_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_kem_get_ctx_params_fn = o
     extension (v: OSSL_FUNC_kem_get_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_kem_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_kem_gettable_ctx_params_fn: 
+  object OSSL_FUNC_kem_gettable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_kem_gettable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_kem_gettable_ctx_params_fn = o
     extension (v: OSSL_FUNC_kem_gettable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_kem_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_kem_newctx_fn: 
+  object OSSL_FUNC_kem_newctx_fn:
     given _tag: Tag[OSSL_FUNC_kem_newctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_kem_newctx_fn = o
     extension (v: OSSL_FUNC_kem_newctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_kem_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_kem_set_ctx_params_fn: 
+  object OSSL_FUNC_kem_set_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_kem_set_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_kem_set_ctx_params_fn = o
     extension (v: OSSL_FUNC_kem_set_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_kem_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_kem_settable_ctx_params_fn: 
+  object OSSL_FUNC_kem_settable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_kem_settable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_kem_settable_ctx_params_fn = o
     extension (v: OSSL_FUNC_kem_settable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_keyexch_derive_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
-  object OSSL_FUNC_keyexch_derive_fn: 
+  object OSSL_FUNC_keyexch_derive_fn:
     given _tag: Tag[OSSL_FUNC_keyexch_derive_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]): OSSL_FUNC_keyexch_derive_fn = o
     extension (v: OSSL_FUNC_keyexch_derive_fn)
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt] = v
 
   type OSSL_FUNC_keyexch_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_keyexch_dupctx_fn: 
+  object OSSL_FUNC_keyexch_dupctx_fn:
     given _tag: Tag[OSSL_FUNC_keyexch_dupctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_keyexch_dupctx_fn = o
     extension (v: OSSL_FUNC_keyexch_dupctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_keyexch_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_keyexch_freectx_fn: 
+  object OSSL_FUNC_keyexch_freectx_fn:
     given _tag: Tag[OSSL_FUNC_keyexch_freectx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_keyexch_freectx_fn = o
     extension (v: OSSL_FUNC_keyexch_freectx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_keyexch_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_keyexch_get_ctx_params_fn: 
+  object OSSL_FUNC_keyexch_get_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_keyexch_get_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_keyexch_get_ctx_params_fn = o
     extension (v: OSSL_FUNC_keyexch_get_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_keyexch_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_keyexch_gettable_ctx_params_fn: 
+  object OSSL_FUNC_keyexch_gettable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_keyexch_gettable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_keyexch_gettable_ctx_params_fn = o
     extension (v: OSSL_FUNC_keyexch_gettable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_keyexch_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_keyexch_init_fn: 
+  object OSSL_FUNC_keyexch_init_fn:
     given _tag: Tag[OSSL_FUNC_keyexch_init_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_keyexch_init_fn = o
     extension (v: OSSL_FUNC_keyexch_init_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_keyexch_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_keyexch_newctx_fn: 
+  object OSSL_FUNC_keyexch_newctx_fn:
     given _tag: Tag[OSSL_FUNC_keyexch_newctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_keyexch_newctx_fn = o
     extension (v: OSSL_FUNC_keyexch_newctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_keyexch_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_keyexch_set_ctx_params_fn: 
+  object OSSL_FUNC_keyexch_set_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_keyexch_set_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_keyexch_set_ctx_params_fn = o
     extension (v: OSSL_FUNC_keyexch_set_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_keyexch_set_peer_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]
-  object OSSL_FUNC_keyexch_set_peer_fn: 
+  object OSSL_FUNC_keyexch_set_peer_fn:
     given _tag: Tag[OSSL_FUNC_keyexch_set_peer_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]): OSSL_FUNC_keyexch_set_peer_fn = o
     extension (v: OSSL_FUNC_keyexch_set_peer_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_keyexch_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_keyexch_settable_ctx_params_fn: 
+  object OSSL_FUNC_keyexch_settable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_keyexch_settable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_keyexch_settable_ctx_params_fn = o
     extension (v: OSSL_FUNC_keyexch_settable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_keymgmt_dup_fn = CFuncPtr2[Ptr[Byte], CInt, Ptr[Byte]]
-  object OSSL_FUNC_keymgmt_dup_fn: 
+  object OSSL_FUNC_keymgmt_dup_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_dup_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], CInt, Ptr[Byte]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], CInt, Ptr[Byte]]): OSSL_FUNC_keymgmt_dup_fn = o
     extension (v: OSSL_FUNC_keymgmt_dup_fn)
       inline def value: CFuncPtr2[Ptr[Byte], CInt, Ptr[Byte]] = v
 
   type OSSL_FUNC_keymgmt_export_fn = CFuncPtr4[Ptr[Byte], CInt, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]
-  object OSSL_FUNC_keymgmt_export_fn: 
+  object OSSL_FUNC_keymgmt_export_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_export_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], CInt, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], CInt, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]): OSSL_FUNC_keymgmt_export_fn = o
     extension (v: OSSL_FUNC_keymgmt_export_fn)
       inline def value: CFuncPtr4[Ptr[Byte], CInt, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_keymgmt_export_types_fn = CFuncPtr1[CInt, Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_keymgmt_export_types_fn: 
+  object OSSL_FUNC_keymgmt_export_types_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_export_types_fn] = Tag.materializeCFuncPtr1[CInt, Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[CInt, Ptr[OSSL_PARAM]]): OSSL_FUNC_keymgmt_export_types_fn = o
     extension (v: OSSL_FUNC_keymgmt_export_types_fn)
       inline def value: CFuncPtr1[CInt, Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_keymgmt_free_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_keymgmt_free_fn: 
+  object OSSL_FUNC_keymgmt_free_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_free_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_keymgmt_free_fn = o
     extension (v: OSSL_FUNC_keymgmt_free_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_keymgmt_gen_cleanup_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_keymgmt_gen_cleanup_fn: 
+  object OSSL_FUNC_keymgmt_gen_cleanup_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_gen_cleanup_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_keymgmt_gen_cleanup_fn = o
     extension (v: OSSL_FUNC_keymgmt_gen_cleanup_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_keymgmt_gen_fn = CFuncPtr3[Ptr[Byte], Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_keymgmt_gen_fn: 
+  object OSSL_FUNC_keymgmt_gen_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_gen_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_keymgmt_gen_fn = o
     extension (v: OSSL_FUNC_keymgmt_gen_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_keymgmt_gen_init_fn = CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], Ptr[Byte]]
-  object OSSL_FUNC_keymgmt_gen_init_fn: 
+  object OSSL_FUNC_keymgmt_gen_init_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_gen_init_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], Ptr[Byte]]): OSSL_FUNC_keymgmt_gen_init_fn = o
     extension (v: OSSL_FUNC_keymgmt_gen_init_fn)
       inline def value: CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], Ptr[Byte]] = v
 
   type OSSL_FUNC_keymgmt_gen_set_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_keymgmt_gen_set_params_fn: 
+  object OSSL_FUNC_keymgmt_gen_set_params_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_gen_set_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_keymgmt_gen_set_params_fn = o
     extension (v: OSSL_FUNC_keymgmt_gen_set_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_keymgmt_gen_set_template_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]
-  object OSSL_FUNC_keymgmt_gen_set_template_fn: 
+  object OSSL_FUNC_keymgmt_gen_set_template_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_gen_set_template_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt]): OSSL_FUNC_keymgmt_gen_set_template_fn = o
     extension (v: OSSL_FUNC_keymgmt_gen_set_template_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_keymgmt_gen_settable_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_keymgmt_gen_settable_params_fn: 
+  object OSSL_FUNC_keymgmt_gen_settable_params_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_gen_settable_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_keymgmt_gen_settable_params_fn = o
     extension (v: OSSL_FUNC_keymgmt_gen_settable_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_keymgmt_get_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_keymgmt_get_params_fn: 
+  object OSSL_FUNC_keymgmt_get_params_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_get_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_keymgmt_get_params_fn = o
     extension (v: OSSL_FUNC_keymgmt_get_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_keymgmt_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_keymgmt_gettable_params_fn: 
+  object OSSL_FUNC_keymgmt_gettable_params_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_gettable_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_keymgmt_gettable_params_fn = o
     extension (v: OSSL_FUNC_keymgmt_gettable_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_keymgmt_has_fn = CFuncPtr2[Ptr[Byte], CInt, CInt]
-  object OSSL_FUNC_keymgmt_has_fn: 
+  object OSSL_FUNC_keymgmt_has_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_has_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], CInt, CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], CInt, CInt]): OSSL_FUNC_keymgmt_has_fn = o
     extension (v: OSSL_FUNC_keymgmt_has_fn)
       inline def value: CFuncPtr2[Ptr[Byte], CInt, CInt] = v
 
   type OSSL_FUNC_keymgmt_import_fn = CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_keymgmt_import_fn: 
+  object OSSL_FUNC_keymgmt_import_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_import_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_keymgmt_import_fn = o
     extension (v: OSSL_FUNC_keymgmt_import_fn)
       inline def value: CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_keymgmt_import_types_fn = CFuncPtr1[CInt, Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_keymgmt_import_types_fn: 
+  object OSSL_FUNC_keymgmt_import_types_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_import_types_fn] = Tag.materializeCFuncPtr1[CInt, Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[CInt, Ptr[OSSL_PARAM]]): OSSL_FUNC_keymgmt_import_types_fn = o
     extension (v: OSSL_FUNC_keymgmt_import_types_fn)
       inline def value: CFuncPtr1[CInt, Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_keymgmt_load_fn = CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]]
-  object OSSL_FUNC_keymgmt_load_fn: 
+  object OSSL_FUNC_keymgmt_load_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_load_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]]): OSSL_FUNC_keymgmt_load_fn = o
     extension (v: OSSL_FUNC_keymgmt_load_fn)
       inline def value: CFuncPtr2[Ptr[Byte], size_t, Ptr[Byte]] = v
 
   type OSSL_FUNC_keymgmt_match_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], CInt, CInt]
-  object OSSL_FUNC_keymgmt_match_fn: 
+  object OSSL_FUNC_keymgmt_match_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_match_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[Byte], CInt, CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], CInt, CInt]): OSSL_FUNC_keymgmt_match_fn = o
     extension (v: OSSL_FUNC_keymgmt_match_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], CInt, CInt] = v
 
   type OSSL_FUNC_keymgmt_new_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_keymgmt_new_fn: 
+  object OSSL_FUNC_keymgmt_new_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_new_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_keymgmt_new_fn = o
     extension (v: OSSL_FUNC_keymgmt_new_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_keymgmt_query_operation_name_fn = CFuncPtr1[CInt, CString]
-  object OSSL_FUNC_keymgmt_query_operation_name_fn: 
+  object OSSL_FUNC_keymgmt_query_operation_name_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_query_operation_name_fn] = Tag.materializeCFuncPtr1[CInt, CString]
     inline def apply(inline o: CFuncPtr1[CInt, CString]): OSSL_FUNC_keymgmt_query_operation_name_fn = o
     extension (v: OSSL_FUNC_keymgmt_query_operation_name_fn)
       inline def value: CFuncPtr1[CInt, CString] = v
 
   type OSSL_FUNC_keymgmt_set_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_keymgmt_set_params_fn: 
+  object OSSL_FUNC_keymgmt_set_params_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_set_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_keymgmt_set_params_fn = o
     extension (v: OSSL_FUNC_keymgmt_set_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_keymgmt_settable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_keymgmt_settable_params_fn: 
+  object OSSL_FUNC_keymgmt_settable_params_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_settable_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_keymgmt_settable_params_fn = o
     extension (v: OSSL_FUNC_keymgmt_settable_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_keymgmt_validate_fn = CFuncPtr3[Ptr[Byte], CInt, CInt, CInt]
-  object OSSL_FUNC_keymgmt_validate_fn: 
+  object OSSL_FUNC_keymgmt_validate_fn:
     given _tag: Tag[OSSL_FUNC_keymgmt_validate_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], CInt, CInt, CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CInt, CInt, CInt]): OSSL_FUNC_keymgmt_validate_fn = o
     extension (v: OSSL_FUNC_keymgmt_validate_fn)
       inline def value: CFuncPtr3[Ptr[Byte], CInt, CInt, CInt] = v
 
   type OSSL_FUNC_mac_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_mac_dupctx_fn: 
+  object OSSL_FUNC_mac_dupctx_fn:
     given _tag: Tag[OSSL_FUNC_mac_dupctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_mac_dupctx_fn = o
     extension (v: OSSL_FUNC_mac_dupctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_mac_final_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
-  object OSSL_FUNC_mac_final_fn: 
+  object OSSL_FUNC_mac_final_fn:
     given _tag: Tag[OSSL_FUNC_mac_final_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]): OSSL_FUNC_mac_final_fn = o
     extension (v: OSSL_FUNC_mac_final_fn)
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt] = v
 
   type OSSL_FUNC_mac_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_mac_freectx_fn: 
+  object OSSL_FUNC_mac_freectx_fn:
     given _tag: Tag[OSSL_FUNC_mac_freectx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_mac_freectx_fn = o
     extension (v: OSSL_FUNC_mac_freectx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_mac_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_mac_get_ctx_params_fn: 
+  object OSSL_FUNC_mac_get_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_mac_get_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_mac_get_ctx_params_fn = o
     extension (v: OSSL_FUNC_mac_get_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_mac_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_mac_get_params_fn: 
+  object OSSL_FUNC_mac_get_params_fn:
     given _tag: Tag[OSSL_FUNC_mac_get_params_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_mac_get_params_fn = o
     extension (v: OSSL_FUNC_mac_get_params_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_mac_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_mac_gettable_ctx_params_fn: 
+  object OSSL_FUNC_mac_gettable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_mac_gettable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_mac_gettable_ctx_params_fn = o
     extension (v: OSSL_FUNC_mac_gettable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_mac_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_mac_gettable_params_fn: 
+  object OSSL_FUNC_mac_gettable_params_fn:
     given _tag: Tag[OSSL_FUNC_mac_gettable_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_mac_gettable_params_fn = o
     extension (v: OSSL_FUNC_mac_gettable_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_mac_init_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_mac_init_fn: 
+  object OSSL_FUNC_mac_init_fn:
     given _tag: Tag[OSSL_FUNC_mac_init_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_mac_init_fn = o
     extension (v: OSSL_FUNC_mac_init_fn)
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_mac_newctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_mac_newctx_fn: 
+  object OSSL_FUNC_mac_newctx_fn:
     given _tag: Tag[OSSL_FUNC_mac_newctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_mac_newctx_fn = o
     extension (v: OSSL_FUNC_mac_newctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_mac_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_mac_set_ctx_params_fn: 
+  object OSSL_FUNC_mac_set_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_mac_set_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_mac_set_ctx_params_fn = o
     extension (v: OSSL_FUNC_mac_set_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_mac_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_mac_settable_ctx_params_fn: 
+  object OSSL_FUNC_mac_settable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_mac_settable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_mac_settable_ctx_params_fn = o
     extension (v: OSSL_FUNC_mac_settable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_mac_update_fn = CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_mac_update_fn: 
+  object OSSL_FUNC_mac_update_fn:
     given _tag: Tag[OSSL_FUNC_mac_update_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_mac_update_fn = o
     extension (v: OSSL_FUNC_mac_update_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_provider_deregister_child_cb_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Unit]
-  object OSSL_FUNC_provider_deregister_child_cb_fn: 
+  object OSSL_FUNC_provider_deregister_child_cb_fn:
     given _tag: Tag[OSSL_FUNC_provider_deregister_child_cb_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_CORE_HANDLE], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Unit]): OSSL_FUNC_provider_deregister_child_cb_fn = o
     extension (v: OSSL_FUNC_provider_deregister_child_cb_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Unit] = v
 
   type OSSL_FUNC_provider_free_fn = CFuncPtr2[Ptr[OSSL_CORE_HANDLE], CInt, CInt]
-  object OSSL_FUNC_provider_free_fn: 
+  object OSSL_FUNC_provider_free_fn:
     given _tag: Tag[OSSL_FUNC_provider_free_fn] = Tag.materializeCFuncPtr2[Ptr[OSSL_CORE_HANDLE], CInt, CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[OSSL_CORE_HANDLE], CInt, CInt]): OSSL_FUNC_provider_free_fn = o
     extension (v: OSSL_FUNC_provider_free_fn)
       inline def value: CFuncPtr2[Ptr[OSSL_CORE_HANDLE], CInt, CInt] = v
 
   type OSSL_FUNC_provider_get0_dispatch_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_DISPATCH]]
-  object OSSL_FUNC_provider_get0_dispatch_fn: 
+  object OSSL_FUNC_provider_get0_dispatch_fn:
     given _tag: Tag[OSSL_FUNC_provider_get0_dispatch_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_DISPATCH]]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_DISPATCH]]): OSSL_FUNC_provider_get0_dispatch_fn = o
     extension (v: OSSL_FUNC_provider_get0_dispatch_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_DISPATCH]] = v
 
   type OSSL_FUNC_provider_get0_provider_ctx_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[Byte]]
-  object OSSL_FUNC_provider_get0_provider_ctx_fn: 
+  object OSSL_FUNC_provider_get0_provider_ctx_fn:
     given _tag: Tag[OSSL_FUNC_provider_get0_provider_ctx_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[Byte]]): OSSL_FUNC_provider_get0_provider_ctx_fn = o
     extension (v: OSSL_FUNC_provider_get0_provider_ctx_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], Ptr[Byte]] = v
 
   type OSSL_FUNC_provider_get_capabilities_fn = CFuncPtr4[Ptr[Byte], CString, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]
-  object OSSL_FUNC_provider_get_capabilities_fn: 
+  object OSSL_FUNC_provider_get_capabilities_fn:
     given _tag: Tag[OSSL_FUNC_provider_get_capabilities_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], CString, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], CString, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]): OSSL_FUNC_provider_get_capabilities_fn = o
     extension (v: OSSL_FUNC_provider_get_capabilities_fn)
       inline def value: CFuncPtr4[Ptr[Byte], CString, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_provider_get_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_provider_get_params_fn: 
+  object OSSL_FUNC_provider_get_params_fn:
     given _tag: Tag[OSSL_FUNC_provider_get_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_provider_get_params_fn = o
     extension (v: OSSL_FUNC_provider_get_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_provider_get_reason_strings_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_ITEM]]
-  object OSSL_FUNC_provider_get_reason_strings_fn: 
+  object OSSL_FUNC_provider_get_reason_strings_fn:
     given _tag: Tag[OSSL_FUNC_provider_get_reason_strings_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_ITEM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_ITEM]]): OSSL_FUNC_provider_get_reason_strings_fn = o
     extension (v: OSSL_FUNC_provider_get_reason_strings_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_ITEM]] = v
 
   type OSSL_FUNC_provider_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_provider_gettable_params_fn: 
+  object OSSL_FUNC_provider_gettable_params_fn:
     given _tag: Tag[OSSL_FUNC_provider_gettable_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_provider_gettable_params_fn = o
     extension (v: OSSL_FUNC_provider_gettable_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_provider_name_fn = CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CString]
-  object OSSL_FUNC_provider_name_fn: 
+  object OSSL_FUNC_provider_name_fn:
     given _tag: Tag[OSSL_FUNC_provider_name_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_CORE_HANDLE], CString]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CString]): OSSL_FUNC_provider_name_fn = o
     extension (v: OSSL_FUNC_provider_name_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_CORE_HANDLE], CString] = v
 
   type OSSL_FUNC_provider_query_operation_fn = CFuncPtr3[Ptr[Byte], CInt, Ptr[CInt], Ptr[OSSL_ALGORITHM]]
-  object OSSL_FUNC_provider_query_operation_fn: 
+  object OSSL_FUNC_provider_query_operation_fn:
     given _tag: Tag[OSSL_FUNC_provider_query_operation_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], CInt, Ptr[CInt], Ptr[OSSL_ALGORITHM]]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CInt, Ptr[CInt], Ptr[OSSL_ALGORITHM]]): OSSL_FUNC_provider_query_operation_fn = o
     extension (v: OSSL_FUNC_provider_query_operation_fn)
       inline def value: CFuncPtr3[Ptr[Byte], CInt, Ptr[CInt], Ptr[OSSL_ALGORITHM]] = v
 
   type OSSL_FUNC_provider_register_child_cb_fn = CFuncPtr5[Ptr[OSSL_CORE_HANDLE], CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[Byte], CInt], CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], Ptr[Byte], CInt]
-  object OSSL_FUNC_provider_register_child_cb_fn: 
+  object OSSL_FUNC_provider_register_child_cb_fn:
     given _tag: Tag[OSSL_FUNC_provider_register_child_cb_fn] = Tag.materializeCFuncPtr5[Ptr[OSSL_CORE_HANDLE], CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[Byte], CInt], CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr5[Ptr[OSSL_CORE_HANDLE], CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[Byte], CInt], CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], Ptr[Byte], CInt]): OSSL_FUNC_provider_register_child_cb_fn = o
     extension (v: OSSL_FUNC_provider_register_child_cb_fn)
       inline def value: CFuncPtr5[Ptr[OSSL_CORE_HANDLE], CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[Byte], CInt], CFuncPtr2[Ptr[OSSL_CORE_HANDLE], Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_provider_self_test_fn = CFuncPtr1[Ptr[Byte], CInt]
-  object OSSL_FUNC_provider_self_test_fn: 
+  object OSSL_FUNC_provider_self_test_fn:
     given _tag: Tag[OSSL_FUNC_provider_self_test_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], CInt]): OSSL_FUNC_provider_self_test_fn = o
     extension (v: OSSL_FUNC_provider_self_test_fn)
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_provider_teardown_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_provider_teardown_fn: 
+  object OSSL_FUNC_provider_teardown_fn:
     given _tag: Tag[OSSL_FUNC_provider_teardown_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_provider_teardown_fn = o
     extension (v: OSSL_FUNC_provider_teardown_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_provider_unquery_operation_fn = CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_ALGORITHM], Unit]
-  object OSSL_FUNC_provider_unquery_operation_fn: 
+  object OSSL_FUNC_provider_unquery_operation_fn:
     given _tag: Tag[OSSL_FUNC_provider_unquery_operation_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_ALGORITHM], Unit]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_ALGORITHM], Unit]): OSSL_FUNC_provider_unquery_operation_fn = o
     extension (v: OSSL_FUNC_provider_unquery_operation_fn)
       inline def value: CFuncPtr3[Ptr[Byte], CInt, Ptr[OSSL_ALGORITHM], Unit] = v
 
   type OSSL_FUNC_provider_up_ref_fn = CFuncPtr2[Ptr[OSSL_CORE_HANDLE], CInt, CInt]
-  object OSSL_FUNC_provider_up_ref_fn: 
+  object OSSL_FUNC_provider_up_ref_fn:
     given _tag: Tag[OSSL_FUNC_provider_up_ref_fn] = Tag.materializeCFuncPtr2[Ptr[OSSL_CORE_HANDLE], CInt, CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[OSSL_CORE_HANDLE], CInt, CInt]): OSSL_FUNC_provider_up_ref_fn = o
     extension (v: OSSL_FUNC_provider_up_ref_fn)
       inline def value: CFuncPtr2[Ptr[OSSL_CORE_HANDLE], CInt, CInt] = v
 
   type OSSL_FUNC_rand_clear_seed_fn = CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, Unit]
-  object OSSL_FUNC_rand_clear_seed_fn: 
+  object OSSL_FUNC_rand_clear_seed_fn:
     given _tag: Tag[OSSL_FUNC_rand_clear_seed_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, Unit]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, Unit]): OSSL_FUNC_rand_clear_seed_fn = o
     extension (v: OSSL_FUNC_rand_clear_seed_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, Unit] = v
 
   type OSSL_FUNC_rand_enable_locking_fn = CFuncPtr1[Ptr[Byte], CInt]
-  object OSSL_FUNC_rand_enable_locking_fn: 
+  object OSSL_FUNC_rand_enable_locking_fn:
     given _tag: Tag[OSSL_FUNC_rand_enable_locking_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], CInt]): OSSL_FUNC_rand_enable_locking_fn = o
     extension (v: OSSL_FUNC_rand_enable_locking_fn)
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_rand_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_rand_freectx_fn: 
+  object OSSL_FUNC_rand_freectx_fn:
     given _tag: Tag[OSSL_FUNC_rand_freectx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_rand_freectx_fn = o
     extension (v: OSSL_FUNC_rand_freectx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_rand_generate_fn = CFuncPtr7[Ptr[Byte], Ptr[CUnsignedChar], size_t, CUnsignedInt, CInt, Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_rand_generate_fn: 
+  object OSSL_FUNC_rand_generate_fn:
     given _tag: Tag[OSSL_FUNC_rand_generate_fn] = Tag.materializeCFuncPtr7[Ptr[Byte], Ptr[CUnsignedChar], size_t, CUnsignedInt, CInt, Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr7[Ptr[Byte], Ptr[CUnsignedChar], size_t, CUnsignedInt, CInt, Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_rand_generate_fn = o
     extension (v: OSSL_FUNC_rand_generate_fn)
       inline def value: CFuncPtr7[Ptr[Byte], Ptr[CUnsignedChar], size_t, CUnsignedInt, CInt, Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_rand_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_rand_get_ctx_params_fn: 
+  object OSSL_FUNC_rand_get_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_rand_get_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_rand_get_ctx_params_fn = o
     extension (v: OSSL_FUNC_rand_get_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_rand_get_params_fn = CFuncPtr1[Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_rand_get_params_fn: 
+  object OSSL_FUNC_rand_get_params_fn:
     given _tag: Tag[OSSL_FUNC_rand_get_params_fn] = Tag.materializeCFuncPtr1[Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_rand_get_params_fn = o
     extension (v: OSSL_FUNC_rand_get_params_fn)
       inline def value: CFuncPtr1[Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_rand_get_seed_fn = CFuncPtr8[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt, size_t, size_t, CInt, Ptr[CUnsignedChar], size_t, size_t]
-  object OSSL_FUNC_rand_get_seed_fn: 
+  object OSSL_FUNC_rand_get_seed_fn:
     given _tag: Tag[OSSL_FUNC_rand_get_seed_fn] = Tag.materializeCFuncPtr8[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt, size_t, size_t, CInt, Ptr[CUnsignedChar], size_t, size_t]
     inline def apply(inline o: CFuncPtr8[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt, size_t, size_t, CInt, Ptr[CUnsignedChar], size_t, size_t]): OSSL_FUNC_rand_get_seed_fn = o
     extension (v: OSSL_FUNC_rand_get_seed_fn)
       inline def value: CFuncPtr8[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt, size_t, size_t, CInt, Ptr[CUnsignedChar], size_t, size_t] = v
 
   type OSSL_FUNC_rand_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_rand_gettable_ctx_params_fn: 
+  object OSSL_FUNC_rand_gettable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_rand_gettable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_rand_gettable_ctx_params_fn = o
     extension (v: OSSL_FUNC_rand_gettable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_rand_gettable_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_rand_gettable_params_fn: 
+  object OSSL_FUNC_rand_gettable_params_fn:
     given _tag: Tag[OSSL_FUNC_rand_gettable_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_rand_gettable_params_fn = o
     extension (v: OSSL_FUNC_rand_gettable_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_rand_instantiate_fn = CFuncPtr6[Ptr[Byte], CUnsignedInt, CInt, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_rand_instantiate_fn: 
+  object OSSL_FUNC_rand_instantiate_fn:
     given _tag: Tag[OSSL_FUNC_rand_instantiate_fn] = Tag.materializeCFuncPtr6[Ptr[Byte], CUnsignedInt, CInt, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], CUnsignedInt, CInt, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_rand_instantiate_fn = o
     extension (v: OSSL_FUNC_rand_instantiate_fn)
       inline def value: CFuncPtr6[Ptr[Byte], CUnsignedInt, CInt, Ptr[CUnsignedChar], size_t, Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_rand_lock_fn = CFuncPtr1[Ptr[Byte], CInt]
-  object OSSL_FUNC_rand_lock_fn: 
+  object OSSL_FUNC_rand_lock_fn:
     given _tag: Tag[OSSL_FUNC_rand_lock_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], CInt]): OSSL_FUNC_rand_lock_fn = o
     extension (v: OSSL_FUNC_rand_lock_fn)
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_rand_newctx_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_DISPATCH], Ptr[Byte]]
-  object OSSL_FUNC_rand_newctx_fn: 
+  object OSSL_FUNC_rand_newctx_fn:
     given _tag: Tag[OSSL_FUNC_rand_newctx_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_DISPATCH], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_DISPATCH], Ptr[Byte]]): OSSL_FUNC_rand_newctx_fn = o
     extension (v: OSSL_FUNC_rand_newctx_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_DISPATCH], Ptr[Byte]] = v
 
   type OSSL_FUNC_rand_nonce_fn = CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], CUnsignedInt, size_t, size_t, size_t]
-  object OSSL_FUNC_rand_nonce_fn: 
+  object OSSL_FUNC_rand_nonce_fn:
     given _tag: Tag[OSSL_FUNC_rand_nonce_fn] = Tag.materializeCFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], CUnsignedInt, size_t, size_t, size_t]
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], CUnsignedInt, size_t, size_t, size_t]): OSSL_FUNC_rand_nonce_fn = o
     extension (v: OSSL_FUNC_rand_nonce_fn)
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], CUnsignedInt, size_t, size_t, size_t] = v
 
   type OSSL_FUNC_rand_reseed_fn = CFuncPtr6[Ptr[Byte], CInt, Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_rand_reseed_fn: 
+  object OSSL_FUNC_rand_reseed_fn:
     given _tag: Tag[OSSL_FUNC_rand_reseed_fn] = Tag.materializeCFuncPtr6[Ptr[Byte], CInt, Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], CInt, Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_rand_reseed_fn = o
     extension (v: OSSL_FUNC_rand_reseed_fn)
       inline def value: CFuncPtr6[Ptr[Byte], CInt, Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_rand_set_callbacks_fn = CFuncPtr6[Ptr[Byte], Ptr[OSSL_INOUT_CALLBACK], Ptr[OSSL_CALLBACK], Ptr[OSSL_INOUT_CALLBACK], Ptr[OSSL_CALLBACK], Ptr[Byte], Unit]
-  object OSSL_FUNC_rand_set_callbacks_fn: 
+  object OSSL_FUNC_rand_set_callbacks_fn:
     given _tag: Tag[OSSL_FUNC_rand_set_callbacks_fn] = Tag.materializeCFuncPtr6[Ptr[Byte], Ptr[OSSL_INOUT_CALLBACK], Ptr[OSSL_CALLBACK], Ptr[OSSL_INOUT_CALLBACK], Ptr[OSSL_CALLBACK], Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], Ptr[OSSL_INOUT_CALLBACK], Ptr[OSSL_CALLBACK], Ptr[OSSL_INOUT_CALLBACK], Ptr[OSSL_CALLBACK], Ptr[Byte], Unit]): OSSL_FUNC_rand_set_callbacks_fn = o
     extension (v: OSSL_FUNC_rand_set_callbacks_fn)
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[OSSL_INOUT_CALLBACK], Ptr[OSSL_CALLBACK], Ptr[OSSL_INOUT_CALLBACK], Ptr[OSSL_CALLBACK], Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_rand_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_rand_set_ctx_params_fn: 
+  object OSSL_FUNC_rand_set_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_rand_set_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_rand_set_ctx_params_fn = o
     extension (v: OSSL_FUNC_rand_set_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_rand_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_rand_settable_ctx_params_fn: 
+  object OSSL_FUNC_rand_settable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_rand_settable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_rand_settable_ctx_params_fn = o
     extension (v: OSSL_FUNC_rand_settable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_rand_uninstantiate_fn = CFuncPtr1[Ptr[Byte], CInt]
-  object OSSL_FUNC_rand_uninstantiate_fn: 
+  object OSSL_FUNC_rand_uninstantiate_fn:
     given _tag: Tag[OSSL_FUNC_rand_uninstantiate_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], CInt]): OSSL_FUNC_rand_uninstantiate_fn = o
     extension (v: OSSL_FUNC_rand_uninstantiate_fn)
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_rand_unlock_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_rand_unlock_fn: 
+  object OSSL_FUNC_rand_unlock_fn:
     given _tag: Tag[OSSL_FUNC_rand_unlock_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_rand_unlock_fn = o
     extension (v: OSSL_FUNC_rand_unlock_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_rand_verify_zeroization_fn = CFuncPtr1[Ptr[Byte], CInt]
-  object OSSL_FUNC_rand_verify_zeroization_fn: 
+  object OSSL_FUNC_rand_verify_zeroization_fn:
     given _tag: Tag[OSSL_FUNC_rand_verify_zeroization_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], CInt]): OSSL_FUNC_rand_verify_zeroization_fn = o
     extension (v: OSSL_FUNC_rand_verify_zeroization_fn)
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_self_test_cb_fn = CFuncPtr3[Ptr[OPENSSL_CORE_CTX], Ptr[Ptr[OSSL_CALLBACK]], Ptr[Ptr[Byte]], Unit]
-  object OSSL_FUNC_self_test_cb_fn: 
+  object OSSL_FUNC_self_test_cb_fn:
     given _tag: Tag[OSSL_FUNC_self_test_cb_fn] = Tag.materializeCFuncPtr3[Ptr[OPENSSL_CORE_CTX], Ptr[Ptr[OSSL_CALLBACK]], Ptr[Ptr[Byte]], Unit]
     inline def apply(inline o: CFuncPtr3[Ptr[OPENSSL_CORE_CTX], Ptr[Ptr[OSSL_CALLBACK]], Ptr[Ptr[Byte]], Unit]): OSSL_FUNC_self_test_cb_fn = o
     extension (v: OSSL_FUNC_self_test_cb_fn)
       inline def value: CFuncPtr3[Ptr[OPENSSL_CORE_CTX], Ptr[Ptr[OSSL_CALLBACK]], Ptr[Ptr[Byte]], Unit] = v
 
   type OSSL_FUNC_signature_digest_sign_final_fn = CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
-  object OSSL_FUNC_signature_digest_sign_final_fn: 
+  object OSSL_FUNC_signature_digest_sign_final_fn:
     given _tag: Tag[OSSL_FUNC_signature_digest_sign_final_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt]): OSSL_FUNC_signature_digest_sign_final_fn = o
     extension (v: OSSL_FUNC_signature_digest_sign_final_fn)
       inline def value: CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, CInt] = v
 
   type OSSL_FUNC_signature_digest_sign_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_signature_digest_sign_fn: 
+  object OSSL_FUNC_signature_digest_sign_fn:
     given _tag: Tag[OSSL_FUNC_signature_digest_sign_fn] = Tag.materializeCFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_signature_digest_sign_fn = o
     extension (v: OSSL_FUNC_signature_digest_sign_fn)
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_signature_digest_sign_init_fn = CFuncPtr4[Ptr[Byte], CString, Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_signature_digest_sign_init_fn: 
+  object OSSL_FUNC_signature_digest_sign_init_fn:
     given _tag: Tag[OSSL_FUNC_signature_digest_sign_init_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], CString, Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], CString, Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_signature_digest_sign_init_fn = o
     extension (v: OSSL_FUNC_signature_digest_sign_init_fn)
       inline def value: CFuncPtr4[Ptr[Byte], CString, Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_signature_digest_sign_update_fn = CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_signature_digest_sign_update_fn: 
+  object OSSL_FUNC_signature_digest_sign_update_fn:
     given _tag: Tag[OSSL_FUNC_signature_digest_sign_update_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_signature_digest_sign_update_fn = o
     extension (v: OSSL_FUNC_signature_digest_sign_update_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_signature_digest_verify_final_fn = CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_signature_digest_verify_final_fn: 
+  object OSSL_FUNC_signature_digest_verify_final_fn:
     given _tag: Tag[OSSL_FUNC_signature_digest_verify_final_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_signature_digest_verify_final_fn = o
     extension (v: OSSL_FUNC_signature_digest_verify_final_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_signature_digest_verify_fn = CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_signature_digest_verify_fn: 
+  object OSSL_FUNC_signature_digest_verify_fn:
     given _tag: Tag[OSSL_FUNC_signature_digest_verify_fn] = Tag.materializeCFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_signature_digest_verify_fn = o
     extension (v: OSSL_FUNC_signature_digest_verify_fn)
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_signature_digest_verify_init_fn = CFuncPtr4[Ptr[Byte], CString, Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_signature_digest_verify_init_fn: 
+  object OSSL_FUNC_signature_digest_verify_init_fn:
     given _tag: Tag[OSSL_FUNC_signature_digest_verify_init_fn] = Tag.materializeCFuncPtr4[Ptr[Byte], CString, Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[Byte], CString, Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_signature_digest_verify_init_fn = o
     extension (v: OSSL_FUNC_signature_digest_verify_init_fn)
       inline def value: CFuncPtr4[Ptr[Byte], CString, Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_signature_digest_verify_update_fn = CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_signature_digest_verify_update_fn: 
+  object OSSL_FUNC_signature_digest_verify_update_fn:
     given _tag: Tag[OSSL_FUNC_signature_digest_verify_update_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_signature_digest_verify_update_fn = o
     extension (v: OSSL_FUNC_signature_digest_verify_update_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_signature_dupctx_fn = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object OSSL_FUNC_signature_dupctx_fn: 
+  object OSSL_FUNC_signature_dupctx_fn:
     given _tag: Tag[OSSL_FUNC_signature_dupctx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): OSSL_FUNC_signature_dupctx_fn = o
     extension (v: OSSL_FUNC_signature_dupctx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[Byte]] = v
 
   type OSSL_FUNC_signature_freectx_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_FUNC_signature_freectx_fn: 
+  object OSSL_FUNC_signature_freectx_fn:
     given _tag: Tag[OSSL_FUNC_signature_freectx_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_FUNC_signature_freectx_fn = o
     extension (v: OSSL_FUNC_signature_freectx_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Unit] = v
 
   type OSSL_FUNC_signature_get_ctx_md_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_signature_get_ctx_md_params_fn: 
+  object OSSL_FUNC_signature_get_ctx_md_params_fn:
     given _tag: Tag[OSSL_FUNC_signature_get_ctx_md_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_signature_get_ctx_md_params_fn = o
     extension (v: OSSL_FUNC_signature_get_ctx_md_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_signature_get_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_signature_get_ctx_params_fn: 
+  object OSSL_FUNC_signature_get_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_signature_get_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_signature_get_ctx_params_fn = o
     extension (v: OSSL_FUNC_signature_get_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_signature_gettable_ctx_md_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_signature_gettable_ctx_md_params_fn: 
+  object OSSL_FUNC_signature_gettable_ctx_md_params_fn:
     given _tag: Tag[OSSL_FUNC_signature_gettable_ctx_md_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_signature_gettable_ctx_md_params_fn = o
     extension (v: OSSL_FUNC_signature_gettable_ctx_md_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_signature_gettable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_signature_gettable_ctx_params_fn: 
+  object OSSL_FUNC_signature_gettable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_signature_gettable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_signature_gettable_ctx_params_fn = o
     extension (v: OSSL_FUNC_signature_gettable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_signature_newctx_fn = CFuncPtr2[Ptr[Byte], CString, Ptr[Byte]]
-  object OSSL_FUNC_signature_newctx_fn: 
+  object OSSL_FUNC_signature_newctx_fn:
     given _tag: Tag[OSSL_FUNC_signature_newctx_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], CString, Ptr[Byte]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], CString, Ptr[Byte]]): OSSL_FUNC_signature_newctx_fn = o
     extension (v: OSSL_FUNC_signature_newctx_fn)
       inline def value: CFuncPtr2[Ptr[Byte], CString, Ptr[Byte]] = v
 
   type OSSL_FUNC_signature_set_ctx_md_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_signature_set_ctx_md_params_fn: 
+  object OSSL_FUNC_signature_set_ctx_md_params_fn:
     given _tag: Tag[OSSL_FUNC_signature_set_ctx_md_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_signature_set_ctx_md_params_fn = o
     extension (v: OSSL_FUNC_signature_set_ctx_md_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_signature_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_signature_set_ctx_params_fn: 
+  object OSSL_FUNC_signature_set_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_signature_set_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_signature_set_ctx_params_fn = o
     extension (v: OSSL_FUNC_signature_set_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_signature_settable_ctx_md_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_signature_settable_ctx_md_params_fn: 
+  object OSSL_FUNC_signature_settable_ctx_md_params_fn:
     given _tag: Tag[OSSL_FUNC_signature_settable_ctx_md_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_signature_settable_ctx_md_params_fn = o
     extension (v: OSSL_FUNC_signature_settable_ctx_md_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_signature_settable_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_signature_settable_ctx_params_fn: 
+  object OSSL_FUNC_signature_settable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_signature_settable_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_signature_settable_ctx_params_fn = o
     extension (v: OSSL_FUNC_signature_settable_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_FUNC_signature_sign_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_signature_sign_fn: 
+  object OSSL_FUNC_signature_sign_fn:
     given _tag: Tag[OSSL_FUNC_signature_sign_fn] = Tag.materializeCFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_signature_sign_fn = o
     extension (v: OSSL_FUNC_signature_sign_fn)
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_signature_sign_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_signature_sign_init_fn: 
+  object OSSL_FUNC_signature_sign_init_fn:
     given _tag: Tag[OSSL_FUNC_signature_sign_init_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_signature_sign_init_fn = o
     extension (v: OSSL_FUNC_signature_sign_init_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_signature_verify_fn = CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_signature_verify_fn: 
+  object OSSL_FUNC_signature_verify_fn:
     given _tag: Tag[OSSL_FUNC_signature_verify_fn] = Tag.materializeCFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_signature_verify_fn = o
     extension (v: OSSL_FUNC_signature_verify_fn)
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[CUnsignedChar], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_signature_verify_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_signature_verify_init_fn: 
+  object OSSL_FUNC_signature_verify_init_fn:
     given _tag: Tag[OSSL_FUNC_signature_verify_init_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_signature_verify_init_fn = o
     extension (v: OSSL_FUNC_signature_verify_init_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_signature_verify_recover_fn = CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
-  object OSSL_FUNC_signature_verify_recover_fn: 
+  object OSSL_FUNC_signature_verify_recover_fn:
     given _tag: Tag[OSSL_FUNC_signature_verify_recover_fn] = Tag.materializeCFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]
     inline def apply(inline o: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt]): OSSL_FUNC_signature_verify_recover_fn = o
     extension (v: OSSL_FUNC_signature_verify_recover_fn)
       inline def value: CFuncPtr6[Ptr[Byte], Ptr[CUnsignedChar], Ptr[size_t], size_t, Ptr[CUnsignedChar], size_t, CInt] = v
 
   type OSSL_FUNC_signature_verify_recover_init_fn = CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_signature_verify_recover_init_fn: 
+  object OSSL_FUNC_signature_verify_recover_init_fn:
     given _tag: Tag[OSSL_FUNC_signature_verify_recover_init_fn] = Tag.materializeCFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_signature_verify_recover_init_fn = o
     extension (v: OSSL_FUNC_signature_verify_recover_init_fn)
       inline def value: CFuncPtr3[Ptr[Byte], Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_store_attach_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_CORE_BIO], Ptr[Byte]]
-  object OSSL_FUNC_store_attach_fn: 
+  object OSSL_FUNC_store_attach_fn:
     given _tag: Tag[OSSL_FUNC_store_attach_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_CORE_BIO], Ptr[Byte]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_CORE_BIO], Ptr[Byte]]): OSSL_FUNC_store_attach_fn = o
     extension (v: OSSL_FUNC_store_attach_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_CORE_BIO], Ptr[Byte]] = v
 
   type OSSL_FUNC_store_close_fn = CFuncPtr1[Ptr[Byte], CInt]
-  object OSSL_FUNC_store_close_fn: 
+  object OSSL_FUNC_store_close_fn:
     given _tag: Tag[OSSL_FUNC_store_close_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], CInt]): OSSL_FUNC_store_close_fn = o
     extension (v: OSSL_FUNC_store_close_fn)
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_store_eof_fn = CFuncPtr1[Ptr[Byte], CInt]
-  object OSSL_FUNC_store_eof_fn: 
+  object OSSL_FUNC_store_eof_fn:
     given _tag: Tag[OSSL_FUNC_store_eof_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], CInt]): OSSL_FUNC_store_eof_fn = o
     extension (v: OSSL_FUNC_store_eof_fn)
       inline def value: CFuncPtr1[Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_store_export_object_fn = CFuncPtr5[Ptr[Byte], Ptr[Byte], size_t, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]
-  object OSSL_FUNC_store_export_object_fn: 
+  object OSSL_FUNC_store_export_object_fn:
     given _tag: Tag[OSSL_FUNC_store_export_object_fn] = Tag.materializeCFuncPtr5[Ptr[Byte], Ptr[Byte], size_t, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], Ptr[Byte], size_t, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt]): OSSL_FUNC_store_export_object_fn = o
     extension (v: OSSL_FUNC_store_export_object_fn)
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[Byte], size_t, Ptr[OSSL_CALLBACK], Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_store_load_fn = CFuncPtr5[Ptr[Byte], Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt]
-  object OSSL_FUNC_store_load_fn: 
+  object OSSL_FUNC_store_load_fn:
     given _tag: Tag[OSSL_FUNC_store_load_fn] = Tag.materializeCFuncPtr5[Ptr[Byte], Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr5[Ptr[Byte], Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt]): OSSL_FUNC_store_load_fn = o
     extension (v: OSSL_FUNC_store_load_fn)
       inline def value: CFuncPtr5[Ptr[Byte], Ptr[OSSL_CALLBACK], Ptr[Byte], Ptr[OSSL_PASSPHRASE_CALLBACK], Ptr[Byte], CInt] = v
 
   type OSSL_FUNC_store_open_fn = CFuncPtr2[Ptr[Byte], CString, Ptr[Byte]]
-  object OSSL_FUNC_store_open_fn: 
+  object OSSL_FUNC_store_open_fn:
     given _tag: Tag[OSSL_FUNC_store_open_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], CString, Ptr[Byte]]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], CString, Ptr[Byte]]): OSSL_FUNC_store_open_fn = o
     extension (v: OSSL_FUNC_store_open_fn)
       inline def value: CFuncPtr2[Ptr[Byte], CString, Ptr[Byte]] = v
 
   type OSSL_FUNC_store_set_ctx_params_fn = CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
-  object OSSL_FUNC_store_set_ctx_params_fn: 
+  object OSSL_FUNC_store_set_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_store_set_ctx_params_fn] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt]): OSSL_FUNC_store_set_ctx_params_fn = o
     extension (v: OSSL_FUNC_store_set_ctx_params_fn)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[OSSL_PARAM], CInt] = v
 
   type OSSL_FUNC_store_settable_ctx_params_fn = CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
-  object OSSL_FUNC_store_settable_ctx_params_fn: 
+  object OSSL_FUNC_store_settable_ctx_params_fn:
     given _tag: Tag[OSSL_FUNC_store_settable_ctx_params_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]]): OSSL_FUNC_store_settable_ctx_params_fn = o
     extension (v: OSSL_FUNC_store_settable_ctx_params_fn)
       inline def value: CFuncPtr1[Ptr[Byte], Ptr[OSSL_PARAM]] = v
 
   type OSSL_INOUT_CALLBACK = CFuncPtr3[Ptr[OSSL_PARAM], Ptr[OSSL_PARAM], Ptr[Byte], CInt]
-  object OSSL_INOUT_CALLBACK: 
+  object OSSL_INOUT_CALLBACK:
     given _tag: Tag[OSSL_INOUT_CALLBACK] = Tag.materializeCFuncPtr3[Ptr[OSSL_PARAM], Ptr[OSSL_PARAM], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr3[Ptr[OSSL_PARAM], Ptr[OSSL_PARAM], Ptr[Byte], CInt]): OSSL_INOUT_CALLBACK = o
     extension (v: OSSL_INOUT_CALLBACK)
       inline def value: CFuncPtr3[Ptr[OSSL_PARAM], Ptr[OSSL_PARAM], Ptr[Byte], CInt] = v
 
   type OSSL_PASSPHRASE_CALLBACK = CFuncPtr5[CString, size_t, Ptr[size_t], Ptr[OSSL_PARAM], Ptr[Byte], CInt]
-  object OSSL_PASSPHRASE_CALLBACK: 
+  object OSSL_PASSPHRASE_CALLBACK:
     given _tag: Tag[OSSL_PASSPHRASE_CALLBACK] = Tag.materializeCFuncPtr5[CString, size_t, Ptr[size_t], Ptr[OSSL_PARAM], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr5[CString, size_t, Ptr[size_t], Ptr[OSSL_PARAM], Ptr[Byte], CInt]): OSSL_PASSPHRASE_CALLBACK = o
     extension (v: OSSL_PASSPHRASE_CALLBACK)
       inline def value: CFuncPtr5[CString, size_t, Ptr[size_t], Ptr[OSSL_PARAM], Ptr[Byte], CInt] = v
 
   type OSSL_provider_init_fn = CFuncPtr4[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_DISPATCH], Ptr[Ptr[OSSL_DISPATCH]], Ptr[Ptr[Byte]], CInt]
-  object OSSL_provider_init_fn: 
+  object OSSL_provider_init_fn:
     given _tag: Tag[OSSL_provider_init_fn] = Tag.materializeCFuncPtr4[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_DISPATCH], Ptr[Ptr[OSSL_DISPATCH]], Ptr[Ptr[Byte]], CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_DISPATCH], Ptr[Ptr[OSSL_DISPATCH]], Ptr[Ptr[Byte]], CInt]): OSSL_provider_init_fn = o
     extension (v: OSSL_provider_init_fn)
       inline def value: CFuncPtr4[Ptr[OSSL_CORE_HANDLE], Ptr[OSSL_DISPATCH], Ptr[Ptr[OSSL_DISPATCH]], Ptr[Ptr[Byte]], CInt] = v
 
   opaque type OSSL_thread_stop_handler_fn = CFuncPtr1[Ptr[Byte], Unit]
-  object OSSL_thread_stop_handler_fn: 
+  object OSSL_thread_stop_handler_fn:
     given _tag: Tag[OSSL_thread_stop_handler_fn] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): OSSL_thread_stop_handler_fn = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): OSSL_thread_stop_handler_fn = o
@@ -1930,105 +1929,105 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type asn1_ps_func = CFuncPtr4[Ptr[BIO], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], Ptr[Byte], CInt]
-  object asn1_ps_func: 
+  object asn1_ps_func:
     given _tag: Tag[asn1_ps_func] = Tag.materializeCFuncPtr4[Ptr[BIO], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr4[Ptr[BIO], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], Ptr[Byte], CInt]): asn1_ps_func = o
     extension (v: asn1_ps_func)
       inline def value: CFuncPtr4[Ptr[BIO], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], Ptr[Byte], CInt] = v
 
   type bio_info_cb = BIO_info_cb
-  object bio_info_cb: 
+  object bio_info_cb:
     given _tag: Tag[bio_info_cb] = BIO_info_cb._tag
     inline def apply(inline o: BIO_info_cb): bio_info_cb = o
     extension (v: bio_info_cb)
       inline def value: BIO_info_cb = v
 
   type d2i_of_void = CFuncPtr3[Ptr[Ptr[Byte]], Ptr[Ptr[CUnsignedChar]], CLongInt, Ptr[Byte]]
-  object d2i_of_void: 
+  object d2i_of_void:
     given _tag: Tag[d2i_of_void] = Tag.materializeCFuncPtr3[Ptr[Ptr[Byte]], Ptr[Ptr[CUnsignedChar]], CLongInt, Ptr[Byte]]
     inline def apply(inline o: CFuncPtr3[Ptr[Ptr[Byte]], Ptr[Ptr[CUnsignedChar]], CLongInt, Ptr[Byte]]): d2i_of_void = o
     extension (v: d2i_of_void)
       inline def value: CFuncPtr3[Ptr[Ptr[Byte]], Ptr[Ptr[CUnsignedChar]], CLongInt, Ptr[Byte]] = v
 
   type i2d_of_void = CFuncPtr2[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt]
-  object i2d_of_void: 
+  object i2d_of_void:
     given _tag: Tag[i2d_of_void] = Tag.materializeCFuncPtr2[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt]
     inline def apply(inline o: CFuncPtr2[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt]): i2d_of_void = o
     extension (v: i2d_of_void)
       inline def value: CFuncPtr2[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt] = v
 
   type int32_t = scala.scalanative.unsafe.CInt
-  object int32_t: 
+  object int32_t:
     val _tag: Tag[int32_t] = summon[Tag[scala.scalanative.unsafe.CInt]]
     inline def apply(inline o: scala.scalanative.unsafe.CInt): int32_t = o
     extension (v: int32_t)
       inline def value: scala.scalanative.unsafe.CInt = v
 
   type int64_t = scala.Long
-  object int64_t: 
+  object int64_t:
     val _tag: Tag[int64_t] = summon[Tag[scala.Long]]
     inline def apply(inline o: scala.Long): int64_t = o
     extension (v: int64_t)
       inline def value: scala.Long = v
 
   type intmax_t = libc.stdint.intmax_t
-  object intmax_t: 
+  object intmax_t:
     val _tag: Tag[intmax_t] = summon[Tag[libc.stdint.intmax_t]]
     inline def apply(inline o: libc.stdint.intmax_t): intmax_t = o
     extension (v: intmax_t)
       inline def value: libc.stdint.intmax_t = v
 
   type ossl_intmax_t = intmax_t
-  object ossl_intmax_t: 
+  object ossl_intmax_t:
     given _tag: Tag[ossl_intmax_t] = intmax_t._tag
     inline def apply(inline o: intmax_t): ossl_intmax_t = o
     extension (v: ossl_intmax_t)
       inline def value: intmax_t = v
 
   type ossl_uintmax_t = uintmax_t
-  object ossl_uintmax_t: 
+  object ossl_uintmax_t:
     given _tag: Tag[ossl_uintmax_t] = uintmax_t._tag
     inline def apply(inline o: uintmax_t): ossl_uintmax_t = o
     extension (v: ossl_uintmax_t)
       inline def value: uintmax_t = v
 
   type pem_password_cb = CFuncPtr4[CString, CInt, CInt, Ptr[Byte], CInt]
-  object pem_password_cb: 
+  object pem_password_cb:
     given _tag: Tag[pem_password_cb] = Tag.materializeCFuncPtr4[CString, CInt, CInt, Ptr[Byte], CInt]
     inline def apply(inline o: CFuncPtr4[CString, CInt, CInt, Ptr[Byte], CInt]): pem_password_cb = o
     extension (v: pem_password_cb)
       inline def value: CFuncPtr4[CString, CInt, CInt, Ptr[Byte], CInt] = v
 
   type pthread_key_t = posix.sys.types.pthread_key_t
-  object pthread_key_t: 
+  object pthread_key_t:
     val _tag: Tag[pthread_key_t] = summon[Tag[posix.sys.types.pthread_key_t]]
     inline def apply(inline o: posix.sys.types.pthread_key_t): pthread_key_t = o
     extension (v: pthread_key_t)
       inline def value: posix.sys.types.pthread_key_t = v
 
   type pthread_once_t = posix.sys.types.pthread_once_t
-  object pthread_once_t: 
+  object pthread_once_t:
     val _tag: Tag[pthread_once_t] = summon[Tag[posix.sys.types.pthread_once_t]]
     inline def apply(inline o: posix.sys.types.pthread_once_t): pthread_once_t = o
     extension (v: pthread_once_t)
       inline def value: posix.sys.types.pthread_once_t = v
 
   type pthread_t = posix.sys.types.pthread_t
-  object pthread_t: 
+  object pthread_t:
     val _tag: Tag[pthread_t] = summon[Tag[posix.sys.types.pthread_t]]
     inline def apply(inline o: posix.sys.types.pthread_t): pthread_t = o
     extension (v: pthread_t)
       inline def value: posix.sys.types.pthread_t = v
 
   type size_t = libc.stddef.size_t
-  object size_t: 
+  object size_t:
     val _tag: Tag[size_t] = summon[Tag[libc.stddef.size_t]]
     inline def apply(inline o: libc.stddef.size_t): size_t = o
     extension (v: size_t)
       inline def value: libc.stddef.size_t = v
 
   opaque type sk_ASN1_GENERALSTRING_compfunc = CFuncPtr2[Ptr[Ptr[ASN1_GENERALSTRING]], Ptr[Ptr[ASN1_GENERALSTRING]], CInt]
-  object sk_ASN1_GENERALSTRING_compfunc: 
+  object sk_ASN1_GENERALSTRING_compfunc:
     given _tag: Tag[sk_ASN1_GENERALSTRING_compfunc] = Tag.materializeCFuncPtr2[Ptr[Ptr[ASN1_GENERALSTRING]], Ptr[Ptr[ASN1_GENERALSTRING]], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_GENERALSTRING_compfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[ASN1_GENERALSTRING]], Ptr[Ptr[ASN1_GENERALSTRING]], CInt]): sk_ASN1_GENERALSTRING_compfunc = o
@@ -2037,7 +2036,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_GENERALSTRING_copyfunc = CFuncPtr1[Ptr[ASN1_GENERALSTRING], Ptr[ASN1_GENERALSTRING]]
-  object sk_ASN1_GENERALSTRING_copyfunc: 
+  object sk_ASN1_GENERALSTRING_copyfunc:
     given _tag: Tag[sk_ASN1_GENERALSTRING_copyfunc] = Tag.materializeCFuncPtr1[Ptr[ASN1_GENERALSTRING], Ptr[ASN1_GENERALSTRING]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_GENERALSTRING_copyfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_GENERALSTRING], Ptr[ASN1_GENERALSTRING]]): sk_ASN1_GENERALSTRING_copyfunc = o
@@ -2046,7 +2045,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_GENERALSTRING_freefunc = CFuncPtr1[Ptr[ASN1_GENERALSTRING], Unit]
-  object sk_ASN1_GENERALSTRING_freefunc: 
+  object sk_ASN1_GENERALSTRING_freefunc:
     given _tag: Tag[sk_ASN1_GENERALSTRING_freefunc] = Tag.materializeCFuncPtr1[Ptr[ASN1_GENERALSTRING], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_GENERALSTRING_freefunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_GENERALSTRING], Unit]): sk_ASN1_GENERALSTRING_freefunc = o
@@ -2055,7 +2054,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_INTEGER_compfunc = CFuncPtr2[Ptr[Ptr[ASN1_INTEGER]], Ptr[Ptr[ASN1_INTEGER]], CInt]
-  object sk_ASN1_INTEGER_compfunc: 
+  object sk_ASN1_INTEGER_compfunc:
     given _tag: Tag[sk_ASN1_INTEGER_compfunc] = Tag.materializeCFuncPtr2[Ptr[Ptr[ASN1_INTEGER]], Ptr[Ptr[ASN1_INTEGER]], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_INTEGER_compfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[ASN1_INTEGER]], Ptr[Ptr[ASN1_INTEGER]], CInt]): sk_ASN1_INTEGER_compfunc = o
@@ -2064,7 +2063,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_INTEGER_copyfunc = CFuncPtr1[Ptr[ASN1_INTEGER], Ptr[ASN1_INTEGER]]
-  object sk_ASN1_INTEGER_copyfunc: 
+  object sk_ASN1_INTEGER_copyfunc:
     given _tag: Tag[sk_ASN1_INTEGER_copyfunc] = Tag.materializeCFuncPtr1[Ptr[ASN1_INTEGER], Ptr[ASN1_INTEGER]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_INTEGER_copyfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_INTEGER], Ptr[ASN1_INTEGER]]): sk_ASN1_INTEGER_copyfunc = o
@@ -2073,7 +2072,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_INTEGER_freefunc = CFuncPtr1[Ptr[ASN1_INTEGER], Unit]
-  object sk_ASN1_INTEGER_freefunc: 
+  object sk_ASN1_INTEGER_freefunc:
     given _tag: Tag[sk_ASN1_INTEGER_freefunc] = Tag.materializeCFuncPtr1[Ptr[ASN1_INTEGER], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_INTEGER_freefunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_INTEGER], Unit]): sk_ASN1_INTEGER_freefunc = o
@@ -2082,7 +2081,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_OBJECT_compfunc = CFuncPtr2[Ptr[Ptr[ASN1_OBJECT]], Ptr[Ptr[ASN1_OBJECT]], CInt]
-  object sk_ASN1_OBJECT_compfunc: 
+  object sk_ASN1_OBJECT_compfunc:
     given _tag: Tag[sk_ASN1_OBJECT_compfunc] = Tag.materializeCFuncPtr2[Ptr[Ptr[ASN1_OBJECT]], Ptr[Ptr[ASN1_OBJECT]], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_OBJECT_compfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[ASN1_OBJECT]], Ptr[Ptr[ASN1_OBJECT]], CInt]): sk_ASN1_OBJECT_compfunc = o
@@ -2091,7 +2090,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_OBJECT_copyfunc = CFuncPtr1[Ptr[ASN1_OBJECT], Ptr[ASN1_OBJECT]]
-  object sk_ASN1_OBJECT_copyfunc: 
+  object sk_ASN1_OBJECT_copyfunc:
     given _tag: Tag[sk_ASN1_OBJECT_copyfunc] = Tag.materializeCFuncPtr1[Ptr[ASN1_OBJECT], Ptr[ASN1_OBJECT]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_OBJECT_copyfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_OBJECT], Ptr[ASN1_OBJECT]]): sk_ASN1_OBJECT_copyfunc = o
@@ -2100,7 +2099,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_OBJECT_freefunc = CFuncPtr1[Ptr[ASN1_OBJECT], Unit]
-  object sk_ASN1_OBJECT_freefunc: 
+  object sk_ASN1_OBJECT_freefunc:
     given _tag: Tag[sk_ASN1_OBJECT_freefunc] = Tag.materializeCFuncPtr1[Ptr[ASN1_OBJECT], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_OBJECT_freefunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_OBJECT], Unit]): sk_ASN1_OBJECT_freefunc = o
@@ -2109,7 +2108,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_STRING_TABLE_compfunc = CFuncPtr2[Ptr[Ptr[ASN1_STRING_TABLE]], Ptr[Ptr[ASN1_STRING_TABLE]], CInt]
-  object sk_ASN1_STRING_TABLE_compfunc: 
+  object sk_ASN1_STRING_TABLE_compfunc:
     given _tag: Tag[sk_ASN1_STRING_TABLE_compfunc] = Tag.materializeCFuncPtr2[Ptr[Ptr[ASN1_STRING_TABLE]], Ptr[Ptr[ASN1_STRING_TABLE]], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_STRING_TABLE_compfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[ASN1_STRING_TABLE]], Ptr[Ptr[ASN1_STRING_TABLE]], CInt]): sk_ASN1_STRING_TABLE_compfunc = o
@@ -2118,7 +2117,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_STRING_TABLE_copyfunc = CFuncPtr1[Ptr[ASN1_STRING_TABLE], Ptr[ASN1_STRING_TABLE]]
-  object sk_ASN1_STRING_TABLE_copyfunc: 
+  object sk_ASN1_STRING_TABLE_copyfunc:
     given _tag: Tag[sk_ASN1_STRING_TABLE_copyfunc] = Tag.materializeCFuncPtr1[Ptr[ASN1_STRING_TABLE], Ptr[ASN1_STRING_TABLE]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_STRING_TABLE_copyfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_STRING_TABLE], Ptr[ASN1_STRING_TABLE]]): sk_ASN1_STRING_TABLE_copyfunc = o
@@ -2127,7 +2126,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_STRING_TABLE_freefunc = CFuncPtr1[Ptr[ASN1_STRING_TABLE], Unit]
-  object sk_ASN1_STRING_TABLE_freefunc: 
+  object sk_ASN1_STRING_TABLE_freefunc:
     given _tag: Tag[sk_ASN1_STRING_TABLE_freefunc] = Tag.materializeCFuncPtr1[Ptr[ASN1_STRING_TABLE], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_STRING_TABLE_freefunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_STRING_TABLE], Unit]): sk_ASN1_STRING_TABLE_freefunc = o
@@ -2136,7 +2135,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_TYPE_compfunc = CFuncPtr2[Ptr[Ptr[ASN1_TYPE]], Ptr[Ptr[ASN1_TYPE]], CInt]
-  object sk_ASN1_TYPE_compfunc: 
+  object sk_ASN1_TYPE_compfunc:
     given _tag: Tag[sk_ASN1_TYPE_compfunc] = Tag.materializeCFuncPtr2[Ptr[Ptr[ASN1_TYPE]], Ptr[Ptr[ASN1_TYPE]], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_TYPE_compfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[ASN1_TYPE]], Ptr[Ptr[ASN1_TYPE]], CInt]): sk_ASN1_TYPE_compfunc = o
@@ -2145,7 +2144,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_TYPE_copyfunc = CFuncPtr1[Ptr[ASN1_TYPE], Ptr[ASN1_TYPE]]
-  object sk_ASN1_TYPE_copyfunc: 
+  object sk_ASN1_TYPE_copyfunc:
     given _tag: Tag[sk_ASN1_TYPE_copyfunc] = Tag.materializeCFuncPtr1[Ptr[ASN1_TYPE], Ptr[ASN1_TYPE]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_TYPE_copyfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_TYPE], Ptr[ASN1_TYPE]]): sk_ASN1_TYPE_copyfunc = o
@@ -2154,7 +2153,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_TYPE_freefunc = CFuncPtr1[Ptr[ASN1_TYPE], Unit]
-  object sk_ASN1_TYPE_freefunc: 
+  object sk_ASN1_TYPE_freefunc:
     given _tag: Tag[sk_ASN1_TYPE_freefunc] = Tag.materializeCFuncPtr1[Ptr[ASN1_TYPE], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_TYPE_freefunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_TYPE], Unit]): sk_ASN1_TYPE_freefunc = o
@@ -2163,7 +2162,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_UTF8STRING_compfunc = CFuncPtr2[Ptr[Ptr[ASN1_UTF8STRING]], Ptr[Ptr[ASN1_UTF8STRING]], CInt]
-  object sk_ASN1_UTF8STRING_compfunc: 
+  object sk_ASN1_UTF8STRING_compfunc:
     given _tag: Tag[sk_ASN1_UTF8STRING_compfunc] = Tag.materializeCFuncPtr2[Ptr[Ptr[ASN1_UTF8STRING]], Ptr[Ptr[ASN1_UTF8STRING]], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_UTF8STRING_compfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[ASN1_UTF8STRING]], Ptr[Ptr[ASN1_UTF8STRING]], CInt]): sk_ASN1_UTF8STRING_compfunc = o
@@ -2172,7 +2171,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_UTF8STRING_copyfunc = CFuncPtr1[Ptr[ASN1_UTF8STRING], Ptr[ASN1_UTF8STRING]]
-  object sk_ASN1_UTF8STRING_copyfunc: 
+  object sk_ASN1_UTF8STRING_copyfunc:
     given _tag: Tag[sk_ASN1_UTF8STRING_copyfunc] = Tag.materializeCFuncPtr1[Ptr[ASN1_UTF8STRING], Ptr[ASN1_UTF8STRING]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_UTF8STRING_copyfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_UTF8STRING], Ptr[ASN1_UTF8STRING]]): sk_ASN1_UTF8STRING_copyfunc = o
@@ -2181,7 +2180,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_ASN1_UTF8STRING_freefunc = CFuncPtr1[Ptr[ASN1_UTF8STRING], Unit]
-  object sk_ASN1_UTF8STRING_freefunc: 
+  object sk_ASN1_UTF8STRING_freefunc:
     given _tag: Tag[sk_ASN1_UTF8STRING_freefunc] = Tag.materializeCFuncPtr1[Ptr[ASN1_UTF8STRING], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_ASN1_UTF8STRING_freefunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[ASN1_UTF8STRING], Unit]): sk_ASN1_UTF8STRING_freefunc = o
@@ -2190,7 +2189,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_BIO_compfunc = CFuncPtr2[Ptr[Ptr[BIO]], Ptr[Ptr[BIO]], CInt]
-  object sk_BIO_compfunc: 
+  object sk_BIO_compfunc:
     given _tag: Tag[sk_BIO_compfunc] = Tag.materializeCFuncPtr2[Ptr[Ptr[BIO]], Ptr[Ptr[BIO]], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_BIO_compfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[BIO]], Ptr[Ptr[BIO]], CInt]): sk_BIO_compfunc = o
@@ -2199,7 +2198,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_BIO_copyfunc = CFuncPtr1[Ptr[BIO], Ptr[BIO]]
-  object sk_BIO_copyfunc: 
+  object sk_BIO_copyfunc:
     given _tag: Tag[sk_BIO_copyfunc] = Tag.materializeCFuncPtr1[Ptr[BIO], Ptr[BIO]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_BIO_copyfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[BIO], Ptr[BIO]]): sk_BIO_copyfunc = o
@@ -2208,7 +2207,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_BIO_freefunc = CFuncPtr1[Ptr[BIO], Unit]
-  object sk_BIO_freefunc: 
+  object sk_BIO_freefunc:
     given _tag: Tag[sk_BIO_freefunc] = Tag.materializeCFuncPtr1[Ptr[BIO], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_BIO_freefunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[BIO], Unit]): sk_BIO_freefunc = o
@@ -2217,7 +2216,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_OPENSSL_BLOCK_compfunc = CFuncPtr2[Ptr[Ptr[Byte]], Ptr[Ptr[Byte]], CInt]
-  object sk_OPENSSL_BLOCK_compfunc: 
+  object sk_OPENSSL_BLOCK_compfunc:
     given _tag: Tag[sk_OPENSSL_BLOCK_compfunc] = Tag.materializeCFuncPtr2[Ptr[Ptr[Byte]], Ptr[Ptr[Byte]], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_OPENSSL_BLOCK_compfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[Byte]], Ptr[Ptr[Byte]], CInt]): sk_OPENSSL_BLOCK_compfunc = o
@@ -2226,7 +2225,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_OPENSSL_BLOCK_copyfunc = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object sk_OPENSSL_BLOCK_copyfunc: 
+  object sk_OPENSSL_BLOCK_copyfunc:
     given _tag: Tag[sk_OPENSSL_BLOCK_copyfunc] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_OPENSSL_BLOCK_copyfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): sk_OPENSSL_BLOCK_copyfunc = o
@@ -2235,7 +2234,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_OPENSSL_BLOCK_freefunc = CFuncPtr1[Ptr[Byte], Unit]
-  object sk_OPENSSL_BLOCK_freefunc: 
+  object sk_OPENSSL_BLOCK_freefunc:
     given _tag: Tag[sk_OPENSSL_BLOCK_freefunc] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_OPENSSL_BLOCK_freefunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): sk_OPENSSL_BLOCK_freefunc = o
@@ -2244,7 +2243,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_OPENSSL_CSTRING_compfunc = CFuncPtr2[Ptr[CString], Ptr[CString], CInt]
-  object sk_OPENSSL_CSTRING_compfunc: 
+  object sk_OPENSSL_CSTRING_compfunc:
     given _tag: Tag[sk_OPENSSL_CSTRING_compfunc] = Tag.materializeCFuncPtr2[Ptr[CString], Ptr[CString], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_OPENSSL_CSTRING_compfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[CString], Ptr[CString], CInt]): sk_OPENSSL_CSTRING_compfunc = o
@@ -2253,7 +2252,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_OPENSSL_CSTRING_copyfunc = CFuncPtr1[CString, CString]
-  object sk_OPENSSL_CSTRING_copyfunc: 
+  object sk_OPENSSL_CSTRING_copyfunc:
     given _tag: Tag[sk_OPENSSL_CSTRING_copyfunc] = Tag.materializeCFuncPtr1[CString, CString]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_OPENSSL_CSTRING_copyfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[CString, CString]): sk_OPENSSL_CSTRING_copyfunc = o
@@ -2262,7 +2261,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_OPENSSL_CSTRING_freefunc = CFuncPtr1[CString, Unit]
-  object sk_OPENSSL_CSTRING_freefunc: 
+  object sk_OPENSSL_CSTRING_freefunc:
     given _tag: Tag[sk_OPENSSL_CSTRING_freefunc] = Tag.materializeCFuncPtr1[CString, Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_OPENSSL_CSTRING_freefunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[CString, Unit]): sk_OPENSSL_CSTRING_freefunc = o
@@ -2271,7 +2270,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_OPENSSL_STRING_compfunc = CFuncPtr2[Ptr[CString], Ptr[CString], CInt]
-  object sk_OPENSSL_STRING_compfunc: 
+  object sk_OPENSSL_STRING_compfunc:
     given _tag: Tag[sk_OPENSSL_STRING_compfunc] = Tag.materializeCFuncPtr2[Ptr[CString], Ptr[CString], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_OPENSSL_STRING_compfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[CString], Ptr[CString], CInt]): sk_OPENSSL_STRING_compfunc = o
@@ -2280,7 +2279,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_OPENSSL_STRING_copyfunc = CFuncPtr1[CString, CString]
-  object sk_OPENSSL_STRING_copyfunc: 
+  object sk_OPENSSL_STRING_copyfunc:
     given _tag: Tag[sk_OPENSSL_STRING_copyfunc] = Tag.materializeCFuncPtr1[CString, CString]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_OPENSSL_STRING_copyfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[CString, CString]): sk_OPENSSL_STRING_copyfunc = o
@@ -2289,7 +2288,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_OPENSSL_STRING_freefunc = CFuncPtr1[CString, Unit]
-  object sk_OPENSSL_STRING_freefunc: 
+  object sk_OPENSSL_STRING_freefunc:
     given _tag: Tag[sk_OPENSSL_STRING_freefunc] = Tag.materializeCFuncPtr1[CString, Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_OPENSSL_STRING_freefunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[CString, Unit]): sk_OPENSSL_STRING_freefunc = o
@@ -2298,7 +2297,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_X509_ALGOR_compfunc = CFuncPtr2[Ptr[Ptr[X509_ALGOR]], Ptr[Ptr[X509_ALGOR]], CInt]
-  object sk_X509_ALGOR_compfunc: 
+  object sk_X509_ALGOR_compfunc:
     given _tag: Tag[sk_X509_ALGOR_compfunc] = Tag.materializeCFuncPtr2[Ptr[Ptr[X509_ALGOR]], Ptr[Ptr[X509_ALGOR]], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_X509_ALGOR_compfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[X509_ALGOR]], Ptr[Ptr[X509_ALGOR]], CInt]): sk_X509_ALGOR_compfunc = o
@@ -2307,7 +2306,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_X509_ALGOR_copyfunc = CFuncPtr1[Ptr[X509_ALGOR], Ptr[X509_ALGOR]]
-  object sk_X509_ALGOR_copyfunc: 
+  object sk_X509_ALGOR_copyfunc:
     given _tag: Tag[sk_X509_ALGOR_copyfunc] = Tag.materializeCFuncPtr1[Ptr[X509_ALGOR], Ptr[X509_ALGOR]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_X509_ALGOR_copyfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[X509_ALGOR], Ptr[X509_ALGOR]]): sk_X509_ALGOR_copyfunc = o
@@ -2316,7 +2315,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_X509_ALGOR_freefunc = CFuncPtr1[Ptr[X509_ALGOR], Unit]
-  object sk_X509_ALGOR_freefunc: 
+  object sk_X509_ALGOR_freefunc:
     given _tag: Tag[sk_X509_ALGOR_freefunc] = Tag.materializeCFuncPtr1[Ptr[X509_ALGOR], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_X509_ALGOR_freefunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[X509_ALGOR], Unit]): sk_X509_ALGOR_freefunc = o
@@ -2325,7 +2324,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_void_compfunc = CFuncPtr2[Ptr[Ptr[Byte]], Ptr[Ptr[Byte]], CInt]
-  object sk_void_compfunc: 
+  object sk_void_compfunc:
     given _tag: Tag[sk_void_compfunc] = Tag.materializeCFuncPtr2[Ptr[Ptr[Byte]], Ptr[Ptr[Byte]], CInt]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_void_compfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr2[Ptr[Ptr[Byte]], Ptr[Ptr[Byte]], CInt]): sk_void_compfunc = o
@@ -2334,7 +2333,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_void_copyfunc = CFuncPtr1[Ptr[Byte], Ptr[Byte]]
-  object sk_void_copyfunc: 
+  object sk_void_copyfunc:
     given _tag: Tag[sk_void_copyfunc] = Tag.materializeCFuncPtr1[Ptr[Byte], Ptr[Byte]]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_void_copyfunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Ptr[Byte]]): sk_void_copyfunc = o
@@ -2343,7 +2342,7 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   opaque type sk_void_freefunc = CFuncPtr1[Ptr[Byte], Unit]
-  object sk_void_freefunc: 
+  object sk_void_freefunc:
     given _tag: Tag[sk_void_freefunc] = Tag.materializeCFuncPtr1[Ptr[Byte], Unit]
     inline def fromPtr(ptr: Ptr[Byte] | CVoidPtr): sk_void_freefunc = CFuncPtr.fromPtr(ptr.asInstanceOf[Ptr[Byte]])
     inline def apply(inline o: CFuncPtr1[Ptr[Byte], Unit]): sk_void_freefunc = o
@@ -2352,42 +2351,42 @@ object aliases:
       inline def toPtr: CVoidPtr = CFuncPtr.toPtr(v)
 
   type time_t = posix.sys.types.time_t
-  object time_t: 
+  object time_t:
     val _tag: Tag[time_t] = summon[Tag[posix.sys.types.time_t]]
     inline def apply(inline o: posix.sys.types.time_t): time_t = o
     extension (v: time_t)
       inline def value: posix.sys.types.time_t = v
 
   type tm = posix.time.tm
-  object tm: 
+  object tm:
     val _tag: Tag[tm] = summon[Tag[posix.time.tm]]
     inline def apply(inline o: posix.time.tm): tm = o
     extension (v: tm)
       inline def value: posix.time.tm = v
 
   type uint32_t = scala.scalanative.unsigned.UInt
-  object uint32_t: 
+  object uint32_t:
     val _tag: Tag[uint32_t] = summon[Tag[scala.scalanative.unsigned.UInt]]
     inline def apply(inline o: scala.scalanative.unsigned.UInt): uint32_t = o
     extension (v: uint32_t)
       inline def value: scala.scalanative.unsigned.UInt = v
 
   type uint64_t = scala.scalanative.unsigned.ULong
-  object uint64_t: 
+  object uint64_t:
     val _tag: Tag[uint64_t] = summon[Tag[scala.scalanative.unsigned.ULong]]
     inline def apply(inline o: scala.scalanative.unsigned.ULong): uint64_t = o
     extension (v: uint64_t)
       inline def value: scala.scalanative.unsigned.ULong = v
 
   type uintmax_t = libc.stdint.uintmax_t
-  object uintmax_t: 
+  object uintmax_t:
     val _tag: Tag[uintmax_t] = summon[Tag[libc.stdint.uintmax_t]]
     inline def apply(inline o: libc.stdint.uintmax_t): uintmax_t = o
     extension (v: uintmax_t)
       inline def value: libc.stdint.uintmax_t = v
 
   type va_list = unsafe.CVarArgList
-  object va_list: 
+  object va_list:
     val _tag: Tag[va_list] = summon[Tag[unsafe.CVarArgList]]
     inline def apply(inline o: unsafe.CVarArgList): va_list = o
     extension (v: va_list)
@@ -2399,17 +2398,22 @@ object structs:
   import _root_.openssl.aliases.*
   import _root_.openssl.structs.*
   import _root_.openssl.unions.*
+
   opaque type ASN1_BIT_STRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_BIT_STRING:
     given _tag: Tag[ASN1_BIT_STRING] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_BIT_STRING on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_BIT_STRING] = scala.scalanative.unsafe.alloc[ASN1_BIT_STRING](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_BIT_STRING] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_BIT_STRING] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_BIT_STRING)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2419,18 +2423,23 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_BMPSTRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_BMPSTRING:
     given _tag: Tag[ASN1_BMPSTRING] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_BMPSTRING on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_BMPSTRING] = scala.scalanative.unsafe.alloc[ASN1_BMPSTRING](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_BMPSTRING] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_BMPSTRING] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_BMPSTRING)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2440,17 +2449,22 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_ENCODING = CStruct3[Ptr[CUnsignedChar], CLongInt, CInt]
+  
   object ASN1_ENCODING:
     given _tag: Tag[ASN1_ENCODING] = Tag.materializeCStruct3Tag[Ptr[CUnsignedChar], CLongInt, CInt]
+    
+    // Allocates ASN1_ENCODING on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_ENCODING] = scala.scalanative.unsafe.alloc[ASN1_ENCODING](1)
-    def apply(enc : Ptr[CUnsignedChar], len : CLongInt, modified : CInt)(using Zone): Ptr[ASN1_ENCODING] = 
+    def apply(enc : Ptr[CUnsignedChar], len : CLongInt, modified : CInt)(using Zone): Ptr[ASN1_ENCODING] =
       val ____ptr = apply()
       (!____ptr).enc = enc
       (!____ptr).len = len
       (!____ptr).modified = modified
       ____ptr
+    
     extension (struct: ASN1_ENCODING)
       def enc : Ptr[CUnsignedChar] = struct._1
       def enc_=(value: Ptr[CUnsignedChar]): Unit = !struct.at1 = value
@@ -2458,17 +2472,22 @@ object structs:
       def len_=(value: CLongInt): Unit = !struct.at2 = value
       def modified : CInt = struct._3
       def modified_=(value: CInt): Unit = !struct.at3 = value
+    
 
   opaque type ASN1_ENCODING_st = CStruct3[Ptr[CUnsignedChar], CLongInt, CInt]
+  
   object ASN1_ENCODING_st:
     given _tag: Tag[ASN1_ENCODING_st] = Tag.materializeCStruct3Tag[Ptr[CUnsignedChar], CLongInt, CInt]
+    
+    // Allocates ASN1_ENCODING_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_ENCODING_st] = scala.scalanative.unsafe.alloc[ASN1_ENCODING_st](1)
-    def apply(enc : Ptr[CUnsignedChar], len : CLongInt, modified : CInt)(using Zone): Ptr[ASN1_ENCODING_st] = 
+    def apply(enc : Ptr[CUnsignedChar], len : CLongInt, modified : CInt)(using Zone): Ptr[ASN1_ENCODING_st] =
       val ____ptr = apply()
       (!____ptr).enc = enc
       (!____ptr).len = len
       (!____ptr).modified = modified
       ____ptr
+    
     extension (struct: ASN1_ENCODING_st)
       def enc : Ptr[CUnsignedChar] = struct._1
       def enc_=(value: Ptr[CUnsignedChar]): Unit = !struct.at1 = value
@@ -2476,18 +2495,23 @@ object structs:
       def len_=(value: CLongInt): Unit = !struct.at2 = value
       def modified : CInt = struct._3
       def modified_=(value: CInt): Unit = !struct.at3 = value
+    
 
   opaque type ASN1_ENUMERATED = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_ENUMERATED:
     given _tag: Tag[ASN1_ENUMERATED] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_ENUMERATED on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_ENUMERATED] = scala.scalanative.unsafe.alloc[ASN1_ENUMERATED](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_ENUMERATED] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_ENUMERATED] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_ENUMERATED)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2497,18 +2521,23 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_GENERALIZEDTIME = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_GENERALIZEDTIME:
     given _tag: Tag[ASN1_GENERALIZEDTIME] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_GENERALIZEDTIME on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_GENERALIZEDTIME] = scala.scalanative.unsafe.alloc[ASN1_GENERALIZEDTIME](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_GENERALIZEDTIME] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_GENERALIZEDTIME] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_GENERALIZEDTIME)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2518,18 +2547,23 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_GENERALSTRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_GENERALSTRING:
     given _tag: Tag[ASN1_GENERALSTRING] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_GENERALSTRING on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_GENERALSTRING] = scala.scalanative.unsafe.alloc[ASN1_GENERALSTRING](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_GENERALSTRING] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_GENERALSTRING] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_GENERALSTRING)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2539,18 +2573,23 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_IA5STRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_IA5STRING:
     given _tag: Tag[ASN1_IA5STRING] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_IA5STRING on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_IA5STRING] = scala.scalanative.unsafe.alloc[ASN1_IA5STRING](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_IA5STRING] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_IA5STRING] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_IA5STRING)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2560,18 +2599,23 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_INTEGER = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_INTEGER:
     given _tag: Tag[ASN1_INTEGER] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_INTEGER on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_INTEGER] = scala.scalanative.unsafe.alloc[ASN1_INTEGER](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_INTEGER] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_INTEGER] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_INTEGER)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2581,30 +2625,41 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_ITEM = CStruct0
+  
   object ASN1_ITEM:
     given _tag: Tag[ASN1_ITEM] = Tag.materializeCStruct0Tag
+    
 
   opaque type ASN1_ITEM_st = CStruct0
+  
   object ASN1_ITEM_st:
     given _tag: Tag[ASN1_ITEM_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ASN1_OBJECT = CStruct0
+  
   object ASN1_OBJECT:
     given _tag: Tag[ASN1_OBJECT] = Tag.materializeCStruct0Tag
+    
 
   opaque type ASN1_OCTET_STRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_OCTET_STRING:
     given _tag: Tag[ASN1_OCTET_STRING] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_OCTET_STRING on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_OCTET_STRING] = scala.scalanative.unsafe.alloc[ASN1_OCTET_STRING](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_OCTET_STRING] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_OCTET_STRING] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_OCTET_STRING)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2614,22 +2669,29 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_PCTX = CStruct0
+  
   object ASN1_PCTX:
     given _tag: Tag[ASN1_PCTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type ASN1_PRINTABLESTRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_PRINTABLESTRING:
     given _tag: Tag[ASN1_PRINTABLESTRING] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_PRINTABLESTRING on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_PRINTABLESTRING] = scala.scalanative.unsafe.alloc[ASN1_PRINTABLESTRING](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_PRINTABLESTRING] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_PRINTABLESTRING] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_PRINTABLESTRING)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2639,26 +2701,35 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_SCTX = CStruct0
+  
   object ASN1_SCTX:
     given _tag: Tag[ASN1_SCTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type ASN1_SEQUENCE_ANY = CStruct0
+  
   object ASN1_SEQUENCE_ANY:
     given _tag: Tag[ASN1_SEQUENCE_ANY] = Tag.materializeCStruct0Tag
+    
 
   opaque type ASN1_STRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_STRING:
     given _tag: Tag[ASN1_STRING] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_STRING on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_STRING] = scala.scalanative.unsafe.alloc[ASN1_STRING](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_STRING] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_STRING] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_STRING)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2668,12 +2739,16 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_STRING_TABLE = CStruct5[CInt, CLongInt, CLongInt, CUnsignedLongInt, CUnsignedLongInt]
+  
   object ASN1_STRING_TABLE:
     given _tag: Tag[ASN1_STRING_TABLE] = Tag.materializeCStruct5Tag[CInt, CLongInt, CLongInt, CUnsignedLongInt, CUnsignedLongInt]
+    
+    // Allocates ASN1_STRING_TABLE on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_STRING_TABLE] = scala.scalanative.unsafe.alloc[ASN1_STRING_TABLE](1)
-    def apply(nid : CInt, minsize : CLongInt, maxsize : CLongInt, mask : CUnsignedLongInt, flags : CUnsignedLongInt)(using Zone): Ptr[ASN1_STRING_TABLE] = 
+    def apply(nid : CInt, minsize : CLongInt, maxsize : CLongInt, mask : CUnsignedLongInt, flags : CUnsignedLongInt)(using Zone): Ptr[ASN1_STRING_TABLE] =
       val ____ptr = apply()
       (!____ptr).nid = nid
       (!____ptr).minsize = minsize
@@ -2681,6 +2756,7 @@ object structs:
       (!____ptr).mask = mask
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_STRING_TABLE)
       def nid : CInt = struct._1
       def nid_=(value: CInt): Unit = !struct.at1 = value
@@ -2692,18 +2768,23 @@ object structs:
       def mask_=(value: CUnsignedLongInt): Unit = !struct.at4 = value
       def flags : CUnsignedLongInt = struct._5
       def flags_=(value: CUnsignedLongInt): Unit = !struct.at5 = value
+    
 
   opaque type ASN1_T61STRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_T61STRING:
     given _tag: Tag[ASN1_T61STRING] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_T61STRING on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_T61STRING] = scala.scalanative.unsafe.alloc[ASN1_T61STRING](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_T61STRING] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_T61STRING] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_T61STRING)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2713,26 +2794,35 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_TEMPLATE = CStruct0
+  
   object ASN1_TEMPLATE:
     given _tag: Tag[ASN1_TEMPLATE] = Tag.materializeCStruct0Tag
+    
 
   opaque type ASN1_TEMPLATE_st = CStruct0
+  
   object ASN1_TEMPLATE_st:
     given _tag: Tag[ASN1_TEMPLATE_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ASN1_TIME = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_TIME:
     given _tag: Tag[ASN1_TIME] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_TIME on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_TIME] = scala.scalanative.unsafe.alloc[ASN1_TIME](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_TIME] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_TIME] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_TIME)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2742,150 +2832,195 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_TLC = CStruct0
+  
   object ASN1_TLC:
     given _tag: Tag[ASN1_TLC] = Tag.materializeCStruct0Tag
+    
 
   opaque type ASN1_TLC_st = CStruct0
+  
   object ASN1_TLC_st:
     given _tag: Tag[ASN1_TLC_st] = Tag.materializeCStruct0Tag
+    
 
-  opaque type ASN1_TYPE = CStruct2[CInt, ASN1_TYPE.Union0]
+  opaque type ASN1_TYPE = CStruct2[CInt, ASN1_TYPE.Value]
+  
   object ASN1_TYPE:
-    opaque type Union0 = CArray[Byte, Nat._8]
-    object Union0:
-      given _tag: Tag[Union0] = Tag.CArray[CChar, Nat._8](Tag.Byte, Tag.Nat8)
-      def apply()(using Zone): Ptr[Union0] = 
-        val ___ptr = alloc[Union0](1)
+    given _tag: Tag[ASN1_TYPE] = Tag.materializeCStruct2Tag[CInt, ASN1_TYPE.Value]
+    
+    // Allocates ASN1_TYPE on the heap – fields are not initalised or zeroed out
+    def apply()(using Zone): Ptr[ASN1_TYPE] = scala.scalanative.unsafe.alloc[ASN1_TYPE](1)
+    def apply(`type` : CInt, value : ASN1_TYPE.Value)(using Zone): Ptr[ASN1_TYPE] =
+      val ____ptr = apply()
+      (!____ptr).`type` = `type`
+      (!____ptr).value = value
+      ____ptr
+    
+    extension (struct: ASN1_TYPE)
+      def `type` : CInt = struct._1
+      def type_=(value: CInt): Unit = !struct.at1 = value
+      def value : ASN1_TYPE.Value = struct._2
+      def value_=(value: ASN1_TYPE.Value): Unit = !struct.at2 = value
+    
+    opaque type Value = CArray[Byte, Nat._8]
+    object Value:
+      given _tag: Tag[Value] = Tag.CArray[CChar, Nat._8](Tag.Byte, Tag.Nat8)
+      
+      def apply()(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         ___ptr
+      
       @scala.annotation.targetName("apply_ptr")
-      def apply(ptr: CString)(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(ptr: CString)(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[CString]].update(0, ptr)
         ___ptr
+      
       @scala.annotation.targetName("apply_boolean")
-      def apply(boolean: ASN1_BOOLEAN)(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(boolean: ASN1_BOOLEAN)(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[ASN1_BOOLEAN]].update(0, boolean)
         ___ptr
+      
       @scala.annotation.targetName("apply_asn1_string")
-      def apply(asn1_string: Ptr[ASN1_STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(asn1_string: Ptr[ASN1_STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_STRING]]].update(0, asn1_string)
         ___ptr
+      
       @scala.annotation.targetName("apply_object")
-      def apply(`object`: Ptr[ASN1_OBJECT])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(`object`: Ptr[ASN1_OBJECT])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_OBJECT]]].update(0, `object`)
         ___ptr
+      
       @scala.annotation.targetName("apply_integer")
-      def apply(integer: Ptr[ASN1_INTEGER])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(integer: Ptr[ASN1_INTEGER])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_INTEGER]]].update(0, integer)
         ___ptr
+      
       @scala.annotation.targetName("apply_enumerated")
-      def apply(enumerated: Ptr[ASN1_ENUMERATED])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(enumerated: Ptr[ASN1_ENUMERATED])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_ENUMERATED]]].update(0, enumerated)
         ___ptr
+      
       @scala.annotation.targetName("apply_bit_string")
-      def apply(bit_string: Ptr[ASN1_BIT_STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(bit_string: Ptr[ASN1_BIT_STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_BIT_STRING]]].update(0, bit_string)
         ___ptr
+      
       @scala.annotation.targetName("apply_octet_string")
-      def apply(octet_string: Ptr[ASN1_OCTET_STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(octet_string: Ptr[ASN1_OCTET_STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_OCTET_STRING]]].update(0, octet_string)
         ___ptr
+      
       @scala.annotation.targetName("apply_printablestring")
-      def apply(printablestring: Ptr[ASN1_PRINTABLESTRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(printablestring: Ptr[ASN1_PRINTABLESTRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_PRINTABLESTRING]]].update(0, printablestring)
         ___ptr
+      
       @scala.annotation.targetName("apply_t61string")
-      def apply(t61string: Ptr[ASN1_T61STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(t61string: Ptr[ASN1_T61STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_T61STRING]]].update(0, t61string)
         ___ptr
+      
       @scala.annotation.targetName("apply_ia5string")
-      def apply(ia5string: Ptr[ASN1_IA5STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(ia5string: Ptr[ASN1_IA5STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_IA5STRING]]].update(0, ia5string)
         ___ptr
+      
       @scala.annotation.targetName("apply_generalstring")
-      def apply(generalstring: Ptr[ASN1_GENERALSTRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(generalstring: Ptr[ASN1_GENERALSTRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_GENERALSTRING]]].update(0, generalstring)
         ___ptr
+      
       @scala.annotation.targetName("apply_bmpstring")
-      def apply(bmpstring: Ptr[ASN1_BMPSTRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(bmpstring: Ptr[ASN1_BMPSTRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_BMPSTRING]]].update(0, bmpstring)
         ___ptr
+      
       @scala.annotation.targetName("apply_universalstring")
-      def apply(universalstring: Ptr[ASN1_UNIVERSALSTRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(universalstring: Ptr[ASN1_UNIVERSALSTRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_UNIVERSALSTRING]]].update(0, universalstring)
         ___ptr
+      
       @scala.annotation.targetName("apply_utctime")
-      def apply(utctime: Ptr[ASN1_UTCTIME])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(utctime: Ptr[ASN1_UTCTIME])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_UTCTIME]]].update(0, utctime)
         ___ptr
+      
       @scala.annotation.targetName("apply_generalizedtime")
-      def apply(generalizedtime: Ptr[ASN1_GENERALIZEDTIME])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(generalizedtime: Ptr[ASN1_GENERALIZEDTIME])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_GENERALIZEDTIME]]].update(0, generalizedtime)
         ___ptr
+      
       @scala.annotation.targetName("apply_visiblestring")
-      def apply(visiblestring: Ptr[ASN1_VISIBLESTRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(visiblestring: Ptr[ASN1_VISIBLESTRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_VISIBLESTRING]]].update(0, visiblestring)
         ___ptr
+      
       @scala.annotation.targetName("apply_utf8string")
-      def apply(utf8string: Ptr[ASN1_UTF8STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(utf8string: Ptr[ASN1_UTF8STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_UTF8STRING]]].update(0, utf8string)
         ___ptr
+      
       @scala.annotation.targetName("apply_set")
-      def apply(set: Ptr[ASN1_STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(set: Ptr[ASN1_STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_STRING]]].update(0, set)
         ___ptr
+      
       @scala.annotation.targetName("apply_sequence")
-      def apply(sequence: Ptr[ASN1_STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(sequence: Ptr[ASN1_STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_STRING]]].update(0, sequence)
         ___ptr
+      
       @scala.annotation.targetName("apply_asn1_value")
-      def apply(asn1_value: Ptr[ASN1_VALUE])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(asn1_value: Ptr[ASN1_VALUE])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_VALUE]]].update(0, asn1_value)
         ___ptr
-      extension (struct: Union0)
+      
+      extension (struct: Value)
         def ptr : CString = !struct.at(0).asInstanceOf[Ptr[CString]]
         def ptr_=(value: CString): Unit = !struct.at(0).asInstanceOf[Ptr[CString]] = value
         def boolean : ASN1_BOOLEAN = !struct.at(0).asInstanceOf[Ptr[ASN1_BOOLEAN]]
@@ -2928,30 +3063,22 @@ object structs:
         def sequence_=(value: Ptr[ASN1_STRING]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[ASN1_STRING]]] = value
         def asn1_value : Ptr[ASN1_VALUE] = !struct.at(0).asInstanceOf[Ptr[Ptr[ASN1_VALUE]]]
         def asn1_value_=(value: Ptr[ASN1_VALUE]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[ASN1_VALUE]]] = value
-    given _tag: Tag[ASN1_TYPE] = Tag.materializeCStruct2Tag[CInt, ASN1_TYPE.Union0]
-    def apply()(using Zone): Ptr[ASN1_TYPE] = scala.scalanative.unsafe.alloc[ASN1_TYPE](1)
-    def apply(`type` : CInt, value : ASN1_TYPE.Union0)(using Zone): Ptr[ASN1_TYPE] = 
-      val ____ptr = apply()
-      (!____ptr).`type` = `type`
-      (!____ptr).value = value
-      ____ptr
-    extension (struct: ASN1_TYPE)
-      def `type` : CInt = struct._1
-      def type_=(value: CInt): Unit = !struct.at1 = value
-      def value : ASN1_TYPE.Union0 = struct._2
-      def value_=(value: ASN1_TYPE.Union0): Unit = !struct.at2 = value
 
   opaque type ASN1_UNIVERSALSTRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_UNIVERSALSTRING:
     given _tag: Tag[ASN1_UNIVERSALSTRING] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_UNIVERSALSTRING on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_UNIVERSALSTRING] = scala.scalanative.unsafe.alloc[ASN1_UNIVERSALSTRING](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_UNIVERSALSTRING] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_UNIVERSALSTRING] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_UNIVERSALSTRING)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2961,18 +3088,23 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_UTCTIME = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_UTCTIME:
     given _tag: Tag[ASN1_UTCTIME] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_UTCTIME on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_UTCTIME] = scala.scalanative.unsafe.alloc[ASN1_UTCTIME](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_UTCTIME] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_UTCTIME] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_UTCTIME)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -2982,18 +3114,23 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_UTF8STRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_UTF8STRING:
     given _tag: Tag[ASN1_UTF8STRING] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_UTF8STRING on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_UTF8STRING] = scala.scalanative.unsafe.alloc[ASN1_UTF8STRING](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_UTF8STRING] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_UTF8STRING] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_UTF8STRING)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -3003,26 +3140,35 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type ASN1_VALUE = CStruct0
+  
   object ASN1_VALUE:
     given _tag: Tag[ASN1_VALUE] = Tag.materializeCStruct0Tag
+    
 
   opaque type ASN1_VALUE_st = CStruct0
+  
   object ASN1_VALUE_st:
     given _tag: Tag[ASN1_VALUE_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ASN1_VISIBLESTRING = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object ASN1_VISIBLESTRING:
     given _tag: Tag[ASN1_VISIBLESTRING] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates ASN1_VISIBLESTRING on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ASN1_VISIBLESTRING] = scala.scalanative.unsafe.alloc[ASN1_VISIBLESTRING](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_VISIBLESTRING] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[ASN1_VISIBLESTRING] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: ASN1_VISIBLESTRING)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -3032,41 +3178,58 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type AUTHORITY_KEYID = CStruct0
+  
   object AUTHORITY_KEYID:
     given _tag: Tag[AUTHORITY_KEYID] = Tag.materializeCStruct0Tag
+    
 
   opaque type AUTHORITY_KEYID_st = CStruct0
+  
   object AUTHORITY_KEYID_st:
     given _tag: Tag[AUTHORITY_KEYID_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type BIGNUM = CStruct0
+  
   object BIGNUM:
     given _tag: Tag[BIGNUM] = Tag.materializeCStruct0Tag
+    
 
   opaque type BIO = CStruct0
+  
   object BIO:
     given _tag: Tag[BIO] = Tag.materializeCStruct0Tag
+    
 
   opaque type BIO_ADDRINFO = CStruct0
+  
   object BIO_ADDRINFO:
     given _tag: Tag[BIO_ADDRINFO] = Tag.materializeCStruct0Tag
+    
 
   opaque type BIO_METHOD = CStruct0
+  
   object BIO_METHOD:
     given _tag: Tag[BIO_METHOD] = Tag.materializeCStruct0Tag
+    
 
   opaque type BIT_STRING_BITNAME = CStruct3[CInt, CString, CString]
+  
   object BIT_STRING_BITNAME:
     given _tag: Tag[BIT_STRING_BITNAME] = Tag.materializeCStruct3Tag[CInt, CString, CString]
+    
+    // Allocates BIT_STRING_BITNAME on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[BIT_STRING_BITNAME] = scala.scalanative.unsafe.alloc[BIT_STRING_BITNAME](1)
-    def apply(bitnum : CInt, lname : CString, sname : CString)(using Zone): Ptr[BIT_STRING_BITNAME] = 
+    def apply(bitnum : CInt, lname : CString, sname : CString)(using Zone): Ptr[BIT_STRING_BITNAME] =
       val ____ptr = apply()
       (!____ptr).bitnum = bitnum
       (!____ptr).lname = lname
       (!____ptr).sname = sname
       ____ptr
+    
     extension (struct: BIT_STRING_BITNAME)
       def bitnum : CInt = struct._1
       def bitnum_=(value: CInt): Unit = !struct.at1 = value
@@ -3074,17 +3237,22 @@ object structs:
       def lname_=(value: CString): Unit = !struct.at2 = value
       def sname : CString = struct._3
       def sname_=(value: CString): Unit = !struct.at3 = value
+    
 
   opaque type BIT_STRING_BITNAME_st = CStruct3[CInt, CString, CString]
+  
   object BIT_STRING_BITNAME_st:
     given _tag: Tag[BIT_STRING_BITNAME_st] = Tag.materializeCStruct3Tag[CInt, CString, CString]
+    
+    // Allocates BIT_STRING_BITNAME_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[BIT_STRING_BITNAME_st] = scala.scalanative.unsafe.alloc[BIT_STRING_BITNAME_st](1)
-    def apply(bitnum : CInt, lname : CString, sname : CString)(using Zone): Ptr[BIT_STRING_BITNAME_st] = 
+    def apply(bitnum : CInt, lname : CString, sname : CString)(using Zone): Ptr[BIT_STRING_BITNAME_st] =
       val ____ptr = apply()
       (!____ptr).bitnum = bitnum
       (!____ptr).lname = lname
       (!____ptr).sname = sname
       ____ptr
+    
     extension (struct: BIT_STRING_BITNAME_st)
       def bitnum : CInt = struct._1
       def bitnum_=(value: CInt): Unit = !struct.at1 = value
@@ -3092,175 +3260,247 @@ object structs:
       def lname_=(value: CString): Unit = !struct.at2 = value
       def sname : CString = struct._3
       def sname_=(value: CString): Unit = !struct.at3 = value
+    
 
   opaque type BN_BLINDING = CStruct0
+  
   object BN_BLINDING:
     given _tag: Tag[BN_BLINDING] = Tag.materializeCStruct0Tag
+    
 
   opaque type BN_CTX = CStruct0
+  
   object BN_CTX:
     given _tag: Tag[BN_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type BN_GENCB = CStruct0
+  
   object BN_GENCB:
     given _tag: Tag[BN_GENCB] = Tag.materializeCStruct0Tag
+    
 
   opaque type BN_MONT_CTX = CStruct0
+  
   object BN_MONT_CTX:
     given _tag: Tag[BN_MONT_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type BN_RECP_CTX = CStruct0
+  
   object BN_RECP_CTX:
     given _tag: Tag[BN_RECP_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type BUF_MEM = CStruct0
+  
   object BUF_MEM:
     given _tag: Tag[BUF_MEM] = Tag.materializeCStruct0Tag
+    
 
   opaque type COMP_CTX = CStruct0
+  
   object COMP_CTX:
     given _tag: Tag[COMP_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type COMP_METHOD = CStruct0
+  
   object COMP_METHOD:
     given _tag: Tag[COMP_METHOD] = Tag.materializeCStruct0Tag
+    
 
   opaque type CONF = CStruct0
+  
   object CONF:
     given _tag: Tag[CONF] = Tag.materializeCStruct0Tag
+    
 
-  opaque type CRYPTO_EX_DATA = CStruct3[Ptr[OSSL_LIB_CTX], CStruct0, Ptr[stack_st_void]]
+  opaque type CRYPTO_EX_DATA = CStruct2[Ptr[OSSL_LIB_CTX], Ptr[stack_st_void]]
+  
   object CRYPTO_EX_DATA:
-    opaque type Struct0 = CStruct0
-    object Struct0:
-      given _tag: Tag[Struct0] = Tag.materializeCStruct0Tag
-    given _tag: Tag[CRYPTO_EX_DATA] = Tag.materializeCStruct3Tag[Ptr[OSSL_LIB_CTX], CStruct0, Ptr[stack_st_void]]
+    given _tag: Tag[CRYPTO_EX_DATA] = Tag.materializeCStruct2Tag[Ptr[OSSL_LIB_CTX], Ptr[stack_st_void]]
+    
+    // Allocates CRYPTO_EX_DATA on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[CRYPTO_EX_DATA] = scala.scalanative.unsafe.alloc[CRYPTO_EX_DATA](1)
-    def apply(ctx : Ptr[OSSL_LIB_CTX], sk : Ptr[stack_st_void])(using Zone): Ptr[CRYPTO_EX_DATA] = 
+    def apply(ctx : Ptr[OSSL_LIB_CTX], sk : Ptr[stack_st_void])(using Zone): Ptr[CRYPTO_EX_DATA] =
       val ____ptr = apply()
       (!____ptr).ctx = ctx
       (!____ptr).sk = sk
       ____ptr
+    
     extension (struct: CRYPTO_EX_DATA)
       def ctx : Ptr[OSSL_LIB_CTX] = struct._1
       def ctx_=(value: Ptr[OSSL_LIB_CTX]): Unit = !struct.at1 = value
-      def sk : Ptr[stack_st_void] = struct._3
-      def sk_=(value: Ptr[stack_st_void]): Unit = !struct.at3 = value
+      def sk : Ptr[stack_st_void] = struct._2
+      def sk_=(value: Ptr[stack_st_void]): Unit = !struct.at2 = value
+    
 
   opaque type CRYPTO_THREADID = CStruct1[CInt]
+  
   object CRYPTO_THREADID:
     given _tag: Tag[CRYPTO_THREADID] = Tag.materializeCStruct1Tag[CInt]
+    
+    // Allocates CRYPTO_THREADID on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[CRYPTO_THREADID] = scala.scalanative.unsafe.alloc[CRYPTO_THREADID](1)
-    def apply(dummy : CInt)(using Zone): Ptr[CRYPTO_THREADID] = 
+    def apply(dummy : CInt)(using Zone): Ptr[CRYPTO_THREADID] =
       val ____ptr = apply()
       (!____ptr).dummy = dummy
       ____ptr
+    
     extension (struct: CRYPTO_THREADID)
       def dummy : CInt = struct._1
       def dummy_=(value: CInt): Unit = !struct.at1 = value
+    
 
   opaque type CRYPTO_dynlock = CStruct1[CInt]
+  
   object CRYPTO_dynlock:
     given _tag: Tag[CRYPTO_dynlock] = Tag.materializeCStruct1Tag[CInt]
+    
+    // Allocates CRYPTO_dynlock on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[CRYPTO_dynlock] = scala.scalanative.unsafe.alloc[CRYPTO_dynlock](1)
-    def apply(dummy : CInt)(using Zone): Ptr[CRYPTO_dynlock] = 
+    def apply(dummy : CInt)(using Zone): Ptr[CRYPTO_dynlock] =
       val ____ptr = apply()
       (!____ptr).dummy = dummy
       ____ptr
+    
     extension (struct: CRYPTO_dynlock)
       def dummy : CInt = struct._1
       def dummy_=(value: CInt): Unit = !struct.at1 = value
+    
 
   opaque type CTLOG = CStruct0
+  
   object CTLOG:
     given _tag: Tag[CTLOG] = Tag.materializeCStruct0Tag
+    
 
   opaque type CTLOG_STORE = CStruct0
+  
   object CTLOG_STORE:
     given _tag: Tag[CTLOG_STORE] = Tag.materializeCStruct0Tag
+    
 
   opaque type CT_POLICY_EVAL_CTX = CStruct0
+  
   object CT_POLICY_EVAL_CTX:
     given _tag: Tag[CT_POLICY_EVAL_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type DH = CStruct0
+  
   object DH:
     given _tag: Tag[DH] = Tag.materializeCStruct0Tag
+    
 
   opaque type DH_METHOD = CStruct0
+  
   object DH_METHOD:
     given _tag: Tag[DH_METHOD] = Tag.materializeCStruct0Tag
+    
 
   opaque type DIST_POINT = CStruct0
+  
   object DIST_POINT:
     given _tag: Tag[DIST_POINT] = Tag.materializeCStruct0Tag
+    
 
   opaque type DIST_POINT_st = CStruct0
+  
   object DIST_POINT_st:
     given _tag: Tag[DIST_POINT_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type DSA = CStruct0
+  
   object DSA:
     given _tag: Tag[DSA] = Tag.materializeCStruct0Tag
+    
 
   opaque type DSA_METHOD = CStruct0
+  
   object DSA_METHOD:
     given _tag: Tag[DSA_METHOD] = Tag.materializeCStruct0Tag
+    
 
   opaque type EC_KEY = CStruct0
+  
   object EC_KEY:
     given _tag: Tag[EC_KEY] = Tag.materializeCStruct0Tag
+    
 
   opaque type EC_KEY_METHOD = CStruct0
+  
   object EC_KEY_METHOD:
     given _tag: Tag[EC_KEY_METHOD] = Tag.materializeCStruct0Tag
+    
 
   opaque type ENGINE = CStruct0
+  
   object ENGINE:
     given _tag: Tag[ENGINE] = Tag.materializeCStruct0Tag
+    
 
   opaque type ERR_STATE = CStruct0
+  
   object ERR_STATE:
     given _tag: Tag[ERR_STATE] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_ASYM_CIPHER = CStruct0
+  
   object EVP_ASYM_CIPHER:
     given _tag: Tag[EVP_ASYM_CIPHER] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_CIPHER = CStruct0
+  
   object EVP_CIPHER:
     given _tag: Tag[EVP_CIPHER] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_CIPHER_CTX = CStruct0
+  
   object EVP_CIPHER_CTX:
     given _tag: Tag[EVP_CIPHER_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_CIPHER_INFO = CStruct2[Ptr[EVP_CIPHER], CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]]]
+  
   object EVP_CIPHER_INFO:
     given _tag: Tag[EVP_CIPHER_INFO] = Tag.materializeCStruct2Tag[Ptr[EVP_CIPHER], CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]]]
+    
+    // Allocates EVP_CIPHER_INFO on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[EVP_CIPHER_INFO] = scala.scalanative.unsafe.alloc[EVP_CIPHER_INFO](1)
-    def apply(cipher : Ptr[EVP_CIPHER], iv : CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]])(using Zone): Ptr[EVP_CIPHER_INFO] = 
+    def apply(cipher : Ptr[EVP_CIPHER], iv : CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]])(using Zone): Ptr[EVP_CIPHER_INFO] =
       val ____ptr = apply()
       (!____ptr).cipher = cipher
       (!____ptr).iv = iv
       ____ptr
+    
     extension (struct: EVP_CIPHER_INFO)
       def cipher : Ptr[EVP_CIPHER] = struct._1
       def cipher_=(value: Ptr[EVP_CIPHER]): Unit = !struct.at1 = value
       def iv : CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]] = struct._2
       def iv_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]]): Unit = !struct.at2 = value
+    
 
   opaque type EVP_CTRL_TLS1_1_MULTIBLOCK_PARAM = CStruct4[Ptr[CUnsignedChar], Ptr[CUnsignedChar], size_t, CUnsignedInt]
+  
   object EVP_CTRL_TLS1_1_MULTIBLOCK_PARAM:
     given _tag: Tag[EVP_CTRL_TLS1_1_MULTIBLOCK_PARAM] = Tag.materializeCStruct4Tag[Ptr[CUnsignedChar], Ptr[CUnsignedChar], size_t, CUnsignedInt]
+    
+    // Allocates EVP_CTRL_TLS1_1_MULTIBLOCK_PARAM on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[EVP_CTRL_TLS1_1_MULTIBLOCK_PARAM] = scala.scalanative.unsafe.alloc[EVP_CTRL_TLS1_1_MULTIBLOCK_PARAM](1)
-    def apply(out : Ptr[CUnsignedChar], inp : Ptr[CUnsignedChar], len : size_t, interleave : CUnsignedInt)(using Zone): Ptr[EVP_CTRL_TLS1_1_MULTIBLOCK_PARAM] = 
+    def apply(out : Ptr[CUnsignedChar], inp : Ptr[CUnsignedChar], len : size_t, interleave : CUnsignedInt)(using Zone): Ptr[EVP_CTRL_TLS1_1_MULTIBLOCK_PARAM] =
       val ____ptr = apply()
       (!____ptr).out = out
       (!____ptr).inp = inp
       (!____ptr).len = len
       (!____ptr).interleave = interleave
       ____ptr
+    
     extension (struct: EVP_CTRL_TLS1_1_MULTIBLOCK_PARAM)
       def out : Ptr[CUnsignedChar] = struct._1
       def out_=(value: Ptr[CUnsignedChar]): Unit = !struct.at1 = value
@@ -3270,106 +3510,155 @@ object structs:
       def len_=(value: size_t): Unit = !struct.at3 = value
       def interleave : CUnsignedInt = struct._4
       def interleave_=(value: CUnsignedInt): Unit = !struct.at4 = value
+    
 
   opaque type EVP_ENCODE_CTX = CStruct0
+  
   object EVP_ENCODE_CTX:
     given _tag: Tag[EVP_ENCODE_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_KDF = CStruct0
+  
   object EVP_KDF:
     given _tag: Tag[EVP_KDF] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_KDF_CTX = CStruct0
+  
   object EVP_KDF_CTX:
     given _tag: Tag[EVP_KDF_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_KEM = CStruct0
+  
   object EVP_KEM:
     given _tag: Tag[EVP_KEM] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_KEYEXCH = CStruct0
+  
   object EVP_KEYEXCH:
     given _tag: Tag[EVP_KEYEXCH] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_KEYMGMT = CStruct0
+  
   object EVP_KEYMGMT:
     given _tag: Tag[EVP_KEYMGMT] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_MAC = CStruct0
+  
   object EVP_MAC:
     given _tag: Tag[EVP_MAC] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_MAC_CTX = CStruct0
+  
   object EVP_MAC_CTX:
     given _tag: Tag[EVP_MAC_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_MD = CStruct0
+  
   object EVP_MD:
     given _tag: Tag[EVP_MD] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_MD_CTX = CStruct0
+  
   object EVP_MD_CTX:
     given _tag: Tag[EVP_MD_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_PKEY = CStruct0
+  
   object EVP_PKEY:
     given _tag: Tag[EVP_PKEY] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_PKEY_ASN1_METHOD = CStruct0
+  
   object EVP_PKEY_ASN1_METHOD:
     given _tag: Tag[EVP_PKEY_ASN1_METHOD] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_PKEY_CTX = CStruct0
+  
   object EVP_PKEY_CTX:
     given _tag: Tag[EVP_PKEY_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_PKEY_METHOD = CStruct0
+  
   object EVP_PKEY_METHOD:
     given _tag: Tag[EVP_PKEY_METHOD] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_RAND = CStruct0
+  
   object EVP_RAND:
     given _tag: Tag[EVP_RAND] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_RAND_CTX = CStruct0
+  
   object EVP_RAND_CTX:
     given _tag: Tag[EVP_RAND_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type EVP_SIGNATURE = CStruct0
+  
   object EVP_SIGNATURE:
     given _tag: Tag[EVP_SIGNATURE] = Tag.materializeCStruct0Tag
+    
 
   opaque type HMAC_CTX = CStruct0
+  
   object HMAC_CTX:
     given _tag: Tag[HMAC_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type ISSUING_DIST_POINT = CStruct0
+  
   object ISSUING_DIST_POINT:
     given _tag: Tag[ISSUING_DIST_POINT] = Tag.materializeCStruct0Tag
+    
 
   opaque type ISSUING_DIST_POINT_st = CStruct0
+  
   object ISSUING_DIST_POINT_st:
     given _tag: Tag[ISSUING_DIST_POINT_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type NAME_CONSTRAINTS = CStruct0
+  
   object NAME_CONSTRAINTS:
     given _tag: Tag[NAME_CONSTRAINTS] = Tag.materializeCStruct0Tag
+    
 
   opaque type NAME_CONSTRAINTS_st = CStruct0
+  
   object NAME_CONSTRAINTS_st:
     given _tag: Tag[NAME_CONSTRAINTS_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type OBJ_NAME = CStruct4[CInt, CInt, CString, CString]
+  
   object OBJ_NAME:
     given _tag: Tag[OBJ_NAME] = Tag.materializeCStruct4Tag[CInt, CInt, CString, CString]
+    
+    // Allocates OBJ_NAME on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[OBJ_NAME] = scala.scalanative.unsafe.alloc[OBJ_NAME](1)
-    def apply(`type` : CInt, alias : CInt, name : CString, data : CString)(using Zone): Ptr[OBJ_NAME] = 
+    def apply(`type` : CInt, alias : CInt, name : CString, data : CString)(using Zone): Ptr[OBJ_NAME] =
       val ____ptr = apply()
       (!____ptr).`type` = `type`
       (!____ptr).alias = alias
       (!____ptr).name = name
       (!____ptr).data = data
       ____ptr
+    
     extension (struct: OBJ_NAME)
       def `type` : CInt = struct._1
       def type_=(value: CInt): Unit = !struct.at1 = value
@@ -3379,38 +3668,53 @@ object structs:
       def name_=(value: CString): Unit = !struct.at3 = value
       def data : CString = struct._4
       def data_=(value: CString): Unit = !struct.at4 = value
+    
 
   opaque type OCSP_RESPID = CStruct0
+  
   object OCSP_RESPID:
     given _tag: Tag[OCSP_RESPID] = Tag.materializeCStruct0Tag
+    
 
   opaque type OCSP_RESPONSE = CStruct0
+  
   object OCSP_RESPONSE:
     given _tag: Tag[OCSP_RESPONSE] = Tag.materializeCStruct0Tag
+    
 
   opaque type OPENSSL_CORE_CTX = CStruct0
+  
   object OPENSSL_CORE_CTX:
     given _tag: Tag[OPENSSL_CORE_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type OPENSSL_INIT_SETTINGS = CStruct0
+  
   object OPENSSL_INIT_SETTINGS:
     given _tag: Tag[OPENSSL_INIT_SETTINGS] = Tag.materializeCStruct0Tag
+    
 
   opaque type OPENSSL_STACK = CStruct0
+  
   object OPENSSL_STACK:
     given _tag: Tag[OPENSSL_STACK] = Tag.materializeCStruct0Tag
+    
 
   opaque type OSSL_ALGORITHM = CStruct4[CString, CString, Ptr[OSSL_DISPATCH], CString]
+  
   object OSSL_ALGORITHM:
     given _tag: Tag[OSSL_ALGORITHM] = Tag.materializeCStruct4Tag[CString, CString, Ptr[OSSL_DISPATCH], CString]
+    
+    // Allocates OSSL_ALGORITHM on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[OSSL_ALGORITHM] = scala.scalanative.unsafe.alloc[OSSL_ALGORITHM](1)
-    def apply(algorithm_names : CString, property_definition : CString, implementation : Ptr[OSSL_DISPATCH], algorithm_description : CString)(using Zone): Ptr[OSSL_ALGORITHM] = 
+    def apply(algorithm_names : CString, property_definition : CString, implementation : Ptr[OSSL_DISPATCH], algorithm_description : CString)(using Zone): Ptr[OSSL_ALGORITHM] =
       val ____ptr = apply()
       (!____ptr).algorithm_names = algorithm_names
       (!____ptr).property_definition = property_definition
       (!____ptr).implementation = implementation
       (!____ptr).algorithm_description = algorithm_description
       ____ptr
+    
     extension (struct: OSSL_ALGORITHM)
       def algorithm_names : CString = struct._1
       def algorithm_names_=(value: CString): Unit = !struct.at1 = value
@@ -3420,74 +3724,104 @@ object structs:
       def implementation_=(value: Ptr[OSSL_DISPATCH]): Unit = !struct.at3 = value
       def algorithm_description : CString = struct._4
       def algorithm_description_=(value: CString): Unit = !struct.at4 = value
+    
 
   opaque type OSSL_CORE_BIO = CStruct0
+  
   object OSSL_CORE_BIO:
     given _tag: Tag[OSSL_CORE_BIO] = Tag.materializeCStruct0Tag
+    
 
   opaque type OSSL_CORE_HANDLE = CStruct0
+  
   object OSSL_CORE_HANDLE:
     given _tag: Tag[OSSL_CORE_HANDLE] = Tag.materializeCStruct0Tag
+    
 
   opaque type OSSL_DECODER = CStruct0
+  
   object OSSL_DECODER:
     given _tag: Tag[OSSL_DECODER] = Tag.materializeCStruct0Tag
+    
 
   opaque type OSSL_DECODER_CTX = CStruct0
+  
   object OSSL_DECODER_CTX:
     given _tag: Tag[OSSL_DECODER_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type OSSL_DISPATCH = CStruct2[CInt, CFuncPtr0[Unit]]
+  
   object OSSL_DISPATCH:
     given _tag: Tag[OSSL_DISPATCH] = Tag.materializeCStruct2Tag[CInt, CFuncPtr0[Unit]]
+    
+    // Allocates OSSL_DISPATCH on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[OSSL_DISPATCH] = scala.scalanative.unsafe.alloc[OSSL_DISPATCH](1)
-    def apply(function_id : CInt, function : CFuncPtr0[Unit])(using Zone): Ptr[OSSL_DISPATCH] = 
+    def apply(function_id : CInt, function : CFuncPtr0[Unit])(using Zone): Ptr[OSSL_DISPATCH] =
       val ____ptr = apply()
       (!____ptr).function_id = function_id
       (!____ptr).function = function
       ____ptr
+    
     extension (struct: OSSL_DISPATCH)
       def function_id : CInt = struct._1
       def function_id_=(value: CInt): Unit = !struct.at1 = value
       def function : CFuncPtr0[Unit] = struct._2
       def function_=(value: CFuncPtr0[Unit]): Unit = !struct.at2 = value
+    
 
   opaque type OSSL_ENCODER = CStruct0
+  
   object OSSL_ENCODER:
     given _tag: Tag[OSSL_ENCODER] = Tag.materializeCStruct0Tag
+    
 
   opaque type OSSL_ENCODER_CTX = CStruct0
+  
   object OSSL_ENCODER_CTX:
     given _tag: Tag[OSSL_ENCODER_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type OSSL_HTTP_REQ_CTX = CStruct0
+  
   object OSSL_HTTP_REQ_CTX:
     given _tag: Tag[OSSL_HTTP_REQ_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type OSSL_ITEM = CStruct2[CUnsignedInt, Ptr[Byte]]
+  
   object OSSL_ITEM:
     given _tag: Tag[OSSL_ITEM] = Tag.materializeCStruct2Tag[CUnsignedInt, Ptr[Byte]]
+    
+    // Allocates OSSL_ITEM on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[OSSL_ITEM] = scala.scalanative.unsafe.alloc[OSSL_ITEM](1)
-    def apply(id : CUnsignedInt, ptr : Ptr[Byte])(using Zone): Ptr[OSSL_ITEM] = 
+    def apply(id : CUnsignedInt, ptr : Ptr[Byte])(using Zone): Ptr[OSSL_ITEM] =
       val ____ptr = apply()
       (!____ptr).id = id
       (!____ptr).ptr = ptr
       ____ptr
+    
     extension (struct: OSSL_ITEM)
       def id : CUnsignedInt = struct._1
       def id_=(value: CUnsignedInt): Unit = !struct.at1 = value
       def ptr : Ptr[Byte] = struct._2
       def ptr_=(value: Ptr[Byte]): Unit = !struct.at2 = value
+    
 
   opaque type OSSL_LIB_CTX = CStruct0
+  
   object OSSL_LIB_CTX:
     given _tag: Tag[OSSL_LIB_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type OSSL_PARAM = CStruct5[CString, CUnsignedInt, Ptr[Byte], size_t, size_t]
+  
   object OSSL_PARAM:
     given _tag: Tag[OSSL_PARAM] = Tag.materializeCStruct5Tag[CString, CUnsignedInt, Ptr[Byte], size_t, size_t]
+    
+    // Allocates OSSL_PARAM on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[OSSL_PARAM] = scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
-    def apply(key : CString, data_type : CUnsignedInt, data : Ptr[Byte], data_size : size_t, return_size : size_t)(using Zone): Ptr[OSSL_PARAM] = 
+    def apply(key : CString, data_type : CUnsignedInt, data : Ptr[Byte], data_size : size_t, return_size : size_t)(using Zone): Ptr[OSSL_PARAM] =
       val ____ptr = apply()
       (!____ptr).key = key
       (!____ptr).data_type = data_type
@@ -3495,6 +3829,7 @@ object structs:
       (!____ptr).data_size = data_size
       (!____ptr).return_size = return_size
       ____ptr
+    
     extension (struct: OSSL_PARAM)
       def key : CString = struct._1
       def key_=(value: CString): Unit = !struct.at1 = value
@@ -3506,64 +3841,94 @@ object structs:
       def data_size_=(value: size_t): Unit = !struct.at4 = value
       def return_size : size_t = struct._5
       def return_size_=(value: size_t): Unit = !struct.at5 = value
+    
 
   opaque type OSSL_PARAM_BLD = CStruct0
+  
   object OSSL_PARAM_BLD:
     given _tag: Tag[OSSL_PARAM_BLD] = Tag.materializeCStruct0Tag
+    
 
   opaque type OSSL_PROVIDER = CStruct0
+  
   object OSSL_PROVIDER:
     given _tag: Tag[OSSL_PROVIDER] = Tag.materializeCStruct0Tag
+    
 
   opaque type OSSL_SELF_TEST = CStruct0
+  
   object OSSL_SELF_TEST:
     given _tag: Tag[OSSL_SELF_TEST] = Tag.materializeCStruct0Tag
+    
 
   opaque type OSSL_STORE_INFO = CStruct0
+  
   object OSSL_STORE_INFO:
     given _tag: Tag[OSSL_STORE_INFO] = Tag.materializeCStruct0Tag
+    
 
   opaque type OSSL_STORE_SEARCH = CStruct0
+  
   object OSSL_STORE_SEARCH:
     given _tag: Tag[OSSL_STORE_SEARCH] = Tag.materializeCStruct0Tag
+    
 
   opaque type PKCS8_PRIV_KEY_INFO = CStruct0
+  
   object PKCS8_PRIV_KEY_INFO:
     given _tag: Tag[PKCS8_PRIV_KEY_INFO] = Tag.materializeCStruct0Tag
+    
 
   opaque type RAND_DRBG = CStruct0
+  
   object RAND_DRBG:
     given _tag: Tag[RAND_DRBG] = Tag.materializeCStruct0Tag
+    
 
   opaque type RAND_METHOD = CStruct0
+  
   object RAND_METHOD:
     given _tag: Tag[RAND_METHOD] = Tag.materializeCStruct0Tag
+    
 
   opaque type RSA = CStruct0
+  
   object RSA:
     given _tag: Tag[RSA] = Tag.materializeCStruct0Tag
+    
 
   opaque type RSA_METHOD = CStruct0
+  
   object RSA_METHOD:
     given _tag: Tag[RSA_METHOD] = Tag.materializeCStruct0Tag
+    
 
   opaque type RSA_PSS_PARAMS = CStruct0
+  
   object RSA_PSS_PARAMS:
     given _tag: Tag[RSA_PSS_PARAMS] = Tag.materializeCStruct0Tag
+    
 
   opaque type SCT = CStruct0
+  
   object SCT:
     given _tag: Tag[SCT] = Tag.materializeCStruct0Tag
+    
 
   opaque type SCT_CTX = CStruct0
+  
   object SCT_CTX:
     given _tag: Tag[SCT_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type SHA256_CTX = CStruct6[CArray[CUnsignedInt, Nat._8], CUnsignedInt, CUnsignedInt, CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], CUnsignedInt, CUnsignedInt]
+  
   object SHA256_CTX:
     given _tag: Tag[SHA256_CTX] = Tag.materializeCStruct6Tag[CArray[CUnsignedInt, Nat._8], CUnsignedInt, CUnsignedInt, CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], CUnsignedInt, CUnsignedInt]
+    
+    // Allocates SHA256_CTX on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[SHA256_CTX] = scala.scalanative.unsafe.alloc[SHA256_CTX](1)
-    def apply(h : CArray[CUnsignedInt, Nat._8], Nl : CUnsignedInt, Nh : CUnsignedInt, data : CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], num : CUnsignedInt, md_len : CUnsignedInt)(using Zone): Ptr[SHA256_CTX] = 
+    def apply(h : CArray[CUnsignedInt, Nat._8], Nl : CUnsignedInt, Nh : CUnsignedInt, data : CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], num : CUnsignedInt, md_len : CUnsignedInt)(using Zone): Ptr[SHA256_CTX] =
       val ____ptr = apply()
       (!____ptr).h = h
       (!____ptr).Nl = Nl
@@ -3572,6 +3937,7 @@ object structs:
       (!____ptr).num = num
       (!____ptr).md_len = md_len
       ____ptr
+    
     extension (struct: SHA256_CTX)
       def h : CArray[CUnsignedInt, Nat._8] = struct._1
       def h_=(value: CArray[CUnsignedInt, Nat._8]): Unit = !struct.at1 = value
@@ -3585,12 +3951,16 @@ object structs:
       def num_=(value: CUnsignedInt): Unit = !struct.at5 = value
       def md_len : CUnsignedInt = struct._6
       def md_len_=(value: CUnsignedInt): Unit = !struct.at6 = value
+    
 
   opaque type SHA256state_st = CStruct6[CArray[CUnsignedInt, Nat._8], CUnsignedInt, CUnsignedInt, CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], CUnsignedInt, CUnsignedInt]
+  
   object SHA256state_st:
     given _tag: Tag[SHA256state_st] = Tag.materializeCStruct6Tag[CArray[CUnsignedInt, Nat._8], CUnsignedInt, CUnsignedInt, CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], CUnsignedInt, CUnsignedInt]
+    
+    // Allocates SHA256state_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[SHA256state_st] = scala.scalanative.unsafe.alloc[SHA256state_st](1)
-    def apply(h : CArray[CUnsignedInt, Nat._8], Nl : CUnsignedInt, Nh : CUnsignedInt, data : CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], num : CUnsignedInt, md_len : CUnsignedInt)(using Zone): Ptr[SHA256state_st] = 
+    def apply(h : CArray[CUnsignedInt, Nat._8], Nl : CUnsignedInt, Nh : CUnsignedInt, data : CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], num : CUnsignedInt, md_len : CUnsignedInt)(using Zone): Ptr[SHA256state_st] =
       val ____ptr = apply()
       (!____ptr).h = h
       (!____ptr).Nl = Nl
@@ -3599,6 +3969,7 @@ object structs:
       (!____ptr).num = num
       (!____ptr).md_len = md_len
       ____ptr
+    
     extension (struct: SHA256state_st)
       def h : CArray[CUnsignedInt, Nat._8] = struct._1
       def h_=(value: CArray[CUnsignedInt, Nat._8]): Unit = !struct.at1 = value
@@ -3612,35 +3983,16 @@ object structs:
       def num_=(value: CUnsignedInt): Unit = !struct.at5 = value
       def md_len : CUnsignedInt = struct._6
       def md_len_=(value: CUnsignedInt): Unit = !struct.at6 = value
+    
 
-  opaque type SHA512_CTX = CStruct6[CArray[CUnsignedLongLong, Nat._8], CUnsignedLongLong, CUnsignedLongLong, SHA512_CTX.Union0, CUnsignedInt, CUnsignedInt]
+  opaque type SHA512_CTX = CStruct6[CArray[CUnsignedLongLong, Nat._8], CUnsignedLongLong, CUnsignedLongLong, SHA512_CTX.U, CUnsignedInt, CUnsignedInt]
+  
   object SHA512_CTX:
-    opaque type Union0 = CArray[Byte, Nat.Digit3[Nat._1, Nat._2, Nat._8]]
-    object Union0:
-      given _tag: Tag[Union0] = Tag.CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]](Tag.Byte, Tag.Digit3[Nat._1, Nat._2, Nat._8](Tag.Nat1, Tag.Nat2, Tag.Nat8))
-      def apply()(using Zone): Ptr[Union0] = 
-        val ___ptr = alloc[Union0](1)
-        ___ptr
-      @scala.annotation.targetName("apply_d")
-      def apply(d: CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
-        val un = !___ptr
-        un.at(0).asInstanceOf[Ptr[CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]]]].update(0, d)
-        ___ptr
-      @scala.annotation.targetName("apply_p")
-      def apply(p: CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
-        val un = !___ptr
-        un.at(0).asInstanceOf[Ptr[CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]].update(0, p)
-        ___ptr
-      extension (struct: Union0)
-        def d : CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]] = !struct.at(0).asInstanceOf[Ptr[CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]]]]
-        def d_=(value: CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]]]] = value
-        def p : CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]] = !struct.at(0).asInstanceOf[Ptr[CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]]
-        def p_=(value: CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]] = value
-    given _tag: Tag[SHA512_CTX] = Tag.materializeCStruct6Tag[CArray[CUnsignedLongLong, Nat._8], CUnsignedLongLong, CUnsignedLongLong, SHA512_CTX.Union0, CUnsignedInt, CUnsignedInt]
+    given _tag: Tag[SHA512_CTX] = Tag.materializeCStruct6Tag[CArray[CUnsignedLongLong, Nat._8], CUnsignedLongLong, CUnsignedLongLong, SHA512_CTX.U, CUnsignedInt, CUnsignedInt]
+    
+    // Allocates SHA512_CTX on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[SHA512_CTX] = scala.scalanative.unsafe.alloc[SHA512_CTX](1)
-    def apply(h : CArray[CUnsignedLongLong, Nat._8], Nl : CUnsignedLongLong, Nh : CUnsignedLongLong, u : SHA512_CTX.Union0, num : CUnsignedInt, md_len : CUnsignedInt)(using Zone): Ptr[SHA512_CTX] = 
+    def apply(h : CArray[CUnsignedLongLong, Nat._8], Nl : CUnsignedLongLong, Nh : CUnsignedLongLong, u : SHA512_CTX.U, num : CUnsignedInt, md_len : CUnsignedInt)(using Zone): Ptr[SHA512_CTX] =
       val ____ptr = apply()
       (!____ptr).h = h
       (!____ptr).Nl = Nl
@@ -3649,6 +4001,7 @@ object structs:
       (!____ptr).num = num
       (!____ptr).md_len = md_len
       ____ptr
+    
     extension (struct: SHA512_CTX)
       def h : CArray[CUnsignedLongLong, Nat._8] = struct._1
       def h_=(value: CArray[CUnsignedLongLong, Nat._8]): Unit = !struct.at1 = value
@@ -3656,41 +4009,49 @@ object structs:
       def Nl_=(value: CUnsignedLongLong): Unit = !struct.at2 = value
       def Nh : CUnsignedLongLong = struct._3
       def Nh_=(value: CUnsignedLongLong): Unit = !struct.at3 = value
-      def u : SHA512_CTX.Union0 = struct._4
-      def u_=(value: SHA512_CTX.Union0): Unit = !struct.at4 = value
+      def u : SHA512_CTX.U = struct._4
+      def u_=(value: SHA512_CTX.U): Unit = !struct.at4 = value
       def num : CUnsignedInt = struct._5
       def num_=(value: CUnsignedInt): Unit = !struct.at5 = value
       def md_len : CUnsignedInt = struct._6
       def md_len_=(value: CUnsignedInt): Unit = !struct.at6 = value
-
-  opaque type SHA512state_st = CStruct6[CArray[CUnsignedLongLong, Nat._8], CUnsignedLongLong, CUnsignedLongLong, SHA512state_st.Union0, CUnsignedInt, CUnsignedInt]
-  object SHA512state_st:
-    opaque type Union0 = CArray[Byte, Nat.Digit3[Nat._1, Nat._2, Nat._8]]
-    object Union0:
-      given _tag: Tag[Union0] = Tag.CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]](Tag.Byte, Tag.Digit3[Nat._1, Nat._2, Nat._8](Tag.Nat1, Tag.Nat2, Tag.Nat8))
-      def apply()(using Zone): Ptr[Union0] = 
-        val ___ptr = alloc[Union0](1)
+    
+    opaque type U = CArray[Byte, Nat.Digit3[Nat._1, Nat._2, Nat._8]]
+    object U:
+      given _tag: Tag[U] = Tag.CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]](Tag.Byte, Tag.Digit3[Nat._1, Nat._2, Nat._8](Tag.Nat1, Tag.Nat2, Tag.Nat8))
+      
+      def apply()(using Zone): Ptr[U] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
         ___ptr
+      
       @scala.annotation.targetName("apply_d")
-      def apply(d: CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(d: CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]])(using Zone): Ptr[U] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]]]].update(0, d)
         ___ptr
+      
       @scala.annotation.targetName("apply_p")
-      def apply(p: CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(p: CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]])(using Zone): Ptr[U] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]].update(0, p)
         ___ptr
-      extension (struct: Union0)
+      
+      extension (struct: U)
         def d : CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]] = !struct.at(0).asInstanceOf[Ptr[CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]]]]
         def d_=(value: CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]]]] = value
         def p : CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]] = !struct.at(0).asInstanceOf[Ptr[CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]]
         def p_=(value: CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]] = value
-    given _tag: Tag[SHA512state_st] = Tag.materializeCStruct6Tag[CArray[CUnsignedLongLong, Nat._8], CUnsignedLongLong, CUnsignedLongLong, SHA512state_st.Union0, CUnsignedInt, CUnsignedInt]
+
+  opaque type SHA512state_st = CStruct6[CArray[CUnsignedLongLong, Nat._8], CUnsignedLongLong, CUnsignedLongLong, SHA512state_st.U, CUnsignedInt, CUnsignedInt]
+  
+  object SHA512state_st:
+    given _tag: Tag[SHA512state_st] = Tag.materializeCStruct6Tag[CArray[CUnsignedLongLong, Nat._8], CUnsignedLongLong, CUnsignedLongLong, SHA512state_st.U, CUnsignedInt, CUnsignedInt]
+    
+    // Allocates SHA512state_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[SHA512state_st] = scala.scalanative.unsafe.alloc[SHA512state_st](1)
-    def apply(h : CArray[CUnsignedLongLong, Nat._8], Nl : CUnsignedLongLong, Nh : CUnsignedLongLong, u : SHA512state_st.Union0, num : CUnsignedInt, md_len : CUnsignedInt)(using Zone): Ptr[SHA512state_st] = 
+    def apply(h : CArray[CUnsignedLongLong, Nat._8], Nl : CUnsignedLongLong, Nh : CUnsignedLongLong, u : SHA512state_st.U, num : CUnsignedInt, md_len : CUnsignedInt)(using Zone): Ptr[SHA512state_st] =
       val ____ptr = apply()
       (!____ptr).h = h
       (!____ptr).Nl = Nl
@@ -3699,6 +4060,7 @@ object structs:
       (!____ptr).num = num
       (!____ptr).md_len = md_len
       ____ptr
+    
     extension (struct: SHA512state_st)
       def h : CArray[CUnsignedLongLong, Nat._8] = struct._1
       def h_=(value: CArray[CUnsignedLongLong, Nat._8]): Unit = !struct.at1 = value
@@ -3706,18 +4068,49 @@ object structs:
       def Nl_=(value: CUnsignedLongLong): Unit = !struct.at2 = value
       def Nh : CUnsignedLongLong = struct._3
       def Nh_=(value: CUnsignedLongLong): Unit = !struct.at3 = value
-      def u : SHA512state_st.Union0 = struct._4
-      def u_=(value: SHA512state_st.Union0): Unit = !struct.at4 = value
+      def u : SHA512state_st.U = struct._4
+      def u_=(value: SHA512state_st.U): Unit = !struct.at4 = value
       def num : CUnsignedInt = struct._5
       def num_=(value: CUnsignedInt): Unit = !struct.at5 = value
       def md_len : CUnsignedInt = struct._6
       def md_len_=(value: CUnsignedInt): Unit = !struct.at6 = value
+    
+    opaque type U = CArray[Byte, Nat.Digit3[Nat._1, Nat._2, Nat._8]]
+    object U:
+      given _tag: Tag[U] = Tag.CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]](Tag.Byte, Tag.Digit3[Nat._1, Nat._2, Nat._8](Tag.Nat1, Tag.Nat2, Tag.Nat8))
+      
+      def apply()(using Zone): Ptr[U] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
+        ___ptr
+      
+      @scala.annotation.targetName("apply_d")
+      def apply(d: CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]])(using Zone): Ptr[U] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
+        val un = !___ptr
+        un.at(0).asInstanceOf[Ptr[CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]]]].update(0, d)
+        ___ptr
+      
+      @scala.annotation.targetName("apply_p")
+      def apply(p: CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]])(using Zone): Ptr[U] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
+        val un = !___ptr
+        un.at(0).asInstanceOf[Ptr[CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]].update(0, p)
+        ___ptr
+      
+      extension (struct: U)
+        def d : CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]] = !struct.at(0).asInstanceOf[Ptr[CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]]]]
+        def d_=(value: CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[CUnsignedLongLong, Nat.Digit2[Nat._1, Nat._6]]]] = value
+        def p : CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]] = !struct.at(0).asInstanceOf[Ptr[CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]]
+        def p_=(value: CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]): Unit = !struct.at(0).asInstanceOf[Ptr[CArray[CUnsignedChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]] = value
 
   opaque type SHA_CTX = CStruct9[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], CUnsignedInt]
+  
   object SHA_CTX:
     given _tag: Tag[SHA_CTX] = Tag.materializeCStruct9Tag[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], CUnsignedInt]
+    
+    // Allocates SHA_CTX on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[SHA_CTX] = scala.scalanative.unsafe.alloc[SHA_CTX](1)
-    def apply(h0 : CUnsignedInt, h1 : CUnsignedInt, h2 : CUnsignedInt, h3 : CUnsignedInt, h4 : CUnsignedInt, Nl : CUnsignedInt, Nh : CUnsignedInt, data : CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], num : CUnsignedInt)(using Zone): Ptr[SHA_CTX] = 
+    def apply(h0 : CUnsignedInt, h1 : CUnsignedInt, h2 : CUnsignedInt, h3 : CUnsignedInt, h4 : CUnsignedInt, Nl : CUnsignedInt, Nh : CUnsignedInt, data : CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], num : CUnsignedInt)(using Zone): Ptr[SHA_CTX] =
       val ____ptr = apply()
       (!____ptr).h0 = h0
       (!____ptr).h1 = h1
@@ -3729,6 +4122,7 @@ object structs:
       (!____ptr).data = data
       (!____ptr).num = num
       ____ptr
+    
     extension (struct: SHA_CTX)
       def h0 : CUnsignedInt = struct._1
       def h0_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -3748,12 +4142,16 @@ object structs:
       def data_=(value: CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]]): Unit = !struct.at8 = value
       def num : CUnsignedInt = struct._9
       def num_=(value: CUnsignedInt): Unit = !struct.at9 = value
+    
 
   opaque type SHAstate_st = CStruct9[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], CUnsignedInt]
+  
   object SHAstate_st:
     given _tag: Tag[SHAstate_st] = Tag.materializeCStruct9Tag[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], CUnsignedInt]
+    
+    // Allocates SHAstate_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[SHAstate_st] = scala.scalanative.unsafe.alloc[SHAstate_st](1)
-    def apply(h0 : CUnsignedInt, h1 : CUnsignedInt, h2 : CUnsignedInt, h3 : CUnsignedInt, h4 : CUnsignedInt, Nl : CUnsignedInt, Nh : CUnsignedInt, data : CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], num : CUnsignedInt)(using Zone): Ptr[SHAstate_st] = 
+    def apply(h0 : CUnsignedInt, h1 : CUnsignedInt, h2 : CUnsignedInt, h3 : CUnsignedInt, h4 : CUnsignedInt, Nl : CUnsignedInt, Nh : CUnsignedInt, data : CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]], num : CUnsignedInt)(using Zone): Ptr[SHAstate_st] =
       val ____ptr = apply()
       (!____ptr).h0 = h0
       (!____ptr).h1 = h1
@@ -3765,6 +4163,7 @@ object structs:
       (!____ptr).data = data
       (!____ptr).num = num
       ____ptr
+    
     extension (struct: SHAstate_st)
       def h0 : CUnsignedInt = struct._1
       def h0_=(value: CUnsignedInt): Unit = !struct.at1 = value
@@ -3784,162 +4183,239 @@ object structs:
       def data_=(value: CArray[CUnsignedInt, Nat.Digit2[Nat._1, Nat._6]]): Unit = !struct.at8 = value
       def num : CUnsignedInt = struct._9
       def num_=(value: CUnsignedInt): Unit = !struct.at9 = value
+    
 
   opaque type SSL = CStruct0
+  
   object SSL:
     given _tag: Tag[SSL] = Tag.materializeCStruct0Tag
+    
 
   opaque type SSL_CTX = CStruct0
+  
   object SSL_CTX:
     given _tag: Tag[SSL_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type SSL_DANE = CStruct0
+  
   object SSL_DANE:
     given _tag: Tag[SSL_DANE] = Tag.materializeCStruct0Tag
+    
 
   opaque type UI = CStruct0
+  
   object UI:
     given _tag: Tag[UI] = Tag.materializeCStruct0Tag
+    
 
   opaque type UI_METHOD = CStruct0
+  
   object UI_METHOD:
     given _tag: Tag[UI_METHOD] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509 = CStruct0
+  
   object X509:
     given _tag: Tag[X509] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509V3_CTX = CStruct0
+  
   object X509V3_CTX:
     given _tag: Tag[X509V3_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_ALGOR = CStruct0
+  
   object X509_ALGOR:
     given _tag: Tag[X509_ALGOR] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_CRL = CStruct0
+  
   object X509_CRL:
     given _tag: Tag[X509_CRL] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_CRL_METHOD = CStruct0
+  
   object X509_CRL_METHOD:
     given _tag: Tag[X509_CRL_METHOD] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_LOOKUP = CStruct0
+  
   object X509_LOOKUP:
     given _tag: Tag[X509_LOOKUP] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_LOOKUP_METHOD = CStruct0
+  
   object X509_LOOKUP_METHOD:
     given _tag: Tag[X509_LOOKUP_METHOD] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_NAME = CStruct0
+  
   object X509_NAME:
     given _tag: Tag[X509_NAME] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_OBJECT = CStruct0
+  
   object X509_OBJECT:
     given _tag: Tag[X509_OBJECT] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_POLICY_CACHE = CStruct0
+  
   object X509_POLICY_CACHE:
     given _tag: Tag[X509_POLICY_CACHE] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_POLICY_CACHE_st = CStruct0
+  
   object X509_POLICY_CACHE_st:
     given _tag: Tag[X509_POLICY_CACHE_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_POLICY_LEVEL = CStruct0
+  
   object X509_POLICY_LEVEL:
     given _tag: Tag[X509_POLICY_LEVEL] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_POLICY_LEVEL_st = CStruct0
+  
   object X509_POLICY_LEVEL_st:
     given _tag: Tag[X509_POLICY_LEVEL_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_POLICY_NODE = CStruct0
+  
   object X509_POLICY_NODE:
     given _tag: Tag[X509_POLICY_NODE] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_POLICY_NODE_st = CStruct0
+  
   object X509_POLICY_NODE_st:
     given _tag: Tag[X509_POLICY_NODE_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_POLICY_TREE = CStruct0
+  
   object X509_POLICY_TREE:
     given _tag: Tag[X509_POLICY_TREE] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_POLICY_TREE_st = CStruct0
+  
   object X509_POLICY_TREE_st:
     given _tag: Tag[X509_POLICY_TREE_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_PUBKEY = CStruct0
+  
   object X509_PUBKEY:
     given _tag: Tag[X509_PUBKEY] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_REVOKED = CStruct0
+  
   object X509_REVOKED:
     given _tag: Tag[X509_REVOKED] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_SIG_INFO = CStruct0
+  
   object X509_SIG_INFO:
     given _tag: Tag[X509_SIG_INFO] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_STORE = CStruct0
+  
   object X509_STORE:
     given _tag: Tag[X509_STORE] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_STORE_CTX = CStruct0
+  
   object X509_STORE_CTX:
     given _tag: Tag[X509_STORE_CTX] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_VERIFY_PARAM = CStruct0
+  
   object X509_VERIFY_PARAM:
     given _tag: Tag[X509_VERIFY_PARAM] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_VERIFY_PARAM_st = CStruct0
+  
   object X509_VERIFY_PARAM_st:
     given _tag: Tag[X509_VERIFY_PARAM_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_algor_st = CStruct0
+  
   object X509_algor_st:
     given _tag: Tag[X509_algor_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_crl_st = CStruct0
+  
   object X509_crl_st:
     given _tag: Tag[X509_crl_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_name_st = CStruct0
+  
   object X509_name_st:
     given _tag: Tag[X509_name_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type X509_pubkey_st = CStruct0
+  
   object X509_pubkey_st:
     given _tag: Tag[X509_pubkey_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type asn1_object_st = CStruct0
+  
   object asn1_object_st:
     given _tag: Tag[asn1_object_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type asn1_pctx_st = CStruct0
+  
   object asn1_pctx_st:
     given _tag: Tag[asn1_pctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type asn1_sctx_st = CStruct0
+  
   object asn1_sctx_st:
     given _tag: Tag[asn1_sctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type asn1_string_st = CStruct4[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+  
   object asn1_string_st:
     given _tag: Tag[asn1_string_st] = Tag.materializeCStruct4Tag[CInt, CInt, Ptr[CUnsignedChar], CLongInt]
+    
+    // Allocates asn1_string_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[asn1_string_st] = scala.scalanative.unsafe.alloc[asn1_string_st](1)
-    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[asn1_string_st] = 
+    def apply(length : CInt, `type` : CInt, data : Ptr[CUnsignedChar], flags : CLongInt)(using Zone): Ptr[asn1_string_st] =
       val ____ptr = apply()
       (!____ptr).length = length
       (!____ptr).`type` = `type`
       (!____ptr).data = data
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: asn1_string_st)
       def length : CInt = struct._1
       def length_=(value: CInt): Unit = !struct.at1 = value
@@ -3949,12 +4425,16 @@ object structs:
       def data_=(value: Ptr[CUnsignedChar]): Unit = !struct.at3 = value
       def flags : CLongInt = struct._4
       def flags_=(value: CLongInt): Unit = !struct.at4 = value
+    
 
   opaque type asn1_string_table_st = CStruct5[CInt, CLongInt, CLongInt, CUnsignedLongInt, CUnsignedLongInt]
+  
   object asn1_string_table_st:
     given _tag: Tag[asn1_string_table_st] = Tag.materializeCStruct5Tag[CInt, CLongInt, CLongInt, CUnsignedLongInt, CUnsignedLongInt]
+    
+    // Allocates asn1_string_table_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[asn1_string_table_st] = scala.scalanative.unsafe.alloc[asn1_string_table_st](1)
-    def apply(nid : CInt, minsize : CLongInt, maxsize : CLongInt, mask : CUnsignedLongInt, flags : CUnsignedLongInt)(using Zone): Ptr[asn1_string_table_st] = 
+    def apply(nid : CInt, minsize : CLongInt, maxsize : CLongInt, mask : CUnsignedLongInt, flags : CUnsignedLongInt)(using Zone): Ptr[asn1_string_table_st] =
       val ____ptr = apply()
       (!____ptr).nid = nid
       (!____ptr).minsize = minsize
@@ -3962,6 +4442,7 @@ object structs:
       (!____ptr).mask = mask
       (!____ptr).flags = flags
       ____ptr
+    
     extension (struct: asn1_string_table_st)
       def nid : CInt = struct._1
       def nid_=(value: CInt): Unit = !struct.at1 = value
@@ -3973,142 +4454,183 @@ object structs:
       def mask_=(value: CUnsignedLongInt): Unit = !struct.at4 = value
       def flags : CUnsignedLongInt = struct._5
       def flags_=(value: CUnsignedLongInt): Unit = !struct.at5 = value
+    
 
-  opaque type asn1_type_st = CStruct2[CInt, asn1_type_st.Union0]
+  opaque type asn1_type_st = CStruct2[CInt, asn1_type_st.Value]
+  
   object asn1_type_st:
-    opaque type Union0 = CArray[Byte, Nat._8]
-    object Union0:
-      given _tag: Tag[Union0] = Tag.CArray[CChar, Nat._8](Tag.Byte, Tag.Nat8)
-      def apply()(using Zone): Ptr[Union0] = 
-        val ___ptr = alloc[Union0](1)
+    given _tag: Tag[asn1_type_st] = Tag.materializeCStruct2Tag[CInt, asn1_type_st.Value]
+    
+    // Allocates asn1_type_st on the heap – fields are not initalised or zeroed out
+    def apply()(using Zone): Ptr[asn1_type_st] = scala.scalanative.unsafe.alloc[asn1_type_st](1)
+    def apply(`type` : CInt, value : asn1_type_st.Value)(using Zone): Ptr[asn1_type_st] =
+      val ____ptr = apply()
+      (!____ptr).`type` = `type`
+      (!____ptr).value = value
+      ____ptr
+    
+    extension (struct: asn1_type_st)
+      def `type` : CInt = struct._1
+      def type_=(value: CInt): Unit = !struct.at1 = value
+      def value : asn1_type_st.Value = struct._2
+      def value_=(value: asn1_type_st.Value): Unit = !struct.at2 = value
+    
+    opaque type Value = CArray[Byte, Nat._8]
+    object Value:
+      given _tag: Tag[Value] = Tag.CArray[CChar, Nat._8](Tag.Byte, Tag.Nat8)
+      
+      def apply()(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         ___ptr
+      
       @scala.annotation.targetName("apply_ptr")
-      def apply(ptr: CString)(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(ptr: CString)(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[CString]].update(0, ptr)
         ___ptr
+      
       @scala.annotation.targetName("apply_boolean")
-      def apply(boolean: ASN1_BOOLEAN)(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(boolean: ASN1_BOOLEAN)(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[ASN1_BOOLEAN]].update(0, boolean)
         ___ptr
+      
       @scala.annotation.targetName("apply_asn1_string")
-      def apply(asn1_string: Ptr[ASN1_STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(asn1_string: Ptr[ASN1_STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_STRING]]].update(0, asn1_string)
         ___ptr
+      
       @scala.annotation.targetName("apply_object")
-      def apply(`object`: Ptr[ASN1_OBJECT])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(`object`: Ptr[ASN1_OBJECT])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_OBJECT]]].update(0, `object`)
         ___ptr
+      
       @scala.annotation.targetName("apply_integer")
-      def apply(integer: Ptr[ASN1_INTEGER])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(integer: Ptr[ASN1_INTEGER])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_INTEGER]]].update(0, integer)
         ___ptr
+      
       @scala.annotation.targetName("apply_enumerated")
-      def apply(enumerated: Ptr[ASN1_ENUMERATED])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(enumerated: Ptr[ASN1_ENUMERATED])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_ENUMERATED]]].update(0, enumerated)
         ___ptr
+      
       @scala.annotation.targetName("apply_bit_string")
-      def apply(bit_string: Ptr[ASN1_BIT_STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(bit_string: Ptr[ASN1_BIT_STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_BIT_STRING]]].update(0, bit_string)
         ___ptr
+      
       @scala.annotation.targetName("apply_octet_string")
-      def apply(octet_string: Ptr[ASN1_OCTET_STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(octet_string: Ptr[ASN1_OCTET_STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_OCTET_STRING]]].update(0, octet_string)
         ___ptr
+      
       @scala.annotation.targetName("apply_printablestring")
-      def apply(printablestring: Ptr[ASN1_PRINTABLESTRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(printablestring: Ptr[ASN1_PRINTABLESTRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_PRINTABLESTRING]]].update(0, printablestring)
         ___ptr
+      
       @scala.annotation.targetName("apply_t61string")
-      def apply(t61string: Ptr[ASN1_T61STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(t61string: Ptr[ASN1_T61STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_T61STRING]]].update(0, t61string)
         ___ptr
+      
       @scala.annotation.targetName("apply_ia5string")
-      def apply(ia5string: Ptr[ASN1_IA5STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(ia5string: Ptr[ASN1_IA5STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_IA5STRING]]].update(0, ia5string)
         ___ptr
+      
       @scala.annotation.targetName("apply_generalstring")
-      def apply(generalstring: Ptr[ASN1_GENERALSTRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(generalstring: Ptr[ASN1_GENERALSTRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_GENERALSTRING]]].update(0, generalstring)
         ___ptr
+      
       @scala.annotation.targetName("apply_bmpstring")
-      def apply(bmpstring: Ptr[ASN1_BMPSTRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(bmpstring: Ptr[ASN1_BMPSTRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_BMPSTRING]]].update(0, bmpstring)
         ___ptr
+      
       @scala.annotation.targetName("apply_universalstring")
-      def apply(universalstring: Ptr[ASN1_UNIVERSALSTRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(universalstring: Ptr[ASN1_UNIVERSALSTRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_UNIVERSALSTRING]]].update(0, universalstring)
         ___ptr
+      
       @scala.annotation.targetName("apply_utctime")
-      def apply(utctime: Ptr[ASN1_UTCTIME])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(utctime: Ptr[ASN1_UTCTIME])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_UTCTIME]]].update(0, utctime)
         ___ptr
+      
       @scala.annotation.targetName("apply_generalizedtime")
-      def apply(generalizedtime: Ptr[ASN1_GENERALIZEDTIME])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(generalizedtime: Ptr[ASN1_GENERALIZEDTIME])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_GENERALIZEDTIME]]].update(0, generalizedtime)
         ___ptr
+      
       @scala.annotation.targetName("apply_visiblestring")
-      def apply(visiblestring: Ptr[ASN1_VISIBLESTRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(visiblestring: Ptr[ASN1_VISIBLESTRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_VISIBLESTRING]]].update(0, visiblestring)
         ___ptr
+      
       @scala.annotation.targetName("apply_utf8string")
-      def apply(utf8string: Ptr[ASN1_UTF8STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(utf8string: Ptr[ASN1_UTF8STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_UTF8STRING]]].update(0, utf8string)
         ___ptr
+      
       @scala.annotation.targetName("apply_set")
-      def apply(set: Ptr[ASN1_STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(set: Ptr[ASN1_STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_STRING]]].update(0, set)
         ___ptr
+      
       @scala.annotation.targetName("apply_sequence")
-      def apply(sequence: Ptr[ASN1_STRING])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(sequence: Ptr[ASN1_STRING])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_STRING]]].update(0, sequence)
         ___ptr
+      
       @scala.annotation.targetName("apply_asn1_value")
-      def apply(asn1_value: Ptr[ASN1_VALUE])(using Zone): Ptr[Union0] =
-        val ___ptr = alloc[Union0](1)
+      def apply(asn1_value: Ptr[ASN1_VALUE])(using Zone): Ptr[Value] =
+        val ___ptr = _root_.scala.scalanative.unsafe.alloc[Value](1)
         val un = !___ptr
         un.at(0).asInstanceOf[Ptr[Ptr[ASN1_VALUE]]].update(0, asn1_value)
         ___ptr
-      extension (struct: Union0)
+      
+      extension (struct: Value)
         def ptr : CString = !struct.at(0).asInstanceOf[Ptr[CString]]
         def ptr_=(value: CString): Unit = !struct.at(0).asInstanceOf[Ptr[CString]] = value
         def boolean : ASN1_BOOLEAN = !struct.at(0).asInstanceOf[Ptr[ASN1_BOOLEAN]]
@@ -4151,259 +4673,355 @@ object structs:
         def sequence_=(value: Ptr[ASN1_STRING]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[ASN1_STRING]]] = value
         def asn1_value : Ptr[ASN1_VALUE] = !struct.at(0).asInstanceOf[Ptr[Ptr[ASN1_VALUE]]]
         def asn1_value_=(value: Ptr[ASN1_VALUE]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[ASN1_VALUE]]] = value
-    given _tag: Tag[asn1_type_st] = Tag.materializeCStruct2Tag[CInt, asn1_type_st.Union0]
-    def apply()(using Zone): Ptr[asn1_type_st] = scala.scalanative.unsafe.alloc[asn1_type_st](1)
-    def apply(`type` : CInt, value : asn1_type_st.Union0)(using Zone): Ptr[asn1_type_st] = 
-      val ____ptr = apply()
-      (!____ptr).`type` = `type`
-      (!____ptr).value = value
-      ____ptr
-    extension (struct: asn1_type_st)
-      def `type` : CInt = struct._1
-      def type_=(value: CInt): Unit = !struct.at1 = value
-      def value : asn1_type_st.Union0 = struct._2
-      def value_=(value: asn1_type_st.Union0): Unit = !struct.at2 = value
 
   opaque type bignum_ctx = CStruct0
+  
   object bignum_ctx:
     given _tag: Tag[bignum_ctx] = Tag.materializeCStruct0Tag
+    
 
   opaque type bignum_st = CStruct0
+  
   object bignum_st:
     given _tag: Tag[bignum_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type bio_addrinfo_st = CStruct0
+  
   object bio_addrinfo_st:
     given _tag: Tag[bio_addrinfo_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type bio_method_st = CStruct0
+  
   object bio_method_st:
     given _tag: Tag[bio_method_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type bio_st = CStruct0
+  
   object bio_st:
     given _tag: Tag[bio_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type bn_blinding_st = CStruct0
+  
   object bn_blinding_st:
     given _tag: Tag[bn_blinding_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type bn_gencb_st = CStruct0
+  
   object bn_gencb_st:
     given _tag: Tag[bn_gencb_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type bn_mont_ctx_st = CStruct0
+  
   object bn_mont_ctx_st:
     given _tag: Tag[bn_mont_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type bn_recp_ctx_st = CStruct0
+  
   object bn_recp_ctx_st:
     given _tag: Tag[bn_recp_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type buf_mem_st = CStruct0
+  
   object buf_mem_st:
     given _tag: Tag[buf_mem_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type comp_ctx_st = CStruct0
+  
   object comp_ctx_st:
     given _tag: Tag[comp_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type comp_method_st = CStruct0
+  
   object comp_method_st:
     given _tag: Tag[comp_method_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type conf_st = CStruct0
+  
   object conf_st:
     given _tag: Tag[conf_st] = Tag.materializeCStruct0Tag
+    
 
-  opaque type crypto_ex_data_st = CStruct3[Ptr[OSSL_LIB_CTX], CStruct0, Ptr[stack_st_void]]
+  opaque type crypto_ex_data_st = CStruct2[Ptr[OSSL_LIB_CTX], Ptr[stack_st_void]]
+  
   object crypto_ex_data_st:
-    opaque type Struct0 = CStruct0
-    object Struct0:
-      given _tag: Tag[Struct0] = Tag.materializeCStruct0Tag
-    given _tag: Tag[crypto_ex_data_st] = Tag.materializeCStruct3Tag[Ptr[OSSL_LIB_CTX], CStruct0, Ptr[stack_st_void]]
+    given _tag: Tag[crypto_ex_data_st] = Tag.materializeCStruct2Tag[Ptr[OSSL_LIB_CTX], Ptr[stack_st_void]]
+    
+    // Allocates crypto_ex_data_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[crypto_ex_data_st] = scala.scalanative.unsafe.alloc[crypto_ex_data_st](1)
-    def apply(ctx : Ptr[OSSL_LIB_CTX], sk : Ptr[stack_st_void])(using Zone): Ptr[crypto_ex_data_st] = 
+    def apply(ctx : Ptr[OSSL_LIB_CTX], sk : Ptr[stack_st_void])(using Zone): Ptr[crypto_ex_data_st] =
       val ____ptr = apply()
       (!____ptr).ctx = ctx
       (!____ptr).sk = sk
       ____ptr
+    
     extension (struct: crypto_ex_data_st)
       def ctx : Ptr[OSSL_LIB_CTX] = struct._1
       def ctx_=(value: Ptr[OSSL_LIB_CTX]): Unit = !struct.at1 = value
-      def sk : Ptr[stack_st_void] = struct._3
-      def sk_=(value: Ptr[stack_st_void]): Unit = !struct.at3 = value
+      def sk : Ptr[stack_st_void] = struct._2
+      def sk_=(value: Ptr[stack_st_void]): Unit = !struct.at2 = value
+    
 
   opaque type crypto_threadid_st = CStruct1[CInt]
+  
   object crypto_threadid_st:
     given _tag: Tag[crypto_threadid_st] = Tag.materializeCStruct1Tag[CInt]
+    
+    // Allocates crypto_threadid_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[crypto_threadid_st] = scala.scalanative.unsafe.alloc[crypto_threadid_st](1)
-    def apply(dummy : CInt)(using Zone): Ptr[crypto_threadid_st] = 
+    def apply(dummy : CInt)(using Zone): Ptr[crypto_threadid_st] =
       val ____ptr = apply()
       (!____ptr).dummy = dummy
       ____ptr
+    
     extension (struct: crypto_threadid_st)
       def dummy : CInt = struct._1
       def dummy_=(value: CInt): Unit = !struct.at1 = value
+    
 
   opaque type ct_policy_eval_ctx_st = CStruct0
+  
   object ct_policy_eval_ctx_st:
     given _tag: Tag[ct_policy_eval_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ctlog_st = CStruct0
+  
   object ctlog_st:
     given _tag: Tag[ctlog_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ctlog_store_st = CStruct0
+  
   object ctlog_store_st:
     given _tag: Tag[ctlog_store_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type dh_method = CStruct0
+  
   object dh_method:
     given _tag: Tag[dh_method] = Tag.materializeCStruct0Tag
+    
 
   opaque type dh_st = CStruct0
+  
   object dh_st:
     given _tag: Tag[dh_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type dsa_method = CStruct0
+  
   object dsa_method:
     given _tag: Tag[dsa_method] = Tag.materializeCStruct0Tag
+    
 
   opaque type dsa_st = CStruct0
+  
   object dsa_st:
     given _tag: Tag[dsa_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ec_key_method_st = CStruct0
+  
   object ec_key_method_st:
     given _tag: Tag[ec_key_method_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ec_key_st = CStruct0
+  
   object ec_key_st:
     given _tag: Tag[ec_key_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type engine_st = CStruct0
+  
   object engine_st:
     given _tag: Tag[engine_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type err_state_st = CStruct0
+  
   object err_state_st:
     given _tag: Tag[err_state_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_Encode_Ctx_st = CStruct0
+  
   object evp_Encode_Ctx_st:
     given _tag: Tag[evp_Encode_Ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_asym_cipher_st = CStruct0
+  
   object evp_asym_cipher_st:
     given _tag: Tag[evp_asym_cipher_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_cipher_ctx_st = CStruct0
+  
   object evp_cipher_ctx_st:
     given _tag: Tag[evp_cipher_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_cipher_info_st = CStruct2[Ptr[EVP_CIPHER], CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]]]
+  
   object evp_cipher_info_st:
     given _tag: Tag[evp_cipher_info_st] = Tag.materializeCStruct2Tag[Ptr[EVP_CIPHER], CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]]]
+    
+    // Allocates evp_cipher_info_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[evp_cipher_info_st] = scala.scalanative.unsafe.alloc[evp_cipher_info_st](1)
-    def apply(cipher : Ptr[EVP_CIPHER], iv : CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]])(using Zone): Ptr[evp_cipher_info_st] = 
+    def apply(cipher : Ptr[EVP_CIPHER], iv : CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]])(using Zone): Ptr[evp_cipher_info_st] =
       val ____ptr = apply()
       (!____ptr).cipher = cipher
       (!____ptr).iv = iv
       ____ptr
+    
     extension (struct: evp_cipher_info_st)
       def cipher : Ptr[EVP_CIPHER] = struct._1
       def cipher_=(value: Ptr[EVP_CIPHER]): Unit = !struct.at1 = value
       def iv : CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]] = struct._2
       def iv_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]]): Unit = !struct.at2 = value
+    
 
   opaque type evp_cipher_st = CStruct0
+  
   object evp_cipher_st:
     given _tag: Tag[evp_cipher_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_kdf_ctx_st = CStruct0
+  
   object evp_kdf_ctx_st:
     given _tag: Tag[evp_kdf_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_kdf_st = CStruct0
+  
   object evp_kdf_st:
     given _tag: Tag[evp_kdf_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_kem_st = CStruct0
+  
   object evp_kem_st:
     given _tag: Tag[evp_kem_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_keyexch_st = CStruct0
+  
   object evp_keyexch_st:
     given _tag: Tag[evp_keyexch_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_keymgmt_st = CStruct0
+  
   object evp_keymgmt_st:
     given _tag: Tag[evp_keymgmt_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_mac_ctx_st = CStruct0
+  
   object evp_mac_ctx_st:
     given _tag: Tag[evp_mac_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_mac_st = CStruct0
+  
   object evp_mac_st:
     given _tag: Tag[evp_mac_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_md_ctx_st = CStruct0
+  
   object evp_md_ctx_st:
     given _tag: Tag[evp_md_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_md_st = CStruct0
+  
   object evp_md_st:
     given _tag: Tag[evp_md_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_pkey_asn1_method_st = CStruct0
+  
   object evp_pkey_asn1_method_st:
     given _tag: Tag[evp_pkey_asn1_method_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_pkey_ctx_st = CStruct0
+  
   object evp_pkey_ctx_st:
     given _tag: Tag[evp_pkey_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_pkey_method_st = CStruct0
+  
   object evp_pkey_method_st:
     given _tag: Tag[evp_pkey_method_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_pkey_st = CStruct0
+  
   object evp_pkey_st:
     given _tag: Tag[evp_pkey_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_rand_ctx_st = CStruct0
+  
   object evp_rand_ctx_st:
     given _tag: Tag[evp_rand_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_rand_st = CStruct0
+  
   object evp_rand_st:
     given _tag: Tag[evp_rand_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type evp_signature_st = CStruct0
+  
   object evp_signature_st:
     given _tag: Tag[evp_signature_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type hmac_ctx_st = CStruct0
+  
   object hmac_ctx_st:
     given _tag: Tag[hmac_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type hostent = CStruct0
+  
   object hostent:
     given _tag: Tag[hostent] = Tag.materializeCStruct0Tag
+    
 
   opaque type obj_name_st = CStruct4[CInt, CInt, CString, CString]
+  
   object obj_name_st:
     given _tag: Tag[obj_name_st] = Tag.materializeCStruct4Tag[CInt, CInt, CString, CString]
+    
+    // Allocates obj_name_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[obj_name_st] = scala.scalanative.unsafe.alloc[obj_name_st](1)
-    def apply(`type` : CInt, alias : CInt, name : CString, data : CString)(using Zone): Ptr[obj_name_st] = 
+    def apply(`type` : CInt, alias : CInt, name : CString, data : CString)(using Zone): Ptr[obj_name_st] =
       val ____ptr = apply()
       (!____ptr).`type` = `type`
       (!____ptr).alias = alias
       (!____ptr).name = name
       (!____ptr).data = data
       ____ptr
+    
     extension (struct: obj_name_st)
       def `type` : CInt = struct._1
       def type_=(value: CInt): Unit = !struct.at1 = value
@@ -4413,30 +5031,41 @@ object structs:
       def name_=(value: CString): Unit = !struct.at3 = value
       def data : CString = struct._4
       def data_=(value: CString): Unit = !struct.at4 = value
+    
 
   opaque type ocsp_responder_id_st = CStruct0
+  
   object ocsp_responder_id_st:
     given _tag: Tag[ocsp_responder_id_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ocsp_response_st = CStruct0
+  
   object ocsp_response_st:
     given _tag: Tag[ocsp_response_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type openssl_core_ctx_st = CStruct0
+  
   object openssl_core_ctx_st:
     given _tag: Tag[openssl_core_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_algorithm_st = CStruct4[CString, CString, Ptr[OSSL_DISPATCH], CString]
+  
   object ossl_algorithm_st:
     given _tag: Tag[ossl_algorithm_st] = Tag.materializeCStruct4Tag[CString, CString, Ptr[OSSL_DISPATCH], CString]
+    
+    // Allocates ossl_algorithm_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ossl_algorithm_st] = scala.scalanative.unsafe.alloc[ossl_algorithm_st](1)
-    def apply(algorithm_names : CString, property_definition : CString, implementation : Ptr[OSSL_DISPATCH], algorithm_description : CString)(using Zone): Ptr[ossl_algorithm_st] = 
+    def apply(algorithm_names : CString, property_definition : CString, implementation : Ptr[OSSL_DISPATCH], algorithm_description : CString)(using Zone): Ptr[ossl_algorithm_st] =
       val ____ptr = apply()
       (!____ptr).algorithm_names = algorithm_names
       (!____ptr).property_definition = property_definition
       (!____ptr).implementation = implementation
       (!____ptr).algorithm_description = algorithm_description
       ____ptr
+    
     extension (struct: ossl_algorithm_st)
       def algorithm_names : CString = struct._1
       def algorithm_names_=(value: CString): Unit = !struct.at1 = value
@@ -4446,82 +5075,116 @@ object structs:
       def implementation_=(value: Ptr[OSSL_DISPATCH]): Unit = !struct.at3 = value
       def algorithm_description : CString = struct._4
       def algorithm_description_=(value: CString): Unit = !struct.at4 = value
+    
 
   opaque type ossl_core_bio_st = CStruct0
+  
   object ossl_core_bio_st:
     given _tag: Tag[ossl_core_bio_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_core_handle_st = CStruct0
+  
   object ossl_core_handle_st:
     given _tag: Tag[ossl_core_handle_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_decoder_ctx_st = CStruct0
+  
   object ossl_decoder_ctx_st:
     given _tag: Tag[ossl_decoder_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_decoder_st = CStruct0
+  
   object ossl_decoder_st:
     given _tag: Tag[ossl_decoder_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_dispatch_st = CStruct2[CInt, CFuncPtr0[Unit]]
+  
   object ossl_dispatch_st:
     given _tag: Tag[ossl_dispatch_st] = Tag.materializeCStruct2Tag[CInt, CFuncPtr0[Unit]]
+    
+    // Allocates ossl_dispatch_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ossl_dispatch_st] = scala.scalanative.unsafe.alloc[ossl_dispatch_st](1)
-    def apply(function_id : CInt, function : CFuncPtr0[Unit])(using Zone): Ptr[ossl_dispatch_st] = 
+    def apply(function_id : CInt, function : CFuncPtr0[Unit])(using Zone): Ptr[ossl_dispatch_st] =
       val ____ptr = apply()
       (!____ptr).function_id = function_id
       (!____ptr).function = function
       ____ptr
+    
     extension (struct: ossl_dispatch_st)
       def function_id : CInt = struct._1
       def function_id_=(value: CInt): Unit = !struct.at1 = value
       def function : CFuncPtr0[Unit] = struct._2
       def function_=(value: CFuncPtr0[Unit]): Unit = !struct.at2 = value
+    
 
   opaque type ossl_encoder_ctx_st = CStruct0
+  
   object ossl_encoder_ctx_st:
     given _tag: Tag[ossl_encoder_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_encoder_st = CStruct0
+  
   object ossl_encoder_st:
     given _tag: Tag[ossl_encoder_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_http_req_ctx_st = CStruct0
+  
   object ossl_http_req_ctx_st:
     given _tag: Tag[ossl_http_req_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_init_settings_st = CStruct0
+  
   object ossl_init_settings_st:
     given _tag: Tag[ossl_init_settings_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_item_st = CStruct2[CUnsignedInt, Ptr[Byte]]
+  
   object ossl_item_st:
     given _tag: Tag[ossl_item_st] = Tag.materializeCStruct2Tag[CUnsignedInt, Ptr[Byte]]
+    
+    // Allocates ossl_item_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ossl_item_st] = scala.scalanative.unsafe.alloc[ossl_item_st](1)
-    def apply(id : CUnsignedInt, ptr : Ptr[Byte])(using Zone): Ptr[ossl_item_st] = 
+    def apply(id : CUnsignedInt, ptr : Ptr[Byte])(using Zone): Ptr[ossl_item_st] =
       val ____ptr = apply()
       (!____ptr).id = id
       (!____ptr).ptr = ptr
       ____ptr
+    
     extension (struct: ossl_item_st)
       def id : CUnsignedInt = struct._1
       def id_=(value: CUnsignedInt): Unit = !struct.at1 = value
       def ptr : Ptr[Byte] = struct._2
       def ptr_=(value: Ptr[Byte]): Unit = !struct.at2 = value
+    
 
   opaque type ossl_lib_ctx_st = CStruct0
+  
   object ossl_lib_ctx_st:
     given _tag: Tag[ossl_lib_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_param_bld_st = CStruct0
+  
   object ossl_param_bld_st:
     given _tag: Tag[ossl_param_bld_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_param_st = CStruct5[CString, CUnsignedInt, Ptr[Byte], size_t, size_t]
+  
   object ossl_param_st:
     given _tag: Tag[ossl_param_st] = Tag.materializeCStruct5Tag[CString, CUnsignedInt, Ptr[Byte], size_t, size_t]
+    
+    // Allocates ossl_param_st on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[ossl_param_st] = scala.scalanative.unsafe.alloc[ossl_param_st](1)
-    def apply(key : CString, data_type : CUnsignedInt, data : Ptr[Byte], data_size : size_t, return_size : size_t)(using Zone): Ptr[ossl_param_st] = 
+    def apply(key : CString, data_type : CUnsignedInt, data : Ptr[Byte], data_size : size_t, return_size : size_t)(using Zone): Ptr[ossl_param_st] =
       val ____ptr = apply()
       (!____ptr).key = key
       (!____ptr).data_type = data_type
@@ -4529,6 +5192,7 @@ object structs:
       (!____ptr).data_size = data_size
       (!____ptr).return_size = return_size
       ____ptr
+    
     extension (struct: ossl_param_st)
       def key : CString = struct._1
       def key_=(value: CString): Unit = !struct.at1 = value
@@ -4540,174 +5204,259 @@ object structs:
       def data_size_=(value: size_t): Unit = !struct.at4 = value
       def return_size : size_t = struct._5
       def return_size_=(value: size_t): Unit = !struct.at5 = value
+    
 
   opaque type ossl_provider_st = CStruct0
+  
   object ossl_provider_st:
     given _tag: Tag[ossl_provider_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_self_test_st = CStruct0
+  
   object ossl_self_test_st:
     given _tag: Tag[ossl_self_test_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_store_info_st = CStruct0
+  
   object ossl_store_info_st:
     given _tag: Tag[ossl_store_info_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ossl_store_search_st = CStruct0
+  
   object ossl_store_search_st:
     given _tag: Tag[ossl_store_search_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type pkcs8_priv_key_info_st = CStruct0
+  
   object pkcs8_priv_key_info_st:
     given _tag: Tag[pkcs8_priv_key_info_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type rand_drbg_st = CStruct0
+  
   object rand_drbg_st:
     given _tag: Tag[rand_drbg_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type rand_meth_st = CStruct0
+  
   object rand_meth_st:
     given _tag: Tag[rand_meth_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type rsa_meth_st = CStruct0
+  
   object rsa_meth_st:
     given _tag: Tag[rsa_meth_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type rsa_pss_params_st = CStruct0
+  
   object rsa_pss_params_st:
     given _tag: Tag[rsa_pss_params_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type rsa_st = CStruct0
+  
   object rsa_st:
     given _tag: Tag[rsa_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type sct_ctx_st = CStruct0
+  
   object sct_ctx_st:
     given _tag: Tag[sct_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type sct_st = CStruct0
+  
   object sct_st:
     given _tag: Tag[sct_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ssl_ctx_st = CStruct0
+  
   object ssl_ctx_st:
     given _tag: Tag[ssl_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ssl_dane_st = CStruct0
+  
   object ssl_dane_st:
     given _tag: Tag[ssl_dane_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ssl_st = CStruct0
+  
   object ssl_st:
     given _tag: Tag[ssl_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st = CStruct0
+  
   object stack_st:
     given _tag: Tag[stack_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_ASN1_GENERALSTRING = CStruct0
+  
   object stack_st_ASN1_GENERALSTRING:
     given _tag: Tag[stack_st_ASN1_GENERALSTRING] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_ASN1_INTEGER = CStruct0
+  
   object stack_st_ASN1_INTEGER:
     given _tag: Tag[stack_st_ASN1_INTEGER] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_ASN1_OBJECT = CStruct0
+  
   object stack_st_ASN1_OBJECT:
     given _tag: Tag[stack_st_ASN1_OBJECT] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_ASN1_STRING_TABLE = CStruct0
+  
   object stack_st_ASN1_STRING_TABLE:
     given _tag: Tag[stack_st_ASN1_STRING_TABLE] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_ASN1_TYPE = CStruct0
+  
   object stack_st_ASN1_TYPE:
     given _tag: Tag[stack_st_ASN1_TYPE] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_ASN1_UTF8STRING = CStruct0
+  
   object stack_st_ASN1_UTF8STRING:
     given _tag: Tag[stack_st_ASN1_UTF8STRING] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_BIGNUM = CStruct0
+  
   object stack_st_BIGNUM:
     given _tag: Tag[stack_st_BIGNUM] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_BIGNUM_const = CStruct0
+  
   object stack_st_BIGNUM_const:
     given _tag: Tag[stack_st_BIGNUM_const] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_BIO = CStruct0
+  
   object stack_st_BIO:
     given _tag: Tag[stack_st_BIO] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_OPENSSL_BLOCK = CStruct0
+  
   object stack_st_OPENSSL_BLOCK:
     given _tag: Tag[stack_st_OPENSSL_BLOCK] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_OPENSSL_CSTRING = CStruct0
+  
   object stack_st_OPENSSL_CSTRING:
     given _tag: Tag[stack_st_OPENSSL_CSTRING] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_OPENSSL_STRING = CStruct0
+  
   object stack_st_OPENSSL_STRING:
     given _tag: Tag[stack_st_OPENSSL_STRING] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_X509_ALGOR = CStruct0
+  
   object stack_st_X509_ALGOR:
     given _tag: Tag[stack_st_X509_ALGOR] = Tag.materializeCStruct0Tag
+    
 
   opaque type stack_st_void = CStruct0
+  
   object stack_st_void:
     given _tag: Tag[stack_st_void] = Tag.materializeCStruct0Tag
+    
 
   opaque type ui_method_st = CStruct0
+  
   object ui_method_st:
     given _tag: Tag[ui_method_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type ui_st = CStruct0
+  
   object ui_st:
     given _tag: Tag[ui_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type v3_ext_ctx = CStruct0
+  
   object v3_ext_ctx:
     given _tag: Tag[v3_ext_ctx] = Tag.materializeCStruct0Tag
+    
 
   opaque type x509_crl_method_st = CStruct0
+  
   object x509_crl_method_st:
     given _tag: Tag[x509_crl_method_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type x509_lookup_method_st = CStruct0
+  
   object x509_lookup_method_st:
     given _tag: Tag[x509_lookup_method_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type x509_lookup_st = CStruct0
+  
   object x509_lookup_st:
     given _tag: Tag[x509_lookup_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type x509_object_st = CStruct0
+  
   object x509_object_st:
     given _tag: Tag[x509_object_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type x509_revoked_st = CStruct0
+  
   object x509_revoked_st:
     given _tag: Tag[x509_revoked_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type x509_sig_info_st = CStruct0
+  
   object x509_sig_info_st:
     given _tag: Tag[x509_sig_info_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type x509_st = CStruct0
+  
   object x509_st:
     given _tag: Tag[x509_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type x509_store_ctx_st = CStruct0
+  
   object x509_store_ctx_st:
     given _tag: Tag[x509_store_ctx_st] = Tag.materializeCStruct0Tag
+    
 
   opaque type x509_store_st = CStruct0
+  
   object x509_store_st:
     given _tag: Tag[x509_store_st] = Tag.materializeCStruct0Tag
+    
 
 object unions:
   import _root_.openssl.enumerations.*
@@ -4715,6 +5464,7 @@ object unions:
   import _root_.openssl.aliases.*
   import _root_.openssl.structs.*
   import _root_.openssl.unions.*
+
   opaque type BIO_ADDR = CArray[Byte, Nat._0]
   object BIO_ADDR:
     given _tag: Tag[BIO_ADDR] = Tag.CArray[CChar, Nat._0](Tag.Byte, Tag.Nat0)
@@ -4722,15 +5472,18 @@ object unions:
   opaque type BIO_sock_info_u = CArray[Byte, Nat._8]
   object BIO_sock_info_u:
     given _tag: Tag[BIO_sock_info_u] = Tag.CArray[CChar, Nat._8](Tag.Byte, Tag.Nat8)
-    def apply()(using Zone): Ptr[BIO_sock_info_u] = 
-      val ___ptr = alloc[BIO_sock_info_u](1)
+    
+    def apply()(using Zone): Ptr[BIO_sock_info_u] =
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[BIO_sock_info_u](1)
       ___ptr
+    
     @scala.annotation.targetName("apply_addr")
     def apply(addr: Ptr[BIO_ADDR])(using Zone): Ptr[BIO_sock_info_u] =
-      val ___ptr = alloc[BIO_sock_info_u](1)
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[BIO_sock_info_u](1)
       val un = !___ptr
       un.at(0).asInstanceOf[Ptr[Ptr[BIO_ADDR]]].update(0, addr)
       ___ptr
+    
     extension (struct: BIO_sock_info_u)
       def addr : Ptr[BIO_ADDR] = !struct.at(0).asInstanceOf[Ptr[Ptr[BIO_ADDR]]]
       def addr_=(value: Ptr[BIO_ADDR]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[BIO_ADDR]]] = value
@@ -8747,147 +9500,147 @@ object functions:
   import extern_functions.*
   export extern_functions.*
 
-  def OSSL_PARAM_construct_BN(key : CString, buf : Ptr[CUnsignedChar], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_BN(key, buf, bsize, __return)
-
-  def OSSL_PARAM_construct_BN(key : CString, buf : Ptr[CUnsignedChar], bsize : size_t)(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_BN(key : CString, buf : Ptr[CUnsignedChar], bsize : size_t)(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_BN(key, buf, bsize, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_double(key : CString, buf : Ptr[Double])(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_BN(key : CString, buf : Ptr[CUnsignedChar], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit =
+    __sn_wrap_openssl_OSSL_PARAM_construct_BN(key, buf, bsize, __return)
+
+  def OSSL_PARAM_construct_double(key : CString, buf : Ptr[Double])(__return : Ptr[OSSL_PARAM]): Unit =
+    __sn_wrap_openssl_OSSL_PARAM_construct_double(key, buf, __return)
+
+  def OSSL_PARAM_construct_double(key : CString, buf : Ptr[Double])(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_double(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_double(key : CString, buf : Ptr[Double])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_double(key, buf, __return)
+  def OSSL_PARAM_construct_end()(__return : Ptr[OSSL_PARAM]): Unit =
+    __sn_wrap_openssl_OSSL_PARAM_construct_end(__return)
 
-  def OSSL_PARAM_construct_end()(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_end()(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_end((__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_end()(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_end(__return)
-
-  def OSSL_PARAM_construct_int(key : CString, buf : Ptr[CInt])(__return : Ptr[OSSL_PARAM]): Unit = 
+  def OSSL_PARAM_construct_int(key : CString, buf : Ptr[CInt])(__return : Ptr[OSSL_PARAM]): Unit =
     __sn_wrap_openssl_OSSL_PARAM_construct_int(key, buf, __return)
 
-  def OSSL_PARAM_construct_int(key : CString, buf : Ptr[CInt])(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_int(key : CString, buf : Ptr[CInt])(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_int(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_int32(key : CString, buf : Ptr[int32_t])(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_int32(key : CString, buf : Ptr[int32_t])(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_int32(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_int32(key : CString, buf : Ptr[int32_t])(__return : Ptr[OSSL_PARAM]): Unit = 
+  def OSSL_PARAM_construct_int32(key : CString, buf : Ptr[int32_t])(__return : Ptr[OSSL_PARAM]): Unit =
     __sn_wrap_openssl_OSSL_PARAM_construct_int32(key, buf, __return)
 
-  def OSSL_PARAM_construct_int64(key : CString, buf : Ptr[int64_t])(__return : Ptr[OSSL_PARAM]): Unit = 
+  def OSSL_PARAM_construct_int64(key : CString, buf : Ptr[int64_t])(__return : Ptr[OSSL_PARAM]): Unit =
     __sn_wrap_openssl_OSSL_PARAM_construct_int64(key, buf, __return)
 
-  def OSSL_PARAM_construct_int64(key : CString, buf : Ptr[int64_t])(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_int64(key : CString, buf : Ptr[int64_t])(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_int64(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_long(key : CString, buf : Ptr[CLongInt])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_long(key, buf, __return)
-
-  def OSSL_PARAM_construct_long(key : CString, buf : Ptr[CLongInt])(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_long(key : CString, buf : Ptr[CLongInt])(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_long(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_octet_ptr(key : CString, buf : Ptr[Ptr[Byte]], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
+  def OSSL_PARAM_construct_long(key : CString, buf : Ptr[CLongInt])(__return : Ptr[OSSL_PARAM]): Unit =
+    __sn_wrap_openssl_OSSL_PARAM_construct_long(key, buf, __return)
+
+  def OSSL_PARAM_construct_octet_ptr(key : CString, buf : Ptr[Ptr[Byte]], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit =
     __sn_wrap_openssl_OSSL_PARAM_construct_octet_ptr(key, buf, bsize, __return)
 
-  def OSSL_PARAM_construct_octet_ptr(key : CString, buf : Ptr[Ptr[Byte]], bsize : size_t)(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_octet_ptr(key : CString, buf : Ptr[Ptr[Byte]], bsize : size_t)(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_octet_ptr(key, buf, bsize, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_octet_string(key : CString, buf : Ptr[Byte], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_octet_string(key, buf, bsize, __return)
-
-  def OSSL_PARAM_construct_octet_string(key : CString, buf : Ptr[Byte], bsize : size_t)(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_octet_string(key : CString, buf : Ptr[Byte], bsize : size_t)(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_octet_string(key, buf, bsize, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_size_t(key : CString, buf : Ptr[size_t])(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_octet_string(key : CString, buf : Ptr[Byte], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit =
+    __sn_wrap_openssl_OSSL_PARAM_construct_octet_string(key, buf, bsize, __return)
+
+  def OSSL_PARAM_construct_size_t(key : CString, buf : Ptr[size_t])(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_size_t(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_size_t(key : CString, buf : Ptr[size_t])(__return : Ptr[OSSL_PARAM]): Unit = 
+  def OSSL_PARAM_construct_size_t(key : CString, buf : Ptr[size_t])(__return : Ptr[OSSL_PARAM]): Unit =
     __sn_wrap_openssl_OSSL_PARAM_construct_size_t(key, buf, __return)
 
-  def OSSL_PARAM_construct_time_t(key : CString, buf : Ptr[time_t])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_time_t(key, buf, __return)
-
-  def OSSL_PARAM_construct_time_t(key : CString, buf : Ptr[time_t])(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_time_t(key : CString, buf : Ptr[time_t])(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_time_t(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_uint(key : CString, buf : Ptr[CUnsignedInt])(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_time_t(key : CString, buf : Ptr[time_t])(__return : Ptr[OSSL_PARAM]): Unit =
+    __sn_wrap_openssl_OSSL_PARAM_construct_time_t(key, buf, __return)
+
+  def OSSL_PARAM_construct_uint(key : CString, buf : Ptr[CUnsignedInt])(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_uint(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_uint(key : CString, buf : Ptr[CUnsignedInt])(__return : Ptr[OSSL_PARAM]): Unit = 
+  def OSSL_PARAM_construct_uint(key : CString, buf : Ptr[CUnsignedInt])(__return : Ptr[OSSL_PARAM]): Unit =
     __sn_wrap_openssl_OSSL_PARAM_construct_uint(key, buf, __return)
 
-  def OSSL_PARAM_construct_uint32(key : CString, buf : Ptr[uint32_t])(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_uint32(key : CString, buf : Ptr[uint32_t])(__return : Ptr[OSSL_PARAM]): Unit =
+    __sn_wrap_openssl_OSSL_PARAM_construct_uint32(key, buf, __return)
+
+  def OSSL_PARAM_construct_uint32(key : CString, buf : Ptr[uint32_t])(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_uint32(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_uint32(key : CString, buf : Ptr[uint32_t])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_uint32(key, buf, __return)
+  def OSSL_PARAM_construct_uint64(key : CString, buf : Ptr[uint64_t])(__return : Ptr[OSSL_PARAM]): Unit =
+    __sn_wrap_openssl_OSSL_PARAM_construct_uint64(key, buf, __return)
 
-  def OSSL_PARAM_construct_uint64(key : CString, buf : Ptr[uint64_t])(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_uint64(key : CString, buf : Ptr[uint64_t])(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_uint64(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_uint64(key : CString, buf : Ptr[uint64_t])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_uint64(key, buf, __return)
+  def OSSL_PARAM_construct_ulong(key : CString, buf : Ptr[CUnsignedLongInt])(__return : Ptr[OSSL_PARAM]): Unit =
+    __sn_wrap_openssl_OSSL_PARAM_construct_ulong(key, buf, __return)
 
-  def OSSL_PARAM_construct_ulong(key : CString, buf : Ptr[CUnsignedLongInt])(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_ulong(key : CString, buf : Ptr[CUnsignedLongInt])(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_ulong(key, buf, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_ulong(key : CString, buf : Ptr[CUnsignedLongInt])(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_ulong(key, buf, __return)
-
-  def OSSL_PARAM_construct_utf8_ptr(key : CString, buf : Ptr[CString], bsize : size_t)(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_utf8_ptr(key : CString, buf : Ptr[CString], bsize : size_t)(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_utf8_ptr(key, buf, bsize, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
-  def OSSL_PARAM_construct_utf8_ptr(key : CString, buf : Ptr[CString], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
+  def OSSL_PARAM_construct_utf8_ptr(key : CString, buf : Ptr[CString], bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit =
     __sn_wrap_openssl_OSSL_PARAM_construct_utf8_ptr(key, buf, bsize, __return)
 
-  def OSSL_PARAM_construct_utf8_string(key : CString, buf : CString, bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit = 
-    __sn_wrap_openssl_OSSL_PARAM_construct_utf8_string(key, buf, bsize, __return)
-
-  def OSSL_PARAM_construct_utf8_string(key : CString, buf : CString, bsize : size_t)(using Zone): OSSL_PARAM = 
-    val __ptr_0: Ptr[OSSL_PARAM] = alloc[OSSL_PARAM](1)
+  def OSSL_PARAM_construct_utf8_string(key : CString, buf : CString, bsize : size_t)(using Zone): OSSL_PARAM =
+    val __ptr_0: Ptr[OSSL_PARAM] = _root_.scala.scalanative.unsafe.alloc[OSSL_PARAM](1)
     __sn_wrap_openssl_OSSL_PARAM_construct_utf8_string(key, buf, bsize, (__ptr_0 + 0))
     !(__ptr_0 + 0)
 
+  def OSSL_PARAM_construct_utf8_string(key : CString, buf : CString, bsize : size_t)(__return : Ptr[OSSL_PARAM]): Unit =
+    __sn_wrap_openssl_OSSL_PARAM_construct_utf8_string(key, buf, bsize, __return)
+
 object types:
-  export _root_.openssl.structs.*
-  export _root_.openssl.aliases.*
-  export _root_.openssl.unions.*
-  export _root_.openssl.enumerations.*
+    export _root_.openssl.structs.*
+    export _root_.openssl.aliases.*
+    export _root_.openssl.unions.*
+    export _root_.openssl.enumerations.*
 
 object all:
   export _root_.openssl.enumerations.BIO_hostserv_priorities
