@@ -5721,7 +5721,6 @@ object unions:
       def f : Double = !struct.at(0).asInstanceOf[Ptr[Double]]
       def f_=(value: Double): Unit = !struct.at(0).asInstanceOf[Ptr[Double]] = value
 
-@link("ffmpeg_wrapper")
 
 @extern
 private[ffmpeg] object extern_functions:
@@ -7796,12 +7795,8 @@ object functions:
   /**
    * Add two rationals.
   */
-  def av_add_q(b : AVRational, c : AVRational)(using Zone): AVRational =
-    val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](3)
-    !(__ptr_0 + 0) = b
-    !(__ptr_0 + 1) = c
-    __sn_wrap_ffmpeg_av_add_q((__ptr_0 + 0), (__ptr_0 + 1), (__ptr_0 + 2))
-    !(__ptr_0 + 2)
+  def av_add_q(b : Ptr[AVRational], c : Ptr[AVRational])(__return : Ptr[AVRational]): Unit =
+    __sn_wrap_ffmpeg_av_add_q(b, c, __return)
 
   /**
    * Add two rationals.
@@ -7814,8 +7809,12 @@ object functions:
   /**
    * Add two rationals.
   */
-  def av_add_q(b : Ptr[AVRational], c : Ptr[AVRational])(__return : Ptr[AVRational]): Unit =
-    __sn_wrap_ffmpeg_av_add_q(b, c, __return)
+  def av_add_q(b : AVRational, c : AVRational)(using Zone): AVRational =
+    val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](3)
+    !(__ptr_0 + 0) = b
+    !(__ptr_0 + 1) = c
+    __sn_wrap_ffmpeg_av_add_q((__ptr_0 + 0), (__ptr_0 + 1), (__ptr_0 + 2))
+    !(__ptr_0 + 2)
 
   /**
    * Add a value to a timestamp.
@@ -7850,12 +7849,6 @@ object functions:
   /**
    * Compare two timestamps each in its own time base.
   */
-  def av_compare_ts(ts_a : int64_t, tb_a : Ptr[AVRational], ts_b : int64_t, tb_b : Ptr[AVRational]): CInt =
-    __sn_wrap_ffmpeg_av_compare_ts(ts_a, tb_a, ts_b, tb_b)
-
-  /**
-   * Compare two timestamps each in its own time base.
-  */
   def av_compare_ts(ts_a : int64_t, tb_a : AVRational, ts_b : int64_t, tb_b : AVRational)(using Zone): CInt =
     val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](2)
     !(__ptr_0 + 0) = tb_a
@@ -7863,10 +7856,10 @@ object functions:
     __sn_wrap_ffmpeg_av_compare_ts(ts_a, (__ptr_0 + 0), ts_b, (__ptr_0 + 1))
 
   /**
-   * Convert a double precision floating point number to a rational.
+   * Compare two timestamps each in its own time base.
   */
-  def av_d2q(d : Double, max : CInt)(__return : Ptr[AVRational]): Unit =
-    __sn_wrap_ffmpeg_av_d2q(d, max, __return)
+  def av_compare_ts(ts_a : int64_t, tb_a : Ptr[AVRational], ts_b : int64_t, tb_b : Ptr[AVRational]): CInt =
+    __sn_wrap_ffmpeg_av_compare_ts(ts_a, tb_a, ts_b, tb_b)
 
   /**
    * Convert a double precision floating point number to a rational.
@@ -7875,6 +7868,12 @@ object functions:
     val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](1)
     __sn_wrap_ffmpeg_av_d2q(d, max, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  /**
+   * Convert a double precision floating point number to a rational.
+  */
+  def av_d2q(d : Double, max : CInt)(__return : Ptr[AVRational]): Unit =
+    __sn_wrap_ffmpeg_av_d2q(d, max, __return)
 
   /**
    * Divide one rational by another.
@@ -7903,16 +7902,22 @@ object functions:
   /**
    * Find the value in a list of rationals nearest a given reference rational.
   */
-  def av_find_nearest_q_idx(q : Ptr[AVRational], q_list : Ptr[AVRational]): CInt =
-    __sn_wrap_ffmpeg_av_find_nearest_q_idx(q, q_list)
-
-  /**
-   * Find the value in a list of rationals nearest a given reference rational.
-  */
   def av_find_nearest_q_idx(q : AVRational, q_list : Ptr[AVRational])(using Zone): CInt =
     val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](1)
     !(__ptr_0 + 0) = q
     __sn_wrap_ffmpeg_av_find_nearest_q_idx((__ptr_0 + 0), q_list)
+
+  /**
+   * Find the value in a list of rationals nearest a given reference rational.
+  */
+  def av_find_nearest_q_idx(q : Ptr[AVRational], q_list : Ptr[AVRational]): CInt =
+    __sn_wrap_ffmpeg_av_find_nearest_q_idx(q, q_list)
+
+  /**
+   * Return the best rational so that a and b are multiple of it. If the resulting denominator is larger than max_den, return def.
+  */
+  def av_gcd_q(a : Ptr[AVRational], b : Ptr[AVRational], max_den : CInt, `def` : Ptr[AVRational])(__return : Ptr[AVRational]): Unit =
+    __sn_wrap_ffmpeg_av_gcd_q(a, b, max_den, `def`, __return)
 
   /**
    * Return the best rational so that a and b are multiple of it. If the resulting denominator is larger than max_den, return def.
@@ -7934,12 +7939,6 @@ object functions:
     !(__ptr_0 + 3)
 
   /**
-   * Return the best rational so that a and b are multiple of it. If the resulting denominator is larger than max_den, return def.
-  */
-  def av_gcd_q(a : Ptr[AVRational], b : Ptr[AVRational], max_den : CInt, `def` : Ptr[AVRational])(__return : Ptr[AVRational]): Unit =
-    __sn_wrap_ffmpeg_av_gcd_q(a, b, max_den, `def`, __return)
-
-  /**
    * Return the fractional representation of the internal time base.
   */
   def av_get_time_base_q()(using Zone): AVRational =
@@ -7956,16 +7955,16 @@ object functions:
   /**
    * Guess the frame rate, based on both the container and codec information.
   */
-  def av_guess_frame_rate(ctx : Ptr[AVFormatContext], stream : Ptr[AVStream], frame : Ptr[AVFrame])(__return : Ptr[AVRational]): Unit =
-    __sn_wrap_ffmpeg_av_guess_frame_rate(ctx, stream, frame, __return)
-
-  /**
-   * Guess the frame rate, based on both the container and codec information.
-  */
   def av_guess_frame_rate(ctx : Ptr[AVFormatContext], stream : Ptr[AVStream], frame : Ptr[AVFrame])(using Zone): AVRational =
     val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](1)
     __sn_wrap_ffmpeg_av_guess_frame_rate(ctx, stream, frame, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  /**
+   * Guess the frame rate, based on both the container and codec information.
+  */
+  def av_guess_frame_rate(ctx : Ptr[AVFormatContext], stream : Ptr[AVStream], frame : Ptr[AVFrame])(__return : Ptr[AVRational]): Unit =
+    __sn_wrap_ffmpeg_av_guess_frame_rate(ctx, stream, frame, __return)
 
   /**
    * Guess the sample aspect ratio of a frame, based on both the stream and the frame aspect ratio.
@@ -7984,15 +7983,6 @@ object functions:
   /**
    * Invert a rational.
   */
-  def av_inv_q(q : AVRational)(using Zone): AVRational =
-    val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](2)
-    !(__ptr_0 + 0) = q
-    __sn_wrap_ffmpeg_av_inv_q((__ptr_0 + 0), (__ptr_0 + 1))
-    !(__ptr_0 + 1)
-
-  /**
-   * Invert a rational.
-  */
   def av_inv_q(q : Ptr[AVRational])(using Zone): AVRational =
     val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](1)
     __sn_wrap_ffmpeg_av_inv_q(q, (__ptr_0 + 0))
@@ -8003,6 +7993,15 @@ object functions:
   */
   def av_inv_q(q : Ptr[AVRational])(__return : Ptr[AVRational]): Unit =
     __sn_wrap_ffmpeg_av_inv_q(q, __return)
+
+  /**
+   * Invert a rational.
+  */
+  def av_inv_q(q : AVRational)(using Zone): AVRational =
+    val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](2)
+    !(__ptr_0 + 0) = q
+    __sn_wrap_ffmpeg_av_inv_q((__ptr_0 + 0), (__ptr_0 + 1))
+    !(__ptr_0 + 1)
 
   /**
    * Create an AVRational.
@@ -8021,12 +8020,10 @@ object functions:
   /**
    * Multiply two rationals.
   */
-  def av_mul_q(b : AVRational, c : AVRational)(using Zone): AVRational =
-    val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](3)
-    !(__ptr_0 + 0) = b
-    !(__ptr_0 + 1) = c
-    __sn_wrap_ffmpeg_av_mul_q((__ptr_0 + 0), (__ptr_0 + 1), (__ptr_0 + 2))
-    !(__ptr_0 + 2)
+  def av_mul_q(b : Ptr[AVRational], c : Ptr[AVRational])(using Zone): AVRational =
+    val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](1)
+    __sn_wrap_ffmpeg_av_mul_q(b, c, (__ptr_0 + 0))
+    !(__ptr_0 + 0)
 
   /**
    * Multiply two rationals.
@@ -8037,16 +8034,12 @@ object functions:
   /**
    * Multiply two rationals.
   */
-  def av_mul_q(b : Ptr[AVRational], c : Ptr[AVRational])(using Zone): AVRational =
-    val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](1)
-    __sn_wrap_ffmpeg_av_mul_q(b, c, (__ptr_0 + 0))
-    !(__ptr_0 + 0)
-
-  /**
-   * Find which of the two rationals is closer to another rational.
-  */
-  def av_nearer_q(q : Ptr[AVRational], q1 : Ptr[AVRational], q2 : Ptr[AVRational]): CInt =
-    __sn_wrap_ffmpeg_av_nearer_q(q, q1, q2)
+  def av_mul_q(b : AVRational, c : AVRational)(using Zone): AVRational =
+    val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](3)
+    !(__ptr_0 + 0) = b
+    !(__ptr_0 + 1) = c
+    __sn_wrap_ffmpeg_av_mul_q((__ptr_0 + 0), (__ptr_0 + 1), (__ptr_0 + 2))
+    !(__ptr_0 + 2)
 
   /**
    * Find which of the two rationals is closer to another rational.
@@ -8059,6 +8052,18 @@ object functions:
     __sn_wrap_ffmpeg_av_nearer_q((__ptr_0 + 0), (__ptr_0 + 1), (__ptr_0 + 2))
 
   /**
+   * Find which of the two rationals is closer to another rational.
+  */
+  def av_nearer_q(q : Ptr[AVRational], q1 : Ptr[AVRational], q2 : Ptr[AVRational]): CInt =
+    __sn_wrap_ffmpeg_av_nearer_q(q, q1, q2)
+
+  /**
+   * Convert valid timing fields (timestamps / durations) in a packet from one timebase to another. Timestamps with unknown values (AV_NOPTS_VALUE) will be ignored.
+  */
+  def av_packet_rescale_ts(pkt : Ptr[AVPacket], tb_src : Ptr[AVRational], tb_dst : Ptr[AVRational]): Unit =
+    __sn_wrap_ffmpeg_av_packet_rescale_ts(pkt, tb_src, tb_dst)
+
+  /**
    * Convert valid timing fields (timestamps / durations) in a packet from one timebase to another. Timestamps with unknown values (AV_NOPTS_VALUE) will be ignored.
   */
   def av_packet_rescale_ts(pkt : Ptr[AVPacket], tb_src : AVRational, tb_dst : AVRational)(using Zone): Unit =
@@ -8066,12 +8071,6 @@ object functions:
     !(__ptr_0 + 0) = tb_src
     !(__ptr_0 + 1) = tb_dst
     __sn_wrap_ffmpeg_av_packet_rescale_ts(pkt, (__ptr_0 + 0), (__ptr_0 + 1))
-
-  /**
-   * Convert valid timing fields (timestamps / durations) in a packet from one timebase to another. Timestamps with unknown values (AV_NOPTS_VALUE) will be ignored.
-  */
-  def av_packet_rescale_ts(pkt : Ptr[AVPacket], tb_src : Ptr[AVRational], tb_dst : Ptr[AVRational]): Unit =
-    __sn_wrap_ffmpeg_av_packet_rescale_ts(pkt, tb_src, tb_dst)
 
   /**
    * Convert an AVRational to a `double`.
@@ -8090,16 +8089,16 @@ object functions:
   /**
    * Convert an AVRational to a IEEE 32-bit `float` expressed in fixed-point format.
   */
-  def av_q2intfloat(q : Ptr[AVRational]): uint32_t =
-    __sn_wrap_ffmpeg_av_q2intfloat(q)
-
-  /**
-   * Convert an AVRational to a IEEE 32-bit `float` expressed in fixed-point format.
-  */
   def av_q2intfloat(q : AVRational)(using Zone): uint32_t =
     val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](1)
     !(__ptr_0 + 0) = q
     __sn_wrap_ffmpeg_av_q2intfloat((__ptr_0 + 0))
+
+  /**
+   * Convert an AVRational to a IEEE 32-bit `float` expressed in fixed-point format.
+  */
+  def av_q2intfloat(q : Ptr[AVRational]): uint32_t =
+    __sn_wrap_ffmpeg_av_q2intfloat(q)
 
   /**
    * Rescale a timestamp while preserving known durations.
@@ -8120,12 +8119,6 @@ object functions:
   /**
    * Rescale a 64-bit integer by 2 rational numbers.
   */
-  def av_rescale_q(a : int64_t, bq : Ptr[AVRational], cq : Ptr[AVRational]): int64_t =
-    __sn_wrap_ffmpeg_av_rescale_q(a, bq, cq)
-
-  /**
-   * Rescale a 64-bit integer by 2 rational numbers.
-  */
   def av_rescale_q(a : int64_t, bq : AVRational, cq : AVRational)(using Zone): int64_t =
     val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](2)
     !(__ptr_0 + 0) = bq
@@ -8133,10 +8126,10 @@ object functions:
     __sn_wrap_ffmpeg_av_rescale_q(a, (__ptr_0 + 0), (__ptr_0 + 1))
 
   /**
-   * Rescale a 64-bit integer by 2 rational numbers with specified rounding.
+   * Rescale a 64-bit integer by 2 rational numbers.
   */
-  def av_rescale_q_rnd(a : int64_t, bq : Ptr[AVRational], cq : Ptr[AVRational], rnd : AVRounding): int64_t =
-    __sn_wrap_ffmpeg_av_rescale_q_rnd(a, bq, cq, rnd)
+  def av_rescale_q(a : int64_t, bq : Ptr[AVRational], cq : Ptr[AVRational]): int64_t =
+    __sn_wrap_ffmpeg_av_rescale_q(a, bq, cq)
 
   /**
    * Rescale a 64-bit integer by 2 rational numbers with specified rounding.
@@ -8146,6 +8139,12 @@ object functions:
     !(__ptr_0 + 0) = bq
     !(__ptr_0 + 1) = cq
     __sn_wrap_ffmpeg_av_rescale_q_rnd(a, (__ptr_0 + 0), (__ptr_0 + 1), rnd)
+
+  /**
+   * Rescale a 64-bit integer by 2 rational numbers with specified rounding.
+  */
+  def av_rescale_q_rnd(a : int64_t, bq : Ptr[AVRational], cq : Ptr[AVRational], rnd : AVRounding): int64_t =
+    __sn_wrap_ffmpeg_av_rescale_q_rnd(a, bq, cq, rnd)
 
   def av_stream_get_codec_timebase(st : Ptr[AVStream])(using Zone): AVRational =
     val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](1)
@@ -8158,16 +8157,16 @@ object functions:
   /**
    * Subtract one rational from another.
   */
-  def av_sub_q(b : Ptr[AVRational], c : Ptr[AVRational])(__return : Ptr[AVRational]): Unit =
-    __sn_wrap_ffmpeg_av_sub_q(b, c, __return)
-
-  /**
-   * Subtract one rational from another.
-  */
   def av_sub_q(b : Ptr[AVRational], c : Ptr[AVRational])(using Zone): AVRational =
     val __ptr_0: Ptr[AVRational] = _root_.scala.scalanative.unsafe.alloc[AVRational](1)
     __sn_wrap_ffmpeg_av_sub_q(b, c, (__ptr_0 + 0))
     !(__ptr_0 + 0)
+
+  /**
+   * Subtract one rational from another.
+  */
+  def av_sub_q(b : Ptr[AVRational], c : Ptr[AVRational])(__return : Ptr[AVRational]): Unit =
+    __sn_wrap_ffmpeg_av_sub_q(b, c, __return)
 
   /**
    * Subtract one rational from another.

@@ -474,6 +474,7 @@ lazy val libuv = project
           )
       )
     },
+// https://github.com/libuv/libuv/issues/1160#issuecomment-727234957
     nativeConfig ~= { _.withCOptions(Seq("-std=gnu11")) }
   )
   .settings(bindgenSettings)
@@ -521,11 +522,20 @@ lazy val ffmpeg =
               "libavutil/log.h"
             )
           )
-          .withLinkName("ffmpeg_wrapper")
-          .withClangFlags(
-            List("-I" + vcpkgConfigurator.value.includes("ffmpeg"))
-          )
-        // .withLogLevel(bindgen.interface.LogLevel.Trace)
+          .withClangFlags({
+            val pkgs = Seq("libavformat", "libavcodec", "libavutil")
+            val pkgConfig = vcpkgConfigurator.value.pkgConfig
+            pkgs.flatMap(pkg => pkgConfig.compilationFlags(pkg))
+          })
+      },
+      nativeConfig := {
+        val pkgs = Seq("libavformat")
+        val pkgConfig = vcpkgConfigurator.value.pkgConfig
+        val compflags = pkgs.flatMap(pkg => pkgConfig.compilationFlags(pkg))
+        val linkflags = pkgs.flatMap(pkg => pkgConfig.linkingFlags(pkg))
+        nativeConfig.value
+          .withCompileOptions(_ ++ compflags)
+          .withLinkingOptions(_ ++ linkflags)
       }
     )
     .settings(bindgenSettings)
