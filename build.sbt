@@ -34,7 +34,8 @@ lazy val root = project
     rocksdb,
     sqlite,
     s2n,
-    jni
+    jni,
+    ffmpeg
   )
   .settings(
     run := {}
