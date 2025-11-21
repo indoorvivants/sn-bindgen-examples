@@ -256,13 +256,12 @@ lazy val mysql =
       // Mysql package in vcpkg is absolutely messed up
       vcpkgNativeConfig ~= { _.addRenamedLibrary("libmysql", "mysqlclient") },
       nativeConfig := {
-
         val config = nativeConfig.value
         config.withLinkingOptions(config.linkingOptions.flatMap {
           case "-lresolv-lresolv" => Some("-lresolv")
           case "-lm-lresolv"      => None
           case other              => Some(other)
-        })
+        }).withCppOptions(_ :+ "-fcxx-exceptions")
 
       },
       bindgenBindings += {
