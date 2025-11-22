@@ -4,7 +4,7 @@ import scala.scalanative.unsafe.*
 import scala.scalanative.libc.*
 
 @main def hello =
-  Zone { 
+  Zone {
     val db = alloc[Ptr[sqlite3]](1)
     val errMsg = alloc[CString](1)
 

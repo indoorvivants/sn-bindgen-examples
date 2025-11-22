@@ -257,11 +257,13 @@ lazy val mysql =
       vcpkgNativeConfig ~= { _.addRenamedLibrary("libmysql", "mysqlclient") },
       nativeConfig := {
         val config = nativeConfig.value
-        config.withLinkingOptions(config.linkingOptions.flatMap {
-          case "-lresolv-lresolv" => Some("-lresolv")
-          case "-lm-lresolv"      => None
-          case other              => Some(other)
-        }).withCppOptions(_ :+ "-fcxx-exceptions")
+        config
+          .withLinkingOptions(config.linkingOptions.flatMap {
+            case "-lresolv-lresolv" => Some("-lresolv")
+            case "-lm-lresolv"      => None
+            case other              => Some(other)
+          })
+          .withCppOptions(_ :+ "-fcxx-exceptions")
 
       },
       bindgenBindings += {
