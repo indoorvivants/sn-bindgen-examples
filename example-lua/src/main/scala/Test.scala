@@ -23,9 +23,10 @@ import lua.aliases.lua_KContext
       }
     }
 
-    val state = lua_newstate(luaAllocator, stats.asInstanceOf[Ptr[Byte]])
+    val state =
+      lua_newstate(luaAllocator, stats.asInstanceOf[Ptr[Byte]], 500.toUInt)
 
-    luaL_openlibs(state)
+    luaL_openselectedlibs(state, ~0, 0)
 
     val scalaSum = lua_CFunction {
       CFuncPtr1.fromScalaFunction { L =>
