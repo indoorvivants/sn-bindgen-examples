@@ -34,6 +34,8 @@ lazy val root = project
     rocksdb,
     sqlite,
     s2n,
+    sdl3,
+    sdl2,
     jni,
     ffmpeg
   )
@@ -309,6 +311,53 @@ lazy val sqlite =
     .settings(bindgenSettings)
     .settings(configurePlatform())
 
+lazy val sdl2 =
+  project
+    .in(file("example-sdl2"))
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(
+      scalaVersion := Versions.Scala,
+      vcpkgDependencies := VcpkgDependencies("sdl2"),
+      bindgenBindings += {
+        Binding(
+          vcpkgConfigurator.value.includes("sdl2") / "SDL2" / "SDL.h",
+          "sdl2"
+        )
+          .withCImports(List("SDL2/SDL.h"))
+          .withClangFlags(List("-fsigned-char", "-DSDL_DISABLE_ARM_NEON_H=1"))
+          .addBindgenArguments(List("--macros", "SDL_*,AUDIO_*"))
+      }
+    )
+    .settings(bindgenSettings)
+    .settings(configurePlatform())
+
+lazy val sdl3 =
+  project
+    .in(file("example-sdl3"))
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(
+      scalaVersion := Versions.Scala,
+      vcpkgDependencies := VcpkgDependencies("sdl3"),
+      bindgenBindings += {
+        Binding(
+          vcpkgConfigurator.value.includes("sdl3") / "SDL3" / "SDL.h",
+          "sdl3"
+        )
+          .withCImports(List("SDL3/SDL.h"))
+          .withClangFlags(
+            List(
+              "-fsigned-char",
+              "-DSDL_DISABLE_ARM_NEON_H=1",
+              "-I" + vcpkgConfigurator.value.includes("sdl3").toString
+            )
+          )
+          .addBindgenArguments(List("--macros", "SDL_*,AUDIO_*"))
+
+      }
+    )
+    .settings(bindgenSettings)
+    .settings(configurePlatform())
+
 lazy val redis =
   project
     .in(file("example-redis"))
@@ -394,7 +443,11 @@ val bindgenSettings = Seq(
   ),
   bindgenBindings := {
     bindgenBindings.value.map(_.withNoLocation(true))
-  }
+  },
+  bindgenBinary := sys.env
+    .get("BINDGEN_BINARY")
+    .map(new File(_))
+    .getOrElse((bindgenBinary).value)
 )
 
 def configurePlatform(rename: String => String = identity) = Seq(
