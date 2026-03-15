@@ -34,6 +34,8 @@ lazy val root = project
     rocksdb,
     sqlite,
     s2n,
+    sdl3,
+    sdl2,
     jni,
     ffmpeg
   )
@@ -323,7 +325,7 @@ lazy val sdl2 =
         )
           .withCImports(List("SDL2/SDL.h"))
           .withClangFlags(List("-fsigned-char", "-DSDL_DISABLE_ARM_NEON_H=1"))
-
+          .addBindgenArguments(List("--macros", "SDL_*,AUDIO_*"))
       }
     )
     .settings(bindgenSettings)
@@ -349,6 +351,7 @@ lazy val sdl3 =
               "-I" + vcpkgConfigurator.value.includes("sdl3").toString
             )
           )
+          .addBindgenArguments(List("--macros", "SDL_*,AUDIO_*"))
 
       }
     )
@@ -440,7 +443,11 @@ val bindgenSettings = Seq(
   ),
   bindgenBindings := {
     bindgenBindings.value.map(_.withNoLocation(true))
-  }
+  },
+  bindgenBinary := sys.env
+    .get("BINDGEN_BINARY")
+    .map(new File(_))
+    .getOrElse((bindgenBinary).value)
 )
 
 def configurePlatform(rename: String => String = identity) = Seq(
