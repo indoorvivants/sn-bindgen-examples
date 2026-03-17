@@ -6,17 +6,18 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-    private[libmysql] trait _BindgenEnumCInt[T](using eq: T =:= CInt):
-      given Tag[T] = Tag.Int.asInstanceOf[Tag[T]]
-      extension (inline t: T)
-        inline def value: CInt = eq.apply(t)
-        inline def int: CInt = eq.apply(t).toInt
     private[libmysql] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
       given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
       extension (inline t: T)
-        inline def value: CUnsignedInt = eq.apply(t)
-        inline def int: CInt = eq.apply(t).toInt
-        inline def uint: CUnsignedInt = eq.apply(t)
+        inline def value: CUnsignedInt = t.asInstanceOf[CUnsignedInt]
+        inline def int: CInt = value.toInt
+        inline def uint: CUnsignedInt = value
+    private[libmysql] trait _BindgenEnumCInt[T](using eq: T =:= CInt):
+      given Tag[T] = Tag.Int.asInstanceOf[Tag[T]]
+      extension (inline t: T)
+        inline def value: CInt = t.asInstanceOf[CInt]
+        inline def int: CInt = value.toInt
+
 
 object enumerations:
   import predef.*
@@ -684,8 +685,8 @@ object enumerations:
       inline def is(b: net_async_status): Boolean = (a & b) == b
 
 object aliases:
-  import _root_.libmysql.enumerations.*
   import _root_.libmysql.predef.*
+  import _root_.libmysql.enumerations.*
   import _root_.libmysql.aliases.*
   import _root_.libmysql.structs.*
   opaque type MYSQL_FIELD_OFFSET = CUnsignedInt
@@ -826,8 +827,8 @@ object aliases:
       inline def value: unsafe.CVarArgList = v
 
 object structs:
-  import _root_.libmysql.enumerations.*
   import _root_.libmysql.predef.*
+  import _root_.libmysql.enumerations.*
   import _root_.libmysql.aliases.*
   import _root_.libmysql.structs.*
 
@@ -848,6 +849,17 @@ object structs:
   object LIST:
     given _tag: Tag[LIST] = Tag.materializeCStruct3Tag[Ptr[Byte], Ptr[Byte], Ptr[Byte]]
     
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: LIST)
+        inline def prev : Ptr[LIST] = struct._1.asInstanceOf[Ptr[LIST]]
+        inline def prev_=(value: Ptr[LIST]): Unit = (!struct.at1 = value.asInstanceOf[Ptr[Byte]])
+        inline def next : Ptr[LIST] = struct._2.asInstanceOf[Ptr[LIST]]
+        inline def next_=(value: Ptr[LIST]): Unit = (!struct.at2 = value.asInstanceOf[Ptr[Byte]])
+        inline def data : Ptr[Byte] = struct._3
+        inline def data_=(value: Ptr[Byte]): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates LIST on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[LIST] = scala.scalanative.unsafe.alloc[LIST](1)
     def apply(prev : Ptr[LIST], next : Ptr[LIST], data : Ptr[Byte])(using Zone): Ptr[LIST] =
@@ -857,13 +869,6 @@ object structs:
       (!____ptr).data = data
       ____ptr
     
-    extension (struct: LIST)
-      def prev : Ptr[LIST] = struct._1.asInstanceOf[Ptr[LIST]]
-      def prev_=(value: Ptr[LIST]): Unit = !struct.at1 = value.asInstanceOf[Ptr[Byte]]
-      def next : Ptr[LIST] = struct._2.asInstanceOf[Ptr[LIST]]
-      def next_=(value: Ptr[LIST]): Unit = !struct.at2 = value.asInstanceOf[Ptr[Byte]]
-      def data : Ptr[Byte] = struct._3
-      def data_=(value: Ptr[Byte]): Unit = !struct.at3 = value
     
 
   opaque type MEM_ROOT = CStruct0
@@ -876,6 +881,85 @@ object structs:
   
   object MYSQL:
     given _tag: Tag[MYSQL] = Tag.CArray[CChar, Nat.Digit4[Nat._1, Nat._1, Nat._6, Nat._0]](Tag.Byte, Tag.Digit4[Nat._1, Nat._1, Nat._6, Nat._0](Tag.Nat1, Tag.Nat1, Tag.Nat6, Tag.Nat0))
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: MYSQL)
+        inline def net: NET = !struct.at(offsets(0)).asInstanceOf[Ptr[NET]]
+        inline def net_=(value: NET): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[NET]] = value
+        inline def connector_fd: Ptr[CUnsignedChar] = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]]
+        inline def connector_fd_=(value: Ptr[CUnsignedChar]): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]] = value
+        inline def host: CString = !struct.at(offsets(2)).asInstanceOf[Ptr[CString]]
+        inline def host_=(value: CString): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[CString]] = value
+        inline def user: CString = !struct.at(offsets(3)).asInstanceOf[Ptr[CString]]
+        inline def user_=(value: CString): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[CString]] = value
+        inline def passwd: CString = !struct.at(offsets(4)).asInstanceOf[Ptr[CString]]
+        inline def passwd_=(value: CString): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[CString]] = value
+        inline def unix_socket: CString = !struct.at(offsets(5)).asInstanceOf[Ptr[CString]]
+        inline def unix_socket_=(value: CString): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[CString]] = value
+        inline def server_version: CString = !struct.at(offsets(6)).asInstanceOf[Ptr[CString]]
+        inline def server_version_=(value: CString): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[CString]] = value
+        inline def host_info: CString = !struct.at(offsets(7)).asInstanceOf[Ptr[CString]]
+        inline def host_info_=(value: CString): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[CString]] = value
+        inline def info: CString = !struct.at(offsets(8)).asInstanceOf[Ptr[CString]]
+        inline def info_=(value: CString): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[CString]] = value
+        inline def db: CString = !struct.at(offsets(9)).asInstanceOf[Ptr[CString]]
+        inline def db_=(value: CString): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[CString]] = value
+        inline def charset: Ptr[CHARSET_INFO] = !struct.at(offsets(10)).asInstanceOf[Ptr[Ptr[CHARSET_INFO]]]
+        inline def charset_=(value: Ptr[CHARSET_INFO]): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[Ptr[CHARSET_INFO]]] = value
+        inline def fields: Ptr[MYSQL_FIELD] = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[MYSQL_FIELD]]]
+        inline def fields_=(value: Ptr[MYSQL_FIELD]): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[MYSQL_FIELD]]] = value
+        inline def field_alloc: Ptr[MEM_ROOT] = !struct.at(offsets(12)).asInstanceOf[Ptr[Ptr[MEM_ROOT]]]
+        inline def field_alloc_=(value: Ptr[MEM_ROOT]): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[Ptr[MEM_ROOT]]] = value
+        inline def affected_rows: uint64_t = !struct.at(offsets(13)).asInstanceOf[Ptr[uint64_t]]
+        inline def affected_rows_=(value: uint64_t): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[uint64_t]] = value
+        inline def insert_id: uint64_t = !struct.at(offsets(14)).asInstanceOf[Ptr[uint64_t]]
+        inline def insert_id_=(value: uint64_t): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[uint64_t]] = value
+        inline def extra_info: uint64_t = !struct.at(offsets(15)).asInstanceOf[Ptr[uint64_t]]
+        inline def extra_info_=(value: uint64_t): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[uint64_t]] = value
+        inline def thread_id: CUnsignedLongInt = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def thread_id_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def packet_length: CUnsignedLongInt = !struct.at(offsets(17)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def packet_length_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def port: CUnsignedInt = !struct.at(offsets(18)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def port_=(value: CUnsignedInt): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def client_flag: CUnsignedLongInt = !struct.at(offsets(19)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def client_flag_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def server_capabilities: CUnsignedLongInt = !struct.at(offsets(20)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def server_capabilities_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def protocol_version: CUnsignedInt = !struct.at(offsets(21)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def protocol_version_=(value: CUnsignedInt): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def field_count: CUnsignedInt = !struct.at(offsets(22)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def field_count_=(value: CUnsignedInt): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def server_status: CUnsignedInt = !struct.at(offsets(23)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def server_status_=(value: CUnsignedInt): Unit = !struct.at(offsets(23)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def server_language: CUnsignedInt = !struct.at(offsets(24)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def server_language_=(value: CUnsignedInt): Unit = !struct.at(offsets(24)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def warning_count: CUnsignedInt = !struct.at(offsets(25)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def warning_count_=(value: CUnsignedInt): Unit = !struct.at(offsets(25)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def options: st_mysql_options = !struct.at(offsets(26)).asInstanceOf[Ptr[st_mysql_options]]
+        inline def options_=(value: st_mysql_options): Unit = !struct.at(offsets(26)).asInstanceOf[Ptr[st_mysql_options]] = value
+        inline def status: mysql_status = !struct.at(offsets(27)).asInstanceOf[Ptr[mysql_status]]
+        inline def status_=(value: mysql_status): Unit = !struct.at(offsets(27)).asInstanceOf[Ptr[mysql_status]] = value
+        inline def resultset_metadata: enum_resultset_metadata = !struct.at(offsets(28)).asInstanceOf[Ptr[enum_resultset_metadata]]
+        inline def resultset_metadata_=(value: enum_resultset_metadata): Unit = !struct.at(offsets(28)).asInstanceOf[Ptr[enum_resultset_metadata]] = value
+        inline def free_me: Boolean = !struct.at(offsets(29)).asInstanceOf[Ptr[Boolean]]
+        inline def free_me_=(value: Boolean): Unit = !struct.at(offsets(29)).asInstanceOf[Ptr[Boolean]] = value
+        inline def reconnect: Boolean = !struct.at(offsets(30)).asInstanceOf[Ptr[Boolean]]
+        inline def reconnect_=(value: Boolean): Unit = !struct.at(offsets(30)).asInstanceOf[Ptr[Boolean]] = value
+        inline def scramble: CArray[CChar, Nat.Digit2[Nat._2, Nat._1]] = !struct.at(offsets(31)).asInstanceOf[Ptr[CArray[CChar, Nat.Digit2[Nat._2, Nat._1]]]]
+        inline def scramble_=(value: CArray[CChar, Nat.Digit2[Nat._2, Nat._1]]): Unit = !struct.at(offsets(31)).asInstanceOf[Ptr[CArray[CChar, Nat.Digit2[Nat._2, Nat._1]]]] = value
+        inline def stmts: Ptr[LIST] = !struct.at(offsets(32)).asInstanceOf[Ptr[Ptr[LIST]]]
+        inline def stmts_=(value: Ptr[LIST]): Unit = !struct.at(offsets(32)).asInstanceOf[Ptr[Ptr[LIST]]] = value
+        inline def methods: Ptr[MYSQL_METHODS] = !struct.at(offsets(33)).asInstanceOf[Ptr[Ptr[MYSQL_METHODS]]]
+        inline def methods_=(value: Ptr[MYSQL_METHODS]): Unit = !struct.at(offsets(33)).asInstanceOf[Ptr[Ptr[MYSQL_METHODS]]] = value
+        inline def thd: Ptr[Byte] = !struct.at(offsets(34)).asInstanceOf[Ptr[Ptr[Byte]]]
+        inline def thd_=(value: Ptr[Byte]): Unit = !struct.at(offsets(34)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+        inline def unbuffered_fetch_owner: Ptr[Boolean] = !struct.at(offsets(35)).asInstanceOf[Ptr[Ptr[Boolean]]]
+        inline def unbuffered_fetch_owner_=(value: Ptr[Boolean]): Unit = !struct.at(offsets(35)).asInstanceOf[Ptr[Ptr[Boolean]]] = value
+        inline def extension: Ptr[Byte] = !struct.at(offsets(36)).asInstanceOf[Ptr[Ptr[Byte]]]
+        inline def extension_=(value: Ptr[Byte]): Unit = !struct.at(offsets(36)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      end extension
     
     // Allocates MYSQL on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[MYSQL] = scala.scalanative.unsafe.alloc[MYSQL](1)
@@ -920,81 +1004,6 @@ object structs:
       (!____ptr).extension = extension
       ____ptr
     
-    extension (struct: MYSQL)
-      def net: NET = !struct.at(offsets(0)).asInstanceOf[Ptr[NET]]
-      def net_=(value: NET): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[NET]] = value
-      def connector_fd: Ptr[CUnsignedChar] = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]]
-      def connector_fd_=(value: Ptr[CUnsignedChar]): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]] = value
-      def host: CString = !struct.at(offsets(2)).asInstanceOf[Ptr[CString]]
-      def host_=(value: CString): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[CString]] = value
-      def user: CString = !struct.at(offsets(3)).asInstanceOf[Ptr[CString]]
-      def user_=(value: CString): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[CString]] = value
-      def passwd: CString = !struct.at(offsets(4)).asInstanceOf[Ptr[CString]]
-      def passwd_=(value: CString): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[CString]] = value
-      def unix_socket: CString = !struct.at(offsets(5)).asInstanceOf[Ptr[CString]]
-      def unix_socket_=(value: CString): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[CString]] = value
-      def server_version: CString = !struct.at(offsets(6)).asInstanceOf[Ptr[CString]]
-      def server_version_=(value: CString): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[CString]] = value
-      def host_info: CString = !struct.at(offsets(7)).asInstanceOf[Ptr[CString]]
-      def host_info_=(value: CString): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[CString]] = value
-      def info: CString = !struct.at(offsets(8)).asInstanceOf[Ptr[CString]]
-      def info_=(value: CString): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[CString]] = value
-      def db: CString = !struct.at(offsets(9)).asInstanceOf[Ptr[CString]]
-      def db_=(value: CString): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[CString]] = value
-      def charset: Ptr[CHARSET_INFO] = !struct.at(offsets(10)).asInstanceOf[Ptr[Ptr[CHARSET_INFO]]]
-      def charset_=(value: Ptr[CHARSET_INFO]): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[Ptr[CHARSET_INFO]]] = value
-      def fields: Ptr[MYSQL_FIELD] = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[MYSQL_FIELD]]]
-      def fields_=(value: Ptr[MYSQL_FIELD]): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[MYSQL_FIELD]]] = value
-      def field_alloc: Ptr[MEM_ROOT] = !struct.at(offsets(12)).asInstanceOf[Ptr[Ptr[MEM_ROOT]]]
-      def field_alloc_=(value: Ptr[MEM_ROOT]): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[Ptr[MEM_ROOT]]] = value
-      def affected_rows: uint64_t = !struct.at(offsets(13)).asInstanceOf[Ptr[uint64_t]]
-      def affected_rows_=(value: uint64_t): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[uint64_t]] = value
-      def insert_id: uint64_t = !struct.at(offsets(14)).asInstanceOf[Ptr[uint64_t]]
-      def insert_id_=(value: uint64_t): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[uint64_t]] = value
-      def extra_info: uint64_t = !struct.at(offsets(15)).asInstanceOf[Ptr[uint64_t]]
-      def extra_info_=(value: uint64_t): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[uint64_t]] = value
-      def thread_id: CUnsignedLongInt = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def thread_id_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def packet_length: CUnsignedLongInt = !struct.at(offsets(17)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def packet_length_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def port: CUnsignedInt = !struct.at(offsets(18)).asInstanceOf[Ptr[CUnsignedInt]]
-      def port_=(value: CUnsignedInt): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def client_flag: CUnsignedLongInt = !struct.at(offsets(19)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def client_flag_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def server_capabilities: CUnsignedLongInt = !struct.at(offsets(20)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def server_capabilities_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def protocol_version: CUnsignedInt = !struct.at(offsets(21)).asInstanceOf[Ptr[CUnsignedInt]]
-      def protocol_version_=(value: CUnsignedInt): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def field_count: CUnsignedInt = !struct.at(offsets(22)).asInstanceOf[Ptr[CUnsignedInt]]
-      def field_count_=(value: CUnsignedInt): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def server_status: CUnsignedInt = !struct.at(offsets(23)).asInstanceOf[Ptr[CUnsignedInt]]
-      def server_status_=(value: CUnsignedInt): Unit = !struct.at(offsets(23)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def server_language: CUnsignedInt = !struct.at(offsets(24)).asInstanceOf[Ptr[CUnsignedInt]]
-      def server_language_=(value: CUnsignedInt): Unit = !struct.at(offsets(24)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def warning_count: CUnsignedInt = !struct.at(offsets(25)).asInstanceOf[Ptr[CUnsignedInt]]
-      def warning_count_=(value: CUnsignedInt): Unit = !struct.at(offsets(25)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def options: st_mysql_options = !struct.at(offsets(26)).asInstanceOf[Ptr[st_mysql_options]]
-      def options_=(value: st_mysql_options): Unit = !struct.at(offsets(26)).asInstanceOf[Ptr[st_mysql_options]] = value
-      def status: mysql_status = !struct.at(offsets(27)).asInstanceOf[Ptr[mysql_status]]
-      def status_=(value: mysql_status): Unit = !struct.at(offsets(27)).asInstanceOf[Ptr[mysql_status]] = value
-      def resultset_metadata: enum_resultset_metadata = !struct.at(offsets(28)).asInstanceOf[Ptr[enum_resultset_metadata]]
-      def resultset_metadata_=(value: enum_resultset_metadata): Unit = !struct.at(offsets(28)).asInstanceOf[Ptr[enum_resultset_metadata]] = value
-      def free_me: Boolean = !struct.at(offsets(29)).asInstanceOf[Ptr[Boolean]]
-      def free_me_=(value: Boolean): Unit = !struct.at(offsets(29)).asInstanceOf[Ptr[Boolean]] = value
-      def reconnect: Boolean = !struct.at(offsets(30)).asInstanceOf[Ptr[Boolean]]
-      def reconnect_=(value: Boolean): Unit = !struct.at(offsets(30)).asInstanceOf[Ptr[Boolean]] = value
-      def scramble: CArray[CChar, Nat.Digit2[Nat._2, Nat._1]] = !struct.at(offsets(31)).asInstanceOf[Ptr[CArray[CChar, Nat.Digit2[Nat._2, Nat._1]]]]
-      def scramble_=(value: CArray[CChar, Nat.Digit2[Nat._2, Nat._1]]): Unit = !struct.at(offsets(31)).asInstanceOf[Ptr[CArray[CChar, Nat.Digit2[Nat._2, Nat._1]]]] = value
-      def stmts: Ptr[LIST] = !struct.at(offsets(32)).asInstanceOf[Ptr[Ptr[LIST]]]
-      def stmts_=(value: Ptr[LIST]): Unit = !struct.at(offsets(32)).asInstanceOf[Ptr[Ptr[LIST]]] = value
-      def methods: Ptr[MYSQL_METHODS] = !struct.at(offsets(33)).asInstanceOf[Ptr[Ptr[MYSQL_METHODS]]]
-      def methods_=(value: Ptr[MYSQL_METHODS]): Unit = !struct.at(offsets(33)).asInstanceOf[Ptr[Ptr[MYSQL_METHODS]]] = value
-      def thd: Ptr[Byte] = !struct.at(offsets(34)).asInstanceOf[Ptr[Ptr[Byte]]]
-      def thd_=(value: Ptr[Byte]): Unit = !struct.at(offsets(34)).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def unbuffered_fetch_owner: Ptr[Boolean] = !struct.at(offsets(35)).asInstanceOf[Ptr[Ptr[Boolean]]]
-      def unbuffered_fetch_owner_=(value: Ptr[Boolean]): Unit = !struct.at(offsets(35)).asInstanceOf[Ptr[Ptr[Boolean]]] = value
-      def extension: Ptr[Byte] = !struct.at(offsets(36)).asInstanceOf[Ptr[Ptr[Byte]]]
-      def extension_=(value: Ptr[Byte]): Unit = !struct.at(offsets(36)).asInstanceOf[Ptr[Ptr[Byte]]] = value
     val offsets: Array[Int] =
       val res = Array.ofDim[Int](37)
       def align(offset: Int, alignment: Int) = {
@@ -1051,6 +1060,49 @@ object structs:
   object MYSQL_BIND:
     given _tag: Tag[MYSQL_BIND] = Tag.materializeCStruct19Tag[Ptr[CUnsignedLongInt], Ptr[Boolean], Ptr[Byte], Ptr[Boolean], Ptr[CUnsignedChar], CFuncPtr2[Ptr[NET], Ptr[Byte], Unit], CFuncPtr3[Ptr[Byte], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit], CFuncPtr3[Ptr[Byte], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit], CUnsignedLongInt, CUnsignedLongInt, CUnsignedLongInt, CUnsignedInt, CUnsignedInt, enum_field_types, Boolean, Boolean, Boolean, Boolean, Ptr[Byte]]
     
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: MYSQL_BIND)
+        inline def length : Ptr[CUnsignedLongInt] = struct._1
+        inline def length_=(value: Ptr[CUnsignedLongInt]): Unit = (!struct.at1 = value)
+        inline def is_null : Ptr[Boolean] = struct._2
+        inline def is_null_=(value: Ptr[Boolean]): Unit = (!struct.at2 = value)
+        inline def buffer : Ptr[Byte] = struct._3
+        inline def buffer_=(value: Ptr[Byte]): Unit = (!struct.at3 = value)
+        inline def error : Ptr[Boolean] = struct._4
+        inline def error_=(value: Ptr[Boolean]): Unit = (!struct.at4 = value)
+        inline def row_ptr : Ptr[CUnsignedChar] = struct._5
+        inline def row_ptr_=(value: Ptr[CUnsignedChar]): Unit = (!struct.at5 = value)
+        inline def store_param_func : CFuncPtr2[Ptr[NET], Ptr[MYSQL_BIND], Unit] = struct._6.asInstanceOf[CFuncPtr2[Ptr[NET], Ptr[MYSQL_BIND], Unit]]
+        inline def store_param_func_=(value: CFuncPtr2[Ptr[NET], Ptr[MYSQL_BIND], Unit]): Unit = (!struct.at6 = value.asInstanceOf[CFuncPtr2[Ptr[NET], Ptr[Byte], Unit]])
+        inline def fetch_result : CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit] = struct._7.asInstanceOf[CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit]]
+        inline def fetch_result_=(value: CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit]): Unit = (!struct.at7 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit]])
+        inline def skip_result : CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit] = struct._8.asInstanceOf[CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit]]
+        inline def skip_result_=(value: CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit]): Unit = (!struct.at8 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit]])
+        inline def buffer_length : CUnsignedLongInt = struct._9
+        inline def buffer_length_=(value: CUnsignedLongInt): Unit = (!struct.at9 = value)
+        inline def offset : CUnsignedLongInt = struct._10
+        inline def offset_=(value: CUnsignedLongInt): Unit = (!struct.at10 = value)
+        inline def length_value : CUnsignedLongInt = struct._11
+        inline def length_value_=(value: CUnsignedLongInt): Unit = (!struct.at11 = value)
+        inline def param_number : CUnsignedInt = struct._12
+        inline def param_number_=(value: CUnsignedInt): Unit = (!struct.at12 = value)
+        inline def pack_length : CUnsignedInt = struct._13
+        inline def pack_length_=(value: CUnsignedInt): Unit = (!struct.at13 = value)
+        inline def buffer_type : enum_field_types = struct._14
+        inline def buffer_type_=(value: enum_field_types): Unit = (!struct.at14 = value)
+        inline def error_value : Boolean = struct._15
+        inline def error_value_=(value: Boolean): Unit = (!struct.at15 = value)
+        inline def is_unsigned : Boolean = struct._16
+        inline def is_unsigned_=(value: Boolean): Unit = (!struct.at16 = value)
+        inline def long_data_used : Boolean = struct._17
+        inline def long_data_used_=(value: Boolean): Unit = (!struct.at17 = value)
+        inline def is_null_value : Boolean = struct._18
+        inline def is_null_value_=(value: Boolean): Unit = (!struct.at18 = value)
+        inline def extension : Ptr[Byte] = struct._19
+        inline def extension_=(value: Ptr[Byte]): Unit = (!struct.at19 = value)
+      end extension
+    
     // Allocates MYSQL_BIND on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[MYSQL_BIND] = scala.scalanative.unsafe.alloc[MYSQL_BIND](1)
     def apply(length : Ptr[CUnsignedLongInt], is_null : Ptr[Boolean], buffer : Ptr[Byte], error : Ptr[Boolean], row_ptr : Ptr[CUnsignedChar], store_param_func : CFuncPtr2[Ptr[NET], Ptr[MYSQL_BIND], Unit], fetch_result : CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit], skip_result : CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit], buffer_length : CUnsignedLongInt, offset : CUnsignedLongInt, length_value : CUnsignedLongInt, param_number : CUnsignedInt, pack_length : CUnsignedInt, buffer_type : enum_field_types, error_value : Boolean, is_unsigned : Boolean, long_data_used : Boolean, is_null_value : Boolean, extension : Ptr[Byte])(using Zone): Ptr[MYSQL_BIND] =
@@ -1076,51 +1128,25 @@ object structs:
       (!____ptr).extension = extension
       ____ptr
     
-    extension (struct: MYSQL_BIND)
-      def length : Ptr[CUnsignedLongInt] = struct._1
-      def length_=(value: Ptr[CUnsignedLongInt]): Unit = !struct.at1 = value
-      def is_null : Ptr[Boolean] = struct._2
-      def is_null_=(value: Ptr[Boolean]): Unit = !struct.at2 = value
-      def buffer : Ptr[Byte] = struct._3
-      def buffer_=(value: Ptr[Byte]): Unit = !struct.at3 = value
-      def error : Ptr[Boolean] = struct._4
-      def error_=(value: Ptr[Boolean]): Unit = !struct.at4 = value
-      def row_ptr : Ptr[CUnsignedChar] = struct._5
-      def row_ptr_=(value: Ptr[CUnsignedChar]): Unit = !struct.at5 = value
-      def store_param_func : CFuncPtr2[Ptr[NET], Ptr[MYSQL_BIND], Unit] = struct._6.asInstanceOf[CFuncPtr2[Ptr[NET], Ptr[MYSQL_BIND], Unit]]
-      def store_param_func_=(value: CFuncPtr2[Ptr[NET], Ptr[MYSQL_BIND], Unit]): Unit = !struct.at6 = value.asInstanceOf[CFuncPtr2[Ptr[NET], Ptr[Byte], Unit]]
-      def fetch_result : CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit] = struct._7.asInstanceOf[CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit]]
-      def fetch_result_=(value: CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit]): Unit = !struct.at7 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit]]
-      def skip_result : CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit] = struct._8.asInstanceOf[CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit]]
-      def skip_result_=(value: CFuncPtr3[Ptr[MYSQL_BIND], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit]): Unit = !struct.at8 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[MYSQL_FIELD], Ptr[Ptr[CUnsignedChar]], Unit]]
-      def buffer_length : CUnsignedLongInt = struct._9
-      def buffer_length_=(value: CUnsignedLongInt): Unit = !struct.at9 = value
-      def offset : CUnsignedLongInt = struct._10
-      def offset_=(value: CUnsignedLongInt): Unit = !struct.at10 = value
-      def length_value : CUnsignedLongInt = struct._11
-      def length_value_=(value: CUnsignedLongInt): Unit = !struct.at11 = value
-      def param_number : CUnsignedInt = struct._12
-      def param_number_=(value: CUnsignedInt): Unit = !struct.at12 = value
-      def pack_length : CUnsignedInt = struct._13
-      def pack_length_=(value: CUnsignedInt): Unit = !struct.at13 = value
-      def buffer_type : enum_field_types = struct._14
-      def buffer_type_=(value: enum_field_types): Unit = !struct.at14 = value
-      def error_value : Boolean = struct._15
-      def error_value_=(value: Boolean): Unit = !struct.at15 = value
-      def is_unsigned : Boolean = struct._16
-      def is_unsigned_=(value: Boolean): Unit = !struct.at16 = value
-      def long_data_used : Boolean = struct._17
-      def long_data_used_=(value: Boolean): Unit = !struct.at17 = value
-      def is_null_value : Boolean = struct._18
-      def is_null_value_=(value: Boolean): Unit = !struct.at18 = value
-      def extension : Ptr[Byte] = struct._19
-      def extension_=(value: Ptr[Byte]): Unit = !struct.at19 = value
     
 
   opaque type MYSQL_DATA = CStruct4[Ptr[Byte], Ptr[MEM_ROOT], uint64_t, CUnsignedInt]
   
   object MYSQL_DATA:
     given _tag: Tag[MYSQL_DATA] = Tag.materializeCStruct4Tag[Ptr[Byte], Ptr[MEM_ROOT], uint64_t, CUnsignedInt]
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: MYSQL_DATA)
+        inline def data : Ptr[MYSQL_ROWS] = struct._1.asInstanceOf[Ptr[MYSQL_ROWS]]
+        inline def data_=(value: Ptr[MYSQL_ROWS]): Unit = (!struct.at1 = value.asInstanceOf[Ptr[Byte]])
+        inline def alloc : Ptr[MEM_ROOT] = struct._2
+        inline def alloc_=(value: Ptr[MEM_ROOT]): Unit = (!struct.at2 = value)
+        inline def rows : uint64_t = struct._3
+        inline def rows_=(value: uint64_t): Unit = (!struct.at3 = value)
+        inline def fields : CUnsignedInt = struct._4
+        inline def fields_=(value: CUnsignedInt): Unit = (!struct.at4 = value)
+      end extension
     
     // Allocates MYSQL_DATA on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[MYSQL_DATA] = scala.scalanative.unsafe.alloc[MYSQL_DATA](1)
@@ -1132,21 +1158,59 @@ object structs:
       (!____ptr).fields = fields
       ____ptr
     
-    extension (struct: MYSQL_DATA)
-      def data : Ptr[MYSQL_ROWS] = struct._1.asInstanceOf[Ptr[MYSQL_ROWS]]
-      def data_=(value: Ptr[MYSQL_ROWS]): Unit = !struct.at1 = value.asInstanceOf[Ptr[Byte]]
-      def alloc : Ptr[MEM_ROOT] = struct._2
-      def alloc_=(value: Ptr[MEM_ROOT]): Unit = !struct.at2 = value
-      def rows : uint64_t = struct._3
-      def rows_=(value: uint64_t): Unit = !struct.at3 = value
-      def fields : CUnsignedInt = struct._4
-      def fields_=(value: CUnsignedInt): Unit = !struct.at4 = value
     
 
   opaque type MYSQL_FIELD = CStruct21[CString, CString, CString, CString, CString, CString, CString, CUnsignedLongInt, CUnsignedLongInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, enum_field_types, Ptr[Byte]]
   
   object MYSQL_FIELD:
     given _tag: Tag[MYSQL_FIELD] = Tag.materializeCStruct21Tag[CString, CString, CString, CString, CString, CString, CString, CUnsignedLongInt, CUnsignedLongInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, enum_field_types, Ptr[Byte]]
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: MYSQL_FIELD)
+        inline def name : CString = struct._1
+        inline def name_=(value: CString): Unit = (!struct.at1 = value)
+        inline def org_name : CString = struct._2
+        inline def org_name_=(value: CString): Unit = (!struct.at2 = value)
+        inline def table : CString = struct._3
+        inline def table_=(value: CString): Unit = (!struct.at3 = value)
+        inline def org_table : CString = struct._4
+        inline def org_table_=(value: CString): Unit = (!struct.at4 = value)
+        inline def db : CString = struct._5
+        inline def db_=(value: CString): Unit = (!struct.at5 = value)
+        inline def catalog : CString = struct._6
+        inline def catalog_=(value: CString): Unit = (!struct.at6 = value)
+        inline def `def` : CString = struct._7
+        inline def def_=(value: CString): Unit = (!struct.at7 = value)
+        inline def length : CUnsignedLongInt = struct._8
+        inline def length_=(value: CUnsignedLongInt): Unit = (!struct.at8 = value)
+        inline def max_length : CUnsignedLongInt = struct._9
+        inline def max_length_=(value: CUnsignedLongInt): Unit = (!struct.at9 = value)
+        inline def name_length : CUnsignedInt = struct._10
+        inline def name_length_=(value: CUnsignedInt): Unit = (!struct.at10 = value)
+        inline def org_name_length : CUnsignedInt = struct._11
+        inline def org_name_length_=(value: CUnsignedInt): Unit = (!struct.at11 = value)
+        inline def table_length : CUnsignedInt = struct._12
+        inline def table_length_=(value: CUnsignedInt): Unit = (!struct.at12 = value)
+        inline def org_table_length : CUnsignedInt = struct._13
+        inline def org_table_length_=(value: CUnsignedInt): Unit = (!struct.at13 = value)
+        inline def db_length : CUnsignedInt = struct._14
+        inline def db_length_=(value: CUnsignedInt): Unit = (!struct.at14 = value)
+        inline def catalog_length : CUnsignedInt = struct._15
+        inline def catalog_length_=(value: CUnsignedInt): Unit = (!struct.at15 = value)
+        inline def def_length : CUnsignedInt = struct._16
+        inline def def_length_=(value: CUnsignedInt): Unit = (!struct.at16 = value)
+        inline def flags : CUnsignedInt = struct._17
+        inline def flags_=(value: CUnsignedInt): Unit = (!struct.at17 = value)
+        inline def decimals : CUnsignedInt = struct._18
+        inline def decimals_=(value: CUnsignedInt): Unit = (!struct.at18 = value)
+        inline def charsetnr : CUnsignedInt = struct._19
+        inline def charsetnr_=(value: CUnsignedInt): Unit = (!struct.at19 = value)
+        inline def `type` : enum_field_types = struct._20
+        inline def type_=(value: enum_field_types): Unit = (!struct.at20 = value)
+        inline def extension : Ptr[Byte] = struct._21
+        inline def extension_=(value: Ptr[Byte]): Unit = (!struct.at21 = value)
+      end extension
     
     // Allocates MYSQL_FIELD on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[MYSQL_FIELD] = scala.scalanative.unsafe.alloc[MYSQL_FIELD](1)
@@ -1175,49 +1239,6 @@ object structs:
       (!____ptr).extension = extension
       ____ptr
     
-    extension (struct: MYSQL_FIELD)
-      def name : CString = struct._1
-      def name_=(value: CString): Unit = !struct.at1 = value
-      def org_name : CString = struct._2
-      def org_name_=(value: CString): Unit = !struct.at2 = value
-      def table : CString = struct._3
-      def table_=(value: CString): Unit = !struct.at3 = value
-      def org_table : CString = struct._4
-      def org_table_=(value: CString): Unit = !struct.at4 = value
-      def db : CString = struct._5
-      def db_=(value: CString): Unit = !struct.at5 = value
-      def catalog : CString = struct._6
-      def catalog_=(value: CString): Unit = !struct.at6 = value
-      def `def` : CString = struct._7
-      def def_=(value: CString): Unit = !struct.at7 = value
-      def length : CUnsignedLongInt = struct._8
-      def length_=(value: CUnsignedLongInt): Unit = !struct.at8 = value
-      def max_length : CUnsignedLongInt = struct._9
-      def max_length_=(value: CUnsignedLongInt): Unit = !struct.at9 = value
-      def name_length : CUnsignedInt = struct._10
-      def name_length_=(value: CUnsignedInt): Unit = !struct.at10 = value
-      def org_name_length : CUnsignedInt = struct._11
-      def org_name_length_=(value: CUnsignedInt): Unit = !struct.at11 = value
-      def table_length : CUnsignedInt = struct._12
-      def table_length_=(value: CUnsignedInt): Unit = !struct.at12 = value
-      def org_table_length : CUnsignedInt = struct._13
-      def org_table_length_=(value: CUnsignedInt): Unit = !struct.at13 = value
-      def db_length : CUnsignedInt = struct._14
-      def db_length_=(value: CUnsignedInt): Unit = !struct.at14 = value
-      def catalog_length : CUnsignedInt = struct._15
-      def catalog_length_=(value: CUnsignedInt): Unit = !struct.at15 = value
-      def def_length : CUnsignedInt = struct._16
-      def def_length_=(value: CUnsignedInt): Unit = !struct.at16 = value
-      def flags : CUnsignedInt = struct._17
-      def flags_=(value: CUnsignedInt): Unit = !struct.at17 = value
-      def decimals : CUnsignedInt = struct._18
-      def decimals_=(value: CUnsignedInt): Unit = !struct.at18 = value
-      def charsetnr : CUnsignedInt = struct._19
-      def charsetnr_=(value: CUnsignedInt): Unit = !struct.at19 = value
-      def `type` : enum_field_types = struct._20
-      def type_=(value: enum_field_types): Unit = !struct.at20 = value
-      def extension : Ptr[Byte] = struct._21
-      def extension_=(value: Ptr[Byte]): Unit = !struct.at21 = value
     
 
   opaque type MYSQL_METHODS = CStruct0
@@ -1234,6 +1255,21 @@ object structs:
   object MYSQL_PLUGIN_VIO:
     given _tag: Tag[MYSQL_PLUGIN_VIO] = Tag.materializeCStruct5Tag[CFuncPtr2[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt], CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], CInt, CInt], CFuncPtr2[Ptr[Byte], Ptr[MYSQL_PLUGIN_VIO_INFO], Unit], CFuncPtr3[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], net_async_status], CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status]]
     
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: MYSQL_PLUGIN_VIO)
+        inline def read_packet : CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], CInt] = struct._1.asInstanceOf[CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], CInt]]
+        inline def read_packet_=(value: CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], CInt]): Unit = (!struct.at1 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt]])
+        inline def write_packet : CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, CInt] = struct._2.asInstanceOf[CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, CInt]]
+        inline def write_packet_=(value: CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, CInt]): Unit = (!struct.at2 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], CInt, CInt]])
+        inline def info : CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL_PLUGIN_VIO_INFO], Unit] = struct._3.asInstanceOf[CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL_PLUGIN_VIO_INFO], Unit]]
+        inline def info_=(value: CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL_PLUGIN_VIO_INFO], Unit]): Unit = (!struct.at3 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[MYSQL_PLUGIN_VIO_INFO], Unit]])
+        inline def read_packet_nonblocking : CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], net_async_status] = struct._4.asInstanceOf[CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], net_async_status]]
+        inline def read_packet_nonblocking_=(value: CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], net_async_status]): Unit = (!struct.at4 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], net_async_status]])
+        inline def write_packet_nonblocking : CFuncPtr4[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status] = struct._5.asInstanceOf[CFuncPtr4[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status]]
+        inline def write_packet_nonblocking_=(value: CFuncPtr4[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status]): Unit = (!struct.at5 = value.asInstanceOf[CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status]])
+      end extension
+    
     // Allocates MYSQL_PLUGIN_VIO on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[MYSQL_PLUGIN_VIO] = scala.scalanative.unsafe.alloc[MYSQL_PLUGIN_VIO](1)
     def apply(read_packet : CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], CInt], write_packet : CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, CInt], info : CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL_PLUGIN_VIO_INFO], Unit], read_packet_nonblocking : CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], net_async_status], write_packet_nonblocking : CFuncPtr4[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status])(using Zone): Ptr[MYSQL_PLUGIN_VIO] =
@@ -1245,64 +1281,94 @@ object structs:
       (!____ptr).write_packet_nonblocking = write_packet_nonblocking
       ____ptr
     
-    extension (struct: MYSQL_PLUGIN_VIO)
-      def read_packet : CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], CInt] = struct._1.asInstanceOf[CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], CInt]]
-      def read_packet_=(value: CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], CInt]): Unit = !struct.at1 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], CInt]]
-      def write_packet : CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, CInt] = struct._2.asInstanceOf[CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, CInt]]
-      def write_packet_=(value: CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, CInt]): Unit = !struct.at2 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[CUnsignedChar], CInt, CInt]]
-      def info : CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL_PLUGIN_VIO_INFO], Unit] = struct._3.asInstanceOf[CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL_PLUGIN_VIO_INFO], Unit]]
-      def info_=(value: CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL_PLUGIN_VIO_INFO], Unit]): Unit = !struct.at3 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[MYSQL_PLUGIN_VIO_INFO], Unit]]
-      def read_packet_nonblocking : CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], net_async_status] = struct._4.asInstanceOf[CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], net_async_status]]
-      def read_packet_nonblocking_=(value: CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], net_async_status]): Unit = !struct.at4 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[Ptr[CUnsignedChar]], Ptr[CInt], net_async_status]]
-      def write_packet_nonblocking : CFuncPtr4[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status] = struct._5.asInstanceOf[CFuncPtr4[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status]]
-      def write_packet_nonblocking_=(value: CFuncPtr4[Ptr[MYSQL_PLUGIN_VIO], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status]): Unit = !struct.at5 = value.asInstanceOf[CFuncPtr4[Ptr[Byte], Ptr[CUnsignedChar], CInt, Ptr[CInt], net_async_status]]
     
 
-  opaque type MYSQL_PLUGIN_VIO_INFO = CStruct2[MYSQL_PLUGIN_VIO_INFO.Protocol, CInt]
+  opaque type MYSQL_PLUGIN_VIO_INFO = CStruct2[MYSQL_PLUGIN_VIO_INFO_Protocol, CInt]
   
   object MYSQL_PLUGIN_VIO_INFO:
-    given _tag: Tag[MYSQL_PLUGIN_VIO_INFO] = Tag.materializeCStruct2Tag[MYSQL_PLUGIN_VIO_INFO.Protocol, CInt]
+    given _tag: Tag[MYSQL_PLUGIN_VIO_INFO] = Tag.materializeCStruct2Tag[MYSQL_PLUGIN_VIO_INFO_Protocol, CInt]
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: MYSQL_PLUGIN_VIO_INFO)
+        inline def protocol : MYSQL_PLUGIN_VIO_INFO_Protocol = struct._1
+        inline def protocol_=(value: MYSQL_PLUGIN_VIO_INFO_Protocol): Unit = (!struct.at1 = value)
+        inline def socket : CInt = struct._2
+        inline def socket_=(value: CInt): Unit = (!struct.at2 = value)
+      end extension
     
     // Allocates MYSQL_PLUGIN_VIO_INFO on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[MYSQL_PLUGIN_VIO_INFO] = scala.scalanative.unsafe.alloc[MYSQL_PLUGIN_VIO_INFO](1)
-    def apply(protocol : MYSQL_PLUGIN_VIO_INFO.Protocol, socket : CInt)(using Zone): Ptr[MYSQL_PLUGIN_VIO_INFO] =
+    def apply(protocol : MYSQL_PLUGIN_VIO_INFO_Protocol, socket : CInt)(using Zone): Ptr[MYSQL_PLUGIN_VIO_INFO] =
       val ____ptr = apply()
       (!____ptr).protocol = protocol
       (!____ptr).socket = socket
       ____ptr
     
-    extension (struct: MYSQL_PLUGIN_VIO_INFO)
-      def protocol : MYSQL_PLUGIN_VIO_INFO.Protocol = struct._1
-      def protocol_=(value: MYSQL_PLUGIN_VIO_INFO.Protocol): Unit = !struct.at1 = value
-      def socket : CInt = struct._2
-      def socket_=(value: CInt): Unit = !struct.at2 = value
     
-    opaque type Protocol = CUnsignedInt
-    object Protocol extends _BindgenEnumCUnsignedInt[Protocol]:
-      given _tag: Tag[Protocol] = Tag.UInt
-      inline def define(inline a: Long): Protocol = a.toUInt
-      val MYSQL_VIO_INVALID = define(0)
-      val MYSQL_VIO_TCP = define(1)
-      val MYSQL_VIO_SOCKET = define(2)
-      val MYSQL_VIO_PIPE = define(3)
-      val MYSQL_VIO_MEMORY = define(4)
-      def getName(value: Protocol): Option[String] =
-        value match
-          case `MYSQL_VIO_INVALID` => Some("MYSQL_VIO_INVALID")
-          case `MYSQL_VIO_TCP` => Some("MYSQL_VIO_TCP")
-          case `MYSQL_VIO_SOCKET` => Some("MYSQL_VIO_SOCKET")
-          case `MYSQL_VIO_PIPE` => Some("MYSQL_VIO_PIPE")
-          case `MYSQL_VIO_MEMORY` => Some("MYSQL_VIO_MEMORY")
-          case _ => _root_.scala.None
-      extension (a: Protocol)
-        inline def &(b: Protocol): Protocol = a & b
-        inline def |(b: Protocol): Protocol = a | b
-        inline def is(b: Protocol): Boolean = (a & b) == b
+  opaque type MYSQL_PLUGIN_VIO_INFO_Protocol = CUnsignedInt
+  object MYSQL_PLUGIN_VIO_INFO_Protocol extends _BindgenEnumCUnsignedInt[MYSQL_PLUGIN_VIO_INFO_Protocol]:
+    given _tag: Tag[MYSQL_PLUGIN_VIO_INFO_Protocol] = Tag.UInt
+    inline def define(inline a: Long): MYSQL_PLUGIN_VIO_INFO_Protocol = a.toUInt
+    val MYSQL_VIO_INVALID = define(0)
+    val MYSQL_VIO_TCP = define(1)
+    val MYSQL_VIO_SOCKET = define(2)
+    val MYSQL_VIO_PIPE = define(3)
+    val MYSQL_VIO_MEMORY = define(4)
+    def getName(value: MYSQL_PLUGIN_VIO_INFO_Protocol): Option[String] =
+      value match
+        case `MYSQL_VIO_INVALID` => Some("MYSQL_VIO_INVALID")
+        case `MYSQL_VIO_TCP` => Some("MYSQL_VIO_TCP")
+        case `MYSQL_VIO_SOCKET` => Some("MYSQL_VIO_SOCKET")
+        case `MYSQL_VIO_PIPE` => Some("MYSQL_VIO_PIPE")
+        case `MYSQL_VIO_MEMORY` => Some("MYSQL_VIO_MEMORY")
+        case _ => _root_.scala.None
+    extension (a: MYSQL_PLUGIN_VIO_INFO_Protocol)
+      inline def &(b: MYSQL_PLUGIN_VIO_INFO_Protocol): MYSQL_PLUGIN_VIO_INFO_Protocol = a & b
+      inline def |(b: MYSQL_PLUGIN_VIO_INFO_Protocol): MYSQL_PLUGIN_VIO_INFO_Protocol = a | b
+      inline def is(b: MYSQL_PLUGIN_VIO_INFO_Protocol): Boolean = (a & b) == b
 
   opaque type MYSQL_RES = CStruct16[uint64_t, Ptr[MYSQL_FIELD], Ptr[Byte], Ptr[Byte], Ptr[CUnsignedLongInt], Ptr[MYSQL], Ptr[MYSQL_METHODS], MYSQL_ROW, MYSQL_ROW, Ptr[MEM_ROOT], CUnsignedInt, CUnsignedInt, Boolean, Boolean, enum_resultset_metadata, Ptr[Byte]]
   
   object MYSQL_RES:
     given _tag: Tag[MYSQL_RES] = Tag.materializeCStruct16Tag[uint64_t, Ptr[MYSQL_FIELD], Ptr[Byte], Ptr[Byte], Ptr[CUnsignedLongInt], Ptr[MYSQL], Ptr[MYSQL_METHODS], MYSQL_ROW, MYSQL_ROW, Ptr[MEM_ROOT], CUnsignedInt, CUnsignedInt, Boolean, Boolean, enum_resultset_metadata, Ptr[Byte]]
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: MYSQL_RES)
+        inline def row_count : uint64_t = struct._1
+        inline def row_count_=(value: uint64_t): Unit = (!struct.at1 = value)
+        inline def fields : Ptr[MYSQL_FIELD] = struct._2
+        inline def fields_=(value: Ptr[MYSQL_FIELD]): Unit = (!struct.at2 = value)
+        inline def data : Ptr[MYSQL_DATA] = struct._3.asInstanceOf[Ptr[MYSQL_DATA]]
+        inline def data_=(value: Ptr[MYSQL_DATA]): Unit = (!struct.at3 = value.asInstanceOf[Ptr[Byte]])
+        inline def data_cursor : Ptr[MYSQL_ROWS] = struct._4.asInstanceOf[Ptr[MYSQL_ROWS]]
+        inline def data_cursor_=(value: Ptr[MYSQL_ROWS]): Unit = (!struct.at4 = value.asInstanceOf[Ptr[Byte]])
+        inline def lengths : Ptr[CUnsignedLongInt] = struct._5
+        inline def lengths_=(value: Ptr[CUnsignedLongInt]): Unit = (!struct.at5 = value)
+        inline def handle : Ptr[MYSQL] = struct._6
+        inline def handle_=(value: Ptr[MYSQL]): Unit = (!struct.at6 = value)
+        inline def methods : Ptr[MYSQL_METHODS] = struct._7
+        inline def methods_=(value: Ptr[MYSQL_METHODS]): Unit = (!struct.at7 = value)
+        inline def row : MYSQL_ROW = struct._8
+        inline def row_=(value: MYSQL_ROW): Unit = (!struct.at8 = value)
+        inline def current_row : MYSQL_ROW = struct._9
+        inline def current_row_=(value: MYSQL_ROW): Unit = (!struct.at9 = value)
+        inline def field_alloc : Ptr[MEM_ROOT] = struct._10
+        inline def field_alloc_=(value: Ptr[MEM_ROOT]): Unit = (!struct.at10 = value)
+        inline def field_count : CUnsignedInt = struct._11
+        inline def field_count_=(value: CUnsignedInt): Unit = (!struct.at11 = value)
+        inline def current_field : CUnsignedInt = struct._12
+        inline def current_field_=(value: CUnsignedInt): Unit = (!struct.at12 = value)
+        inline def eof : Boolean = struct._13
+        inline def eof_=(value: Boolean): Unit = (!struct.at13 = value)
+        inline def unbuffered_fetch_cancelled : Boolean = struct._14
+        inline def unbuffered_fetch_cancelled_=(value: Boolean): Unit = (!struct.at14 = value)
+        inline def metadata : enum_resultset_metadata = struct._15
+        inline def metadata_=(value: enum_resultset_metadata): Unit = (!struct.at15 = value)
+        inline def extension : Ptr[Byte] = struct._16
+        inline def extension_=(value: Ptr[Byte]): Unit = (!struct.at16 = value)
+      end extension
     
     // Allocates MYSQL_RES on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[MYSQL_RES] = scala.scalanative.unsafe.alloc[MYSQL_RES](1)
@@ -1326,45 +1392,23 @@ object structs:
       (!____ptr).extension = extension
       ____ptr
     
-    extension (struct: MYSQL_RES)
-      def row_count : uint64_t = struct._1
-      def row_count_=(value: uint64_t): Unit = !struct.at1 = value
-      def fields : Ptr[MYSQL_FIELD] = struct._2
-      def fields_=(value: Ptr[MYSQL_FIELD]): Unit = !struct.at2 = value
-      def data : Ptr[MYSQL_DATA] = struct._3.asInstanceOf[Ptr[MYSQL_DATA]]
-      def data_=(value: Ptr[MYSQL_DATA]): Unit = !struct.at3 = value.asInstanceOf[Ptr[Byte]]
-      def data_cursor : Ptr[MYSQL_ROWS] = struct._4.asInstanceOf[Ptr[MYSQL_ROWS]]
-      def data_cursor_=(value: Ptr[MYSQL_ROWS]): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def lengths : Ptr[CUnsignedLongInt] = struct._5
-      def lengths_=(value: Ptr[CUnsignedLongInt]): Unit = !struct.at5 = value
-      def handle : Ptr[MYSQL] = struct._6
-      def handle_=(value: Ptr[MYSQL]): Unit = !struct.at6 = value
-      def methods : Ptr[MYSQL_METHODS] = struct._7
-      def methods_=(value: Ptr[MYSQL_METHODS]): Unit = !struct.at7 = value
-      def row : MYSQL_ROW = struct._8
-      def row_=(value: MYSQL_ROW): Unit = !struct.at8 = value
-      def current_row : MYSQL_ROW = struct._9
-      def current_row_=(value: MYSQL_ROW): Unit = !struct.at9 = value
-      def field_alloc : Ptr[MEM_ROOT] = struct._10
-      def field_alloc_=(value: Ptr[MEM_ROOT]): Unit = !struct.at10 = value
-      def field_count : CUnsignedInt = struct._11
-      def field_count_=(value: CUnsignedInt): Unit = !struct.at11 = value
-      def current_field : CUnsignedInt = struct._12
-      def current_field_=(value: CUnsignedInt): Unit = !struct.at12 = value
-      def eof : Boolean = struct._13
-      def eof_=(value: Boolean): Unit = !struct.at13 = value
-      def unbuffered_fetch_cancelled : Boolean = struct._14
-      def unbuffered_fetch_cancelled_=(value: Boolean): Unit = !struct.at14 = value
-      def metadata : enum_resultset_metadata = struct._15
-      def metadata_=(value: enum_resultset_metadata): Unit = !struct.at15 = value
-      def extension : Ptr[Byte] = struct._16
-      def extension_=(value: Ptr[Byte]): Unit = !struct.at16 = value
     
 
   opaque type MYSQL_ROWS = CStruct3[Ptr[Byte], MYSQL_ROW, CUnsignedLongInt]
   
   object MYSQL_ROWS:
     given _tag: Tag[MYSQL_ROWS] = Tag.materializeCStruct3Tag[Ptr[Byte], MYSQL_ROW, CUnsignedLongInt]
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: MYSQL_ROWS)
+        inline def next : Ptr[MYSQL_ROWS] = struct._1.asInstanceOf[Ptr[MYSQL_ROWS]]
+        inline def next_=(value: Ptr[MYSQL_ROWS]): Unit = (!struct.at1 = value.asInstanceOf[Ptr[Byte]])
+        inline def data : MYSQL_ROW = struct._2
+        inline def data_=(value: MYSQL_ROW): Unit = (!struct.at2 = value)
+        inline def length : CUnsignedLongInt = struct._3
+        inline def length_=(value: CUnsignedLongInt): Unit = (!struct.at3 = value)
+      end extension
     
     // Allocates MYSQL_ROWS on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[MYSQL_ROWS] = scala.scalanative.unsafe.alloc[MYSQL_ROWS](1)
@@ -1375,13 +1419,6 @@ object structs:
       (!____ptr).length = length
       ____ptr
     
-    extension (struct: MYSQL_ROWS)
-      def next : Ptr[MYSQL_ROWS] = struct._1.asInstanceOf[Ptr[MYSQL_ROWS]]
-      def next_=(value: Ptr[MYSQL_ROWS]): Unit = !struct.at1 = value.asInstanceOf[Ptr[Byte]]
-      def data : MYSQL_ROW = struct._2
-      def data_=(value: MYSQL_ROW): Unit = !struct.at2 = value
-      def length : CUnsignedLongInt = struct._3
-      def length_=(value: CUnsignedLongInt): Unit = !struct.at3 = value
     
 
   /**
@@ -1391,6 +1428,31 @@ object structs:
   
   object MYSQL_RPL:
     given _tag: Tag[MYSQL_RPL] = Tag.materializeCStruct10Tag[size_t, CString, uint64_t, CUnsignedInt, CUnsignedInt, size_t, CFuncPtr2[Ptr[Byte], Ptr[CUnsignedChar], Unit], Ptr[Byte], CUnsignedLongInt, Ptr[CUnsignedChar]]
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: MYSQL_RPL)
+        inline def file_name_length : size_t = struct._1
+        inline def file_name_length_=(value: size_t): Unit = (!struct.at1 = value)
+        inline def file_name : CString = struct._2
+        inline def file_name_=(value: CString): Unit = (!struct.at2 = value)
+        inline def start_position : uint64_t = struct._3
+        inline def start_position_=(value: uint64_t): Unit = (!struct.at3 = value)
+        inline def server_id : CUnsignedInt = struct._4
+        inline def server_id_=(value: CUnsignedInt): Unit = (!struct.at4 = value)
+        inline def flags : CUnsignedInt = struct._5
+        inline def flags_=(value: CUnsignedInt): Unit = (!struct.at5 = value)
+        inline def gtid_set_encoded_size : size_t = struct._6
+        inline def gtid_set_encoded_size_=(value: size_t): Unit = (!struct.at6 = value)
+        inline def fix_gtid_set : CFuncPtr2[Ptr[MYSQL_RPL], Ptr[CUnsignedChar], Unit] = struct._7.asInstanceOf[CFuncPtr2[Ptr[MYSQL_RPL], Ptr[CUnsignedChar], Unit]]
+        inline def fix_gtid_set_=(value: CFuncPtr2[Ptr[MYSQL_RPL], Ptr[CUnsignedChar], Unit]): Unit = (!struct.at7 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[CUnsignedChar], Unit]])
+        inline def gtid_set_arg : Ptr[Byte] = struct._8
+        inline def gtid_set_arg_=(value: Ptr[Byte]): Unit = (!struct.at8 = value)
+        inline def size : CUnsignedLongInt = struct._9
+        inline def size_=(value: CUnsignedLongInt): Unit = (!struct.at9 = value)
+        inline def buffer : Ptr[CUnsignedChar] = struct._10
+        inline def buffer_=(value: Ptr[CUnsignedChar]): Unit = (!struct.at10 = value)
+      end extension
     
     // Allocates MYSQL_RPL on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[MYSQL_RPL] = scala.scalanative.unsafe.alloc[MYSQL_RPL](1)
@@ -1408,33 +1470,71 @@ object structs:
       (!____ptr).buffer = buffer
       ____ptr
     
-    extension (struct: MYSQL_RPL)
-      def file_name_length : size_t = struct._1
-      def file_name_length_=(value: size_t): Unit = !struct.at1 = value
-      def file_name : CString = struct._2
-      def file_name_=(value: CString): Unit = !struct.at2 = value
-      def start_position : uint64_t = struct._3
-      def start_position_=(value: uint64_t): Unit = !struct.at3 = value
-      def server_id : CUnsignedInt = struct._4
-      def server_id_=(value: CUnsignedInt): Unit = !struct.at4 = value
-      def flags : CUnsignedInt = struct._5
-      def flags_=(value: CUnsignedInt): Unit = !struct.at5 = value
-      def gtid_set_encoded_size : size_t = struct._6
-      def gtid_set_encoded_size_=(value: size_t): Unit = !struct.at6 = value
-      def fix_gtid_set : CFuncPtr2[Ptr[MYSQL_RPL], Ptr[CUnsignedChar], Unit] = struct._7.asInstanceOf[CFuncPtr2[Ptr[MYSQL_RPL], Ptr[CUnsignedChar], Unit]]
-      def fix_gtid_set_=(value: CFuncPtr2[Ptr[MYSQL_RPL], Ptr[CUnsignedChar], Unit]): Unit = !struct.at7 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[CUnsignedChar], Unit]]
-      def gtid_set_arg : Ptr[Byte] = struct._8
-      def gtid_set_arg_=(value: Ptr[Byte]): Unit = !struct.at8 = value
-      def size : CUnsignedLongInt = struct._9
-      def size_=(value: CUnsignedLongInt): Unit = !struct.at9 = value
-      def buffer : Ptr[CUnsignedChar] = struct._10
-      def buffer_=(value: Ptr[CUnsignedChar]): Unit = !struct.at10 = value
     
 
   opaque type MYSQL_STMT = CArray[CChar, Nat.Digit3[Nat._7, Nat._0, Nat._4]]
   
   object MYSQL_STMT:
     given _tag: Tag[MYSQL_STMT] = Tag.CArray[CChar, Nat.Digit3[Nat._7, Nat._0, Nat._4]](Tag.Byte, Tag.Digit3[Nat._7, Nat._0, Nat._4](Tag.Nat7, Tag.Nat0, Tag.Nat4))
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: MYSQL_STMT)
+        inline def mem_root: Ptr[MEM_ROOT] = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[MEM_ROOT]]]
+        inline def mem_root_=(value: Ptr[MEM_ROOT]): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[MEM_ROOT]]] = value
+        inline def list: LIST = !struct.at(offsets(1)).asInstanceOf[Ptr[LIST]]
+        inline def list_=(value: LIST): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[LIST]] = value
+        inline def mysql: Ptr[MYSQL] = !struct.at(offsets(2)).asInstanceOf[Ptr[Ptr[MYSQL]]]
+        inline def mysql_=(value: Ptr[MYSQL]): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[Ptr[MYSQL]]] = value
+        inline def params: Ptr[MYSQL_BIND] = !struct.at(offsets(3)).asInstanceOf[Ptr[Ptr[MYSQL_BIND]]]
+        inline def params_=(value: Ptr[MYSQL_BIND]): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[Ptr[MYSQL_BIND]]] = value
+        inline def bind: Ptr[MYSQL_BIND] = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[MYSQL_BIND]]]
+        inline def bind_=(value: Ptr[MYSQL_BIND]): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[MYSQL_BIND]]] = value
+        inline def fields: Ptr[MYSQL_FIELD] = !struct.at(offsets(5)).asInstanceOf[Ptr[Ptr[MYSQL_FIELD]]]
+        inline def fields_=(value: Ptr[MYSQL_FIELD]): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[Ptr[MYSQL_FIELD]]] = value
+        inline def result: MYSQL_DATA = !struct.at(offsets(6)).asInstanceOf[Ptr[MYSQL_DATA]]
+        inline def result_=(value: MYSQL_DATA): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[MYSQL_DATA]] = value
+        inline def data_cursor: Ptr[MYSQL_ROWS] = !struct.at(offsets(7)).asInstanceOf[Ptr[Ptr[MYSQL_ROWS]]]
+        inline def data_cursor_=(value: Ptr[MYSQL_ROWS]): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[Ptr[MYSQL_ROWS]]] = value
+        inline def read_row_func: CFuncPtr2[Ptr[MYSQL_STMT], Ptr[Ptr[CUnsignedChar]], CInt] = !struct.at(offsets(8)).asInstanceOf[Ptr[CFuncPtr2[Ptr[MYSQL_STMT], Ptr[Ptr[CUnsignedChar]], CInt]]]
+        inline def read_row_func_=(value: CFuncPtr2[Ptr[MYSQL_STMT], Ptr[Ptr[CUnsignedChar]], CInt]): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[CFuncPtr2[Ptr[MYSQL_STMT], Ptr[Ptr[CUnsignedChar]], CInt]]] = value
+        inline def affected_rows: uint64_t = !struct.at(offsets(9)).asInstanceOf[Ptr[uint64_t]]
+        inline def affected_rows_=(value: uint64_t): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[uint64_t]] = value
+        inline def insert_id: uint64_t = !struct.at(offsets(10)).asInstanceOf[Ptr[uint64_t]]
+        inline def insert_id_=(value: uint64_t): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[uint64_t]] = value
+        inline def stmt_id: CUnsignedLongInt = !struct.at(offsets(11)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def stmt_id_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def flags: CUnsignedLongInt = !struct.at(offsets(12)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def flags_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def prefetch_rows: CUnsignedLongInt = !struct.at(offsets(13)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def prefetch_rows_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def server_status: CUnsignedInt = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def server_status_=(value: CUnsignedInt): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def last_errno: CUnsignedInt = !struct.at(offsets(15)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def last_errno_=(value: CUnsignedInt): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def param_count: CUnsignedInt = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def param_count_=(value: CUnsignedInt): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def field_count: CUnsignedInt = !struct.at(offsets(17)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def field_count_=(value: CUnsignedInt): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def state: enum_mysql_stmt_state = !struct.at(offsets(18)).asInstanceOf[Ptr[enum_mysql_stmt_state]]
+        inline def state_=(value: enum_mysql_stmt_state): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[enum_mysql_stmt_state]] = value
+        inline def last_error: CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]] = !struct.at(offsets(19)).asInstanceOf[Ptr[CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]]]]
+        inline def last_error_=(value: CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]]): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]]]] = value
+        inline def sqlstate: CArray[CChar, Nat._6] = !struct.at(offsets(20)).asInstanceOf[Ptr[CArray[CChar, Nat._6]]]
+        inline def sqlstate_=(value: CArray[CChar, Nat._6]): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[CArray[CChar, Nat._6]]] = value
+        inline def send_types_to_server: Boolean = !struct.at(offsets(21)).asInstanceOf[Ptr[Boolean]]
+        inline def send_types_to_server_=(value: Boolean): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[Boolean]] = value
+        inline def bind_param_done: Boolean = !struct.at(offsets(22)).asInstanceOf[Ptr[Boolean]]
+        inline def bind_param_done_=(value: Boolean): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[Boolean]] = value
+        inline def bind_result_done: CUnsignedChar = !struct.at(offsets(23)).asInstanceOf[Ptr[CUnsignedChar]]
+        inline def bind_result_done_=(value: CUnsignedChar): Unit = !struct.at(offsets(23)).asInstanceOf[Ptr[CUnsignedChar]] = value
+        inline def unbuffered_fetch_cancelled: Boolean = !struct.at(offsets(24)).asInstanceOf[Ptr[Boolean]]
+        inline def unbuffered_fetch_cancelled_=(value: Boolean): Unit = !struct.at(offsets(24)).asInstanceOf[Ptr[Boolean]] = value
+        inline def update_max_length: Boolean = !struct.at(offsets(25)).asInstanceOf[Ptr[Boolean]]
+        inline def update_max_length_=(value: Boolean): Unit = !struct.at(offsets(25)).asInstanceOf[Ptr[Boolean]] = value
+        inline def extension: Ptr[MYSQL_STMT_EXT] = !struct.at(offsets(26)).asInstanceOf[Ptr[Ptr[MYSQL_STMT_EXT]]]
+        inline def extension_=(value: Ptr[MYSQL_STMT_EXT]): Unit = !struct.at(offsets(26)).asInstanceOf[Ptr[Ptr[MYSQL_STMT_EXT]]] = value
+      end extension
     
     // Allocates MYSQL_STMT on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[MYSQL_STMT] = scala.scalanative.unsafe.alloc[MYSQL_STMT](1)
@@ -1469,61 +1569,6 @@ object structs:
       (!____ptr).extension = extension
       ____ptr
     
-    extension (struct: MYSQL_STMT)
-      def mem_root: Ptr[MEM_ROOT] = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[MEM_ROOT]]]
-      def mem_root_=(value: Ptr[MEM_ROOT]): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[MEM_ROOT]]] = value
-      def list: LIST = !struct.at(offsets(1)).asInstanceOf[Ptr[LIST]]
-      def list_=(value: LIST): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[LIST]] = value
-      def mysql: Ptr[MYSQL] = !struct.at(offsets(2)).asInstanceOf[Ptr[Ptr[MYSQL]]]
-      def mysql_=(value: Ptr[MYSQL]): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[Ptr[MYSQL]]] = value
-      def params: Ptr[MYSQL_BIND] = !struct.at(offsets(3)).asInstanceOf[Ptr[Ptr[MYSQL_BIND]]]
-      def params_=(value: Ptr[MYSQL_BIND]): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[Ptr[MYSQL_BIND]]] = value
-      def bind: Ptr[MYSQL_BIND] = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[MYSQL_BIND]]]
-      def bind_=(value: Ptr[MYSQL_BIND]): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[MYSQL_BIND]]] = value
-      def fields: Ptr[MYSQL_FIELD] = !struct.at(offsets(5)).asInstanceOf[Ptr[Ptr[MYSQL_FIELD]]]
-      def fields_=(value: Ptr[MYSQL_FIELD]): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[Ptr[MYSQL_FIELD]]] = value
-      def result: MYSQL_DATA = !struct.at(offsets(6)).asInstanceOf[Ptr[MYSQL_DATA]]
-      def result_=(value: MYSQL_DATA): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[MYSQL_DATA]] = value
-      def data_cursor: Ptr[MYSQL_ROWS] = !struct.at(offsets(7)).asInstanceOf[Ptr[Ptr[MYSQL_ROWS]]]
-      def data_cursor_=(value: Ptr[MYSQL_ROWS]): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[Ptr[MYSQL_ROWS]]] = value
-      def read_row_func: CFuncPtr2[Ptr[MYSQL_STMT], Ptr[Ptr[CUnsignedChar]], CInt] = !struct.at(offsets(8)).asInstanceOf[Ptr[CFuncPtr2[Ptr[MYSQL_STMT], Ptr[Ptr[CUnsignedChar]], CInt]]]
-      def read_row_func_=(value: CFuncPtr2[Ptr[MYSQL_STMT], Ptr[Ptr[CUnsignedChar]], CInt]): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[CFuncPtr2[Ptr[MYSQL_STMT], Ptr[Ptr[CUnsignedChar]], CInt]]] = value
-      def affected_rows: uint64_t = !struct.at(offsets(9)).asInstanceOf[Ptr[uint64_t]]
-      def affected_rows_=(value: uint64_t): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[uint64_t]] = value
-      def insert_id: uint64_t = !struct.at(offsets(10)).asInstanceOf[Ptr[uint64_t]]
-      def insert_id_=(value: uint64_t): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[uint64_t]] = value
-      def stmt_id: CUnsignedLongInt = !struct.at(offsets(11)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def stmt_id_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def flags: CUnsignedLongInt = !struct.at(offsets(12)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def flags_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def prefetch_rows: CUnsignedLongInt = !struct.at(offsets(13)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def prefetch_rows_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def server_status: CUnsignedInt = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]]
-      def server_status_=(value: CUnsignedInt): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def last_errno: CUnsignedInt = !struct.at(offsets(15)).asInstanceOf[Ptr[CUnsignedInt]]
-      def last_errno_=(value: CUnsignedInt): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def param_count: CUnsignedInt = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedInt]]
-      def param_count_=(value: CUnsignedInt): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def field_count: CUnsignedInt = !struct.at(offsets(17)).asInstanceOf[Ptr[CUnsignedInt]]
-      def field_count_=(value: CUnsignedInt): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def state: enum_mysql_stmt_state = !struct.at(offsets(18)).asInstanceOf[Ptr[enum_mysql_stmt_state]]
-      def state_=(value: enum_mysql_stmt_state): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[enum_mysql_stmt_state]] = value
-      def last_error: CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]] = !struct.at(offsets(19)).asInstanceOf[Ptr[CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]]]]
-      def last_error_=(value: CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]]): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]]]] = value
-      def sqlstate: CArray[CChar, Nat._6] = !struct.at(offsets(20)).asInstanceOf[Ptr[CArray[CChar, Nat._6]]]
-      def sqlstate_=(value: CArray[CChar, Nat._6]): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[CArray[CChar, Nat._6]]] = value
-      def send_types_to_server: Boolean = !struct.at(offsets(21)).asInstanceOf[Ptr[Boolean]]
-      def send_types_to_server_=(value: Boolean): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[Boolean]] = value
-      def bind_param_done: Boolean = !struct.at(offsets(22)).asInstanceOf[Ptr[Boolean]]
-      def bind_param_done_=(value: Boolean): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[Boolean]] = value
-      def bind_result_done: CUnsignedChar = !struct.at(offsets(23)).asInstanceOf[Ptr[CUnsignedChar]]
-      def bind_result_done_=(value: CUnsignedChar): Unit = !struct.at(offsets(23)).asInstanceOf[Ptr[CUnsignedChar]] = value
-      def unbuffered_fetch_cancelled: Boolean = !struct.at(offsets(24)).asInstanceOf[Ptr[Boolean]]
-      def unbuffered_fetch_cancelled_=(value: Boolean): Unit = !struct.at(offsets(24)).asInstanceOf[Ptr[Boolean]] = value
-      def update_max_length: Boolean = !struct.at(offsets(25)).asInstanceOf[Ptr[Boolean]]
-      def update_max_length_=(value: Boolean): Unit = !struct.at(offsets(25)).asInstanceOf[Ptr[Boolean]] = value
-      def extension: Ptr[MYSQL_STMT_EXT] = !struct.at(offsets(26)).asInstanceOf[Ptr[Ptr[MYSQL_STMT_EXT]]]
-      def extension_=(value: Ptr[MYSQL_STMT_EXT]): Unit = !struct.at(offsets(26)).asInstanceOf[Ptr[Ptr[MYSQL_STMT_EXT]]] = value
     val offsets: Array[Int] =
       val res = Array.ofDim[Int](27)
       def align(offset: Int, alignment: Int) = {
@@ -1576,6 +1621,31 @@ object structs:
   object MYSQL_TIME:
     given _tag: Tag[MYSQL_TIME] = Tag.materializeCStruct10Tag[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedLongInt, Boolean, enum_mysql_timestamp_type, CInt]
     
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: MYSQL_TIME)
+        inline def year : CUnsignedInt = struct._1
+        inline def year_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def month : CUnsignedInt = struct._2
+        inline def month_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def day : CUnsignedInt = struct._3
+        inline def day_=(value: CUnsignedInt): Unit = (!struct.at3 = value)
+        inline def hour : CUnsignedInt = struct._4
+        inline def hour_=(value: CUnsignedInt): Unit = (!struct.at4 = value)
+        inline def minute : CUnsignedInt = struct._5
+        inline def minute_=(value: CUnsignedInt): Unit = (!struct.at5 = value)
+        inline def second : CUnsignedInt = struct._6
+        inline def second_=(value: CUnsignedInt): Unit = (!struct.at6 = value)
+        inline def second_part : CUnsignedLongInt = struct._7
+        inline def second_part_=(value: CUnsignedLongInt): Unit = (!struct.at7 = value)
+        inline def neg : Boolean = struct._8
+        inline def neg_=(value: Boolean): Unit = (!struct.at8 = value)
+        inline def time_type : enum_mysql_timestamp_type = struct._9
+        inline def time_type_=(value: enum_mysql_timestamp_type): Unit = (!struct.at9 = value)
+        inline def time_zone_displacement : CInt = struct._10
+        inline def time_zone_displacement_=(value: CInt): Unit = (!struct.at10 = value)
+      end extension
+    
     // Allocates MYSQL_TIME on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[MYSQL_TIME] = scala.scalanative.unsafe.alloc[MYSQL_TIME](1)
     def apply(year : CUnsignedInt, month : CUnsignedInt, day : CUnsignedInt, hour : CUnsignedInt, minute : CUnsignedInt, second : CUnsignedInt, second_part : CUnsignedLongInt, neg : Boolean, time_type : enum_mysql_timestamp_type, time_zone_displacement : CInt)(using Zone): Ptr[MYSQL_TIME] =
@@ -1592,33 +1662,33 @@ object structs:
       (!____ptr).time_zone_displacement = time_zone_displacement
       ____ptr
     
-    extension (struct: MYSQL_TIME)
-      def year : CUnsignedInt = struct._1
-      def year_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def month : CUnsignedInt = struct._2
-      def month_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def day : CUnsignedInt = struct._3
-      def day_=(value: CUnsignedInt): Unit = !struct.at3 = value
-      def hour : CUnsignedInt = struct._4
-      def hour_=(value: CUnsignedInt): Unit = !struct.at4 = value
-      def minute : CUnsignedInt = struct._5
-      def minute_=(value: CUnsignedInt): Unit = !struct.at5 = value
-      def second : CUnsignedInt = struct._6
-      def second_=(value: CUnsignedInt): Unit = !struct.at6 = value
-      def second_part : CUnsignedLongInt = struct._7
-      def second_part_=(value: CUnsignedLongInt): Unit = !struct.at7 = value
-      def neg : Boolean = struct._8
-      def neg_=(value: Boolean): Unit = !struct.at8 = value
-      def time_type : enum_mysql_timestamp_type = struct._9
-      def time_type_=(value: enum_mysql_timestamp_type): Unit = !struct.at9 = value
-      def time_zone_displacement : CInt = struct._10
-      def time_zone_displacement_=(value: CInt): Unit = !struct.at10 = value
     
 
   opaque type MY_CHARSET_INFO = CStruct8[CUnsignedInt, CUnsignedInt, CString, CString, CString, CString, CUnsignedInt, CUnsignedInt]
   
   object MY_CHARSET_INFO:
     given _tag: Tag[MY_CHARSET_INFO] = Tag.materializeCStruct8Tag[CUnsignedInt, CUnsignedInt, CString, CString, CString, CString, CUnsignedInt, CUnsignedInt]
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: MY_CHARSET_INFO)
+        inline def number : CUnsignedInt = struct._1
+        inline def number_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def state : CUnsignedInt = struct._2
+        inline def state_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def csname : CString = struct._3
+        inline def csname_=(value: CString): Unit = (!struct.at3 = value)
+        inline def name : CString = struct._4
+        inline def name_=(value: CString): Unit = (!struct.at4 = value)
+        inline def comment : CString = struct._5
+        inline def comment_=(value: CString): Unit = (!struct.at5 = value)
+        inline def dir : CString = struct._6
+        inline def dir_=(value: CString): Unit = (!struct.at6 = value)
+        inline def mbminlen : CUnsignedInt = struct._7
+        inline def mbminlen_=(value: CUnsignedInt): Unit = (!struct.at7 = value)
+        inline def mbmaxlen : CUnsignedInt = struct._8
+        inline def mbmaxlen_=(value: CUnsignedInt): Unit = (!struct.at8 = value)
+      end extension
     
     // Allocates MY_CHARSET_INFO on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[MY_CHARSET_INFO] = scala.scalanative.unsafe.alloc[MY_CHARSET_INFO](1)
@@ -1634,29 +1704,71 @@ object structs:
       (!____ptr).mbmaxlen = mbmaxlen
       ____ptr
     
-    extension (struct: MY_CHARSET_INFO)
-      def number : CUnsignedInt = struct._1
-      def number_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def state : CUnsignedInt = struct._2
-      def state_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def csname : CString = struct._3
-      def csname_=(value: CString): Unit = !struct.at3 = value
-      def name : CString = struct._4
-      def name_=(value: CString): Unit = !struct.at4 = value
-      def comment : CString = struct._5
-      def comment_=(value: CString): Unit = !struct.at5 = value
-      def dir : CString = struct._6
-      def dir_=(value: CString): Unit = !struct.at6 = value
-      def mbminlen : CUnsignedInt = struct._7
-      def mbminlen_=(value: CUnsignedInt): Unit = !struct.at7 = value
-      def mbmaxlen : CUnsignedInt = struct._8
-      def mbmaxlen_=(value: CUnsignedInt): Unit = !struct.at8 = value
     
 
   opaque type NET = CArray[CChar, Nat.Digit3[Nat._6, Nat._6, Nat._4]]
   
   object NET:
     given _tag: Tag[NET] = Tag.CArray[CChar, Nat.Digit3[Nat._6, Nat._6, Nat._4]](Tag.Byte, Tag.Digit3[Nat._6, Nat._6, Nat._4](Tag.Nat6, Tag.Nat6, Tag.Nat4))
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: NET)
+        inline def vio: Ptr[Vio] = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Vio]]]
+        inline def vio_=(value: Ptr[Vio]): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Vio]]] = value
+        inline def buff: Ptr[CUnsignedChar] = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]]
+        inline def buff_=(value: Ptr[CUnsignedChar]): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]] = value
+        inline def buff_end: Ptr[CUnsignedChar] = !struct.at(offsets(2)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]]
+        inline def buff_end_=(value: Ptr[CUnsignedChar]): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]] = value
+        inline def write_pos: Ptr[CUnsignedChar] = !struct.at(offsets(3)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]]
+        inline def write_pos_=(value: Ptr[CUnsignedChar]): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]] = value
+        inline def read_pos: Ptr[CUnsignedChar] = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]]
+        inline def read_pos_=(value: Ptr[CUnsignedChar]): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]] = value
+        inline def fd: my_socket = !struct.at(offsets(5)).asInstanceOf[Ptr[my_socket]]
+        inline def fd_=(value: my_socket): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[my_socket]] = value
+        inline def remain_in_buf: CUnsignedLongInt = !struct.at(offsets(6)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def remain_in_buf_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def _length: CUnsignedLongInt = !struct.at(offsets(7)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def _length_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def buf_length: CUnsignedLongInt = !struct.at(offsets(8)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def buf_length_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def where_b: CUnsignedLongInt = !struct.at(offsets(9)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def where_b_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def max_packet: CUnsignedLongInt = !struct.at(offsets(10)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def max_packet_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def max_packet_size: CUnsignedLongInt = !struct.at(offsets(11)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def max_packet_size_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def pkt_nr: CUnsignedInt = !struct.at(offsets(12)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def pkt_nr_=(value: CUnsignedInt): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def compress_pkt_nr: CUnsignedInt = !struct.at(offsets(13)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def compress_pkt_nr_=(value: CUnsignedInt): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def write_timeout: CUnsignedInt = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def write_timeout_=(value: CUnsignedInt): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def read_timeout: CUnsignedInt = !struct.at(offsets(15)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def read_timeout_=(value: CUnsignedInt): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def retry_count: CUnsignedInt = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def retry_count_=(value: CUnsignedInt): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def fcntl: CInt = !struct.at(offsets(17)).asInstanceOf[Ptr[CInt]]
+        inline def fcntl_=(value: CInt): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[CInt]] = value
+        inline def return_status: Ptr[CUnsignedInt] = !struct.at(offsets(18)).asInstanceOf[Ptr[Ptr[CUnsignedInt]]]
+        inline def return_status_=(value: Ptr[CUnsignedInt]): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[Ptr[CUnsignedInt]]] = value
+        inline def reading_or_writing: CUnsignedChar = !struct.at(offsets(19)).asInstanceOf[Ptr[CUnsignedChar]]
+        inline def reading_or_writing_=(value: CUnsignedChar): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[CUnsignedChar]] = value
+        inline def save_char: CUnsignedChar = !struct.at(offsets(20)).asInstanceOf[Ptr[CUnsignedChar]]
+        inline def save_char_=(value: CUnsignedChar): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[CUnsignedChar]] = value
+        inline def compress: Boolean = !struct.at(offsets(21)).asInstanceOf[Ptr[Boolean]]
+        inline def compress_=(value: Boolean): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[Boolean]] = value
+        inline def last_errno: CUnsignedInt = !struct.at(offsets(22)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def last_errno_=(value: CUnsignedInt): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def error: CUnsignedChar = !struct.at(offsets(23)).asInstanceOf[Ptr[CUnsignedChar]]
+        inline def error_=(value: CUnsignedChar): Unit = !struct.at(offsets(23)).asInstanceOf[Ptr[CUnsignedChar]] = value
+        inline def last_error: CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]] = !struct.at(offsets(24)).asInstanceOf[Ptr[CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]]]]
+        inline def last_error_=(value: CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]]): Unit = !struct.at(offsets(24)).asInstanceOf[Ptr[CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]]]] = value
+        inline def sqlstate: CArray[CChar, Nat._6] = !struct.at(offsets(25)).asInstanceOf[Ptr[CArray[CChar, Nat._6]]]
+        inline def sqlstate_=(value: CArray[CChar, Nat._6]): Unit = !struct.at(offsets(25)).asInstanceOf[Ptr[CArray[CChar, Nat._6]]] = value
+        inline def extension: Ptr[Byte] = !struct.at(offsets(26)).asInstanceOf[Ptr[Ptr[Byte]]]
+        inline def extension_=(value: Ptr[Byte]): Unit = !struct.at(offsets(26)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+      end extension
     
     // Allocates NET on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[NET] = scala.scalanative.unsafe.alloc[NET](1)
@@ -1691,61 +1803,6 @@ object structs:
       (!____ptr).extension = extension
       ____ptr
     
-    extension (struct: NET)
-      def vio: Ptr[Vio] = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Vio]]]
-      def vio_=(value: Ptr[Vio]): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[Ptr[Vio]]] = value
-      def buff: Ptr[CUnsignedChar] = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]]
-      def buff_=(value: Ptr[CUnsignedChar]): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]] = value
-      def buff_end: Ptr[CUnsignedChar] = !struct.at(offsets(2)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]]
-      def buff_end_=(value: Ptr[CUnsignedChar]): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]] = value
-      def write_pos: Ptr[CUnsignedChar] = !struct.at(offsets(3)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]]
-      def write_pos_=(value: Ptr[CUnsignedChar]): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]] = value
-      def read_pos: Ptr[CUnsignedChar] = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]]
-      def read_pos_=(value: Ptr[CUnsignedChar]): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[Ptr[CUnsignedChar]]] = value
-      def fd: my_socket = !struct.at(offsets(5)).asInstanceOf[Ptr[my_socket]]
-      def fd_=(value: my_socket): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[my_socket]] = value
-      def remain_in_buf: CUnsignedLongInt = !struct.at(offsets(6)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def remain_in_buf_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def _length: CUnsignedLongInt = !struct.at(offsets(7)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def _length_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def buf_length: CUnsignedLongInt = !struct.at(offsets(8)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def buf_length_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def where_b: CUnsignedLongInt = !struct.at(offsets(9)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def where_b_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def max_packet: CUnsignedLongInt = !struct.at(offsets(10)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def max_packet_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def max_packet_size: CUnsignedLongInt = !struct.at(offsets(11)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def max_packet_size_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def pkt_nr: CUnsignedInt = !struct.at(offsets(12)).asInstanceOf[Ptr[CUnsignedInt]]
-      def pkt_nr_=(value: CUnsignedInt): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def compress_pkt_nr: CUnsignedInt = !struct.at(offsets(13)).asInstanceOf[Ptr[CUnsignedInt]]
-      def compress_pkt_nr_=(value: CUnsignedInt): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def write_timeout: CUnsignedInt = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]]
-      def write_timeout_=(value: CUnsignedInt): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def read_timeout: CUnsignedInt = !struct.at(offsets(15)).asInstanceOf[Ptr[CUnsignedInt]]
-      def read_timeout_=(value: CUnsignedInt): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def retry_count: CUnsignedInt = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedInt]]
-      def retry_count_=(value: CUnsignedInt): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def fcntl: CInt = !struct.at(offsets(17)).asInstanceOf[Ptr[CInt]]
-      def fcntl_=(value: CInt): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[CInt]] = value
-      def return_status: Ptr[CUnsignedInt] = !struct.at(offsets(18)).asInstanceOf[Ptr[Ptr[CUnsignedInt]]]
-      def return_status_=(value: Ptr[CUnsignedInt]): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[Ptr[CUnsignedInt]]] = value
-      def reading_or_writing: CUnsignedChar = !struct.at(offsets(19)).asInstanceOf[Ptr[CUnsignedChar]]
-      def reading_or_writing_=(value: CUnsignedChar): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[CUnsignedChar]] = value
-      def save_char: CUnsignedChar = !struct.at(offsets(20)).asInstanceOf[Ptr[CUnsignedChar]]
-      def save_char_=(value: CUnsignedChar): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[CUnsignedChar]] = value
-      def compress: Boolean = !struct.at(offsets(21)).asInstanceOf[Ptr[Boolean]]
-      def compress_=(value: Boolean): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[Boolean]] = value
-      def last_errno: CUnsignedInt = !struct.at(offsets(22)).asInstanceOf[Ptr[CUnsignedInt]]
-      def last_errno_=(value: CUnsignedInt): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def error: CUnsignedChar = !struct.at(offsets(23)).asInstanceOf[Ptr[CUnsignedChar]]
-      def error_=(value: CUnsignedChar): Unit = !struct.at(offsets(23)).asInstanceOf[Ptr[CUnsignedChar]] = value
-      def last_error: CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]] = !struct.at(offsets(24)).asInstanceOf[Ptr[CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]]]]
-      def last_error_=(value: CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]]): Unit = !struct.at(offsets(24)).asInstanceOf[Ptr[CArray[CChar, Nat.Digit3[Nat._5, Nat._1, Nat._2]]]] = value
-      def sqlstate: CArray[CChar, Nat._6] = !struct.at(offsets(25)).asInstanceOf[Ptr[CArray[CChar, Nat._6]]]
-      def sqlstate_=(value: CArray[CChar, Nat._6]): Unit = !struct.at(offsets(25)).asInstanceOf[Ptr[CArray[CChar, Nat._6]]] = value
-      def extension: Ptr[Byte] = !struct.at(offsets(26)).asInstanceOf[Ptr[Ptr[Byte]]]
-      def extension_=(value: Ptr[Byte]): Unit = !struct.at(offsets(26)).asInstanceOf[Ptr[Ptr[Byte]]] = value
     val offsets: Array[Int] =
       val res = Array.ofDim[Int](27)
       def align(offset: Int, alignment: Int) = {
@@ -1792,6 +1849,27 @@ object structs:
   object UDF_ARGS:
     given _tag: Tag[UDF_ARGS] = Tag.materializeCStruct8Tag[CUnsignedInt, Ptr[Item_result], Ptr[CString], Ptr[CUnsignedLongInt], CString, Ptr[CString], Ptr[CUnsignedLongInt], Ptr[Byte]]
     
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: UDF_ARGS)
+        inline def arg_count : CUnsignedInt = struct._1
+        inline def arg_count_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def arg_type : Ptr[Item_result] = struct._2
+        inline def arg_type_=(value: Ptr[Item_result]): Unit = (!struct.at2 = value)
+        inline def args : Ptr[CString] = struct._3
+        inline def args_=(value: Ptr[CString]): Unit = (!struct.at3 = value)
+        inline def lengths : Ptr[CUnsignedLongInt] = struct._4
+        inline def lengths_=(value: Ptr[CUnsignedLongInt]): Unit = (!struct.at4 = value)
+        inline def maybe_null : CString = struct._5
+        inline def maybe_null_=(value: CString): Unit = (!struct.at5 = value)
+        inline def attributes : Ptr[CString] = struct._6
+        inline def attributes_=(value: Ptr[CString]): Unit = (!struct.at6 = value)
+        inline def attribute_lengths : Ptr[CUnsignedLongInt] = struct._7
+        inline def attribute_lengths_=(value: Ptr[CUnsignedLongInt]): Unit = (!struct.at7 = value)
+        inline def extension : Ptr[Byte] = struct._8
+        inline def extension_=(value: Ptr[Byte]): Unit = (!struct.at8 = value)
+      end extension
+    
     // Allocates UDF_ARGS on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[UDF_ARGS] = scala.scalanative.unsafe.alloc[UDF_ARGS](1)
     def apply(arg_count : CUnsignedInt, arg_type : Ptr[Item_result], args : Ptr[CString], lengths : Ptr[CUnsignedLongInt], maybe_null : CString, attributes : Ptr[CString], attribute_lengths : Ptr[CUnsignedLongInt], extension : Ptr[Byte])(using Zone): Ptr[UDF_ARGS] =
@@ -1806,23 +1884,6 @@ object structs:
       (!____ptr).extension = extension
       ____ptr
     
-    extension (struct: UDF_ARGS)
-      def arg_count : CUnsignedInt = struct._1
-      def arg_count_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def arg_type : Ptr[Item_result] = struct._2
-      def arg_type_=(value: Ptr[Item_result]): Unit = !struct.at2 = value
-      def args : Ptr[CString] = struct._3
-      def args_=(value: Ptr[CString]): Unit = !struct.at3 = value
-      def lengths : Ptr[CUnsignedLongInt] = struct._4
-      def lengths_=(value: Ptr[CUnsignedLongInt]): Unit = !struct.at4 = value
-      def maybe_null : CString = struct._5
-      def maybe_null_=(value: CString): Unit = !struct.at5 = value
-      def attributes : Ptr[CString] = struct._6
-      def attributes_=(value: Ptr[CString]): Unit = !struct.at6 = value
-      def attribute_lengths : Ptr[CUnsignedLongInt] = struct._7
-      def attribute_lengths_=(value: Ptr[CUnsignedLongInt]): Unit = !struct.at7 = value
-      def extension : Ptr[Byte] = struct._8
-      def extension_=(value: Ptr[Byte]): Unit = !struct.at8 = value
     
 
   /**
@@ -1832,6 +1893,23 @@ object structs:
   
   object UDF_INIT:
     given _tag: Tag[UDF_INIT] = Tag.materializeCStruct6Tag[Boolean, CUnsignedInt, CUnsignedLongInt, CString, Boolean, Ptr[Byte]]
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: UDF_INIT)
+        inline def maybe_null : Boolean = struct._1
+        inline def maybe_null_=(value: Boolean): Unit = (!struct.at1 = value)
+        inline def decimals : CUnsignedInt = struct._2
+        inline def decimals_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def max_length : CUnsignedLongInt = struct._3
+        inline def max_length_=(value: CUnsignedLongInt): Unit = (!struct.at3 = value)
+        inline def ptr : CString = struct._4
+        inline def ptr_=(value: CString): Unit = (!struct.at4 = value)
+        inline def const_item : Boolean = struct._5
+        inline def const_item_=(value: Boolean): Unit = (!struct.at5 = value)
+        inline def extension : Ptr[Byte] = struct._6
+        inline def extension_=(value: Ptr[Byte]): Unit = (!struct.at6 = value)
+      end extension
     
     // Allocates UDF_INIT on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[UDF_INIT] = scala.scalanative.unsafe.alloc[UDF_INIT](1)
@@ -1845,19 +1923,6 @@ object structs:
       (!____ptr).extension = extension
       ____ptr
     
-    extension (struct: UDF_INIT)
-      def maybe_null : Boolean = struct._1
-      def maybe_null_=(value: Boolean): Unit = !struct.at1 = value
-      def decimals : CUnsignedInt = struct._2
-      def decimals_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def max_length : CUnsignedLongInt = struct._3
-      def max_length_=(value: CUnsignedLongInt): Unit = !struct.at3 = value
-      def ptr : CString = struct._4
-      def ptr_=(value: CString): Unit = !struct.at4 = value
-      def const_item : Boolean = struct._5
-      def const_item_=(value: Boolean): Unit = !struct.at5 = value
-      def extension : Ptr[Byte] = struct._6
-      def extension_=(value: Ptr[Byte]): Unit = !struct.at6 = value
     
 
   opaque type Vio = CStruct0
@@ -1895,6 +1960,39 @@ object structs:
   object auth_plugin_t:
     given _tag: Tag[auth_plugin_t] = Tag.materializeCStruct14Tag[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[Ptr[Byte], Ptr[MYSQL], CInt], CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
     
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: auth_plugin_t)
+        inline def `type` : CInt = struct._1
+        inline def type_=(value: CInt): Unit = (!struct.at1 = value)
+        inline def interface_version : CUnsignedInt = struct._2
+        inline def interface_version_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def name : CString = struct._3
+        inline def name_=(value: CString): Unit = (!struct.at3 = value)
+        inline def author : CString = struct._4
+        inline def author_=(value: CString): Unit = (!struct.at4 = value)
+        inline def desc : CString = struct._5
+        inline def desc_=(value: CString): Unit = (!struct.at5 = value)
+        inline def version : CArray[CUnsignedInt, Nat._3] = struct._6
+        inline def version_=(value: CArray[CUnsignedInt, Nat._3]): Unit = (!struct.at6 = value)
+        inline def license : CString = struct._7
+        inline def license_=(value: CString): Unit = (!struct.at7 = value)
+        inline def mysql_api : Ptr[Byte] = struct._8
+        inline def mysql_api_=(value: Ptr[Byte]): Unit = (!struct.at8 = value)
+        inline def init : CFuncPtr4[CString, size_t, CInt, va_list, CInt] = struct._9
+        inline def init_=(value: CFuncPtr4[CString, size_t, CInt, va_list, CInt]): Unit = (!struct.at9 = value)
+        inline def deinit : CFuncPtr0[CInt] = struct._10
+        inline def deinit_=(value: CFuncPtr0[CInt]): Unit = (!struct.at10 = value)
+        inline def options : CFuncPtr2[CString, Ptr[Byte], CInt] = struct._11
+        inline def options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = (!struct.at11 = value)
+        inline def get_options : CFuncPtr2[CString, Ptr[Byte], CInt] = struct._12
+        inline def get_options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = (!struct.at12 = value)
+        inline def authenticate_user : CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], CInt] = struct._13.asInstanceOf[CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], CInt]]
+        inline def authenticate_user_=(value: CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], CInt]): Unit = (!struct.at13 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[MYSQL], CInt]])
+        inline def authenticate_user_nonblocking : CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status] = struct._14.asInstanceOf[CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]]
+        inline def authenticate_user_nonblocking_=(value: CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]): Unit = (!struct.at14 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]])
+      end extension
+    
     // Allocates auth_plugin_t on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[auth_plugin_t] = scala.scalanative.unsafe.alloc[auth_plugin_t](1)
     def apply(`type` : CInt, interface_version : CUnsignedInt, name : CString, author : CString, desc : CString, version : CArray[CUnsignedInt, Nat._3], license : CString, mysql_api : Ptr[Byte], init : CFuncPtr4[CString, size_t, CInt, va_list, CInt], deinit : CFuncPtr0[CInt], options : CFuncPtr2[CString, Ptr[Byte], CInt], get_options : CFuncPtr2[CString, Ptr[Byte], CInt], authenticate_user : CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], CInt], authenticate_user_nonblocking : CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status])(using Zone): Ptr[auth_plugin_t] =
@@ -1915,41 +2013,33 @@ object structs:
       (!____ptr).authenticate_user_nonblocking = authenticate_user_nonblocking
       ____ptr
     
-    extension (struct: auth_plugin_t)
-      def `type` : CInt = struct._1
-      def type_=(value: CInt): Unit = !struct.at1 = value
-      def interface_version : CUnsignedInt = struct._2
-      def interface_version_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def name : CString = struct._3
-      def name_=(value: CString): Unit = !struct.at3 = value
-      def author : CString = struct._4
-      def author_=(value: CString): Unit = !struct.at4 = value
-      def desc : CString = struct._5
-      def desc_=(value: CString): Unit = !struct.at5 = value
-      def version : CArray[CUnsignedInt, Nat._3] = struct._6
-      def version_=(value: CArray[CUnsignedInt, Nat._3]): Unit = !struct.at6 = value
-      def license : CString = struct._7
-      def license_=(value: CString): Unit = !struct.at7 = value
-      def mysql_api : Ptr[Byte] = struct._8
-      def mysql_api_=(value: Ptr[Byte]): Unit = !struct.at8 = value
-      def init : CFuncPtr4[CString, size_t, CInt, va_list, CInt] = struct._9
-      def init_=(value: CFuncPtr4[CString, size_t, CInt, va_list, CInt]): Unit = !struct.at9 = value
-      def deinit : CFuncPtr0[CInt] = struct._10
-      def deinit_=(value: CFuncPtr0[CInt]): Unit = !struct.at10 = value
-      def options : CFuncPtr2[CString, Ptr[Byte], CInt] = struct._11
-      def options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = !struct.at11 = value
-      def get_options : CFuncPtr2[CString, Ptr[Byte], CInt] = struct._12
-      def get_options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = !struct.at12 = value
-      def authenticate_user : CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], CInt] = struct._13.asInstanceOf[CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], CInt]]
-      def authenticate_user_=(value: CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], CInt]): Unit = !struct.at13 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[MYSQL], CInt]]
-      def authenticate_user_nonblocking : CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status] = struct._14.asInstanceOf[CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]]
-      def authenticate_user_nonblocking_=(value: CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]): Unit = !struct.at14 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
     
 
   opaque type character_set = CStruct8[CUnsignedInt, CUnsignedInt, CString, CString, CString, CString, CUnsignedInt, CUnsignedInt]
   
   object character_set:
     given _tag: Tag[character_set] = Tag.materializeCStruct8Tag[CUnsignedInt, CUnsignedInt, CString, CString, CString, CString, CUnsignedInt, CUnsignedInt]
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: character_set)
+        inline def number : CUnsignedInt = struct._1
+        inline def number_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def state : CUnsignedInt = struct._2
+        inline def state_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def csname : CString = struct._3
+        inline def csname_=(value: CString): Unit = (!struct.at3 = value)
+        inline def name : CString = struct._4
+        inline def name_=(value: CString): Unit = (!struct.at4 = value)
+        inline def comment : CString = struct._5
+        inline def comment_=(value: CString): Unit = (!struct.at5 = value)
+        inline def dir : CString = struct._6
+        inline def dir_=(value: CString): Unit = (!struct.at6 = value)
+        inline def mbminlen : CUnsignedInt = struct._7
+        inline def mbminlen_=(value: CUnsignedInt): Unit = (!struct.at7 = value)
+        inline def mbmaxlen : CUnsignedInt = struct._8
+        inline def mbmaxlen_=(value: CUnsignedInt): Unit = (!struct.at8 = value)
+      end extension
     
     // Allocates character_set on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[character_set] = scala.scalanative.unsafe.alloc[character_set](1)
@@ -1965,74 +2055,61 @@ object structs:
       (!____ptr).mbmaxlen = mbmaxlen
       ____ptr
     
-    extension (struct: character_set)
-      def number : CUnsignedInt = struct._1
-      def number_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def state : CUnsignedInt = struct._2
-      def state_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def csname : CString = struct._3
-      def csname_=(value: CString): Unit = !struct.at3 = value
-      def name : CString = struct._4
-      def name_=(value: CString): Unit = !struct.at4 = value
-      def comment : CString = struct._5
-      def comment_=(value: CString): Unit = !struct.at5 = value
-      def dir : CString = struct._6
-      def dir_=(value: CString): Unit = !struct.at6 = value
-      def mbminlen : CUnsignedInt = struct._7
-      def mbminlen_=(value: CUnsignedInt): Unit = !struct.at7 = value
-      def mbmaxlen : CUnsignedInt = struct._8
-      def mbmaxlen_=(value: CUnsignedInt): Unit = !struct.at8 = value
     
 
   /**
    * Compression context information. It encapsulate the context information based on compression method and presents a generic struct.
   */
-  opaque type mysql_compress_context = CStruct2[enum_compression_algorithm, mysql_compress_context.U]
+  opaque type mysql_compress_context = CStruct2[enum_compression_algorithm, mysql_compress_context_U]
   
   object mysql_compress_context:
-    given _tag: Tag[mysql_compress_context] = Tag.materializeCStruct2Tag[enum_compression_algorithm, mysql_compress_context.U]
+    given _tag: Tag[mysql_compress_context] = Tag.materializeCStruct2Tag[enum_compression_algorithm, mysql_compress_context_U]
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: mysql_compress_context)
+        inline def algorithm : enum_compression_algorithm = struct._1
+        inline def algorithm_=(value: enum_compression_algorithm): Unit = (!struct.at1 = value)
+        inline def u : mysql_compress_context_U = struct._2
+        inline def u_=(value: mysql_compress_context_U): Unit = (!struct.at2 = value)
+      end extension
     
     // Allocates mysql_compress_context on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[mysql_compress_context] = scala.scalanative.unsafe.alloc[mysql_compress_context](1)
-    def apply(algorithm : enum_compression_algorithm, u : mysql_compress_context.U)(using Zone): Ptr[mysql_compress_context] =
+    def apply(algorithm : enum_compression_algorithm, u : mysql_compress_context_U)(using Zone): Ptr[mysql_compress_context] =
       val ____ptr = apply()
       (!____ptr).algorithm = algorithm
       (!____ptr).u = u
       ____ptr
     
-    extension (struct: mysql_compress_context)
-      def algorithm : enum_compression_algorithm = struct._1
-      def algorithm_=(value: enum_compression_algorithm): Unit = !struct.at1 = value
-      def u : mysql_compress_context.U = struct._2
-      def u_=(value: mysql_compress_context.U): Unit = !struct.at2 = value
     
-    opaque type U = CArray[Byte, Nat.Digit2[Nat._2, Nat._4]]
-    object U:
-      given _tag: Tag[U] = Tag.CArray[CChar, Nat.Digit2[Nat._2, Nat._4]](Tag.Byte, Tag.Digit2[Nat._2, Nat._4](Tag.Nat2, Tag.Nat4))
-      
-      def apply()(using Zone): Ptr[U] =
-        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
-        ___ptr
-      
-      @scala.annotation.targetName("apply_zlib_ctx")
-      def apply(zlib_ctx: mysql_zlib_compress_context)(using Zone): Ptr[U] =
-        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
-        val un = !___ptr
-        un.at(0).asInstanceOf[Ptr[mysql_zlib_compress_context]].update(0, zlib_ctx)
-        ___ptr
-      
-      @scala.annotation.targetName("apply_zstd_ctx")
-      def apply(zstd_ctx: mysql_zstd_compress_context)(using Zone): Ptr[U] =
-        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
-        val un = !___ptr
-        un.at(0).asInstanceOf[Ptr[mysql_zstd_compress_context]].update(0, zstd_ctx)
-        ___ptr
-      
-      extension (struct: U)
-        def zlib_ctx : mysql_zlib_compress_context = !struct.at(0).asInstanceOf[Ptr[mysql_zlib_compress_context]]
-        def zlib_ctx_=(value: mysql_zlib_compress_context): Unit = !struct.at(0).asInstanceOf[Ptr[mysql_zlib_compress_context]] = value
-        def zstd_ctx : mysql_zstd_compress_context = !struct.at(0).asInstanceOf[Ptr[mysql_zstd_compress_context]]
-        def zstd_ctx_=(value: mysql_zstd_compress_context): Unit = !struct.at(0).asInstanceOf[Ptr[mysql_zstd_compress_context]] = value
+  opaque type mysql_compress_context_U = CArray[Byte, Nat.Digit2[Nat._2, Nat._4]]
+  object mysql_compress_context_U:
+    given _tag: Tag[mysql_compress_context_U] = Tag.CArray[CChar, Nat.Digit2[Nat._2, Nat._4]](Tag.Byte, Tag.Digit2[Nat._2, Nat._4](Tag.Nat2, Tag.Nat4))
+    
+    def apply()(using Zone): Ptr[mysql_compress_context_U] =
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[mysql_compress_context_U](1)
+      ___ptr
+    
+    @scala.annotation.targetName("apply_zlib_ctx")
+    def apply(zlib_ctx: mysql_zlib_compress_context)(using Zone): Ptr[mysql_compress_context_U] =
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[mysql_compress_context_U](1)
+      val un = !___ptr
+      un.at(0).asInstanceOf[Ptr[mysql_zlib_compress_context]].update(0, zlib_ctx)
+      ___ptr
+    
+    @scala.annotation.targetName("apply_zstd_ctx")
+    def apply(zstd_ctx: mysql_zstd_compress_context)(using Zone): Ptr[mysql_compress_context_U] =
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[mysql_compress_context_U](1)
+      val un = !___ptr
+      un.at(0).asInstanceOf[Ptr[mysql_zstd_compress_context]].update(0, zstd_ctx)
+      ___ptr
+    
+    extension (struct: mysql_compress_context_U)
+      inline def zlib_ctx : mysql_zlib_compress_context = !struct.at(0).asInstanceOf[Ptr[mysql_zlib_compress_context]]
+      inline def zlib_ctx_=(value: mysql_zlib_compress_context): Unit = !struct.at(0).asInstanceOf[Ptr[mysql_zlib_compress_context]] = value
+      inline def zstd_ctx : mysql_zstd_compress_context = !struct.at(0).asInstanceOf[Ptr[mysql_zstd_compress_context]]
+      inline def zstd_ctx_=(value: mysql_zstd_compress_context): Unit = !struct.at(0).asInstanceOf[Ptr[mysql_zstd_compress_context]] = value
 
   /**
    * Compress context information. relating to zlib compression.
@@ -2042,6 +2119,13 @@ object structs:
   object mysql_zlib_compress_context:
     given _tag: Tag[mysql_zlib_compress_context] = Tag.materializeCStruct1Tag[CUnsignedInt]
     
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: mysql_zlib_compress_context)
+        inline def compression_level : CUnsignedInt = struct._1
+        inline def compression_level_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+      end extension
+    
     // Allocates mysql_zlib_compress_context on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[mysql_zlib_compress_context] = scala.scalanative.unsafe.alloc[mysql_zlib_compress_context](1)
     def apply(compression_level : CUnsignedInt)(using Zone): Ptr[mysql_zlib_compress_context] =
@@ -2049,9 +2133,6 @@ object structs:
       (!____ptr).compression_level = compression_level
       ____ptr
     
-    extension (struct: mysql_zlib_compress_context)
-      def compression_level : CUnsignedInt = struct._1
-      def compression_level_=(value: CUnsignedInt): Unit = !struct.at1 = value
     
 
   /**
@@ -2062,6 +2143,17 @@ object structs:
   object mysql_zstd_compress_context:
     given _tag: Tag[mysql_zstd_compress_context] = Tag.materializeCStruct3Tag[Ptr[ZSTD_CCtx], Ptr[ZSTD_DCtx], CUnsignedInt]
     
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: mysql_zstd_compress_context)
+        inline def cctx : Ptr[ZSTD_CCtx] = struct._1
+        inline def cctx_=(value: Ptr[ZSTD_CCtx]): Unit = (!struct.at1 = value)
+        inline def dctx : Ptr[ZSTD_DCtx] = struct._2
+        inline def dctx_=(value: Ptr[ZSTD_DCtx]): Unit = (!struct.at2 = value)
+        inline def compression_level : CUnsignedInt = struct._3
+        inline def compression_level_=(value: CUnsignedInt): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates mysql_zstd_compress_context on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[mysql_zstd_compress_context] = scala.scalanative.unsafe.alloc[mysql_zstd_compress_context](1)
     def apply(cctx : Ptr[ZSTD_CCtx], dctx : Ptr[ZSTD_DCtx], compression_level : CUnsignedInt)(using Zone): Ptr[mysql_zstd_compress_context] =
@@ -2071,19 +2163,25 @@ object structs:
       (!____ptr).compression_level = compression_level
       ____ptr
     
-    extension (struct: mysql_zstd_compress_context)
-      def cctx : Ptr[ZSTD_CCtx] = struct._1
-      def cctx_=(value: Ptr[ZSTD_CCtx]): Unit = !struct.at1 = value
-      def dctx : Ptr[ZSTD_DCtx] = struct._2
-      def dctx_=(value: Ptr[ZSTD_DCtx]): Unit = !struct.at2 = value
-      def compression_level : CUnsignedInt = struct._3
-      def compression_level_=(value: CUnsignedInt): Unit = !struct.at3 = value
     
 
   opaque type rand_struct = CStruct4[CUnsignedLongInt, CUnsignedLongInt, CUnsignedLongInt, Double]
   
   object rand_struct:
     given _tag: Tag[rand_struct] = Tag.materializeCStruct4Tag[CUnsignedLongInt, CUnsignedLongInt, CUnsignedLongInt, Double]
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: rand_struct)
+        inline def seed1 : CUnsignedLongInt = struct._1
+        inline def seed1_=(value: CUnsignedLongInt): Unit = (!struct.at1 = value)
+        inline def seed2 : CUnsignedLongInt = struct._2
+        inline def seed2_=(value: CUnsignedLongInt): Unit = (!struct.at2 = value)
+        inline def max_value : CUnsignedLongInt = struct._3
+        inline def max_value_=(value: CUnsignedLongInt): Unit = (!struct.at3 = value)
+        inline def max_value_dbl : Double = struct._4
+        inline def max_value_dbl_=(value: Double): Unit = (!struct.at4 = value)
+      end extension
     
     // Allocates rand_struct on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[rand_struct] = scala.scalanative.unsafe.alloc[rand_struct](1)
@@ -2095,21 +2193,41 @@ object structs:
       (!____ptr).max_value_dbl = max_value_dbl
       ____ptr
     
-    extension (struct: rand_struct)
-      def seed1 : CUnsignedLongInt = struct._1
-      def seed1_=(value: CUnsignedLongInt): Unit = !struct.at1 = value
-      def seed2 : CUnsignedLongInt = struct._2
-      def seed2_=(value: CUnsignedLongInt): Unit = !struct.at2 = value
-      def max_value : CUnsignedLongInt = struct._3
-      def max_value_=(value: CUnsignedLongInt): Unit = !struct.at3 = value
-      def max_value_dbl : Double = struct._4
-      def max_value_dbl_=(value: Double): Unit = !struct.at4 = value
     
 
   opaque type st_mysql_client_plugin = CStruct12[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt]]
   
   object st_mysql_client_plugin:
     given _tag: Tag[st_mysql_client_plugin] = Tag.materializeCStruct12Tag[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt]]
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: st_mysql_client_plugin)
+        inline def `type` : CInt = struct._1
+        inline def type_=(value: CInt): Unit = (!struct.at1 = value)
+        inline def interface_version : CUnsignedInt = struct._2
+        inline def interface_version_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def name : CString = struct._3
+        inline def name_=(value: CString): Unit = (!struct.at3 = value)
+        inline def author : CString = struct._4
+        inline def author_=(value: CString): Unit = (!struct.at4 = value)
+        inline def desc : CString = struct._5
+        inline def desc_=(value: CString): Unit = (!struct.at5 = value)
+        inline def version : CArray[CUnsignedInt, Nat._3] = struct._6
+        inline def version_=(value: CArray[CUnsignedInt, Nat._3]): Unit = (!struct.at6 = value)
+        inline def license : CString = struct._7
+        inline def license_=(value: CString): Unit = (!struct.at7 = value)
+        inline def mysql_api : Ptr[Byte] = struct._8
+        inline def mysql_api_=(value: Ptr[Byte]): Unit = (!struct.at8 = value)
+        inline def init : CFuncPtr4[CString, size_t, CInt, va_list, CInt] = struct._9
+        inline def init_=(value: CFuncPtr4[CString, size_t, CInt, va_list, CInt]): Unit = (!struct.at9 = value)
+        inline def deinit : CFuncPtr0[CInt] = struct._10
+        inline def deinit_=(value: CFuncPtr0[CInt]): Unit = (!struct.at10 = value)
+        inline def options : CFuncPtr2[CString, Ptr[Byte], CInt] = struct._11
+        inline def options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = (!struct.at11 = value)
+        inline def get_options : CFuncPtr2[CString, Ptr[Byte], CInt] = struct._12
+        inline def get_options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = (!struct.at12 = value)
+      end extension
     
     // Allocates st_mysql_client_plugin on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[st_mysql_client_plugin] = scala.scalanative.unsafe.alloc[st_mysql_client_plugin](1)
@@ -2129,37 +2247,45 @@ object structs:
       (!____ptr).get_options = get_options
       ____ptr
     
-    extension (struct: st_mysql_client_plugin)
-      def `type` : CInt = struct._1
-      def type_=(value: CInt): Unit = !struct.at1 = value
-      def interface_version : CUnsignedInt = struct._2
-      def interface_version_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def name : CString = struct._3
-      def name_=(value: CString): Unit = !struct.at3 = value
-      def author : CString = struct._4
-      def author_=(value: CString): Unit = !struct.at4 = value
-      def desc : CString = struct._5
-      def desc_=(value: CString): Unit = !struct.at5 = value
-      def version : CArray[CUnsignedInt, Nat._3] = struct._6
-      def version_=(value: CArray[CUnsignedInt, Nat._3]): Unit = !struct.at6 = value
-      def license : CString = struct._7
-      def license_=(value: CString): Unit = !struct.at7 = value
-      def mysql_api : Ptr[Byte] = struct._8
-      def mysql_api_=(value: Ptr[Byte]): Unit = !struct.at8 = value
-      def init : CFuncPtr4[CString, size_t, CInt, va_list, CInt] = struct._9
-      def init_=(value: CFuncPtr4[CString, size_t, CInt, va_list, CInt]): Unit = !struct.at9 = value
-      def deinit : CFuncPtr0[CInt] = struct._10
-      def deinit_=(value: CFuncPtr0[CInt]): Unit = !struct.at10 = value
-      def options : CFuncPtr2[CString, Ptr[Byte], CInt] = struct._11
-      def options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = !struct.at11 = value
-      def get_options : CFuncPtr2[CString, Ptr[Byte], CInt] = struct._12
-      def get_options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = !struct.at12 = value
     
 
   opaque type st_mysql_client_plugin_AUTHENTICATION = CStruct14[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[Ptr[Byte], Ptr[MYSQL], CInt], CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
   
   object st_mysql_client_plugin_AUTHENTICATION:
     given _tag: Tag[st_mysql_client_plugin_AUTHENTICATION] = Tag.materializeCStruct14Tag[CInt, CUnsignedInt, CString, CString, CString, CArray[CUnsignedInt, Nat._3], CString, Ptr[Byte], CFuncPtr4[CString, size_t, CInt, va_list, CInt], CFuncPtr0[CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[CString, Ptr[Byte], CInt], CFuncPtr2[Ptr[Byte], Ptr[MYSQL], CInt], CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: st_mysql_client_plugin_AUTHENTICATION)
+        inline def `type` : CInt = struct._1
+        inline def type_=(value: CInt): Unit = (!struct.at1 = value)
+        inline def interface_version : CUnsignedInt = struct._2
+        inline def interface_version_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def name : CString = struct._3
+        inline def name_=(value: CString): Unit = (!struct.at3 = value)
+        inline def author : CString = struct._4
+        inline def author_=(value: CString): Unit = (!struct.at4 = value)
+        inline def desc : CString = struct._5
+        inline def desc_=(value: CString): Unit = (!struct.at5 = value)
+        inline def version : CArray[CUnsignedInt, Nat._3] = struct._6
+        inline def version_=(value: CArray[CUnsignedInt, Nat._3]): Unit = (!struct.at6 = value)
+        inline def license : CString = struct._7
+        inline def license_=(value: CString): Unit = (!struct.at7 = value)
+        inline def mysql_api : Ptr[Byte] = struct._8
+        inline def mysql_api_=(value: Ptr[Byte]): Unit = (!struct.at8 = value)
+        inline def init : CFuncPtr4[CString, size_t, CInt, va_list, CInt] = struct._9
+        inline def init_=(value: CFuncPtr4[CString, size_t, CInt, va_list, CInt]): Unit = (!struct.at9 = value)
+        inline def deinit : CFuncPtr0[CInt] = struct._10
+        inline def deinit_=(value: CFuncPtr0[CInt]): Unit = (!struct.at10 = value)
+        inline def options : CFuncPtr2[CString, Ptr[Byte], CInt] = struct._11
+        inline def options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = (!struct.at11 = value)
+        inline def get_options : CFuncPtr2[CString, Ptr[Byte], CInt] = struct._12
+        inline def get_options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = (!struct.at12 = value)
+        inline def authenticate_user : CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], CInt] = struct._13.asInstanceOf[CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], CInt]]
+        inline def authenticate_user_=(value: CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], CInt]): Unit = (!struct.at13 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[MYSQL], CInt]])
+        inline def authenticate_user_nonblocking : CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status] = struct._14.asInstanceOf[CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]]
+        inline def authenticate_user_nonblocking_=(value: CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]): Unit = (!struct.at14 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]])
+      end extension
     
     // Allocates st_mysql_client_plugin_AUTHENTICATION on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[st_mysql_client_plugin_AUTHENTICATION] = scala.scalanative.unsafe.alloc[st_mysql_client_plugin_AUTHENTICATION](1)
@@ -2181,41 +2307,83 @@ object structs:
       (!____ptr).authenticate_user_nonblocking = authenticate_user_nonblocking
       ____ptr
     
-    extension (struct: st_mysql_client_plugin_AUTHENTICATION)
-      def `type` : CInt = struct._1
-      def type_=(value: CInt): Unit = !struct.at1 = value
-      def interface_version : CUnsignedInt = struct._2
-      def interface_version_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def name : CString = struct._3
-      def name_=(value: CString): Unit = !struct.at3 = value
-      def author : CString = struct._4
-      def author_=(value: CString): Unit = !struct.at4 = value
-      def desc : CString = struct._5
-      def desc_=(value: CString): Unit = !struct.at5 = value
-      def version : CArray[CUnsignedInt, Nat._3] = struct._6
-      def version_=(value: CArray[CUnsignedInt, Nat._3]): Unit = !struct.at6 = value
-      def license : CString = struct._7
-      def license_=(value: CString): Unit = !struct.at7 = value
-      def mysql_api : Ptr[Byte] = struct._8
-      def mysql_api_=(value: Ptr[Byte]): Unit = !struct.at8 = value
-      def init : CFuncPtr4[CString, size_t, CInt, va_list, CInt] = struct._9
-      def init_=(value: CFuncPtr4[CString, size_t, CInt, va_list, CInt]): Unit = !struct.at9 = value
-      def deinit : CFuncPtr0[CInt] = struct._10
-      def deinit_=(value: CFuncPtr0[CInt]): Unit = !struct.at10 = value
-      def options : CFuncPtr2[CString, Ptr[Byte], CInt] = struct._11
-      def options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = !struct.at11 = value
-      def get_options : CFuncPtr2[CString, Ptr[Byte], CInt] = struct._12
-      def get_options_=(value: CFuncPtr2[CString, Ptr[Byte], CInt]): Unit = !struct.at12 = value
-      def authenticate_user : CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], CInt] = struct._13.asInstanceOf[CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], CInt]]
-      def authenticate_user_=(value: CFuncPtr2[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], CInt]): Unit = !struct.at13 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[MYSQL], CInt]]
-      def authenticate_user_nonblocking : CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status] = struct._14.asInstanceOf[CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]]
-      def authenticate_user_nonblocking_=(value: CFuncPtr3[Ptr[MYSQL_PLUGIN_VIO], Ptr[MYSQL], Ptr[CInt], net_async_status]): Unit = !struct.at14 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], Ptr[MYSQL], Ptr[CInt], net_async_status]]
     
 
   opaque type st_mysql_options = CArray[CChar, Nat.Digit3[Nat._2, Nat._4, Nat._0]]
   
   object st_mysql_options:
     given _tag: Tag[st_mysql_options] = Tag.CArray[CChar, Nat.Digit3[Nat._2, Nat._4, Nat._0]](Tag.Byte, Tag.Digit3[Nat._2, Nat._4, Nat._0](Tag.Nat2, Tag.Nat4, Tag.Nat0))
+    
+    export fields.*
+    private[libmysql] object fields:
+      extension (struct: st_mysql_options)
+        inline def connect_timeout: CUnsignedInt = !struct.at(offsets(0)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def connect_timeout_=(value: CUnsignedInt): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def read_timeout: CUnsignedInt = !struct.at(offsets(1)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def read_timeout_=(value: CUnsignedInt): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def write_timeout: CUnsignedInt = !struct.at(offsets(2)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def write_timeout_=(value: CUnsignedInt): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def port: CUnsignedInt = !struct.at(offsets(3)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def port_=(value: CUnsignedInt): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def protocol: CUnsignedInt = !struct.at(offsets(4)).asInstanceOf[Ptr[CUnsignedInt]]
+        inline def protocol_=(value: CUnsignedInt): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[CUnsignedInt]] = value
+        inline def client_flag: CUnsignedLongInt = !struct.at(offsets(5)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def client_flag_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def host: CString = !struct.at(offsets(6)).asInstanceOf[Ptr[CString]]
+        inline def host_=(value: CString): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[CString]] = value
+        inline def user: CString = !struct.at(offsets(7)).asInstanceOf[Ptr[CString]]
+        inline def user_=(value: CString): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[CString]] = value
+        inline def password: CString = !struct.at(offsets(8)).asInstanceOf[Ptr[CString]]
+        inline def password_=(value: CString): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[CString]] = value
+        inline def unix_socket: CString = !struct.at(offsets(9)).asInstanceOf[Ptr[CString]]
+        inline def unix_socket_=(value: CString): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[CString]] = value
+        inline def db: CString = !struct.at(offsets(10)).asInstanceOf[Ptr[CString]]
+        inline def db_=(value: CString): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[CString]] = value
+        inline def init_commands: Ptr[Init_commands_array] = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[Init_commands_array]]]
+        inline def init_commands_=(value: Ptr[Init_commands_array]): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[Init_commands_array]]] = value
+        inline def my_cnf_file: CString = !struct.at(offsets(12)).asInstanceOf[Ptr[CString]]
+        inline def my_cnf_file_=(value: CString): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[CString]] = value
+        inline def my_cnf_group: CString = !struct.at(offsets(13)).asInstanceOf[Ptr[CString]]
+        inline def my_cnf_group_=(value: CString): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[CString]] = value
+        inline def charset_dir: CString = !struct.at(offsets(14)).asInstanceOf[Ptr[CString]]
+        inline def charset_dir_=(value: CString): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[CString]] = value
+        inline def charset_name: CString = !struct.at(offsets(15)).asInstanceOf[Ptr[CString]]
+        inline def charset_name_=(value: CString): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[CString]] = value
+        inline def ssl_key: CString = !struct.at(offsets(16)).asInstanceOf[Ptr[CString]]
+        inline def ssl_key_=(value: CString): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[CString]] = value
+        inline def ssl_cert: CString = !struct.at(offsets(17)).asInstanceOf[Ptr[CString]]
+        inline def ssl_cert_=(value: CString): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[CString]] = value
+        inline def ssl_ca: CString = !struct.at(offsets(18)).asInstanceOf[Ptr[CString]]
+        inline def ssl_ca_=(value: CString): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[CString]] = value
+        inline def ssl_capath: CString = !struct.at(offsets(19)).asInstanceOf[Ptr[CString]]
+        inline def ssl_capath_=(value: CString): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[CString]] = value
+        inline def ssl_cipher: CString = !struct.at(offsets(20)).asInstanceOf[Ptr[CString]]
+        inline def ssl_cipher_=(value: CString): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[CString]] = value
+        inline def shared_memory_base_name: CString = !struct.at(offsets(21)).asInstanceOf[Ptr[CString]]
+        inline def shared_memory_base_name_=(value: CString): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[CString]] = value
+        inline def max_allowed_packet: CUnsignedLongInt = !struct.at(offsets(22)).asInstanceOf[Ptr[CUnsignedLongInt]]
+        inline def max_allowed_packet_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
+        inline def compress: Boolean = !struct.at(offsets(23)).asInstanceOf[Ptr[Boolean]]
+        inline def compress_=(value: Boolean): Unit = !struct.at(offsets(23)).asInstanceOf[Ptr[Boolean]] = value
+        inline def named_pipe: Boolean = !struct.at(offsets(24)).asInstanceOf[Ptr[Boolean]]
+        inline def named_pipe_=(value: Boolean): Unit = !struct.at(offsets(24)).asInstanceOf[Ptr[Boolean]] = value
+        inline def bind_address: CString = !struct.at(offsets(25)).asInstanceOf[Ptr[CString]]
+        inline def bind_address_=(value: CString): Unit = !struct.at(offsets(25)).asInstanceOf[Ptr[CString]] = value
+        inline def report_data_truncation: Boolean = !struct.at(offsets(26)).asInstanceOf[Ptr[Boolean]]
+        inline def report_data_truncation_=(value: Boolean): Unit = !struct.at(offsets(26)).asInstanceOf[Ptr[Boolean]] = value
+        inline def local_infile_init: CFuncPtr3[Ptr[Ptr[Byte]], CString, Ptr[Byte], CInt] = !struct.at(offsets(27)).asInstanceOf[Ptr[CFuncPtr3[Ptr[Ptr[Byte]], CString, Ptr[Byte], CInt]]]
+        inline def local_infile_init_=(value: CFuncPtr3[Ptr[Ptr[Byte]], CString, Ptr[Byte], CInt]): Unit = !struct.at(offsets(27)).asInstanceOf[Ptr[CFuncPtr3[Ptr[Ptr[Byte]], CString, Ptr[Byte], CInt]]] = value
+        inline def local_infile_read: CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt] = !struct.at(offsets(28)).asInstanceOf[Ptr[CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt]]]
+        inline def local_infile_read_=(value: CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt]): Unit = !struct.at(offsets(28)).asInstanceOf[Ptr[CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt]]] = value
+        inline def local_infile_end: CFuncPtr1[Ptr[Byte], Unit] = !struct.at(offsets(29)).asInstanceOf[Ptr[CFuncPtr1[Ptr[Byte], Unit]]]
+        inline def local_infile_end_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at(offsets(29)).asInstanceOf[Ptr[CFuncPtr1[Ptr[Byte], Unit]]] = value
+        inline def local_infile_error: CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt] = !struct.at(offsets(30)).asInstanceOf[Ptr[CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt]]]
+        inline def local_infile_error_=(value: CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt]): Unit = !struct.at(offsets(30)).asInstanceOf[Ptr[CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt]]] = value
+        inline def local_infile_userdata: Ptr[Byte] = !struct.at(offsets(31)).asInstanceOf[Ptr[Ptr[Byte]]]
+        inline def local_infile_userdata_=(value: Ptr[Byte]): Unit = !struct.at(offsets(31)).asInstanceOf[Ptr[Ptr[Byte]]] = value
+        inline def extension: Ptr[st_mysql_options_extention] = !struct.at(offsets(32)).asInstanceOf[Ptr[Ptr[st_mysql_options_extention]]]
+        inline def extension_=(value: Ptr[st_mysql_options_extention]): Unit = !struct.at(offsets(32)).asInstanceOf[Ptr[Ptr[st_mysql_options_extention]]] = value
+      end extension
     
     // Allocates st_mysql_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[st_mysql_options] = scala.scalanative.unsafe.alloc[st_mysql_options](1)
@@ -2256,73 +2424,6 @@ object structs:
       (!____ptr).extension = extension
       ____ptr
     
-    extension (struct: st_mysql_options)
-      def connect_timeout: CUnsignedInt = !struct.at(offsets(0)).asInstanceOf[Ptr[CUnsignedInt]]
-      def connect_timeout_=(value: CUnsignedInt): Unit = !struct.at(offsets(0)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def read_timeout: CUnsignedInt = !struct.at(offsets(1)).asInstanceOf[Ptr[CUnsignedInt]]
-      def read_timeout_=(value: CUnsignedInt): Unit = !struct.at(offsets(1)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def write_timeout: CUnsignedInt = !struct.at(offsets(2)).asInstanceOf[Ptr[CUnsignedInt]]
-      def write_timeout_=(value: CUnsignedInt): Unit = !struct.at(offsets(2)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def port: CUnsignedInt = !struct.at(offsets(3)).asInstanceOf[Ptr[CUnsignedInt]]
-      def port_=(value: CUnsignedInt): Unit = !struct.at(offsets(3)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def protocol: CUnsignedInt = !struct.at(offsets(4)).asInstanceOf[Ptr[CUnsignedInt]]
-      def protocol_=(value: CUnsignedInt): Unit = !struct.at(offsets(4)).asInstanceOf[Ptr[CUnsignedInt]] = value
-      def client_flag: CUnsignedLongInt = !struct.at(offsets(5)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def client_flag_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(5)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def host: CString = !struct.at(offsets(6)).asInstanceOf[Ptr[CString]]
-      def host_=(value: CString): Unit = !struct.at(offsets(6)).asInstanceOf[Ptr[CString]] = value
-      def user: CString = !struct.at(offsets(7)).asInstanceOf[Ptr[CString]]
-      def user_=(value: CString): Unit = !struct.at(offsets(7)).asInstanceOf[Ptr[CString]] = value
-      def password: CString = !struct.at(offsets(8)).asInstanceOf[Ptr[CString]]
-      def password_=(value: CString): Unit = !struct.at(offsets(8)).asInstanceOf[Ptr[CString]] = value
-      def unix_socket: CString = !struct.at(offsets(9)).asInstanceOf[Ptr[CString]]
-      def unix_socket_=(value: CString): Unit = !struct.at(offsets(9)).asInstanceOf[Ptr[CString]] = value
-      def db: CString = !struct.at(offsets(10)).asInstanceOf[Ptr[CString]]
-      def db_=(value: CString): Unit = !struct.at(offsets(10)).asInstanceOf[Ptr[CString]] = value
-      def init_commands: Ptr[Init_commands_array] = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[Init_commands_array]]]
-      def init_commands_=(value: Ptr[Init_commands_array]): Unit = !struct.at(offsets(11)).asInstanceOf[Ptr[Ptr[Init_commands_array]]] = value
-      def my_cnf_file: CString = !struct.at(offsets(12)).asInstanceOf[Ptr[CString]]
-      def my_cnf_file_=(value: CString): Unit = !struct.at(offsets(12)).asInstanceOf[Ptr[CString]] = value
-      def my_cnf_group: CString = !struct.at(offsets(13)).asInstanceOf[Ptr[CString]]
-      def my_cnf_group_=(value: CString): Unit = !struct.at(offsets(13)).asInstanceOf[Ptr[CString]] = value
-      def charset_dir: CString = !struct.at(offsets(14)).asInstanceOf[Ptr[CString]]
-      def charset_dir_=(value: CString): Unit = !struct.at(offsets(14)).asInstanceOf[Ptr[CString]] = value
-      def charset_name: CString = !struct.at(offsets(15)).asInstanceOf[Ptr[CString]]
-      def charset_name_=(value: CString): Unit = !struct.at(offsets(15)).asInstanceOf[Ptr[CString]] = value
-      def ssl_key: CString = !struct.at(offsets(16)).asInstanceOf[Ptr[CString]]
-      def ssl_key_=(value: CString): Unit = !struct.at(offsets(16)).asInstanceOf[Ptr[CString]] = value
-      def ssl_cert: CString = !struct.at(offsets(17)).asInstanceOf[Ptr[CString]]
-      def ssl_cert_=(value: CString): Unit = !struct.at(offsets(17)).asInstanceOf[Ptr[CString]] = value
-      def ssl_ca: CString = !struct.at(offsets(18)).asInstanceOf[Ptr[CString]]
-      def ssl_ca_=(value: CString): Unit = !struct.at(offsets(18)).asInstanceOf[Ptr[CString]] = value
-      def ssl_capath: CString = !struct.at(offsets(19)).asInstanceOf[Ptr[CString]]
-      def ssl_capath_=(value: CString): Unit = !struct.at(offsets(19)).asInstanceOf[Ptr[CString]] = value
-      def ssl_cipher: CString = !struct.at(offsets(20)).asInstanceOf[Ptr[CString]]
-      def ssl_cipher_=(value: CString): Unit = !struct.at(offsets(20)).asInstanceOf[Ptr[CString]] = value
-      def shared_memory_base_name: CString = !struct.at(offsets(21)).asInstanceOf[Ptr[CString]]
-      def shared_memory_base_name_=(value: CString): Unit = !struct.at(offsets(21)).asInstanceOf[Ptr[CString]] = value
-      def max_allowed_packet: CUnsignedLongInt = !struct.at(offsets(22)).asInstanceOf[Ptr[CUnsignedLongInt]]
-      def max_allowed_packet_=(value: CUnsignedLongInt): Unit = !struct.at(offsets(22)).asInstanceOf[Ptr[CUnsignedLongInt]] = value
-      def compress: Boolean = !struct.at(offsets(23)).asInstanceOf[Ptr[Boolean]]
-      def compress_=(value: Boolean): Unit = !struct.at(offsets(23)).asInstanceOf[Ptr[Boolean]] = value
-      def named_pipe: Boolean = !struct.at(offsets(24)).asInstanceOf[Ptr[Boolean]]
-      def named_pipe_=(value: Boolean): Unit = !struct.at(offsets(24)).asInstanceOf[Ptr[Boolean]] = value
-      def bind_address: CString = !struct.at(offsets(25)).asInstanceOf[Ptr[CString]]
-      def bind_address_=(value: CString): Unit = !struct.at(offsets(25)).asInstanceOf[Ptr[CString]] = value
-      def report_data_truncation: Boolean = !struct.at(offsets(26)).asInstanceOf[Ptr[Boolean]]
-      def report_data_truncation_=(value: Boolean): Unit = !struct.at(offsets(26)).asInstanceOf[Ptr[Boolean]] = value
-      def local_infile_init: CFuncPtr3[Ptr[Ptr[Byte]], CString, Ptr[Byte], CInt] = !struct.at(offsets(27)).asInstanceOf[Ptr[CFuncPtr3[Ptr[Ptr[Byte]], CString, Ptr[Byte], CInt]]]
-      def local_infile_init_=(value: CFuncPtr3[Ptr[Ptr[Byte]], CString, Ptr[Byte], CInt]): Unit = !struct.at(offsets(27)).asInstanceOf[Ptr[CFuncPtr3[Ptr[Ptr[Byte]], CString, Ptr[Byte], CInt]]] = value
-      def local_infile_read: CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt] = !struct.at(offsets(28)).asInstanceOf[Ptr[CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt]]]
-      def local_infile_read_=(value: CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt]): Unit = !struct.at(offsets(28)).asInstanceOf[Ptr[CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt]]] = value
-      def local_infile_end: CFuncPtr1[Ptr[Byte], Unit] = !struct.at(offsets(29)).asInstanceOf[Ptr[CFuncPtr1[Ptr[Byte], Unit]]]
-      def local_infile_end_=(value: CFuncPtr1[Ptr[Byte], Unit]): Unit = !struct.at(offsets(29)).asInstanceOf[Ptr[CFuncPtr1[Ptr[Byte], Unit]]] = value
-      def local_infile_error: CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt] = !struct.at(offsets(30)).asInstanceOf[Ptr[CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt]]]
-      def local_infile_error_=(value: CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt]): Unit = !struct.at(offsets(30)).asInstanceOf[Ptr[CFuncPtr3[Ptr[Byte], CString, CUnsignedInt, CInt]]] = value
-      def local_infile_userdata: Ptr[Byte] = !struct.at(offsets(31)).asInstanceOf[Ptr[Ptr[Byte]]]
-      def local_infile_userdata_=(value: Ptr[Byte]): Unit = !struct.at(offsets(31)).asInstanceOf[Ptr[Ptr[Byte]]] = value
-      def extension: Ptr[st_mysql_options_extention] = !struct.at(offsets(32)).asInstanceOf[Ptr[Ptr[st_mysql_options_extention]]]
-      def extension_=(value: Ptr[st_mysql_options_extention]): Unit = !struct.at(offsets(32)).asInstanceOf[Ptr[Ptr[st_mysql_options_extention]]] = value
     val offsets: Array[Int] =
       val res = Array.ofDim[Int](33)
       def align(offset: Int, alignment: Int) = {
@@ -2380,8 +2481,8 @@ object structs:
 
 @extern
 private[libmysql] object extern_functions:
-  import _root_.libmysql.enumerations.*
   import _root_.libmysql.predef.*
+  import _root_.libmysql.enumerations.*
   import _root_.libmysql.aliases.*
   import _root_.libmysql.structs.*
   def ER_CLIENT(client_errno : CInt): CString = extern
@@ -2789,8 +2890,8 @@ private[libmysql] object extern_functions:
 
 
 object functions:
-  import _root_.libmysql.enumerations.*
   import _root_.libmysql.predef.*
+  import _root_.libmysql.enumerations.*
   import _root_.libmysql.aliases.*
   import _root_.libmysql.structs.*
   import extern_functions.*
@@ -3067,3 +3168,8 @@ object all:
   export _root_.libmysql.functions.randominit
   export _root_.libmysql.functions.scramble
   export _root_.libmysql.functions.scramble_323
+  export _root_.libmysql.constants.MYSQL_VIO_INVALID
+  export _root_.libmysql.constants.MYSQL_VIO_TCP
+  export _root_.libmysql.constants.MYSQL_VIO_SOCKET
+  export _root_.libmysql.constants.MYSQL_VIO_PIPE
+  export _root_.libmysql.constants.MYSQL_VIO_MEMORY

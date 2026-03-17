@@ -24,6 +24,12 @@ uint32_t __sn_wrap_treesitter_ts_node_child_count(TSNode *self) {
 };
 
 
+void __sn_wrap_treesitter_ts_node_child_with_descendant(TSNode *self, TSNode *descendant, TSNode *____return) {
+  TSNode ____ret = ts_node_child_with_descendant(*self, *descendant);
+  memcpy(____return, &____ret, sizeof(TSNode));
+}
+
+
 uint32_t __sn_wrap_treesitter_ts_node_descendant_count(TSNode *self) {
  return ts_node_descendant_count(*self);
 };
@@ -59,6 +65,11 @@ _Bool __sn_wrap_treesitter_ts_node_eq(TSNode *self, TSNode *other) {
 
 const char * __sn_wrap_treesitter_ts_node_field_name_for_child(TSNode *self, uint32_t child_index) {
  return ts_node_field_name_for_child(*self, child_index);
+};
+
+
+const char * __sn_wrap_treesitter_ts_node_field_name_for_named_child(TSNode *self, uint32_t named_child_index) {
+ return ts_node_field_name_for_named_child(*self, named_child_index);
 };
 
 
@@ -224,6 +235,11 @@ TSTree * __sn_wrap_treesitter_ts_parser_parse(TSParser * self, const TSTree * ol
 };
 
 
+TSTree * __sn_wrap_treesitter_ts_parser_parse_with_options(TSParser * self, const TSTree * old_tree, TSInput *input, TSParseOptions *parse_options) {
+ return ts_parser_parse_with_options(self, old_tree, *input, *parse_options);
+};
+
+
 void __sn_wrap_treesitter_ts_parser_set_logger(TSParser * self, TSLogger *logger) {
  ts_parser_set_logger(self, *logger);
 };
@@ -234,8 +250,18 @@ void __sn_wrap_treesitter_ts_query_cursor_exec(TSQueryCursor * self, const TSQue
 };
 
 
-void __sn_wrap_treesitter_ts_query_cursor_set_point_range(TSQueryCursor * self, TSPoint *start_point, TSPoint *end_point) {
- ts_query_cursor_set_point_range(self, *start_point, *end_point);
+void __sn_wrap_treesitter_ts_query_cursor_exec_with_options(TSQueryCursor * self, const TSQuery * query, TSNode *node, const TSQueryCursorOptions * query_options) {
+ ts_query_cursor_exec_with_options(self, query, *node, query_options);
+};
+
+
+_Bool __sn_wrap_treesitter_ts_query_cursor_set_containing_point_range(TSQueryCursor * self, TSPoint *start_point, TSPoint *end_point) {
+ return ts_query_cursor_set_containing_point_range(self, *start_point, *end_point);
+};
+
+
+_Bool __sn_wrap_treesitter_ts_query_cursor_set_point_range(TSQueryCursor * self, TSPoint *start_point, TSPoint *end_point) {
+ return ts_query_cursor_set_point_range(self, *start_point, *end_point);
 };
 
 

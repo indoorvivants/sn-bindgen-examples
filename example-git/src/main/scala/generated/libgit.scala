@@ -6,17 +6,18 @@ import _root_.scala.scalanative.libc.*
 import _root_.scala.scalanative.*
 
 object predef:
-    private[libgit] trait _BindgenEnumCInt[T](using eq: T =:= CInt):
-      given Tag[T] = Tag.Int.asInstanceOf[Tag[T]]
-      extension (inline t: T)
-        inline def value: CInt = eq.apply(t)
-        inline def int: CInt = eq.apply(t).toInt
     private[libgit] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
       given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
       extension (inline t: T)
-        inline def value: CUnsignedInt = eq.apply(t)
-        inline def int: CInt = eq.apply(t).toInt
-        inline def uint: CUnsignedInt = eq.apply(t)
+        inline def value: CUnsignedInt = t.asInstanceOf[CUnsignedInt]
+        inline def int: CInt = value.toInt
+        inline def uint: CUnsignedInt = value
+    private[libgit] trait _BindgenEnumCInt[T](using eq: T =:= CInt):
+      given Tag[T] = Tag.Int.asInstanceOf[Tag[T]]
+      extension (inline t: T)
+        inline def value: CInt = t.asInstanceOf[CInt]
+        inline def int: CInt = value.toInt
+
 
 object enumerations:
   import predef.*
@@ -2439,8 +2440,8 @@ object enumerations:
       inline def is(b: git_worktree_prune_t): Boolean = (a & b) == b
 
 object aliases:
-  import _root_.libgit.enumerations.*
   import _root_.libgit.predef.*
+  import _root_.libgit.enumerations.*
   import _root_.libgit.aliases.*
   import _root_.libgit.structs.*
   /**
@@ -3244,8 +3245,8 @@ object aliases:
       inline def value: scala.scalanative.unsigned.ULong = v
 
 object structs:
-  import _root_.libgit.enumerations.*
   import _root_.libgit.predef.*
+  import _root_.libgit.enumerations.*
   import _root_.libgit.aliases.*
   import _root_.libgit.structs.*
 
@@ -3299,6 +3300,21 @@ object structs:
   object git_apply_options:
     given _tag: Tag[git_apply_options] = Tag.materializeCStruct5Tag[CUnsignedInt, git_apply_delta_cb, git_apply_hunk_cb, Ptr[Byte], CUnsignedInt]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_apply_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def delta_cb : git_apply_delta_cb = struct._2
+        inline def delta_cb_=(value: git_apply_delta_cb): Unit = (!struct.at2 = value)
+        inline def hunk_cb : git_apply_hunk_cb = struct._3
+        inline def hunk_cb_=(value: git_apply_hunk_cb): Unit = (!struct.at3 = value)
+        inline def payload : Ptr[Byte] = struct._4
+        inline def payload_=(value: Ptr[Byte]): Unit = (!struct.at4 = value)
+        inline def flags : CUnsignedInt = struct._5
+        inline def flags_=(value: CUnsignedInt): Unit = (!struct.at5 = value)
+      end extension
+    
     // Allocates git_apply_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_apply_options] = scala.scalanative.unsafe.alloc[git_apply_options](1)
     def apply(version : CUnsignedInt, delta_cb : git_apply_delta_cb, hunk_cb : git_apply_hunk_cb, payload : Ptr[Byte], flags : CUnsignedInt)(using Zone): Ptr[git_apply_options] =
@@ -3310,17 +3326,6 @@ object structs:
       (!____ptr).flags = flags
       ____ptr
     
-    extension (struct: git_apply_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def delta_cb : git_apply_delta_cb = struct._2
-      def delta_cb_=(value: git_apply_delta_cb): Unit = !struct.at2 = value
-      def hunk_cb : git_apply_hunk_cb = struct._3
-      def hunk_cb_=(value: git_apply_hunk_cb): Unit = !struct.at3 = value
-      def payload : Ptr[Byte] = struct._4
-      def payload_=(value: Ptr[Byte]): Unit = !struct.at4 = value
-      def flags : CUnsignedInt = struct._5
-      def flags_=(value: CUnsignedInt): Unit = !struct.at5 = value
     
 
   /**
@@ -3330,6 +3335,19 @@ object structs:
   
   object git_attr_options:
     given _tag: Tag[git_attr_options] = Tag.materializeCStruct4Tag[CUnsignedInt, CUnsignedInt, Ptr[git_oid], git_oid]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_attr_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def flags : CUnsignedInt = struct._2
+        inline def flags_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def commit_id : Ptr[git_oid] = struct._3
+        inline def commit_id_=(value: Ptr[git_oid]): Unit = (!struct.at3 = value)
+        inline def attr_commit_id : git_oid = struct._4
+        inline def attr_commit_id_=(value: git_oid): Unit = (!struct.at4 = value)
+      end extension
     
     // Allocates git_attr_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_attr_options] = scala.scalanative.unsafe.alloc[git_attr_options](1)
@@ -3341,15 +3359,6 @@ object structs:
       (!____ptr).attr_commit_id = attr_commit_id
       ____ptr
     
-    extension (struct: git_attr_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : CUnsignedInt = struct._2
-      def flags_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def commit_id : Ptr[git_oid] = struct._3
-      def commit_id_=(value: Ptr[git_oid]): Unit = !struct.at3 = value
-      def attr_commit_id : git_oid = struct._4
-      def attr_commit_id_=(value: git_oid): Unit = !struct.at4 = value
     
 
   opaque type git_blame = CStruct0
@@ -3365,6 +3374,35 @@ object structs:
   
   object git_blame_hunk:
     given _tag: Tag[git_blame_hunk] = Tag.materializeCStruct12Tag[size_t, git_oid, size_t, Ptr[git_signature], Ptr[git_signature], git_oid, CString, size_t, Ptr[git_signature], Ptr[git_signature], CString, CChar]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_blame_hunk)
+        inline def lines_in_hunk : size_t = struct._1
+        inline def lines_in_hunk_=(value: size_t): Unit = (!struct.at1 = value)
+        inline def final_commit_id : git_oid = struct._2
+        inline def final_commit_id_=(value: git_oid): Unit = (!struct.at2 = value)
+        inline def final_start_line_number : size_t = struct._3
+        inline def final_start_line_number_=(value: size_t): Unit = (!struct.at3 = value)
+        inline def final_signature : Ptr[git_signature] = struct._4
+        inline def final_signature_=(value: Ptr[git_signature]): Unit = (!struct.at4 = value)
+        inline def final_committer : Ptr[git_signature] = struct._5
+        inline def final_committer_=(value: Ptr[git_signature]): Unit = (!struct.at5 = value)
+        inline def orig_commit_id : git_oid = struct._6
+        inline def orig_commit_id_=(value: git_oid): Unit = (!struct.at6 = value)
+        inline def orig_path : CString = struct._7
+        inline def orig_path_=(value: CString): Unit = (!struct.at7 = value)
+        inline def orig_start_line_number : size_t = struct._8
+        inline def orig_start_line_number_=(value: size_t): Unit = (!struct.at8 = value)
+        inline def orig_signature : Ptr[git_signature] = struct._9
+        inline def orig_signature_=(value: Ptr[git_signature]): Unit = (!struct.at9 = value)
+        inline def orig_committer : Ptr[git_signature] = struct._10
+        inline def orig_committer_=(value: Ptr[git_signature]): Unit = (!struct.at10 = value)
+        inline def summary : CString = struct._11
+        inline def summary_=(value: CString): Unit = (!struct.at11 = value)
+        inline def boundary : CChar = struct._12
+        inline def boundary_=(value: CChar): Unit = (!struct.at12 = value)
+      end extension
     
     // Allocates git_blame_hunk on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_blame_hunk] = scala.scalanative.unsafe.alloc[git_blame_hunk](1)
@@ -3384,31 +3422,6 @@ object structs:
       (!____ptr).boundary = boundary
       ____ptr
     
-    extension (struct: git_blame_hunk)
-      def lines_in_hunk : size_t = struct._1
-      def lines_in_hunk_=(value: size_t): Unit = !struct.at1 = value
-      def final_commit_id : git_oid = struct._2
-      def final_commit_id_=(value: git_oid): Unit = !struct.at2 = value
-      def final_start_line_number : size_t = struct._3
-      def final_start_line_number_=(value: size_t): Unit = !struct.at3 = value
-      def final_signature : Ptr[git_signature] = struct._4
-      def final_signature_=(value: Ptr[git_signature]): Unit = !struct.at4 = value
-      def final_committer : Ptr[git_signature] = struct._5
-      def final_committer_=(value: Ptr[git_signature]): Unit = !struct.at5 = value
-      def orig_commit_id : git_oid = struct._6
-      def orig_commit_id_=(value: git_oid): Unit = !struct.at6 = value
-      def orig_path : CString = struct._7
-      def orig_path_=(value: CString): Unit = !struct.at7 = value
-      def orig_start_line_number : size_t = struct._8
-      def orig_start_line_number_=(value: size_t): Unit = !struct.at8 = value
-      def orig_signature : Ptr[git_signature] = struct._9
-      def orig_signature_=(value: Ptr[git_signature]): Unit = !struct.at9 = value
-      def orig_committer : Ptr[git_signature] = struct._10
-      def orig_committer_=(value: Ptr[git_signature]): Unit = !struct.at10 = value
-      def summary : CString = struct._11
-      def summary_=(value: CString): Unit = !struct.at11 = value
-      def boundary : CChar = struct._12
-      def boundary_=(value: CChar): Unit = !struct.at12 = value
     
 
   /**
@@ -3419,6 +3432,15 @@ object structs:
   object git_blame_line:
     given _tag: Tag[git_blame_line] = Tag.materializeCStruct2Tag[CString, size_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_blame_line)
+        inline def ptr : CString = struct._1
+        inline def ptr_=(value: CString): Unit = (!struct.at1 = value)
+        inline def len : size_t = struct._2
+        inline def len_=(value: size_t): Unit = (!struct.at2 = value)
+      end extension
+    
     // Allocates git_blame_line on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_blame_line] = scala.scalanative.unsafe.alloc[git_blame_line](1)
     def apply(ptr : CString, len : size_t)(using Zone): Ptr[git_blame_line] =
@@ -3427,11 +3449,6 @@ object structs:
       (!____ptr).len = len
       ____ptr
     
-    extension (struct: git_blame_line)
-      def ptr : CString = struct._1
-      def ptr_=(value: CString): Unit = !struct.at1 = value
-      def len : size_t = struct._2
-      def len_=(value: size_t): Unit = !struct.at2 = value
     
 
   /**
@@ -3441,6 +3458,25 @@ object structs:
   
   object git_blame_options:
     given _tag: Tag[git_blame_options] = Tag.materializeCStruct7Tag[CUnsignedInt, CUnsignedInt, uint16_t, git_oid, git_oid, size_t, size_t]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_blame_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def flags : CUnsignedInt = struct._2
+        inline def flags_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def min_match_characters : uint16_t = struct._3
+        inline def min_match_characters_=(value: uint16_t): Unit = (!struct.at3 = value)
+        inline def newest_commit : git_oid = struct._4
+        inline def newest_commit_=(value: git_oid): Unit = (!struct.at4 = value)
+        inline def oldest_commit : git_oid = struct._5
+        inline def oldest_commit_=(value: git_oid): Unit = (!struct.at5 = value)
+        inline def min_line : size_t = struct._6
+        inline def min_line_=(value: size_t): Unit = (!struct.at6 = value)
+        inline def max_line : size_t = struct._7
+        inline def max_line_=(value: size_t): Unit = (!struct.at7 = value)
+      end extension
     
     // Allocates git_blame_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_blame_options] = scala.scalanative.unsafe.alloc[git_blame_options](1)
@@ -3455,21 +3491,6 @@ object structs:
       (!____ptr).max_line = max_line
       ____ptr
     
-    extension (struct: git_blame_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : CUnsignedInt = struct._2
-      def flags_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def min_match_characters : uint16_t = struct._3
-      def min_match_characters_=(value: uint16_t): Unit = !struct.at3 = value
-      def newest_commit : git_oid = struct._4
-      def newest_commit_=(value: git_oid): Unit = !struct.at4 = value
-      def oldest_commit : git_oid = struct._5
-      def oldest_commit_=(value: git_oid): Unit = !struct.at5 = value
-      def min_line : size_t = struct._6
-      def min_line_=(value: size_t): Unit = !struct.at6 = value
-      def max_line : size_t = struct._7
-      def max_line_=(value: size_t): Unit = !struct.at7 = value
     
 
   opaque type git_blob = CStruct0
@@ -3486,6 +3507,19 @@ object structs:
   object git_blob_filter_options:
     given _tag: Tag[git_blob_filter_options] = Tag.materializeCStruct4Tag[CInt, uint32_t, Ptr[git_oid], git_oid]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_blob_filter_options)
+        inline def version : CInt = struct._1
+        inline def version_=(value: CInt): Unit = (!struct.at1 = value)
+        inline def flags : uint32_t = struct._2
+        inline def flags_=(value: uint32_t): Unit = (!struct.at2 = value)
+        inline def commit_id : Ptr[git_oid] = struct._3
+        inline def commit_id_=(value: Ptr[git_oid]): Unit = (!struct.at3 = value)
+        inline def attr_commit_id : git_oid = struct._4
+        inline def attr_commit_id_=(value: git_oid): Unit = (!struct.at4 = value)
+      end extension
+    
     // Allocates git_blob_filter_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_blob_filter_options] = scala.scalanative.unsafe.alloc[git_blob_filter_options](1)
     def apply(version : CInt, flags : uint32_t, commit_id : Ptr[git_oid], attr_commit_id : git_oid)(using Zone): Ptr[git_blob_filter_options] =
@@ -3496,15 +3530,6 @@ object structs:
       (!____ptr).attr_commit_id = attr_commit_id
       ____ptr
     
-    extension (struct: git_blob_filter_options)
-      def version : CInt = struct._1
-      def version_=(value: CInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def commit_id : Ptr[git_oid] = struct._3
-      def commit_id_=(value: Ptr[git_oid]): Unit = !struct.at3 = value
-      def attr_commit_id : git_oid = struct._4
-      def attr_commit_id_=(value: git_oid): Unit = !struct.at4 = value
     
 
   opaque type git_branch_iterator = CStruct0
@@ -3521,6 +3546,17 @@ object structs:
   object git_buf:
     given _tag: Tag[git_buf] = Tag.materializeCStruct3Tag[CString, size_t, size_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_buf)
+        inline def ptr : CString = struct._1
+        inline def ptr_=(value: CString): Unit = (!struct.at1 = value)
+        inline def reserved : size_t = struct._2
+        inline def reserved_=(value: size_t): Unit = (!struct.at2 = value)
+        inline def size : size_t = struct._3
+        inline def size_=(value: size_t): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates git_buf on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_buf] = scala.scalanative.unsafe.alloc[git_buf](1)
     def apply(ptr : CString, reserved : size_t, size : size_t)(using Zone): Ptr[git_buf] =
@@ -3530,13 +3566,6 @@ object structs:
       (!____ptr).size = size
       ____ptr
     
-    extension (struct: git_buf)
-      def ptr : CString = struct._1
-      def ptr_=(value: CString): Unit = !struct.at1 = value
-      def reserved : size_t = struct._2
-      def reserved_=(value: size_t): Unit = !struct.at2 = value
-      def size : size_t = struct._3
-      def size_=(value: size_t): Unit = !struct.at3 = value
     
 
   /**
@@ -3547,6 +3576,13 @@ object structs:
   object git_cert:
     given _tag: Tag[git_cert] = Tag.materializeCStruct1Tag[git_cert_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_cert)
+        inline def cert_type : git_cert_t = struct._1
+        inline def cert_type_=(value: git_cert_t): Unit = (!struct.at1 = value)
+      end extension
+    
     // Allocates git_cert on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_cert] = scala.scalanative.unsafe.alloc[git_cert](1)
     def apply(cert_type : git_cert_t)(using Zone): Ptr[git_cert] =
@@ -3554,9 +3590,6 @@ object structs:
       (!____ptr).cert_type = cert_type
       ____ptr
     
-    extension (struct: git_cert)
-      def cert_type : git_cert_t = struct._1
-      def cert_type_=(value: git_cert_t): Unit = !struct.at1 = value
     
 
   /**
@@ -3566,6 +3599,27 @@ object structs:
   
   object git_cert_hostkey:
     given _tag: Tag[git_cert_hostkey] = Tag.materializeCStruct8Tag[git_cert, git_cert_ssh_t, CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]], CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]], CArray[CUnsignedChar, Nat.Digit2[Nat._3, Nat._2]], git_cert_ssh_raw_type_t, CString, size_t]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_cert_hostkey)
+        inline def parent : git_cert = struct._1
+        inline def parent_=(value: git_cert): Unit = (!struct.at1 = value)
+        inline def `type` : git_cert_ssh_t = struct._2
+        inline def type_=(value: git_cert_ssh_t): Unit = (!struct.at2 = value)
+        inline def hash_md5 : CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]] = struct._3
+        inline def hash_md5_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]]): Unit = (!struct.at3 = value)
+        inline def hash_sha1 : CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]] = struct._4
+        inline def hash_sha1_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]]): Unit = (!struct.at4 = value)
+        inline def hash_sha256 : CArray[CUnsignedChar, Nat.Digit2[Nat._3, Nat._2]] = struct._5
+        inline def hash_sha256_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._3, Nat._2]]): Unit = (!struct.at5 = value)
+        inline def raw_type : git_cert_ssh_raw_type_t = struct._6
+        inline def raw_type_=(value: git_cert_ssh_raw_type_t): Unit = (!struct.at6 = value)
+        inline def hostkey : CString = struct._7
+        inline def hostkey_=(value: CString): Unit = (!struct.at7 = value)
+        inline def hostkey_len : size_t = struct._8
+        inline def hostkey_len_=(value: size_t): Unit = (!struct.at8 = value)
+      end extension
     
     // Allocates git_cert_hostkey on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_cert_hostkey] = scala.scalanative.unsafe.alloc[git_cert_hostkey](1)
@@ -3581,23 +3635,6 @@ object structs:
       (!____ptr).hostkey_len = hostkey_len
       ____ptr
     
-    extension (struct: git_cert_hostkey)
-      def parent : git_cert = struct._1
-      def parent_=(value: git_cert): Unit = !struct.at1 = value
-      def `type` : git_cert_ssh_t = struct._2
-      def type_=(value: git_cert_ssh_t): Unit = !struct.at2 = value
-      def hash_md5 : CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]] = struct._3
-      def hash_md5_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._1, Nat._6]]): Unit = !struct.at3 = value
-      def hash_sha1 : CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]] = struct._4
-      def hash_sha1_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]]): Unit = !struct.at4 = value
-      def hash_sha256 : CArray[CUnsignedChar, Nat.Digit2[Nat._3, Nat._2]] = struct._5
-      def hash_sha256_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._3, Nat._2]]): Unit = !struct.at5 = value
-      def raw_type : git_cert_ssh_raw_type_t = struct._6
-      def raw_type_=(value: git_cert_ssh_raw_type_t): Unit = !struct.at6 = value
-      def hostkey : CString = struct._7
-      def hostkey_=(value: CString): Unit = !struct.at7 = value
-      def hostkey_len : size_t = struct._8
-      def hostkey_len_=(value: size_t): Unit = !struct.at8 = value
     
 
   /**
@@ -3608,6 +3645,17 @@ object structs:
   object git_cert_x509:
     given _tag: Tag[git_cert_x509] = Tag.materializeCStruct3Tag[git_cert, Ptr[Byte], size_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_cert_x509)
+        inline def parent : git_cert = struct._1
+        inline def parent_=(value: git_cert): Unit = (!struct.at1 = value)
+        inline def data : Ptr[Byte] = struct._2
+        inline def data_=(value: Ptr[Byte]): Unit = (!struct.at2 = value)
+        inline def len : size_t = struct._3
+        inline def len_=(value: size_t): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates git_cert_x509 on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_cert_x509] = scala.scalanative.unsafe.alloc[git_cert_x509](1)
     def apply(parent : git_cert, data : Ptr[Byte], len : size_t)(using Zone): Ptr[git_cert_x509] =
@@ -3617,13 +3665,6 @@ object structs:
       (!____ptr).len = len
       ____ptr
     
-    extension (struct: git_cert_x509)
-      def parent : git_cert = struct._1
-      def parent_=(value: git_cert): Unit = !struct.at1 = value
-      def data : Ptr[Byte] = struct._2
-      def data_=(value: Ptr[Byte]): Unit = !struct.at2 = value
-      def len : size_t = struct._3
-      def len_=(value: size_t): Unit = !struct.at3 = value
     
 
   /**
@@ -3633,6 +3674,51 @@ object structs:
   
   object git_checkout_options:
     given _tag: Tag[git_checkout_options] = Tag.materializeCStruct20Tag[CUnsignedInt, CUnsignedInt, CInt, CUnsignedInt, CUnsignedInt, CInt, CUnsignedInt, git_checkout_notify_cb, Ptr[Byte], git_checkout_progress_cb, Ptr[Byte], git_strarray, Ptr[git_tree], Ptr[git_index], CString, CString, CString, CString, git_checkout_perfdata_cb, Ptr[Byte]]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_checkout_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def checkout_strategy : CUnsignedInt = struct._2
+        inline def checkout_strategy_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def disable_filters : CInt = struct._3
+        inline def disable_filters_=(value: CInt): Unit = (!struct.at3 = value)
+        inline def dir_mode : CUnsignedInt = struct._4
+        inline def dir_mode_=(value: CUnsignedInt): Unit = (!struct.at4 = value)
+        inline def file_mode : CUnsignedInt = struct._5
+        inline def file_mode_=(value: CUnsignedInt): Unit = (!struct.at5 = value)
+        inline def file_open_flags : CInt = struct._6
+        inline def file_open_flags_=(value: CInt): Unit = (!struct.at6 = value)
+        inline def notify_flags : CUnsignedInt = struct._7
+        inline def notify_flags_=(value: CUnsignedInt): Unit = (!struct.at7 = value)
+        inline def notify_cb : git_checkout_notify_cb = struct._8
+        inline def notify_cb_=(value: git_checkout_notify_cb): Unit = (!struct.at8 = value)
+        inline def notify_payload : Ptr[Byte] = struct._9
+        inline def notify_payload_=(value: Ptr[Byte]): Unit = (!struct.at9 = value)
+        inline def progress_cb : git_checkout_progress_cb = struct._10
+        inline def progress_cb_=(value: git_checkout_progress_cb): Unit = (!struct.at10 = value)
+        inline def progress_payload : Ptr[Byte] = struct._11
+        inline def progress_payload_=(value: Ptr[Byte]): Unit = (!struct.at11 = value)
+        inline def paths : git_strarray = struct._12
+        inline def paths_=(value: git_strarray): Unit = (!struct.at12 = value)
+        inline def baseline : Ptr[git_tree] = struct._13
+        inline def baseline_=(value: Ptr[git_tree]): Unit = (!struct.at13 = value)
+        inline def baseline_index : Ptr[git_index] = struct._14
+        inline def baseline_index_=(value: Ptr[git_index]): Unit = (!struct.at14 = value)
+        inline def target_directory : CString = struct._15
+        inline def target_directory_=(value: CString): Unit = (!struct.at15 = value)
+        inline def ancestor_label : CString = struct._16
+        inline def ancestor_label_=(value: CString): Unit = (!struct.at16 = value)
+        inline def our_label : CString = struct._17
+        inline def our_label_=(value: CString): Unit = (!struct.at17 = value)
+        inline def their_label : CString = struct._18
+        inline def their_label_=(value: CString): Unit = (!struct.at18 = value)
+        inline def perfdata_cb : git_checkout_perfdata_cb = struct._19
+        inline def perfdata_cb_=(value: git_checkout_perfdata_cb): Unit = (!struct.at19 = value)
+        inline def perfdata_payload : Ptr[Byte] = struct._20
+        inline def perfdata_payload_=(value: Ptr[Byte]): Unit = (!struct.at20 = value)
+      end extension
     
     // Allocates git_checkout_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_checkout_options] = scala.scalanative.unsafe.alloc[git_checkout_options](1)
@@ -3660,47 +3746,6 @@ object structs:
       (!____ptr).perfdata_payload = perfdata_payload
       ____ptr
     
-    extension (struct: git_checkout_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def checkout_strategy : CUnsignedInt = struct._2
-      def checkout_strategy_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def disable_filters : CInt = struct._3
-      def disable_filters_=(value: CInt): Unit = !struct.at3 = value
-      def dir_mode : CUnsignedInt = struct._4
-      def dir_mode_=(value: CUnsignedInt): Unit = !struct.at4 = value
-      def file_mode : CUnsignedInt = struct._5
-      def file_mode_=(value: CUnsignedInt): Unit = !struct.at5 = value
-      def file_open_flags : CInt = struct._6
-      def file_open_flags_=(value: CInt): Unit = !struct.at6 = value
-      def notify_flags : CUnsignedInt = struct._7
-      def notify_flags_=(value: CUnsignedInt): Unit = !struct.at7 = value
-      def notify_cb : git_checkout_notify_cb = struct._8
-      def notify_cb_=(value: git_checkout_notify_cb): Unit = !struct.at8 = value
-      def notify_payload : Ptr[Byte] = struct._9
-      def notify_payload_=(value: Ptr[Byte]): Unit = !struct.at9 = value
-      def progress_cb : git_checkout_progress_cb = struct._10
-      def progress_cb_=(value: git_checkout_progress_cb): Unit = !struct.at10 = value
-      def progress_payload : Ptr[Byte] = struct._11
-      def progress_payload_=(value: Ptr[Byte]): Unit = !struct.at11 = value
-      def paths : git_strarray = struct._12
-      def paths_=(value: git_strarray): Unit = !struct.at12 = value
-      def baseline : Ptr[git_tree] = struct._13
-      def baseline_=(value: Ptr[git_tree]): Unit = !struct.at13 = value
-      def baseline_index : Ptr[git_index] = struct._14
-      def baseline_index_=(value: Ptr[git_index]): Unit = !struct.at14 = value
-      def target_directory : CString = struct._15
-      def target_directory_=(value: CString): Unit = !struct.at15 = value
-      def ancestor_label : CString = struct._16
-      def ancestor_label_=(value: CString): Unit = !struct.at16 = value
-      def our_label : CString = struct._17
-      def our_label_=(value: CString): Unit = !struct.at17 = value
-      def their_label : CString = struct._18
-      def their_label_=(value: CString): Unit = !struct.at18 = value
-      def perfdata_cb : git_checkout_perfdata_cb = struct._19
-      def perfdata_cb_=(value: git_checkout_perfdata_cb): Unit = !struct.at19 = value
-      def perfdata_payload : Ptr[Byte] = struct._20
-      def perfdata_payload_=(value: Ptr[Byte]): Unit = !struct.at20 = value
     
 
   /**
@@ -3711,6 +3756,17 @@ object structs:
   object git_checkout_perfdata:
     given _tag: Tag[git_checkout_perfdata] = Tag.materializeCStruct3Tag[size_t, size_t, size_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_checkout_perfdata)
+        inline def mkdir_calls : size_t = struct._1
+        inline def mkdir_calls_=(value: size_t): Unit = (!struct.at1 = value)
+        inline def stat_calls : size_t = struct._2
+        inline def stat_calls_=(value: size_t): Unit = (!struct.at2 = value)
+        inline def chmod_calls : size_t = struct._3
+        inline def chmod_calls_=(value: size_t): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates git_checkout_perfdata on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_checkout_perfdata] = scala.scalanative.unsafe.alloc[git_checkout_perfdata](1)
     def apply(mkdir_calls : size_t, stat_calls : size_t, chmod_calls : size_t)(using Zone): Ptr[git_checkout_perfdata] =
@@ -3720,13 +3776,6 @@ object structs:
       (!____ptr).chmod_calls = chmod_calls
       ____ptr
     
-    extension (struct: git_checkout_perfdata)
-      def mkdir_calls : size_t = struct._1
-      def mkdir_calls_=(value: size_t): Unit = !struct.at1 = value
-      def stat_calls : size_t = struct._2
-      def stat_calls_=(value: size_t): Unit = !struct.at2 = value
-      def chmod_calls : size_t = struct._3
-      def chmod_calls_=(value: size_t): Unit = !struct.at3 = value
     
 
   /**
@@ -3736,6 +3785,19 @@ object structs:
   
   object git_cherrypick_options:
     given _tag: Tag[git_cherrypick_options] = Tag.materializeCStruct4Tag[CUnsignedInt, CUnsignedInt, git_merge_options, git_checkout_options]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_cherrypick_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def mainline : CUnsignedInt = struct._2
+        inline def mainline_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def merge_opts : git_merge_options = struct._3
+        inline def merge_opts_=(value: git_merge_options): Unit = (!struct.at3 = value)
+        inline def checkout_opts : git_checkout_options = struct._4
+        inline def checkout_opts_=(value: git_checkout_options): Unit = (!struct.at4 = value)
+      end extension
     
     // Allocates git_cherrypick_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_cherrypick_options] = scala.scalanative.unsafe.alloc[git_cherrypick_options](1)
@@ -3747,15 +3809,6 @@ object structs:
       (!____ptr).checkout_opts = checkout_opts
       ____ptr
     
-    extension (struct: git_cherrypick_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def mainline : CUnsignedInt = struct._2
-      def mainline_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def merge_opts : git_merge_options = struct._3
-      def merge_opts_=(value: git_merge_options): Unit = !struct.at3 = value
-      def checkout_opts : git_checkout_options = struct._4
-      def checkout_opts_=(value: git_checkout_options): Unit = !struct.at4 = value
     
 
   /**
@@ -3765,6 +3818,31 @@ object structs:
   
   object git_clone_options:
     given _tag: Tag[git_clone_options] = Tag.materializeCStruct10Tag[CUnsignedInt, git_checkout_options, git_fetch_options, CInt, git_clone_local_t, CString, git_repository_create_cb, Ptr[Byte], git_remote_create_cb, Ptr[Byte]]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_clone_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def checkout_opts : git_checkout_options = struct._2
+        inline def checkout_opts_=(value: git_checkout_options): Unit = (!struct.at2 = value)
+        inline def fetch_opts : git_fetch_options = struct._3
+        inline def fetch_opts_=(value: git_fetch_options): Unit = (!struct.at3 = value)
+        inline def bare : CInt = struct._4
+        inline def bare_=(value: CInt): Unit = (!struct.at4 = value)
+        inline def local : git_clone_local_t = struct._5
+        inline def local_=(value: git_clone_local_t): Unit = (!struct.at5 = value)
+        inline def checkout_branch : CString = struct._6
+        inline def checkout_branch_=(value: CString): Unit = (!struct.at6 = value)
+        inline def repository_cb : git_repository_create_cb = struct._7
+        inline def repository_cb_=(value: git_repository_create_cb): Unit = (!struct.at7 = value)
+        inline def repository_cb_payload : Ptr[Byte] = struct._8
+        inline def repository_cb_payload_=(value: Ptr[Byte]): Unit = (!struct.at8 = value)
+        inline def remote_cb : git_remote_create_cb = struct._9
+        inline def remote_cb_=(value: git_remote_create_cb): Unit = (!struct.at9 = value)
+        inline def remote_cb_payload : Ptr[Byte] = struct._10
+        inline def remote_cb_payload_=(value: Ptr[Byte]): Unit = (!struct.at10 = value)
+      end extension
     
     // Allocates git_clone_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_clone_options] = scala.scalanative.unsafe.alloc[git_clone_options](1)
@@ -3782,27 +3860,6 @@ object structs:
       (!____ptr).remote_cb_payload = remote_cb_payload
       ____ptr
     
-    extension (struct: git_clone_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def checkout_opts : git_checkout_options = struct._2
-      def checkout_opts_=(value: git_checkout_options): Unit = !struct.at2 = value
-      def fetch_opts : git_fetch_options = struct._3
-      def fetch_opts_=(value: git_fetch_options): Unit = !struct.at3 = value
-      def bare : CInt = struct._4
-      def bare_=(value: CInt): Unit = !struct.at4 = value
-      def local : git_clone_local_t = struct._5
-      def local_=(value: git_clone_local_t): Unit = !struct.at5 = value
-      def checkout_branch : CString = struct._6
-      def checkout_branch_=(value: CString): Unit = !struct.at6 = value
-      def repository_cb : git_repository_create_cb = struct._7
-      def repository_cb_=(value: git_repository_create_cb): Unit = !struct.at7 = value
-      def repository_cb_payload : Ptr[Byte] = struct._8
-      def repository_cb_payload_=(value: Ptr[Byte]): Unit = !struct.at8 = value
-      def remote_cb : git_remote_create_cb = struct._9
-      def remote_cb_=(value: git_remote_create_cb): Unit = !struct.at9 = value
-      def remote_cb_payload : Ptr[Byte] = struct._10
-      def remote_cb_payload_=(value: Ptr[Byte]): Unit = !struct.at10 = value
     
 
   opaque type git_commit = CStruct0
@@ -3816,6 +3873,21 @@ object structs:
   object git_commit_create_options:
     given _tag: Tag[git_commit_create_options] = Tag.materializeCStruct5Tag[CUnsignedInt, CUnsignedInt, Ptr[git_signature], Ptr[git_signature], CString]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_commit_create_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def allow_empty_commit : CUnsignedInt = struct._2
+        inline def allow_empty_commit_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def author : Ptr[git_signature] = struct._3
+        inline def author_=(value: Ptr[git_signature]): Unit = (!struct.at3 = value)
+        inline def committer : Ptr[git_signature] = struct._4
+        inline def committer_=(value: Ptr[git_signature]): Unit = (!struct.at4 = value)
+        inline def message_encoding : CString = struct._5
+        inline def message_encoding_=(value: CString): Unit = (!struct.at5 = value)
+      end extension
+    
     // Allocates git_commit_create_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_commit_create_options] = scala.scalanative.unsafe.alloc[git_commit_create_options](1)
     def apply(version : CUnsignedInt, allow_empty_commit : CUnsignedInt, author : Ptr[git_signature], committer : Ptr[git_signature], message_encoding : CString)(using Zone): Ptr[git_commit_create_options] =
@@ -3827,17 +3899,6 @@ object structs:
       (!____ptr).message_encoding = message_encoding
       ____ptr
     
-    extension (struct: git_commit_create_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def allow_empty_commit : CUnsignedInt = struct._2
-      def allow_empty_commit_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def author : Ptr[git_signature] = struct._3
-      def author_=(value: Ptr[git_signature]): Unit = !struct.at3 = value
-      def committer : Ptr[git_signature] = struct._4
-      def committer_=(value: Ptr[git_signature]): Unit = !struct.at4 = value
-      def message_encoding : CString = struct._5
-      def message_encoding_=(value: CString): Unit = !struct.at5 = value
     
 
   opaque type git_commit_graph = CStruct0
@@ -3860,6 +3921,15 @@ object structs:
   object git_commitarray:
     given _tag: Tag[git_commitarray] = Tag.materializeCStruct2Tag[Ptr[Ptr[git_commit]], size_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_commitarray)
+        inline def commits : Ptr[Ptr[git_commit]] = struct._1
+        inline def commits_=(value: Ptr[Ptr[git_commit]]): Unit = (!struct.at1 = value)
+        inline def count : size_t = struct._2
+        inline def count_=(value: size_t): Unit = (!struct.at2 = value)
+      end extension
+    
     // Allocates git_commitarray on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_commitarray] = scala.scalanative.unsafe.alloc[git_commitarray](1)
     def apply(commits : Ptr[Ptr[git_commit]], count : size_t)(using Zone): Ptr[git_commitarray] =
@@ -3868,11 +3938,6 @@ object structs:
       (!____ptr).count = count
       ____ptr
     
-    extension (struct: git_commitarray)
-      def commits : Ptr[Ptr[git_commit]] = struct._1
-      def commits_=(value: Ptr[Ptr[git_commit]]): Unit = !struct.at1 = value
-      def count : size_t = struct._2
-      def count_=(value: size_t): Unit = !struct.at2 = value
     
 
   opaque type git_config = CStruct0
@@ -3895,6 +3960,23 @@ object structs:
   object git_config_entry:
     given _tag: Tag[git_config_entry] = Tag.materializeCStruct6Tag[CString, CString, CString, CString, CUnsignedInt, git_config_level_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_config_entry)
+        inline def name : CString = struct._1
+        inline def name_=(value: CString): Unit = (!struct.at1 = value)
+        inline def value : CString = struct._2
+        inline def value_=(value: CString): Unit = (!struct.at2 = value)
+        inline def backend_type : CString = struct._3
+        inline def backend_type_=(value: CString): Unit = (!struct.at3 = value)
+        inline def origin_path : CString = struct._4
+        inline def origin_path_=(value: CString): Unit = (!struct.at4 = value)
+        inline def include_depth : CUnsignedInt = struct._5
+        inline def include_depth_=(value: CUnsignedInt): Unit = (!struct.at5 = value)
+        inline def level : git_config_level_t = struct._6
+        inline def level_=(value: git_config_level_t): Unit = (!struct.at6 = value)
+      end extension
+    
     // Allocates git_config_entry on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_config_entry] = scala.scalanative.unsafe.alloc[git_config_entry](1)
     def apply(name : CString, value : CString, backend_type : CString, origin_path : CString, include_depth : CUnsignedInt, level : git_config_level_t)(using Zone): Ptr[git_config_entry] =
@@ -3907,19 +3989,6 @@ object structs:
       (!____ptr).level = level
       ____ptr
     
-    extension (struct: git_config_entry)
-      def name : CString = struct._1
-      def name_=(value: CString): Unit = !struct.at1 = value
-      def value : CString = struct._2
-      def value_=(value: CString): Unit = !struct.at2 = value
-      def backend_type : CString = struct._3
-      def backend_type_=(value: CString): Unit = !struct.at3 = value
-      def origin_path : CString = struct._4
-      def origin_path_=(value: CString): Unit = !struct.at4 = value
-      def include_depth : CUnsignedInt = struct._5
-      def include_depth_=(value: CUnsignedInt): Unit = !struct.at5 = value
-      def level : git_config_level_t = struct._6
-      def level_=(value: git_config_level_t): Unit = !struct.at6 = value
     
 
   opaque type git_config_iterator = CStruct0
@@ -3936,6 +4005,17 @@ object structs:
   object git_configmap:
     given _tag: Tag[git_configmap] = Tag.materializeCStruct3Tag[git_configmap_t, CString, CInt]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_configmap)
+        inline def `type` : git_configmap_t = struct._1
+        inline def type_=(value: git_configmap_t): Unit = (!struct.at1 = value)
+        inline def str_match : CString = struct._2
+        inline def str_match_=(value: CString): Unit = (!struct.at2 = value)
+        inline def map_value : CInt = struct._3
+        inline def map_value_=(value: CInt): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates git_configmap on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_configmap] = scala.scalanative.unsafe.alloc[git_configmap](1)
     def apply(`type` : git_configmap_t, str_match : CString, map_value : CInt)(using Zone): Ptr[git_configmap] =
@@ -3945,13 +4025,6 @@ object structs:
       (!____ptr).map_value = map_value
       ____ptr
     
-    extension (struct: git_configmap)
-      def `type` : git_configmap_t = struct._1
-      def type_=(value: git_configmap_t): Unit = !struct.at1 = value
-      def str_match : CString = struct._2
-      def str_match_=(value: CString): Unit = !struct.at2 = value
-      def map_value : CInt = struct._3
-      def map_value_=(value: CInt): Unit = !struct.at3 = value
     
 
   /**
@@ -3962,6 +4035,15 @@ object structs:
   object git_credential:
     given _tag: Tag[git_credential] = Tag.materializeCStruct2Tag[git_credential_t, CFuncPtr1[Ptr[Byte], Unit]]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_credential)
+        inline def credtype : git_credential_t = struct._1
+        inline def credtype_=(value: git_credential_t): Unit = (!struct.at1 = value)
+        inline def free : CFuncPtr1[Ptr[git_credential], Unit] = struct._2.asInstanceOf[CFuncPtr1[Ptr[git_credential], Unit]]
+        inline def free_=(value: CFuncPtr1[Ptr[git_credential], Unit]): Unit = (!struct.at2 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]])
+      end extension
+    
     // Allocates git_credential on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential] = scala.scalanative.unsafe.alloc[git_credential](1)
     def apply(credtype : git_credential_t, free : CFuncPtr1[Ptr[git_credential], Unit])(using Zone): Ptr[git_credential] =
@@ -3970,11 +4052,6 @@ object structs:
       (!____ptr).free = free
       ____ptr
     
-    extension (struct: git_credential)
-      def credtype : git_credential_t = struct._1
-      def credtype_=(value: git_credential_t): Unit = !struct.at1 = value
-      def free : CFuncPtr1[Ptr[git_credential], Unit] = struct._2.asInstanceOf[CFuncPtr1[Ptr[git_credential], Unit]]
-      def free_=(value: CFuncPtr1[Ptr[git_credential], Unit]): Unit = !struct.at2 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
     
 
   /**
@@ -3985,6 +4062,15 @@ object structs:
   object git_credential_default:
     given _tag: Tag[git_credential_default] = Tag.materializeCStruct2Tag[git_credential_t, CFuncPtr1[Ptr[Byte], Unit]]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_credential_default)
+        inline def credtype : git_credential_t = struct._1
+        inline def credtype_=(value: git_credential_t): Unit = (!struct.at1 = value)
+        inline def free : CFuncPtr1[Ptr[git_credential], Unit] = struct._2.asInstanceOf[CFuncPtr1[Ptr[git_credential], Unit]]
+        inline def free_=(value: CFuncPtr1[Ptr[git_credential], Unit]): Unit = (!struct.at2 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]])
+      end extension
+    
     // Allocates git_credential_default on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_default] = scala.scalanative.unsafe.alloc[git_credential_default](1)
     def apply(credtype : git_credential_t, free : CFuncPtr1[Ptr[git_credential], Unit])(using Zone): Ptr[git_credential_default] =
@@ -3993,11 +4079,6 @@ object structs:
       (!____ptr).free = free
       ____ptr
     
-    extension (struct: git_credential_default)
-      def credtype : git_credential_t = struct._1
-      def credtype_=(value: git_credential_t): Unit = !struct.at1 = value
-      def free : CFuncPtr1[Ptr[git_credential], Unit] = struct._2.asInstanceOf[CFuncPtr1[Ptr[git_credential], Unit]]
-      def free_=(value: CFuncPtr1[Ptr[git_credential], Unit]): Unit = !struct.at2 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
     
 
   /**
@@ -4007,6 +4088,23 @@ object structs:
   
   object git_credential_ssh_custom:
     given _tag: Tag[git_credential_ssh_custom] = Tag.materializeCStruct6Tag[git_credential, CString, CString, size_t, git_credential_sign_cb, Ptr[Byte]]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_credential_ssh_custom)
+        inline def parent : git_credential = struct._1
+        inline def parent_=(value: git_credential): Unit = (!struct.at1 = value)
+        inline def username : CString = struct._2
+        inline def username_=(value: CString): Unit = (!struct.at2 = value)
+        inline def publickey : CString = struct._3
+        inline def publickey_=(value: CString): Unit = (!struct.at3 = value)
+        inline def publickey_len : size_t = struct._4
+        inline def publickey_len_=(value: size_t): Unit = (!struct.at4 = value)
+        inline def sign_callback : git_credential_sign_cb = struct._5
+        inline def sign_callback_=(value: git_credential_sign_cb): Unit = (!struct.at5 = value)
+        inline def payload : Ptr[Byte] = struct._6
+        inline def payload_=(value: Ptr[Byte]): Unit = (!struct.at6 = value)
+      end extension
     
     // Allocates git_credential_ssh_custom on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_ssh_custom] = scala.scalanative.unsafe.alloc[git_credential_ssh_custom](1)
@@ -4020,19 +4118,6 @@ object structs:
       (!____ptr).payload = payload
       ____ptr
     
-    extension (struct: git_credential_ssh_custom)
-      def parent : git_credential = struct._1
-      def parent_=(value: git_credential): Unit = !struct.at1 = value
-      def username : CString = struct._2
-      def username_=(value: CString): Unit = !struct.at2 = value
-      def publickey : CString = struct._3
-      def publickey_=(value: CString): Unit = !struct.at3 = value
-      def publickey_len : size_t = struct._4
-      def publickey_len_=(value: size_t): Unit = !struct.at4 = value
-      def sign_callback : git_credential_sign_cb = struct._5
-      def sign_callback_=(value: git_credential_sign_cb): Unit = !struct.at5 = value
-      def payload : Ptr[Byte] = struct._6
-      def payload_=(value: Ptr[Byte]): Unit = !struct.at6 = value
     
 
   /**
@@ -4042,6 +4127,19 @@ object structs:
   
   object git_credential_ssh_interactive:
     given _tag: Tag[git_credential_ssh_interactive] = Tag.materializeCStruct4Tag[git_credential, CString, git_credential_ssh_interactive_cb, Ptr[Byte]]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_credential_ssh_interactive)
+        inline def parent : git_credential = struct._1
+        inline def parent_=(value: git_credential): Unit = (!struct.at1 = value)
+        inline def username : CString = struct._2
+        inline def username_=(value: CString): Unit = (!struct.at2 = value)
+        inline def prompt_callback : git_credential_ssh_interactive_cb = struct._3
+        inline def prompt_callback_=(value: git_credential_ssh_interactive_cb): Unit = (!struct.at3 = value)
+        inline def payload : Ptr[Byte] = struct._4
+        inline def payload_=(value: Ptr[Byte]): Unit = (!struct.at4 = value)
+      end extension
     
     // Allocates git_credential_ssh_interactive on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_ssh_interactive] = scala.scalanative.unsafe.alloc[git_credential_ssh_interactive](1)
@@ -4053,15 +4151,6 @@ object structs:
       (!____ptr).payload = payload
       ____ptr
     
-    extension (struct: git_credential_ssh_interactive)
-      def parent : git_credential = struct._1
-      def parent_=(value: git_credential): Unit = !struct.at1 = value
-      def username : CString = struct._2
-      def username_=(value: CString): Unit = !struct.at2 = value
-      def prompt_callback : git_credential_ssh_interactive_cb = struct._3
-      def prompt_callback_=(value: git_credential_ssh_interactive_cb): Unit = !struct.at3 = value
-      def payload : Ptr[Byte] = struct._4
-      def payload_=(value: Ptr[Byte]): Unit = !struct.at4 = value
     
 
   /**
@@ -4071,6 +4160,21 @@ object structs:
   
   object git_credential_ssh_key:
     given _tag: Tag[git_credential_ssh_key] = Tag.materializeCStruct5Tag[git_credential, CString, CString, CString, CString]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_credential_ssh_key)
+        inline def parent : git_credential = struct._1
+        inline def parent_=(value: git_credential): Unit = (!struct.at1 = value)
+        inline def username : CString = struct._2
+        inline def username_=(value: CString): Unit = (!struct.at2 = value)
+        inline def publickey : CString = struct._3
+        inline def publickey_=(value: CString): Unit = (!struct.at3 = value)
+        inline def privatekey : CString = struct._4
+        inline def privatekey_=(value: CString): Unit = (!struct.at4 = value)
+        inline def passphrase : CString = struct._5
+        inline def passphrase_=(value: CString): Unit = (!struct.at5 = value)
+      end extension
     
     // Allocates git_credential_ssh_key on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_ssh_key] = scala.scalanative.unsafe.alloc[git_credential_ssh_key](1)
@@ -4083,17 +4187,6 @@ object structs:
       (!____ptr).passphrase = passphrase
       ____ptr
     
-    extension (struct: git_credential_ssh_key)
-      def parent : git_credential = struct._1
-      def parent_=(value: git_credential): Unit = !struct.at1 = value
-      def username : CString = struct._2
-      def username_=(value: CString): Unit = !struct.at2 = value
-      def publickey : CString = struct._3
-      def publickey_=(value: CString): Unit = !struct.at3 = value
-      def privatekey : CString = struct._4
-      def privatekey_=(value: CString): Unit = !struct.at4 = value
-      def passphrase : CString = struct._5
-      def passphrase_=(value: CString): Unit = !struct.at5 = value
     
 
   /**
@@ -4104,6 +4197,15 @@ object structs:
   object git_credential_username:
     given _tag: Tag[git_credential_username] = Tag.materializeCStruct2Tag[git_credential, CArray[CChar, Nat._1]]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_credential_username)
+        inline def parent : git_credential = struct._1
+        inline def parent_=(value: git_credential): Unit = (!struct.at1 = value)
+        inline def username : CArray[CChar, Nat._1] = struct._2
+        inline def username_=(value: CArray[CChar, Nat._1]): Unit = (!struct.at2 = value)
+      end extension
+    
     // Allocates git_credential_username on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_username] = scala.scalanative.unsafe.alloc[git_credential_username](1)
     def apply(parent : git_credential, username : CArray[CChar, Nat._1])(using Zone): Ptr[git_credential_username] =
@@ -4112,11 +4214,6 @@ object structs:
       (!____ptr).username = username
       ____ptr
     
-    extension (struct: git_credential_username)
-      def parent : git_credential = struct._1
-      def parent_=(value: git_credential): Unit = !struct.at1 = value
-      def username : CArray[CChar, Nat._1] = struct._2
-      def username_=(value: CArray[CChar, Nat._1]): Unit = !struct.at2 = value
     
 
   /**
@@ -4127,6 +4224,15 @@ object structs:
   object git_credential_userpass_payload:
     given _tag: Tag[git_credential_userpass_payload] = Tag.materializeCStruct2Tag[CString, CString]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_credential_userpass_payload)
+        inline def username : CString = struct._1
+        inline def username_=(value: CString): Unit = (!struct.at1 = value)
+        inline def password : CString = struct._2
+        inline def password_=(value: CString): Unit = (!struct.at2 = value)
+      end extension
+    
     // Allocates git_credential_userpass_payload on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_userpass_payload] = scala.scalanative.unsafe.alloc[git_credential_userpass_payload](1)
     def apply(username : CString, password : CString)(using Zone): Ptr[git_credential_userpass_payload] =
@@ -4135,11 +4241,6 @@ object structs:
       (!____ptr).password = password
       ____ptr
     
-    extension (struct: git_credential_userpass_payload)
-      def username : CString = struct._1
-      def username_=(value: CString): Unit = !struct.at1 = value
-      def password : CString = struct._2
-      def password_=(value: CString): Unit = !struct.at2 = value
     
 
   /**
@@ -4150,6 +4251,17 @@ object structs:
   object git_credential_userpass_plaintext:
     given _tag: Tag[git_credential_userpass_plaintext] = Tag.materializeCStruct3Tag[git_credential, CString, CString]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_credential_userpass_plaintext)
+        inline def parent : git_credential = struct._1
+        inline def parent_=(value: git_credential): Unit = (!struct.at1 = value)
+        inline def username : CString = struct._2
+        inline def username_=(value: CString): Unit = (!struct.at2 = value)
+        inline def password : CString = struct._3
+        inline def password_=(value: CString): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates git_credential_userpass_plaintext on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_credential_userpass_plaintext] = scala.scalanative.unsafe.alloc[git_credential_userpass_plaintext](1)
     def apply(parent : git_credential, username : CString, password : CString)(using Zone): Ptr[git_credential_userpass_plaintext] =
@@ -4159,13 +4271,6 @@ object structs:
       (!____ptr).password = password
       ____ptr
     
-    extension (struct: git_credential_userpass_plaintext)
-      def parent : git_credential = struct._1
-      def parent_=(value: git_credential): Unit = !struct.at1 = value
-      def username : CString = struct._2
-      def username_=(value: CString): Unit = !struct.at2 = value
-      def password : CString = struct._3
-      def password_=(value: CString): Unit = !struct.at3 = value
     
 
   /**
@@ -4175,6 +4280,19 @@ object structs:
   
   object git_describe_format_options:
     given _tag: Tag[git_describe_format_options] = Tag.materializeCStruct4Tag[CUnsignedInt, CUnsignedInt, CInt, CString]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_describe_format_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def abbreviated_size : CUnsignedInt = struct._2
+        inline def abbreviated_size_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def always_use_long_format : CInt = struct._3
+        inline def always_use_long_format_=(value: CInt): Unit = (!struct.at3 = value)
+        inline def dirty_suffix : CString = struct._4
+        inline def dirty_suffix_=(value: CString): Unit = (!struct.at4 = value)
+      end extension
     
     // Allocates git_describe_format_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_describe_format_options] = scala.scalanative.unsafe.alloc[git_describe_format_options](1)
@@ -4186,15 +4304,6 @@ object structs:
       (!____ptr).dirty_suffix = dirty_suffix
       ____ptr
     
-    extension (struct: git_describe_format_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def abbreviated_size : CUnsignedInt = struct._2
-      def abbreviated_size_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def always_use_long_format : CInt = struct._3
-      def always_use_long_format_=(value: CInt): Unit = !struct.at3 = value
-      def dirty_suffix : CString = struct._4
-      def dirty_suffix_=(value: CString): Unit = !struct.at4 = value
     
 
   /**
@@ -4204,6 +4313,23 @@ object structs:
   
   object git_describe_options:
     given _tag: Tag[git_describe_options] = Tag.materializeCStruct6Tag[CUnsignedInt, CUnsignedInt, CUnsignedInt, CString, CInt, CInt]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_describe_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def max_candidates_tags : CUnsignedInt = struct._2
+        inline def max_candidates_tags_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def describe_strategy : CUnsignedInt = struct._3
+        inline def describe_strategy_=(value: CUnsignedInt): Unit = (!struct.at3 = value)
+        inline def pattern : CString = struct._4
+        inline def pattern_=(value: CString): Unit = (!struct.at4 = value)
+        inline def only_follow_first_parent : CInt = struct._5
+        inline def only_follow_first_parent_=(value: CInt): Unit = (!struct.at5 = value)
+        inline def show_commit_oid_as_fallback : CInt = struct._6
+        inline def show_commit_oid_as_fallback_=(value: CInt): Unit = (!struct.at6 = value)
+      end extension
     
     // Allocates git_describe_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_describe_options] = scala.scalanative.unsafe.alloc[git_describe_options](1)
@@ -4217,19 +4343,6 @@ object structs:
       (!____ptr).show_commit_oid_as_fallback = show_commit_oid_as_fallback
       ____ptr
     
-    extension (struct: git_describe_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def max_candidates_tags : CUnsignedInt = struct._2
-      def max_candidates_tags_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def describe_strategy : CUnsignedInt = struct._3
-      def describe_strategy_=(value: CUnsignedInt): Unit = !struct.at3 = value
-      def pattern : CString = struct._4
-      def pattern_=(value: CString): Unit = !struct.at4 = value
-      def only_follow_first_parent : CInt = struct._5
-      def only_follow_first_parent_=(value: CInt): Unit = !struct.at5 = value
-      def show_commit_oid_as_fallback : CInt = struct._6
-      def show_commit_oid_as_fallback_=(value: CInt): Unit = !struct.at6 = value
     
 
   opaque type git_describe_result = CStruct0
@@ -4252,6 +4365,17 @@ object structs:
   object git_diff_binary:
     given _tag: Tag[git_diff_binary] = Tag.materializeCStruct3Tag[CUnsignedInt, git_diff_binary_file, git_diff_binary_file]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_diff_binary)
+        inline def contains_data : CUnsignedInt = struct._1
+        inline def contains_data_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def old_file : git_diff_binary_file = struct._2
+        inline def old_file_=(value: git_diff_binary_file): Unit = (!struct.at2 = value)
+        inline def new_file : git_diff_binary_file = struct._3
+        inline def new_file_=(value: git_diff_binary_file): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates git_diff_binary on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_binary] = scala.scalanative.unsafe.alloc[git_diff_binary](1)
     def apply(contains_data : CUnsignedInt, old_file : git_diff_binary_file, new_file : git_diff_binary_file)(using Zone): Ptr[git_diff_binary] =
@@ -4261,13 +4385,6 @@ object structs:
       (!____ptr).new_file = new_file
       ____ptr
     
-    extension (struct: git_diff_binary)
-      def contains_data : CUnsignedInt = struct._1
-      def contains_data_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def old_file : git_diff_binary_file = struct._2
-      def old_file_=(value: git_diff_binary_file): Unit = !struct.at2 = value
-      def new_file : git_diff_binary_file = struct._3
-      def new_file_=(value: git_diff_binary_file): Unit = !struct.at3 = value
     
 
   /**
@@ -4277,6 +4394,19 @@ object structs:
   
   object git_diff_binary_file:
     given _tag: Tag[git_diff_binary_file] = Tag.materializeCStruct4Tag[git_diff_binary_t, CString, size_t, size_t]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_diff_binary_file)
+        inline def `type` : git_diff_binary_t = struct._1
+        inline def type_=(value: git_diff_binary_t): Unit = (!struct.at1 = value)
+        inline def data : CString = struct._2
+        inline def data_=(value: CString): Unit = (!struct.at2 = value)
+        inline def datalen : size_t = struct._3
+        inline def datalen_=(value: size_t): Unit = (!struct.at3 = value)
+        inline def inflatedlen : size_t = struct._4
+        inline def inflatedlen_=(value: size_t): Unit = (!struct.at4 = value)
+      end extension
     
     // Allocates git_diff_binary_file on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_binary_file] = scala.scalanative.unsafe.alloc[git_diff_binary_file](1)
@@ -4288,15 +4418,6 @@ object structs:
       (!____ptr).inflatedlen = inflatedlen
       ____ptr
     
-    extension (struct: git_diff_binary_file)
-      def `type` : git_diff_binary_t = struct._1
-      def type_=(value: git_diff_binary_t): Unit = !struct.at1 = value
-      def data : CString = struct._2
-      def data_=(value: CString): Unit = !struct.at2 = value
-      def datalen : size_t = struct._3
-      def datalen_=(value: size_t): Unit = !struct.at3 = value
-      def inflatedlen : size_t = struct._4
-      def inflatedlen_=(value: size_t): Unit = !struct.at4 = value
     
 
   /**
@@ -4306,6 +4427,23 @@ object structs:
   
   object git_diff_delta:
     given _tag: Tag[git_diff_delta] = Tag.materializeCStruct6Tag[git_delta_t, uint32_t, uint16_t, uint16_t, git_diff_file, git_diff_file]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_diff_delta)
+        inline def status : git_delta_t = struct._1
+        inline def status_=(value: git_delta_t): Unit = (!struct.at1 = value)
+        inline def flags : uint32_t = struct._2
+        inline def flags_=(value: uint32_t): Unit = (!struct.at2 = value)
+        inline def similarity : uint16_t = struct._3
+        inline def similarity_=(value: uint16_t): Unit = (!struct.at3 = value)
+        inline def nfiles : uint16_t = struct._4
+        inline def nfiles_=(value: uint16_t): Unit = (!struct.at4 = value)
+        inline def old_file : git_diff_file = struct._5
+        inline def old_file_=(value: git_diff_file): Unit = (!struct.at5 = value)
+        inline def new_file : git_diff_file = struct._6
+        inline def new_file_=(value: git_diff_file): Unit = (!struct.at6 = value)
+      end extension
     
     // Allocates git_diff_delta on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_delta] = scala.scalanative.unsafe.alloc[git_diff_delta](1)
@@ -4319,19 +4457,6 @@ object structs:
       (!____ptr).new_file = new_file
       ____ptr
     
-    extension (struct: git_diff_delta)
-      def status : git_delta_t = struct._1
-      def status_=(value: git_delta_t): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def similarity : uint16_t = struct._3
-      def similarity_=(value: uint16_t): Unit = !struct.at3 = value
-      def nfiles : uint16_t = struct._4
-      def nfiles_=(value: uint16_t): Unit = !struct.at4 = value
-      def old_file : git_diff_file = struct._5
-      def old_file_=(value: git_diff_file): Unit = !struct.at5 = value
-      def new_file : git_diff_file = struct._6
-      def new_file_=(value: git_diff_file): Unit = !struct.at6 = value
     
 
   /**
@@ -4341,6 +4466,23 @@ object structs:
   
   object git_diff_file:
     given _tag: Tag[git_diff_file] = Tag.materializeCStruct6Tag[git_oid, CString, git_object_size_t, uint32_t, uint16_t, uint16_t]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_diff_file)
+        inline def id : git_oid = struct._1
+        inline def id_=(value: git_oid): Unit = (!struct.at1 = value)
+        inline def path : CString = struct._2
+        inline def path_=(value: CString): Unit = (!struct.at2 = value)
+        inline def size : git_object_size_t = struct._3
+        inline def size_=(value: git_object_size_t): Unit = (!struct.at3 = value)
+        inline def flags : uint32_t = struct._4
+        inline def flags_=(value: uint32_t): Unit = (!struct.at4 = value)
+        inline def mode : uint16_t = struct._5
+        inline def mode_=(value: uint16_t): Unit = (!struct.at5 = value)
+        inline def id_abbrev : uint16_t = struct._6
+        inline def id_abbrev_=(value: uint16_t): Unit = (!struct.at6 = value)
+      end extension
     
     // Allocates git_diff_file on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_file] = scala.scalanative.unsafe.alloc[git_diff_file](1)
@@ -4354,19 +4496,6 @@ object structs:
       (!____ptr).id_abbrev = id_abbrev
       ____ptr
     
-    extension (struct: git_diff_file)
-      def id : git_oid = struct._1
-      def id_=(value: git_oid): Unit = !struct.at1 = value
-      def path : CString = struct._2
-      def path_=(value: CString): Unit = !struct.at2 = value
-      def size : git_object_size_t = struct._3
-      def size_=(value: git_object_size_t): Unit = !struct.at3 = value
-      def flags : uint32_t = struct._4
-      def flags_=(value: uint32_t): Unit = !struct.at4 = value
-      def mode : uint16_t = struct._5
-      def mode_=(value: uint16_t): Unit = !struct.at5 = value
-      def id_abbrev : uint16_t = struct._6
-      def id_abbrev_=(value: uint16_t): Unit = !struct.at6 = value
     
 
   /**
@@ -4376,6 +4505,27 @@ object structs:
   
   object git_diff_find_options:
     given _tag: Tag[git_diff_find_options] = Tag.materializeCStruct8Tag[CUnsignedInt, uint32_t, uint16_t, uint16_t, uint16_t, uint16_t, size_t, Ptr[git_diff_similarity_metric]]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_diff_find_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def flags : uint32_t = struct._2
+        inline def flags_=(value: uint32_t): Unit = (!struct.at2 = value)
+        inline def rename_threshold : uint16_t = struct._3
+        inline def rename_threshold_=(value: uint16_t): Unit = (!struct.at3 = value)
+        inline def rename_from_rewrite_threshold : uint16_t = struct._4
+        inline def rename_from_rewrite_threshold_=(value: uint16_t): Unit = (!struct.at4 = value)
+        inline def copy_threshold : uint16_t = struct._5
+        inline def copy_threshold_=(value: uint16_t): Unit = (!struct.at5 = value)
+        inline def break_rewrite_threshold : uint16_t = struct._6
+        inline def break_rewrite_threshold_=(value: uint16_t): Unit = (!struct.at6 = value)
+        inline def rename_limit : size_t = struct._7
+        inline def rename_limit_=(value: size_t): Unit = (!struct.at7 = value)
+        inline def metric : Ptr[git_diff_similarity_metric] = struct._8
+        inline def metric_=(value: Ptr[git_diff_similarity_metric]): Unit = (!struct.at8 = value)
+      end extension
     
     // Allocates git_diff_find_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_find_options] = scala.scalanative.unsafe.alloc[git_diff_find_options](1)
@@ -4391,23 +4541,6 @@ object structs:
       (!____ptr).metric = metric
       ____ptr
     
-    extension (struct: git_diff_find_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def rename_threshold : uint16_t = struct._3
-      def rename_threshold_=(value: uint16_t): Unit = !struct.at3 = value
-      def rename_from_rewrite_threshold : uint16_t = struct._4
-      def rename_from_rewrite_threshold_=(value: uint16_t): Unit = !struct.at4 = value
-      def copy_threshold : uint16_t = struct._5
-      def copy_threshold_=(value: uint16_t): Unit = !struct.at5 = value
-      def break_rewrite_threshold : uint16_t = struct._6
-      def break_rewrite_threshold_=(value: uint16_t): Unit = !struct.at6 = value
-      def rename_limit : size_t = struct._7
-      def rename_limit_=(value: size_t): Unit = !struct.at7 = value
-      def metric : Ptr[git_diff_similarity_metric] = struct._8
-      def metric_=(value: Ptr[git_diff_similarity_metric]): Unit = !struct.at8 = value
     
 
   /**
@@ -4417,6 +4550,27 @@ object structs:
   
   object git_diff_format_email_options:
     given _tag: Tag[git_diff_format_email_options] = Tag.materializeCStruct8Tag[CUnsignedInt, uint32_t, size_t, size_t, Ptr[git_oid], CString, CString, Ptr[git_signature]]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_diff_format_email_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def flags : uint32_t = struct._2
+        inline def flags_=(value: uint32_t): Unit = (!struct.at2 = value)
+        inline def patch_no : size_t = struct._3
+        inline def patch_no_=(value: size_t): Unit = (!struct.at3 = value)
+        inline def total_patches : size_t = struct._4
+        inline def total_patches_=(value: size_t): Unit = (!struct.at4 = value)
+        inline def id : Ptr[git_oid] = struct._5
+        inline def id_=(value: Ptr[git_oid]): Unit = (!struct.at5 = value)
+        inline def summary : CString = struct._6
+        inline def summary_=(value: CString): Unit = (!struct.at6 = value)
+        inline def body : CString = struct._7
+        inline def body_=(value: CString): Unit = (!struct.at7 = value)
+        inline def author : Ptr[git_signature] = struct._8
+        inline def author_=(value: Ptr[git_signature]): Unit = (!struct.at8 = value)
+      end extension
     
     // Allocates git_diff_format_email_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_format_email_options] = scala.scalanative.unsafe.alloc[git_diff_format_email_options](1)
@@ -4432,23 +4586,6 @@ object structs:
       (!____ptr).author = author
       ____ptr
     
-    extension (struct: git_diff_format_email_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def patch_no : size_t = struct._3
-      def patch_no_=(value: size_t): Unit = !struct.at3 = value
-      def total_patches : size_t = struct._4
-      def total_patches_=(value: size_t): Unit = !struct.at4 = value
-      def id : Ptr[git_oid] = struct._5
-      def id_=(value: Ptr[git_oid]): Unit = !struct.at5 = value
-      def summary : CString = struct._6
-      def summary_=(value: CString): Unit = !struct.at6 = value
-      def body : CString = struct._7
-      def body_=(value: CString): Unit = !struct.at7 = value
-      def author : Ptr[git_signature] = struct._8
-      def author_=(value: Ptr[git_signature]): Unit = !struct.at8 = value
     
 
   /**
@@ -4458,6 +4595,23 @@ object structs:
   
   object git_diff_hunk:
     given _tag: Tag[git_diff_hunk] = Tag.materializeCStruct6Tag[CInt, CInt, CInt, CInt, size_t, CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_diff_hunk)
+        inline def old_start : CInt = struct._1
+        inline def old_start_=(value: CInt): Unit = (!struct.at1 = value)
+        inline def old_lines : CInt = struct._2
+        inline def old_lines_=(value: CInt): Unit = (!struct.at2 = value)
+        inline def new_start : CInt = struct._3
+        inline def new_start_=(value: CInt): Unit = (!struct.at3 = value)
+        inline def new_lines : CInt = struct._4
+        inline def new_lines_=(value: CInt): Unit = (!struct.at4 = value)
+        inline def header_len : size_t = struct._5
+        inline def header_len_=(value: size_t): Unit = (!struct.at5 = value)
+        inline def header : CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]] = struct._6
+        inline def header_=(value: CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]): Unit = (!struct.at6 = value)
+      end extension
     
     // Allocates git_diff_hunk on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_hunk] = scala.scalanative.unsafe.alloc[git_diff_hunk](1)
@@ -4471,19 +4625,6 @@ object structs:
       (!____ptr).header = header
       ____ptr
     
-    extension (struct: git_diff_hunk)
-      def old_start : CInt = struct._1
-      def old_start_=(value: CInt): Unit = !struct.at1 = value
-      def old_lines : CInt = struct._2
-      def old_lines_=(value: CInt): Unit = !struct.at2 = value
-      def new_start : CInt = struct._3
-      def new_start_=(value: CInt): Unit = !struct.at3 = value
-      def new_lines : CInt = struct._4
-      def new_lines_=(value: CInt): Unit = !struct.at4 = value
-      def header_len : size_t = struct._5
-      def header_len_=(value: size_t): Unit = !struct.at5 = value
-      def header : CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]] = struct._6
-      def header_=(value: CArray[CChar, Nat.Digit3[Nat._1, Nat._2, Nat._8]]): Unit = !struct.at6 = value
     
 
   /**
@@ -4493,6 +4634,25 @@ object structs:
   
   object git_diff_line:
     given _tag: Tag[git_diff_line] = Tag.materializeCStruct7Tag[CChar, CInt, CInt, CInt, size_t, git_off_t, CString]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_diff_line)
+        inline def origin : CChar = struct._1
+        inline def origin_=(value: CChar): Unit = (!struct.at1 = value)
+        inline def old_lineno : CInt = struct._2
+        inline def old_lineno_=(value: CInt): Unit = (!struct.at2 = value)
+        inline def new_lineno : CInt = struct._3
+        inline def new_lineno_=(value: CInt): Unit = (!struct.at3 = value)
+        inline def num_lines : CInt = struct._4
+        inline def num_lines_=(value: CInt): Unit = (!struct.at4 = value)
+        inline def content_len : size_t = struct._5
+        inline def content_len_=(value: size_t): Unit = (!struct.at5 = value)
+        inline def content_offset : git_off_t = struct._6
+        inline def content_offset_=(value: git_off_t): Unit = (!struct.at6 = value)
+        inline def content : CString = struct._7
+        inline def content_=(value: CString): Unit = (!struct.at7 = value)
+      end extension
     
     // Allocates git_diff_line on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_line] = scala.scalanative.unsafe.alloc[git_diff_line](1)
@@ -4507,21 +4667,6 @@ object structs:
       (!____ptr).content = content
       ____ptr
     
-    extension (struct: git_diff_line)
-      def origin : CChar = struct._1
-      def origin_=(value: CChar): Unit = !struct.at1 = value
-      def old_lineno : CInt = struct._2
-      def old_lineno_=(value: CInt): Unit = !struct.at2 = value
-      def new_lineno : CInt = struct._3
-      def new_lineno_=(value: CInt): Unit = !struct.at3 = value
-      def num_lines : CInt = struct._4
-      def num_lines_=(value: CInt): Unit = !struct.at4 = value
-      def content_len : size_t = struct._5
-      def content_len_=(value: size_t): Unit = !struct.at5 = value
-      def content_offset : git_off_t = struct._6
-      def content_offset_=(value: git_off_t): Unit = !struct.at6 = value
-      def content : CString = struct._7
-      def content_=(value: CString): Unit = !struct.at7 = value
     
 
   /**
@@ -4531,6 +4676,39 @@ object structs:
   
   object git_diff_options:
     given _tag: Tag[git_diff_options] = Tag.materializeCStruct14Tag[CUnsignedInt, uint32_t, git_submodule_ignore_t, git_strarray, git_diff_notify_cb, git_diff_progress_cb, Ptr[Byte], uint32_t, uint32_t, git_oid_t, uint16_t, git_off_t, CString, CString]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_diff_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def flags : uint32_t = struct._2
+        inline def flags_=(value: uint32_t): Unit = (!struct.at2 = value)
+        inline def ignore_submodules : git_submodule_ignore_t = struct._3
+        inline def ignore_submodules_=(value: git_submodule_ignore_t): Unit = (!struct.at3 = value)
+        inline def pathspec : git_strarray = struct._4
+        inline def pathspec_=(value: git_strarray): Unit = (!struct.at4 = value)
+        inline def notify_cb : git_diff_notify_cb = struct._5
+        inline def notify_cb_=(value: git_diff_notify_cb): Unit = (!struct.at5 = value)
+        inline def progress_cb : git_diff_progress_cb = struct._6
+        inline def progress_cb_=(value: git_diff_progress_cb): Unit = (!struct.at6 = value)
+        inline def payload : Ptr[Byte] = struct._7
+        inline def payload_=(value: Ptr[Byte]): Unit = (!struct.at7 = value)
+        inline def context_lines : uint32_t = struct._8
+        inline def context_lines_=(value: uint32_t): Unit = (!struct.at8 = value)
+        inline def interhunk_lines : uint32_t = struct._9
+        inline def interhunk_lines_=(value: uint32_t): Unit = (!struct.at9 = value)
+        inline def oid_type : git_oid_t = struct._10
+        inline def oid_type_=(value: git_oid_t): Unit = (!struct.at10 = value)
+        inline def id_abbrev : uint16_t = struct._11
+        inline def id_abbrev_=(value: uint16_t): Unit = (!struct.at11 = value)
+        inline def max_size : git_off_t = struct._12
+        inline def max_size_=(value: git_off_t): Unit = (!struct.at12 = value)
+        inline def old_prefix : CString = struct._13
+        inline def old_prefix_=(value: CString): Unit = (!struct.at13 = value)
+        inline def new_prefix : CString = struct._14
+        inline def new_prefix_=(value: CString): Unit = (!struct.at14 = value)
+      end extension
     
     // Allocates git_diff_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_options] = scala.scalanative.unsafe.alloc[git_diff_options](1)
@@ -4552,35 +4730,6 @@ object structs:
       (!____ptr).new_prefix = new_prefix
       ____ptr
     
-    extension (struct: git_diff_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def ignore_submodules : git_submodule_ignore_t = struct._3
-      def ignore_submodules_=(value: git_submodule_ignore_t): Unit = !struct.at3 = value
-      def pathspec : git_strarray = struct._4
-      def pathspec_=(value: git_strarray): Unit = !struct.at4 = value
-      def notify_cb : git_diff_notify_cb = struct._5
-      def notify_cb_=(value: git_diff_notify_cb): Unit = !struct.at5 = value
-      def progress_cb : git_diff_progress_cb = struct._6
-      def progress_cb_=(value: git_diff_progress_cb): Unit = !struct.at6 = value
-      def payload : Ptr[Byte] = struct._7
-      def payload_=(value: Ptr[Byte]): Unit = !struct.at7 = value
-      def context_lines : uint32_t = struct._8
-      def context_lines_=(value: uint32_t): Unit = !struct.at8 = value
-      def interhunk_lines : uint32_t = struct._9
-      def interhunk_lines_=(value: uint32_t): Unit = !struct.at9 = value
-      def oid_type : git_oid_t = struct._10
-      def oid_type_=(value: git_oid_t): Unit = !struct.at10 = value
-      def id_abbrev : uint16_t = struct._11
-      def id_abbrev_=(value: uint16_t): Unit = !struct.at11 = value
-      def max_size : git_off_t = struct._12
-      def max_size_=(value: git_off_t): Unit = !struct.at12 = value
-      def old_prefix : CString = struct._13
-      def old_prefix_=(value: CString): Unit = !struct.at13 = value
-      def new_prefix : CString = struct._14
-      def new_prefix_=(value: CString): Unit = !struct.at14 = value
     
 
   /**
@@ -4591,6 +4740,15 @@ object structs:
   object git_diff_parse_options:
     given _tag: Tag[git_diff_parse_options] = Tag.materializeCStruct2Tag[CUnsignedInt, git_oid_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_diff_parse_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def oid_type : git_oid_t = struct._2
+        inline def oid_type_=(value: git_oid_t): Unit = (!struct.at2 = value)
+      end extension
+    
     // Allocates git_diff_parse_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_parse_options] = scala.scalanative.unsafe.alloc[git_diff_parse_options](1)
     def apply(version : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_diff_parse_options] =
@@ -4599,11 +4757,6 @@ object structs:
       (!____ptr).oid_type = oid_type
       ____ptr
     
-    extension (struct: git_diff_parse_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def oid_type : git_oid_t = struct._2
-      def oid_type_=(value: git_oid_t): Unit = !struct.at2 = value
     
 
   /**
@@ -4614,6 +4767,13 @@ object structs:
   object git_diff_patchid_options:
     given _tag: Tag[git_diff_patchid_options] = Tag.materializeCStruct1Tag[CUnsignedInt]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_diff_patchid_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+      end extension
+    
     // Allocates git_diff_patchid_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_patchid_options] = scala.scalanative.unsafe.alloc[git_diff_patchid_options](1)
     def apply(version : CUnsignedInt)(using Zone): Ptr[git_diff_patchid_options] =
@@ -4621,9 +4781,6 @@ object structs:
       (!____ptr).version = version
       ____ptr
     
-    extension (struct: git_diff_patchid_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
     
 
   /**
@@ -4633,6 +4790,21 @@ object structs:
   
   object git_diff_similarity_metric:
     given _tag: Tag[git_diff_similarity_metric] = Tag.materializeCStruct5Tag[CFuncPtr4[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, Ptr[Byte], CInt], CFuncPtr5[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, size_t, Ptr[Byte], CInt], CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit], CFuncPtr4[Ptr[CInt], Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt], Ptr[Byte]]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_diff_similarity_metric)
+        inline def file_signature : CFuncPtr4[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, Ptr[Byte], CInt] = struct._1
+        inline def file_signature_=(value: CFuncPtr4[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, Ptr[Byte], CInt]): Unit = (!struct.at1 = value)
+        inline def buffer_signature : CFuncPtr5[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, size_t, Ptr[Byte], CInt] = struct._2
+        inline def buffer_signature_=(value: CFuncPtr5[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, size_t, Ptr[Byte], CInt]): Unit = (!struct.at2 = value)
+        inline def free_signature : CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit] = struct._3
+        inline def free_signature_=(value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit]): Unit = (!struct.at3 = value)
+        inline def similarity : CFuncPtr4[Ptr[CInt], Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt] = struct._4
+        inline def similarity_=(value: CFuncPtr4[Ptr[CInt], Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt]): Unit = (!struct.at4 = value)
+        inline def payload : Ptr[Byte] = struct._5
+        inline def payload_=(value: Ptr[Byte]): Unit = (!struct.at5 = value)
+      end extension
     
     // Allocates git_diff_similarity_metric on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_diff_similarity_metric] = scala.scalanative.unsafe.alloc[git_diff_similarity_metric](1)
@@ -4645,17 +4817,6 @@ object structs:
       (!____ptr).payload = payload
       ____ptr
     
-    extension (struct: git_diff_similarity_metric)
-      def file_signature : CFuncPtr4[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, Ptr[Byte], CInt] = struct._1
-      def file_signature_=(value: CFuncPtr4[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, Ptr[Byte], CInt]): Unit = !struct.at1 = value
-      def buffer_signature : CFuncPtr5[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, size_t, Ptr[Byte], CInt] = struct._2
-      def buffer_signature_=(value: CFuncPtr5[Ptr[Ptr[Byte]], Ptr[git_diff_file], CString, size_t, Ptr[Byte], CInt]): Unit = !struct.at2 = value
-      def free_signature : CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit] = struct._3
-      def free_signature_=(value: CFuncPtr2[Ptr[Byte], Ptr[Byte], Unit]): Unit = !struct.at3 = value
-      def similarity : CFuncPtr4[Ptr[CInt], Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt] = struct._4
-      def similarity_=(value: CFuncPtr4[Ptr[CInt], Ptr[Byte], Ptr[Byte], Ptr[Byte], CInt]): Unit = !struct.at4 = value
-      def payload : Ptr[Byte] = struct._5
-      def payload_=(value: Ptr[Byte]): Unit = !struct.at5 = value
     
 
   opaque type git_diff_stats = CStruct0
@@ -4672,6 +4833,25 @@ object structs:
   object git_email_create_options:
     given _tag: Tag[git_email_create_options] = Tag.materializeCStruct7Tag[CUnsignedInt, uint32_t, git_diff_options, git_diff_find_options, CString, size_t, size_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_email_create_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def flags : uint32_t = struct._2
+        inline def flags_=(value: uint32_t): Unit = (!struct.at2 = value)
+        inline def diff_opts : git_diff_options = struct._3
+        inline def diff_opts_=(value: git_diff_options): Unit = (!struct.at3 = value)
+        inline def diff_find_opts : git_diff_find_options = struct._4
+        inline def diff_find_opts_=(value: git_diff_find_options): Unit = (!struct.at4 = value)
+        inline def subject_prefix : CString = struct._5
+        inline def subject_prefix_=(value: CString): Unit = (!struct.at5 = value)
+        inline def start_number : size_t = struct._6
+        inline def start_number_=(value: size_t): Unit = (!struct.at6 = value)
+        inline def reroll_number : size_t = struct._7
+        inline def reroll_number_=(value: size_t): Unit = (!struct.at7 = value)
+      end extension
+    
     // Allocates git_email_create_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_email_create_options] = scala.scalanative.unsafe.alloc[git_email_create_options](1)
     def apply(version : CUnsignedInt, flags : uint32_t, diff_opts : git_diff_options, diff_find_opts : git_diff_find_options, subject_prefix : CString, start_number : size_t, reroll_number : size_t)(using Zone): Ptr[git_email_create_options] =
@@ -4685,21 +4865,6 @@ object structs:
       (!____ptr).reroll_number = reroll_number
       ____ptr
     
-    extension (struct: git_email_create_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def diff_opts : git_diff_options = struct._3
-      def diff_opts_=(value: git_diff_options): Unit = !struct.at3 = value
-      def diff_find_opts : git_diff_find_options = struct._4
-      def diff_find_opts_=(value: git_diff_find_options): Unit = !struct.at4 = value
-      def subject_prefix : CString = struct._5
-      def subject_prefix_=(value: CString): Unit = !struct.at5 = value
-      def start_number : size_t = struct._6
-      def start_number_=(value: size_t): Unit = !struct.at6 = value
-      def reroll_number : size_t = struct._7
-      def reroll_number_=(value: size_t): Unit = !struct.at7 = value
     
 
   /**
@@ -4710,6 +4875,15 @@ object structs:
   object git_error:
     given _tag: Tag[git_error] = Tag.materializeCStruct2Tag[CString, CInt]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_error)
+        inline def message : CString = struct._1
+        inline def message_=(value: CString): Unit = (!struct.at1 = value)
+        inline def klass : CInt = struct._2
+        inline def klass_=(value: CInt): Unit = (!struct.at2 = value)
+      end extension
+    
     // Allocates git_error on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_error] = scala.scalanative.unsafe.alloc[git_error](1)
     def apply(message : CString, klass : CInt)(using Zone): Ptr[git_error] =
@@ -4718,11 +4892,6 @@ object structs:
       (!____ptr).klass = klass
       ____ptr
     
-    extension (struct: git_error)
-      def message : CString = struct._1
-      def message_=(value: CString): Unit = !struct.at1 = value
-      def klass : CInt = struct._2
-      def klass_=(value: CInt): Unit = !struct.at2 = value
     
 
   /**
@@ -4732,6 +4901,29 @@ object structs:
   
   object git_fetch_options:
     given _tag: Tag[git_fetch_options] = Tag.materializeCStruct9Tag[CInt, git_remote_callbacks, git_fetch_prune_t, CUnsignedInt, git_remote_autotag_option_t, git_proxy_options, CInt, git_remote_redirect_t, git_strarray]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_fetch_options)
+        inline def version : CInt = struct._1
+        inline def version_=(value: CInt): Unit = (!struct.at1 = value)
+        inline def callbacks : git_remote_callbacks = struct._2
+        inline def callbacks_=(value: git_remote_callbacks): Unit = (!struct.at2 = value)
+        inline def prune : git_fetch_prune_t = struct._3
+        inline def prune_=(value: git_fetch_prune_t): Unit = (!struct.at3 = value)
+        inline def update_fetchhead : CUnsignedInt = struct._4
+        inline def update_fetchhead_=(value: CUnsignedInt): Unit = (!struct.at4 = value)
+        inline def download_tags : git_remote_autotag_option_t = struct._5
+        inline def download_tags_=(value: git_remote_autotag_option_t): Unit = (!struct.at5 = value)
+        inline def proxy_opts : git_proxy_options = struct._6
+        inline def proxy_opts_=(value: git_proxy_options): Unit = (!struct.at6 = value)
+        inline def depth : CInt = struct._7
+        inline def depth_=(value: CInt): Unit = (!struct.at7 = value)
+        inline def follow_redirects : git_remote_redirect_t = struct._8
+        inline def follow_redirects_=(value: git_remote_redirect_t): Unit = (!struct.at8 = value)
+        inline def custom_headers : git_strarray = struct._9
+        inline def custom_headers_=(value: git_strarray): Unit = (!struct.at9 = value)
+      end extension
     
     // Allocates git_fetch_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_fetch_options] = scala.scalanative.unsafe.alloc[git_fetch_options](1)
@@ -4748,25 +4940,6 @@ object structs:
       (!____ptr).custom_headers = custom_headers
       ____ptr
     
-    extension (struct: git_fetch_options)
-      def version : CInt = struct._1
-      def version_=(value: CInt): Unit = !struct.at1 = value
-      def callbacks : git_remote_callbacks = struct._2
-      def callbacks_=(value: git_remote_callbacks): Unit = !struct.at2 = value
-      def prune : git_fetch_prune_t = struct._3
-      def prune_=(value: git_fetch_prune_t): Unit = !struct.at3 = value
-      def update_fetchhead : CUnsignedInt = struct._4
-      def update_fetchhead_=(value: CUnsignedInt): Unit = !struct.at4 = value
-      def download_tags : git_remote_autotag_option_t = struct._5
-      def download_tags_=(value: git_remote_autotag_option_t): Unit = !struct.at5 = value
-      def proxy_opts : git_proxy_options = struct._6
-      def proxy_opts_=(value: git_proxy_options): Unit = !struct.at6 = value
-      def depth : CInt = struct._7
-      def depth_=(value: CInt): Unit = !struct.at7 = value
-      def follow_redirects : git_remote_redirect_t = struct._8
-      def follow_redirects_=(value: git_remote_redirect_t): Unit = !struct.at8 = value
-      def custom_headers : git_strarray = struct._9
-      def custom_headers_=(value: git_strarray): Unit = !struct.at9 = value
     
 
   opaque type git_filter = CStruct0
@@ -4789,6 +4962,19 @@ object structs:
   object git_filter_options:
     given _tag: Tag[git_filter_options] = Tag.materializeCStruct4Tag[CUnsignedInt, uint32_t, Ptr[git_oid], git_oid]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_filter_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def flags : uint32_t = struct._2
+        inline def flags_=(value: uint32_t): Unit = (!struct.at2 = value)
+        inline def commit_id : Ptr[git_oid] = struct._3
+        inline def commit_id_=(value: Ptr[git_oid]): Unit = (!struct.at3 = value)
+        inline def attr_commit_id : git_oid = struct._4
+        inline def attr_commit_id_=(value: git_oid): Unit = (!struct.at4 = value)
+      end extension
+    
     // Allocates git_filter_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_filter_options] = scala.scalanative.unsafe.alloc[git_filter_options](1)
     def apply(version : CUnsignedInt, flags : uint32_t, commit_id : Ptr[git_oid], attr_commit_id : git_oid)(using Zone): Ptr[git_filter_options] =
@@ -4799,15 +4985,6 @@ object structs:
       (!____ptr).attr_commit_id = attr_commit_id
       ____ptr
     
-    extension (struct: git_filter_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def commit_id : Ptr[git_oid] = struct._3
-      def commit_id_=(value: Ptr[git_oid]): Unit = !struct.at3 = value
-      def attr_commit_id : git_oid = struct._4
-      def attr_commit_id_=(value: git_oid): Unit = !struct.at4 = value
     
 
   opaque type git_index = CStruct0
@@ -4830,6 +5007,35 @@ object structs:
   object git_index_entry:
     given _tag: Tag[git_index_entry] = Tag.materializeCStruct12Tag[git_index_time, git_index_time, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, git_oid, uint16_t, uint16_t, CString]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_index_entry)
+        inline def ctime : git_index_time = struct._1
+        inline def ctime_=(value: git_index_time): Unit = (!struct.at1 = value)
+        inline def mtime : git_index_time = struct._2
+        inline def mtime_=(value: git_index_time): Unit = (!struct.at2 = value)
+        inline def dev : uint32_t = struct._3
+        inline def dev_=(value: uint32_t): Unit = (!struct.at3 = value)
+        inline def ino : uint32_t = struct._4
+        inline def ino_=(value: uint32_t): Unit = (!struct.at4 = value)
+        inline def mode : uint32_t = struct._5
+        inline def mode_=(value: uint32_t): Unit = (!struct.at5 = value)
+        inline def uid : uint32_t = struct._6
+        inline def uid_=(value: uint32_t): Unit = (!struct.at6 = value)
+        inline def gid : uint32_t = struct._7
+        inline def gid_=(value: uint32_t): Unit = (!struct.at7 = value)
+        inline def file_size : uint32_t = struct._8
+        inline def file_size_=(value: uint32_t): Unit = (!struct.at8 = value)
+        inline def id : git_oid = struct._9
+        inline def id_=(value: git_oid): Unit = (!struct.at9 = value)
+        inline def flags : uint16_t = struct._10
+        inline def flags_=(value: uint16_t): Unit = (!struct.at10 = value)
+        inline def flags_extended : uint16_t = struct._11
+        inline def flags_extended_=(value: uint16_t): Unit = (!struct.at11 = value)
+        inline def path : CString = struct._12
+        inline def path_=(value: CString): Unit = (!struct.at12 = value)
+      end extension
+    
     // Allocates git_index_entry on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_index_entry] = scala.scalanative.unsafe.alloc[git_index_entry](1)
     def apply(ctime : git_index_time, mtime : git_index_time, dev : uint32_t, ino : uint32_t, mode : uint32_t, uid : uint32_t, gid : uint32_t, file_size : uint32_t, id : git_oid, flags : uint16_t, flags_extended : uint16_t, path : CString)(using Zone): Ptr[git_index_entry] =
@@ -4848,31 +5054,6 @@ object structs:
       (!____ptr).path = path
       ____ptr
     
-    extension (struct: git_index_entry)
-      def ctime : git_index_time = struct._1
-      def ctime_=(value: git_index_time): Unit = !struct.at1 = value
-      def mtime : git_index_time = struct._2
-      def mtime_=(value: git_index_time): Unit = !struct.at2 = value
-      def dev : uint32_t = struct._3
-      def dev_=(value: uint32_t): Unit = !struct.at3 = value
-      def ino : uint32_t = struct._4
-      def ino_=(value: uint32_t): Unit = !struct.at4 = value
-      def mode : uint32_t = struct._5
-      def mode_=(value: uint32_t): Unit = !struct.at5 = value
-      def uid : uint32_t = struct._6
-      def uid_=(value: uint32_t): Unit = !struct.at6 = value
-      def gid : uint32_t = struct._7
-      def gid_=(value: uint32_t): Unit = !struct.at7 = value
-      def file_size : uint32_t = struct._8
-      def file_size_=(value: uint32_t): Unit = !struct.at8 = value
-      def id : git_oid = struct._9
-      def id_=(value: git_oid): Unit = !struct.at9 = value
-      def flags : uint16_t = struct._10
-      def flags_=(value: uint16_t): Unit = !struct.at10 = value
-      def flags_extended : uint16_t = struct._11
-      def flags_extended_=(value: uint16_t): Unit = !struct.at11 = value
-      def path : CString = struct._12
-      def path_=(value: CString): Unit = !struct.at12 = value
     
 
   opaque type git_index_iterator = CStruct0
@@ -4889,6 +5070,15 @@ object structs:
   object git_index_time:
     given _tag: Tag[git_index_time] = Tag.materializeCStruct2Tag[int32_t, uint32_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_index_time)
+        inline def seconds : int32_t = struct._1
+        inline def seconds_=(value: int32_t): Unit = (!struct.at1 = value)
+        inline def nanoseconds : uint32_t = struct._2
+        inline def nanoseconds_=(value: uint32_t): Unit = (!struct.at2 = value)
+      end extension
+    
     // Allocates git_index_time on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_index_time] = scala.scalanative.unsafe.alloc[git_index_time](1)
     def apply(seconds : int32_t, nanoseconds : uint32_t)(using Zone): Ptr[git_index_time] =
@@ -4897,11 +5087,6 @@ object structs:
       (!____ptr).nanoseconds = nanoseconds
       ____ptr
     
-    extension (struct: git_index_time)
-      def seconds : int32_t = struct._1
-      def seconds_=(value: int32_t): Unit = !struct.at1 = value
-      def nanoseconds : uint32_t = struct._2
-      def nanoseconds_=(value: uint32_t): Unit = !struct.at2 = value
     
 
   opaque type git_indexer = CStruct0
@@ -4918,6 +5103,19 @@ object structs:
   object git_indexer_options:
     given _tag: Tag[git_indexer_options] = Tag.materializeCStruct4Tag[CUnsignedInt, git_indexer_progress_cb, Ptr[Byte], CUnsignedChar]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_indexer_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def progress_cb : git_indexer_progress_cb = struct._2
+        inline def progress_cb_=(value: git_indexer_progress_cb): Unit = (!struct.at2 = value)
+        inline def progress_cb_payload : Ptr[Byte] = struct._3
+        inline def progress_cb_payload_=(value: Ptr[Byte]): Unit = (!struct.at3 = value)
+        inline def verify : CUnsignedChar = struct._4
+        inline def verify_=(value: CUnsignedChar): Unit = (!struct.at4 = value)
+      end extension
+    
     // Allocates git_indexer_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_indexer_options] = scala.scalanative.unsafe.alloc[git_indexer_options](1)
     def apply(version : CUnsignedInt, progress_cb : git_indexer_progress_cb, progress_cb_payload : Ptr[Byte], verify : CUnsignedChar)(using Zone): Ptr[git_indexer_options] =
@@ -4928,15 +5126,6 @@ object structs:
       (!____ptr).verify = verify
       ____ptr
     
-    extension (struct: git_indexer_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def progress_cb : git_indexer_progress_cb = struct._2
-      def progress_cb_=(value: git_indexer_progress_cb): Unit = !struct.at2 = value
-      def progress_cb_payload : Ptr[Byte] = struct._3
-      def progress_cb_payload_=(value: Ptr[Byte]): Unit = !struct.at3 = value
-      def verify : CUnsignedChar = struct._4
-      def verify_=(value: CUnsignedChar): Unit = !struct.at4 = value
     
 
   /**
@@ -4946,6 +5135,25 @@ object structs:
   
   object git_indexer_progress:
     given _tag: Tag[git_indexer_progress] = Tag.materializeCStruct7Tag[CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, CUnsignedInt, size_t]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_indexer_progress)
+        inline def total_objects : CUnsignedInt = struct._1
+        inline def total_objects_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def indexed_objects : CUnsignedInt = struct._2
+        inline def indexed_objects_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def received_objects : CUnsignedInt = struct._3
+        inline def received_objects_=(value: CUnsignedInt): Unit = (!struct.at3 = value)
+        inline def local_objects : CUnsignedInt = struct._4
+        inline def local_objects_=(value: CUnsignedInt): Unit = (!struct.at4 = value)
+        inline def total_deltas : CUnsignedInt = struct._5
+        inline def total_deltas_=(value: CUnsignedInt): Unit = (!struct.at5 = value)
+        inline def indexed_deltas : CUnsignedInt = struct._6
+        inline def indexed_deltas_=(value: CUnsignedInt): Unit = (!struct.at6 = value)
+        inline def received_bytes : size_t = struct._7
+        inline def received_bytes_=(value: size_t): Unit = (!struct.at7 = value)
+      end extension
     
     // Allocates git_indexer_progress on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_indexer_progress] = scala.scalanative.unsafe.alloc[git_indexer_progress](1)
@@ -4960,21 +5168,6 @@ object structs:
       (!____ptr).received_bytes = received_bytes
       ____ptr
     
-    extension (struct: git_indexer_progress)
-      def total_objects : CUnsignedInt = struct._1
-      def total_objects_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def indexed_objects : CUnsignedInt = struct._2
-      def indexed_objects_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def received_objects : CUnsignedInt = struct._3
-      def received_objects_=(value: CUnsignedInt): Unit = !struct.at3 = value
-      def local_objects : CUnsignedInt = struct._4
-      def local_objects_=(value: CUnsignedInt): Unit = !struct.at4 = value
-      def total_deltas : CUnsignedInt = struct._5
-      def total_deltas_=(value: CUnsignedInt): Unit = !struct.at5 = value
-      def indexed_deltas : CUnsignedInt = struct._6
-      def indexed_deltas_=(value: CUnsignedInt): Unit = !struct.at6 = value
-      def received_bytes : size_t = struct._7
-      def received_bytes_=(value: size_t): Unit = !struct.at7 = value
     
 
   opaque type git_iterator = CStruct0
@@ -4997,6 +5190,21 @@ object structs:
   object git_merge_file_input:
     given _tag: Tag[git_merge_file_input] = Tag.materializeCStruct5Tag[CUnsignedInt, CString, size_t, CString, CUnsignedInt]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_merge_file_input)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def ptr : CString = struct._2
+        inline def ptr_=(value: CString): Unit = (!struct.at2 = value)
+        inline def size : size_t = struct._3
+        inline def size_=(value: size_t): Unit = (!struct.at3 = value)
+        inline def path : CString = struct._4
+        inline def path_=(value: CString): Unit = (!struct.at4 = value)
+        inline def mode : CUnsignedInt = struct._5
+        inline def mode_=(value: CUnsignedInt): Unit = (!struct.at5 = value)
+      end extension
+    
     // Allocates git_merge_file_input on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_merge_file_input] = scala.scalanative.unsafe.alloc[git_merge_file_input](1)
     def apply(version : CUnsignedInt, ptr : CString, size : size_t, path : CString, mode : CUnsignedInt)(using Zone): Ptr[git_merge_file_input] =
@@ -5008,17 +5216,6 @@ object structs:
       (!____ptr).mode = mode
       ____ptr
     
-    extension (struct: git_merge_file_input)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def ptr : CString = struct._2
-      def ptr_=(value: CString): Unit = !struct.at2 = value
-      def size : size_t = struct._3
-      def size_=(value: size_t): Unit = !struct.at3 = value
-      def path : CString = struct._4
-      def path_=(value: CString): Unit = !struct.at4 = value
-      def mode : CUnsignedInt = struct._5
-      def mode_=(value: CUnsignedInt): Unit = !struct.at5 = value
     
 
   /**
@@ -5028,6 +5225,25 @@ object structs:
   
   object git_merge_file_options:
     given _tag: Tag[git_merge_file_options] = Tag.materializeCStruct7Tag[CUnsignedInt, CString, CString, CString, git_merge_file_favor_t, uint32_t, CUnsignedShort]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_merge_file_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def ancestor_label : CString = struct._2
+        inline def ancestor_label_=(value: CString): Unit = (!struct.at2 = value)
+        inline def our_label : CString = struct._3
+        inline def our_label_=(value: CString): Unit = (!struct.at3 = value)
+        inline def their_label : CString = struct._4
+        inline def their_label_=(value: CString): Unit = (!struct.at4 = value)
+        inline def favor : git_merge_file_favor_t = struct._5
+        inline def favor_=(value: git_merge_file_favor_t): Unit = (!struct.at5 = value)
+        inline def flags : uint32_t = struct._6
+        inline def flags_=(value: uint32_t): Unit = (!struct.at6 = value)
+        inline def marker_size : CUnsignedShort = struct._7
+        inline def marker_size_=(value: CUnsignedShort): Unit = (!struct.at7 = value)
+      end extension
     
     // Allocates git_merge_file_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_merge_file_options] = scala.scalanative.unsafe.alloc[git_merge_file_options](1)
@@ -5042,21 +5258,6 @@ object structs:
       (!____ptr).marker_size = marker_size
       ____ptr
     
-    extension (struct: git_merge_file_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def ancestor_label : CString = struct._2
-      def ancestor_label_=(value: CString): Unit = !struct.at2 = value
-      def our_label : CString = struct._3
-      def our_label_=(value: CString): Unit = !struct.at3 = value
-      def their_label : CString = struct._4
-      def their_label_=(value: CString): Unit = !struct.at4 = value
-      def favor : git_merge_file_favor_t = struct._5
-      def favor_=(value: git_merge_file_favor_t): Unit = !struct.at5 = value
-      def flags : uint32_t = struct._6
-      def flags_=(value: uint32_t): Unit = !struct.at6 = value
-      def marker_size : CUnsignedShort = struct._7
-      def marker_size_=(value: CUnsignedShort): Unit = !struct.at7 = value
     
 
   /**
@@ -5066,6 +5267,21 @@ object structs:
   
   object git_merge_file_result:
     given _tag: Tag[git_merge_file_result] = Tag.materializeCStruct5Tag[CUnsignedInt, CString, CUnsignedInt, CString, size_t]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_merge_file_result)
+        inline def automergeable : CUnsignedInt = struct._1
+        inline def automergeable_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def path : CString = struct._2
+        inline def path_=(value: CString): Unit = (!struct.at2 = value)
+        inline def mode : CUnsignedInt = struct._3
+        inline def mode_=(value: CUnsignedInt): Unit = (!struct.at3 = value)
+        inline def ptr : CString = struct._4
+        inline def ptr_=(value: CString): Unit = (!struct.at4 = value)
+        inline def len : size_t = struct._5
+        inline def len_=(value: size_t): Unit = (!struct.at5 = value)
+      end extension
     
     // Allocates git_merge_file_result on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_merge_file_result] = scala.scalanative.unsafe.alloc[git_merge_file_result](1)
@@ -5078,17 +5294,6 @@ object structs:
       (!____ptr).len = len
       ____ptr
     
-    extension (struct: git_merge_file_result)
-      def automergeable : CUnsignedInt = struct._1
-      def automergeable_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def path : CString = struct._2
-      def path_=(value: CString): Unit = !struct.at2 = value
-      def mode : CUnsignedInt = struct._3
-      def mode_=(value: CUnsignedInt): Unit = !struct.at3 = value
-      def ptr : CString = struct._4
-      def ptr_=(value: CString): Unit = !struct.at4 = value
-      def len : size_t = struct._5
-      def len_=(value: size_t): Unit = !struct.at5 = value
     
 
   /**
@@ -5098,6 +5303,29 @@ object structs:
   
   object git_merge_options:
     given _tag: Tag[git_merge_options] = Tag.materializeCStruct9Tag[CUnsignedInt, uint32_t, CUnsignedInt, CUnsignedInt, Ptr[git_diff_similarity_metric], CUnsignedInt, CString, git_merge_file_favor_t, uint32_t]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_merge_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def flags : uint32_t = struct._2
+        inline def flags_=(value: uint32_t): Unit = (!struct.at2 = value)
+        inline def rename_threshold : CUnsignedInt = struct._3
+        inline def rename_threshold_=(value: CUnsignedInt): Unit = (!struct.at3 = value)
+        inline def target_limit : CUnsignedInt = struct._4
+        inline def target_limit_=(value: CUnsignedInt): Unit = (!struct.at4 = value)
+        inline def metric : Ptr[git_diff_similarity_metric] = struct._5
+        inline def metric_=(value: Ptr[git_diff_similarity_metric]): Unit = (!struct.at5 = value)
+        inline def recursion_limit : CUnsignedInt = struct._6
+        inline def recursion_limit_=(value: CUnsignedInt): Unit = (!struct.at6 = value)
+        inline def default_driver : CString = struct._7
+        inline def default_driver_=(value: CString): Unit = (!struct.at7 = value)
+        inline def file_favor : git_merge_file_favor_t = struct._8
+        inline def file_favor_=(value: git_merge_file_favor_t): Unit = (!struct.at8 = value)
+        inline def file_flags : uint32_t = struct._9
+        inline def file_flags_=(value: uint32_t): Unit = (!struct.at9 = value)
+      end extension
     
     // Allocates git_merge_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_merge_options] = scala.scalanative.unsafe.alloc[git_merge_options](1)
@@ -5114,25 +5342,6 @@ object structs:
       (!____ptr).file_flags = file_flags
       ____ptr
     
-    extension (struct: git_merge_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def rename_threshold : CUnsignedInt = struct._3
-      def rename_threshold_=(value: CUnsignedInt): Unit = !struct.at3 = value
-      def target_limit : CUnsignedInt = struct._4
-      def target_limit_=(value: CUnsignedInt): Unit = !struct.at4 = value
-      def metric : Ptr[git_diff_similarity_metric] = struct._5
-      def metric_=(value: Ptr[git_diff_similarity_metric]): Unit = !struct.at5 = value
-      def recursion_limit : CUnsignedInt = struct._6
-      def recursion_limit_=(value: CUnsignedInt): Unit = !struct.at6 = value
-      def default_driver : CString = struct._7
-      def default_driver_=(value: CString): Unit = !struct.at7 = value
-      def file_favor : git_merge_file_favor_t = struct._8
-      def file_favor_=(value: git_merge_file_favor_t): Unit = !struct.at8 = value
-      def file_flags : uint32_t = struct._9
-      def file_flags_=(value: uint32_t): Unit = !struct.at9 = value
     
 
   /**
@@ -5143,6 +5352,15 @@ object structs:
   object git_message_trailer:
     given _tag: Tag[git_message_trailer] = Tag.materializeCStruct2Tag[CString, CString]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_message_trailer)
+        inline def key : CString = struct._1
+        inline def key_=(value: CString): Unit = (!struct.at1 = value)
+        inline def value : CString = struct._2
+        inline def value_=(value: CString): Unit = (!struct.at2 = value)
+      end extension
+    
     // Allocates git_message_trailer on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_message_trailer] = scala.scalanative.unsafe.alloc[git_message_trailer](1)
     def apply(key : CString, value : CString)(using Zone): Ptr[git_message_trailer] =
@@ -5151,11 +5369,6 @@ object structs:
       (!____ptr).value = value
       ____ptr
     
-    extension (struct: git_message_trailer)
-      def key : CString = struct._1
-      def key_=(value: CString): Unit = !struct.at1 = value
-      def value : CString = struct._2
-      def value_=(value: CString): Unit = !struct.at2 = value
     
 
   /**
@@ -5166,6 +5379,17 @@ object structs:
   object git_message_trailer_array:
     given _tag: Tag[git_message_trailer_array] = Tag.materializeCStruct3Tag[Ptr[git_message_trailer], size_t, CString]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_message_trailer_array)
+        inline def trailers : Ptr[git_message_trailer] = struct._1
+        inline def trailers_=(value: Ptr[git_message_trailer]): Unit = (!struct.at1 = value)
+        inline def count : size_t = struct._2
+        inline def count_=(value: size_t): Unit = (!struct.at2 = value)
+        inline def _trailer_block : CString = struct._3
+        inline def _trailer_block_=(value: CString): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates git_message_trailer_array on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_message_trailer_array] = scala.scalanative.unsafe.alloc[git_message_trailer_array](1)
     def apply(trailers : Ptr[git_message_trailer], count : size_t, _trailer_block : CString)(using Zone): Ptr[git_message_trailer_array] =
@@ -5175,13 +5399,6 @@ object structs:
       (!____ptr)._trailer_block = _trailer_block
       ____ptr
     
-    extension (struct: git_message_trailer_array)
-      def trailers : Ptr[git_message_trailer] = struct._1
-      def trailers_=(value: Ptr[git_message_trailer]): Unit = !struct.at1 = value
-      def count : size_t = struct._2
-      def count_=(value: size_t): Unit = !struct.at2 = value
-      def _trailer_block : CString = struct._3
-      def _trailer_block_=(value: CString): Unit = !struct.at3 = value
     
 
   opaque type git_midx_writer = CStruct0
@@ -5228,6 +5445,23 @@ object structs:
   object git_odb_backend_loose_options:
     given _tag: Tag[git_odb_backend_loose_options] = Tag.materializeCStruct6Tag[CUnsignedInt, uint32_t, CInt, CUnsignedInt, CUnsignedInt, git_oid_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_odb_backend_loose_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def flags : uint32_t = struct._2
+        inline def flags_=(value: uint32_t): Unit = (!struct.at2 = value)
+        inline def compression_level : CInt = struct._3
+        inline def compression_level_=(value: CInt): Unit = (!struct.at3 = value)
+        inline def dir_mode : CUnsignedInt = struct._4
+        inline def dir_mode_=(value: CUnsignedInt): Unit = (!struct.at4 = value)
+        inline def file_mode : CUnsignedInt = struct._5
+        inline def file_mode_=(value: CUnsignedInt): Unit = (!struct.at5 = value)
+        inline def oid_type : git_oid_t = struct._6
+        inline def oid_type_=(value: git_oid_t): Unit = (!struct.at6 = value)
+      end extension
+    
     // Allocates git_odb_backend_loose_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_odb_backend_loose_options] = scala.scalanative.unsafe.alloc[git_odb_backend_loose_options](1)
     def apply(version : CUnsignedInt, flags : uint32_t, compression_level : CInt, dir_mode : CUnsignedInt, file_mode : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_backend_loose_options] =
@@ -5240,19 +5474,6 @@ object structs:
       (!____ptr).oid_type = oid_type
       ____ptr
     
-    extension (struct: git_odb_backend_loose_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def compression_level : CInt = struct._3
-      def compression_level_=(value: CInt): Unit = !struct.at3 = value
-      def dir_mode : CUnsignedInt = struct._4
-      def dir_mode_=(value: CUnsignedInt): Unit = !struct.at4 = value
-      def file_mode : CUnsignedInt = struct._5
-      def file_mode_=(value: CUnsignedInt): Unit = !struct.at5 = value
-      def oid_type : git_oid_t = struct._6
-      def oid_type_=(value: git_oid_t): Unit = !struct.at6 = value
     
 
   /**
@@ -5263,6 +5484,15 @@ object structs:
   object git_odb_backend_pack_options:
     given _tag: Tag[git_odb_backend_pack_options] = Tag.materializeCStruct2Tag[CUnsignedInt, git_oid_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_odb_backend_pack_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def oid_type : git_oid_t = struct._2
+        inline def oid_type_=(value: git_oid_t): Unit = (!struct.at2 = value)
+      end extension
+    
     // Allocates git_odb_backend_pack_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_odb_backend_pack_options] = scala.scalanative.unsafe.alloc[git_odb_backend_pack_options](1)
     def apply(version : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_backend_pack_options] =
@@ -5271,11 +5501,6 @@ object structs:
       (!____ptr).oid_type = oid_type
       ____ptr
     
-    extension (struct: git_odb_backend_pack_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def oid_type : git_oid_t = struct._2
-      def oid_type_=(value: git_oid_t): Unit = !struct.at2 = value
     
 
   /**
@@ -5286,6 +5511,17 @@ object structs:
   object git_odb_expand_id:
     given _tag: Tag[git_odb_expand_id] = Tag.materializeCStruct3Tag[git_oid, CUnsignedShort, git_object_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_odb_expand_id)
+        inline def id : git_oid = struct._1
+        inline def id_=(value: git_oid): Unit = (!struct.at1 = value)
+        inline def length : CUnsignedShort = struct._2
+        inline def length_=(value: CUnsignedShort): Unit = (!struct.at2 = value)
+        inline def `type` : git_object_t = struct._3
+        inline def type_=(value: git_object_t): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates git_odb_expand_id on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_odb_expand_id] = scala.scalanative.unsafe.alloc[git_odb_expand_id](1)
     def apply(id : git_oid, length : CUnsignedShort, `type` : git_object_t)(using Zone): Ptr[git_odb_expand_id] =
@@ -5295,13 +5531,6 @@ object structs:
       (!____ptr).`type` = `type`
       ____ptr
     
-    extension (struct: git_odb_expand_id)
-      def id : git_oid = struct._1
-      def id_=(value: git_oid): Unit = !struct.at1 = value
-      def length : CUnsignedShort = struct._2
-      def length_=(value: CUnsignedShort): Unit = !struct.at2 = value
-      def `type` : git_object_t = struct._3
-      def type_=(value: git_object_t): Unit = !struct.at3 = value
     
 
   opaque type git_odb_object = CStruct0
@@ -5318,6 +5547,15 @@ object structs:
   object git_odb_options:
     given _tag: Tag[git_odb_options] = Tag.materializeCStruct2Tag[CUnsignedInt, git_oid_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_odb_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def oid_type : git_oid_t = struct._2
+        inline def oid_type_=(value: git_oid_t): Unit = (!struct.at2 = value)
+      end extension
+    
     // Allocates git_odb_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_odb_options] = scala.scalanative.unsafe.alloc[git_odb_options](1)
     def apply(version : CUnsignedInt, oid_type : git_oid_t)(using Zone): Ptr[git_odb_options] =
@@ -5326,11 +5564,6 @@ object structs:
       (!____ptr).oid_type = oid_type
       ____ptr
     
-    extension (struct: git_odb_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def oid_type : git_oid_t = struct._2
-      def oid_type_=(value: git_oid_t): Unit = !struct.at2 = value
     
 
   /**
@@ -5340,6 +5573,29 @@ object structs:
   
   object git_odb_stream:
     given _tag: Tag[git_odb_stream] = Tag.materializeCStruct9Tag[Ptr[git_odb_backend], CUnsignedInt, Ptr[Byte], git_object_size_t, git_object_size_t, CFuncPtr3[Ptr[Byte], CString, size_t, CInt], CFuncPtr3[Ptr[Byte], CString, size_t, CInt], CFuncPtr2[Ptr[Byte], Ptr[git_oid], CInt], CFuncPtr1[Ptr[Byte], Unit]]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_odb_stream)
+        inline def backend : Ptr[git_odb_backend] = struct._1
+        inline def backend_=(value: Ptr[git_odb_backend]): Unit = (!struct.at1 = value)
+        inline def mode : CUnsignedInt = struct._2
+        inline def mode_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def hash_ctx : Ptr[Byte] = struct._3
+        inline def hash_ctx_=(value: Ptr[Byte]): Unit = (!struct.at3 = value)
+        inline def declared_size : git_object_size_t = struct._4
+        inline def declared_size_=(value: git_object_size_t): Unit = (!struct.at4 = value)
+        inline def received_bytes : git_object_size_t = struct._5
+        inline def received_bytes_=(value: git_object_size_t): Unit = (!struct.at5 = value)
+        inline def read : CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt] = struct._6.asInstanceOf[CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt]]
+        inline def read_=(value: CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt]): Unit = (!struct.at6 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], CString, size_t, CInt]])
+        inline def write : CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt] = struct._7.asInstanceOf[CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt]]
+        inline def write_=(value: CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt]): Unit = (!struct.at7 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], CString, size_t, CInt]])
+        inline def finalize_write : CFuncPtr2[Ptr[git_odb_stream], Ptr[git_oid], CInt] = struct._8.asInstanceOf[CFuncPtr2[Ptr[git_odb_stream], Ptr[git_oid], CInt]]
+        inline def finalize_write_=(value: CFuncPtr2[Ptr[git_odb_stream], Ptr[git_oid], CInt]): Unit = (!struct.at8 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[git_oid], CInt]])
+        inline def free : CFuncPtr1[Ptr[git_odb_stream], Unit] = struct._9.asInstanceOf[CFuncPtr1[Ptr[git_odb_stream], Unit]]
+        inline def free_=(value: CFuncPtr1[Ptr[git_odb_stream], Unit]): Unit = (!struct.at9 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]])
+      end extension
     
     // Allocates git_odb_stream on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_odb_stream] = scala.scalanative.unsafe.alloc[git_odb_stream](1)
@@ -5356,25 +5612,6 @@ object structs:
       (!____ptr).free = free
       ____ptr
     
-    extension (struct: git_odb_stream)
-      def backend : Ptr[git_odb_backend] = struct._1
-      def backend_=(value: Ptr[git_odb_backend]): Unit = !struct.at1 = value
-      def mode : CUnsignedInt = struct._2
-      def mode_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def hash_ctx : Ptr[Byte] = struct._3
-      def hash_ctx_=(value: Ptr[Byte]): Unit = !struct.at3 = value
-      def declared_size : git_object_size_t = struct._4
-      def declared_size_=(value: git_object_size_t): Unit = !struct.at4 = value
-      def received_bytes : git_object_size_t = struct._5
-      def received_bytes_=(value: git_object_size_t): Unit = !struct.at5 = value
-      def read : CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt] = struct._6.asInstanceOf[CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt]]
-      def read_=(value: CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt]): Unit = !struct.at6 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], CString, size_t, CInt]]
-      def write : CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt] = struct._7.asInstanceOf[CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt]]
-      def write_=(value: CFuncPtr3[Ptr[git_odb_stream], CString, size_t, CInt]): Unit = !struct.at7 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], CString, size_t, CInt]]
-      def finalize_write : CFuncPtr2[Ptr[git_odb_stream], Ptr[git_oid], CInt] = struct._8.asInstanceOf[CFuncPtr2[Ptr[git_odb_stream], Ptr[git_oid], CInt]]
-      def finalize_write_=(value: CFuncPtr2[Ptr[git_odb_stream], Ptr[git_oid], CInt]): Unit = !struct.at8 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[git_oid], CInt]]
-      def free : CFuncPtr1[Ptr[git_odb_stream], Unit] = struct._9.asInstanceOf[CFuncPtr1[Ptr[git_odb_stream], Unit]]
-      def free_=(value: CFuncPtr1[Ptr[git_odb_stream], Unit]): Unit = !struct.at9 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
     
 
   /**
@@ -5384,6 +5621,19 @@ object structs:
   
   object git_odb_writepack:
     given _tag: Tag[git_odb_writepack] = Tag.materializeCStruct4Tag[Ptr[git_odb_backend], CFuncPtr4[Ptr[Byte], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt], CFuncPtr2[Ptr[Byte], Ptr[git_indexer_progress], CInt], CFuncPtr1[Ptr[Byte], Unit]]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_odb_writepack)
+        inline def backend : Ptr[git_odb_backend] = struct._1
+        inline def backend_=(value: Ptr[git_odb_backend]): Unit = (!struct.at1 = value)
+        inline def append : CFuncPtr4[Ptr[git_odb_writepack], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt] = struct._2.asInstanceOf[CFuncPtr4[Ptr[git_odb_writepack], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt]]
+        inline def append_=(value: CFuncPtr4[Ptr[git_odb_writepack], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt]): Unit = (!struct.at2 = value.asInstanceOf[CFuncPtr4[Ptr[Byte], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt]])
+        inline def commit : CFuncPtr2[Ptr[git_odb_writepack], Ptr[git_indexer_progress], CInt] = struct._3.asInstanceOf[CFuncPtr2[Ptr[git_odb_writepack], Ptr[git_indexer_progress], CInt]]
+        inline def commit_=(value: CFuncPtr2[Ptr[git_odb_writepack], Ptr[git_indexer_progress], CInt]): Unit = (!struct.at3 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[git_indexer_progress], CInt]])
+        inline def free : CFuncPtr1[Ptr[git_odb_writepack], Unit] = struct._4.asInstanceOf[CFuncPtr1[Ptr[git_odb_writepack], Unit]]
+        inline def free_=(value: CFuncPtr1[Ptr[git_odb_writepack], Unit]): Unit = (!struct.at4 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]])
+      end extension
     
     // Allocates git_odb_writepack on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_odb_writepack] = scala.scalanative.unsafe.alloc[git_odb_writepack](1)
@@ -5395,15 +5645,6 @@ object structs:
       (!____ptr).free = free
       ____ptr
     
-    extension (struct: git_odb_writepack)
-      def backend : Ptr[git_odb_backend] = struct._1
-      def backend_=(value: Ptr[git_odb_backend]): Unit = !struct.at1 = value
-      def append : CFuncPtr4[Ptr[git_odb_writepack], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt] = struct._2.asInstanceOf[CFuncPtr4[Ptr[git_odb_writepack], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt]]
-      def append_=(value: CFuncPtr4[Ptr[git_odb_writepack], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt]): Unit = !struct.at2 = value.asInstanceOf[CFuncPtr4[Ptr[Byte], Ptr[Byte], size_t, Ptr[git_indexer_progress], CInt]]
-      def commit : CFuncPtr2[Ptr[git_odb_writepack], Ptr[git_indexer_progress], CInt] = struct._3.asInstanceOf[CFuncPtr2[Ptr[git_odb_writepack], Ptr[git_indexer_progress], CInt]]
-      def commit_=(value: CFuncPtr2[Ptr[git_odb_writepack], Ptr[git_indexer_progress], CInt]): Unit = !struct.at3 = value.asInstanceOf[CFuncPtr2[Ptr[Byte], Ptr[git_indexer_progress], CInt]]
-      def free : CFuncPtr1[Ptr[git_odb_writepack], Unit] = struct._4.asInstanceOf[CFuncPtr1[Ptr[git_odb_writepack], Unit]]
-      def free_=(value: CFuncPtr1[Ptr[git_odb_writepack], Unit]): Unit = !struct.at4 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
     
 
   /**
@@ -5414,6 +5655,13 @@ object structs:
   object git_oid:
     given _tag: Tag[git_oid] = Tag.materializeCStruct1Tag[CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]]]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_oid)
+        inline def id : CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]] = struct._1
+        inline def id_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]]): Unit = (!struct.at1 = value)
+      end extension
+    
     // Allocates git_oid on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_oid] = scala.scalanative.unsafe.alloc[git_oid](1)
     def apply(id : CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]])(using Zone): Ptr[git_oid] =
@@ -5421,9 +5669,6 @@ object structs:
       (!____ptr).id = id
       ____ptr
     
-    extension (struct: git_oid)
-      def id : CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]] = struct._1
-      def id_=(value: CArray[CUnsignedChar, Nat.Digit2[Nat._2, Nat._0]]): Unit = !struct.at1 = value
     
 
   opaque type git_oid_shorten = CStruct0
@@ -5440,6 +5685,15 @@ object structs:
   object git_oidarray:
     given _tag: Tag[git_oidarray] = Tag.materializeCStruct2Tag[Ptr[git_oid], size_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_oidarray)
+        inline def ids : Ptr[git_oid] = struct._1
+        inline def ids_=(value: Ptr[git_oid]): Unit = (!struct.at1 = value)
+        inline def count : size_t = struct._2
+        inline def count_=(value: size_t): Unit = (!struct.at2 = value)
+      end extension
+    
     // Allocates git_oidarray on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_oidarray] = scala.scalanative.unsafe.alloc[git_oidarray](1)
     def apply(ids : Ptr[git_oid], count : size_t)(using Zone): Ptr[git_oidarray] =
@@ -5448,11 +5702,6 @@ object structs:
       (!____ptr).count = count
       ____ptr
     
-    extension (struct: git_oidarray)
-      def ids : Ptr[git_oid] = struct._1
-      def ids_=(value: Ptr[git_oid]): Unit = !struct.at1 = value
-      def count : size_t = struct._2
-      def count_=(value: size_t): Unit = !struct.at2 = value
     
 
   opaque type git_packbuilder = CStruct0
@@ -5487,6 +5736,23 @@ object structs:
   object git_proxy_options:
     given _tag: Tag[git_proxy_options] = Tag.materializeCStruct6Tag[CUnsignedInt, git_proxy_t, CString, Ptr[Byte], git_transport_certificate_check_cb, Ptr[Byte]]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_proxy_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def `type` : git_proxy_t = struct._2
+        inline def type_=(value: git_proxy_t): Unit = (!struct.at2 = value)
+        inline def url : CString = struct._3
+        inline def url_=(value: CString): Unit = (!struct.at3 = value)
+        inline def credentials : git_credential_acquire_cb = struct._4.asInstanceOf[git_credential_acquire_cb]
+        inline def credentials_=(value: git_credential_acquire_cb): Unit = (!struct.at4 = value.asInstanceOf[Ptr[Byte]])
+        inline def certificate_check : git_transport_certificate_check_cb = struct._5
+        inline def certificate_check_=(value: git_transport_certificate_check_cb): Unit = (!struct.at5 = value)
+        inline def payload : Ptr[Byte] = struct._6
+        inline def payload_=(value: Ptr[Byte]): Unit = (!struct.at6 = value)
+      end extension
+    
     // Allocates git_proxy_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_proxy_options] = scala.scalanative.unsafe.alloc[git_proxy_options](1)
     def apply(version : CUnsignedInt, `type` : git_proxy_t, url : CString, credentials : git_credential_acquire_cb, certificate_check : git_transport_certificate_check_cb, payload : Ptr[Byte])(using Zone): Ptr[git_proxy_options] =
@@ -5499,19 +5765,6 @@ object structs:
       (!____ptr).payload = payload
       ____ptr
     
-    extension (struct: git_proxy_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def `type` : git_proxy_t = struct._2
-      def type_=(value: git_proxy_t): Unit = !struct.at2 = value
-      def url : CString = struct._3
-      def url_=(value: CString): Unit = !struct.at3 = value
-      def credentials : git_credential_acquire_cb = struct._4.asInstanceOf[git_credential_acquire_cb]
-      def credentials_=(value: git_credential_acquire_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def certificate_check : git_transport_certificate_check_cb = struct._5
-      def certificate_check_=(value: git_transport_certificate_check_cb): Unit = !struct.at5 = value
-      def payload : Ptr[Byte] = struct._6
-      def payload_=(value: Ptr[Byte]): Unit = !struct.at6 = value
     
 
   opaque type git_push = CStruct0
@@ -5528,6 +5781,25 @@ object structs:
   object git_push_options:
     given _tag: Tag[git_push_options] = Tag.materializeCStruct7Tag[CUnsignedInt, CUnsignedInt, git_remote_callbacks, git_proxy_options, git_remote_redirect_t, git_strarray, git_strarray]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_push_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def pb_parallelism : CUnsignedInt = struct._2
+        inline def pb_parallelism_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def callbacks : git_remote_callbacks = struct._3
+        inline def callbacks_=(value: git_remote_callbacks): Unit = (!struct.at3 = value)
+        inline def proxy_opts : git_proxy_options = struct._4
+        inline def proxy_opts_=(value: git_proxy_options): Unit = (!struct.at4 = value)
+        inline def follow_redirects : git_remote_redirect_t = struct._5
+        inline def follow_redirects_=(value: git_remote_redirect_t): Unit = (!struct.at5 = value)
+        inline def custom_headers : git_strarray = struct._6
+        inline def custom_headers_=(value: git_strarray): Unit = (!struct.at6 = value)
+        inline def remote_push_options : git_strarray = struct._7
+        inline def remote_push_options_=(value: git_strarray): Unit = (!struct.at7 = value)
+      end extension
+    
     // Allocates git_push_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_push_options] = scala.scalanative.unsafe.alloc[git_push_options](1)
     def apply(version : CUnsignedInt, pb_parallelism : CUnsignedInt, callbacks : git_remote_callbacks, proxy_opts : git_proxy_options, follow_redirects : git_remote_redirect_t, custom_headers : git_strarray, remote_push_options : git_strarray)(using Zone): Ptr[git_push_options] =
@@ -5541,21 +5813,6 @@ object structs:
       (!____ptr).remote_push_options = remote_push_options
       ____ptr
     
-    extension (struct: git_push_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def pb_parallelism : CUnsignedInt = struct._2
-      def pb_parallelism_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def callbacks : git_remote_callbacks = struct._3
-      def callbacks_=(value: git_remote_callbacks): Unit = !struct.at3 = value
-      def proxy_opts : git_proxy_options = struct._4
-      def proxy_opts_=(value: git_proxy_options): Unit = !struct.at4 = value
-      def follow_redirects : git_remote_redirect_t = struct._5
-      def follow_redirects_=(value: git_remote_redirect_t): Unit = !struct.at5 = value
-      def custom_headers : git_strarray = struct._6
-      def custom_headers_=(value: git_strarray): Unit = !struct.at6 = value
-      def remote_push_options : git_strarray = struct._7
-      def remote_push_options_=(value: git_strarray): Unit = !struct.at7 = value
     
 
   /**
@@ -5565,6 +5822,19 @@ object structs:
   
   object git_push_update:
     given _tag: Tag[git_push_update] = Tag.materializeCStruct4Tag[CString, CString, git_oid, git_oid]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_push_update)
+        inline def src_refname : CString = struct._1
+        inline def src_refname_=(value: CString): Unit = (!struct.at1 = value)
+        inline def dst_refname : CString = struct._2
+        inline def dst_refname_=(value: CString): Unit = (!struct.at2 = value)
+        inline def src : git_oid = struct._3
+        inline def src_=(value: git_oid): Unit = (!struct.at3 = value)
+        inline def dst : git_oid = struct._4
+        inline def dst_=(value: git_oid): Unit = (!struct.at4 = value)
+      end extension
     
     // Allocates git_push_update on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_push_update] = scala.scalanative.unsafe.alloc[git_push_update](1)
@@ -5576,15 +5846,6 @@ object structs:
       (!____ptr).dst = dst
       ____ptr
     
-    extension (struct: git_push_update)
-      def src_refname : CString = struct._1
-      def src_refname_=(value: CString): Unit = !struct.at1 = value
-      def dst_refname : CString = struct._2
-      def dst_refname_=(value: CString): Unit = !struct.at2 = value
-      def src : git_oid = struct._3
-      def src_=(value: git_oid): Unit = !struct.at3 = value
-      def dst : git_oid = struct._4
-      def dst_=(value: git_oid): Unit = !struct.at4 = value
     
 
   opaque type git_rebase = CStruct0
@@ -5601,6 +5862,17 @@ object structs:
   object git_rebase_operation:
     given _tag: Tag[git_rebase_operation] = Tag.materializeCStruct3Tag[git_rebase_operation_t, git_oid, CString]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_rebase_operation)
+        inline def `type` : git_rebase_operation_t = struct._1
+        inline def type_=(value: git_rebase_operation_t): Unit = (!struct.at1 = value)
+        inline def id : git_oid = struct._2
+        inline def id_=(value: git_oid): Unit = (!struct.at2 = value)
+        inline def exec : CString = struct._3
+        inline def exec_=(value: CString): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates git_rebase_operation on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_rebase_operation] = scala.scalanative.unsafe.alloc[git_rebase_operation](1)
     def apply(`type` : git_rebase_operation_t, id : git_oid, exec : CString)(using Zone): Ptr[git_rebase_operation] =
@@ -5610,13 +5882,6 @@ object structs:
       (!____ptr).exec = exec
       ____ptr
     
-    extension (struct: git_rebase_operation)
-      def `type` : git_rebase_operation_t = struct._1
-      def type_=(value: git_rebase_operation_t): Unit = !struct.at1 = value
-      def id : git_oid = struct._2
-      def id_=(value: git_oid): Unit = !struct.at2 = value
-      def exec : CString = struct._3
-      def exec_=(value: CString): Unit = !struct.at3 = value
     
 
   /**
@@ -5626,6 +5891,29 @@ object structs:
   
   object git_rebase_options:
     given _tag: Tag[git_rebase_options] = Tag.materializeCStruct9Tag[CUnsignedInt, CInt, CInt, CString, git_merge_options, git_checkout_options, git_commit_create_cb, CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt], Ptr[Byte]]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_rebase_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def quiet : CInt = struct._2
+        inline def quiet_=(value: CInt): Unit = (!struct.at2 = value)
+        inline def inmemory : CInt = struct._3
+        inline def inmemory_=(value: CInt): Unit = (!struct.at3 = value)
+        inline def rewrite_notes_ref : CString = struct._4
+        inline def rewrite_notes_ref_=(value: CString): Unit = (!struct.at4 = value)
+        inline def merge_options : git_merge_options = struct._5
+        inline def merge_options_=(value: git_merge_options): Unit = (!struct.at5 = value)
+        inline def checkout_options : git_checkout_options = struct._6
+        inline def checkout_options_=(value: git_checkout_options): Unit = (!struct.at6 = value)
+        inline def commit_create_cb : git_commit_create_cb = struct._7
+        inline def commit_create_cb_=(value: git_commit_create_cb): Unit = (!struct.at7 = value)
+        inline def signing_cb : CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt] = struct._8
+        inline def signing_cb_=(value: CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt]): Unit = (!struct.at8 = value)
+        inline def payload : Ptr[Byte] = struct._9
+        inline def payload_=(value: Ptr[Byte]): Unit = (!struct.at9 = value)
+      end extension
     
     // Allocates git_rebase_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_rebase_options] = scala.scalanative.unsafe.alloc[git_rebase_options](1)
@@ -5642,25 +5930,6 @@ object structs:
       (!____ptr).payload = payload
       ____ptr
     
-    extension (struct: git_rebase_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def quiet : CInt = struct._2
-      def quiet_=(value: CInt): Unit = !struct.at2 = value
-      def inmemory : CInt = struct._3
-      def inmemory_=(value: CInt): Unit = !struct.at3 = value
-      def rewrite_notes_ref : CString = struct._4
-      def rewrite_notes_ref_=(value: CString): Unit = !struct.at4 = value
-      def merge_options : git_merge_options = struct._5
-      def merge_options_=(value: git_merge_options): Unit = !struct.at5 = value
-      def checkout_options : git_checkout_options = struct._6
-      def checkout_options_=(value: git_checkout_options): Unit = !struct.at6 = value
-      def commit_create_cb : git_commit_create_cb = struct._7
-      def commit_create_cb_=(value: git_commit_create_cb): Unit = !struct.at7 = value
-      def signing_cb : CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt] = struct._8
-      def signing_cb_=(value: CFuncPtr4[Ptr[git_buf], Ptr[git_buf], CString, Ptr[Byte], CInt]): Unit = !struct.at8 = value
-      def payload : Ptr[Byte] = struct._9
-      def payload_=(value: Ptr[Byte]): Unit = !struct.at9 = value
     
 
   opaque type git_refdb = CStruct0
@@ -5719,6 +5988,43 @@ object structs:
   object git_remote_callbacks:
     given _tag: Tag[git_remote_callbacks] = Tag.materializeCStruct16Tag[CUnsignedInt, git_transport_message_cb, CFuncPtr2[git_remote_completion_t, Ptr[Byte], CInt], Ptr[Byte], git_transport_certificate_check_cb, git_indexer_progress_cb, CFuncPtr4[CString, Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt], git_packbuilder_progress, git_push_transfer_progress_cb, git_push_update_reference_cb, git_push_negotiation, git_transport_cb, git_remote_ready_cb, Ptr[Byte], git_url_resolve_cb, CFuncPtr5[CString, Ptr[git_oid], Ptr[git_oid], Ptr[git_refspec], Ptr[Byte], CInt]]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_remote_callbacks)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def sideband_progress : git_transport_message_cb = struct._2
+        inline def sideband_progress_=(value: git_transport_message_cb): Unit = (!struct.at2 = value)
+        inline def completion : CFuncPtr2[git_remote_completion_t, Ptr[Byte], CInt] = struct._3
+        inline def completion_=(value: CFuncPtr2[git_remote_completion_t, Ptr[Byte], CInt]): Unit = (!struct.at3 = value)
+        inline def credentials : git_credential_acquire_cb = struct._4.asInstanceOf[git_credential_acquire_cb]
+        inline def credentials_=(value: git_credential_acquire_cb): Unit = (!struct.at4 = value.asInstanceOf[Ptr[Byte]])
+        inline def certificate_check : git_transport_certificate_check_cb = struct._5
+        inline def certificate_check_=(value: git_transport_certificate_check_cb): Unit = (!struct.at5 = value)
+        inline def transfer_progress : git_indexer_progress_cb = struct._6
+        inline def transfer_progress_=(value: git_indexer_progress_cb): Unit = (!struct.at6 = value)
+        inline def update_tips : CFuncPtr4[CString, Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt] = struct._7
+        inline def update_tips_=(value: CFuncPtr4[CString, Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt]): Unit = (!struct.at7 = value)
+        inline def pack_progress : git_packbuilder_progress = struct._8
+        inline def pack_progress_=(value: git_packbuilder_progress): Unit = (!struct.at8 = value)
+        inline def push_transfer_progress : git_push_transfer_progress_cb = struct._9
+        inline def push_transfer_progress_=(value: git_push_transfer_progress_cb): Unit = (!struct.at9 = value)
+        inline def push_update_reference : git_push_update_reference_cb = struct._10
+        inline def push_update_reference_=(value: git_push_update_reference_cb): Unit = (!struct.at10 = value)
+        inline def push_negotiation : git_push_negotiation = struct._11
+        inline def push_negotiation_=(value: git_push_negotiation): Unit = (!struct.at11 = value)
+        inline def transport : git_transport_cb = struct._12
+        inline def transport_=(value: git_transport_cb): Unit = (!struct.at12 = value)
+        inline def remote_ready : git_remote_ready_cb = struct._13
+        inline def remote_ready_=(value: git_remote_ready_cb): Unit = (!struct.at13 = value)
+        inline def payload : Ptr[Byte] = struct._14
+        inline def payload_=(value: Ptr[Byte]): Unit = (!struct.at14 = value)
+        inline def resolve_url : git_url_resolve_cb = struct._15
+        inline def resolve_url_=(value: git_url_resolve_cb): Unit = (!struct.at15 = value)
+        inline def update_refs : CFuncPtr5[CString, Ptr[git_oid], Ptr[git_oid], Ptr[git_refspec], Ptr[Byte], CInt] = struct._16
+        inline def update_refs_=(value: CFuncPtr5[CString, Ptr[git_oid], Ptr[git_oid], Ptr[git_refspec], Ptr[Byte], CInt]): Unit = (!struct.at16 = value)
+      end extension
+    
     // Allocates git_remote_callbacks on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_remote_callbacks] = scala.scalanative.unsafe.alloc[git_remote_callbacks](1)
     def apply(version : CUnsignedInt, sideband_progress : git_transport_message_cb, completion : CFuncPtr2[git_remote_completion_t, Ptr[Byte], CInt], credentials : git_credential_acquire_cb, certificate_check : git_transport_certificate_check_cb, transfer_progress : git_indexer_progress_cb, update_tips : CFuncPtr4[CString, Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt], pack_progress : git_packbuilder_progress, push_transfer_progress : git_push_transfer_progress_cb, push_update_reference : git_push_update_reference_cb, push_negotiation : git_push_negotiation, transport : git_transport_cb, remote_ready : git_remote_ready_cb, payload : Ptr[Byte], resolve_url : git_url_resolve_cb, update_refs : CFuncPtr5[CString, Ptr[git_oid], Ptr[git_oid], Ptr[git_refspec], Ptr[Byte], CInt])(using Zone): Ptr[git_remote_callbacks] =
@@ -5741,39 +6047,6 @@ object structs:
       (!____ptr).update_refs = update_refs
       ____ptr
     
-    extension (struct: git_remote_callbacks)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def sideband_progress : git_transport_message_cb = struct._2
-      def sideband_progress_=(value: git_transport_message_cb): Unit = !struct.at2 = value
-      def completion : CFuncPtr2[git_remote_completion_t, Ptr[Byte], CInt] = struct._3
-      def completion_=(value: CFuncPtr2[git_remote_completion_t, Ptr[Byte], CInt]): Unit = !struct.at3 = value
-      def credentials : git_credential_acquire_cb = struct._4.asInstanceOf[git_credential_acquire_cb]
-      def credentials_=(value: git_credential_acquire_cb): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
-      def certificate_check : git_transport_certificate_check_cb = struct._5
-      def certificate_check_=(value: git_transport_certificate_check_cb): Unit = !struct.at5 = value
-      def transfer_progress : git_indexer_progress_cb = struct._6
-      def transfer_progress_=(value: git_indexer_progress_cb): Unit = !struct.at6 = value
-      def update_tips : CFuncPtr4[CString, Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt] = struct._7
-      def update_tips_=(value: CFuncPtr4[CString, Ptr[git_oid], Ptr[git_oid], Ptr[Byte], CInt]): Unit = !struct.at7 = value
-      def pack_progress : git_packbuilder_progress = struct._8
-      def pack_progress_=(value: git_packbuilder_progress): Unit = !struct.at8 = value
-      def push_transfer_progress : git_push_transfer_progress_cb = struct._9
-      def push_transfer_progress_=(value: git_push_transfer_progress_cb): Unit = !struct.at9 = value
-      def push_update_reference : git_push_update_reference_cb = struct._10
-      def push_update_reference_=(value: git_push_update_reference_cb): Unit = !struct.at10 = value
-      def push_negotiation : git_push_negotiation = struct._11
-      def push_negotiation_=(value: git_push_negotiation): Unit = !struct.at11 = value
-      def transport : git_transport_cb = struct._12
-      def transport_=(value: git_transport_cb): Unit = !struct.at12 = value
-      def remote_ready : git_remote_ready_cb = struct._13
-      def remote_ready_=(value: git_remote_ready_cb): Unit = !struct.at13 = value
-      def payload : Ptr[Byte] = struct._14
-      def payload_=(value: Ptr[Byte]): Unit = !struct.at14 = value
-      def resolve_url : git_url_resolve_cb = struct._15
-      def resolve_url_=(value: git_url_resolve_cb): Unit = !struct.at15 = value
-      def update_refs : CFuncPtr5[CString, Ptr[git_oid], Ptr[git_oid], Ptr[git_refspec], Ptr[Byte], CInt] = struct._16
-      def update_refs_=(value: CFuncPtr5[CString, Ptr[git_oid], Ptr[git_oid], Ptr[git_refspec], Ptr[Byte], CInt]): Unit = !struct.at16 = value
     
 
   /**
@@ -5783,6 +6056,21 @@ object structs:
   
   object git_remote_connect_options:
     given _tag: Tag[git_remote_connect_options] = Tag.materializeCStruct5Tag[CUnsignedInt, git_remote_callbacks, git_proxy_options, git_remote_redirect_t, git_strarray]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_remote_connect_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def callbacks : git_remote_callbacks = struct._2
+        inline def callbacks_=(value: git_remote_callbacks): Unit = (!struct.at2 = value)
+        inline def proxy_opts : git_proxy_options = struct._3
+        inline def proxy_opts_=(value: git_proxy_options): Unit = (!struct.at3 = value)
+        inline def follow_redirects : git_remote_redirect_t = struct._4
+        inline def follow_redirects_=(value: git_remote_redirect_t): Unit = (!struct.at4 = value)
+        inline def custom_headers : git_strarray = struct._5
+        inline def custom_headers_=(value: git_strarray): Unit = (!struct.at5 = value)
+      end extension
     
     // Allocates git_remote_connect_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_remote_connect_options] = scala.scalanative.unsafe.alloc[git_remote_connect_options](1)
@@ -5795,17 +6083,6 @@ object structs:
       (!____ptr).custom_headers = custom_headers
       ____ptr
     
-    extension (struct: git_remote_connect_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def callbacks : git_remote_callbacks = struct._2
-      def callbacks_=(value: git_remote_callbacks): Unit = !struct.at2 = value
-      def proxy_opts : git_proxy_options = struct._3
-      def proxy_opts_=(value: git_proxy_options): Unit = !struct.at3 = value
-      def follow_redirects : git_remote_redirect_t = struct._4
-      def follow_redirects_=(value: git_remote_redirect_t): Unit = !struct.at4 = value
-      def custom_headers : git_strarray = struct._5
-      def custom_headers_=(value: git_strarray): Unit = !struct.at5 = value
     
 
   /**
@@ -5815,6 +6092,21 @@ object structs:
   
   object git_remote_create_options:
     given _tag: Tag[git_remote_create_options] = Tag.materializeCStruct5Tag[CUnsignedInt, Ptr[git_repository], CString, CString, CUnsignedInt]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_remote_create_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def repository : Ptr[git_repository] = struct._2
+        inline def repository_=(value: Ptr[git_repository]): Unit = (!struct.at2 = value)
+        inline def name : CString = struct._3
+        inline def name_=(value: CString): Unit = (!struct.at3 = value)
+        inline def fetchspec : CString = struct._4
+        inline def fetchspec_=(value: CString): Unit = (!struct.at4 = value)
+        inline def flags : CUnsignedInt = struct._5
+        inline def flags_=(value: CUnsignedInt): Unit = (!struct.at5 = value)
+      end extension
     
     // Allocates git_remote_create_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_remote_create_options] = scala.scalanative.unsafe.alloc[git_remote_create_options](1)
@@ -5827,17 +6119,6 @@ object structs:
       (!____ptr).flags = flags
       ____ptr
     
-    extension (struct: git_remote_create_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def repository : Ptr[git_repository] = struct._2
-      def repository_=(value: Ptr[git_repository]): Unit = !struct.at2 = value
-      def name : CString = struct._3
-      def name_=(value: CString): Unit = !struct.at3 = value
-      def fetchspec : CString = struct._4
-      def fetchspec_=(value: CString): Unit = !struct.at4 = value
-      def flags : CUnsignedInt = struct._5
-      def flags_=(value: CUnsignedInt): Unit = !struct.at5 = value
     
 
   /**
@@ -5847,6 +6128,21 @@ object structs:
   
   object git_remote_head:
     given _tag: Tag[git_remote_head] = Tag.materializeCStruct5Tag[CInt, git_oid, git_oid, CString, CString]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_remote_head)
+        inline def local : CInt = struct._1
+        inline def local_=(value: CInt): Unit = (!struct.at1 = value)
+        inline def oid : git_oid = struct._2
+        inline def oid_=(value: git_oid): Unit = (!struct.at2 = value)
+        inline def loid : git_oid = struct._3
+        inline def loid_=(value: git_oid): Unit = (!struct.at3 = value)
+        inline def name : CString = struct._4
+        inline def name_=(value: CString): Unit = (!struct.at4 = value)
+        inline def symref_target : CString = struct._5
+        inline def symref_target_=(value: CString): Unit = (!struct.at5 = value)
+      end extension
     
     // Allocates git_remote_head on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_remote_head] = scala.scalanative.unsafe.alloc[git_remote_head](1)
@@ -5859,17 +6155,6 @@ object structs:
       (!____ptr).symref_target = symref_target
       ____ptr
     
-    extension (struct: git_remote_head)
-      def local : CInt = struct._1
-      def local_=(value: CInt): Unit = !struct.at1 = value
-      def oid : git_oid = struct._2
-      def oid_=(value: git_oid): Unit = !struct.at2 = value
-      def loid : git_oid = struct._3
-      def loid_=(value: git_oid): Unit = !struct.at3 = value
-      def name : CString = struct._4
-      def name_=(value: CString): Unit = !struct.at4 = value
-      def symref_target : CString = struct._5
-      def symref_target_=(value: CString): Unit = !struct.at5 = value
     
 
   opaque type git_repository = CStruct0
@@ -5886,6 +6171,27 @@ object structs:
   object git_repository_init_options:
     given _tag: Tag[git_repository_init_options] = Tag.materializeCStruct8Tag[CUnsignedInt, uint32_t, uint32_t, CString, CString, CString, CString, CString]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_repository_init_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def flags : uint32_t = struct._2
+        inline def flags_=(value: uint32_t): Unit = (!struct.at2 = value)
+        inline def mode : uint32_t = struct._3
+        inline def mode_=(value: uint32_t): Unit = (!struct.at3 = value)
+        inline def workdir_path : CString = struct._4
+        inline def workdir_path_=(value: CString): Unit = (!struct.at4 = value)
+        inline def description : CString = struct._5
+        inline def description_=(value: CString): Unit = (!struct.at5 = value)
+        inline def template_path : CString = struct._6
+        inline def template_path_=(value: CString): Unit = (!struct.at6 = value)
+        inline def initial_head : CString = struct._7
+        inline def initial_head_=(value: CString): Unit = (!struct.at7 = value)
+        inline def origin_url : CString = struct._8
+        inline def origin_url_=(value: CString): Unit = (!struct.at8 = value)
+      end extension
+    
     // Allocates git_repository_init_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_repository_init_options] = scala.scalanative.unsafe.alloc[git_repository_init_options](1)
     def apply(version : CUnsignedInt, flags : uint32_t, mode : uint32_t, workdir_path : CString, description : CString, template_path : CString, initial_head : CString, origin_url : CString)(using Zone): Ptr[git_repository_init_options] =
@@ -5900,23 +6206,6 @@ object structs:
       (!____ptr).origin_url = origin_url
       ____ptr
     
-    extension (struct: git_repository_init_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def mode : uint32_t = struct._3
-      def mode_=(value: uint32_t): Unit = !struct.at3 = value
-      def workdir_path : CString = struct._4
-      def workdir_path_=(value: CString): Unit = !struct.at4 = value
-      def description : CString = struct._5
-      def description_=(value: CString): Unit = !struct.at5 = value
-      def template_path : CString = struct._6
-      def template_path_=(value: CString): Unit = !struct.at6 = value
-      def initial_head : CString = struct._7
-      def initial_head_=(value: CString): Unit = !struct.at7 = value
-      def origin_url : CString = struct._8
-      def origin_url_=(value: CString): Unit = !struct.at8 = value
     
 
   /**
@@ -5926,6 +6215,19 @@ object structs:
   
   object git_revert_options:
     given _tag: Tag[git_revert_options] = Tag.materializeCStruct4Tag[CUnsignedInt, CUnsignedInt, git_merge_options, git_checkout_options]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_revert_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def mainline : CUnsignedInt = struct._2
+        inline def mainline_=(value: CUnsignedInt): Unit = (!struct.at2 = value)
+        inline def merge_opts : git_merge_options = struct._3
+        inline def merge_opts_=(value: git_merge_options): Unit = (!struct.at3 = value)
+        inline def checkout_opts : git_checkout_options = struct._4
+        inline def checkout_opts_=(value: git_checkout_options): Unit = (!struct.at4 = value)
+      end extension
     
     // Allocates git_revert_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_revert_options] = scala.scalanative.unsafe.alloc[git_revert_options](1)
@@ -5937,15 +6239,6 @@ object structs:
       (!____ptr).checkout_opts = checkout_opts
       ____ptr
     
-    extension (struct: git_revert_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def mainline : CUnsignedInt = struct._2
-      def mainline_=(value: CUnsignedInt): Unit = !struct.at2 = value
-      def merge_opts : git_merge_options = struct._3
-      def merge_opts_=(value: git_merge_options): Unit = !struct.at3 = value
-      def checkout_opts : git_checkout_options = struct._4
-      def checkout_opts_=(value: git_checkout_options): Unit = !struct.at4 = value
     
 
   /**
@@ -5956,6 +6249,17 @@ object structs:
   object git_revspec:
     given _tag: Tag[git_revspec] = Tag.materializeCStruct3Tag[Ptr[git_object], Ptr[git_object], CUnsignedInt]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_revspec)
+        inline def from : Ptr[git_object] = struct._1
+        inline def from_=(value: Ptr[git_object]): Unit = (!struct.at1 = value)
+        inline def to : Ptr[git_object] = struct._2
+        inline def to_=(value: Ptr[git_object]): Unit = (!struct.at2 = value)
+        inline def flags : CUnsignedInt = struct._3
+        inline def flags_=(value: CUnsignedInt): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates git_revspec on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_revspec] = scala.scalanative.unsafe.alloc[git_revspec](1)
     def apply(from : Ptr[git_object], to : Ptr[git_object], flags : CUnsignedInt)(using Zone): Ptr[git_revspec] =
@@ -5965,13 +6269,6 @@ object structs:
       (!____ptr).flags = flags
       ____ptr
     
-    extension (struct: git_revspec)
-      def from : Ptr[git_object] = struct._1
-      def from_=(value: Ptr[git_object]): Unit = !struct.at1 = value
-      def to : Ptr[git_object] = struct._2
-      def to_=(value: Ptr[git_object]): Unit = !struct.at2 = value
-      def flags : CUnsignedInt = struct._3
-      def flags_=(value: CUnsignedInt): Unit = !struct.at3 = value
     
 
   opaque type git_revwalk = CStruct0
@@ -5988,6 +6285,17 @@ object structs:
   object git_signature:
     given _tag: Tag[git_signature] = Tag.materializeCStruct3Tag[CString, CString, git_time]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_signature)
+        inline def name : CString = struct._1
+        inline def name_=(value: CString): Unit = (!struct.at1 = value)
+        inline def email : CString = struct._2
+        inline def email_=(value: CString): Unit = (!struct.at2 = value)
+        inline def when : git_time = struct._3
+        inline def when_=(value: git_time): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates git_signature on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_signature] = scala.scalanative.unsafe.alloc[git_signature](1)
     def apply(name : CString, email : CString, when : git_time)(using Zone): Ptr[git_signature] =
@@ -5997,13 +6305,6 @@ object structs:
       (!____ptr).when = when
       ____ptr
     
-    extension (struct: git_signature)
-      def name : CString = struct._1
-      def name_=(value: CString): Unit = !struct.at1 = value
-      def email : CString = struct._2
-      def email_=(value: CString): Unit = !struct.at2 = value
-      def when : git_time = struct._3
-      def when_=(value: git_time): Unit = !struct.at3 = value
     
 
   /**
@@ -6013,6 +6314,21 @@ object structs:
   
   object git_stash_apply_options:
     given _tag: Tag[git_stash_apply_options] = Tag.materializeCStruct5Tag[CUnsignedInt, uint32_t, git_checkout_options, git_stash_apply_progress_cb, Ptr[Byte]]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_stash_apply_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def flags : uint32_t = struct._2
+        inline def flags_=(value: uint32_t): Unit = (!struct.at2 = value)
+        inline def checkout_options : git_checkout_options = struct._3
+        inline def checkout_options_=(value: git_checkout_options): Unit = (!struct.at3 = value)
+        inline def progress_cb : git_stash_apply_progress_cb = struct._4
+        inline def progress_cb_=(value: git_stash_apply_progress_cb): Unit = (!struct.at4 = value)
+        inline def progress_payload : Ptr[Byte] = struct._5
+        inline def progress_payload_=(value: Ptr[Byte]): Unit = (!struct.at5 = value)
+      end extension
     
     // Allocates git_stash_apply_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_stash_apply_options] = scala.scalanative.unsafe.alloc[git_stash_apply_options](1)
@@ -6025,17 +6341,6 @@ object structs:
       (!____ptr).progress_payload = progress_payload
       ____ptr
     
-    extension (struct: git_stash_apply_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def checkout_options : git_checkout_options = struct._3
-      def checkout_options_=(value: git_checkout_options): Unit = !struct.at3 = value
-      def progress_cb : git_stash_apply_progress_cb = struct._4
-      def progress_cb_=(value: git_stash_apply_progress_cb): Unit = !struct.at4 = value
-      def progress_payload : Ptr[Byte] = struct._5
-      def progress_payload_=(value: Ptr[Byte]): Unit = !struct.at5 = value
     
 
   /**
@@ -6045,6 +6350,21 @@ object structs:
   
   object git_stash_save_options:
     given _tag: Tag[git_stash_save_options] = Tag.materializeCStruct5Tag[CUnsignedInt, uint32_t, Ptr[git_signature], CString, git_strarray]
+    
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_stash_save_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def flags : uint32_t = struct._2
+        inline def flags_=(value: uint32_t): Unit = (!struct.at2 = value)
+        inline def stasher : Ptr[git_signature] = struct._3
+        inline def stasher_=(value: Ptr[git_signature]): Unit = (!struct.at3 = value)
+        inline def message : CString = struct._4
+        inline def message_=(value: CString): Unit = (!struct.at4 = value)
+        inline def paths : git_strarray = struct._5
+        inline def paths_=(value: git_strarray): Unit = (!struct.at5 = value)
+      end extension
     
     // Allocates git_stash_save_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_stash_save_options] = scala.scalanative.unsafe.alloc[git_stash_save_options](1)
@@ -6057,17 +6377,6 @@ object structs:
       (!____ptr).paths = paths
       ____ptr
     
-    extension (struct: git_stash_save_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
-      def stasher : Ptr[git_signature] = struct._3
-      def stasher_=(value: Ptr[git_signature]): Unit = !struct.at3 = value
-      def message : CString = struct._4
-      def message_=(value: CString): Unit = !struct.at4 = value
-      def paths : git_strarray = struct._5
-      def paths_=(value: git_strarray): Unit = !struct.at5 = value
     
 
   /**
@@ -6078,6 +6387,17 @@ object structs:
   object git_status_entry:
     given _tag: Tag[git_status_entry] = Tag.materializeCStruct3Tag[git_status_t, Ptr[git_diff_delta], Ptr[git_diff_delta]]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_status_entry)
+        inline def status : git_status_t = struct._1
+        inline def status_=(value: git_status_t): Unit = (!struct.at1 = value)
+        inline def head_to_index : Ptr[git_diff_delta] = struct._2
+        inline def head_to_index_=(value: Ptr[git_diff_delta]): Unit = (!struct.at2 = value)
+        inline def index_to_workdir : Ptr[git_diff_delta] = struct._3
+        inline def index_to_workdir_=(value: Ptr[git_diff_delta]): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates git_status_entry on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_status_entry] = scala.scalanative.unsafe.alloc[git_status_entry](1)
     def apply(status : git_status_t, head_to_index : Ptr[git_diff_delta], index_to_workdir : Ptr[git_diff_delta])(using Zone): Ptr[git_status_entry] =
@@ -6087,13 +6407,6 @@ object structs:
       (!____ptr).index_to_workdir = index_to_workdir
       ____ptr
     
-    extension (struct: git_status_entry)
-      def status : git_status_t = struct._1
-      def status_=(value: git_status_t): Unit = !struct.at1 = value
-      def head_to_index : Ptr[git_diff_delta] = struct._2
-      def head_to_index_=(value: Ptr[git_diff_delta]): Unit = !struct.at2 = value
-      def index_to_workdir : Ptr[git_diff_delta] = struct._3
-      def index_to_workdir_=(value: Ptr[git_diff_delta]): Unit = !struct.at3 = value
     
 
   opaque type git_status_list = CStruct0
@@ -6110,6 +6423,23 @@ object structs:
   object git_status_options:
     given _tag: Tag[git_status_options] = Tag.materializeCStruct6Tag[CUnsignedInt, git_status_show_t, CUnsignedInt, git_strarray, Ptr[git_tree], uint16_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_status_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def show : git_status_show_t = struct._2
+        inline def show_=(value: git_status_show_t): Unit = (!struct.at2 = value)
+        inline def flags : CUnsignedInt = struct._3
+        inline def flags_=(value: CUnsignedInt): Unit = (!struct.at3 = value)
+        inline def pathspec : git_strarray = struct._4
+        inline def pathspec_=(value: git_strarray): Unit = (!struct.at4 = value)
+        inline def baseline : Ptr[git_tree] = struct._5
+        inline def baseline_=(value: Ptr[git_tree]): Unit = (!struct.at5 = value)
+        inline def rename_threshold : uint16_t = struct._6
+        inline def rename_threshold_=(value: uint16_t): Unit = (!struct.at6 = value)
+      end extension
+    
     // Allocates git_status_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_status_options] = scala.scalanative.unsafe.alloc[git_status_options](1)
     def apply(version : CUnsignedInt, show : git_status_show_t, flags : CUnsignedInt, pathspec : git_strarray, baseline : Ptr[git_tree], rename_threshold : uint16_t)(using Zone): Ptr[git_status_options] =
@@ -6122,19 +6452,6 @@ object structs:
       (!____ptr).rename_threshold = rename_threshold
       ____ptr
     
-    extension (struct: git_status_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def show : git_status_show_t = struct._2
-      def show_=(value: git_status_show_t): Unit = !struct.at2 = value
-      def flags : CUnsignedInt = struct._3
-      def flags_=(value: CUnsignedInt): Unit = !struct.at3 = value
-      def pathspec : git_strarray = struct._4
-      def pathspec_=(value: git_strarray): Unit = !struct.at4 = value
-      def baseline : Ptr[git_tree] = struct._5
-      def baseline_=(value: Ptr[git_tree]): Unit = !struct.at5 = value
-      def rename_threshold : uint16_t = struct._6
-      def rename_threshold_=(value: uint16_t): Unit = !struct.at6 = value
     
 
   /**
@@ -6145,6 +6462,15 @@ object structs:
   object git_strarray:
     given _tag: Tag[git_strarray] = Tag.materializeCStruct2Tag[Ptr[CString], size_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_strarray)
+        inline def strings : Ptr[CString] = struct._1
+        inline def strings_=(value: Ptr[CString]): Unit = (!struct.at1 = value)
+        inline def count : size_t = struct._2
+        inline def count_=(value: size_t): Unit = (!struct.at2 = value)
+      end extension
+    
     // Allocates git_strarray on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_strarray] = scala.scalanative.unsafe.alloc[git_strarray](1)
     def apply(strings : Ptr[CString], count : size_t)(using Zone): Ptr[git_strarray] =
@@ -6153,11 +6479,6 @@ object structs:
       (!____ptr).count = count
       ____ptr
     
-    extension (struct: git_strarray)
-      def strings : Ptr[CString] = struct._1
-      def strings_=(value: Ptr[CString]): Unit = !struct.at1 = value
-      def count : size_t = struct._2
-      def count_=(value: size_t): Unit = !struct.at2 = value
     
 
   opaque type git_submodule = CStruct0
@@ -6174,6 +6495,19 @@ object structs:
   object git_submodule_update_options:
     given _tag: Tag[git_submodule_update_options] = Tag.materializeCStruct4Tag[CUnsignedInt, git_checkout_options, git_fetch_options, CInt]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_submodule_update_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def checkout_opts : git_checkout_options = struct._2
+        inline def checkout_opts_=(value: git_checkout_options): Unit = (!struct.at2 = value)
+        inline def fetch_opts : git_fetch_options = struct._3
+        inline def fetch_opts_=(value: git_fetch_options): Unit = (!struct.at3 = value)
+        inline def allow_fetch : CInt = struct._4
+        inline def allow_fetch_=(value: CInt): Unit = (!struct.at4 = value)
+      end extension
+    
     // Allocates git_submodule_update_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_submodule_update_options] = scala.scalanative.unsafe.alloc[git_submodule_update_options](1)
     def apply(version : CUnsignedInt, checkout_opts : git_checkout_options, fetch_opts : git_fetch_options, allow_fetch : CInt)(using Zone): Ptr[git_submodule_update_options] =
@@ -6184,15 +6518,6 @@ object structs:
       (!____ptr).allow_fetch = allow_fetch
       ____ptr
     
-    extension (struct: git_submodule_update_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def checkout_opts : git_checkout_options = struct._2
-      def checkout_opts_=(value: git_checkout_options): Unit = !struct.at2 = value
-      def fetch_opts : git_fetch_options = struct._3
-      def fetch_opts_=(value: git_fetch_options): Unit = !struct.at3 = value
-      def allow_fetch : CInt = struct._4
-      def allow_fetch_=(value: CInt): Unit = !struct.at4 = value
     
 
   opaque type git_tag = CStruct0
@@ -6209,6 +6534,17 @@ object structs:
   object git_time:
     given _tag: Tag[git_time] = Tag.materializeCStruct3Tag[git_time_t, CInt, CChar]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_time)
+        inline def time : git_time_t = struct._1
+        inline def time_=(value: git_time_t): Unit = (!struct.at1 = value)
+        inline def offset : CInt = struct._2
+        inline def offset_=(value: CInt): Unit = (!struct.at2 = value)
+        inline def sign : CChar = struct._3
+        inline def sign_=(value: CChar): Unit = (!struct.at3 = value)
+      end extension
+    
     // Allocates git_time on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_time] = scala.scalanative.unsafe.alloc[git_time](1)
     def apply(time : git_time_t, offset : CInt, sign : CChar)(using Zone): Ptr[git_time] =
@@ -6218,13 +6554,6 @@ object structs:
       (!____ptr).sign = sign
       ____ptr
     
-    extension (struct: git_time)
-      def time : git_time_t = struct._1
-      def time_=(value: git_time_t): Unit = !struct.at1 = value
-      def offset : CInt = struct._2
-      def offset_=(value: CInt): Unit = !struct.at2 = value
-      def sign : CChar = struct._3
-      def sign_=(value: CChar): Unit = !struct.at3 = value
     
 
   opaque type git_transaction = CStruct0
@@ -6259,6 +6588,19 @@ object structs:
   object git_tree_update:
     given _tag: Tag[git_tree_update] = Tag.materializeCStruct4Tag[git_tree_update_t, git_oid, git_filemode_t, CString]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_tree_update)
+        inline def action : git_tree_update_t = struct._1
+        inline def action_=(value: git_tree_update_t): Unit = (!struct.at1 = value)
+        inline def id : git_oid = struct._2
+        inline def id_=(value: git_oid): Unit = (!struct.at2 = value)
+        inline def filemode : git_filemode_t = struct._3
+        inline def filemode_=(value: git_filemode_t): Unit = (!struct.at3 = value)
+        inline def path : CString = struct._4
+        inline def path_=(value: CString): Unit = (!struct.at4 = value)
+      end extension
+    
     // Allocates git_tree_update on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_tree_update] = scala.scalanative.unsafe.alloc[git_tree_update](1)
     def apply(action : git_tree_update_t, id : git_oid, filemode : git_filemode_t, path : CString)(using Zone): Ptr[git_tree_update] =
@@ -6269,15 +6611,6 @@ object structs:
       (!____ptr).path = path
       ____ptr
     
-    extension (struct: git_tree_update)
-      def action : git_tree_update_t = struct._1
-      def action_=(value: git_tree_update_t): Unit = !struct.at1 = value
-      def id : git_oid = struct._2
-      def id_=(value: git_oid): Unit = !struct.at2 = value
-      def filemode : git_filemode_t = struct._3
-      def filemode_=(value: git_filemode_t): Unit = !struct.at3 = value
-      def path : CString = struct._4
-      def path_=(value: CString): Unit = !struct.at4 = value
     
 
   opaque type git_treebuilder = CStruct0
@@ -6300,6 +6633,21 @@ object structs:
   object git_worktree_add_options:
     given _tag: Tag[git_worktree_add_options] = Tag.materializeCStruct5Tag[CUnsignedInt, CInt, CInt, Ptr[git_reference], git_checkout_options]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_worktree_add_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def lock : CInt = struct._2
+        inline def lock_=(value: CInt): Unit = (!struct.at2 = value)
+        inline def checkout_existing : CInt = struct._3
+        inline def checkout_existing_=(value: CInt): Unit = (!struct.at3 = value)
+        inline def ref : Ptr[git_reference] = struct._4
+        inline def ref_=(value: Ptr[git_reference]): Unit = (!struct.at4 = value)
+        inline def checkout_options : git_checkout_options = struct._5
+        inline def checkout_options_=(value: git_checkout_options): Unit = (!struct.at5 = value)
+      end extension
+    
     // Allocates git_worktree_add_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_worktree_add_options] = scala.scalanative.unsafe.alloc[git_worktree_add_options](1)
     def apply(version : CUnsignedInt, lock : CInt, checkout_existing : CInt, ref : Ptr[git_reference], checkout_options : git_checkout_options)(using Zone): Ptr[git_worktree_add_options] =
@@ -6311,17 +6659,6 @@ object structs:
       (!____ptr).checkout_options = checkout_options
       ____ptr
     
-    extension (struct: git_worktree_add_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def lock : CInt = struct._2
-      def lock_=(value: CInt): Unit = !struct.at2 = value
-      def checkout_existing : CInt = struct._3
-      def checkout_existing_=(value: CInt): Unit = !struct.at3 = value
-      def ref : Ptr[git_reference] = struct._4
-      def ref_=(value: Ptr[git_reference]): Unit = !struct.at4 = value
-      def checkout_options : git_checkout_options = struct._5
-      def checkout_options_=(value: git_checkout_options): Unit = !struct.at5 = value
     
 
   /**
@@ -6332,6 +6669,15 @@ object structs:
   object git_worktree_prune_options:
     given _tag: Tag[git_worktree_prune_options] = Tag.materializeCStruct2Tag[CUnsignedInt, uint32_t]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_worktree_prune_options)
+        inline def version : CUnsignedInt = struct._1
+        inline def version_=(value: CUnsignedInt): Unit = (!struct.at1 = value)
+        inline def flags : uint32_t = struct._2
+        inline def flags_=(value: uint32_t): Unit = (!struct.at2 = value)
+      end extension
+    
     // Allocates git_worktree_prune_options on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_worktree_prune_options] = scala.scalanative.unsafe.alloc[git_worktree_prune_options](1)
     def apply(version : CUnsignedInt, flags : uint32_t)(using Zone): Ptr[git_worktree_prune_options] =
@@ -6340,11 +6686,6 @@ object structs:
       (!____ptr).flags = flags
       ____ptr
     
-    extension (struct: git_worktree_prune_options)
-      def version : CUnsignedInt = struct._1
-      def version_=(value: CUnsignedInt): Unit = !struct.at1 = value
-      def flags : uint32_t = struct._2
-      def flags_=(value: uint32_t): Unit = !struct.at2 = value
     
 
   /**
@@ -6355,6 +6696,17 @@ object structs:
   object git_writestream:
     given _tag: Tag[git_writestream] = Tag.materializeCStruct3Tag[CFuncPtr3[Ptr[Byte], CString, size_t, CInt], CFuncPtr1[Ptr[Byte], CInt], CFuncPtr1[Ptr[Byte], Unit]]
     
+    export fields.*
+    private[libgit] object fields:
+      extension (struct: git_writestream)
+        inline def write : CFuncPtr3[Ptr[git_writestream], CString, size_t, CInt] = struct._1.asInstanceOf[CFuncPtr3[Ptr[git_writestream], CString, size_t, CInt]]
+        inline def write_=(value: CFuncPtr3[Ptr[git_writestream], CString, size_t, CInt]): Unit = (!struct.at1 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], CString, size_t, CInt]])
+        inline def close : CFuncPtr1[Ptr[git_writestream], CInt] = struct._2.asInstanceOf[CFuncPtr1[Ptr[git_writestream], CInt]]
+        inline def close_=(value: CFuncPtr1[Ptr[git_writestream], CInt]): Unit = (!struct.at2 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], CInt]])
+        inline def free : CFuncPtr1[Ptr[git_writestream], Unit] = struct._3.asInstanceOf[CFuncPtr1[Ptr[git_writestream], Unit]]
+        inline def free_=(value: CFuncPtr1[Ptr[git_writestream], Unit]): Unit = (!struct.at3 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]])
+      end extension
+    
     // Allocates git_writestream on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[git_writestream] = scala.scalanative.unsafe.alloc[git_writestream](1)
     def apply(write : CFuncPtr3[Ptr[git_writestream], CString, size_t, CInt], close : CFuncPtr1[Ptr[git_writestream], CInt], free : CFuncPtr1[Ptr[git_writestream], Unit])(using Zone): Ptr[git_writestream] =
@@ -6364,21 +6716,14 @@ object structs:
       (!____ptr).free = free
       ____ptr
     
-    extension (struct: git_writestream)
-      def write : CFuncPtr3[Ptr[git_writestream], CString, size_t, CInt] = struct._1.asInstanceOf[CFuncPtr3[Ptr[git_writestream], CString, size_t, CInt]]
-      def write_=(value: CFuncPtr3[Ptr[git_writestream], CString, size_t, CInt]): Unit = !struct.at1 = value.asInstanceOf[CFuncPtr3[Ptr[Byte], CString, size_t, CInt]]
-      def close : CFuncPtr1[Ptr[git_writestream], CInt] = struct._2.asInstanceOf[CFuncPtr1[Ptr[git_writestream], CInt]]
-      def close_=(value: CFuncPtr1[Ptr[git_writestream], CInt]): Unit = !struct.at2 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], CInt]]
-      def free : CFuncPtr1[Ptr[git_writestream], Unit] = struct._3.asInstanceOf[CFuncPtr1[Ptr[git_writestream], Unit]]
-      def free_=(value: CFuncPtr1[Ptr[git_writestream], Unit]): Unit = !struct.at3 = value.asInstanceOf[CFuncPtr1[Ptr[Byte], Unit]]
     
 
 @link("git2")
 
 @extern
 private[libgit] object extern_functions:
-  import _root_.libgit.enumerations.*
   import _root_.libgit.predef.*
+  import _root_.libgit.enumerations.*
   import _root_.libgit.aliases.*
   import _root_.libgit.structs.*
   /**
@@ -10488,8 +10833,8 @@ private[libgit] object extern_functions:
 
 
 object functions:
-  import _root_.libgit.enumerations.*
   import _root_.libgit.predef.*
+  import _root_.libgit.enumerations.*
   import _root_.libgit.aliases.*
   import _root_.libgit.structs.*
   import extern_functions.*
