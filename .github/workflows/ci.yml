@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: ["*"]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   JAVA_OPTS: "-Xmx4G"
 
@@ -14,34 +18,36 @@ jobs:
     name: CI on ${{matrix.os}} ${{matrix.segment}} out of 3
     strategy:
       fail-fast: false
-      matrix: 
+      matrix:
         os: [macos-14, ubuntu-22.04]
         segment: [1, 2, 3]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/setup-java@v3
+      - uses: actions/checkout@v4
         with:
-          distribution: 'temurin' 
-          java-version: '17'
+          submodules: recursive
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
           cache: sbt
 
-      # - name: Cache vcpkg
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: |
-      #       ~/Library/Caches/sbt-vcpkg/vcpkg-install
-      #       ~/Library/Caches/sbt-vcpkg/vcpkg
-      #       ~/.cache/sbt-vcpkg/vcpkg-install
-      #       ~/.cache/sbt-vcpkg/vcpkg
-      #     key: ${{ runner.os }}-sbt-vcpkg-${{ matrix.segment }}
+      - name: Cache vcpkg
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/Library/Caches/sbt-vcpkg/vcpkg-install
+            ~/Library/Caches/sbt-vcpkg/vcpkg
+            ~/.cache/sbt-vcpkg/vcpkg-install
+            ~/.cache/sbt-vcpkg/vcpkg
+          key: ${{ runner.os }}-sbt-vcpkg-${{ matrix.segment }}
 
       - uses: rui314/setup-mold@v1
 
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Setup for Scala Native
         run: |
@@ -55,22 +61,30 @@ jobs:
             wget https://apt.llvm.org/llvm.sh
             chmod +x llvm.sh
             sudo ./llvm.sh 17
-            sudo apt-get install ninja-build nasm
+            sudo apt-get install -y ninja-build nasm autoconf autoconf-archive automake libtool
+            sudo apt-get install -y ninja-build nasm
+
+            # ALL OF THIS FOR SDL: https://wiki.libsdl.org/SDL3/README-linux#build-dependencies
+            sudo apt-get install -y build-essential git make \
+            pkg-config cmake ninja-build gnome-desktop-testing libasound2-dev libpulse-dev \
+            libaudio-dev libfribidi-dev libjack-dev libsndio-dev libx11-dev libxext-dev \
+            libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libxtst-dev \
+            libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev \
+            libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev libthai-dev
+
             echo "LLVM_BIN=/usr/lib/llvm-17/bin" >> $GITHUB_ENV
           fi
 
       - name: Setup for examples
         run: |
           PLATFORM="$(uname)"
-          if [ $PLATFORM == "Darwin" ]; then 
+          if [ $PLATFORM == "Darwin" ]; then
             python3 -m pip install packaging
           else
             docker run -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
             docker run -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_USER=mysql -e MYSQL_PASSWORD=mysql-password -e MYSQL_DATABASE=mysql_db -p 3306:3306 -d mysql
             docker run -p 6379:6379 -d redis
           fi
-
-          ./manual_setup.sh
 
       - name: Run examples
         run: sbt 'runBatchedExamples ${{matrix.segment}} 3'

@@ -9,9 +9,10 @@ object predef:
     private[libpq] trait _BindgenEnumCUnsignedInt[T](using eq: T =:= CUnsignedInt):
       given Tag[T] = Tag.UInt.asInstanceOf[Tag[T]]
       extension (inline t: T)
-        inline def value: CUnsignedInt = eq.apply(t)
-        inline def int: CInt = eq.apply(t).toInt
-        inline def uint: CUnsignedInt = eq.apply(t)
+        inline def value: CUnsignedInt = t.asInstanceOf[CUnsignedInt]
+        inline def int: CInt = value.toInt
+        inline def uint: CUnsignedInt = value
+
 
 object enumerations:
   import predef.*
@@ -212,8 +213,8 @@ object enumerations:
       inline def is(b: PostgresPollingStatusType): Boolean = (a & b) == b
 
 object aliases:
-  import _root_.libpq.enumerations.*
   import _root_.libpq.predef.*
+  import _root_.libpq.enumerations.*
   import _root_.libpq.aliases.*
   import _root_.libpq.structs.*
   type FILE = libc.stdio.FILE
@@ -288,8 +289,8 @@ object aliases:
       inline def value: libc.stddef.size_t = v
 
 object structs:
-  import _root_.libpq.enumerations.*
   import _root_.libpq.predef.*
+  import _root_.libpq.enumerations.*
   import _root_.libpq.aliases.*
   import _root_.libpq.structs.*
 
@@ -310,6 +311,19 @@ object structs:
   object PGnotify:
     given _tag: Tag[PGnotify] = Tag.materializeCStruct4Tag[CString, CInt, CString, Ptr[Byte]]
     
+    export fields.*
+    private[libpq] object fields:
+      extension (struct: PGnotify)
+        inline def relname : CString = struct._1
+        inline def relname_=(value: CString): Unit = (!struct.at1 = value)
+        inline def be_pid : CInt = struct._2
+        inline def be_pid_=(value: CInt): Unit = (!struct.at2 = value)
+        inline def extra : CString = struct._3
+        inline def extra_=(value: CString): Unit = (!struct.at3 = value)
+        inline def next : Ptr[pgNotify] = struct._4.asInstanceOf[Ptr[pgNotify]]
+        inline def next_=(value: Ptr[pgNotify]): Unit = (!struct.at4 = value.asInstanceOf[Ptr[Byte]])
+      end extension
+    
     // Allocates PGnotify on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[PGnotify] = scala.scalanative.unsafe.alloc[PGnotify](1)
     def apply(relname : CString, be_pid : CInt, extra : CString, next : Ptr[pgNotify])(using Zone): Ptr[PGnotify] =
@@ -320,21 +334,31 @@ object structs:
       (!____ptr).next = next
       ____ptr
     
-    extension (struct: PGnotify)
-      def relname : CString = struct._1
-      def relname_=(value: CString): Unit = !struct.at1 = value
-      def be_pid : CInt = struct._2
-      def be_pid_=(value: CInt): Unit = !struct.at2 = value
-      def extra : CString = struct._3
-      def extra_=(value: CString): Unit = !struct.at3 = value
-      def next : Ptr[pgNotify] = struct._4.asInstanceOf[Ptr[pgNotify]]
-      def next_=(value: Ptr[pgNotify]): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
     
 
   opaque type PGresAttDesc = CStruct7[CString, Oid, CInt, CInt, Oid, CInt, CInt]
   
   object PGresAttDesc:
     given _tag: Tag[PGresAttDesc] = Tag.materializeCStruct7Tag[CString, Oid, CInt, CInt, Oid, CInt, CInt]
+    
+    export fields.*
+    private[libpq] object fields:
+      extension (struct: PGresAttDesc)
+        inline def name : CString = struct._1
+        inline def name_=(value: CString): Unit = (!struct.at1 = value)
+        inline def tableid : Oid = struct._2
+        inline def tableid_=(value: Oid): Unit = (!struct.at2 = value)
+        inline def columnid : CInt = struct._3
+        inline def columnid_=(value: CInt): Unit = (!struct.at3 = value)
+        inline def format : CInt = struct._4
+        inline def format_=(value: CInt): Unit = (!struct.at4 = value)
+        inline def typid : Oid = struct._5
+        inline def typid_=(value: Oid): Unit = (!struct.at5 = value)
+        inline def typlen : CInt = struct._6
+        inline def typlen_=(value: CInt): Unit = (!struct.at6 = value)
+        inline def atttypmod : CInt = struct._7
+        inline def atttypmod_=(value: CInt): Unit = (!struct.at7 = value)
+      end extension
     
     // Allocates PGresAttDesc on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[PGresAttDesc] = scala.scalanative.unsafe.alloc[PGresAttDesc](1)
@@ -349,21 +373,6 @@ object structs:
       (!____ptr).atttypmod = atttypmod
       ____ptr
     
-    extension (struct: PGresAttDesc)
-      def name : CString = struct._1
-      def name_=(value: CString): Unit = !struct.at1 = value
-      def tableid : Oid = struct._2
-      def tableid_=(value: Oid): Unit = !struct.at2 = value
-      def columnid : CInt = struct._3
-      def columnid_=(value: CInt): Unit = !struct.at3 = value
-      def format : CInt = struct._4
-      def format_=(value: CInt): Unit = !struct.at4 = value
-      def typid : Oid = struct._5
-      def typid_=(value: Oid): Unit = !struct.at5 = value
-      def typlen : CInt = struct._6
-      def typlen_=(value: CInt): Unit = !struct.at6 = value
-      def atttypmod : CInt = struct._7
-      def atttypmod_=(value: CInt): Unit = !struct.at7 = value
     
 
   opaque type PGresult = CStruct0
@@ -372,60 +381,83 @@ object structs:
     given _tag: Tag[PGresult] = Tag.materializeCStruct0Tag
     
 
-  opaque type PQArgBlock = CStruct3[CInt, CInt, PQArgBlock.U]
+  opaque type PQArgBlock = CStruct3[CInt, CInt, PQArgBlock_U]
   
   object PQArgBlock:
-    given _tag: Tag[PQArgBlock] = Tag.materializeCStruct3Tag[CInt, CInt, PQArgBlock.U]
+    given _tag: Tag[PQArgBlock] = Tag.materializeCStruct3Tag[CInt, CInt, PQArgBlock_U]
+    
+    export fields.*
+    private[libpq] object fields:
+      extension (struct: PQArgBlock)
+        inline def len : CInt = struct._1
+        inline def len_=(value: CInt): Unit = (!struct.at1 = value)
+        inline def isint : CInt = struct._2
+        inline def isint_=(value: CInt): Unit = (!struct.at2 = value)
+        inline def u : PQArgBlock_U = struct._3
+        inline def u_=(value: PQArgBlock_U): Unit = (!struct.at3 = value)
+      end extension
     
     // Allocates PQArgBlock on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[PQArgBlock] = scala.scalanative.unsafe.alloc[PQArgBlock](1)
-    def apply(len : CInt, isint : CInt, u : PQArgBlock.U)(using Zone): Ptr[PQArgBlock] =
+    def apply(len : CInt, isint : CInt, u : PQArgBlock_U)(using Zone): Ptr[PQArgBlock] =
       val ____ptr = apply()
       (!____ptr).len = len
       (!____ptr).isint = isint
       (!____ptr).u = u
       ____ptr
     
-    extension (struct: PQArgBlock)
-      def len : CInt = struct._1
-      def len_=(value: CInt): Unit = !struct.at1 = value
-      def isint : CInt = struct._2
-      def isint_=(value: CInt): Unit = !struct.at2 = value
-      def u : PQArgBlock.U = struct._3
-      def u_=(value: PQArgBlock.U): Unit = !struct.at3 = value
     
-    opaque type U = CArray[Byte, Nat._8]
-    object U:
-      given _tag: Tag[U] = Tag.CArray[CChar, Nat._8](Tag.Byte, Tag.Nat8)
-      
-      def apply()(using Zone): Ptr[U] =
-        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
-        ___ptr
-      
-      @scala.annotation.targetName("apply_ptr")
-      def apply(ptr: Ptr[CInt])(using Zone): Ptr[U] =
-        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
-        val un = !___ptr
-        un.at(0).asInstanceOf[Ptr[Ptr[CInt]]].update(0, ptr)
-        ___ptr
-      
-      @scala.annotation.targetName("apply_integer")
-      def apply(integer: CInt)(using Zone): Ptr[U] =
-        val ___ptr = _root_.scala.scalanative.unsafe.alloc[U](1)
-        val un = !___ptr
-        un.at(0).asInstanceOf[Ptr[CInt]].update(0, integer)
-        ___ptr
-      
-      extension (struct: U)
-        def ptr : Ptr[CInt] = !struct.at(0).asInstanceOf[Ptr[Ptr[CInt]]]
-        def ptr_=(value: Ptr[CInt]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[CInt]]] = value
-        def integer : CInt = !struct.at(0).asInstanceOf[Ptr[CInt]]
-        def integer_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
+  opaque type PQArgBlock_U = CArray[Byte, Nat._8]
+  object PQArgBlock_U:
+    given _tag: Tag[PQArgBlock_U] = Tag.CArray[CChar, Nat._8](Tag.Byte, Tag.Nat8)
+    
+    def apply()(using Zone): Ptr[PQArgBlock_U] =
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[PQArgBlock_U](1)
+      ___ptr
+    
+    @scala.annotation.targetName("apply_ptr")
+    def apply(ptr: Ptr[CInt])(using Zone): Ptr[PQArgBlock_U] =
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[PQArgBlock_U](1)
+      val un = !___ptr
+      un.at(0).asInstanceOf[Ptr[Ptr[CInt]]].update(0, ptr)
+      ___ptr
+    
+    @scala.annotation.targetName("apply_integer")
+    def apply(integer: CInt)(using Zone): Ptr[PQArgBlock_U] =
+      val ___ptr = _root_.scala.scalanative.unsafe.alloc[PQArgBlock_U](1)
+      val un = !___ptr
+      un.at(0).asInstanceOf[Ptr[CInt]].update(0, integer)
+      ___ptr
+    
+    extension (struct: PQArgBlock_U)
+      inline def ptr : Ptr[CInt] = !struct.at(0).asInstanceOf[Ptr[Ptr[CInt]]]
+      inline def ptr_=(value: Ptr[CInt]): Unit = !struct.at(0).asInstanceOf[Ptr[Ptr[CInt]]] = value
+      inline def integer : CInt = !struct.at(0).asInstanceOf[Ptr[CInt]]
+      inline def integer_=(value: CInt): Unit = !struct.at(0).asInstanceOf[Ptr[CInt]] = value
 
   opaque type PQconninfoOption = CStruct7[CString, CString, CString, CString, CString, CString, CInt]
   
   object PQconninfoOption:
     given _tag: Tag[PQconninfoOption] = Tag.materializeCStruct7Tag[CString, CString, CString, CString, CString, CString, CInt]
+    
+    export fields.*
+    private[libpq] object fields:
+      extension (struct: PQconninfoOption)
+        inline def keyword : CString = struct._1
+        inline def keyword_=(value: CString): Unit = (!struct.at1 = value)
+        inline def envvar : CString = struct._2
+        inline def envvar_=(value: CString): Unit = (!struct.at2 = value)
+        inline def compiled : CString = struct._3
+        inline def compiled_=(value: CString): Unit = (!struct.at3 = value)
+        inline def `val` : CString = struct._4
+        inline def val_=(value: CString): Unit = (!struct.at4 = value)
+        inline def label : CString = struct._5
+        inline def label_=(value: CString): Unit = (!struct.at5 = value)
+        inline def dispchar : CString = struct._6
+        inline def dispchar_=(value: CString): Unit = (!struct.at6 = value)
+        inline def dispsize : CInt = struct._7
+        inline def dispsize_=(value: CInt): Unit = (!struct.at7 = value)
+      end extension
     
     // Allocates PQconninfoOption on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[PQconninfoOption] = scala.scalanative.unsafe.alloc[PQconninfoOption](1)
@@ -440,27 +472,37 @@ object structs:
       (!____ptr).dispsize = dispsize
       ____ptr
     
-    extension (struct: PQconninfoOption)
-      def keyword : CString = struct._1
-      def keyword_=(value: CString): Unit = !struct.at1 = value
-      def envvar : CString = struct._2
-      def envvar_=(value: CString): Unit = !struct.at2 = value
-      def compiled : CString = struct._3
-      def compiled_=(value: CString): Unit = !struct.at3 = value
-      def `val` : CString = struct._4
-      def val_=(value: CString): Unit = !struct.at4 = value
-      def label : CString = struct._5
-      def label_=(value: CString): Unit = !struct.at5 = value
-      def dispchar : CString = struct._6
-      def dispchar_=(value: CString): Unit = !struct.at6 = value
-      def dispsize : CInt = struct._7
-      def dispsize_=(value: CInt): Unit = !struct.at7 = value
     
 
   opaque type PQprintOpt = CStruct10[pqbool, pqbool, pqbool, pqbool, pqbool, pqbool, CString, CString, CString, Ptr[CString]]
   
   object PQprintOpt:
     given _tag: Tag[PQprintOpt] = Tag.materializeCStruct10Tag[pqbool, pqbool, pqbool, pqbool, pqbool, pqbool, CString, CString, CString, Ptr[CString]]
+    
+    export fields.*
+    private[libpq] object fields:
+      extension (struct: PQprintOpt)
+        inline def header : pqbool = struct._1
+        inline def header_=(value: pqbool): Unit = (!struct.at1 = value)
+        inline def align : pqbool = struct._2
+        inline def align_=(value: pqbool): Unit = (!struct.at2 = value)
+        inline def standard : pqbool = struct._3
+        inline def standard_=(value: pqbool): Unit = (!struct.at3 = value)
+        inline def html3 : pqbool = struct._4
+        inline def html3_=(value: pqbool): Unit = (!struct.at4 = value)
+        inline def expanded : pqbool = struct._5
+        inline def expanded_=(value: pqbool): Unit = (!struct.at5 = value)
+        inline def pager : pqbool = struct._6
+        inline def pager_=(value: pqbool): Unit = (!struct.at6 = value)
+        inline def fieldSep : CString = struct._7
+        inline def fieldSep_=(value: CString): Unit = (!struct.at7 = value)
+        inline def tableOpt : CString = struct._8
+        inline def tableOpt_=(value: CString): Unit = (!struct.at8 = value)
+        inline def caption : CString = struct._9
+        inline def caption_=(value: CString): Unit = (!struct.at9 = value)
+        inline def fieldName : Ptr[CString] = struct._10
+        inline def fieldName_=(value: Ptr[CString]): Unit = (!struct.at10 = value)
+      end extension
     
     // Allocates PQprintOpt on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[PQprintOpt] = scala.scalanative.unsafe.alloc[PQprintOpt](1)
@@ -478,33 +520,31 @@ object structs:
       (!____ptr).fieldName = fieldName
       ____ptr
     
-    extension (struct: PQprintOpt)
-      def header : pqbool = struct._1
-      def header_=(value: pqbool): Unit = !struct.at1 = value
-      def align : pqbool = struct._2
-      def align_=(value: pqbool): Unit = !struct.at2 = value
-      def standard : pqbool = struct._3
-      def standard_=(value: pqbool): Unit = !struct.at3 = value
-      def html3 : pqbool = struct._4
-      def html3_=(value: pqbool): Unit = !struct.at4 = value
-      def expanded : pqbool = struct._5
-      def expanded_=(value: pqbool): Unit = !struct.at5 = value
-      def pager : pqbool = struct._6
-      def pager_=(value: pqbool): Unit = !struct.at6 = value
-      def fieldSep : CString = struct._7
-      def fieldSep_=(value: CString): Unit = !struct.at7 = value
-      def tableOpt : CString = struct._8
-      def tableOpt_=(value: CString): Unit = !struct.at8 = value
-      def caption : CString = struct._9
-      def caption_=(value: CString): Unit = !struct.at9 = value
-      def fieldName : Ptr[CString] = struct._10
-      def fieldName_=(value: Ptr[CString]): Unit = !struct.at10 = value
     
 
   opaque type _PQconninfoOption = CStruct7[CString, CString, CString, CString, CString, CString, CInt]
   
   object _PQconninfoOption:
     given _tag: Tag[_PQconninfoOption] = Tag.materializeCStruct7Tag[CString, CString, CString, CString, CString, CString, CInt]
+    
+    export fields.*
+    private[libpq] object fields:
+      extension (struct: _PQconninfoOption)
+        inline def keyword : CString = struct._1
+        inline def keyword_=(value: CString): Unit = (!struct.at1 = value)
+        inline def envvar : CString = struct._2
+        inline def envvar_=(value: CString): Unit = (!struct.at2 = value)
+        inline def compiled : CString = struct._3
+        inline def compiled_=(value: CString): Unit = (!struct.at3 = value)
+        inline def `val` : CString = struct._4
+        inline def val_=(value: CString): Unit = (!struct.at4 = value)
+        inline def label : CString = struct._5
+        inline def label_=(value: CString): Unit = (!struct.at5 = value)
+        inline def dispchar : CString = struct._6
+        inline def dispchar_=(value: CString): Unit = (!struct.at6 = value)
+        inline def dispsize : CInt = struct._7
+        inline def dispsize_=(value: CInt): Unit = (!struct.at7 = value)
+      end extension
     
     // Allocates _PQconninfoOption on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[_PQconninfoOption] = scala.scalanative.unsafe.alloc[_PQconninfoOption](1)
@@ -519,27 +559,37 @@ object structs:
       (!____ptr).dispsize = dispsize
       ____ptr
     
-    extension (struct: _PQconninfoOption)
-      def keyword : CString = struct._1
-      def keyword_=(value: CString): Unit = !struct.at1 = value
-      def envvar : CString = struct._2
-      def envvar_=(value: CString): Unit = !struct.at2 = value
-      def compiled : CString = struct._3
-      def compiled_=(value: CString): Unit = !struct.at3 = value
-      def `val` : CString = struct._4
-      def val_=(value: CString): Unit = !struct.at4 = value
-      def label : CString = struct._5
-      def label_=(value: CString): Unit = !struct.at5 = value
-      def dispchar : CString = struct._6
-      def dispchar_=(value: CString): Unit = !struct.at6 = value
-      def dispsize : CInt = struct._7
-      def dispsize_=(value: CInt): Unit = !struct.at7 = value
     
 
   opaque type _PQprintOpt = CStruct10[pqbool, pqbool, pqbool, pqbool, pqbool, pqbool, CString, CString, CString, Ptr[CString]]
   
   object _PQprintOpt:
     given _tag: Tag[_PQprintOpt] = Tag.materializeCStruct10Tag[pqbool, pqbool, pqbool, pqbool, pqbool, pqbool, CString, CString, CString, Ptr[CString]]
+    
+    export fields.*
+    private[libpq] object fields:
+      extension (struct: _PQprintOpt)
+        inline def header : pqbool = struct._1
+        inline def header_=(value: pqbool): Unit = (!struct.at1 = value)
+        inline def align : pqbool = struct._2
+        inline def align_=(value: pqbool): Unit = (!struct.at2 = value)
+        inline def standard : pqbool = struct._3
+        inline def standard_=(value: pqbool): Unit = (!struct.at3 = value)
+        inline def html3 : pqbool = struct._4
+        inline def html3_=(value: pqbool): Unit = (!struct.at4 = value)
+        inline def expanded : pqbool = struct._5
+        inline def expanded_=(value: pqbool): Unit = (!struct.at5 = value)
+        inline def pager : pqbool = struct._6
+        inline def pager_=(value: pqbool): Unit = (!struct.at6 = value)
+        inline def fieldSep : CString = struct._7
+        inline def fieldSep_=(value: CString): Unit = (!struct.at7 = value)
+        inline def tableOpt : CString = struct._8
+        inline def tableOpt_=(value: CString): Unit = (!struct.at8 = value)
+        inline def caption : CString = struct._9
+        inline def caption_=(value: CString): Unit = (!struct.at9 = value)
+        inline def fieldName : Ptr[CString] = struct._10
+        inline def fieldName_=(value: Ptr[CString]): Unit = (!struct.at10 = value)
+      end extension
     
     // Allocates _PQprintOpt on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[_PQprintOpt] = scala.scalanative.unsafe.alloc[_PQprintOpt](1)
@@ -557,33 +607,25 @@ object structs:
       (!____ptr).fieldName = fieldName
       ____ptr
     
-    extension (struct: _PQprintOpt)
-      def header : pqbool = struct._1
-      def header_=(value: pqbool): Unit = !struct.at1 = value
-      def align : pqbool = struct._2
-      def align_=(value: pqbool): Unit = !struct.at2 = value
-      def standard : pqbool = struct._3
-      def standard_=(value: pqbool): Unit = !struct.at3 = value
-      def html3 : pqbool = struct._4
-      def html3_=(value: pqbool): Unit = !struct.at4 = value
-      def expanded : pqbool = struct._5
-      def expanded_=(value: pqbool): Unit = !struct.at5 = value
-      def pager : pqbool = struct._6
-      def pager_=(value: pqbool): Unit = !struct.at6 = value
-      def fieldSep : CString = struct._7
-      def fieldSep_=(value: CString): Unit = !struct.at7 = value
-      def tableOpt : CString = struct._8
-      def tableOpt_=(value: CString): Unit = !struct.at8 = value
-      def caption : CString = struct._9
-      def caption_=(value: CString): Unit = !struct.at9 = value
-      def fieldName : Ptr[CString] = struct._10
-      def fieldName_=(value: Ptr[CString]): Unit = !struct.at10 = value
     
 
   opaque type pgNotify = CStruct4[CString, CInt, CString, Ptr[Byte]]
   
   object pgNotify:
     given _tag: Tag[pgNotify] = Tag.materializeCStruct4Tag[CString, CInt, CString, Ptr[Byte]]
+    
+    export fields.*
+    private[libpq] object fields:
+      extension (struct: pgNotify)
+        inline def relname : CString = struct._1
+        inline def relname_=(value: CString): Unit = (!struct.at1 = value)
+        inline def be_pid : CInt = struct._2
+        inline def be_pid_=(value: CInt): Unit = (!struct.at2 = value)
+        inline def extra : CString = struct._3
+        inline def extra_=(value: CString): Unit = (!struct.at3 = value)
+        inline def next : Ptr[pgNotify] = struct._4.asInstanceOf[Ptr[pgNotify]]
+        inline def next_=(value: Ptr[pgNotify]): Unit = (!struct.at4 = value.asInstanceOf[Ptr[Byte]])
+      end extension
     
     // Allocates pgNotify on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[pgNotify] = scala.scalanative.unsafe.alloc[pgNotify](1)
@@ -595,15 +637,6 @@ object structs:
       (!____ptr).next = next
       ____ptr
     
-    extension (struct: pgNotify)
-      def relname : CString = struct._1
-      def relname_=(value: CString): Unit = !struct.at1 = value
-      def be_pid : CInt = struct._2
-      def be_pid_=(value: CInt): Unit = !struct.at2 = value
-      def extra : CString = struct._3
-      def extra_=(value: CString): Unit = !struct.at3 = value
-      def next : Ptr[pgNotify] = struct._4.asInstanceOf[Ptr[pgNotify]]
-      def next_=(value: Ptr[pgNotify]): Unit = !struct.at4 = value.asInstanceOf[Ptr[Byte]]
     
 
   opaque type pg_cancel = CStruct0
@@ -629,6 +662,25 @@ object structs:
   object pgresAttDesc:
     given _tag: Tag[pgresAttDesc] = Tag.materializeCStruct7Tag[CString, Oid, CInt, CInt, Oid, CInt, CInt]
     
+    export fields.*
+    private[libpq] object fields:
+      extension (struct: pgresAttDesc)
+        inline def name : CString = struct._1
+        inline def name_=(value: CString): Unit = (!struct.at1 = value)
+        inline def tableid : Oid = struct._2
+        inline def tableid_=(value: Oid): Unit = (!struct.at2 = value)
+        inline def columnid : CInt = struct._3
+        inline def columnid_=(value: CInt): Unit = (!struct.at3 = value)
+        inline def format : CInt = struct._4
+        inline def format_=(value: CInt): Unit = (!struct.at4 = value)
+        inline def typid : Oid = struct._5
+        inline def typid_=(value: Oid): Unit = (!struct.at5 = value)
+        inline def typlen : CInt = struct._6
+        inline def typlen_=(value: CInt): Unit = (!struct.at6 = value)
+        inline def atttypmod : CInt = struct._7
+        inline def atttypmod_=(value: CInt): Unit = (!struct.at7 = value)
+      end extension
+    
     // Allocates pgresAttDesc on the heap – fields are not initalised or zeroed out
     def apply()(using Zone): Ptr[pgresAttDesc] = scala.scalanative.unsafe.alloc[pgresAttDesc](1)
     def apply(name : CString, tableid : Oid, columnid : CInt, format : CInt, typid : Oid, typlen : CInt, atttypmod : CInt)(using Zone): Ptr[pgresAttDesc] =
@@ -642,29 +694,14 @@ object structs:
       (!____ptr).atttypmod = atttypmod
       ____ptr
     
-    extension (struct: pgresAttDesc)
-      def name : CString = struct._1
-      def name_=(value: CString): Unit = !struct.at1 = value
-      def tableid : Oid = struct._2
-      def tableid_=(value: Oid): Unit = !struct.at2 = value
-      def columnid : CInt = struct._3
-      def columnid_=(value: CInt): Unit = !struct.at3 = value
-      def format : CInt = struct._4
-      def format_=(value: CInt): Unit = !struct.at4 = value
-      def typid : Oid = struct._5
-      def typid_=(value: Oid): Unit = !struct.at5 = value
-      def typlen : CInt = struct._6
-      def typlen_=(value: CInt): Unit = !struct.at6 = value
-      def atttypmod : CInt = struct._7
-      def atttypmod_=(value: CInt): Unit = !struct.at7 = value
     
 
 @link("pq")
 
 @extern
 private[libpq] object extern_functions:
-  import _root_.libpq.enumerations.*
   import _root_.libpq.predef.*
+  import _root_.libpq.enumerations.*
   import _root_.libpq.aliases.*
   import _root_.libpq.structs.*
   def PQbackendPID(conn : Ptr[PGconn]): CInt = extern
@@ -999,8 +1036,8 @@ private[libpq] object extern_functions:
 
 
 object functions:
-  import _root_.libpq.enumerations.*
   import _root_.libpq.predef.*
+  import _root_.libpq.enumerations.*
   import _root_.libpq.aliases.*
   import _root_.libpq.structs.*
   import extern_functions.*

@@ -1,3 +1,4 @@
+import java.nio.file.Files
 import scala.scalanative.build.SourceLevelDebuggingConfig
 import scala.scalanative.build.OptimizerConfig
 import bindgen.plugin.BindgenMode
@@ -34,6 +35,8 @@ lazy val root = project
     rocksdb,
     sqlite,
     s2n,
+    sdl3,
+    sdl2,
     jni,
     ffmpeg
   )
@@ -45,47 +48,24 @@ lazy val root = project
 // https://tree-sitter.github.io/tree-sitter/using-parsers#the-basic-objects
 lazy val `tree-sitter` = project
   .in(file("example-tree-sitter"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    // Generate bindings to Tree Sitter's main API
+    vcpkgDependencies := VcpkgDependencies("tree-sitter"),
     bindgenBindings += {
       Binding(
-        baseDirectory.value / "tree-sitter" / "lib" / "include" / "tree_sitter" / "api.h",
+        vcpkgConfigurator.value.includes(
+          "tree-sitter"
+        ) / "tree_sitter" / "api.h",
         "treesitter"
       )
         .withCImports(
           List("tree_sitter/api.h")
         )
     },
-    // Copy generated Scala parser
-    Compile / resourceGenerators += Def.task {
-      val scalaParserLocation =
-        baseDirectory.value / "tree-sitter-scala" / "src"
-      val resourcesFolder = (Compile / resourceManaged).value / "scala-native"
-
-      val fileNames = List("parser.c", "scanner.c", "stack.h")
-
-      fileNames.foreach { fileName =>
-        IO.copyFile(scalaParserLocation / fileName, resourcesFolder / fileName)
-      }
-
-      fileNames.map(fileName => resourcesFolder / fileName)
-    },
     nativeConfig := {
-      val base = baseDirectory.value / "tree-sitter"
-      val conf = nativeConfig.value
-      val staticLib = base / "libtree-sitter.a"
-
-      conf
-        .withLinkingOptions(
-          conf.linkingOptions ++ List(
-            staticLib.toString
-          )
-        )
-        .withCompileOptions(
-          List(s"-I${base / "lib" / "include"}") ++ conf.compileOptions
-        )
+      nativeConfig.value
+        .withLinkingOptions(_ :+ buildScalaGrammar.value.toString)
     }
   )
   .settings(bindgenSettings)
@@ -109,6 +89,101 @@ lazy val cjson = project
   )
   .settings(bindgenSettings)
   .settings(configurePlatform())
+
+lazy val buildScalaGrammar =
+  taskKey[File]("")
+
+Global / buildScalaGrammar := {
+  val tg =
+    crossTarget.value / "tree-sitter-scala-build"
+  val src =
+    (baseDirectory.value) / "example-tree-sitter" / "tree-sitter-scala" / "src"
+  val cSources =
+    src.toGlob / "*.c"
+  val hSources =
+    src.toGlob / "*.h"
+  val s =
+    streams.value
+
+  val files =
+    (fileTreeView.value.list(cSources) ++
+      fileTreeView.value.list(hSources)).map(_._1.toFile)
+
+  Files.createDirectories(tg.toPath)
+  IO.copyDirectory(src, tg)
+
+  val cachedFun =
+    FileFunction.cached(
+      s.cacheDirectory / "tree-sitter-scala-build"
+    ) { (in: Set[File]) =>
+      Set(buildScalaGrammarImpl(files, tg, src, s.log))
+    }
+  cachedFun(files.toSet).headOption
+    .getOrElse(sys.error("No static library produced"))
+}
+
+def buildScalaGrammarImpl(
+    files: Seq[File],
+    outDir: File,
+    src: File,
+    log: sbt.Logger
+) = {
+  import sbt.nio.file.FileTreeView
+  val out =
+    outDir / "libtree-sitter-scala.a"
+  import scala.sys.process.*
+  try {
+    val cmd =
+      List.newBuilder[String]
+
+    val filePaths =
+      files
+        .flatMap(_.relativeTo(src))
+        .map(s => outDir.toPath.resolve(s.toPath))
+        .toSeq
+        .map(_.toString)
+
+    log.info(
+      s"Building tree-sitter-scala from ${filePaths}, in $outDir"
+    )
+
+    cmd += "clang"
+    cmd ++= filePaths
+    cmd += "-fPIC"
+    cmd += "-c"
+    cmd += s"-I${src}"
+
+    Process(
+      command = cmd.result(),
+      cwd = outDir
+    ).!(log)
+
+    val objectFiles =
+      outDir.toGlob / ** / "*.o"
+
+    val arCmd =
+      List.newBuilder[String]
+    arCmd += "ar"
+    arCmd += "r"
+    arCmd += out.name
+
+    val objects = FileTreeView.nio
+      .list(objectFiles)
+      .map(_._1.toAbsolutePath.toString())
+
+    assert(objects.nonEmpty, "No object files found in stage directory")
+    arCmd ++= objects
+
+    Process(
+      arCmd.result(),
+      cwd = outDir
+    ).!(log)
+
+    out
+  } finally {
+    // IO.delete(stage)
+  }
+}
 
 lazy val curl = project
   .in(file("example-curl"))
@@ -309,6 +384,53 @@ lazy val sqlite =
     .settings(bindgenSettings)
     .settings(configurePlatform())
 
+lazy val sdl2 =
+  project
+    .in(file("example-sdl2"))
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(
+      scalaVersion := Versions.Scala,
+      vcpkgDependencies := VcpkgDependencies("sdl2"),
+      bindgenBindings += {
+        Binding(
+          vcpkgConfigurator.value.includes("sdl2") / "SDL2" / "SDL.h",
+          "sdl2"
+        )
+          .withCImports(List("SDL2/SDL.h"))
+          .withClangFlags(List("-fsigned-char", "-DSDL_DISABLE_ARM_NEON_H=1"))
+          .withMacros(Set("SDL_*", "AUDIO_*"))
+      }
+    )
+    .settings(bindgenSettings)
+    .settings(configurePlatform())
+
+lazy val sdl3 =
+  project
+    .in(file("example-sdl3"))
+    .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(
+      scalaVersion := Versions.Scala,
+      vcpkgDependencies := VcpkgDependencies("sdl3"),
+      bindgenBindings += {
+        Binding(
+          vcpkgConfigurator.value.includes("sdl3") / "SDL3" / "SDL.h",
+          "sdl3"
+        )
+          .withCImports(List("SDL3/SDL.h"))
+          .withClangFlags(
+            List(
+              "-fsigned-char",
+              "-DSDL_DISABLE_ARM_NEON_H=1",
+              "-I" + vcpkgConfigurator.value.includes("sdl3").toString
+            )
+          )
+          .withMacros(Set("SDL_*", "AUDIO_*"))
+
+      }
+    )
+    .settings(bindgenSettings)
+    .settings(configurePlatform())
+
 lazy val redis =
   project
     .in(file("example-redis"))
@@ -355,6 +477,7 @@ lazy val rocksdb = project
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("rocksdb", "zlib"),
+    nativeConfig ~= { (_).withCppOptions(_ :+ "-fcxx-exceptions") },
     bindgenBindings += {
       Binding(
         vcpkgConfigurator.value.includes("rocksdb") / "rocksdb" / "c.h",
@@ -394,7 +517,11 @@ val bindgenSettings = Seq(
   ),
   bindgenBindings := {
     bindgenBindings.value.map(_.withNoLocation(true))
-  }
+  },
+  bindgenBinary := sys.env
+    .get("BINDGEN_BINARY")
+    .map(new File(_))
+    .getOrElse((bindgenBinary).value)
 )
 
 def configurePlatform(rename: String => String = identity) = Seq(
@@ -419,41 +546,25 @@ def configurePlatform(rename: String => String = identity) = Seq(
 
 lazy val duckdb = project
   .in(file("example-duckdb"))
-  .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+  .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
   .settings(
     scalaVersion := Versions.Scala,
-    Compile / run / envVars := Map(
-      "LD_LIBRARY_PATH" -> (baseDirectory.value / "duckdb" / "build" / "debug" / "src").toString,
-      "DYLD_LIBRARY_PATH" -> (baseDirectory.value / "duckdb" / "build" / "debug" / "src").toString
-    ),
-    // Generate bindings to Tree Sitter's main API
-    bindgenBindings += {
-      val bd = (baseDirectory.value / "duckdb" / "src" / "include")
-      Binding(
-        baseDirectory.value / "duckdb" / "src" / "include" / "duckdb.h",
-        "duckdb"
-      )
-        .withLinkName("duckdb")
-        .withCImports(List("duckdb.h"))
-        .withClangFlags(List(s"-I$bd", "-fsigned-char"))
-
-    },
-    nativeConfig := {
-      val base = baseDirectory.value / "duckdb"
-      val libFolder = base / "build" / "debug" / "src"
-      val headersFolder = base / "src" / "include"
-      val conf = nativeConfig.value
-
-      conf
-        .withLinkingOptions(
-          conf.linkingOptions ++ List(
-            "-lduckdb",
-            s"-L$libFolder"
+    vcpkgDependencies := VcpkgDependencies("duckdb"),
+    nativeConfig ~= { (_).withCppOptions(_ :+ "-fcxx-exceptions") },
+    bindgenBindings := {
+      Seq(
+        Binding(
+          vcpkgConfigurator.value.includes("duckdb") / "duckdb.h",
+          "duckdb"
+        )
+          .withCImports(List("duckdb.h"))
+          .withClangFlags(
+            List(
+              "-I" + vcpkgConfigurator.value.includes("duckdb").toString,
+              "-fsigned-char"
+            )
           )
-        )
-        .withCompileOptions(
-          conf.compileOptions ++ List(s"-I$headersFolder")
-        )
+      )
     }
   )
   .settings(bindgenSettings)
@@ -602,15 +713,17 @@ import complete.DefaultParsers.*
 
 def projectCommands(st: State) = {
   val exceptions: Set[String] =
-    if (sys.env.contains("CI")) {
-      val platformSpecific = Platform.os match {
-        // these require docker containers so we don't run them on CI
-        case MacOS => Set("mysql", "postgres", "redis")
-        case _     => Set.empty
-      }
+    Set("root") ++ {
+      if (sys.env.contains("CI")) {
+        val platformSpecific = Platform.os match {
+          // these require docker containers so we don't run them on CI
+          case MacOS => Set("mysql", "postgres", "redis")
+          case _     => Set.empty
+        }
 
-      platformSpecific ++ Set("duckdb", "rocksdb")
-    } else Set.empty
+        platformSpecific
+      } else Set.empty
+    }
 
   getProjects(st).sorted.reverse
     .filterNot(exceptions.contains)
