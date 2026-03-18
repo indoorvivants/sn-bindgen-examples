@@ -713,15 +713,17 @@ import complete.DefaultParsers.*
 
 def projectCommands(st: State) = {
   val exceptions: Set[String] =
-    if (sys.env.contains("CI")) {
-      val platformSpecific = Platform.os match {
-        // these require docker containers so we don't run them on CI
-        case MacOS => Set("mysql", "postgres", "redis")
-        case _     => Set.empty
-      }
+    Set("root") ++ {
+      if (sys.env.contains("CI")) {
+        val platformSpecific = Platform.os match {
+          // these require docker containers so we don't run them on CI
+          case MacOS => Set("mysql", "postgres", "redis")
+          case _     => Set.empty
+        }
 
-      platformSpecific ++ Set("duckdb", "rocksdb")
-    } else Set.empty
+        platformSpecific
+      } else Set.empty
+    }
 
   getProjects(st).sorted.reverse
     .filterNot(exceptions.contains)
