@@ -31,8 +31,8 @@ RUN coursier launch sn-vcpkg --contrib -- bootstrap
 COPY vcpkg.json .
 ENV CC="/usr/lib/llvm-17/bin/clang"
 ENV CXX="/usr/lib/llvm-17/bin/clang++"
-RUN coursier launch sn-vcpkg --contrib -- install --manifest vcpkg.json
-# RUN coursier launch sn-vcpkg --contrib -- install rapidjson || (cat /root/.cache/sbt-vcpkg/vcpkg/buildtrees/rapidjson/config-arm64-linux-out.log && exit 1)
+# RUN coursier launch sn-vcpkg --contrib -- install --manifest vcpkg.json
+RUN coursier launch sn-vcpkg --contrib -- install libmysql || (cat /root/.cache/sbt-vcpkg/vcpkg/buildtrees/libmysql/config-arm64-linux-out.log && exit 1)
 
 # COPY build.sbt .
 # COPY project/build.properties project/build.properties
