@@ -1,3 +1,4 @@
+import java.nio.file.Files
 import scala.scalanative.build.SourceLevelDebuggingConfig
 import scala.scalanative.build.OptimizerConfig
 import bindgen.plugin.BindgenMode
@@ -98,21 +99,24 @@ Global / buildScalaGrammar := {
   val src =
     (baseDirectory.value) / "example-tree-sitter" / "tree-sitter-scala" / "src"
   val cSources =
-    src.toGlob / ** / "*.c"
+    src.toGlob / "*.c"
   val hSources =
-    src.toGlob / ** / "*.h"
+    src.toGlob / "*.h"
   val s =
     streams.value
 
   val files =
-    (fileTreeView.value.list(cSources) ++ fileTreeView.value.list(hSources))
-      .map(_._1.toFile)
+    (fileTreeView.value.list(cSources) ++
+      fileTreeView.value.list(hSources)).map(_._1.toFile)
+
+  Files.createDirectories(tg.toPath)
+  IO.copyDirectory(src, tg)
 
   val cachedFun =
     FileFunction.cached(
       s.cacheDirectory / "tree-sitter-scala-build"
     ) { (in: Set[File]) =>
-      Set(buildScalaGrammarImpl(files, tg, s.log))
+      Set(buildScalaGrammarImpl(files, tg, src, s.log))
     }
   cachedFun(files.toSet).headOption
     .getOrElse(sys.error("No static library produced"))
@@ -121,31 +125,41 @@ Global / buildScalaGrammar := {
 def buildScalaGrammarImpl(
     files: Seq[File],
     outDir: File,
+    src: File,
     log: sbt.Logger
 ) = {
   import sbt.nio.file.FileTreeView
   val out =
     outDir / "libtree-sitter-scala.a"
-  val stage =
-    outDir / "stage"
-  IO.delete(stage)
   import scala.sys.process.*
   try {
     val cmd =
       List.newBuilder[String]
+
+    val filePaths =
+      files
+        .flatMap(_.relativeTo(src))
+        .map(s => outDir.toPath.resolve(s.toPath))
+        .toSeq
+        .map(_.toString)
+
+    log.info(
+      s"Building tree-sitter-scala from ${filePaths}, in $outDir"
+    )
+
     cmd += "clang"
-    cmd ++= files.toSeq.map(_.toString)
+    cmd ++= filePaths
     cmd += "-fPIC"
     cmd += "-c"
+    cmd += s"-I${src}"
 
-    IO.createDirectory(stage)
     Process(
       command = cmd.result(),
-      cwd = stage
+      cwd = outDir
     ).!(log)
 
     val objectFiles =
-      stage.toGlob / ** / "*.o"
+      outDir.toGlob / ** / "*.o"
 
     val arCmd =
       List.newBuilder[String]
@@ -153,9 +167,12 @@ def buildScalaGrammarImpl(
     arCmd += "r"
     arCmd += out.name
 
-    arCmd ++= FileTreeView.nio
+    val objects = FileTreeView.nio
       .list(objectFiles)
       .map(_._1.toAbsolutePath.toString())
+
+    assert(objects.nonEmpty, "No object files found in stage directory")
+    arCmd ++= objects
 
     Process(
       arCmd.result(),
@@ -164,7 +181,7 @@ def buildScalaGrammarImpl(
 
     out
   } finally {
-    IO.delete(stage)
+    // IO.delete(stage)
   }
 }
 

@@ -14,7 +14,7 @@ jobs:
     name: CI on ${{matrix.os}} ${{matrix.segment}} out of 3
     strategy:
       fail-fast: false
-      matrix: 
+      matrix:
         os: [macos-14, ubuntu-22.04]
         segment: [1, 2, 3]
     runs-on: ${{ matrix.os }}
@@ -23,8 +23,8 @@ jobs:
 
       - uses: actions/setup-java@v3
         with:
-          distribution: 'temurin' 
-          java-version: '17'
+          distribution: "temurin"
+          java-version: "17"
           cache: sbt
 
       # - name: Cache vcpkg
@@ -41,7 +41,7 @@ jobs:
 
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Setup for Scala Native
         run: |
@@ -62,15 +62,13 @@ jobs:
       - name: Setup for examples
         run: |
           PLATFORM="$(uname)"
-          if [ $PLATFORM == "Darwin" ]; then 
+          if [ $PLATFORM == "Darwin" ]; then
             python3 -m pip install packaging
           else
             docker run -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
             docker run -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_USER=mysql -e MYSQL_PASSWORD=mysql-password -e MYSQL_DATABASE=mysql_db -p 3306:3306 -d mysql
             docker run -p 6379:6379 -d redis
           fi
-
-          ./manual_setup.sh
 
       - name: Run examples
         run: sbt 'runBatchedExamples ${{matrix.segment}} 3'
