@@ -22,7 +22,10 @@ ENV LLVM_BIN=/usr/lib/llvm-17/bin
 
 WORKDIR /source/build
 
-RUN apt -y install curl zip unzip tar ninja-build nasm cmake make pkg-config git libtirpc-dev
+RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
+RUN echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ noble main' | tee /etc/apt/sources.list.d/kitware.list >/dev/null
+RUN apt update
+RUN apt -y install curl zip unzip tar ninja-build nasm cmake make pkg-config git libtirpc-dev bison flex cmake
 RUN coursier launch sn-vcpkg --contrib -- bootstrap
 
 COPY vcpkg.json .
