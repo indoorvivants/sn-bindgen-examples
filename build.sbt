@@ -47,8 +47,9 @@ lazy val root = project
 // Example of Tree Sitter binding usage:
 // https://tree-sitter.github.io/tree-sitter/using-parsers#the-basic-objects
 lazy val `tree-sitter` = project
-  .in(file("example-tree-sitter"))
+  .in(file("bindings/tree-sitter"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+  .settings(withPublishing("tree-sitter"))
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("tree-sitter"),
@@ -71,8 +72,9 @@ lazy val `tree-sitter` = project
   .settings(bindgenSettings)
 
 lazy val cjson = project
-  .in(file("example-cjson"))
+  .in(file("bindings/cjson"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+  .settings(withPublishing("cjson"))
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("cjson"),
@@ -90,6 +92,116 @@ lazy val cjson = project
   .settings(bindgenSettings)
   .settings(configurePlatform())
 
+def runWithOverrides[T](
+    state: State,
+    projectRef: ProjectRef,
+    task: TaskKey[T],
+    overrides: Seq[Def.Setting[?]]
+): T = {
+  val extracted = Project.extract(state)
+  val updatedState = extracted.appendWithSession(overrides, state)
+
+  val (newState, result) =
+    Project
+      .extract(updatedState)
+      .runTask(projectRef / task, updatedState)
+
+  result
+}
+
+lazy val publishBindingsLocal = taskKey[Unit]("")
+
+def publishingImpl(
+    key: String,
+    delegate: TaskKey[Unit]
+) = Def.task {
+  val initialState = state.value
+  val tpr = thisProjectRef.value
+  val log = sLog.value
+
+  (Global / vcpkgVersions).value.get(key.toLowerCase()) match {
+    case None =>
+      log.error(s"Missing vcpkg version information for $key")
+    case Some(pb) =>
+
+      val snapshotVersion = pb.version + "-SNAPSHOT"
+      val desc =
+        s"$key bindings for Scala 3 Native ${if (pb.description == "") ""
+          else ": " + pb.description}"
+      val snapshotSettings = Seq(
+        tpr / moduleName := key,
+        tpr / organization := "com.indoorvivants.sn-bindings",
+        tpr / version := snapshotVersion,
+        tpr / delegate / skip := false,
+        tpr / description := desc
+      )
+
+      runWithOverrides(initialState, tpr, delegate, snapshotSettings)
+
+    // val stableSettings = Seq(
+    //   tpr / moduleName := key,
+    //   tpr / organization := "com.indoorvivants.sn-bindings",
+    //   tpr / version := pb.version + "-bindgen" + (tpr / bindgenVersion).value,
+    //   tpr / publishLocal / skip := false,
+    //   tpr / description := desc
+    // )
+    // runWithOverrides(initialState, tpr, publishLocal, stableSettings)
+  }
+}
+def withPublishing(key: String) = Seq(
+  publish / skip := true,
+  publishLocal / skip := true,
+  // publishingKey := key,
+  publishLocal := {
+    val log = sLog.value
+    val org = organization.value
+    val name = moduleName.value
+    val ver = version.value
+    log.info(s"Publishing $org::$name::$ver")
+    publishLocal.value
+  },
+  publishBindingsLocal := publishingImpl(
+    key,
+    publishLocal
+  ).value
+)
+
+lazy val publishingKey = settingKey[String]("")
+
+// this task parses the output of vcpkg json listing versions, and creates a Map of all installed
+// packages and their versions
+lazy val vcpkgVersions = taskKey[Map[String, PublishingInfo]]("")
+Global / vcpkgVersions := {
+
+  import upickle.default.*
+
+  val vcpkg = (cjson / vcpkgManager).value
+
+  val raw = vcpkg.pass(Seq("list", "--x-json")).mkString("\n")
+
+  val json = read[Map[String, ujson.Obj]](raw)
+
+  val mp = Map.newBuilder[String, PublishingInfo]
+
+  json.foreach { case (_, obj) =>
+    for {
+      packageName <- obj.value.get("package_name").flatMap(_.strOpt)
+      version <- obj.value.get("version").flatMap(_.strOpt)
+      desc = obj.value
+        .get("desc")
+        .flatMap(_.arrOpt)
+        .toVector
+        .flatMap(_.flatMap(_.strOpt))
+        .mkString("\n")
+    } yield mp += packageName.toLowerCase -> PublishingInfo(
+      version,
+      desc.toString
+    )
+  }
+
+  mp.result()
+}
+
 lazy val buildScalaGrammar =
   taskKey[File]("")
 
@@ -97,7 +209,7 @@ Global / buildScalaGrammar := {
   val tg =
     crossTarget.value / "tree-sitter-scala-build"
   val src =
-    (baseDirectory.value) / "example-tree-sitter" / "tree-sitter-scala" / "src"
+    (baseDirectory.value) / "bindings" / "tree-sitter" / "tree-sitter-scala" / "src"
   val cSources =
     src.toGlob / "*.c"
   val hSources =
@@ -186,8 +298,9 @@ def buildScalaGrammarImpl(
 }
 
 lazy val curl = project
-  .in(file("example-curl"))
+  .in(file("bindings/curl"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+  .settings(withPublishing("curl"))
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("curl"),
@@ -206,8 +319,9 @@ lazy val curl = project
   .settings(configurePlatform())
 
 lazy val jni = project
-  .in(file("example-jni"))
+  .in(file("bindings/jni"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin)
+  .settings(withPublishing("jni"))
   .settings(
     scalaVersion := Versions.Scala,
     bindgenBindings += {
@@ -277,8 +391,9 @@ ThisBuild / detectedJavaHome := {
 }
 
 lazy val git = project
-  .in(file("example-git"))
+  .in(file("bindings/git"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+  .settings(withPublishing("libgit2"))
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("libgit2"),
@@ -299,8 +414,9 @@ lazy val git = project
 
 lazy val postgres =
   project
-    .in(file("example-postgres"))
+    .in(file("bindings/postgres"))
     .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(withPublishing("libpq"))
     .settings(
       scalaVersion := Versions.Scala,
       vcpkgDependencies := VcpkgDependencies("libpq"),
@@ -323,8 +439,9 @@ lazy val postgres =
 
 lazy val mysql =
   project
-    .in(file("example-mysql"))
+    .in(file("bindings/mysql"))
     .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(withPublishing("libmysql"))
     .settings(
       scalaVersion := Versions.Scala,
       vcpkgDependencies := VcpkgDependencies("libmysql", "openssl", "zlib"),
@@ -366,8 +483,9 @@ lazy val mysql =
 
 lazy val sqlite =
   project
-    .in(file("example-sqlite"))
+    .in(file("bindings/sqlite"))
     .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(withPublishing("sqlite3"))
     .settings(
       scalaVersion := Versions.Scala,
       vcpkgDependencies := VcpkgDependencies("sqlite3"),
@@ -386,8 +504,9 @@ lazy val sqlite =
 
 lazy val sdl2 =
   project
-    .in(file("example-sdl2"))
+    .in(file("bindings/sdl2"))
     .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(withPublishing("SDL2"))
     .settings(
       scalaVersion := Versions.Scala,
       vcpkgDependencies := VcpkgDependencies("sdl2"),
@@ -406,8 +525,9 @@ lazy val sdl2 =
 
 lazy val sdl3 =
   project
-    .in(file("example-sdl3"))
+    .in(file("bindings/sdl3"))
     .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(withPublishing("SDL3"))
     .settings(
       scalaVersion := Versions.Scala,
       vcpkgDependencies := VcpkgDependencies("sdl3"),
@@ -433,8 +553,9 @@ lazy val sdl3 =
 
 lazy val redis =
   project
-    .in(file("example-redis"))
+    .in(file("bindings/redis"))
     .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(withPublishing("hiredis"))
     .settings(
       scalaVersion := Versions.Scala,
       vcpkgDependencies := VcpkgDependencies("hiredis"),
@@ -452,8 +573,9 @@ lazy val redis =
     .settings(configurePlatform())
 
 lazy val cmark = project
-  .in(file("example-cmark"))
+  .in(file("bindings/cmark"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+  .settings(withPublishing("cmark"))
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("cmark"),
@@ -472,8 +594,9 @@ lazy val cmark = project
   .settings(configurePlatform())
 
 lazy val rocksdb = project
-  .in(file("example-rocksdb"))
+  .in(file("bindings/rocksdb"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+  .settings(withPublishing("rocksdb"))
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("rocksdb", "zlib"),
@@ -494,8 +617,9 @@ lazy val rocksdb = project
   .settings(configurePlatform())
 
 lazy val s2n = project
-  .in(file("example-s2n"))
+  .in(file("bindings/s2n"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+  .settings(withPublishing("s2n"))
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("s2n", "openssl"),
@@ -545,8 +669,9 @@ def configurePlatform(rename: String => String = identity) = Seq(
 )
 
 lazy val duckdb = project
-  .in(file("example-duckdb"))
+  .in(file("bindings/duckdb"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+  .settings(withPublishing("duckdb"))
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("duckdb"),
@@ -570,8 +695,9 @@ lazy val duckdb = project
   .settings(bindgenSettings)
 
 lazy val libuv = project
-  .in(file("example-libuv"))
+  .in(file("bindings/libuv"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+  .settings(withPublishing("libuv"))
   .settings(
     scalaVersion := Versions.Scala,
     vcpkgDependencies := VcpkgDependencies("libuv"),
@@ -593,8 +719,9 @@ lazy val libuv = project
   .settings(configurePlatform())
 
 lazy val lua = project
-  .in(file("example-lua"))
+  .in(file("bindings/lua"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+  .settings(withPublishing("lua"))
   .settings(
     vcpkgDependencies := VcpkgDependencies("lua"),
     scalaVersion := Versions.Scala,
@@ -615,8 +742,9 @@ lazy val lua = project
 
 lazy val ffmpeg =
   project
-    .in(file("example-ffmpeg"))
+    .in(file("bindings/ffmpeg"))
     .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+    .settings(withPublishing("ffmpeg"))
     .settings(
       scalaVersion := Versions.Scala,
       vcpkgDependencies := VcpkgDependencies("ffmpeg"),
@@ -654,8 +782,9 @@ lazy val ffmpeg =
     .settings(configurePlatform())
 
 lazy val openssl = project
-  .in(file("example-openssl"))
+  .in(file("bindings/openssl"))
   .enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgNativePlugin)
+  .settings(withPublishing("openssl"))
   .settings(
     vcpkgDependencies := VcpkgDependencies("openssl"),
     scalaVersion := Versions.Scala,

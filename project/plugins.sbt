@@ -9,6 +9,8 @@ val ScalaNativeVersion =
 
 resolvers += Resolver.sonatypeCentralSnapshots
 
+libraryDependencies += "com.lihaoyi" %% "upickle" % "4.1.0"
+
 addSbtPlugin("com.indoorvivants" % "bindgen-sbt-plugin" % BindgenVersion)
 addSbtPlugin("org.scala-native" % "sbt-scala-native" % ScalaNativeVersion)
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.5.6")

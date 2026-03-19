@@ -1,3 +1,3 @@
-[submodule "example-tree-sitter/tree-sitter-scala"]
-	path = example-tree-sitter/tree-sitter-scala
-	url = https://github.com/tree-sitter/tree-sitter-scala
+[submodule "bindings/tree-sitter/tree-sitter-scala"]
+	path = bindings/tree-sitter/tree-sitter-scala
+	url = git@github.com:tree-sitter/tree-sitter-scala.git
