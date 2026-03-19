@@ -110,10 +110,12 @@ def runWithOverrides[T](
 }
 
 lazy val publishBindingsLocal = taskKey[Unit]("")
+lazy val publishBindings = taskKey[Unit]("")
 
 def publishingImpl(
     key: String,
-    delegate: TaskKey[Unit]
+    delegate: TaskKey[Unit],
+    where: Option[Resolver] = None
 ) = Def.task {
   val initialState = state.value
   val tpr = thisProjectRef.value
@@ -133,7 +135,8 @@ def publishingImpl(
         tpr / organization := "com.indoorvivants.sn-bindings",
         tpr / version := snapshotVersion,
         tpr / delegate / skip := false,
-        tpr / description := desc
+        tpr / description := desc,
+        tpr / publishTo := where
       )
 
       runWithOverrides(initialState, tpr, delegate, snapshotSettings)
@@ -163,6 +166,13 @@ def withPublishing(key: String) = Seq(
   publishBindingsLocal := publishingImpl(
     key,
     publishLocal
+  ).value,
+  publishBindings := publishingImpl(
+    key,
+    publish,
+    Some(
+      "central-snapshots" at "https://central.sonatype.com/repository/maven-snapshots/"
+    )
   ).value
 )
 
