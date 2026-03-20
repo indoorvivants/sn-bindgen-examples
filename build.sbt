@@ -850,7 +850,7 @@ def balancedPartitioner[A](strings: Vector[A], jobs: Int): Int => Vector[A] = {
 
 import complete.DefaultParsers.*
 
-def projectCommands(st: State) = {
+def runCommands(st: State) = {
   val exceptions: Set[String] =
     Set("root") ++ {
       if (sys.env.contains("CI")) {
@@ -871,13 +871,41 @@ def projectCommands(st: State) = {
     }
 }
 
+def publishCommands(st: State) = {
+  val exceptions: Set[String] =
+    Set("root")
+
+  getProjects(st).sorted.reverse
+    .filterNot(exceptions)
+    .flatMap { projectName =>
+      List(s"$projectName/publishBindings")
+    }
+}
+
 ThisBuild / commands += Command.arb { s =>
   token(
     literal("runBatchedExamples") <~ Space
   ) ~ (IntBasic <~ Space) ~ (IntBasic)
 } { case (st, t) =>
   val ((_, jobId), totalJobs) = t
-  val commands = projectCommands(st)
+  val commands = runCommands(st)
+  val partition = balancedPartitioner(commands.toVector, totalJobs)(jobId)
+
+  println(s"COMMANDS ${partition}")
+
+  partition.foldLeft(st) { case (s, n) =>
+    n :: s
+  }
+
+}
+
+ThisBuild / commands += Command.arb { s =>
+  token(
+    literal("publishBatchedBindings") <~ Space
+  ) ~ (IntBasic <~ Space) ~ (IntBasic)
+} { case (st, t) =>
+  val ((_, jobId), totalJobs) = t
+  val commands = publishCommands(st)
   val partition = balancedPartitioner(commands.toVector, totalJobs)(jobId)
 
   println(s"COMMANDS ${partition}")
@@ -889,7 +917,7 @@ ThisBuild / commands += Command.arb { s =>
 }
 
 ThisBuild / commands += Command.command("runExamples") { st =>
-  projectCommands(st).foldLeft(st) { case (s, n) =>
+  runCommands(st).foldLeft(st) { case (s, n) =>
     n :: s
   }
 
