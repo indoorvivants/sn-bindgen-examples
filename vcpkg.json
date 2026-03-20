@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "builtin-baseline": "f6735d5aa1537081e8d425372ea7e585b0ad65e8",
+  "name": "bindgen-examples",
+  "dependencies": [
+    "cjson",
+    "cmark",
+    "curl",
+    "duckdb",
+    "ffmpeg",
+    "hiredis",
+    "libgit2",
+    "libmysql",
+    "libpq",
+    "libuv",
+    "lua",
+    "openssl",
+    "rocksdb",
+    "s2n",
+    "sdl2",
+    "sdl3",
+    "sqlite3",
+    "tree-sitter",
+    "zlib"
+  ]
+}
